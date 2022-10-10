@@ -1,0 +1,34 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: OpenScope Library
+author: Carter Peene
+logo: logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: off
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+# Launch button settings
+launch_buttons:
+  notebook_interface: "jupyterlab"
+  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
+  jupyterhub_url: "https://hub.dandiarchive.org"
+  # The URL of the BinderHub (e.g., https://mybinder.org)
+  binderhub_url: "https://mybinder.org"
