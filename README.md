@@ -4,7 +4,7 @@ This library is meant to store projects used for brain data processing and visua
 
 ## General book overall content goals
 
-# OpenScope for dummies
+# NWB for dummies
 
 # Chapter 1: Using DANDI/getting data
 - Downloading files from DANDI
