@@ -1,0 +1,32 @@
+
+name: Deployment
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Upgrading pip
+        run: pip install --upgrade pip
+
+      - name: Installing dependencies
+        run: pip install markupsafe==2.0.1
+
+      - name: Installing Jupyter book
+        run: pip install -U jupyter-book
+
+      - name: Build Jupyter book
+        run: |
+          jupyter-book clean ./docs
+          jupyter-book build ./docs
+          
+      - name: Deploy book to Github pages
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/_build/html
+
