@@ -9,6 +9,7 @@ This repo is meant to store projects used for brain data processing and visualiz
 - Streaming files from DANDI
 - Downloading embargoed data
 - Querying metadata across datasets: From Dandi, From OpenscopeDataPortal
+
 ### Chapter 2: Data visualization
 - Sending data to NWBWidget.
 - Exploring 2P and Neuro data in NWB files. Each field explained
@@ -20,6 +21,7 @@ This repo is meant to store projects used for brain data processing and visualiz
 - Neuropixel: Accessing Local Field potential. Visualizing LFP responses to a trial event, simple example with latencies, plot responses in different epochs.
 - Neuropixel: visualizing brain areas recorded from one or more probes
 - Neuropixel: Showing recorded unit metrics, spike waveforms
+
 ### Chapter 3: First-order analysis
 - 2P: Stimuli averages with 2P data
 - 2P: Cell matching across days
@@ -28,6 +30,7 @@ This repo is meant to store projects used for brain data processing and visualiz
 - Neuropixel: Stimuli averages with neuropixel data
 - Neuropixel: extracting Current Source Density plots
 - Neuropixel: plotting receptive fields
+
 ### Chapter 4: Higher-order analysis
 - Sending NWB raw data to a segmentation pipeline: example with Suite2p.
 - Identifying mouse behavioral state based on eye tracking and behavioral data.
@@ -35,6 +38,7 @@ This repo is meant to store projects used for brain data processing and visualiz
 - Classifying spike waveform between fast spiking and normal spiking cells.
 - Extracting clusters of correlated neurons.
 - Analysis of functional connectivity.
+
 ### Chapter 5: Replicating figures
 - Example notebook from past projects
 - Guidelines for reproducible figures from NWB files
