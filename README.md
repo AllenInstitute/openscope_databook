@@ -1,8 +1,9 @@
 ## NWB for dummies: OpenScope Databook!
 
-This repo is meant to store projects used for brain data analysis and visualization, primarily working with the [.NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). This repo is provided by the Allen Institute's **OpenScope** Project. **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function.
+This codebase is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with the [.NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). This codebase is provided by the Allen Institute's **OpenScope** Project, a component of The Allen Institute [Mindscope Program](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through Jupyter Book, this code is structured as a series of documented Python notebooks intended to explain and educate users on how to work with brain data.
 
 We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to @rcpeene or @jeromelecoq. Below, you can see a working list of the content goals for this databook. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* standard.
+
 
 
 ## General book overall content goals
