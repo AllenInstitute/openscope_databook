@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Download an NWB File &#8212; OpenScope Databook</title>
+    <title>Downloading an NWB File &#8212; OpenScope Databook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Download an NWB File
+   Downloading an NWB File
   </a>
  </li>
  <li class="toctree-l1">
@@ -136,7 +136,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="stream_nwb.html">
-   Stream an NWB File with fsspec
+   Streaming an NWB File with fsspec
   </a>
  </li>
 </ul>
@@ -404,13 +404,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-just-one-file">
-   Download Just One File
+  <a class="reference internal nav-link" href="#downloading-just-one-file">
+   Downloading Just One File
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-entire-dandiset">
-   Download Entire Dandiset
+  <a class="reference internal nav-link" href="#downloading-entire-dandiset">
+   Downloading Entire Dandiset
   </a>
  </li>
 </ul>
@@ -422,7 +422,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Download an NWB File</h1>
+                <h1>Downloading an NWB File</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -443,13 +443,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-just-one-file">
-   Download Just One File
+  <a class="reference internal nav-link" href="#downloading-just-one-file">
+   Downloading Just One File
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-entire-dandiset">
-   Download Entire Dandiset
+  <a class="reference internal nav-link" href="#downloading-entire-dandiset">
+   Downloading Entire Dandiset
   </a>
  </li>
 </ul>
@@ -462,14 +462,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="download-an-nwb-file">
-<h1>Download an NWB File<a class="headerlink" href="#download-an-nwb-file" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="downloading-an-nwb-file">
+<h1>Downloading an NWB File<a class="headerlink" href="#downloading-an-nwb-file" title="Permalink to this headline">#</a></h1>
 <p>In order to analyze some data, you’ll need to have some data. The <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a> is used to store NWB files in datasets called <strong>dandisets</strong>. Typically, an NWB file contains the data for just one experimental session, while a dandiset contains all the related data files yielded from a project. This notebook allows you to download from public dandisets or private dandisets (called <strong>embargoed</strong> dandisets) via the <a class="reference external" href="https://dandi.readthedocs.io/en/latest/modref/index.html">DANDI Python API</a>. To download embargoed dandisets from DANDI, you will need to make an account on the DANDI Archive and must be given access by the owner of the dandiset.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from dandi import dandiapi
 </pre></div>
 </div>
 </div>
@@ -480,60 +480,73 @@ title="Print to PDF"
 <p>Here you can configure the download. Browse the DANDI Archive for a Dandiset you’re interested in and use its ID in <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>. Also set <code class="docutils literal notranslate"><span class="pre">data_loc</span></code> to the relative filepath of the directory you’d like to download to. If you’re accessing an embargoed dandiset, you should set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API Key, which can be found if you click on your profile icon in the top-right corner on the DANDI Archive website.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">data_loc</span> <span class="o">=</span> <span class="s2">&quot;~/data&quot;</span>
-<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;your_api_key_here&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
+download_loc = &quot;.&quot;
+authenticate = False
+dandi_api_key = &quot;&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span>
-<span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if authenticate:
+    client = dandiapi.DandiAPIClient(token=dandi_api_key)
+else:
+    client = dandiapi.DandiAPIClient()
+my_dandiset = client.get_dandiset(dandiset_id)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;Got dandiset {my_dandiset}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="download-just-one-file">
-<h2>Download Just One File<a class="headerlink" href="#download-just-one-file" title="Permalink to this headline">#</a></h2>
+<section id="downloading-just-one-file">
+<h2>Downloading Just One File<a class="headerlink" href="#downloading-just-one-file" title="Permalink to this headline">#</a></h2>
 <p>Set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to the path of the file you want to download within the dandiset. You can get this by navigating to the file you want to download on the DANDI Archive website and pressing on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon. There, you can copy the filepath from the field labeled <code class="docutils literal notranslate"><span class="pre">path</span></code>. Don’t include a leading <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="n">filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="c1"># this may take awhile, especially if the file to download is large</span>
-<span class="n">file</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filename = filepath.split(&quot;/&quot;)[-1]
+file = my_dandiset.get_asset_by_path(filepath)
+# this may take awhile, especially if the file to download is large
+file.download(f&quot;{download_loc}/{filename}&quot;)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">data_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;Downloaded file to {download_loc}/{filename}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-699733573_ses-715093703.nwb
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="download-entire-dandiset">
-<h2>Download Entire Dandiset<a class="headerlink" href="#download-entire-dandiset" title="Permalink to this headline">#</a></h2>
+<section id="downloading-entire-dandiset">
+<h2>Downloading Entire Dandiset<a class="headerlink" href="#downloading-entire-dandiset" title="Permalink to this headline">#</a></h2>
 <p>If you’d like to do a lot of work with the files in a dandiset, you might want to download the entire thing or some portion of the dandiset. Be prepared, though; This could take a significant amount of space on your drive and a significant amount of time. If you want to just download all the files within a directory of the dandiset, you can set the first argument of <code class="docutils literal notranslate"><span class="pre">download_directory</span></code> below to a more specific path within the dandiset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># patience isn&#39;t just a virtue, it&#39;s a requirement</span>
-<span class="n">my_dandiset</span><span class="o">.</span><span class="n">download_directory</span><span class="p">(</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">dandiset_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># patience isn&#39;t just a virtue, it&#39;s a requirement
+my_dandiset.download_directory(&quot;./&quot;, f&quot;{download_loc}/{dandiset_id}&quot;)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded directory to </span><span class="si">{</span><span class="n">data_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">dandiset_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;Downloaded directory to {download_loc}/{dandiset_id}&quot;)
 </pre></div>
 </div>
 </div>

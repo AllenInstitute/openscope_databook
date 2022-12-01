@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Stream an NWB File with fsspec &#8212; OpenScope Databook</title>
+    <title>Streaming an NWB File with fsspec &#8212; OpenScope Databook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="download_nwb.html">
-   Download an NWB File
+   Downloading an NWB File
   </a>
  </li>
  <li class="toctree-l1">
@@ -136,7 +136,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Stream an NWB File with fsspec
+   Streaming an NWB File with fsspec
   </a>
  </li>
 </ul>
@@ -404,8 +404,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stream-your-file">
-   Stream Your File
+  <a class="reference internal nav-link" href="#streaming-a-file">
+   Streaming a File
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -422,7 +422,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Stream an NWB File with fsspec</h1>
+                <h1>Streaming an NWB File with fsspec</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -443,8 +443,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stream-your-file">
-   Stream Your File
+  <a class="reference internal nav-link" href="#streaming-a-file">
+   Streaming a File
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -462,20 +462,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="stream-an-nwb-file-with-fsspec">
-<h1>Stream an NWB File with fsspec<a class="headerlink" href="#stream-an-nwb-file-with-fsspec" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="streaming-an-nwb-file-with-fsspec">
+<h1>Streaming an NWB File with fsspec<a class="headerlink" href="#streaming-an-nwb-file-with-fsspec" title="Permalink to this headline">#</a></h1>
 <p>As you might have realized, NWB files are large. They take a lot of time to download and a lot of space on your drive. A convenient tool to mitigate this is <strong>fsspec</strong>. Fsspec allows you to <em>stream</em> the information from a file remotely without having to download it. This can be more efficient if you are only wanting to quickly examine a file or just need access to a portion of the file’s contents. For more exensive analysis, it is still recommended that you download the file.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
-<span class="kn">import</span> <span class="nn">dandi</span>
-<span class="kn">import</span> <span class="nn">fsspec</span>
-<span class="kn">import</span> <span class="nn">pynwb</span>
-<span class="kn">import</span> <span class="nn">h5py</span>
-<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
-<span class="kn">from</span> <span class="nn">nwbwidgets</span> <span class="kn">import</span> <span class="n">nwb2widget</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from dandi import dandiapi
+import dandi
+import fsspec
+import pynwb
+import h5py
+from fsspec.implementations.cached import CachingFileSystem
+from nwbwidgets import nwb2widget
 </pre></div>
 </div>
 </div>
@@ -487,53 +487,73 @@ title="Print to PDF"
 <p>If you’re accessing an embargoed dandiset, you should set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API Key, which can be found if you click on your profile icon in the top-right corner on the DANDI Archive website.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;</span>
-<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
+filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
+authenticate = False
+dandi_api_key = &quot;&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span>
-<span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if authenticate:
+    client = dandiapi.DandiAPIClient(token=dandi_api_key)
+else:
+    client = dandiapi.DandiAPIClient()
+my_dandiset = client.get_dandiset(dandiset_id)
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;Got dandiset {my_dandiset}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
-<span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(filepath)
+base_url = file.client.session.head(file.base_download_url)
+file_url = base_url.headers[&#39;Location&#39;]
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrieved file url </span><span class="si">{</span><span class="n">file_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;Retrieved file url {file_url}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/f5f/175/f5f1752f-5227-47d5-8f75-cd71937878aa?response-content-disposition=attachment%3B%20filename%3D%22sub-699733573_ses-715093703.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20221130%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20221130T215329Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9edb7bb8f4263cd27cdcc37b27cc23cc7e79b8dbc3a0c9d6b4ae2a74da30c63a
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="stream-your-file">
-<h2>Stream Your File<a class="headerlink" href="#stream-your-file" title="Permalink to this headline">#</a></h2>
+<section id="streaming-a-file">
+<h2>Streaming a File<a class="headerlink" href="#streaming-a-file" title="Permalink to this headline">#</a></h2>
 <p>First, this creates a virtual filesystem based on the http protocol and specifies using caching to save accessed data to RAM. Then it opens the file remotely through the virtual filesystem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">CachingFileSystem</span><span class="p">(</span>
-    <span class="n">fs</span><span class="o">=</span><span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">),</span>
-    <span class="n">cache_storage</span><span class="o">=</span><span class="s2">&quot;nwb-cache&quot;</span><span class="p">,</span>  <span class="c1"># Local folder for the cache</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fs = CachingFileSystem(
+    fs=fsspec.filesystem(&quot;http&quot;)
+)
 
-<span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
-<span class="n">file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">io</span> <span class="o">=</span> <span class="n">pynwb</span><span class="o">.</span><span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+f = fs.open(file_url, &quot;rb&quot;)
+file = h5py.File(f)
+io = pynwb.NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
+nwb = io.read()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
 </div>
@@ -544,24 +564,28 @@ title="Print to PDF"
 <p>Once the file has been opened remotely, you can explore the file as you wish via <code class="docutils literal notranslate"><span class="pre">print</span></code> statements, or you can view the whole thing with <code class="docutils literal notranslate"><span class="pre">NWBWidgets</span></code> like we showed in <em>Exploring an NWB File</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### uncomment these to view aspects of the file</span>
-<span class="c1">### note that not all these properties exist for all nwb files</span>
-<span class="c1"># nwb.identifier</span>
-<span class="c1"># nwb.processing</span>
-<span class="c1"># nwb.acquisition[&quot;events&quot;]</span>
-<span class="c1"># nwb.intervals[&quot;trials&quot;]</span>
-<span class="c1"># nwb.stimulus[&quot;StimulusPresentation&quot;]</span>
-<span class="c1"># nwb.electrodes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### uncomment these to view aspects of the file
+### note that not all these properties exist for all nwb files
+# nwb.identifier
+# nwb.processing
+# nwb.acquisition[&quot;events&quot;]
+# nwb.intervals[&quot;trials&quot;]
+# nwb.stimulus[&quot;StimulusPresentation&quot;]
+# nwb.electrodes
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb2widget</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nwb2widget(nwb)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "682abdb6aeef48f4a3164f618072cbc1", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 </section>
 </section>

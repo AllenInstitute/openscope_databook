@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Environment setup &#8212; OpenScope Databook</title>
+    <title>Visualizing LFP Responses to Stimulus &#8212; OpenScope Databook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -119,7 +119,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/download_nwb.html">
-   Download an NWB File
+   Downloading an NWB File
   </a>
  </li>
  <li class="toctree-l1">
@@ -134,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/stream_nwb.html">
-   Stream an NWB File with fsspec
+   Streaming an NWB File with fsspec
   </a>
  </li>
 </ul>
@@ -391,30 +391,62 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Environment setup
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-nwb-files">
-   Read NWB files
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-nwb-files">
+   Downloading NWB Files
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-stimuli">
-   Visualizing stimuli
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-data-from-files">
+   Reading Data from Files
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#break">
-   BREAK
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-stimulus-times">
+   Extracting Stimulus Times
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   BREAK
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-a-period">
+   Selecting a Period
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lfp-interpolation">
+   LFP Interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-stimulus-time-windows">
+   Getting Stimulus Time Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-lfp-traces">
+   Visualizing LFP Traces
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traces-from-channels-overlaid">
+     Traces from Channels Overlaid
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traces-from-channels-stacked">
+     Traces from Channels Stacked
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traces-from-channels-with-confidence-intervals">
+     Traces from Channels with Confidence Intervals
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -425,7 +457,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Environment setup</h1>
+                <h1>Visualizing LFP Responses to Stimulus</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -435,30 +467,62 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Environment setup
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-nwb-files">
-   Read NWB files
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-nwb-files">
+   Downloading NWB Files
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-stimuli">
-   Visualizing stimuli
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-data-from-files">
+   Reading Data from Files
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#break">
-   BREAK
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-stimulus-times">
+   Extracting Stimulus Times
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   BREAK
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-a-period">
+   Selecting a Period
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lfp-interpolation">
+   LFP Interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-stimulus-time-windows">
+   Getting Stimulus Time Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-lfp-traces">
+   Visualizing LFP Traces
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traces-from-channels-overlaid">
+     Traces from Channels Overlaid
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traces-from-channels-stacked">
+     Traces from Channels Stacked
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traces-from-channels-with-confidence-intervals">
+     Traces from Channels with Confidence Intervals
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -470,59 +534,110 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="environment-setup">
-<h1>Environment setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-lfp-responses-to-stimulus">
+<h1>Visualizing LFP Responses to Stimulus<a class="headerlink" href="#visualizing-lfp-responses-to-stimulus" title="Permalink to this headline">#</a></h1>
+<p>A very useful view when working with ecephys data is the <strong>LFP trace</strong>. LFP, or Local Field Potential, is the electrical potential recorded in the extracellular space in brain tissue, and represents activity in regions of neurons. This is particularly useful when you examine LFP responses to stimulus events. The type of stimulus can vary, but in order to visualize this, you must have access to the times of the stimulus events you’re interested in. In this notebook, you can extract data from a stimulus nwb file and an LFP nwb file. Importantly, since the stimulus timestamps and the LFP timestamps are not likely to be aligned with each other and in perfectly regular intervals, they must be interpolated.</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install pynwb
-<span class="o">!</span>pip install matplotlib
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install scipy
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pynwb import NWBHDF5IO
+from scipy import interpolate
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+from math import sqrt
+from dandi import dandiapi
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="read-nwb-files">
-<h1>Read NWB files<a class="headerlink" href="#read-nwb-files" title="Permalink to this headline">#</a></h1>
+<section id="downloading-nwb-files">
+<h2>Downloading NWB Files<a class="headerlink" href="#downloading-nwb-files" title="Permalink to this headline">#</a></h2>
+<p>If you don’t already have files to analyze, you can use data from The Allen Institute’s <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Coding</span> <span class="pre">-</span> <span class="pre">Neuropixels</span></code> dataset. If you want to choose your own files to download, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_stim_filepath</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_lfp_filepath</span></code> accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp_filepath</span> <span class="o">=</span> <span class="s2">&quot;../../../data/Illusion/lfp_testing/probeA_lfp.nwb&quot;</span>
-<span class="n">stim_filepath</span> <span class="o">=</span> <span class="s2">&quot;../../../data/Illusion/lfp_testing/spike_times.nwb&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
+dandi_stim_filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
+dandi_lfp_filepath = &quot;sub-699733573/sub-699733573_ses-715093703_probe-810755797_ecephys.nwb&quot;
+download_loc = &quot;.&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">lfp_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">lfp_file</span> <span class="o">=</span> <span class="n">lfp_io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">stim_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">stim_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">stim_file</span> <span class="o">=</span> <span class="n">stim_io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_filename = dandi_stim_filepath.split(&quot;/&quot;)[-1]
+lfp_filename = dandi_lfp_filepath.split(&quot;/&quot;)[-1]
+my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
+print(f&quot;Got dandiset {my_dandiset}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\rcpee\miniconda3\envs\databook\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_stim_filepath)
+# this may take awhile, especially if the file to download is large
+file.download(f&quot;{download_loc}/{stim_filename}&quot;)
+
+print(f&quot;Downloaded file to {download_loc}/{stim_filename}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to .//sub-699733573_ses-715093703.nwb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_lfp_filepath)
+# this may take awhile, especially if the file to download is large
+file.download(f&quot;{download_loc}/{lfp_filename}&quot;)
+
+print(f&quot;Downloaded file to {download_loc}/{lfp_filename}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to .//sub-699733573_ses-715093703_probe-810755797_ecephys.nwb
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-data-from-files">
+<h2>Reading Data from Files<a class="headerlink" href="#reading-data-from-files" title="Permalink to this headline">#</a></h2>
+<p>Below you can read in the stimulus file from a filepath you specify. You can extract the <code class="docutils literal notranslate"><span class="pre">LFP.data</span></code> and associated <code class="docutils literal notranslate"><span class="pre">LFP.timestamps</span></code> from an LFP file as well. If you didn’t download new nwb files, you’ll have to set the value of <code class="docutils literal notranslate"><span class="pre">stim_filepath</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_filepath</span></code>. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_810755797_lfp_data</span></code>, but it may be named differently if you are using a different nwb file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_filepath = f&quot;{download_loc}/{stim_filename}&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_io = NWBHDF5IO(stim_filepath, mode=&quot;r&quot;, load_namespaces=True)
+stim_file = stim_io.read() 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\rcpee\miniconda3\envs\databook\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\rcpee\miniconda3\envs\databook\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -530,477 +645,660 @@ C:\Users\rcpee\miniconda3\envs\databook\lib\site-packages\hdmf\spec\namespace.py
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span> <span class="o">=</span> <span class="n">lfp_file</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;probe_0_lfp_data&quot;</span><span class="p">]</span>
-<span class="n">series</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lfp_filepath = f&quot;{download_loc}/{lfp_filename}&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stimulus_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">stim_file</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">stimulus_names</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lfp_io = NWBHDF5IO(lfp_filepath, mode=&quot;r&quot;, load_namespaces=True)
+lfp_file = lfp_io.read()
+lfp_file.acquisition.keys()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ICkcfg0_presentations&#39;, &#39;ICkcfg1_presentations&#39;, &#39;ICwcfg0_presentations&#39;, &#39;ICwcfg1_presentations&#39;, &#39;RFCI_presentations&#39;, &#39;invalid_times&#39;, &#39;sizeCI_presentations&#39;, &#39;spontaneous_presentations&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;probe_810755797_lfp&#39;, &#39;probe_810755797_lfp_data&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lfp = lfp_file.acquisition[&quot;probe_810755797_lfp_data&quot;]
+lfp_timestamps = lfp.timestamps
+lfp_data = lfp.data
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="visualizing-stimuli">
-<h1>Visualizing stimuli<a class="headerlink" href="#visualizing-stimuli" title="Permalink to this headline">#</a></h1>
+<section id="extracting-stimulus-times">
+<h2>Extracting Stimulus Times<a class="headerlink" href="#extracting-stimulus-times" title="Permalink to this headline">#</a></h2>
+<p>First, you must take the stimulus table from your stimulus file. Since your stimulus table will be unique to your experiment, you’ll have to use some ingenuity to extract the timestamps that are of interest to you. Below, we display your stimulus names. Set <code class="docutils literal notranslate"><span class="pre">stim_name</span></code> to be the name that contains the associated stimulus table you want. Then we display the stimulus table. You can see that it contains the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> of each stimulus event. In the commented cell below showing <code class="docutils literal notranslate"><span class="pre">extract</span> <span class="pre">timestamps</span> <span class="pre">for</span> <span class="pre">given</span> <span class="pre">stimulus</span> <span class="pre">frame</span></code>, you should write code to iterate through this table and filter all but the rows that contain an important stimulus event. The output should be a list of timestamps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_name</span> <span class="o">=</span> <span class="s2">&quot;ICwcfg1_presentations&quot;</span>
-<span class="n">stim_table</span> <span class="o">=</span> <span class="n">stim_file</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">({</span><span class="n">frame</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">frame</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stimulus_names = list(stim_file.intervals.keys())
+print(stimulus_names)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drifting_gratings_presentations&#39;, &#39;flashes_presentations&#39;, &#39;gabors_presentations&#39;, &#39;invalid_times&#39;, &#39;natural_movie_one_presentations&#39;, &#39;natural_movie_three_presentations&#39;, &#39;natural_scenes_presentations&#39;, &#39;spontaneous_presentations&#39;, &#39;static_gratings_presentations&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_name = &quot;static_gratings_presentations&quot;
+stim_table = stim_file.intervals[stim_name]
+stim_table[:]
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    start_time   stop_time stimulus_name  stimulus_block  frame  \
-id                                                                
-0    99.256575   99.656919       ICwcfg1             0.0    0.0   
-1    99.656919  100.057262       ICwcfg1             0.0    0.0   
-2   100.057262  100.457598       ICwcfg1             0.0    0.0   
-3   100.457598  100.857927       ICwcfg1             0.0    0.0   
-4   100.857927  101.258255       ICwcfg1             0.0    0.0   
-5   101.258255  101.658603       ICwcfg1             0.0    0.0   
-6   101.658603  102.058950       ICwcfg1             0.0    0.0   
-7   102.058950  102.459292       ICwcfg1             0.0    0.0   
-8   102.459292  102.859629       ICwcfg1             0.0    0.0   
-9   102.859629  103.259965       ICwcfg1             0.0    0.0   
-10  103.259965  103.660305       ICwcfg1             0.0    0.0   
-11  103.660305  104.060644       ICwcfg1             0.0    0.0   
-12  104.060644  104.460976       ICwcfg1             0.0    0.0   
-13  104.460976  104.861301       ICwcfg1             0.0    0.0   
-14  104.861301  105.261625       ICwcfg1             0.0    0.0   
-15  105.261625  105.661977       ICwcfg1             0.0    0.0   
-16  105.661977  106.062328       ICwcfg1             0.0    0.0   
-17  106.062328  106.462662       ICwcfg1             0.0    0.0   
-18  106.462662  106.862979       ICwcfg1             0.0    0.0   
-19  106.862979  107.263295       ICwcfg1             0.0    0.0   
-20  107.263295  107.663651       ICwcfg1             0.0    0.0   
-21  107.663651  108.064006       ICwcfg1             0.0    0.0   
-22  108.064006  108.464336       ICwcfg1             0.0    0.0   
-23  108.464336  108.864641       ICwcfg1             0.0    0.0   
-24  108.864641  109.264945       ICwcfg1             0.0    0.0   
-25  109.264945  109.665317       ICwcfg1             0.0    0.0   
-26  109.665317  110.065688       ICwcfg1             0.0    0.0   
-27  110.065688  110.466034       ICwcfg1             0.0    0.0   
-28  110.466034  110.866355       ICwcfg1             0.0    0.0   
-29  110.866355  111.266675       ICwcfg1             0.0    0.0   
-30  111.266675  111.667035       ICwcfg1             0.0    0.0   
-31  111.667035  112.067394       ICwcfg1             0.0    0.0   
-32  112.067394  112.467730       ICwcfg1             0.0    0.0   
-33  112.467730  112.868043       ICwcfg1             0.0    0.0   
-34  112.868043  113.268355       ICwcfg1             0.0    0.0   
-35  113.268355  113.668707       ICwcfg1             0.0    0.0   
-36  113.668707  114.069058       ICwcfg1             0.0    0.0   
-37  114.069058  114.469392       ICwcfg1             0.0    0.0   
-38  114.469392  114.869709       ICwcfg1             0.0    0.0   
-39  114.869709  115.270025       ICwcfg1             0.0    0.0   
-40  115.270025  115.670377       ICwcfg1             0.0    0.0   
-41  115.670377  116.070728       ICwcfg1             0.0    0.0   
-42  116.070728  116.471068       ICwcfg1             0.0    0.0   
-43  116.471068  116.871397       ICwcfg1             0.0    0.0   
-44  116.871397  117.271725       ICwcfg1             0.0    0.0   
-45  117.271725  117.672081       ICwcfg1             0.0    0.0   
-46  117.672081  118.072436       ICwcfg1             0.0    0.0   
-47  118.072436  118.472770       ICwcfg1             0.0    0.0   
-48  118.472770  118.873083       ICwcfg1             0.0    0.0   
-49  118.873083  119.273395       ICwcfg1             0.0    0.0   
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-    stimulus_index                      tags  \
-id                                             
-0              0.0  [stimulus_time_interval]   
-1              0.0  [stimulus_time_interval]   
-2              0.0  [stimulus_time_interval]   
-3              0.0  [stimulus_time_interval]   
-4              0.0  [stimulus_time_interval]   
-5              0.0  [stimulus_time_interval]   
-6              0.0  [stimulus_time_interval]   
-7              0.0  [stimulus_time_interval]   
-8              0.0  [stimulus_time_interval]   
-9              0.0  [stimulus_time_interval]   
-10             0.0  [stimulus_time_interval]   
-11             0.0  [stimulus_time_interval]   
-12             0.0  [stimulus_time_interval]   
-13             0.0  [stimulus_time_interval]   
-14             0.0  [stimulus_time_interval]   
-15             0.0  [stimulus_time_interval]   
-16             0.0  [stimulus_time_interval]   
-17             0.0  [stimulus_time_interval]   
-18             0.0  [stimulus_time_interval]   
-19             0.0  [stimulus_time_interval]   
-20             0.0  [stimulus_time_interval]   
-21             0.0  [stimulus_time_interval]   
-22             0.0  [stimulus_time_interval]   
-23             0.0  [stimulus_time_interval]   
-24             0.0  [stimulus_time_interval]   
-25             0.0  [stimulus_time_interval]   
-26             0.0  [stimulus_time_interval]   
-27             0.0  [stimulus_time_interval]   
-28             0.0  [stimulus_time_interval]   
-29             0.0  [stimulus_time_interval]   
-30             0.0  [stimulus_time_interval]   
-31             0.0  [stimulus_time_interval]   
-32             0.0  [stimulus_time_interval]   
-33             0.0  [stimulus_time_interval]   
-34             0.0  [stimulus_time_interval]   
-35             0.0  [stimulus_time_interval]   
-36             0.0  [stimulus_time_interval]   
-37             0.0  [stimulus_time_interval]   
-38             0.0  [stimulus_time_interval]   
-39             0.0  [stimulus_time_interval]   
-40             0.0  [stimulus_time_interval]   
-41             0.0  [stimulus_time_interval]   
-42             0.0  [stimulus_time_interval]   
-43             0.0  [stimulus_time_interval]   
-44             0.0  [stimulus_time_interval]   
-45             0.0  [stimulus_time_interval]   
-46             0.0  [stimulus_time_interval]   
-47             0.0  [stimulus_time_interval]   
-48             0.0  [stimulus_time_interval]   
-49             0.0  [stimulus_time_interval]   
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-                                           timeseries  
-id                                                     
-0   [(1, 1, timestamps pynwb.base.TimeSeries at 0x...  
-1   [(2, 1, timestamps pynwb.base.TimeSeries at 0x...  
-2   [(3, 1, timestamps pynwb.base.TimeSeries at 0x...  
-3   [(4, 1, timestamps pynwb.base.TimeSeries at 0x...  
-4   [(5, 1, timestamps pynwb.base.TimeSeries at 0x...  
-5   [(6, 1, timestamps pynwb.base.TimeSeries at 0x...  
-6   [(7, 1, timestamps pynwb.base.TimeSeries at 0x...  
-7   [(8, 1, timestamps pynwb.base.TimeSeries at 0x...  
-8   [(9, 1, timestamps pynwb.base.TimeSeries at 0x...  
-9   [(10, 1, timestamps pynwb.base.TimeSeries at 0...  
-10  [(11, 1, timestamps pynwb.base.TimeSeries at 0...  
-11  [(12, 1, timestamps pynwb.base.TimeSeries at 0...  
-12  [(13, 1, timestamps pynwb.base.TimeSeries at 0...  
-13  [(14, 1, timestamps pynwb.base.TimeSeries at 0...  
-14  [(15, 1, timestamps pynwb.base.TimeSeries at 0...  
-15  [(16, 1, timestamps pynwb.base.TimeSeries at 0...  
-16  [(17, 1, timestamps pynwb.base.TimeSeries at 0...  
-17  [(18, 1, timestamps pynwb.base.TimeSeries at 0...  
-18  [(19, 1, timestamps pynwb.base.TimeSeries at 0...  
-19  [(20, 1, timestamps pynwb.base.TimeSeries at 0...  
-20  [(21, 1, timestamps pynwb.base.TimeSeries at 0...  
-21  [(22, 1, timestamps pynwb.base.TimeSeries at 0...  
-22  [(23, 1, timestamps pynwb.base.TimeSeries at 0...  
-23  [(24, 1, timestamps pynwb.base.TimeSeries at 0...  
-24  [(25, 1, timestamps pynwb.base.TimeSeries at 0...  
-25  [(26, 1, timestamps pynwb.base.TimeSeries at 0...  
-26  [(27, 1, timestamps pynwb.base.TimeSeries at 0...  
-27  [(28, 1, timestamps pynwb.base.TimeSeries at 0...  
-28  [(29, 1, timestamps pynwb.base.TimeSeries at 0...  
-29  [(30, 1, timestamps pynwb.base.TimeSeries at 0...  
-30  [(31, 1, timestamps pynwb.base.TimeSeries at 0...  
-31  [(32, 1, timestamps pynwb.base.TimeSeries at 0...  
-32  [(33, 1, timestamps pynwb.base.TimeSeries at 0...  
-33  [(34, 1, timestamps pynwb.base.TimeSeries at 0...  
-34  [(35, 1, timestamps pynwb.base.TimeSeries at 0...  
-35  [(36, 1, timestamps pynwb.base.TimeSeries at 0...  
-36  [(37, 1, timestamps pynwb.base.TimeSeries at 0...  
-37  [(38, 1, timestamps pynwb.base.TimeSeries at 0...  
-38  [(39, 1, timestamps pynwb.base.TimeSeries at 0...  
-39  [(40, 1, timestamps pynwb.base.TimeSeries at 0...  
-40  [(41, 1, timestamps pynwb.base.TimeSeries at 0...  
-41  [(42, 1, timestamps pynwb.base.TimeSeries at 0...  
-42  [(43, 1, timestamps pynwb.base.TimeSeries at 0...  
-43  [(44, 1, timestamps pynwb.base.TimeSeries at 0...  
-44  [(45, 1, timestamps pynwb.base.TimeSeries at 0...  
-45  [(46, 1, timestamps pynwb.base.TimeSeries at 0...  
-46  [(47, 1, timestamps pynwb.base.TimeSeries at 0...  
-47  [(48, 1, timestamps pynwb.base.TimeSeries at 0...  
-48  [(49, 1, timestamps pynwb.base.TimeSeries at 0...  
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49  [(50, 1, timestamps pynwb.base.TimeSeries at 0...  
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_time</th>
+      <th>stop_time</th>
+      <th>stimulus_name</th>
+      <th>stimulus_block</th>
+      <th>color</th>
+      <th>mask</th>
+      <th>opacity</th>
+      <th>phase</th>
+      <th>size</th>
+      <th>units</th>
+      <th>stimulus_index</th>
+      <th>orientation</th>
+      <th>spatial_frequency</th>
+      <th>contrast</th>
+      <th>tags</th>
+      <th>timeseries</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5381.988653</td>
+      <td>5382.238857</td>
+      <td>static_gratings</td>
+      <td>8.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.5</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>120.0</td>
+      <td>0.32</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(49432, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5382.238857</td>
+      <td>5382.489060</td>
+      <td>static_gratings</td>
+      <td>8.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.5</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>150.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(49433, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5382.489060</td>
+      <td>5382.739264</td>
+      <td>static_gratings</td>
+      <td>8.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.5</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>60.0</td>
+      <td>0.32</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(49434, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5382.739264</td>
+      <td>5382.989467</td>
+      <td>static_gratings</td>
+      <td>8.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.75</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>120.0</td>
+      <td>0.04</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(49435, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5382.989467</td>
+      <td>5383.239686</td>
+      <td>static_gratings</td>
+      <td>8.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>150.0</td>
+      <td>0.02</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(49436, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5995</th>
+      <td>9133.889309</td>
+      <td>9134.139517</td>
+      <td>static_gratings</td>
+      <td>14.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.75</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>60.0</td>
+      <td>0.04</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(70383, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>5996</th>
+      <td>9134.139517</td>
+      <td>9134.389719</td>
+      <td>static_gratings</td>
+      <td>14.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>90.0</td>
+      <td>0.02</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(70384, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>5997</th>
+      <td>9134.389719</td>
+      <td>9134.639920</td>
+      <td>static_gratings</td>
+      <td>14.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>60.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(70385, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>5998</th>
+      <td>9134.639920</td>
+      <td>9134.890122</td>
+      <td>static_gratings</td>
+      <td>14.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.5</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>60.0</td>
+      <td>0.32</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(70386, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+    <tr>
+      <th>5999</th>
+      <td>9134.890122</td>
+      <td>9135.140323</td>
+      <td>static_gratings</td>
+      <td>14.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[250.0, 250.0]</td>
+      <td>deg</td>
+      <td>6.0</td>
+      <td>60.0</td>
+      <td>0.16</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(70387, 1, timestamps pynwb.base.TimeSeries a...</td>
+    </tr>
+  </tbody>
+</table>
+<p>6000 rows × 16 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_frame</span> <span class="o">=</span> <span class="mf">13.0</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### extract timestamps for given stimulus frame</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### extract timestamps for given stimulus frame
 
-<span class="n">stim_timestamps</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">prev_frame</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">)):</span>
-    <span class="n">row</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">frame</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">prev_frame</span> <span class="ow">and</span> <span class="n">row</span><span class="o">.</span><span class="n">frame</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">select_frame</span><span class="p">:</span>
-        <span class="n">stim_timestamps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">prev_frame</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">frame</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">stim_timestamps</span><span class="p">)</span>
+filtered_stim_rows = []
+for i in range(len(stim_table)):
+    if stim_table.orientation[i] == 150.0:
+        filtered_stim_rows.append(stim_table[i])
+    
+all_stim_timestamps = [float(row.start_time) for row in filtered_stim_rows]
+print(all_stim_timestamps)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[128.08084646720096, 139.29023498262623, 142.492946467201, 148.09768446720096, 175.32051498262624, 188.13134646720096, 236.17172846720095, 242.577108467201, 250.583848467201, 254.58722046720095, 260.19194246720093, 329.8504967249136, 343.4619449826262, 347.4652849826262, 358.6747204672009, 363.47873498262624, 370.68482046720095, 371.4854849826263, 375.4888249826262, 377.0902127249136, 411.51910498262623, 428.33328046720095, 447.5494449826262, 481.9783927249136, 502.795910467201, 505.9985747249136, 510.802626467201, 523.6133649826262, 526.0154287249137, 529.2181067249136, 541.2282127249135, 551.6369649826262, 559.6436749826262, 562.846384467201, 571.6537649826262, 589.2686027249135, 590.0692787249136, 592.4712984672009, 596.474656467201, 603.6807049826263, 614.890148467201, 617.2921567249136, 618.0928247249136, 630.903616467201, 651.7210749826262, 661.3291587249136, 666.9338924672011, 674.1399267249136, 687.7513849826262, 695.7581149826262, 702.1635207249136, 719.7783249826263, 720.579004467201, 722.981014467201, 731.7883949826262, 742.997828467201, 746.2005147249137, 747.001214467201, 764.6160264672011, 773.4234147249136, 775.0247724672009, 781.4301607249135, 809.4537007249136, 810.2543767249136, 823.8658049826262, 859.8960949826262, 870.3048567249136, 895.9263849826262, 898.3284287249136, 916.743904467201, 928.754020467201, 934.3587247249136, 936.760742467201, 948.7708404672012, 968.787666467201, 972.791022467201, 999.213242467201, 1000.0138749826262, 1004.817956467201, 1040.848244467201, 1068.0710949826262, 1088.0879249826262, 1100.8987244672007, 1116.1114949826265, 1123.3175704672012, 1131.324302467201, 1144.9357604672014, 1155.344486467201, 1161.7498907249137, 1163.3512264672008, 1167.3545524672008, 1176.1619649826262, 1178.5640107249135, 1194.5774767249136, 1208.9895904672012, 1210.590938724914, 1211.3916184672012, 1235.4118164672009, 1236.2124649826264, 1238.6144927249138, 1242.6178667249137, 1251.425268467201, 1252.2259249826266, 1279.4488244672011, 1292.2595549826265, 1295.462278467201, 1308.2730249826263, 1309.073744467201, 1329.8912327249136, 1341.9013307249138, 1342.7019987249137, 1353.9114167249136, 1373.1275864672011, 1377.9316107249138, 1384.3369949826265, 1386.7390287249136, 1389.9417167249137, 1390.7423887249138, 1426.7726707249135, 1427.5733664672011, 1429.9753487249136, 1437.982092724914, 1440.3841149826262, 1442.7861487249138, 1462.8029727249136, 1470.8096947249137, 1485.2218084672008, 1510.0426967249136, 1515.6473984672011, 1526.856794724914, 1534.0628727249136, 1555.681048467201, 1558.0830767249136, 1562.0864347249135, 1565.2891304672012, 1566.0897967249134, 1590.1099947249136, 1628.5422749826262, 1640.5523849826263, 1653.3631884672009, 1663.7719324672007, 1665.3732924672013, 1673.3800084672012, 1679.785380467201, 1684.5894049826263, 1696.5995049826265, 1709.410316467201, 1729.4271204672011, 1731.0284647249136, 1734.2311507249135, 1743.0385707249138, 1752.6466249826262, 1759.8527064672012, 1760.6533549826263, 1775.8661584672009, 1796.6836249826265, 1810.2950887249133, 1823.105878724914, 1832.7139249826264, 1847.9267384672007, 1848.7273949826265, 1856.7341449826265, 1862.3388727249132, 1874.3489707249137, 1875.1496467249133, 1886.3590507249137, 1889.5617444672007, 1948.0109004672008, 1952.8149249826265, 1966.4263687249136, 1968.8283949826264, 1969.629090467201, 1984.041170467201, 1992.8485749826264, 1997.652622467201, 2000.8553149826264, 2023.2741707249136, 2056.902414982626, 2059.304452724913, 2067.3111827249136, 2085.726680467201, 2098.5374247249133, 2104.1421824672007, 2104.942814982626, 2155.3852327249137, 2161.790622467201, 2173.0000449826266, 2178.604758724914, 2179.405434724914, 2183.408788724914, 2196.219578467201, 2229.0471549826266, 2245.8613024672013, 2250.665342724914, 2260.2733924672016, 2265.0774649826267, 2265.8781524672013, 2277.8882184672016, 2288.2969784672014, 2298.705738724914, 2308.3138004672014, 2313.918530467201, 2336.3373664672013, 2337.938718467202, 2362.759572724914, 2373.9689984672013, 2374.769668724914, 2383.577076724914, 2404.394616467201, 2434.820156724914, 2439.624192724914, 2456.438334467201, 2474.853802724914, 2475.654478724914, 2504.478710467202, 2505.2793749826265, 2506.880732724914, 2507.6814087249136, 2516.4888424672013, 2534.904284724914, 2540.5090304672017, 2550.1171124672014, 2551.718432724914, 2559.725172724914, 2560.5258564672013, 2575.738636724914, 2577.3399849826264, 2578.140664467201, 2586.1473984672016, 2594.1541204672017, 2598.9581687249142, 2606.164232467201, 2612.569600467202, 2624.5797004672017, 2634.1877884672017, 2661.4106449826263, 2667.015348724914, 2675.022088724914, 2683.829512724914, 2689.4342349826265, 2690.2349064672017, 2711.052382724914, 2713.4544049826263, 2720.6604684672016, 2721.461124982626, 2726.2652064672016, 2729.4678849826264, 2754.288760467201, 2768.7008704672016, 2771.903568724914, 2783.112980724913, 2786.315662467201, 2797.5251049826265, 2839.960792724914, 2872.7883784672013, 2873.5890749826262, 2881.5957549826267, 2887.200492724914, 2890.403186467201, 2909.6193449826264, 2912.822036467201, 2916.024718724914, 2928.835492467201, 2932.038198724914, 2932.838882467201, 2941.6462549826265, 2944.8489564672013, 2970.470522467201, 2978.477238467201, 2994.490702467201, 3008.102130724914, 3008.9028064672016, 3018.510890467201, 3020.112228724914, 3022.514236467201, 3028.919650467202, 3031.321684724914, 3041.7303949826264, 3054.541174467201, 3066.5512944672014, 3067.3519447249137, 3076.960032467201, 3083.365410724913, 3108.9869804672016, 3112.189660724914, 3124.199750724914, 3128.2030967249143, 3140.213190724914, 3143.4158967249136, 3153.023972467201, 3156.226690724914, 3175.4428327249143, 3183.449558724914, 3187.452934724914, 3229.0879484672014, 3233.0913064672013, 3241.0980364672014, 3252.3074687249136, 3255.510138724914, 3259.5135047249137, 3263.5168667249136, 3281.1317084672014, 3284.3343787249137, 3317.1619544672017, 3350.790254467201, 3355.5942907249137, 3358.796978467202, 3363.601006724913, 3370.0064149826267, 3400.431988724914, 3403.6346707249136, 3406.0366849826264, 3426.0535149826264, 3429.256218467201, 3431.6582487249143, 3433.259586467201, 3439.6649787249144, 3472.492566724914, 3474.0939349826263, 3492.509390724914, 3509.3235344672016, 3524.536314724914, 3528.539686724914, 3532.543066724914, 3542.951826467201, 3555.762568724914, 3557.3639064672016, 3583.786134724914, 3597.3975764672014, 3600.6002807249142, 3609.4076744672016, 3629.424514467202, 3642.2352749826255, 3644.637310724914, 3648.640658724914, 3650.241994982626, 3651.042690467201, 3655.046052467201, 3667.0561604672016, 3671.860192724914, 3680.667584724914, 3700.684418724914, 3711.893838724914, 3737.515396467201, 3747.1234684672017, 3750.3261449826255, 3779.150402467201, 3779.9510607249135, 3791.9611567249135, 3817.5827304672016, 3840.802232724914, 3850.4103149826265, 3858.4170149826255, 3879.234548467202, 3893.646642467201, 3896.048688724914, 3901.6533644672018, 3912.862820724914, 3934.4809749826254, 3942.4877149826266, 3950.494444982626, 3965.707240467201, 3972.112636724914, 3981.7207104672016, 3991.3287964672018, 3992.930134724914, 3996.933496724914, 3998.5348449826265, 4029.7610944672015, 4035.3657884672016, 4039.3691904672014, 4064.990728724914, 4094.6156549826255, 4103.4230284672, 4104.223692724913, 4112.230436724913, 4117.835128467201, 4130.645904982626, 4147.4600524672005, 4171.480236467201, 4211.513930467201, 4213.915924467201, 4226.726684982626, 4244.3414987249125, 4251.547572467201, 4265.1589987249135, 4269.162362724914, 4293.182572724913, 4297.9866224672, 4312.398726724913, 4318.0034204672, 4319.604780467201, 4320.405464724913, 4323.6081384672, 4324.408802724914, 4328.412176724913, 4329.212848724914, 4337.219586724913, 4346.026986467201, 4357.236410724914]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5382.238856576834, 5382.989467497215, 5385.49156021696, 5386.492395216961, 5386.992817497215, 5388.243861576834, 5390.745951357088, 5390.996157497214, 5392.497405216961, 5393.748469076833, 5393.998682936706, 5395.750134076833, 5397.001177497215, 5397.5015952169615, 5397.751804076835, 5398.002012936707, 5398.252219076834, 5400.2539015768325, 5403.256388857088, 5403.5066002169615, 5403.7568115768345, 5404.0070229367075, 5404.257231576834, 5406.0087129367075, 5406.5091202169615, 5407.760154076834, 5408.7610038570865, 5409.011217497215, 5411.263096357086, 5411.51330521696, 5411.7635140768325, 5414.015352936706, 5414.7660088570865, 5417.518330216961, 5419.770186576833, 5420.771033857087, 5422.022082936706, 5422.772708857088, 5424.774376357088, 5425.2747913570865, 5429.278146357086, 5430.0287729367055, 5434.282304076834, 5438.035482936706, 5439.286488857088, 5440.287309076834, 5440.5375252169615, 5441.037957497214, 5448.043812936708, 5448.54423521696, 5449.044657497214, 5451.54675521696, 5452.54758521696, 5454.048792936706, 5454.2990115768325, 5458.052162936707, 5458.302376576834, 5459.8036215768325, 5460.554255216961, 5460.804471357087, 5465.308231357088, 5470.812841357088, 5471.313256357087, 5473.064717497215, 5473.815374076833, 5474.315791576832, 5478.319109076834, 5480.821191357088, 5484.324131576834, 5484.574340216961, 5487.3266363570865, 5487.576845216961, 5491.830376576833, 5497.0847774972135, 5498.085622936706, 5498.58604021696, 5498.836248857087, 5500.087302936707, 5500.837906357087, 5501.588540216961, 5502.58938521696, 5503.840424076833, 5504.841258857087, 5505.591880216961, 5506.092292936706, 5506.592715216961, 5508.844601357087, 5513.59857021696, 5515.850446576834, 5516.350864076833, 5517.852124076833, 5520.103972936707, 5522.355869076833, 5523.1065174972155, 5524.857976357087, 5525.60860021696, 5527.360081357087, 5527.860509076833, 5530.3625540768335, 5531.863829076833, 5533.615290216961, 5535.116537497214, 5537.61864521696, 5537.868864076833, 5541.621985216961, 5545.375111357087, 5546.876371357087, 5547.376791357087, 5550.379304076833, 5550.879706357087, 5551.129907497214, 5552.881396357087, 5553.131607497216, 5554.632850216961, 5556.884731357088, 5557.385138857087, 5557.63535021696, 5558.385981576834, 5558.886398857087, 5560.137452936707, 5564.64119021696, 5565.8922540768335, 5568.394311576833, 5569.395173857088, 5570.145792936706, 5571.1466574972155, 5571.897284076834, 5574.149152936707, 5574.899786357088, 5575.149997497214, 5576.150812936707, 5579.153327497214, 5579.65376021696, 5580.154192936707, 5580.654600216961, 5581.905619076833, 5582.406036576834, 5583.65710521696, 5585.408553857087, 5585.908986576834, 5586.409409076833, 5586.909821357088, 5588.1608629367065, 5589.161697497214, 5590.662950216961, 5591.663780216961, 5591.913991576834, 5592.414411576833, 5596.167552936707, 5596.417759076833, 5597.418593857087, 5598.419446576833, 5599.170057497216, 5600.921528857088, 5603.673820216961, 5603.924036576834, 5604.674660216961, 5605.175067497215, 5611.68050521696, 5614.933226357088, 5618.436146576833, 5618.936553857087, 5621.188437497214, 5622.68972021696, 5623.69052021696, 5624.441139076834, 5626.192632936706, 5627.944109076833, 5631.947421576833, 5632.197632936706, 5633.1984674972155, 5634.949938857088, 5636.951606357087, 5637.201807497215, 5638.953286357088, 5639.453698857087, 5645.959134076834, 5646.209342936707, 5646.959961357087, 5651.463736357087, 5653.215197497214, 5653.465408857088, 5654.466249076833, 5661.972521576833, 5662.222732936707, 5663.473771357088, 5665.475446357087, 5665.72565521696, 5666.226072936706, 5666.9766913570875, 5670.980033857088, 5671.980874076833, 5673.231917497214, 5676.484634076834, 5681.488816357088, 5681.989254076833, 5684.991726357088, 5685.9925940768335, 5689.245287497214, 5690.246142936707, 5693.498851357087, 5694.499694076833, 5696.251172936706, 5698.002599076834, 5698.252802936707, 5704.007624076833, 5704.257832936706, 5704.508041576833, 5706.75993021696, 5708.010971576833, 5711.76411021696, 5712.264542936707, 5712.514749076833, 5713.515576357087, 5714.516409076833, 5719.270377497214, 5720.521446576833, 5722.523069076833, 5724.024344076834, 5725.025178857088, 5726.77663021696, 5727.026848857087, 5727.277067497214, 5729.028528857088, 5734.78332521696, 5736.284622936707, 5737.78584021696, 5741.038553857087, 5743.040226357088, 5743.540648857087, 5743.79086021696, 5745.2921074972155, 5746.543144076833, 5747.043566357087, 5747.543983857087, 5751.297117497215, 5752.548154076833, 5754.549806576833, 5754.80003021696, 5755.300477497214, 5756.5514915768335, 5757.302147497216, 5757.80256021696, 5759.053613857088, 5759.303827497214, 5761.80590521696, 5762.056119076833, 5765.5590263570875, 5767.810925216961, 5770.563236576833, 5774.566529076834, 5777.819270216961, 5779.570738857087, 5782.323032936706, 5784.074501576833, 5785.075331357088, 5786.576574076834, 5787.076996357087, 5787.827630216961, 5791.080338857088, 5792.081174076833, 5792.581601576833, 5795.584111357088, 5795.83431521696, 5797.085363857087, 5797.335577497214, 5798.83683521696, 5799.337247497215, 5800.838495216961, 5801.589133857087, 5803.090401357087, 5811.597503857088, 5812.598329076834, 5813.849370216961, 5814.600001576833, 5820.605011576834, 5820.85522021696, 5821.605836357087, 5824.608364076834, 5826.109639076833, 5826.86026021696, 5827.110463857088, 5827.86110021696, 5828.361532936707, 5830.613361576833, 5831.113798857087, 5837.619221357088, 5839.120488857087, 5840.8719552169605, 5841.122161357087, 5841.622576357087, 5845.375707497215, 5847.877780216961, 5849.128831357088, 5849.629258857088, 5851.630926357087, 5853.88281021696, 5856.635146576834, 5860.388202936707, 5860.638426576834, 5860.888650216961, 7184.761183857087, 7188.013900216961, 7191.767046576833, 7192.267453857087, 7193.268269076833, 7194.018900216961, 7197.021430216961, 7199.273309076833, 7201.775409076833, 7204.027275216959, 7204.277481357088, 7204.777906357087, 7205.528562936706, 7206.279166357087, 7207.780426576834, 7208.280833857088, 7209.031460216959, 7209.782094076833, 7211.7837440768335, 7219.540242936707, 7220.541077497214, 7221.291689076834, 7222.042315216961, 7222.542737497214, 7226.546087497214, 7230.799633857087, 7232.801301357087, 7233.551942936707, 7234.0523652169595, 7235.053210216959, 7235.803836576833, 7236.054040216961, 7236.304243857087, 7242.309266357088, 7242.559477497214, 7247.3134115768335, 7247.813829076834, 7248.814688857087, 7249.565322936706, 7249.815529076834, 7251.817201576833, 7252.317618857088, 7254.069080216959, 7254.569497497215, 7260.574517497214, 7262.325976357088, 7263.577042936707, 7266.579537497214, 7267.079950216959, 7270.833071357088, 7274.586217497214, 7274.836431357087, 7275.336859076833, 7278.589577497214, 7283.843936576834, 7285.345166576833, 7286.596237497214, 7287.346879076834, 7288.848138857087, 7289.348561576833, 7290.099180216959, 7291.099980216961, 7292.1008252169595, 7292.601277497214, 7294.102505216961, 7297.105040216959, 7300.858166357088, 7301.108375216961, 7301.358584076834, 7302.359411357087, 7302.859816357088, 7303.11001521696, 7303.3602140768335, 7305.8623365768335, 7307.1133902169595, 7307.3635965768335, 7308.364428857088, 7308.614637497214, 7308.864848857087, 7310.6163074972155, 7311.1167352169605, 7313.1183902169605, 7314.369433857088, 7315.120070216959, 7315.370281576834, 7315.870699076833, 7318.873201357087, 7320.124245216961, 7320.374461357087, 7320.624677497214, 7324.628017497214, 7326.129255216961, 7326.379471357088, 7327.380314076833, 7328.381141357087, 7329.131770216959, 7330.1326152169595, 7331.3836490768335, 7332.13428021696, 7332.6347074972155, 7337.388651576834, 7338.389516357088, 7340.891586357087, 7342.643077497214, 7343.143495216959, 7347.897444076833, 7348.147655216961, 7348.397866357087, 7348.648077497214, 7351.900801576833, 7355.904179076833, 7358.1560152169595, 7359.407076576834, 7364.161045216961, 7365.412041576834, 7366.412903857087, 7367.163535216961, 7367.663942936707, 7368.915016357088, 7369.165215216961, 7372.167700216961, 7378.17273021696, 7378.923363857088, 7381.925864076834, 7382.176075216959, 7384.928383857087, 7385.178600216959, 7387.6806629367065, 7389.682332936706, 7391.433809076833, 7397.188640216959, 7399.940921576834, 7400.191130216959, 7403.193660216959, 7404.194495216959, 7407.1969852169605, 7410.950126357087, 7411.950961576834, 7418.206195216961, 7418.706597497216, 7419.207035216959, 7420.458076357087, 7420.958481357087, 7422.709937497214, 7426.463058857087, 7426.963488857087, 7428.965166357088, 7432.968511357088, 7435.720852936705, 7440.724987497214, 7441.725802936707, 7441.976019076834, 7444.227915216959, 7448.481471357088, 7449.4822965768335, 7450.483136357087, 7451.233760216959, 7452.735017497214, 7452.985223857087, 7458.489841357087, 7458.990253857088, 7459.490646576834, 7460.24127521696, 7460.7417074972145, 7460.991916357088, 7461.242125216961, 7462.993591357087, 7463.243795216959, 7463.4939990768335, 7464.4948363570875, 7464.995256357088, 7466.996928857087, 7470.499851357087, 7471.500709076833, 7472.0011265768335, 7473.752602936706, 7475.003611357088, 7475.504039076834, 7476.755077497214, 7478.506551357087, 7479.7576029367065, 7482.009481576833, 7482.509898857087, 7483.510734076834, 7484.011151576833, 7484.761777497214, 7485.762572936706, 7486.2630102169605, 7487.013651357088, 7490.266385216961, 7490.7667974972155, 7491.517416576833, 7493.018666357088, 7494.7701474972155, 7495.520759076833, 7496.7718074972145, 7497.272235216959, 7499.774312936706, 7500.524946357087, 7505.779312936706, 7506.279745216961, 7507.530789076834, 7509.532466576834, 7512.284780216959, 7514.28643021696, 7516.538321357088, 7521.542479076834, 7523.544204076834, 7523.794422936707, 7527.547506576833, 7529.048776357087, 7530.299815216959, 7532.301490216961, 7532.551698857087, 7532.801907497214, 7535.303980216961, 7535.554186576834, 7536.30482021696, 7537.055453857088, 7537.305660216959, 7538.806917497214, 7539.807772936707, 7541.809422936706, 7544.061296576833, 7545.562564076834, 7546.0629790768335, 7547.3140252169605, 7551.067163857087, 7551.817782936707, 7557.072188857087, 7557.572611576834, 7558.573433857087, 7560.074676576834, 7562.826977497214, 7564.078024076834, 7564.578446357087, 7564.828657497214, 7567.5809440768335, 7570.0830315768335, 7570.8336574972145, 7572.334935216961, 7572.585141357087, 7573.585966576834, 7579.340785216959, 7579.841212936706, 7581.842842936707, 7583.34410521696, 7583.594304076833, 7583.844502936707, 7585.095588857087, 7587.097241357087, 7588.848727497214, 7589.599316576833, 7590.099734076834, 7590.8503974972145, 7592.351640216961, 7593.102278857087, 7596.104774076834, 7596.605196357087, 7598.606866357088, 7599.857892936707, 7605.112298857088, 7608.615236357087, 7613.619409076833, 7613.869622936707, 7615.370885216959, 7618.37337021696, 7618.623588857087, 7618.873807497214, 7619.874632936707, 7620.875467497214, 7621.3758802169605, 7623.877952936707, 7626.1298690768335, 7627.380910216959, 7632.885507497214, 7633.385945216959, 7633.8863829367065, 7637.3892702169605, 7638.890527497214, 7642.143209076833, 7646.646993857087, 7646.897207497214, 7647.147426357087, 7647.397645216959, 7647.8980829367065, 7648.398480216959, 7648.898877497214, 7650.650341357087, 7650.9005474972155, 7651.651196576833, 7653.152426357087, 7654.9038974972145, 7656.655356357088, 7657.4059752169605, 7659.407660216961, 7660.658706357088, 7661.159126357087, 7661.659544076833, 7663.411000216959, 8594.688932936708, 8595.189335216959, 8595.689737497214, 8596.440334076833, 8596.940754076835, 8599.442873857086, 8599.693077497213, 8599.943291357087, 8600.193505216961, 8604.697292936708, 8606.698982936707, 8606.949181576834, 8608.950786576834, 8610.702302936708, 8611.953331357086, 8612.453739076835, 8613.454568857087, 8613.954988857091, 8615.206045216959, 8615.706467497213, 8616.20688521696, 8617.958343857088, 8618.208550216961, 8619.459596357086, 8619.709807497216, 8621.461261357088, 8624.21358021696, 8626.465439076834, 8627.216075216958, 8628.717262936707, 8629.217715216959, 8630.218575216959, 8630.468779076833, 8630.718982936707, 8634.722292936707, 8636.223595216961, 8636.473799076834, 8637.224430216958, 8637.975061357087, 8639.726537497214, 8640.477141576834, 8642.729022936708, 8645.981761357089, 8652.236975216962, 8655.239470216959, 8656.990936576833, 8657.24115021696, 8657.741577497214, 8658.492166576834, 8658.742362936708, 8660.994276576834, 8661.494703857086, 8662.745742936708, 8664.24699021696, 8664.747382936708, 8665.247825216962, 8670.502254076835, 8671.002676576834, 8672.503899076833, 8673.254525216958, 8673.504736357087, 8676.757452936707, 8682.262050216961, 8683.513088857087, 8684.013511357089, 8685.514771357088, 8685.764977497212, 8687.766657497214, 8690.26873521696, 8690.769142936708, 8693.521453857087, 8694.021873857087, 8695.773357497214, 8701.778367497214, 8703.780027497214, 8705.531488857087, 8705.781707497214, 8707.282950216959, 8711.786707497216, 8713.538168857087, 8715.289635216961, 8715.539846357087, 8716.29048021696, 8717.791727497213, 8718.041931357091, 8719.042759076834, 8719.793407497216, 8721.044459076835, 8721.294665216961, 8723.796747497214, 8725.047789076834, 8726.048616357088, 8726.298825216962, 8728.300500216961, 8729.551546357086, 8731.553238857086, 8732.554089076835, 8735.806777497215, 8736.056986357089, 8737.558238857087, 8737.808447497215, 8738.308875216962, 8739.559913857087, 8740.060326357087, 8743.563251357087, 8744.063671357088, 8744.313885216961, 8748.317230216959, 8749.067846576832, 8749.31806021696, 8750.068688857087, 8752.570771576835, 8753.571606357087, 8754.822622936708, 8755.072841576834, 8756.824362936708, 8757.324765216961, 8757.825167497214, 8761.578303857086, 8762.32892521696, 8764.831032936707, 8766.082051357087, 8767.833537497214, 8770.085413857087, 8772.837712936707, 8775.089601576832, 8776.090431357086, 8780.594179076834, 8784.597521576834, 8785.34814521696, 8787.850257497214, 8792.854432936707, 8793.855277497214, 8794.105483857089, 8794.856102936708, 8796.107131357086, 8800.110491357089, 8800.610899076833, 8803.613411357088, 8806.615924076836, 8807.866967497213, 8811.36989021696, 8812.370740216962, 8818.625949076835, 8819.877017497214, 8824.130556357086, 8824.881152936707, 8825.38157521696, 8826.882842936708, 8831.136371576833, 8832.637654076836, 8834.889522936708, 8836.641004076835, 8837.141421576833, 8838.142263857091, 8840.644369076836, 8842.145611357088, 8843.146454076834, 8846.399150216961, 8847.39998521696, 8850.40252021696, 8850.902942936707, 8852.654384076835, 8853.405010216959, 8854.155638857088, 8854.656061576834, 8855.156479076833, 8855.40668521696, 8856.657724076835, 8857.908767497214, 8858.659394076836, 8859.410025216961, 8861.411690216959, 8863.663581357087, 8866.666076576834, 8867.917127497214, 8868.917942936707, 8872.671079076834, 8876.424245216962, 8876.674454076836, 8878.175703857089, 8879.927157497214, 8880.427585216961, 8880.677799076835, 8881.178219076834, 8883.179901576834, 8885.681973857087, 8886.182373857087, 8888.434260216962, 8888.934672936708, 8891.937207497214, 8892.187416357088, 8893.188251576832, 8895.690341357087, 8901.44513021696, 8902.195763857088, 8902.696176576834, 8903.44680521696, 8904.697809076833, 8907.700348857088, 8908.951422936707, 8910.953052936708, 8913.204959076833, 8914.205803857087, 8914.45600021696, 8916.45766521696, 8917.708721357087, 8917.958937497213, 8918.459345216961, 8919.209966576833, 8920.711226576834, 8922.712889076833, 8923.713741357085, 8924.964742936707, 8926.215828857088, 8927.717073857088, 8929.46854521696, 8930.469385216962, 8931.970647497214, 8932.220851357086, 8932.47105521696, 8934.472720216962, 8935.723766357087, 8936.224181357087, 8936.47438521696, 8940.227531357086, 8940.727939076833, 8940.978142936707, 8945.982347497216, 8947.233321576834, 8951.486945216959, 8952.737991576834, 8952.988202936707, 8955.990707497214, 8956.491110216959, 8961.495310216958, 8962.245923857088, 8962.746336576833, 8966.499460216959, 8967.50029021696, 8967.750508857087, 8968.250936357088, 8969.251774076833, 8969.752196357087, 8971.50362521696, 8973.255106576833, 8974.506155216959, 8975.256776576833, 8976.007417497214, 8977.008252936708, 8978.009087497214, 8978.759684076833, 8979.260101576832, 8979.760538857086, 8981.512015216958, 8982.512855216959, 8983.013272936707, 8986.265981357086, 8990.519545216961, 8990.769754076835, 8992.270998857088, 8993.021602936706, 8993.772258857087, 8994.022477497214, 8995.523690216962, 8995.773918857089, 8998.526220216962, 8999.777268857088, 9000.027487497215, 9000.277696357089, 9001.028322936707, 9002.029157497214, 9002.529555216961, 9003.029952936708, 9004.281046357088, 9004.781464076836, 9005.532090216959, 9006.282703857087, 9006.783096576833, 9007.283511576834, 9010.536235216961, 9011.537070216962, 9011.787293857087, 9014.539595216958, 9014.789794076833, 9016.54127021696, 9018.542935216961, 9019.293549076834, 9019.543765216958, 9022.546290216962, 9023.547130216959, 9025.298584076834, 9027.300256576833, 9030.052557497214, 9033.055022936707, 9033.305249076837, 9035.306936576832, 9035.807363857088, 9036.557990216961, 9038.809851576834, 9039.810708857087, 9040.561330216959, 9042.813194076833, 9043.56382021696, 9047.56719521696, 9048.818259076836, 9052.321156357088, 9053.572200216959, 9053.822408857088, 9055.824098857087, 9059.076802936708, 9060.077637497214, 9062.579735216961, 9064.080987497216, 9064.58139521696, 9066.082677497214, 9067.583920216959, 9068.834919076833, 9070.086007497215, 9071.837463857088, 9072.337883857092, 9072.838316576835, 9075.090142936708, 9078.342901357086, 9081.095172936708, 9086.59981021696, 9086.850026576834, 9089.852516357087, 9091.353764076834, 9091.60397521696, 9092.104397497214, 9093.60565021696, 9095.357126576831, 9096.107737497214, 9096.357948857087, 9097.859208857088, 9098.359626357087, 9099.110252936707, 9102.112767497214, 9102.362976357088, 9105.615680216959, 9106.616490216958, 9106.866691576834, 9108.61816521696, 9109.368776576834, 9113.372171576832, 9114.873379076836, 9116.62485521696, 9118.626545216961, 9118.876749076831, 9119.126952936707, 9119.377164076834, 9119.62737521696, 9120.628200216961, 9121.879258857087, 9122.379688857087, 9125.632395216959, 9126.883434076835, 9127.634065216958, 9128.134487497216, 9128.384686357087, 9129.135282936708, 9131.387189076831, 9133.138682936707]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="break">
-<h1>BREAK<a class="headerlink" href="#break" title="Permalink to this headline">#</a></h1>
+<section id="selecting-a-period">
+<h2>Selecting a Period<a class="headerlink" href="#selecting-a-period" title="Permalink to this headline">#</a></h2>
+<p>Oftentimes, the LFP data can be very large. Depending on the machine this analysis is performed on, there may not be enough memory to perform this interpolation. This can be mitigated in two ways. Firstly, the <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> variable in the following section can be decreased. Otherwise, the analysis can be performed with some smaller period of time within the LFP data. If you wish to do this, set <code class="docutils literal notranslate"><span class="pre">period_start</span></code> and <code class="docutils literal notranslate"><span class="pre">period_end</span></code> to be reasonable times (in seconds) within the experiment to look at. Below are printed the first and last timestamps from the stimulus data and LFP data to inform this choice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finding nearest neighbor in lfp time for each stim time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(all_stim_timestamps[0])
+print(all_stim_timestamps[-1])
+print(lfp_timestamps[0])
+print(lfp_timestamps[-1])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5382.238856576834
+9133.138682936707
+28.82399658853398
+9616.024894403303
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># period_start = lfp.timestamps[0]
+period_start = 5000
+# period_end = lfp.timestamps[-1]
+period_end = 5800
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># filter stim_timestamps to just timestamps within period
+stim_timestamps = np.array([ts for ts in all_stim_timestamps if ts &gt;= period_start and ts &lt;= period_end])
 
-<span class="n">intp_stim_timestamps</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">lfp_ts_idx</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">stim_ts</span> <span class="ow">in</span> <span class="n">stim_timestamps</span><span class="p">:</span>
-    <span class="n">nearest_lfp_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">lfp_ts_idx</span><span class="p">]</span>
-    <span class="c1"># find nearest neighbor to stim timestamp within lfp timestamps</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">stim_ts</span> <span class="o">-</span> <span class="n">nearest_lfp_ts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="n">diff_t</span> <span class="o">=</span> <span class="n">stim_ts</span> <span class="o">-</span> <span class="n">nearest_lfp_ts</span>
-        <span class="n">lfp_ts_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">nearest_lfp_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">lfp_ts_idx</span><span class="p">]</span>
-    <span class="c1"># save nearest neighbor timestamp</span>
-    <span class="n">intp_stim_timestamps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nearest_lfp_ts</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">intp_stim_timestamps</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>3 arrays:
-stim_timestamps
-lfp.timestamps
-lfp.data</p>
-<p>goal: using lfp.timestamps, interpolate every lfp.data element to a stim_timestamps element
-iterpolate lfp.timestamps to7 stim_timestamps to create interpolated_timestamps (the main axis) which should be same length as lfp.data
-then use interpolated_timestamps as display axis for lfp data
-view window can then be filtered based on this axis</p>
-<ol class="simple">
-<li><p>align stimulus and lfp</p></li>
-<li><p>identify events within lfp</p></li>
-<li><p>get window of lfp around event</p></li>
-<li><p>split lfp eventwise into 3d array</p></li>
-<li><p>calculate average across events</p></li>
-<li><p>calculate average across nodes and events</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stop_time</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">stim_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">stop_time</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_axis</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4357237
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(11252278,)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(11252278, 89)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">,</span> <span class="n">lfp</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)</span>
-<span class="n">intp_lfp</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">time_axis</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">data</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">])</span>
+# find indices within lfp data that correspond to period bounds
+period_start_idx, period_end_idx = None, None
+for i, ts in enumerate(lfp.timestamps):
+    if not period_start_idx and ts &gt;= period_start:
+        period_start_idx = i
+    if period_start_idx and ts &gt;= period_end:
+        period_end_idx = i
+        break
 
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intp_lfp</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">intp_lfp</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11252278
-[[ 5.55750012e-05  6.37650010e-05  3.97799995e-05 ... -1.95000007e-06
-   7.99499958e-06  7.99499958e-06]
- [ 3.12000011e-05  3.72450013e-05 -1.71600004e-05 ... -1.17000000e-05
-   1.38449996e-05 -1.17000002e-06]
- [ 7.27349980e-05  9.88649990e-05  5.92799988e-05 ... -2.00849991e-05
-  -1.15049997e-05 -5.84999998e-06]
- ...
- [-1.81740004e-04 -1.41960001e-04 -2.02800002e-04 ... -4.17299998e-05
-  -3.50999994e-06 -6.43500016e-06]
- [-1.82324991e-04 -1.60290001e-04 -2.15474996e-04 ... -3.25649999e-05
-  -3.31499996e-06  1.20899995e-05]
- [-2.08650003e-04 -1.86809993e-04 -2.50574987e-04 ... -2.82750007e-05
-   5.84999998e-06 -1.95000007e-06]]
-4357237
-[[ 5.5575e-05  6.3765e-05  3.9780e-05 ... -1.9500e-06  7.9950e-06
-   7.9950e-06]
- [ 5.5575e-05  6.3765e-05  3.9780e-05 ... -1.9500e-06  7.9950e-06
-   7.9950e-06]
- [ 5.5575e-05  6.3765e-05  3.9780e-05 ... -1.9500e-06  7.9950e-06
-   7.9950e-06]
- ...
- [ 5.5575e-05  6.3765e-05  3.9780e-05 ... -1.9500e-06  7.9950e-06
-   7.9950e-06]
- [ 5.5575e-05  6.3765e-05  3.9780e-05 ... -1.9500e-06  7.9950e-06
-   7.9950e-06]
- [ 5.5575e-05  6.3765e-05  3.9780e-05 ... -1.9500e-06  7.9950e-06
-   7.9950e-06]]
+if period_start_idx == None or period_end_idx == None:
+    raise ValueError(&quot;Period bounds not found within lfp data&quot;)
+
+# get slice of LFP data corresponding to the period bounds
+lfp_timestamps = lfp_timestamps[period_start_idx:period_end_idx]
+lfp_data = lfp_data[period_start_idx:period_end_idx]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intp_lfp_measurements</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">lfp_idx</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">time_axis</span><span class="p">:</span>
-    <span class="n">nearest_lfp_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">lfp_idx</span><span class="p">]</span>
-    <span class="c1"># find nearest neighbor to timestamp within lfp timestamps</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">nearest_lfp_ts</span> <span class="o">-</span> <span class="n">ts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="n">diff_t</span> <span class="o">=</span> <span class="n">nearest_lfp_ts</span> <span class="o">-</span> <span class="n">ts</span>
-        <span class="n">lfp_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">nearest_lfp_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">lfp_idx</span><span class="p">]</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">lfp_idx</span><span class="p">,</span> <span class="n">nearest_lfp_ts</span><span class="p">)</span>
-    <span class="c1"># save nearest neighbor timestamp</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;saving&quot;</span><span class="p">,</span><span class="n">lfp_idx</span><span class="p">)</span>
-    <span class="n">intp_lfp_measurements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">lfp_idx</span><span class="p">])</span>
-    <span class="k">break</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">intp_lfp_measurements</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(stim_timestamps.shape)
+print(lfp_timestamps.shape)
+print(lfp_data.shape)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(268,)
+(999999,)
+(999999, 93)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id1">
-<h1>BREAK<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="lfp-interpolation">
+<h2>LFP Interpolation<a class="headerlink" href="#lfp-interpolation" title="Permalink to this headline">#</a></h2>
+<p>After you have a valid list of stimulus timestamps, you can generate a linearly-spaced timestamp array called <code class="docutils literal notranslate"><span class="pre">time_axis</span></code>, and interpolate the LFP data along it, making interpolated LFP data called <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code>. This should be a 2D array with dimensions <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">channel</span></code>, where channels are the different measurement channels along the probe. Here, the timestamps are interpolated to 1000 Hz, but you can change this by setting <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### get closest corresponding lfp index to the stimulus timestamps</span>
-
-<span class="n">lfp_events</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">lfp_ts_idx</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">stim_ts</span> <span class="ow">in</span> <span class="n">stim_timestamps</span><span class="p">:</span>
-
-    <span class="n">lfp_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">lfp_ts_idx</span><span class="p">]</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">lfp_ts</span> <span class="o">&lt;</span> <span class="n">stim_ts</span><span class="p">):</span>
-        <span class="n">lfp_ts_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">lfp_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">lfp_ts_idx</span><span class="p">]</span>
-    <span class="n">lfp_ts_idx</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="n">lfp_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lfp_ts_idx</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">lfp_events</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>interp_hz = 250
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interval_start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.05</span>
-<span class="n">interval_end</span> <span class="o">=</span> <span class="mf">0.25</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(lfp_timestamps.shape)
+print(lfp_data.shape)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(999999,)
+(999999, 93)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get lfp data intervals for viewing</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># generate regularly-space x values and interpolate along it
+time_axis = np.arange(0, lfp_timestamps[-1], step=(1/interp_hz))
+interp_channels = []
 
-<span class="k">if</span> <span class="n">interval_start</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;interval start must be non-positive&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">interval_end</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;interval end must be positive&quot;</span><span class="p">)</span>
+for channel in range(lfp_data.shape[1]):
+    f = interpolate.interp1d(lfp_timestamps, lfp_data[:,channel], axis=0, kind=&quot;nearest&quot;, fill_value=&quot;extrapolate&quot;)
+    interp_channels.append(f(time_axis))
     
-<span class="n">lfp_event_intervals</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">lfp_event</span> <span class="ow">in</span> <span class="n">lfp_events</span><span class="p">:</span>
-    <span class="n">event_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">lfp_event</span><span class="p">]</span>
+interp_lfp = np.transpose(interp_channels)
     
-    <span class="c1"># iterate backward to get start time idx</span>
-    <span class="n">start_idx</span> <span class="o">=</span> <span class="n">lfp_event</span>
-    <span class="n">start_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">start_idx</span><span class="p">]</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">start_ts</span> <span class="o">&gt;</span> <span class="n">event_ts</span> <span class="o">+</span> <span class="n">interval_start</span><span class="p">):</span>
-        <span class="n">start_idx</span> <span class="o">-=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">start_idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="n">start_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">start_idx</span><span class="p">]</span>
+print(interp_lfp.shape)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1450000, 93)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-stimulus-time-windows">
+<h2>Getting Stimulus Time Windows<a class="headerlink" href="#getting-stimulus-time-windows" title="Permalink to this headline">#</a></h2>
+<p>Now that you have your interpolated LFP data, you can use the stimulus times to identify the windows of time in the LFP data that exist around a stimulus event. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to be a negative number, representing the seconds before the stimulus event and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be number of seconds afterward. Then the <code class="docutils literal notranslate"><span class="pre">windows</span></code> array will be generated as a set of slices of the <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code> trace by using <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> to convert seconds to array indices. These will be averaged out for each measurement channel, and a confidence interval will be calculated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>start_time = -0.02
+end_time = 0.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># validate window bounds
+if start_time &gt; 0:
+    raise ValueError(&quot;start time must be non-positive number&quot;)
+if end_time &lt;= 0:
+    raise ValueError(&quot;end time must be positive number&quot;)
     
-    <span class="c1"># iterate forward to get end time idx</span>
-    <span class="n">end_idx</span> <span class="o">=</span> <span class="n">lfp_event</span>
-    <span class="n">end_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">end_idx</span><span class="p">]</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">end_ts</span> <span class="o">&lt;</span> <span class="n">event_ts</span> <span class="o">+</span> <span class="n">interval_end</span><span class="p">):</span>
-        <span class="n">end_idx</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">end_idx</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">):</span>
-            <span class="k">break</span>
-        <span class="n">end_ts</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">end_idx</span><span class="p">]</span>
-    
-    <span class="k">if</span> <span class="n">start_idx</span> <span class="o">&gt;=</span> <span class="n">end_idx</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;interval too small&quot;</span><span class="p">)</span>
+# get event windows
+windows = []
+i = 0
+for stim_ts in stim_timestamps:
+    i += 0
+    # convert time to index
+    start_idx = int((stim_ts+start_time) * interp_hz)
+    end_idx = int((stim_ts+end_time) * interp_hz)
+ 
+    # bounds checking
+    if start_idx &lt; 0 or end_idx &gt; len(interp_lfp)-1:
+        continue
         
-    <span class="n">lfp_event_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interval for event at </span><span class="si">{</span><span class="n">lfp_event</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">start_idx</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">end_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    windows.append(interp_lfp[start_idx:end_idx])
+    
+
+windows = np.array(windows)
+print(windows.shape)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(268, 55, 93)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">event_num</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get average of all windows
+
+average_trace = np.average(windows, axis=0)
+print(average_trace.shape)
+
+# get standard error of the mean for confidence interval
+
+n = windows.shape[0]
+ci = np.std(windows, axis=0) / sqrt(n)
+print(ci.shape)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(55, 93)
+(55, 93)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-lfp-traces">
+<h2>Visualizing LFP Traces<a class="headerlink" href="#visualizing-lfp-traces" title="Permalink to this headline">#</a></h2>
+<p>Now you have the averaged LFP traces for each channel. Below are three views of the same data. There are many channels to view, so for convenience, you can view just a subset of all the channels. You can set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to the bounds of the subset you want to view.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># number of channels
+print(average_trace.shape[1])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>93
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># nodewise view</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span> <span class="o">=</span> <span class="n">lfp_event_intervals</span><span class="p">[</span><span class="n">event_num</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">,</span><span class="n">node</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># start_channel = 0
+# end_channel = average_trace.shape[1]
+start_channel = 40
+end_channel = 80
+n_channels = end_channel - start_channel
 </pre></div>
 </div>
 </div>
 </div>
+<section id="traces-from-channels-overlaid">
+<h3>Traces from Channels Overlaid<a class="headerlink" href="#traces-from-channels-overlaid" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+
+xaxis = np.linspace(start_time, end_time, len(average_trace))
+fig, ax = plt.subplots(figsize=(12,8))
+colors = plt.cm.viridis(np.linspace(0, 1, n_channels))
+ax.set_prop_cycle(color=colors)
+ax.plot(xaxis, average_trace[:,start_channel:end_channel])
+
+plt.xlabel(&quot;time&quot;)
+plt.ylabel(&quot;volts&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/visualize_lfp_responses_35_0.png" src="../_images/visualize_lfp_responses_35_0.png" />
+</div>
+</div>
+</section>
+<section id="traces-from-channels-stacked">
+<h3>Traces from Channels Stacked<a class="headerlink" href="#traces-from-channels-stacked" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Change this if the visualization below looks messy. The larger value the flatter
+amp_res = 0.00001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+
+xaxis = np.linspace(start_time, end_time, len(average_trace))
+colors = plt.cm.viridis(np.linspace(0, 1, n_channels))
+fig, ax = plt.subplots(figsize=(8, n_channels/2))
+
+for i, channel in enumerate(range(start_channel, end_channel)):
+    offset_trace = average_trace[:,channel] + i*amp_res
+    plot = ax.plot(xaxis, offset_trace, color=colors[i])
+
+norm = mpl.colors.Normalize(vmin=start_channel, vmax=end_channel)
+cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm), location=&quot;left&quot;, anchor=(0,1), shrink=0.2, ax=ax, label=&#39;Depth (channel num)&#39;)
+ax.yaxis.set_ticks([])
+plt.xlabel(&quot;time&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/visualize_lfp_responses_38_0.png" src="../_images/visualize_lfp_responses_38_0.png" />
+</div>
+</div>
+</section>
+<section id="traces-from-channels-with-confidence-intervals">
+<h3>Traces from Channels with Confidence Intervals<a class="headerlink" href="#traces-from-channels-with-confidence-intervals" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+
+fig, axs = plt.subplots(n_channels//2, 2, figsize=(16, n_channels))
+xaxis = np.linspace(start_time, end_time, len(average_trace))
+
+min_yval = np.amin(average_trace[:,start_channel:end_channel])
+max_yval = np.amax(average_trace[:,start_channel:end_channel])
+upper_bound = average_trace + (ci)
+lower_bound = average_trace - (ci)
+
+for i in range(n_channels // 2):
+    for j in range(2):
+        channel = start_channel + i + j
+        ax = axs[i][j]
+
+        ax.plot(xaxis, average_trace[:,channel])
+        ax.fill_between(xaxis, lower_bound[:,channel], upper_bound[:,channel], color=&#39;b&#39;, alpha=.1)
+        
+        ax.set_ylim([min_yval, max_yval])
+        ax.set_ylabel(&quot;volts&quot;)
+        ax.set_xlabel(&quot;time&quot;)
+
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/visualize_lfp_responses_40_0.png" src="../_images/visualize_lfp_responses_40_0.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
