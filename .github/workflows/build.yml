@@ -32,6 +32,8 @@ jobs:
           pip install nbmake
 
       - name: Testing notebooks
+        env:
+          DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
         run: pytest --nbmake "./docs"
         
       - name: Build Jupyter book
