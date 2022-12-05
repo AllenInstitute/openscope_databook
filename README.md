@@ -8,22 +8,22 @@ We are releasing this code to the public as a tool we expect others to use. We a
 ## Overall content goals
 
 ### Chapter 1: Using DANDI/getting data
-- Downloading files from DANDI
-- Streaming files from DANDI
-- Downloading embargoed data
+- [Downloading NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/download_nwb.ipynb)
+- [Reading NWB files](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/read_nwb.ipynb)
+- [Streaming NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/stream_nwb.ipynb)
+- [Exploring NWB files with NWBWidgets](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/use_nwbwidgets.ipynb)
 - Querying metadata across datasets: From Dandi, From OpenscopeDataPortal
 
 ### Chapter 2: Data visualization
-- Sending data to NWBWidget.
-- Exploring 2P and Neuro data in NWB files. Each field explained
-- Data evaluation of 2P and Neuropixel NWB files. Is your NWB file ok? Is the experiment good? QC notebooks.
-- Visualizing running and eye tracking data, Visualizing motion correction
-- Explaining eye tracking geometry and calibration of eye gaze location.
-- 2P: How to access neuronal recording data. Visualizing neuronal responses to a trial event, simple example with latencies
-- Neuropixel: How to access neuronal recording data. Visualizing neuronal responses (neurons) to a trial event, simple example with latencies, plot -responses in different epochs.
-- Neuropixel: Accessing Local Field potential. Visualizing LFP responses to a trial event, simple example with latencies, plot responses in different epochs.
-- Neuropixel: visualizing brain areas recorded from one or more probes
-- Neuropixel: Showing recorded unit metrics, spike waveforms
+
+- [Visualizing Neuropixel probe locations](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_neuropixel_probes.ipynb)
+- [Visualizing LFP responses to a stimulus event](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_lfp_responses.ipynb)
+- [Visualizing 2P Fluorescence, dff, and Raw movie](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_raw.ipynb)
+- Visualizing eye-tracking gaze locations and eye area
+- Visualizing running data
+- QC Notebooks
+- Visualizing Neuropixel spike waveforms
+- Visualizing neuronal responses to stimulus event
 
 ### Chapter 3: First-order analysis
 - 2P: Stimuli averages with 2P data
