@@ -21,11 +21,11 @@ https://alleninstitute.github.io/openscope_databook
 - [Visualizing Neuropixel probe locations](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_neuropixel_probes.ipynb)
 - [Visualizing LFP responses to a stimulus event](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_lfp_responses.ipynb)
 - [Visualizing 2P Fluorescence, dff, and Raw movie](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_raw.ipynb)
-- Visualizing eye-tracking gaze locations and eye area
-- QC Notebooks (including running data)
+- [Visualizing eye-tracking gaze locations and eye area](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_eye_tracking.ipynb)
 - Visualizing neuronal responses to stimulus events and activity in different epochs
 - Visualizing 2P responses to stimulus events and activity in different epochs
 - Visualizing Neuropixel spike waveforms and recorded unit metrics
+- QC Notebooks (including running data)
 
 ### Chapter 3: First-order analysis
 - 2P: Stimuli averages with 2P data
