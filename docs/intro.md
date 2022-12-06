@@ -17,14 +17,33 @@ This Databook leverages a number of technologies to combine those components int
 Data is accessed from The [DANDI archive](https://dandiarchive.org/) and downloaded via the DANDI Python API within notebooks. Most notebooks make use of publically available datasets on DANDI, but for some notebooks, there is no sufficient publically-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.
 
 ### Computation
-The computation can be done remotely or locally. This project utilizes [Binder](https://mybinder.org/), as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don't have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally. Users can either download an individual notebook or clone our repo.
+This project utilizes [Binder](https://mybinder.org/), as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don't have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally. Details about the different ways to run this code can be found in the section [How Can I Use It?](Usage) below.
 
 ### Environment
-When run locally, the environment can be replicated with our [requirements.txt](https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt) file using the command 
+As mentioned above, Binder is capable of reproducing the environment in which to run this code. Instructions for running this code locally can be found in the section [How can I use it?](Usage) below.
+
+### Documentation
+The great part about this Databook is that the usage of the code is explained within each notebook. The instructions found here should be sufficient for utilizing our code and accurately reproducing a number of different analyses on the relevant data.
+
+
+
+(Usage)=
+## How Can I Use It?
+There are three ways to run this code. With **Binder**, with **Thebe**, or **Locally**.
+
+### Binder
+Binder can be used to setup the environment and execute the code in JupyterLab where the kernel is hosted. JupyterLab offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the `Launch` button in the top-right and selecting `Binder`. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes. 
+
+### Thebe
+[Thebe](https://github.com/executablebooks/thebe) uses Binder in the backend to run prepare the environment and host the kernel. It allows users to run notebooks embedded directly within the Databook's web UI. It can be used by hovering over the `Launch` button in the top-right of a notebook and selecting `Live Code`. Thebe is a work-in-progress project and has room for improvement. It is also worth noting that, like Binder, starting the Jupyter Kernel can sometimes take many minutes.
+
+### Locally
+You can download an individual notebook by pressing the `Download` button in the top-right and selecting `.ipynb`. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the `Github` button in the top-right and selecting `repository`. When run locally, the environment can be replicated with our [requirements.txt](https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt) file using the command 
 ```
 pip install -r requirements.txt --user
 ```
 It is recommended that this is done within a conda environment to minimize any interference with local machine environments.
-
-### Documentation
-The great part about this Databook is that the usage of the code is explained within each notebook. The instructions found here should be sufficient for utilizing our code and accurately reproducing a number of different analyses on the relevant data.
+From there, you can execute the notebook in Jupyter by running the following command within the repo directory;
+```
+Jupyter notebook
+```
