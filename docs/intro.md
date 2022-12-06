@@ -42,7 +42,7 @@ You can download an individual notebook by pressing the `Download` button in the
 ```
 pip install -r requirements.txt --user
 ```
-It is recommended that this is done within a conda environment to minimize any interference with local machine environments.
+It is recommended that this is done within a conda environment using Python 3.8 to minimize any interference with local machine environments.
 From there, you can execute the notebook in Jupyter by running the following command within the repo directory;
 ```
 Jupyter notebook
