@@ -2,15 +2,18 @@
 name: CI
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
 
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
 
     steps:
       - uses: actions/checkout@v3
@@ -25,11 +28,15 @@ jobs:
         run: pip install -r requirements.txt --user
 
       - name: Installing build dependencies
-        run: pip install markupsafe==2.0.1
+        run: |
+          pip install markupsafe==2.0.1
+          pip install jupyter
+          pip install -U jupyter-book
+          pip install nbmake
 
-      - name: Installing Jupyter book
-        run: pip install -U jupyter-book
-
+      - name: Testing notebooks
+        run: pytest --nbmake "./docs"
+        
       - name: Build Jupyter book
         run: |
           jupyter-book clean ./docs
