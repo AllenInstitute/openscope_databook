@@ -20,7 +20,7 @@ Data is accessed from The [DANDI archive](https://dandiarchive.org/) and downloa
 This project utilizes [Binder](https://mybinder.org/), as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don't have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally. Details about the different ways to run this code can be found in the section [How Can I Use It?](Usage) below.
 
 ### Environment
-As mentioned above, Binder is capable of reproducing the environment in which to run this code. Instructions for running this code locally can be found in the section [How can I use it?](Usage) below.
+As mentioned above, Binder is capable of reproducing the environment in which to run this code. Instructions for running this code locally can be found in the section [How Can I Use It?](Usage) below.
 
 ### Documentation
 The great part about this Databook is that the usage of the code is explained within each notebook. The instructions found here should be sufficient for utilizing our code and accurately reproducing a number of different analyses on the relevant data.
