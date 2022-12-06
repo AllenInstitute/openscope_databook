@@ -4,7 +4,7 @@ This repo is meant to store scripts and documentation used for brain data analys
 
 We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* standard.
 
-### How Does it Work?
+## How Does it Work?
 
 Reproducible Analysis requires four components; 
 - Accessible Data
@@ -13,18 +13,18 @@ Reproducible Analysis requires four components;
 - Documentation of Usage
 This Databook leverages a number of technologies to combine those components into a web-application. 
 
-#### Data
+### Data
 Data is accessed from The [DANDI archive](https://dandiarchive.org/) and downloaded via the DANDI Python API within notebooks. Most notebooks make use of publically available datasets on DANDI, but for some notebooks, there is no sufficient publically-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.
 
-#### Computation
+### Computation
 The computation can be done remotely or locally. This project utilizes [Binder](https://mybinder.org/), as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don't have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally. Users can either download an individual notebook or clone our repo.
 
-#### Environment
+### Environment
 When run locally, the environment can be replicated with our [requirements.txt](https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt) file using the command 
 ```
 pip install -r requirements.txt --user
 ```
 It is recommended that this is done within a conda environment to minimize any interference with local machine environments.
 
-#### Documentation
+### Documentation
 The great part about this Databook is that the usage of the code is explained within each notebook. The instructions found here should be sufficient for utilizing our code and accurately reproducing a number of different analyses on the relevant data.
