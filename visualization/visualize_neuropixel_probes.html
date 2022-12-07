@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing LFP Responses to Stimulus" href="visualize_lfp_responses.html" />
-    <link rel="prev" title="Streaming an NWB File with fsspec" href="../basics/stream_nwb.html" />
+    <link rel="prev" title="Visualizing Raw 2-Photon Images" href="visualize_2p_raw.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -146,6 +146,16 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_eye_tracking.html">
+   Visualizing Eye Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Visualizing Neuropixel Probe Locations
@@ -414,11 +424,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-scene">
-   Creating a Scene
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rendering">
    Rendering
   </a>
@@ -458,11 +463,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-a-scene">
-   Creating a Scene
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rendering">
    Rendering
   </a>
@@ -480,21 +480,16 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuropixel-probe-locations">
 <h1>Visualizing Neuropixel Probe Locations<a class="headerlink" href="#visualizing-neuropixel-probe-locations" title="Permalink to this headline">#</a></h1>
 <p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <strong>CCF</strong> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which allows us to represent locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
-<p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. You also need to ensure that the brain model being used to visualize probes are appropriate for the CCF data used. In this case, we use a mouse brain atlas to work with our mouse CCF data.</p>
-<p>We also use <strong><a class="reference external" href="https://github.com/brainglobe/brainrender">brainrender</a></strong> as the engine by which we 3D render the brain and the probe coordinates.</p>
+<p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. We use <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/ccf-widget">ccf-widget</a></strong> as the engine by which we 3D render the brain and the probe coordinates.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from dandi import dandiapi
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+from ccfwidget import CCFWidget
+from dandi import dandiapi
 from pynwb import NWBHDF5IO
-from brainrender import Scene
-from brainrender.actors import Points
-from brainrender._colors import get_random_colors
-import numpy as np
-### sets up viewing window
-from vedo import embedWindow
-embedWindow(None)
 </pre></div>
 </div>
 </div>
@@ -506,22 +501,29 @@ embedWindow(None)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
-dandi_filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
-download_loc = &quot;~/data&quot;
-
-filename = dandi_filepath.split(&quot;/&quot;)[-1]
+dandi_filepath = &quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;
+download_loc = &quot;.&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filename = dandi_filepath.split(&quot;/&quot;)[-1]
+my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
 file = my_dandiset.get_asset_by_path(dandi_filepath)
 # this may take awhile, especially if the file to download is large
 file.download(f&quot;{download_loc}/{filename}&quot;)
 
 print(f&quot;Downloaded file to {download_loc}/{filename}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-703279277_ses-719161530.nwb
 </pre></div>
 </div>
 </div>
@@ -547,10 +549,8 @@ nwb = io.read()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
 </pre></div>
 </div>
 </div>
@@ -567,60 +567,14 @@ points = np.array([[xs[i], ys[i], zs[i]] for i in range(n)])
 </div>
 </div>
 </div>
-</section>
-<section id="creating-a-scene">
-<h2>Creating a Scene<a class="headerlink" href="#creating-a-scene" title="Permalink to this headline">#</a></h2>
-<p>The scene-to-be-rendered is instantiated from a brain atlas within BrainGlobe’s <a class="reference external" href="https://gin.g-node.org/brainglobe/atlases">Atlas API</a>. This is used to select a brain model. In this case, we use The 100 micrometer Allen Mouse Brain Atlas, but you could choose others to suit your purposes. It may take awhile to download, but you should only have to do it once. From there, you can select any number of brain regions to highlight in your render and how to color them. Below, VISp is chosen to highlight green. You can choose any number of brain regions and how to color them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### Below, VISp is selected for coloring. Multiple region arguments can be supplied if needed.
-### Region names and IDs can be viewed with each of these lines
-# print(scene.atlas.lookup_df.head())
-# print(scene.atlas.lookup_df)
-# print(scene.atlas.hierarchy)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>scene = Scene(atlas_name=&quot;allen_mouse_100um&quot;, title=&#39;Probes&#39;)
-scene.add_brain_region(&quot;VISp&quot;, alpha=0.15, color=&quot;green&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(points.shape)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
-</pre>
-</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
-
-
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">╭──────────────────────────────────────────────────────────────────────────────────────╮</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>  <span style="font-weight: bold">                                                                                  </span>  <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726; font-weight: bold">brainrender.Actor: </span>                                                                <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726; font-weight: bold">──────────────────────</span>                                                             <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>                                                                                      <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726; font-weight: bold">name:</span><span style="color: #ffca28; text-decoration-color: #ffca28"> VISp</span>                                                                         <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726; font-weight: bold">type:</span><span style="color: #ffca28; text-decoration-color: #ffca28"> brain region</span>                                                                 <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffffff; text-decoration-color: #ffffff">────────────────────────────────────────────────────────────────────────────────</span>   <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726">center of mass:</span><span style="color: #ffca28; text-decoration-color: #ffca28"> [9121 1260 5672]</span>                                                   <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726">number of vertices:</span><span style="color: #ffca28; text-decoration-color: #ffca28"> 3532</span>                                                           <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726">dimensions:</span><span style="color: #ffca28; text-decoration-color: #ffca28"> [ 7695 10361   370  2248  2079  9300]</span>                                  <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>   <span style="color: #ffa726; text-decoration-color: #ffa726">color:</span><span style="color: #ffca28; text-decoration-color: #ffca28"> [0.         0.50196078 0.        ]</span>                                          <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>                                                                                      <span style="color: #c0c0c0; text-decoration-color: #c0c0c0">│</span>
-<span style="color: #c0c0c0; text-decoration-color: #c0c0c0">╰──────────────────────────────────────────────────────────────────────────────────────╯</span>
-</pre>
-</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### add the points to the scene all as one color
-# scene.add(Points(points, name=&quot;units&quot;, colors=&quot;red&quot;))
-
-### add the points to the scene, coloring them based on CCF location label
-for location in set(nwb.electrodes.location):
-    these_points = np.array([points[i] for i in range(n) if nwb.electrodes.location[i] == location])
-    scene.add(Points(these_points, colors=get_random_colors()))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2304, 3)
 </pre></div>
 </div>
 </div>
@@ -628,15 +582,24 @@ for location in set(nwb.electrodes.location):
 </section>
 <section id="rendering">
 <h2>Rendering<a class="headerlink" href="#rendering" title="Permalink to this headline">#</a></h2>
-<p>Rendering is as simple as <code class="docutils literal notranslate"><span class="pre">scene.render()</span></code>.
-This will create a pop-up window with the interactive 3D rendering of your scene.
-When you’re done with it, press “Esc” to close the window!</p>
+<p>Rendering is as simple as generating the widget and displaying it. This will create embedded window with the interactive 3D rendering of your scene.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>scene.render()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ccf = CCFWidget(markers=[points])
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ccf
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "99c29ad254924ef1af634fb45658d8d1", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 </section>
 </section>
@@ -668,11 +631,11 @@ When you’re done with it, press “Esc” to close the window!</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../basics/stream_nwb.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="visualize_2p_raw.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Streaming an NWB File with fsspec</p>
+            <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="visualize_lfp_responses.html" title="next page">

@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Neuropixel Probe Locations" href="../visualization/visualize_neuropixel_probes.html" />
+    <link rel="next" title="Visualizing Eye Tracking" href="../visualization/visualize_eye_tracking.html" />
     <link rel="prev" title="Exploring an NWB File" href="use_nwbwidgets.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -146,6 +146,16 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_eye_tracking.html">
+   Visualizing Eye Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">
    Visualizing Neuropixel Probe Locations
@@ -474,13 +484,14 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from dandi import dandiapi
-import dandi
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import dandi
 import fsspec
-import pynwb
 import h5py
+
+from dandi import dandiapi
 from fsspec.implementations.cached import CachingFileSystem
 from nwbwidgets import nwb2widget
+from pynwb import NWBHDF5IO
 </pre></div>
 </div>
 </div>
@@ -532,7 +543,7 @@ print(f&quot;Retrieved file url {file_url}&quot;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/f5f/175/f5f1752f-5227-47d5-8f75-cd71937878aa?response-content-disposition=attachment%3B%20filename%3D%22sub-699733573_ses-715093703.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20221130%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20221130T215329Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9edb7bb8f4263cd27cdcc37b27cc23cc7e79b8dbc3a0c9d6b4ae2a74da30c63a
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/f5f/175/f5f1752f-5227-47d5-8f75-cd71937878aa?response-content-disposition=attachment%3B%20filename%3D%22sub-699733573_ses-715093703.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20221206%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20221206T221524Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6ad49dd5fbfde4aca3bc0b5ca497dfa6b2652385798a3e14bf8886fe5bf24642
 </pre></div>
 </div>
 </div>
@@ -549,7 +560,7 @@ print(f&quot;Retrieved file url {file_url}&quot;)
 
 f = fs.open(file_url, &quot;rb&quot;)
 file = h5py.File(f)
-io = pynwb.NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
+io = NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
 nwb = io.read()
 </pre></div>
 </div>
@@ -589,7 +600,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "682abdb6aeef48f4a3164f618072cbc1", "version_major": 2, "version_minor": 0}
+{"model_id": "9479fe099bea414caab771bad52136ab", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
@@ -629,10 +640,10 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             <p class="prev-next-title">Exploring an NWB File</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../visualization/visualize_neuropixel_probes.html" title="next page">
+    <a class='right-next' id="next-link" href="../visualization/visualize_eye_tracking.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Neuropixel Probe Locations</p>
+        <p class="prev-next-title">Visualizing Eye Tracking</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

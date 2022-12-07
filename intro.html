@@ -146,6 +146,16 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="visualization/visualize_eye_tracking.html">
+   Visualizing Eye Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization/visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="visualization/visualize_neuropixel_probes.html">
    Visualizing Neuropixel Probe Locations
   </a>
@@ -333,33 +343,50 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overall-content-goals">
-   Overall content goals
+  <a class="reference internal nav-link" href="#how-does-it-work">
+   How Does it Work?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-1-using-dandi-getting-data">
-     Chapter 1: Using DANDI/getting data
+    <a class="reference internal nav-link" href="#data">
+     Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-2-data-visualization">
-     Chapter 2: Data visualization
+    <a class="reference internal nav-link" href="#computation">
+     Computation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-3-first-order-analysis">
-     Chapter 3: First-order analysis
+    <a class="reference internal nav-link" href="#environment">
+     Environment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-4-higher-order-analysis">
-     Chapter 4: Higher-order analysis
+    <a class="reference internal nav-link" href="#documentation">
+     Documentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-i-use-it">
+   How Can I Use It?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binder">
+     Binder
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-5-replicating-figures">
-     Chapter 5: Replicating figures
+    <a class="reference internal nav-link" href="#thebe">
+     Thebe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#locally">
+     Locally
     </a>
    </li>
   </ul>
@@ -384,33 +411,50 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overall-content-goals">
-   Overall content goals
+  <a class="reference internal nav-link" href="#how-does-it-work">
+   How Does it Work?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-1-using-dandi-getting-data">
-     Chapter 1: Using DANDI/getting data
+    <a class="reference internal nav-link" href="#data">
+     Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-2-data-visualization">
-     Chapter 2: Data visualization
+    <a class="reference internal nav-link" href="#computation">
+     Computation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-3-first-order-analysis">
-     Chapter 3: First-order analysis
+    <a class="reference internal nav-link" href="#environment">
+     Environment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-4-higher-order-analysis">
-     Chapter 4: Higher-order analysis
+    <a class="reference internal nav-link" href="#documentation">
+     Documentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-i-use-it">
+   How Can I Use It?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binder">
+     Binder
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#chapter-5-replicating-figures">
-     Chapter 5: Replicating figures
+    <a class="reference internal nav-link" href="#thebe">
+     Thebe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#locally">
+     Locally
     </a>
    </li>
   </ul>
@@ -427,63 +471,57 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="openscope-databook-nwb-for-dummies">
 <h1>OpenScope Databook: “NWB for Dummies”<a class="headerlink" href="#openscope-databook-nwb-for-dummies" title="Permalink to this headline">#</a></h1>
-<p>This repo is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with <a class="reference external" href="https://www.nwb.org/how-to-use/">NWB files</a> and the <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a>. This codebase is provided by the Allen Institute’s <strong><a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/">OpenScope</a></strong> Project, a component of The Allen Institute <a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/">Mindscope Program</a>. <strong>OpenScope</strong> is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through <a class="reference external" href="https://jupyterbook.org/">Jupyter Book</a>, this code is structured as a series of documented Python notebooks intended to explain and educate users on how to work with brain data.</p>
-<p>We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to <a class="reference external" href="https://github.com/rcpeene">&#64;rcpeene</a> or <a class="reference external" href="https://github.com/jeromelecoq">&#64;jeromelecoq</a>. Below, you can see a working list of the content goals for this databook. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the <em>NWB</em> standard.</p>
-<section id="overall-content-goals">
-<h2>Overall content goals<a class="headerlink" href="#overall-content-goals" title="Permalink to this headline">#</a></h2>
-<section id="chapter-1-using-dandi-getting-data">
-<h3>Chapter 1: Using DANDI/getting data<a class="headerlink" href="#chapter-1-using-dandi-getting-data" title="Permalink to this headline">#</a></h3>
+<p>This repo is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with <a class="reference external" href="https://www.nwb.org/how-to-use/">NWB files</a> and the <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a>. This codebase is provided by the Allen Institute’s <strong><a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/">OpenScope</a></strong> Project, an endeavor of The Allen Institute <a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/">Mindscope Program</a>. <strong>OpenScope</strong> is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through <a class="reference external" href="https://jupyterbook.org/">Jupyter Book</a>, this code is structured as a series of notebooks intended to explain and educate users on how to work with brain data.</p>
+<p>We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to <a class="reference external" href="https://github.com/rcpeene">&#64;rcpeene</a> or <a class="reference external" href="https://github.com/jeromelecoq">&#64;jeromelecoq</a>. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the <em>NWB</em> standard.</p>
+<section id="how-does-it-work">
+<h2>How Does it Work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">#</a></h2>
+<p>Reproducible Analysis requires four components;</p>
 <ul class="simple">
-<li><p>Downloading files from DANDI</p></li>
-<li><p>Streaming files from DANDI</p></li>
-<li><p>Downloading embargoed data</p></li>
-<li><p>Querying metadata across datasets: From Dandi, From OpenscopeDataPortal</p></li>
+<li><p>Accessible Data</p></li>
+<li><p>Accessible Computational Resources</p></li>
+<li><p>Reproducible environment</p></li>
+<li><p>Documentation of Usage
+This Databook leverages a number of technologies to combine those components into a web-application.</p></li>
 </ul>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h3>
+<p>Data is accessed from The <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a> and downloaded via the DANDI Python API within notebooks. Most notebooks make use of publically available datasets on DANDI, but for some notebooks, there is no sufficient publically-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.</p>
 </section>
-<section id="chapter-2-data-visualization">
-<h3>Chapter 2: Data visualization<a class="headerlink" href="#chapter-2-data-visualization" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Sending data to NWBWidget.</p></li>
-<li><p>Exploring 2P and Neuro data in NWB files. Each field explained</p></li>
-<li><p>Data evaluation of 2P and Neuropixel NWB files. Is your NWB file ok? Is the experiment good? QC notebooks.</p></li>
-<li><p>Visualizing running and eye tracking data, Visualizing motion correction</p></li>
-<li><p>Explaining eye tracking geometry and calibration of eye gaze location.</p></li>
-<li><p>2P: How to access neuronal recording data. Visualizing neuronal responses to a trial event, simple example with latencies</p></li>
-<li><p>Neuropixel: How to access neuronal recording data. Visualizing neuronal responses (neurons) to a trial event, simple example with latencies, plot -responses in different epochs.</p></li>
-<li><p>Neuropixel: Accessing Local Field potential. Visualizing LFP responses to a trial event, simple example with latencies, plot responses in different epochs.</p></li>
-<li><p>Neuropixel: visualizing brain areas recorded from one or more probes</p></li>
-<li><p>Neuropixel: Showing recorded unit metrics, spike waveforms</p></li>
-</ul>
+<section id="computation">
+<h3>Computation<a class="headerlink" href="#computation" title="Permalink to this headline">#</a></h3>
+<p>This project utilizes <a class="reference external" href="https://mybinder.org/">Binder</a>, as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don’t have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally. Details about the different ways to run this code can be found in the section <a class="reference internal" href="#usage"><span class="std std-ref">How Can I Use It?</span></a> below.</p>
 </section>
-<section id="chapter-3-first-order-analysis">
-<h3>Chapter 3: First-order analysis<a class="headerlink" href="#chapter-3-first-order-analysis" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>2P: Stimuli averages with 2P data</p></li>
-<li><p>2P: Cell matching across days</p></li>
-<li><p>2P: How to align timestamps across modalities.</p></li>
-<li><p>Neuropixel: Identifying opto-tagged cells</p></li>
-<li><p>Neuropixel: Stimuli averages with neuropixel data</p></li>
-<li><p>Neuropixel: extracting Current Source Density plots</p></li>
-<li><p>Neuropixel: plotting receptive fields</p></li>
-</ul>
+<section id="environment">
+<h3>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">#</a></h3>
+<p>As mentioned above, Binder is capable of reproducing the environment in which to run this code. Instructions for running this code locally can be found in the section <a class="reference internal" href="#usage"><span class="std std-ref">How Can I Use It?</span></a> below.</p>
 </section>
-<section id="chapter-4-higher-order-analysis">
-<h3>Chapter 4: Higher-order analysis<a class="headerlink" href="#chapter-4-higher-order-analysis" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Sending NWB raw data to a segmentation pipeline: example with Suite2p.</p></li>
-<li><p>Identifying mouse behavioral state based on eye tracking and behavioral data.</p></li>
-<li><p>Ruling out behavioral causes for neural responses.</p></li>
-<li><p>Classifying spike waveform between fast spiking and normal spiking cells.</p></li>
-<li><p>Extracting clusters of correlated neurons.</p></li>
-<li><p>Analysis of functional connectivity.</p></li>
-</ul>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">#</a></h3>
+<p>The great part about this Databook is that the usage of the code is explained within each notebook. The instructions found here should be sufficient for utilizing our code and accurately reproducing a number of different analyses on the relevant data.</p>
 </section>
-<section id="chapter-5-replicating-figures">
-<h3>Chapter 5: Replicating figures<a class="headerlink" href="#chapter-5-replicating-figures" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Example notebook from past projects</p></li>
-<li><p>Guidelines for reproducible figures from NWB files</p></li>
-</ul>
+</section>
+<section id="how-can-i-use-it">
+<span id="usage"></span><h2>How Can I Use It?<a class="headerlink" href="#how-can-i-use-it" title="Permalink to this headline">#</a></h2>
+<p>There are three ways to run this code. With <strong>Binder</strong>, with <strong>Thebe</strong>, or <strong>Locally</strong>.</p>
+<section id="binder">
+<h3>Binder<a class="headerlink" href="#binder" title="Permalink to this headline">#</a></h3>
+<p>Binder can be used to setup the environment and execute the code in JupyterLab where the kernel is hosted. JupyterLab offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">Binder</span></code>. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes.</p>
+</section>
+<section id="thebe">
+<h3>Thebe<a class="headerlink" href="#thebe" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://github.com/executablebooks/thebe">Thebe</a> uses Binder in the backend to run prepare the environment and host the kernel. It allows users to run notebooks embedded directly within the Databook’s web UI. It can be used by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right of a notebook and selecting <code class="docutils literal notranslate"><span class="pre">Live</span> <span class="pre">Code</span></code>. Thebe is a work-in-progress project and has room for improvement. It is also worth noting that, like Binder, starting the Jupyter Kernel can sometimes take many minutes.</p>
+</section>
+<section id="locally">
+<h3>Locally<a class="headerlink" href="#locally" title="Permalink to this headline">#</a></h3>
+<p>You can download an individual notebook by pressing the <code class="docutils literal notranslate"><span class="pre">Download</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the <code class="docutils literal notranslate"><span class="pre">Github</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">repository</span></code>. When run locally, the environment can be replicated with our <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt">requirements.txt</a> file using the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">user</span>
+</pre></div>
+</div>
+<p>It is recommended that this is done within a conda environment using Python 3.8 to minimize any interference with local machine environments.
+From there, you can execute the notebook in Jupyter by running the following command within the repo directory;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Jupyter</span> <span class="n">notebook</span>
+</pre></div>
+</div>
 </section>
 </section>
 <div class="toctree-wrapper compound">

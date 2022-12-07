@@ -147,6 +147,16 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_eye_tracking.html">
+   Visualizing Eye Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">
    Visualizing Neuropixel Probe Locations
   </a>
@@ -454,8 +464,8 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pynwb import NWBHDF5IO
-from nwbwidgets import nwb2widget
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from nwbwidgets import nwb2widget
+from pynwb import NWBHDF5IO
 </pre></div>
 </div>
 </div>
@@ -480,6 +490,77 @@ print(nwb)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x1612251839840
+Fields:
+  acquisition: {
+    raw_running_wheel_rotation &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
+    running_wheel_signal_voltage &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
+    running_wheel_supply_voltage &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;
+  }
+  devices: {
+    probeA &lt;class &#39;abc.EcephysProbe&#39;&gt;,
+    probeB &lt;class &#39;abc.EcephysProbe&#39;&gt;,
+    probeC &lt;class &#39;abc.EcephysProbe&#39;&gt;,
+    probeD &lt;class &#39;abc.EcephysProbe&#39;&gt;,
+    probeE &lt;class &#39;abc.EcephysProbe&#39;&gt;,
+    probeF &lt;class &#39;abc.EcephysProbe&#39;&gt;
+  }
+  electrode_groups: {
+    probeA &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
+    probeB &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
+    probeC &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
+    probeD &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
+    probeE &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
+    probeF &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;
+  }
+  electrodes: electrodes &lt;class &#39;hdmf.common.table.DynamicTable&#39;&gt;
+  file_create_date: [datetime.datetime(2020, 5, 26, 0, 53, 26, 986608, tzinfo=tzoffset(None, -25200))]
+  identifier: 715093703
+  institution: Allen Institute for Brain Science
+  intervals: {
+    drifting_gratings_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    flashes_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    gabors_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    invalid_times &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    natural_movie_one_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    natural_movie_three_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    natural_scenes_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    spontaneous_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    static_gratings_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;
+  }
+  invalid_times: invalid_times &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;
+  processing: {
+    eye_tracking_rig_metadata &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    optotagging &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    running &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    stimulus &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;
+  }
+  session_description: Data and metadata for an Ecephys session
+  session_id: 715093703
+  session_start_time: 2019-01-19 00:54:18-08:00
+  stimulus_notes: brain_observatory_1.1
+  subject: subject abc.EcephysSpecimen at 0x1612253099824
+Fields:
+  age: P118D
+  age_in_days: 118.0
+  genotype: Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt
+  sex: M
+  species: Mus musculus
+  specimen_name: Sst-IRES-Cre;Ai32-386129
+  subject_id: 699733573
+
+  timestamps_reference_time: 2019-01-19 00:54:18-08:00
+  units: units &lt;class &#39;pynwb.misc.Units&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -487,6 +568,10 @@ print(nwb)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "2cac639aca684a339a4b29fa25af90ba", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 </section>
 </section>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Visualizing Raw 2-Photon Images &#8212; OpenScope Databook</title>
+    <title>Visualizing Eye Tracking &#8212; OpenScope Databook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Neuropixel Probe Locations" href="visualize_neuropixel_probes.html" />
-    <link rel="prev" title="Visualizing Eye Tracking" href="visualize_eye_tracking.html" />
+    <link rel="next" title="Visualizing Raw 2-Photon Images" href="visualize_2p_raw.html" />
+    <link rel="prev" title="Streaming an NWB File with fsspec" href="../basics/stream_nwb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -146,13 +146,13 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="visualize_eye_tracking.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Visualizing Eye Tracking
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
  </li>
@@ -225,7 +225,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_2p_raw.ipynb"
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_eye_tracking.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -243,7 +243,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_2p_raw.ipynb&branch=main"
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_eye_tracking.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -321,7 +321,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fvisualization/visualize_2p_raw.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fvisualization/visualize_eye_tracking.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -349,7 +349,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/visualization/visualize_2p_raw.ipynb"
+        <a href="../_sources/visualization/visualize_eye_tracking.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -414,23 +414,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#streaming-2p-file">
-   Streaming 2P File
+  <a class="reference internal nav-link" href="#streaming-nwb-files">
+   Streaming NWB Files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-fluorescence">
-   Extracting Fluorescence
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-regions-of-interest">
-   Extracting Regions of Interest
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-2p-movie">
-   Extracting 2P Movie
+  <a class="reference internal nav-link" href="#extracting-eye-tracking-data">
+   Extracting Eye Tracking Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -439,28 +429,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#viewing-the-data">
-   Viewing the Data
+  <a class="reference internal nav-link" href="#visualizing-the-data">
+   Visualizing the Data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fluorescence-trace">
-     Fluorescence Trace
+    <a class="reference internal nav-link" href="#blink-times">
+     Blink Times
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#df-f-trace">
-     DF/F Trace
+    <a class="reference internal nav-link" href="#area">
+     Area
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regions-of-interest-mask">
-     Regions of Interest Mask
+    <a class="reference internal nav-link" href="#angle">
+     Angle
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#p-movie-with-roi-mask">
-     2P Movie with ROI Mask
+    <a class="reference internal nav-link" href="#eye-trace">
+     Eye Trace
     </a>
    </li>
   </ul>
@@ -474,7 +464,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Visualizing Raw 2-Photon Images</h1>
+                <h1>Visualizing Eye Tracking</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -490,23 +480,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#streaming-2p-file">
-   Streaming 2P File
+  <a class="reference internal nav-link" href="#streaming-nwb-files">
+   Streaming NWB Files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-fluorescence">
-   Extracting Fluorescence
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-regions-of-interest">
-   Extracting Regions of Interest
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-2p-movie">
-   Extracting 2P Movie
+  <a class="reference internal nav-link" href="#extracting-eye-tracking-data">
+   Extracting Eye Tracking Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -515,28 +495,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#viewing-the-data">
-   Viewing the Data
+  <a class="reference internal nav-link" href="#visualizing-the-data">
+   Visualizing the Data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fluorescence-trace">
-     Fluorescence Trace
+    <a class="reference internal nav-link" href="#blink-times">
+     Blink Times
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#df-f-trace">
-     DF/F Trace
+    <a class="reference internal nav-link" href="#area">
+     Area
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regions-of-interest-mask">
-     Regions of Interest Mask
+    <a class="reference internal nav-link" href="#angle">
+     Angle
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#p-movie-with-roi-mask">
-     2P Movie with ROI Mask
+    <a class="reference internal nav-link" href="#eye-trace">
+     Eye Trace
     </a>
    </li>
   </ul>
@@ -551,9 +531,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-raw-2-photon-images">
-<h1>Visualizing Raw 2-Photon Images<a class="headerlink" href="#visualizing-raw-2-photon-images" title="Permalink to this headline">#</a></h1>
-<p>Some Ophys NWB Files contain the raw imaging data from 2-Photon calcium imaging. The raw images, taken over time, make up a movie. Using mpl_interactions, we can view the data interactively. Since the raw data are very large, it’s recommended that you stream it rather than download it.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-eye-tracking">
+<h1>Visualizing Eye Tracking<a class="headerlink" href="#visualizing-eye-tracking" title="Permalink to this headline">#</a></h1>
+<p>As a measure of behavioral information, the Allen Institute tracks mouse eye motion during experiments, as well as other things like eye area and blink events. In this notebook, this information is extracted from an NWB file and visualized with matplotlib.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -562,26 +542,26 @@ title="Print to PDF"
 
 import fsspec
 import h5py
+import matplotlib.pyplot as plt
 import numpy as np
-import pynwb
 
 from dandi import dandiapi
 from fsspec.implementations.cached import CachingFileSystem
-from matplotlib import pyplot as plt
-from mpl_interactions import hyperslicer
-from nwbwidgets import nwb2widget
+from pynwb import NWBHDF5IO
+
+%matplotlib inline
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="streaming-2p-file">
-<h2>Streaming 2P File<a class="headerlink" href="#streaming-2p-file" title="Permalink to this headline">#</a></h2>
+<section id="streaming-nwb-files">
+<h2>Streaming NWB Files<a class="headerlink" href="#streaming-nwb-files" title="Permalink to this headline">#</a></h2>
 <p>Streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your dandi api key, otherwise, set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to False.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000336&quot;
-filepath = &quot;1186140941/1212553658/1212705237_raw.nwb&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000253&quot;
+dandi_filepath = &quot;sub-1169714184/sub-1169714184_ses-1180116198.nwb&quot;
 authenticate = True
 dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]
 </pre></div>
@@ -591,12 +571,25 @@ dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if authenticate:
-    client = dandiapi.DandiAPIClient(token=dandi_api_key)
+    my_dandiset = dandiapi.DandiAPIClient(token=dandi_api_key).get_dandiset(dandiset_id)
 else:
-    client = dandiapi.DandiAPIClient()
-my_dandiset = client.get_dandiset(dandiset_id)
-
-file = my_dandiset.get_asset_by_path(filepath)
+    my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
+print(f&quot;Got dandiset {my_dandiset}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000253/draft
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_filepath)
 base_url = file.client.session.head(file.base_download_url)
 file_url = base_url.headers[&#39;Location&#39;]
 
@@ -605,10 +598,7 @@ print(f&quot;Retrieved file url {file_url}&quot;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive-embargo.s3.amazonaws.com/000336/blobs/012/2e7/0122e754-50b4-4483-8081-305f82fd7f6d?response-content-disposition=attachment%3B%20filename%3D%221212705237_raw.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20221206%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20221206T220759Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5167ecf86410361f9bb39a1e921e839da349b36c34cef24f00e952b8e621ad4e
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive-embargo.s3.amazonaws.com/000253/blobs/f70/207/f702073d-2b05-4657-b3a2-2f69b0d674ee?response-content-disposition=attachment%3B%20filename%3D%22sub-1169714184_ses-1180116198.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20221206%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20221206T221743Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=811b4678f1e4bb7628dd3f78d5afbbaa37acd4042d8cd9bcfc8d382a1e2d8b3b
 </pre></div>
 </div>
 </div>
@@ -616,13 +606,12 @@ print(f&quot;Retrieved file url {file_url}&quot;)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fs = CachingFileSystem(
-    fs=fsspec.filesystem(&quot;http&quot;),
+    fs=fsspec.filesystem(&quot;http&quot;)
 )
 
-# opening may take awhile on a large file
 f = fs.open(file_url, &quot;rb&quot;)
 file = h5py.File(f)
-io = pynwb.NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
+io = NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
 nwb = io.read()
 </pre></div>
 </div>
@@ -630,7 +619,7 @@ nwb = io.read()
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.5.0 is already loaded.
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
@@ -639,63 +628,46 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 </section>
-<section id="extracting-fluorescence">
-<h2>Extracting Fluorescence<a class="headerlink" href="#extracting-fluorescence" title="Permalink to this headline">#</a></h2>
+<section id="extracting-eye-tracking-data">
+<h2>Extracting Eye Tracking Data<a class="headerlink" href="#extracting-eye-tracking-data" title="Permalink to this headline">#</a></h2>
+<p>Our datasets include eye data with eye tracking, corneal reflection tracking, and pupil tracking. Any of these should be usable for the following analyses. Below, you can set <code class="docutils literal notranslate"><span class="pre">eye_tracking</span></code> to one of those values commented out below. You can also take the probable blink times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dff = nwb.processing[&quot;ophys&quot;][&quot;dff&quot;]
-dff_trace = dff.roi_response_series[&quot;traces&quot;].data
-dff_timestamps = dff.roi_response_series[&quot;traces&quot;].timestamps
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].eye_tracking
+# eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].corneal_reflection_tracking
+# eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].pupil_tracking
 
-print(dff_timestamps.shape)
-print(dff_trace.shape)
+timestamps = eye_tracking.timestamps
+blink_times = nwb.acquisition[&quot;EyeTracking&quot;].likely_blink
 
-flr = nwb.processing[&quot;ophys&quot;][&quot;corrected_fluorescence&quot;]
-flr_trace = flr.roi_response_series[&quot;traces&quot;].data
-flr_timestamps = flr.roi_response_series[&quot;traces&quot;].timestamps
-
-print(flr_timestamps.shape)
-print(flr_trace.shape)
+print(eye_tracking)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42337,)
-(42337, 6)
-(42337,)
-(42337, 6)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="extracting-regions-of-interest">
-<h2>Extracting Regions of Interest<a class="headerlink" href="#extracting-regions-of-interest" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>roi_masks = np.array(nwb.processing[&quot;ophys&quot;][&quot;images&quot;][&quot;segmentation_mask_image&quot;])
-print(roi_masks.shape)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(512, 512)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="extracting-2p-movie">
-<h2>Extracting 2P Movie<a class="headerlink" href="#extracting-2p-movie" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>two_p = nwb.acquisition[&quot;raw_suite2p_motion_corrected&quot;].data
-print(two_p.shape)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42337, 512, 512)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eye_tracking abc.EllipseSeries at 0x2365230132480
+Fields:
+  angle: &lt;HDF5 dataset &quot;angle&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
+  area: &lt;HDF5 dataset &quot;area&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
+  area_raw: &lt;HDF5 dataset &quot;area_raw&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
+  comments: no comments
+  conversion: 1.0
+  data: &lt;HDF5 dataset &quot;data&quot;: shape (478660, 2), type &quot;&lt;f8&quot;&gt;
+  description: no description
+  height: &lt;HDF5 dataset &quot;height&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
+  interval: 1
+  offset: 0.0
+  reference_frame: nose
+  resolution: -1.0
+  timestamp_link: (
+    pupil_tracking &lt;class &#39;abc.EllipseSeries&#39;&gt;,
+    corneal_reflection_tracking &lt;class &#39;abc.EllipseSeries&#39;&gt;,
+    likely_blink &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;
+  )
+  timestamps: &lt;HDF5 dataset &quot;timestamps&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
+  timestamps_unit: seconds
+  unit: meters
+  width: &lt;HDF5 dataset &quot;width&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
 </pre></div>
 </div>
 </div>
@@ -703,12 +675,24 @@ print(two_p.shape)
 </section>
 <section id="selecting-a-period">
 <h2>Selecting a Period<a class="headerlink" href="#selecting-a-period" title="Permalink to this headline">#</a></h2>
-<p>Because the image data are so large, it is advised the you select a subsection of the data to view. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to the first image you want to be displayed, and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be the last. Below are printed the first and last timestamps from the 2P data to inform this choice. The larger the period, the longer it will take to display. It is recommended the period length is less than 100 seconds.</p>
+<p>The data can be large or messy. In order to visualize the data more cleanly and efficiently, you can just select a period of time within the data to plot. To do this, specify the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> you’d like in terms of seconds. Below, the first and last timestamps from the data are printed to assist in this choice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># start_time = flr_timestamps[0]
-start_time = 0
-# end_time = flr_timestamps[-1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(timestamps[0])
+print(timestamps[-2])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.07742
+7979.68481
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>start_time = 0
 end_time = 100
 </pre></div>
 </div>
@@ -716,8 +700,10 @@ end_time = 100
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>start_idx, end_idx = None, None
-for i, ts in enumerate(flr_timestamps):
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get data indices from times
+
+start_idx, end_idx = None, None
+for i, ts in enumerate(timestamps):
     if not start_idx and ts &gt;= start_time:
         start_idx = i
     if start_idx and ts &gt;= end_time:
@@ -725,114 +711,128 @@ for i, ts in enumerate(flr_timestamps):
         break
 
 if start_idx == None or end_idx == None:
-    raise ValueError(&quot;Period bounds not found within 2P data&quot;)
+    raise ValueError(&quot;Time bounds not found within eyetracking timestamps&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># make time axis
+time_axis = np.arange(start_idx, end_idx)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="viewing-the-data">
-<h2>Viewing the Data<a class="headerlink" href="#viewing-the-data" title="Permalink to this headline">#</a></h2>
-<p>You can view the Fluorescence and DF/F traces below with matplotlib. You can set an individual <code class="docutils literal notranslate"><span class="pre">roi</span></code> whose fluorescence trace to view. If <code class="docutils literal notranslate"><span class="pre">roi</span></code> is None, it will plot all of them. You can also view the 2P video with mpl_interactions.hyperslicer.</p>
+<section id="visualizing-the-data">
+<h2>Visualizing the Data<a class="headerlink" href="#visualizing-the-data" title="Permalink to this headline">#</a></h2>
+<p>Below, several types of measurements are visualized from the eye tracking data that was selected.</p>
+<section id="blink-times">
+<h3>Blink Times<a class="headerlink" href="#blink-times" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>roi = None
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
+ax.plot(blink_times.data[start_idx:end_idx], linewidth=0.2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x226b3304190&gt;]
+</pre></div>
+</div>
+<img alt="../_images/visualize_eye_tracking_17_1.png" src="../_images/visualize_eye_tracking_17_1.png" />
+</div>
+</div>
+</section>
+<section id="area">
+<h3>Area<a class="headerlink" href="#area" title="Permalink to this headline">#</a></h3>
+<p>Below, eye height and width are plotted together, and area, the product of height and width, is also plotted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax1 = plt.subplots()
+ax1.set_xlabel(&#39;time&#39;)
+ax1.plot(time_axis, eye_tracking.width[start_idx:end_idx], color=&#39;b&#39;)
+ax1.set_ylabel(&#39;width&#39;, color=&#39;b&#39;)
+ax2 = ax1.twinx()
+ax2.plot(time_axis, eye_tracking.height[start_idx:end_idx], color=&#39;r&#39;)
+ax2.set_ylabel(&#39;height&#39;, color=&#39;r&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;height&#39;)
+</pre></div>
+</div>
+<img alt="../_images/visualize_eye_tracking_19_1.png" src="../_images/visualize_eye_tracking_19_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax1 = plt.subplots()
+ax1.set_xlabel(&#39;time&#39;)
+ax1.set_ylabel(&#39;area&#39;)
+ax1.plot(time_axis, eye_tracking.area[start_idx:end_idx])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x226b2ceaf10&gt;]
+</pre></div>
+</div>
+<img alt="../_images/visualize_eye_tracking_20_1.png" src="../_images/visualize_eye_tracking_20_1.png" />
+</div>
+</div>
+</section>
+<section id="angle">
+<h3>Angle<a class="headerlink" href="#angle" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
+angle = np.array(eye_tracking.angle)
+ax.set_xlabel(&#39;time&#39;)
+ax.set_ylabel(&#39;angle (degrees)&#39;)
+ax.plot(time_axis, angle[start_idx:end_idx])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x226b33f21c0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/visualize_eye_tracking_22_1.png" src="../_images/visualize_eye_tracking_22_1.png" />
+</div>
+</div>
+</section>
+<section id="eye-trace">
+<h3>Eye Trace<a class="headerlink" href="#eye-trace" title="Permalink to this headline">#</a></h3>
+<p>With marker color representing time, the x and y coordinates of the eye’s view are traced below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># extract coords from eye tracking array
+xs = np.array([point[0] for point in eye_tracking.data])
+ys = np.array([point[1] for point in eye_tracking.data])
 </pre></div>
 </div>
 </div>
 </div>
-<section id="fluorescence-trace">
-<h3>Fluorescence Trace<a class="headerlink" href="#fluorescence-trace" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
-fig, ax = plt.subplots(figsize=(8,6))
-if roi == None:
-    ax.plot(flr_timestamps[start_idx:end_idx], flr_trace[start_idx:end_idx])
-else:
-    ax.plot(flr_timestamps[start_idx:end_idx], flr_trace[start_idx:end_idx, roi])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
+colors = plt.cm.viridis(np.linspace(0, 1, end_idx-start_idx))
+ax.plot(xs[start_idx:end_idx], ys[start_idx:end_idx], zorder=0, linewidth=0.25)
+ax.scatter(xs[start_idx:end_idx], ys[start_idx:end_idx], s=5, c=colors, zorder=1)
 
-plt.ylabel(&quot;fluorescence&quot;)   
-plt.xlabel(&quot;seconds&quot;)
+# set these to restrict the plot limits
+# ax.set_xlim(320,350)
+# ax.set_ylim(270,320)
 plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_2p_raw_19_0.png" src="../_images/visualize_2p_raw_19_0.png" />
+<img alt="../_images/visualize_eye_tracking_25_0.png" src="../_images/visualize_eye_tracking_25_0.png" />
 </div>
-</div>
-</section>
-<section id="df-f-trace">
-<h3>DF/F Trace<a class="headerlink" href="#df-f-trace" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
-fig, ax = plt.subplots(figsize=(8,6))
-if roi == None:
-    ax.plot(dff_timestamps[start_idx: end_idx], dff_trace[start_idx: end_idx]*100)
-else:
-    ax.plot(dff_timestamps[start_idx: end_idx], dff_trace[start_idx: end_idx, roi]*100)
-
-plt.ylabel(&quot;DF/F&quot;)
-plt.xlabel(&quot;seconds&quot;)
-plt.show()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/visualize_2p_raw_21_0.png" src="../_images/visualize_2p_raw_21_0.png" />
-</div>
-</div>
-</section>
-<section id="regions-of-interest-mask">
-<h3>Regions of Interest Mask<a class="headerlink" href="#regions-of-interest-mask" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
-fig, ax = plt.subplots()
-plt.tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
-plt.imshow(roi_masks)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2e616c5a8e0&gt;
-</pre></div>
-</div>
-<img alt="../_images/visualize_2p_raw_23_1.png" src="../_images/visualize_2p_raw_23_1.png" />
-</div>
-</div>
-</section>
-<section id="p-movie-with-roi-mask">
-<h3>2P Movie with ROI Mask<a class="headerlink" href="#p-movie-with-roi-mask" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### overlaying ROIs onto 2p movie
-two_p_subset = np.array(two_p[start_idx:end_idx])
-roi_masks_3d = np.reshape(roi_masks, (1,) + roi_masks.shape)
-m = two_p_subset.mean()
-roi_masks_3d = np.multiply(roi_masks_3d, m*10)
-two_p_masked = np.add(two_p_subset, roi_masks_3d)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib ipympl
-fig, ax = plt.subplots()
-plt.tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
-view = hyperslicer(two_p_masked,play_buttons=True)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "25a8fec0960f4d26a76077873cd0666d", "version_major": 2, "version_minor": 0}
-</script><script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "1b6c0e61d7fc4d37b9533f2b39318f35", "version_major": 2, "version_minor": 0}
-</script></div>
 </div>
 </section>
 </section>
@@ -865,17 +865,17 @@ view = hyperslicer(two_p_masked,play_buttons=True)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="visualize_eye_tracking.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../basics/stream_nwb.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Visualizing Eye Tracking</p>
+            <p class="prev-next-title">Streaming an NWB File with fsspec</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="visualize_neuropixel_probes.html" title="next page">
+    <a class='right-next' id="next-link" href="visualize_2p_raw.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Neuropixel Probe Locations</p>
+        <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
