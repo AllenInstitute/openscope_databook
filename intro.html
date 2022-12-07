@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OpenScope Databook: “NWB for Dummies” &#8212; OpenScope Databook</title>
+    <title>OpenScope Databook &#8212; OpenScope Databook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    OpenScope Databook: “NWB for Dummies”
+                    OpenScope Databook
                 </a>
             </li>
         </ul>
@@ -385,6 +385,11 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dandihub">
+     Dandihub
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#locally">
      Locally
     </a>
@@ -400,7 +405,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>OpenScope Databook: “NWB for Dummies”</h1>
+                <h1>OpenScope Databook</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -453,6 +458,11 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dandihub">
+     Dandihub
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#locally">
      Locally
     </a>
@@ -469,8 +479,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="openscope-databook-nwb-for-dummies">
-<h1>OpenScope Databook: “NWB for Dummies”<a class="headerlink" href="#openscope-databook-nwb-for-dummies" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="openscope-databook">
+<h1>OpenScope Databook<a class="headerlink" href="#openscope-databook" title="Permalink to this headline">#</a></h1>
 <p>This repo is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with <a class="reference external" href="https://www.nwb.org/how-to-use/">NWB files</a> and the <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a>. This codebase is provided by the Allen Institute’s <strong><a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/">OpenScope</a></strong> Project, an endeavor of The Allen Institute <a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/">Mindscope Program</a>. <strong>OpenScope</strong> is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through <a class="reference external" href="https://jupyterbook.org/">Jupyter Book</a>, this code is structured as a series of notebooks intended to explain and educate users on how to work with brain data.</p>
 <p>We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to <a class="reference external" href="https://github.com/rcpeene">&#64;rcpeene</a> or <a class="reference external" href="https://github.com/jeromelecoq">&#64;jeromelecoq</a>. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the <em>NWB</em> standard.</p>
 <section id="how-does-it-work">
@@ -502,14 +512,21 @@ This Databook leverages a number of technologies to combine those components int
 </section>
 <section id="how-can-i-use-it">
 <span id="usage"></span><h2>How Can I Use It?<a class="headerlink" href="#how-can-i-use-it" title="Permalink to this headline">#</a></h2>
-<p>There are three ways to run this code. With <strong>Binder</strong>, with <strong>Thebe</strong>, or <strong>Locally</strong>.</p>
+<p>There are four ways to run this code. With <strong>Binder</strong>, with <strong>Thebe</strong>, <strong>Dandihub</strong>, or <strong>Locally</strong>.</p>
 <section id="binder">
 <h3>Binder<a class="headerlink" href="#binder" title="Permalink to this headline">#</a></h3>
-<p>Binder can be used to setup the environment and execute the code in JupyterLab where the kernel is hosted. JupyterLab offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">Binder</span></code>. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes.</p>
+<p>Binder can be used to setup the environment with <a class="reference external" href="https://github.com/jupyterhub/repo2docker">repo2docker</a> and then execute the code in an instance of JupyterHub where the kernel is run. JupyterHub offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">Binder</span></code>. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes.</p>
 </section>
 <section id="thebe">
 <h3>Thebe<a class="headerlink" href="#thebe" title="Permalink to this headline">#</a></h3>
-<p><a class="reference external" href="https://github.com/executablebooks/thebe">Thebe</a> uses Binder in the backend to run prepare the environment and host the kernel. It allows users to run notebooks embedded directly within the Databook’s web UI. It can be used by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right of a notebook and selecting <code class="docutils literal notranslate"><span class="pre">Live</span> <span class="pre">Code</span></code>. Thebe is a work-in-progress project and has room for improvement. It is also worth noting that, like Binder, starting the Jupyter Kernel can sometimes take many minutes.</p>
+<p><a class="reference external" href="https://github.com/executablebooks/thebe">Thebe</a> uses Binder in the backend to prepare the environment and run the kernel. It allows users to run notebooks embedded directly within the Databook’s web UI. It can be used by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right of a notebook and selecting <code class="docutils literal notranslate"><span class="pre">Live</span> <span class="pre">Code</span></code>. Thebe is a work-in-progress project and has room for improvement. It is also worth noting that, like Binder, starting the Jupyter Kernel can sometimes take many minutes.</p>
+</section>
+<section id="dandihub">
+<h3>Dandihub<a class="headerlink" href="#dandihub" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://hub.dandiarchive.org/">Dandihub</a> is an instance of JupyterHub hosted by DANDI. Dandihub does not automatically reproduce the environment required for these notebooks, but importantly, Dandihub allows for persistent storage of your files, so you can leave your work and come back to it later. In order to run notebooks on Dandihub, you must sign in with your github account. To set up the correct environment on Dandihub, open a <code class="docutils literal notranslate"><span class="pre">terminal</span></code> tab and navigate to the main folder containing <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt">requirements.txt</a> and run the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">user</span>
+</pre></div>
+</div>
 </section>
 <section id="locally">
 <h3>Locally<a class="headerlink" href="#locally" title="Permalink to this headline">#</a></h3>
