@@ -37,7 +37,7 @@ Binder can be used to setup the environment with [repo2docker](https://github.co
 [Thebe](https://github.com/executablebooks/thebe) uses Binder in the backend to prepare the environment and run the kernel. It allows users to run notebooks embedded directly within the Databook's web UI. It can be used by hovering over the `Launch` button in the top-right of a notebook and selecting `Live Code`. Thebe is a work-in-progress project and has room for improvement. It is also worth noting that, like Binder, starting the Jupyter Kernel can sometimes take many minutes.
 
 ### Dandihub
-[Dandihub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by DANDI. Dandihub does not automatically reproduce the environment required for these notebooks, but importantly, Dandihub allows for persistent storage of your files, so you can leave your work and come back to it later. In order to run notebooks on Dandihub, you must sign in with your github account. To set up the correct environment on Dandihub, open a `terminal` tab and navigate to the main folder containing [requirements.txt](https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt) and run the command
+[Dandihub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by DANDI. Dandihub does not automatically reproduce the environment required for these notebooks, but importantly, Dandihub allows for persistent storage of your files, so you can leave your work and come back to it later. In order to run notebooks on Dandihub, you must sign in with your github account. To set up the correct environment on Dandihub, open a `terminal` tab and navigate to the directory `openscope_databook` and run the command
 ```
 pip install -r requirements.txt --user
 ```
