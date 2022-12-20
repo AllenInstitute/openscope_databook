@@ -581,7 +581,7 @@ from nwbwidgets import nwb2widget
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000336&quot;
-filepath = &quot;1186140941/1212553658/1212705237_raw.nwb&quot;
+dandi_filepath = &quot;1186140941/1212553658/1212705237_raw.nwb&quot;
 authenticate = True
 dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]
 </pre></div>
@@ -596,7 +596,7 @@ else:
     client = dandiapi.DandiAPIClient()
 my_dandiset = client.get_dandiset(dandiset_id)
 
-file = my_dandiset.get_asset_by_path(filepath)
+file = my_dandiset.get_asset_by_path(dandi_filepath)
 base_url = file.client.session.head(file.base_download_url)
 file_url = base_url.headers[&#39;Location&#39;]
 

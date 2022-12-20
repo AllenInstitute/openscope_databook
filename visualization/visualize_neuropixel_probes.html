@@ -510,12 +510,19 @@ download_loc = &quot;.&quot;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filename = dandi_filepath.split(&quot;/&quot;)[-1]
-my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
+filepath = f&quot;{download_loc}/{filename}&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
 file = my_dandiset.get_asset_by_path(dandi_filepath)
 # this may take awhile, especially if the file to download is large
-file.download(f&quot;{download_loc}/{filename}&quot;)
+file.download(filepath)
 
-print(f&quot;Downloaded file to {download_loc}/{filename}&quot;)
+print(f&quot;Downloaded file to {filepath}&quot;)
 </pre></div>
 </div>
 </div>
@@ -535,15 +542,8 @@ print(f&quot;Downloaded file to {download_loc}/{filename}&quot;)
 <p>Note that this will only work with ecephys NWB files which have a valid <strong>electrodes</strong> field.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nwb_filepath = f&quot;{download_loc}/{filename}&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### read the nwb file
-io = NWBHDF5IO(nwb_filepath, mode=&quot;r&quot;, load_namespaces=True)
+io = NWBHDF5IO(filepath, mode=&quot;r&quot;, load_namespaces=True)
 nwb = io.read()
 </pre></div>
 </div>

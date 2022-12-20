@@ -414,6 +414,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-an-nwb-file">
+   Downloading an NWB File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    Reading an NWB File
   </a>
@@ -443,6 +448,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-an-nwb-file">
+   Downloading an NWB File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    Reading an NWB File
   </a>
@@ -459,12 +469,47 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="reading-an-nwb-file">
 <h1>Reading an NWB File<a class="headerlink" href="#reading-an-nwb-file" title="Permalink to this headline">#</a></h1>
-<p>After downloading an NWB file, you <em>may</em> want to view the data inside. You can do basic reading of the file with <a class="reference external" href="https://github.com/NeurodataWithoutBorders/pynwb">PyNWB</a>. This is a package designed to utilize, modify, and process NWB files. The basic read functionality of PyNWB is shown below. This notebook is intended to explore the NWB file which was specified for download in <em>Downloading an NWB file</em>. If you choose a different file, make sure it’s already downloaded!</p>
+<p>After downloading an NWB file, you <em>may</em> want to view the data inside. You can do basic reading of the file with <a class="reference external" href="https://github.com/NeurodataWithoutBorders/pynwb">PyNWB</a>. This is a package designed to utilize, modify, and process NWB files. The basic read functionality of PyNWB is shown below.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pynwb import NWBHDF5IO
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from dandi import dandiapi
+from pynwb import NWBHDF5IO
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="downloading-an-nwb-file">
+<h2>Downloading an NWB File<a class="headerlink" href="#downloading-an-nwb-file" title="Permalink to this headline">#</a></h2>
+<p>To read an NWB File, it must first be downloaded. <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">filepath</span></code> may be changed to select a different file off of DANDI. If the file of interest already downloaded, you don’t need to run the download cell again. When trying to download an embargoed file, refer to the code from the <a class="reference internal" href="download_nwb.html"><span class="doc std std-doc">Downloading an NWB File</span></a> notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
+dandi_filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
+download_loc = &quot;.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filename = dandi_filepath.split(&quot;/&quot;)[-1]
+filepath = f&quot;{download_loc}/{filename}&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>client = dandiapi.DandiAPIClient()
+my_dandiset = client.get_dandiset(dandiset_id)
+file = my_dandiset.get_asset_by_path(dandi_filepath)
+# this may take awhile, especially if the file to download is large
+file.download(filepath)
+
+print(f&quot;Downloaded file to {filepath}&quot;)
 </pre></div>
 </div>
 </div>
@@ -475,88 +520,10 @@ title="Print to PDF"
 <p>You can read in a PyNWB file with <code class="docutils literal notranslate"><span class="pre">NWBHDF5IO</span></code> to retrieve an io object. You can use the <code class="docutils literal notranslate"><span class="pre">.read</span></code> method to actually read it in. From there, you can see the raw data of the NWB file and can print the fields you are interested in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nwb_filepath = &quot;./sub-699733573_ses-715093703.nwb&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>io = NWBHDF5IO(nwb_filepath, mode=&quot;r&quot;, load_namespaces=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>io = NWBHDF5IO(f&quot;{download_loc}/{filename}&quot;, mode=&quot;r&quot;, load_namespaces=True)
 nwb = io.read()
 
 print(nwb)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2228950120912
-Fields:
-  acquisition: {
-    raw_running_wheel_rotation &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
-    running_wheel_signal_voltage &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
-    running_wheel_supply_voltage &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;
-  }
-  devices: {
-    probeA &lt;class &#39;abc.EcephysProbe&#39;&gt;,
-    probeB &lt;class &#39;abc.EcephysProbe&#39;&gt;,
-    probeC &lt;class &#39;abc.EcephysProbe&#39;&gt;,
-    probeD &lt;class &#39;abc.EcephysProbe&#39;&gt;,
-    probeE &lt;class &#39;abc.EcephysProbe&#39;&gt;,
-    probeF &lt;class &#39;abc.EcephysProbe&#39;&gt;
-  }
-  electrode_groups: {
-    probeA &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
-    probeB &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
-    probeC &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
-    probeD &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
-    probeE &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;,
-    probeF &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;
-  }
-  electrodes: electrodes &lt;class &#39;hdmf.common.table.DynamicTable&#39;&gt;
-  file_create_date: [datetime.datetime(2020, 5, 26, 0, 53, 26, 986608, tzinfo=tzoffset(None, -25200))]
-  identifier: 715093703
-  institution: Allen Institute for Brain Science
-  intervals: {
-    drifting_gratings_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    flashes_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    gabors_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    invalid_times &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    natural_movie_one_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    natural_movie_three_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    natural_scenes_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    spontaneous_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
-    static_gratings_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;
-  }
-  invalid_times: invalid_times &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;
-  processing: {
-    eye_tracking_rig_metadata &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
-    optotagging &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
-    running &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
-    stimulus &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;
-  }
-  session_description: Data and metadata for an Ecephys session
-  session_id: 715093703
-  session_start_time: 2019-01-19 00:54:18-08:00
-  stimulus_notes: brain_observatory_1.1
-  subject: subject abc.EcephysSpecimen at 0x2228949633056
-Fields:
-  age: P118D
-  age_in_days: 118.0
-  genotype: Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt
-  sex: M
-  species: Mus musculus
-  specimen_name: Sst-IRES-Cre;Ai32-386129
-  subject_id: 699733573
-
-  timestamps_reference_time: 2019-01-19 00:54:18-08:00
-  units: units &lt;class &#39;pynwb.misc.Units&#39;&gt;
 </pre></div>
 </div>
 </div>

@@ -527,18 +527,18 @@ print(f&quot;Got dandiset {my_dandiset}&quot;)
 </section>
 <section id="downloading-just-one-file">
 <h2>Downloading Just One File<a class="headerlink" href="#downloading-just-one-file" title="Permalink to this headline">#</a></h2>
-<p>Set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to the path of the file you want to download within the dandiset. You can get this by navigating to the file you want to download on the DANDI Archive website and pressing on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon. There, you can copy the filepath from the field labeled <code class="docutils literal notranslate"><span class="pre">path</span></code>. Don’t include a leading <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to the path of the file you want to download within the dandiset. You can get this by navigating to the file you want to download on the DANDI Archive website and pressing on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon. There, you can copy the filepath from the field labeled <code class="docutils literal notranslate"><span class="pre">path</span></code>. Don’t include a leading <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandi_filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filename = filepath.split(&quot;/&quot;)[-1]
-file = my_dandiset.get_asset_by_path(filepath)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>filename = dandi_filepath.split(&quot;/&quot;)[-1]
+file = my_dandiset.get_asset_by_path(dandi_filepath)
 # this may take awhile, especially if the file to download is large
 file.download(f&quot;{download_loc}/{filename}&quot;)
 

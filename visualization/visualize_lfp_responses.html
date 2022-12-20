@@ -587,6 +587,9 @@ download_loc = &quot;.&quot;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_filename = dandi_stim_filepath.split(&quot;/&quot;)[-1]
 lfp_filename = dandi_lfp_filepath.split(&quot;/&quot;)[-1]
+stim_filepath = f&quot;{download_loc}/{stim_filename}&quot;
+lfp_filepath = f&quot;{download_loc}/{lfp_filename}&quot;
+
 my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
 print(f&quot;Got dandiset {my_dandiset}&quot;)
 </pre></div>
@@ -605,9 +608,9 @@ print(f&quot;Got dandiset {my_dandiset}&quot;)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_stim_filepath)
 # this may take awhile, especially if the file to download is large
-file.download(f&quot;{download_loc}/{stim_filename}&quot;)
+file.download(stim_filepath)
 
-print(f&quot;Downloaded file to {download_loc}/{stim_filename}&quot;)
+print(f&quot;Downloaded file to {stim_filepath}&quot;)
 </pre></div>
 </div>
 </div>
@@ -621,9 +624,9 @@ print(f&quot;Downloaded file to {download_loc}/{stim_filename}&quot;)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_lfp_filepath)
 # this may take awhile, especially if the file to download is large
-file.download(f&quot;{download_loc}/{lfp_filename}&quot;)
+file.download(lfp_filepath)
 
-print(f&quot;Downloaded file to {download_loc}/{lfp_filename}&quot;)
+print(f&quot;Downloaded file to {lfp_filepath}&quot;)
 </pre></div>
 </div>
 </div>
@@ -639,13 +642,6 @@ print(f&quot;Downloaded file to {download_loc}/{lfp_filename}&quot;)
 <p>Below you can read in the stimulus file from a filepath you specify. You can extract the <code class="docutils literal notranslate"><span class="pre">LFP.data</span></code> and associated <code class="docutils literal notranslate"><span class="pre">LFP.timestamps</span></code> from an LFP file as well. If you didn’t download new nwb files, you’ll have to set the value of <code class="docutils literal notranslate"><span class="pre">stim_filepath</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_filepath</span></code>. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_810755797_lfp_data</span></code>, but it may be named differently if you are using a different nwb file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_filepath = f&quot;{download_loc}/{stim_filename}&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_io = NWBHDF5IO(stim_filepath, mode=&quot;r&quot;, load_namespaces=True)
 stim_file = stim_io.read() 
 </pre></div>
@@ -656,13 +652,6 @@ stim_file = stim_io.read()
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lfp_filepath = f&quot;{download_loc}/{lfp_filename}&quot;
 </pre></div>
 </div>
 </div>
@@ -1241,7 +1230,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_lfp_responses_35_0.png" src="../_images/visualize_lfp_responses_35_0.png" />
+<img alt="../_images/visualize_lfp_responses_33_0.png" src="../_images/visualize_lfp_responses_33_0.png" />
 </div>
 </div>
 </section>
@@ -1276,7 +1265,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_lfp_responses_38_0.png" src="../_images/visualize_lfp_responses_38_0.png" />
+<img alt="../_images/visualize_lfp_responses_36_0.png" src="../_images/visualize_lfp_responses_36_0.png" />
 </div>
 </div>
 </section>
@@ -1311,7 +1300,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_lfp_responses_40_0.png" src="../_images/visualize_lfp_responses_40_0.png" />
+<img alt="../_images/visualize_lfp_responses_38_0.png" src="../_images/visualize_lfp_responses_38_0.png" />
 </div>
 </div>
 </section>

@@ -504,7 +504,7 @@ from pynwb import NWBHDF5IO
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
-filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
+dandi_filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
 authenticate = False
 dandi_api_key = &quot;&quot;
 </pre></div>
@@ -534,7 +534,7 @@ print(f&quot;Got dandiset {my_dandiset}&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(filepath)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_filepath)
 base_url = file.client.session.head(file.base_download_url)
 file_url = base_url.headers[&#39;Location&#39;]
 
