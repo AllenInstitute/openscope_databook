@@ -10,6 +10,7 @@ Reproducible Analysis requires four components;
 - Accessible Computational Resources
 - Reproducible environment
 - Documentation of Usage
+
 This Databook leverages a number of technologies to combine those components into a web-application. 
 
 ### Data
