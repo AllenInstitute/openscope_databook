@@ -1,0 +1,1815 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Visualizing Neuronal Unit Spikes &#8212; OpenScope Databook</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OpenScope Databook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NWB Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/download_nwb.html">
+   Downloading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/read_nwb.html">
+   Reading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/use_nwbwidgets.html">
+   Exploring an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/stream_nwb.html">
+   Streaming an NWB File with fsspec
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Visualizing NWB Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_eye_tracking.html">
+   Visualizing Eye Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_neuropixel_probes.html">
+   Visualizing Neuropixel Probe Locations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_unit_responses.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_unit_responses.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fvisualization/visualize_unit_responses.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/visualization/visualize_unit_responses.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-ecephys-file">
+   Download Ecephys File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-unit-data-and-stimulus-data">
+   Extracting Unit Data and Stimulus Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-stimulus-epochs">
+   Getting Stimulus Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-unit-activity-throughout-epochs">
+   Visualizing Unit Activity Throughout Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#showing-spike-times">
+   Showing Spike Times
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#waveforms">
+   Waveforms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#peak-waveform">
+     Peak waveform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Waveforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#waveform-image">
+     Waveform Image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#average-waveform-across-channels">
+     Average waveform across channels
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Visualizing Neuronal Unit Spikes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-ecephys-file">
+   Download Ecephys File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-unit-data-and-stimulus-data">
+   Extracting Unit Data and Stimulus Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-stimulus-epochs">
+   Getting Stimulus Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-unit-activity-throughout-epochs">
+   Visualizing Unit Activity Throughout Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#showing-spike-times">
+   Showing Spike Times
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#waveforms">
+   Waveforms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#peak-waveform">
+     Peak waveform
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Waveforms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#waveform-image">
+     Waveform Image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#average-waveform-across-channels">
+     Average waveform across channels
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuronal-unit-spikes">
+<h1>Visualizing Neuronal Unit Spikes<a class="headerlink" href="#visualizing-neuronal-unit-spikes" title="Permalink to this headline">#</a></h1>
+<p>Some of this content is adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_session.html">Allen SDK Documentation</a>.</p>
+<p>After processing Neuropixel ecephys data with <a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort</a>, individual neuronal units have been identified and are stored in the Units table, in the <code class="docutils literal notranslate"><span class="pre">Units</span></code> section of the NWB file. The Units table contains information about hypothetical neurons determined by Kilosort. With this information, and the stimulus information found in the stimulus tables of the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, this notebook helps examine the spiking behavior of these units in response to stimulus and their associated waveforms</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-ecephys-file">
+<h2>Download Ecephys File<a class="headerlink" href="#download-ecephys-file" title="Permalink to this headline">#</a></h2>
+<p>Change the code to download the file you’re interested in. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to correspond to the dandiset id and filepath of the file, respectively. If you’re accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and change <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your dandi api key. If you want to stream a file instead of downloading it, checkout <a class="reference internal" href="../basics/stream_nwb.html"><span class="doc std std-doc">Streaming an NWB File with fsspec</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
+<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]</span>
+<span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="n">dandi_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span>
+<span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+<span class="c1"># this may take awhile, especially if the file to download is large</span>
+<span class="n">file</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-703279277_ses-719161530.nwb
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extracting-unit-data-and-stimulus-data">
+<h2>Extracting Unit Data and Stimulus Data<a class="headerlink" href="#extracting-unit-data-and-stimulus-data" title="Permalink to this headline">#</a></h2>
+<p>Below, the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table is read from the file. Individual units are identified with the <code class="docutils literal notranslate"><span class="pre">id</span></code> column. Note that, while each id is unique, they are not perfectly ordinal; some ids are missing. In the cells below, the unit properties are listed and a slice of the units table is shown. More thorough descriptions of several unit properties can be found in <a class="reference internal" href="visualize_unit_metrics.html"><span class="doc std std-doc">Visualizing Unit Quality Metrics</span></a></p>
+<p>Additionally, the stimulus data is also read from the NWB file’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. Stimulus information is stored as a series of tables depending on the type of stimulus shown in the session. One such table is displayed below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">units</span>
+<span class="n">units</span><span class="o">.</span><span class="n">colnames</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;waveform_duration&#39;,
+ &#39;cluster_id&#39;,
+ &#39;peak_channel_id&#39;,
+ &#39;cumulative_drift&#39;,
+ &#39;amplitude_cutoff&#39;,
+ &#39;snr&#39;,
+ &#39;recovery_slope&#39;,
+ &#39;isolation_distance&#39;,
+ &#39;nn_miss_rate&#39;,
+ &#39;silhouette_score&#39;,
+ &#39;velocity_above&#39;,
+ &#39;quality&#39;,
+ &#39;PT_ratio&#39;,
+ &#39;l_ratio&#39;,
+ &#39;velocity_below&#39;,
+ &#39;max_drift&#39;,
+ &#39;isi_violations&#39;,
+ &#39;firing_rate&#39;,
+ &#39;amplitude&#39;,
+ &#39;local_index&#39;,
+ &#39;spread&#39;,
+ &#39;waveform_halfwidth&#39;,
+ &#39;d_prime&#39;,
+ &#39;presence_ratio&#39;,
+ &#39;repolarization_slope&#39;,
+ &#39;nn_hit_rate&#39;,
+ &#39;spike_times&#39;,
+ &#39;spike_amplitudes&#39;,
+ &#39;waveform_mean&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="p">[:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>waveform_duration</th>
+      <th>cluster_id</th>
+      <th>peak_channel_id</th>
+      <th>cumulative_drift</th>
+      <th>amplitude_cutoff</th>
+      <th>snr</th>
+      <th>recovery_slope</th>
+      <th>isolation_distance</th>
+      <th>nn_miss_rate</th>
+      <th>silhouette_score</th>
+      <th>...</th>
+      <th>local_index</th>
+      <th>spread</th>
+      <th>waveform_halfwidth</th>
+      <th>d_prime</th>
+      <th>presence_ratio</th>
+      <th>repolarization_slope</th>
+      <th>nn_hit_rate</th>
+      <th>spike_times</th>
+      <th>spike_amplitudes</th>
+      <th>waveform_mean</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>950921187</th>
+      <td>0.604355</td>
+      <td>4</td>
+      <td>850249267</td>
+      <td>481.80</td>
+      <td>0.425574</td>
+      <td>2.209140</td>
+      <td>-0.118430</td>
+      <td>17.537571</td>
+      <td>0.009496</td>
+      <td>0.036369</td>
+      <td>...</td>
+      <td>4</td>
+      <td>50.0</td>
+      <td>0.357119</td>
+      <td>2.962274</td>
+      <td>0.99</td>
+      <td>0.381716</td>
+      <td>0.473829</td>
+      <td>[1.0439430431793884, 1.543311060144649, 2.7287...</td>
+      <td>[0.0001908626967721937, 0.00016134635752077775...</td>
+      <td>[[0.0, 0.5961149999999966, 5.378099999999993, ...</td>
+    </tr>
+    <tr>
+      <th>950921172</th>
+      <td>0.521943</td>
+      <td>3</td>
+      <td>850249267</td>
+      <td>681.53</td>
+      <td>0.390098</td>
+      <td>1.959983</td>
+      <td>-0.109729</td>
+      <td>14.677643</td>
+      <td>0.003857</td>
+      <td>0.103446</td>
+      <td>...</td>
+      <td>3</td>
+      <td>40.0</td>
+      <td>0.260972</td>
+      <td>2.067810</td>
+      <td>0.99</td>
+      <td>0.536663</td>
+      <td>0.445946</td>
+      <td>[10.406435026164546, 17.127986534673788, 18.48...</td>
+      <td>[0.00014485615850768024, 0.0001722424107984555...</td>
+      <td>[[0.0, -1.341600000000002, -0.4586399999999933...</td>
+    </tr>
+    <tr>
+      <th>950921152</th>
+      <td>0.467002</td>
+      <td>2</td>
+      <td>850249267</td>
+      <td>1070.71</td>
+      <td>0.500000</td>
+      <td>2.522905</td>
+      <td>-0.109867</td>
+      <td>15.783665</td>
+      <td>0.017776</td>
+      <td>0.027818</td>
+      <td>...</td>
+      <td>2</td>
+      <td>50.0</td>
+      <td>0.247236</td>
+      <td>2.220043</td>
+      <td>0.99</td>
+      <td>0.566559</td>
+      <td>0.284058</td>
+      <td>[1.2775103414155262, 2.3915133536963493, 3.701...</td>
+      <td>[0.00014859435856024575, 0.0001531048673600236...</td>
+      <td>[[0.0, -0.6427199999999993, -2.836079999999998...</td>
+    </tr>
+    <tr>
+      <th>950921135</th>
+      <td>0.467002</td>
+      <td>1</td>
+      <td>850249267</td>
+      <td>253.42</td>
+      <td>0.500000</td>
+      <td>2.803475</td>
+      <td>-0.150379</td>
+      <td>26.666930</td>
+      <td>0.023742</td>
+      <td>0.076530</td>
+      <td>...</td>
+      <td>1</td>
+      <td>40.0</td>
+      <td>0.233501</td>
+      <td>2.339206</td>
+      <td>0.99</td>
+      <td>0.669090</td>
+      <td>0.590737</td>
+      <td>[9.473732504122962, 13.198542576065163, 18.302...</td>
+      <td>[0.00032386170367170055, 0.0004518112387675137...</td>
+      <td>[[0.0, -3.2800950000000078, -6.087510000000009...</td>
+    </tr>
+    <tr>
+      <th>950921111</th>
+      <td>0.439531</td>
+      <td>0</td>
+      <td>850249267</td>
+      <td>141.82</td>
+      <td>0.018056</td>
+      <td>4.647943</td>
+      <td>-0.328727</td>
+      <td>66.901065</td>
+      <td>0.006595</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0</td>
+      <td>30.0</td>
+      <td>0.219765</td>
+      <td>4.395994</td>
+      <td>0.99</td>
+      <td>1.261416</td>
+      <td>0.952667</td>
+      <td>[1.1677100445138795, 1.1707767194728813, 1.349...</td>
+      <td>[0.00015644521007973124, 0.000214412247939483,...</td>
+      <td>[[0.0, -0.9291749999999945, -6.120270000000007...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>950958827</th>
+      <td>0.686767</td>
+      <td>327</td>
+      <td>850256505</td>
+      <td>425.47</td>
+      <td>0.013262</td>
+      <td>1.197137</td>
+      <td>-0.033924</td>
+      <td>47.100934</td>
+      <td>0.000569</td>
+      <td>0.003954</td>
+      <td>...</td>
+      <td>323</td>
+      <td>70.0</td>
+      <td>0.219765</td>
+      <td>3.495039</td>
+      <td>0.99</td>
+      <td>0.166195</td>
+      <td>0.562500</td>
+      <td>[56.68879155534432, 56.71539151930708, 140.382...</td>
+      <td>[7.006826592238747e-05, 6.896932990521833e-05,...</td>
+      <td>[[0.0, 1.456064999999999, -2.1444149999999933,...</td>
+    </tr>
+    <tr>
+      <th>950958817</th>
+      <td>0.535678</td>
+      <td>326</td>
+      <td>850256505</td>
+      <td>391.97</td>
+      <td>0.029259</td>
+      <td>2.162418</td>
+      <td>-0.045889</td>
+      <td>44.871938</td>
+      <td>0.004134</td>
+      <td>-0.030602</td>
+      <td>...</td>
+      <td>322</td>
+      <td>50.0</td>
+      <td>0.164824</td>
+      <td>3.535095</td>
+      <td>0.96</td>
+      <td>0.374690</td>
+      <td>0.618474</td>
+      <td>[32.77642395146384, 53.25072954651286, 53.3577...</td>
+      <td>[7.075155819535531e-05, 7.864810630992507e-05,...</td>
+      <td>[[0.0, 5.052254999999994, -0.3732300000000003,...</td>
+    </tr>
+    <tr>
+      <th>950958015</th>
+      <td>0.576884</td>
+      <td>236</td>
+      <td>850256505</td>
+      <td>195.00</td>
+      <td>0.003844</td>
+      <td>3.398071</td>
+      <td>-0.072890</td>
+      <td>43.340940</td>
+      <td>0.001142</td>
+      <td>-0.127013</td>
+      <td>...</td>
+      <td>232</td>
+      <td>40.0</td>
+      <td>0.137353</td>
+      <td>4.977663</td>
+      <td>0.92</td>
+      <td>0.634695</td>
+      <td>0.767932</td>
+      <td>[171.13333650757914, 614.5358357924764, 895.59...</td>
+      <td>[9.143536229559716e-05, 0.00010639289111014194...</td>
+      <td>[[0.0, 7.7005500000000175, 12.612210000000019,...</td>
+    </tr>
+    <tr>
+      <th>950958038</th>
+      <td>0.137353</td>
+      <td>239</td>
+      <td>850256507</td>
+      <td>132.76</td>
+      <td>0.001628</td>
+      <td>3.938438</td>
+      <td>-0.121152</td>
+      <td>84.593734</td>
+      <td>0.000101</td>
+      <td>0.250970</td>
+      <td>...</td>
+      <td>235</td>
+      <td>40.0</td>
+      <td>0.082412</td>
+      <td>6.011525</td>
+      <td>0.71</td>
+      <td>0.613976</td>
+      <td>0.995134</td>
+      <td>[2625.1812451333517, 2625.195478447402, 2625.2...</td>
+      <td>[9.332805407085107e-05, 0.00011217241356378219...</td>
+      <td>[[0.0, -1.2247949999999905, 3.6318750000000044...</td>
+    </tr>
+    <tr>
+      <th>950958064</th>
+      <td>0.604355</td>
+      <td>242</td>
+      <td>850256511</td>
+      <td>314.21</td>
+      <td>0.084867</td>
+      <td>3.099177</td>
+      <td>-0.064093</td>
+      <td>49.170211</td>
+      <td>0.001985</td>
+      <td>0.153596</td>
+      <td>...</td>
+      <td>238</td>
+      <td>60.0</td>
+      <td>0.151089</td>
+      <td>4.192806</td>
+      <td>0.99</td>
+      <td>0.426358</td>
+      <td>0.947028</td>
+      <td>[8.229957206651436, 8.243390521785514, 9.81902...</td>
+      <td>[0.00021079520849161493, 0.0001983938878704022...</td>
+      <td>[[0.0, -4.4120700000000035, -6.431880000000012...</td>
+    </tr>
+  </tbody>
+</table>
+<p>3232 rows × 29 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stimulus_names</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stimulus_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;drifting_gratings_presentations&#39;, &#39;flashes_presentations&#39;, &#39;gabors_presentations&#39;, &#39;invalid_times&#39;, &#39;natural_movie_one_presentations&#39;, &#39;natural_movie_three_presentations&#39;, &#39;natural_scenes_presentations&#39;, &#39;spontaneous_presentations&#39;, &#39;static_gratings_presentations&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="s2">&quot;flashes_presentations&quot;</span><span class="p">]</span>
+<span class="n">stim_table</span><span class="p">[:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_time</th>
+      <th>stop_time</th>
+      <th>stimulus_name</th>
+      <th>stimulus_block</th>
+      <th>color</th>
+      <th>mask</th>
+      <th>opacity</th>
+      <th>phase</th>
+      <th>size</th>
+      <th>units</th>
+      <th>stimulus_index</th>
+      <th>orientation</th>
+      <th>spatial_frequency</th>
+      <th>contrast</th>
+      <th>tags</th>
+      <th>timeseries</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1290.883097</td>
+      <td>1291.133309</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>-1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3647, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1292.884817</td>
+      <td>1293.135016</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3648, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1294.886487</td>
+      <td>1295.136691</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3649, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1296.888137</td>
+      <td>1297.138344</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3650, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1298.889787</td>
+      <td>1299.140004</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>-1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3651, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>1581.125517</td>
+      <td>1581.375726</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3792, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>1583.127217</td>
+      <td>1583.377419</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3793, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>1585.128807</td>
+      <td>1585.379029</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>-1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3794, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>1587.130507</td>
+      <td>1587.380724</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>-1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3795, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>1589.132187</td>
+      <td>1589.382401</td>
+      <td>flashes</td>
+      <td>1.0</td>
+      <td>-1.0</td>
+      <td>None</td>
+      <td>1.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>[300.0, 300.0]</td>
+      <td>deg</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[0.0, 0.0]</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3796, 1, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 16 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="getting-stimulus-epochs">
+<h2>Getting Stimulus Epochs<a class="headerlink" href="#getting-stimulus-epochs" title="Permalink to this headline">#</a></h2>
+<p>Here, epochs are extracted from the stimulus tables. In this case, an ‘epoch’ is a continuous period of time during a session where a particular type of stimulus is shown. The output here is a list of epochs, where an epoch is a tuple of four values; the stimulus name, the stimulus block, the starting time and the ending time. Since stimulus information can vary signifcantly between experiments and NWB files, you may need to tailor the code below to extract epochs for the file you’re interested in.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
+<span class="c1"># returns list of epochs, where an epoch is of the form (stimulus name, stimulus block, start time, stop time)</span>
+<span class="k">def</span> <span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    
+    <span class="c1"># specify a current epoch stop and start time</span>
+    <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># for each row, try to extend current epoch stop_time</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">)):</span>
+        <span class="n">this_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stimulus_block</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># if end of table, end the current epoch</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">):</span>
+            <span class="n">epochs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">this_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_stop</span><span class="p">))</span>
+            <span class="k">break</span>
+            
+        <span class="n">next_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stimulus_block</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># if next row is the same stim block, push back epoch_stop time</span>
+        <span class="k">if</span> <span class="n">next_block</span> <span class="o">==</span> <span class="n">this_block</span><span class="p">:</span>
+            <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># otherwise, end the current epoch, start new epoch</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">epochs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">this_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_stop</span><span class="p">))</span>
+            <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">epochs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epochs from all valid stimulus tables</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">stim_name</span> <span class="ow">in</span> <span class="n">stimulus_names</span><span class="p">:</span>
+    <span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">epochs</span> <span class="o">=</span> <span class="n">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+<span class="c1"># epochs take the form (stimulus name, stimulus block, start time, stop time)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">))</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+(&#39;gabors_presentations&#39;, 0.0, 89.8968273815905, 1001.8917716749913)
+(&#39;flashes_presentations&#39;, 1.0, 1290.8830973815907, 1589.382401312724)
+(&#39;drifting_gratings_presentations&#39;, 2.0, 1591.1338573815906, 2190.634543106125)
+(&#39;natural_movie_three_presentations&#39;, 3.0, 2221.6604473815905, 2822.161967381591)
+(&#39;natural_movie_one_presentations&#39;, 4.0, 2852.1870373815905, 3152.4377773815904)
+(&#39;drifting_gratings_presentations&#39;, 5.0, 3182.4628573815908, 3781.963503106125)
+(&#39;natural_movie_three_presentations&#39;, 6.0, 4083.215117381591, 4683.716567381592)
+(&#39;drifting_gratings_presentations&#39;, 7.0, 4713.741627381592, 5397.312443106124)
+(&#39;static_gratings_presentations&#39;, 8.0, 5398.31325738159, 5878.714467381591)
+(&#39;natural_scenes_presentations&#39;, 9.0, 5908.739537381591, 6389.157337381589)
+(&#39;natural_scenes_presentations&#39;, 10.0, 6689.408117381589, 7169.809297381591)
+(&#39;static_gratings_presentations&#39;, 11.0, 7199.83431738159, 7680.268867381591)
+(&#39;natural_movie_one_presentations&#39;, 12.0, 7710.293937381591, 8010.54467738159)
+(&#39;natural_scenes_presentations&#39;, 13.0, 8040.56972738159, 8568.510620243858)
+(&#39;static_gratings_presentations&#39;, 14.0, 8611.04613738159, 9151.49746738159)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-unit-activity-throughout-epochs">
+<h2>Visualizing Unit Activity Throughout Epochs<a class="headerlink" href="#visualizing-unit-activity-throughout-epochs" title="Permalink to this headline">#</a></h2>
+<p>Below is a view of the spiking activity of a unit throughout a session, where epochs are shown as colored sections. Set <code class="docutils literal notranslate"><span class="pre">unit_num</span></code> to be the id of the unit to view. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> to the starting bound in seconds of the session, you’d like to see, and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the ending bound. You may want to use the output above to inform your choice. As mentioned above, if your file’s stimulus information differs signifcantly, this code may need to be modified to appropriately display the epochs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_num</span> <span class="o">=</span> <span class="mi">950930672</span> <span class="c1"># chosen from units table</span>
+<span class="n">time_start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">time_end</span> <span class="o">=</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># translate unit id to row index</span>
+<span class="n">unit_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">id</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">unit_num</span><span class="p">:</span>
+        <span class="n">unit_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unit index:&quot;</span><span class="p">,</span><span class="n">unit_idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unit index: 648
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make histogram of unit spikes per second over specified timeframe</span>
+<span class="n">spikes</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_times&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
+<span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate plot of spike histogram with colored epoch intervals and legend</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># assign unique color to each stimulus name</span>
+<span class="n">stim_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">epoch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">})</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">)))</span>
+<span class="n">stim_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">stim_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">))}</span>
+
+<span class="n">epoch_key</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="c1"># draw colored rectangles for each epoch</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+    <span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_end</span> <span class="o">=</span> <span class="n">epoch</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
+    <span class="n">epoch_key</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">height</span><span class="o">+</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;# spikes&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.12</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x256673bfbb0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/visualize_unit_responses_21_1.png" src="../_images/visualize_unit_responses_21_1.png" />
+</div>
+</div>
+</section>
+<section id="showing-spike-times">
+<h2>Showing Spike Times<a class="headerlink" href="#showing-spike-times" title="Permalink to this headline">#</a></h2>
+<p>Here, a histogram plot of unit spikes over time is created. In the second cell below, set <code class="docutils literal notranslate"><span class="pre">stim_time</span></code> to be the time of the stimulus you’re interested in viewing. To get an idea of the stimulus times you might be interested in, access one of the tables in the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, discussed above in <strong>Extracting Unit Data and Stimulus Data</strong>.  The first cell below shows how to access these. Set <code class="docutils literal notranslate"><span class="pre">interval_start</span></code> and <code class="docutils literal notranslate"><span class="pre">interval_end</span></code> to the relative time bounds, in seconds, of the histogram around <code class="docutils literal notranslate"><span class="pre">stim_time</span></code>. Finally, <code class="docutils literal notranslate"><span class="pre">start_unit</span></code> and <code class="docutils literal notranslate"><span class="pre">end_unit</span></code> can be used to choose the slice indices of <code class="docutils literal notranslate"><span class="pre">selected_units</span></code> to display.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_time</span> <span class="o">=</span> <span class="mi">1007</span> <span class="c1"># arbitrarily chosen here</span>
+<span class="n">interval_start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span>
+<span class="n">interval_end</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">start_unit</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">end_unit</span> <span class="o">=</span> <span class="mi">500</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spike_times</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_times&quot;</span><span class="p">][</span><span class="n">start_unit</span><span class="p">:</span><span class="n">end_unit</span><span class="p">]]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;There are no spiking units in this selection&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>400
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each unit, generate a histogram with 200 bins, where bins represent the number spikes per second</span>
+<span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">interval_start</span><span class="p">,</span> <span class="n">interval_end</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">hists</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">unit_spike_times</span> <span class="ow">in</span> <span class="n">spike_times</span><span class="p">:</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">unit_spike_times</span><span class="o">-</span><span class="n">stim_time</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
+    <span class="n">hists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="n">hists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">hists</span><span class="p">)</span>
+
+<span class="n">hists</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(400, 199)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display array of histograms as 2D image with color</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hists</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;# spikes&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">NullLocator</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">xtick_step</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">reltime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">time_bin_edges</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reltime</span><span class="p">),</span> <span class="n">xtick_step</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mp</span><span class="si">:</span><span class="s1">1.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">mp</span> <span class="ow">in</span> <span class="n">reltime</span><span class="p">[::</span><span class="n">xtick_step</span><span class="p">]],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time since stimulus event&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;unit spikes over time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;unit spikes over time&#39;)
+</pre></div>
+</div>
+<img alt="../_images/visualize_unit_responses_26_1.png" src="../_images/visualize_unit_responses_26_1.png" />
+</div>
+</div>
+</section>
+<section id="waveforms">
+<h2>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Units</span></code> table can also be used to view the waveforms of a units with the <code class="docutils literal notranslate"><span class="pre">waveform_mean</span></code> property, which consists of the mean waveform of that unit as measured by each channel along the probe. One channel will contain the peak waveform. With a bit of legwork, the <code class="docutils literal notranslate"><span class="pre">peak_channel_id</span></code> of the unit and the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> section can be used to get the single peak waveform as shown below. There is also a timewise and channelwise view of all the mean waveforms and an average of the waveforms across all channels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_num</span> <span class="o">=</span> <span class="mi">950952910</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># translate unit id to row index</span>
+<span class="n">unit_idx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">id</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">unit_num</span><span class="p">:</span>
+        <span class="n">unit_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unit index:&quot;</span><span class="p">,</span><span class="n">unit_idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unit index: 2513
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get sampling Hz for this unit&#39;s waveform</span>
+<span class="n">peak_channel_id</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">probe_name</span> <span class="o">=</span> <span class="n">electrodes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">peak_channel_id</span><span class="p">]</span><span class="o">.</span><span class="n">group_name</span>
+
+<span class="n">Hz</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="n">probe_name</span><span class="p">]</span><span class="o">.</span><span class="n">sampling_rate</span>
+<span class="n">Hz</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29999.9995000281
+</pre></div>
+</div>
+</div>
+</div>
+<section id="peak-waveform">
+<h3>Peak waveform<a class="headerlink" href="#peak-waveform" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use peak_channel_id of unit to fetch the peak waveform index from electrodes table</span>
+<span class="n">peak_channel_id</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">local_index</span> <span class="o">=</span> <span class="n">electrodes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">peak_channel_id</span><span class="p">]</span><span class="o">.</span><span class="n">local_index</span>
+
+<span class="n">unit_waveform</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;waveform_mean&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
+<span class="n">peak_waveform</span> <span class="o">=</span> <span class="n">unit_waveform</span><span class="p">[</span><span class="n">local_index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">n_secs</span> <span class="o">=</span> <span class="n">peak_waveform</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">Hz</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_secs</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">peak_waveform</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">peak_waveform</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (ms)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;membrane potential (uV)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;unit peak waveform&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/visualize_unit_responses_33_0.png" src="../_images/visualize_unit_responses_33_0.png" />
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Waveforms<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_waveforms</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;waveform_mean&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
+<span class="n">unit_waveforms</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(384, 82)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unit_waveforms</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_prop_cycle</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="n">n_secs</span> <span class="o">=</span> <span class="n">unit_waveforms</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">Hz</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_secs</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">unit_waveforms</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">unit_waveforms</span><span class="p">))</span>
+
+<span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;channel #&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;membrane potential (uV)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;unit waveforms&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/visualize_unit_responses_36_0.png" src="../_images/visualize_unit_responses_36_0.png" />
+</div>
+</div>
+</section>
+<section id="waveform-image">
+<h3>Waveform Image<a class="headerlink" href="#waveform-image" title="Permalink to this headline">#</a></h3>
+<p>Below is an image of the waveform means for each channel of a unit. The further in space from the real neuron, the weaker the measurment of the response waveform, so it is usualyl only useful to view a subsection of the channels at once. Set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to be the bounds of the channels you want displayed. Because the channels are arranged into two rows along the length of a probe, typically a unit is only strongly detected by every other channel. The data shown below displays every other channel to avoid the resultant striping effect. If the waveform looks too dim, try incrementing <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> by 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_channel</span> <span class="o">=</span> <span class="mi">230</span>
+<span class="n">end_channel</span> <span class="o">=</span> <span class="mi">280</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">unit_waveforms</span><span class="p">[</span><span class="n">start_channel</span><span class="p">:</span><span class="n">end_channel</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># step by 2 to remove striping effect</span>
+<span class="n">n_channels</span> <span class="o">=</span> <span class="n">end_channel</span> <span class="o">-</span> <span class="n">start_channel</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_channels</span> <span class="o">//</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="n">n_secs</span> <span class="o">=</span> <span class="n">unit_waveforms</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">Hz</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_secs</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">unit_waveforms</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;membrane potential (uV)&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;channel #&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;unit waveforms image&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_secs</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">end_channel</span><span class="p">,</span> <span class="n">start_channel</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2570a95c370&gt;
+</pre></div>
+</div>
+<img alt="../_images/visualize_unit_responses_39_1.png" src="../_images/visualize_unit_responses_39_1.png" />
+</div>
+</div>
+</section>
+<section id="average-waveform-across-channels">
+<h3>Average waveform across channels<a class="headerlink" href="#average-waveform-across-channels" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_waveform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="s2">&quot;waveform_mean&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">avg_waveform</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(82,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">avg_waveform</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;membrane potential (uV)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;average unit waveform&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/visualize_unit_responses_42_0.png" src="../_images/visualize_unit_responses_42_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./visualization"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Carter Peene<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -558,18 +558,18 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-import fsspec
-import h5py
-import numpy as np
-import pynwb
+<span class="kn">import</span> <span class="nn">fsspec</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-from dandi import dandiapi
-from fsspec.implementations.cached import CachingFileSystem
-from matplotlib import pyplot as plt
-from mpl_interactions import hyperslicer
-from nwbwidgets import nwb2widget
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_interactions</span> <span class="kn">import</span> <span class="n">hyperslicer</span>
+<span class="kn">from</span> <span class="nn">nwbwidgets</span> <span class="kn">import</span> <span class="n">nwb2widget</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 </pre></div>
 </div>
 </div>
@@ -580,27 +580,27 @@ from nwbwidgets import nwb2widget
 <p>Streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your dandi api key, otherwise, set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to False.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000336&quot;
-dandi_filepath = &quot;1186140941/1212553658/1212705237_raw.nwb&quot;
-authenticate = True
-dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000336&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub_1186140941/sub_1186140941sess_1212553658/sub_1186140941+sess_1212553658+exp_1212705237+raw_ophys.nwb&quot;</span>
+<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DANDI_API_KEY&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if authenticate:
-    client = dandiapi.DandiAPIClient(token=dandi_api_key)
-else:
-    client = dandiapi.DandiAPIClient()
-my_dandiset = client.get_dandiset(dandiset_id)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span>
+<span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
 
-file = my_dandiset.get_asset_by_path(dandi_filepath)
-base_url = file.client.session.head(file.base_download_url)
-file_url = base_url.headers[&#39;Location&#39;]
+<span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
+<span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">]</span>
 
-print(f&quot;Retrieved file url {file_url}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrieved file url </span><span class="si">{</span><span class="n">file_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -615,15 +615,15 @@ print(f&quot;Retrieved file url {file_url}&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fs = CachingFileSystem(
-    fs=fsspec.filesystem(&quot;http&quot;),
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">CachingFileSystem</span><span class="p">(</span>
+    <span class="n">fs</span><span class="o">=</span><span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">),</span>
+<span class="p">)</span>
 
-# opening may take awhile on a large file
-f = fs.open(file_url, &quot;rb&quot;)
-file = h5py.File(f)
-io = pynwb.NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
-nwb = io.read()
+<span class="c1"># opening may take awhile on a large file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -643,19 +643,19 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <h2>Extracting Fluorescence<a class="headerlink" href="#extracting-fluorescence" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dff = nwb.processing[&quot;ophys&quot;][&quot;dff&quot;]
-dff_trace = dff.roi_response_series[&quot;traces&quot;].data
-dff_timestamps = dff.roi_response_series[&quot;traces&quot;].timestamps
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dff</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;dff&quot;</span><span class="p">]</span>
+<span class="n">dff_trace</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">dff_timestamps</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
 
-print(dff_timestamps.shape)
-print(dff_trace.shape)
+<span class="nb">print</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dff_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-flr = nwb.processing[&quot;ophys&quot;][&quot;corrected_fluorescence&quot;]
-flr_trace = flr.roi_response_series[&quot;traces&quot;].data
-flr_timestamps = flr.roi_response_series[&quot;traces&quot;].timestamps
+<span class="n">flr</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;corrected_fluorescence&quot;</span><span class="p">]</span>
+<span class="n">flr_trace</span> <span class="o">=</span> <span class="n">flr</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">flr_timestamps</span> <span class="o">=</span> <span class="n">flr</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
 
-print(flr_timestamps.shape)
-print(flr_trace.shape)
+<span class="nb">print</span><span class="p">(</span><span class="n">flr_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flr_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -673,8 +673,8 @@ print(flr_trace.shape)
 <h2>Extracting Regions of Interest<a class="headerlink" href="#extracting-regions-of-interest" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>roi_masks = np.array(nwb.processing[&quot;ophys&quot;][&quot;images&quot;][&quot;segmentation_mask_image&quot;])
-print(roi_masks.shape)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi_masks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;images&quot;</span><span class="p">][</span><span class="s2">&quot;segmentation_mask_image&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">roi_masks</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -689,8 +689,8 @@ print(roi_masks.shape)
 <h2>Extracting 2P Movie<a class="headerlink" href="#extracting-2p-movie" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>two_p = nwb.acquisition[&quot;raw_suite2p_motion_corrected&quot;].data
-print(two_p.shape)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_p</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;raw_suite2p_motion_corrected&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">two_p</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -706,26 +706,26 @@ print(two_p.shape)
 <p>Because the image data are so large, it is advised the you select a subsection of the data to view. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to the first image you want to be displayed, and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be the last. Below are printed the first and last timestamps from the 2P data to inform this choice. The larger the period, the longer it will take to display. It is recommended the period length is less than 100 seconds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># start_time = flr_timestamps[0]
-start_time = 0
-# end_time = flr_timestamps[-1]
-end_time = 100
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start_time = flr_timestamps[0]</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># end_time = flr_timestamps[-1]</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>start_idx, end_idx = None, None
-for i, ts in enumerate(flr_timestamps):
-    if not start_idx and ts &gt;= start_time:
-        start_idx = i
-    if start_idx and ts &gt;= end_time:
-        end_idx = i
-        break
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">flr_timestamps</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">start_idx</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">start_time</span><span class="p">:</span>
+        <span class="n">start_idx</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">if</span> <span class="n">start_idx</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">end_time</span><span class="p">:</span>
+        <span class="n">end_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">break</span>
 
-if start_idx == None or end_idx == None:
-    raise ValueError(&quot;Period bounds not found within 2P data&quot;)
+<span class="k">if</span> <span class="n">start_idx</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">end_idx</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Period bounds not found within 2P data&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -736,7 +736,7 @@ if start_idx == None or end_idx == None:
 <p>You can view the Fluorescence and DF/F traces below with matplotlib. You can set an individual <code class="docutils literal notranslate"><span class="pre">roi</span></code> whose fluorescence trace to view. If <code class="docutils literal notranslate"><span class="pre">roi</span></code> is None, it will plot all of them. You can also view the 2P video with mpl_interactions.hyperslicer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>roi = None
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -745,16 +745,16 @@ if start_idx == None or end_idx == None:
 <h3>Fluorescence Trace<a class="headerlink" href="#fluorescence-trace" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
-fig, ax = plt.subplots(figsize=(8,6))
-if roi == None:
-    ax.plot(flr_timestamps[start_idx:end_idx], flr_trace[start_idx:end_idx])
-else:
-    ax.plot(flr_timestamps[start_idx:end_idx], flr_trace[start_idx:end_idx, roi])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">roi</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">flr_timestamps</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">flr_trace</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">flr_timestamps</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">flr_trace</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">,</span> <span class="n">roi</span><span class="p">])</span>
 
-plt.ylabel(&quot;fluorescence&quot;)   
-plt.xlabel(&quot;seconds&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;fluorescence&quot;</span><span class="p">)</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -767,16 +767,16 @@ plt.show()
 <h3>DF/F Trace<a class="headerlink" href="#df-f-trace" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
-fig, ax = plt.subplots(figsize=(8,6))
-if roi == None:
-    ax.plot(dff_timestamps[start_idx: end_idx], dff_trace[start_idx: end_idx]*100)
-else:
-    ax.plot(dff_timestamps[start_idx: end_idx], dff_trace[start_idx: end_idx, roi]*100)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">roi</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span> <span class="n">end_idx</span><span class="p">],</span> <span class="n">dff_trace</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span> <span class="n">end_idx</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span> <span class="n">end_idx</span><span class="p">],</span> <span class="n">dff_trace</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span> <span class="n">end_idx</span><span class="p">,</span> <span class="n">roi</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 
-plt.ylabel(&quot;DF/F&quot;)
-plt.xlabel(&quot;seconds&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;DF/F&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -789,10 +789,10 @@ plt.show()
 <h3>Regions of Interest Mask<a class="headerlink" href="#regions-of-interest-mask" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
-fig, ax = plt.subplots()
-plt.tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
-plt.imshow(roi_masks)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">roi_masks</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -808,22 +808,22 @@ plt.imshow(roi_masks)
 <h3>2P Movie with ROI Mask<a class="headerlink" href="#p-movie-with-roi-mask" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### overlaying ROIs onto 2p movie
-two_p_subset = np.array(two_p[start_idx:end_idx])
-roi_masks_3d = np.reshape(roi_masks, (1,) + roi_masks.shape)
-m = two_p_subset.mean()
-roi_masks_3d = np.multiply(roi_masks_3d, m*10)
-two_p_masked = np.add(two_p_subset, roi_masks_3d)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### overlaying ROIs onto 2p movie</span>
+<span class="n">two_p_subset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">two_p</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
+<span class="n">roi_masks_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">roi_masks</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="n">roi_masks</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">two_p_subset</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">roi_masks_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">roi_masks_3d</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">two_p_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">two_p_subset</span><span class="p">,</span> <span class="n">roi_masks_3d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib ipympl
-fig, ax = plt.subplots()
-plt.tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
-view = hyperslicer(two_p_masked,play_buttons=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> ipympl
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">hyperslicer</span><span class="p">(</span><span class="n">two_p_masked</span><span class="p">,</span><span class="n">play_buttons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

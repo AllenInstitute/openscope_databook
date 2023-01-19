@@ -538,18 +538,18 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-import fsspec
-import h5py
-import matplotlib.pyplot as plt
-import numpy as np
+<span class="kn">import</span> <span class="nn">fsspec</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-from dandi import dandiapi
-from fsspec.implementations.cached import CachingFileSystem
-from pynwb import NWBHDF5IO
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -560,21 +560,21 @@ from pynwb import NWBHDF5IO
 <p>Streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your dandi api key, otherwise, set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to False.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000253&quot;
-dandi_filepath = &quot;sub-1169714184/sub-1169714184_ses-1180116198.nwb&quot;
-authenticate = True
-dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000253&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub_1169714193/sub_1169714193sess_1180116198/sub_1169714193+sess_1180116198_ecephys.nwb&quot;</span>
+<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DANDI_API_KEY&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if authenticate:
-    my_dandiset = dandiapi.DandiAPIClient(token=dandi_api_key).get_dandiset(dandiset_id)
-else:
-    my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
-print(f&quot;Got dandiset {my_dandiset}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
+    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -589,11 +589,11 @@ print(f&quot;Got dandiset {my_dandiset}&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_filepath)
-base_url = file.client.session.head(file.base_download_url)
-file_url = base_url.headers[&#39;Location&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
+<span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">]</span>
 
-print(f&quot;Retrieved file url {file_url}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrieved file url </span><span class="si">{</span><span class="n">file_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -605,14 +605,14 @@ print(f&quot;Retrieved file url {file_url}&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fs = CachingFileSystem(
-    fs=fsspec.filesystem(&quot;http&quot;)
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">CachingFileSystem</span><span class="p">(</span>
+    <span class="n">fs</span><span class="o">=</span><span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 
-f = fs.open(file_url, &quot;rb&quot;)
-file = h5py.File(f)
-io = NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
-nwb = io.read()
+<span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -633,14 +633,14 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>Our datasets include eye data with eye tracking, corneal reflection tracking, and pupil tracking. Any of these should be usable for the following analyses. Below, you can set <code class="docutils literal notranslate"><span class="pre">eye_tracking</span></code> to one of those values commented out below. You can also take the probable blink times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].eye_tracking
-# eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].corneal_reflection_tracking
-# eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].pupil_tracking
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eye_tracking</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;EyeTracking&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eye_tracking</span>
+<span class="c1"># eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].corneal_reflection_tracking</span>
+<span class="c1"># eye_tracking = nwb.acquisition[&quot;EyeTracking&quot;].pupil_tracking</span>
 
-timestamps = eye_tracking.timestamps
-blink_times = nwb.acquisition[&quot;EyeTracking&quot;].likely_blink
+<span class="n">timestamps</span> <span class="o">=</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">timestamps</span>
+<span class="n">blink_times</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;EyeTracking&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">likely_blink</span>
 
-print(eye_tracking)
+<span class="nb">print</span><span class="p">(</span><span class="n">eye_tracking</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -678,8 +678,8 @@ Fields:
 <p>The data can be large or messy. In order to visualize the data more cleanly and efficiently, you can just select a period of time within the data to plot. To do this, specify the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> you’d like in terms of seconds. Below, the first and last timestamps from the data are printed to assist in this choice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(timestamps[0])
-print(timestamps[-2])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -692,34 +692,34 @@ print(timestamps[-2])
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>start_time = 0
-end_time = 100
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_time</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get data indices from times
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get data indices from times</span>
 
-start_idx, end_idx = None, None
-for i, ts in enumerate(timestamps):
-    if not start_idx and ts &gt;= start_time:
-        start_idx = i
-    if start_idx and ts &gt;= end_time:
-        end_idx = i
-        break
+<span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">timestamps</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">start_idx</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">start_time</span><span class="p">:</span>
+        <span class="n">start_idx</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">if</span> <span class="n">start_idx</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">end_time</span><span class="p">:</span>
+        <span class="n">end_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">break</span>
 
-if start_idx == None or end_idx == None:
-    raise ValueError(&quot;Time bounds not found within eyetracking timestamps&quot;)
+<span class="k">if</span> <span class="n">start_idx</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">end_idx</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Time bounds not found within eyetracking timestamps&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># make time axis
-time_axis = np.arange(start_idx, end_idx)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make time axis</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -732,8 +732,8 @@ time_axis = np.arange(start_idx, end_idx)
 <h3>Blink Times<a class="headerlink" href="#blink-times" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
-ax.plot(blink_times.data[start_idx:end_idx], linewidth=0.2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">blink_times</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -750,13 +750,13 @@ ax.plot(blink_times.data[start_idx:end_idx], linewidth=0.2)
 <p>Below, eye height and width are plotted together, and area, the product of height and width, is also plotted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax1 = plt.subplots()
-ax1.set_xlabel(&#39;time&#39;)
-ax1.plot(time_axis, eye_tracking.width[start_idx:end_idx], color=&#39;b&#39;)
-ax1.set_ylabel(&#39;width&#39;, color=&#39;b&#39;)
-ax2 = ax1.twinx()
-ax2.plot(time_axis, eye_tracking.height[start_idx:end_idx], color=&#39;r&#39;)
-ax2.set_ylabel(&#39;height&#39;, color=&#39;r&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">width</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">height</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -769,10 +769,10 @@ ax2.set_ylabel(&#39;height&#39;, color=&#39;r&#39;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax1 = plt.subplots()
-ax1.set_xlabel(&#39;time&#39;)
-ax1.set_ylabel(&#39;area&#39;)
-ax1.plot(time_axis, eye_tracking.area[start_idx:end_idx])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -788,11 +788,11 @@ ax1.plot(time_axis, eye_tracking.area[start_idx:end_idx])
 <h3>Angle<a class="headerlink" href="#angle" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
-angle = np.array(eye_tracking.angle)
-ax.set_xlabel(&#39;time&#39;)
-ax.set_ylabel(&#39;angle (degrees)&#39;)
-ax.plot(time_axis, angle[start_idx:end_idx])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eye_tracking</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;angle (degrees)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">angle</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -809,24 +809,24 @@ ax.plot(time_axis, angle[start_idx:end_idx])
 <p>With marker color representing time, the x and y coordinates of the eye’s view are traced below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># extract coords from eye tracking array
-xs = np.array([point[0] for point in eye_tracking.data])
-ys = np.array([point[1] for point in eye_tracking.data])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract coords from eye tracking array</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">data</span><span class="p">])</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">data</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
-colors = plt.cm.viridis(np.linspace(0, 1, end_idx-start_idx))
-ax.plot(xs[start_idx:end_idx], ys[start_idx:end_idx], zorder=0, linewidth=0.25)
-ax.scatter(xs[start_idx:end_idx], ys[start_idx:end_idx], s=5, c=colors, zorder=1)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end_idx</span><span class="o">-</span><span class="n">start_idx</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-# set these to restrict the plot limits
-# ax.set_xlim(320,350)
-# ax.set_ylim(270,320)
-plt.show()
+<span class="c1"># set these to restrict the plot limits</span>
+<span class="c1"># ax.set_xlim(320,350)</span>
+<span class="c1"># ax.set_ylim(270,320)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

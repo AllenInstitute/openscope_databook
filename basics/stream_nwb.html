@@ -484,14 +484,14 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import dandi
-import fsspec
-import h5py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dandi</span>
+<span class="kn">import</span> <span class="nn">fsspec</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
 
-from dandi import dandiapi
-from fsspec.implementations.cached import CachingFileSystem
-from nwbwidgets import nwb2widget
-from pynwb import NWBHDF5IO
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
+<span class="kn">from</span> <span class="nn">nwbwidgets</span> <span class="kn">import</span> <span class="n">nwb2widget</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 </pre></div>
 </div>
 </div>
@@ -503,23 +503,23 @@ from pynwb import NWBHDF5IO
 <p>If you’re accessing an embargoed dandiset, you should set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API Key, which can be found if you click on your profile icon in the top-right corner on the DANDI Archive website.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
-dandi_filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
-authenticate = False
-dandi_api_key = &quot;&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;</span>
+<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if authenticate:
-    client = dandiapi.DandiAPIClient(token=dandi_api_key)
-else:
-    client = dandiapi.DandiAPIClient()
-my_dandiset = client.get_dandiset(dandiset_id)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span>
+<span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
 
-print(f&quot;Got dandiset {my_dandiset}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -534,11 +534,11 @@ print(f&quot;Got dandiset {my_dandiset}&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_filepath)
-base_url = file.client.session.head(file.base_download_url)
-file_url = base_url.headers[&#39;Location&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
+<span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">]</span>
 
-print(f&quot;Retrieved file url {file_url}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrieved file url </span><span class="si">{</span><span class="n">file_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -554,14 +554,14 @@ print(f&quot;Retrieved file url {file_url}&quot;)
 <p>First, this creates a virtual filesystem based on the http protocol and specifies using caching to save accessed data to RAM. Then it opens the file remotely through the virtual filesystem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fs = CachingFileSystem(
-    fs=fsspec.filesystem(&quot;http&quot;)
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">CachingFileSystem</span><span class="p">(</span>
+    <span class="n">fs</span><span class="o">=</span><span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 
-f = fs.open(file_url, &quot;rb&quot;)
-file = h5py.File(f)
-io = NWBHDF5IO(file=file, mode=&#39;r&#39;, load_namespaces=True)
-nwb = io.read()
+<span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -580,21 +580,21 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>Once the file has been opened remotely, you can explore the file as you wish via <code class="docutils literal notranslate"><span class="pre">print</span></code> statements, or you can view the whole thing with <code class="docutils literal notranslate"><span class="pre">NWBWidgets</span></code> like we showed in <em>Exploring an NWB File</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### uncomment these to view aspects of the file
-### note that not all these properties exist for all nwb files
-# nwb.identifier
-# nwb.processing
-# nwb.acquisition[&quot;events&quot;]
-# nwb.intervals[&quot;trials&quot;]
-# nwb.stimulus[&quot;StimulusPresentation&quot;]
-# nwb.electrodes
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### uncomment these to view aspects of the file</span>
+<span class="c1">### note that not all these properties exist for all nwb files</span>
+<span class="c1"># nwb.identifier</span>
+<span class="c1"># nwb.processing</span>
+<span class="c1"># nwb.acquisition[&quot;events&quot;]</span>
+<span class="c1"># nwb.intervals[&quot;trials&quot;]</span>
+<span class="c1"># nwb.stimulus[&quot;StimulusPresentation&quot;]</span>
+<span class="c1"># nwb.electrodes</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nwb2widget(nwb)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb2widget</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

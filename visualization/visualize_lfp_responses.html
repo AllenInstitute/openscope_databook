@@ -557,14 +557,14 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib as mpl
-import matplotlib.pyplot as plt
-import numpy as np
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-from dandi import dandiapi
-from math import sqrt
-from pynwb import NWBHDF5IO
-from scipy import interpolate
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
 </pre></div>
 </div>
 </div>
@@ -575,23 +575,23 @@ from scipy import interpolate
 <p>If you don’t already have files to analyze, you can use data from The Allen Institute’s <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Coding</span> <span class="pre">-</span> <span class="pre">Neuropixels</span></code> dataset. If you want to choose your own files to download, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_stim_filepath</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_lfp_filepath</span></code> accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dandiset_id = &quot;000021&quot;
-dandi_stim_filepath = &quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;
-dandi_lfp_filepath = &quot;sub-699733573/sub-699733573_ses-715093703_probe-810755797_ecephys.nwb&quot;
-download_loc = &quot;.&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
+<span class="n">dandi_stim_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;</span>
+<span class="n">dandi_lfp_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-699733573/sub-699733573_ses-715093703_probe-810755797_ecephys.nwb&quot;</span>
+<span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_filename = dandi_stim_filepath.split(&quot;/&quot;)[-1]
-lfp_filename = dandi_lfp_filepath.split(&quot;/&quot;)[-1]
-stim_filepath = f&quot;{download_loc}/{stim_filename}&quot;
-lfp_filepath = f&quot;{download_loc}/{lfp_filename}&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_filename</span> <span class="o">=</span> <span class="n">dandi_stim_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">lfp_filename</span> <span class="o">=</span> <span class="n">dandi_lfp_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">stim_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">stim_filename</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">lfp_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">lfp_filename</span><span class="si">}</span><span class="s2">&quot;</span>
 
-my_dandiset = dandiapi.DandiAPIClient().get_dandiset(dandiset_id)
-print(f&quot;Got dandiset {my_dandiset}&quot;)
+<span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -606,11 +606,11 @@ print(f&quot;Got dandiset {my_dandiset}&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_stim_filepath)
-# this may take awhile, especially if the file to download is large
-file.download(stim_filepath)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_stim_filepath</span><span class="p">)</span>
+<span class="c1"># this may take awhile, especially if the file to download is large</span>
+<span class="n">file</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">stim_filepath</span><span class="p">)</span>
 
-print(f&quot;Downloaded file to {stim_filepath}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">stim_filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -622,11 +622,11 @@ print(f&quot;Downloaded file to {stim_filepath}&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>file = my_dandiset.get_asset_by_path(dandi_lfp_filepath)
-# this may take awhile, especially if the file to download is large
-file.download(lfp_filepath)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_lfp_filepath</span><span class="p">)</span>
+<span class="c1"># this may take awhile, especially if the file to download is large</span>
+<span class="n">file</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">lfp_filepath</span><span class="p">)</span>
 
-print(f&quot;Downloaded file to {lfp_filepath}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">lfp_filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -642,8 +642,8 @@ print(f&quot;Downloaded file to {lfp_filepath}&quot;)
 <p>Below you can read in the stimulus file from a filepath you specify. You can extract the <code class="docutils literal notranslate"><span class="pre">LFP.data</span></code> and associated <code class="docutils literal notranslate"><span class="pre">LFP.timestamps</span></code> from an LFP file as well. If you didn’t download new nwb files, you’ll have to set the value of <code class="docutils literal notranslate"><span class="pre">stim_filepath</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_filepath</span></code>. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_810755797_lfp_data</span></code>, but it may be named differently if you are using a different nwb file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_io = NWBHDF5IO(stim_filepath, mode=&quot;r&quot;, load_namespaces=True)
-stim_file = stim_io.read() 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">stim_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">stim_file</span> <span class="o">=</span> <span class="n">stim_io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
@@ -658,9 +658,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lfp_io = NWBHDF5IO(lfp_filepath, mode=&quot;r&quot;, load_namespaces=True)
-lfp_file = lfp_io.read()
-lfp_file.acquisition.keys()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">lfp_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lfp_file</span> <span class="o">=</span> <span class="n">lfp_io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">lfp_file</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -672,9 +672,9 @@ lfp_file.acquisition.keys()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lfp = lfp_file.acquisition[&quot;probe_810755797_lfp_data&quot;]
-lfp_timestamps = lfp.timestamps
-lfp_data = lfp.data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span> <span class="o">=</span> <span class="n">lfp_file</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;probe_810755797_lfp_data&quot;</span><span class="p">]</span>
+<span class="n">lfp_timestamps</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span>
+<span class="n">lfp_data</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -685,8 +685,8 @@ lfp_data = lfp.data
 <p>First, you must take the stimulus table from your stimulus file. Since your stimulus table will be unique to your experiment, you’ll have to use some ingenuity to extract the timestamps that are of interest to you. Below, we display your stimulus names. Set <code class="docutils literal notranslate"><span class="pre">stim_name</span></code> to be the name that contains the associated stimulus table you want. Then we display the stimulus table. You can see that it contains the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> of each stimulus event. In the commented cell below showing <code class="docutils literal notranslate"><span class="pre">extract</span> <span class="pre">timestamps</span> <span class="pre">for</span> <span class="pre">given</span> <span class="pre">stimulus</span> <span class="pre">frame</span></code>, you should write code to iterate through this table and filter all but the rows that contain an important stimulus event. The output should be a list of timestamps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stimulus_names = list(stim_file.intervals.keys())
-print(stimulus_names)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stimulus_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">stim_file</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stimulus_names</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -698,9 +698,9 @@ print(stimulus_names)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stim_name = &quot;static_gratings_presentations&quot;
-stim_table = stim_file.intervals[stim_name]
-stim_table[:]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_name</span> <span class="o">=</span> <span class="s2">&quot;static_gratings_presentations&quot;</span>
+<span class="n">stim_table</span> <span class="o">=</span> <span class="n">stim_file</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+<span class="n">stim_table</span><span class="p">[:]</span>
 </pre></div>
 </div>
 </div>
@@ -977,15 +977,15 @@ stim_table[:]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>### extract timestamps for given stimulus frame
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### extract timestamps for given stimulus frame</span>
 
-filtered_stim_rows = []
-for i in range(len(stim_table)):
-    if stim_table.orientation[i] == 150.0:
-        filtered_stim_rows.append(stim_table[i])
+<span class="n">filtered_stim_rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">orientation</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mf">150.0</span><span class="p">:</span>
+        <span class="n">filtered_stim_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     
-all_stim_timestamps = [float(row.start_time) for row in filtered_stim_rows]
-print(all_stim_timestamps)
+<span class="n">all_stim_timestamps</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">filtered_stim_rows</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_stim_timestamps</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1001,10 +1001,10 @@ print(all_stim_timestamps)
 <p>Oftentimes, the LFP data can be very large. Depending on the machine this analysis is performed on, there may not be enough memory to perform this interpolation. This can be mitigated in two ways. Firstly, the <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> variable in the following section can be decreased. Otherwise, the analysis can be performed with some smaller period of time within the LFP data. If you wish to do this, set <code class="docutils literal notranslate"><span class="pre">period_start</span></code> and <code class="docutils literal notranslate"><span class="pre">period_end</span></code> to be reasonable times (in seconds) within the experiment to look at. Below are printed the first and last timestamps from the stimulus data and LFP data to inform this choice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(all_stim_timestamps[0])
-print(all_stim_timestamps[-1])
-print(lfp_timestamps[0])
-print(lfp_timestamps[-1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">all_stim_timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_stim_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1019,43 +1019,43 @@ print(lfp_timestamps[-1])
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># period_start = lfp.timestamps[0]
-period_start = 5000
-# period_end = lfp.timestamps[-1]
-period_end = 5800
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># period_start = lfp.timestamps[0]</span>
+<span class="n">period_start</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="c1"># period_end = lfp.timestamps[-1]</span>
+<span class="n">period_end</span> <span class="o">=</span> <span class="mi">5800</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># filter stim_timestamps to just timestamps within period
-stim_timestamps = np.array([ts for ts in all_stim_timestamps if ts &gt;= period_start and ts &lt;= period_end])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter stim_timestamps to just timestamps within period</span>
+<span class="n">stim_timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ts</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">all_stim_timestamps</span> <span class="k">if</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">period_start</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&lt;=</span> <span class="n">period_end</span><span class="p">])</span>
 
-# find indices within lfp data that correspond to period bounds
-period_start_idx, period_end_idx = None, None
-for i, ts in enumerate(lfp.timestamps):
-    if not period_start_idx and ts &gt;= period_start:
-        period_start_idx = i
-    if period_start_idx and ts &gt;= period_end:
-        period_end_idx = i
-        break
+<span class="c1"># find indices within lfp data that correspond to period bounds</span>
+<span class="n">period_start_idx</span><span class="p">,</span> <span class="n">period_end_idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">period_start_idx</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">period_start</span><span class="p">:</span>
+        <span class="n">period_start_idx</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">if</span> <span class="n">period_start_idx</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">period_end</span><span class="p">:</span>
+        <span class="n">period_end_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">break</span>
 
-if period_start_idx == None or period_end_idx == None:
-    raise ValueError(&quot;Period bounds not found within lfp data&quot;)
+<span class="k">if</span> <span class="n">period_start_idx</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">period_end_idx</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Period bounds not found within lfp data&quot;</span><span class="p">)</span>
 
-# get slice of LFP data corresponding to the period bounds
-lfp_timestamps = lfp_timestamps[period_start_idx:period_end_idx]
-lfp_data = lfp_data[period_start_idx:period_end_idx]
+<span class="c1"># get slice of LFP data corresponding to the period bounds</span>
+<span class="n">lfp_timestamps</span> <span class="o">=</span> <span class="n">lfp_timestamps</span><span class="p">[</span><span class="n">period_start_idx</span><span class="p">:</span><span class="n">period_end_idx</span><span class="p">]</span>
+<span class="n">lfp_data</span> <span class="o">=</span> <span class="n">lfp_data</span><span class="p">[</span><span class="n">period_start_idx</span><span class="p">:</span><span class="n">period_end_idx</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(stim_timestamps.shape)
-print(lfp_timestamps.shape)
-print(lfp_data.shape)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stim_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1073,15 +1073,15 @@ print(lfp_data.shape)
 <p>After you have a valid list of stimulus timestamps, you can generate a linearly-spaced timestamp array called <code class="docutils literal notranslate"><span class="pre">time_axis</span></code>, and interpolate the LFP data along it, making interpolated LFP data called <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code>. This should be a 2D array with dimensions <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">channel</span></code>, where channels are the different measurement channels along the probe. Here, the timestamps are interpolated to 1000 Hz, but you can change this by setting <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>interp_hz = 250
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interp_hz</span> <span class="o">=</span> <span class="mi">250</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(lfp_timestamps.shape)
-print(lfp_data.shape)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1094,17 +1094,17 @@ print(lfp_data.shape)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># generate regularly-space x values and interpolate along it
-time_axis = np.arange(0, lfp_timestamps[-1], step=(1/interp_hz))
-interp_channels = []
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate regularly-space x values and interpolate along it</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lfp_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">step</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">interp_hz</span><span class="p">))</span>
+<span class="n">interp_channels</span> <span class="o">=</span> <span class="p">[]</span>
 
-for channel in range(lfp_data.shape[1]):
-    f = interpolate.interp1d(lfp_timestamps, lfp_data[:,channel], axis=0, kind=&quot;nearest&quot;, fill_value=&quot;extrapolate&quot;)
-    interp_channels.append(f(time_axis))
+<span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lfp_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="p">,</span> <span class="n">lfp_data</span><span class="p">[:,</span><span class="n">channel</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)</span>
+    <span class="n">interp_channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">time_axis</span><span class="p">))</span>
     
-interp_lfp = np.transpose(interp_channels)
+<span class="n">interp_lfp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">interp_channels</span><span class="p">)</span>
     
-print(interp_lfp.shape)
+<span class="nb">print</span><span class="p">(</span><span class="n">interp_lfp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1120,38 +1120,38 @@ print(interp_lfp.shape)
 <p>Now that you have your interpolated LFP data, you can use the stimulus times to identify the windows of time in the LFP data that exist around a stimulus event. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to be a negative number, representing the seconds before the stimulus event and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be number of seconds afterward. Then the <code class="docutils literal notranslate"><span class="pre">windows</span></code> array will be generated as a set of slices of the <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code> trace by using <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> to convert seconds to array indices. These will be averaged out for each measurement channel, and a confidence interval will be calculated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>start_time = -0.02
-end_time = 0.2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_time</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.02</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="mf">0.2</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># validate window bounds
-if start_time &gt; 0:
-    raise ValueError(&quot;start time must be non-positive number&quot;)
-if end_time &lt;= 0:
-    raise ValueError(&quot;end time must be positive number&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># validate window bounds</span>
+<span class="k">if</span> <span class="n">start_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;start time must be non-positive number&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">end_time</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;end time must be positive number&quot;</span><span class="p">)</span>
     
-# get event windows
-windows = []
-i = 0
-for stim_ts in stim_timestamps:
-    i += 0
-    # convert time to index
-    start_idx = int((stim_ts+start_time) * interp_hz)
-    end_idx = int((stim_ts+end_time) * interp_hz)
+<span class="c1"># get event windows</span>
+<span class="n">windows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">stim_ts</span> <span class="ow">in</span> <span class="n">stim_timestamps</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">0</span>
+    <span class="c1"># convert time to index</span>
+    <span class="n">start_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">stim_ts</span><span class="o">+</span><span class="n">start_time</span><span class="p">)</span> <span class="o">*</span> <span class="n">interp_hz</span><span class="p">)</span>
+    <span class="n">end_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">stim_ts</span><span class="o">+</span><span class="n">end_time</span><span class="p">)</span> <span class="o">*</span> <span class="n">interp_hz</span><span class="p">)</span>
  
-    # bounds checking
-    if start_idx &lt; 0 or end_idx &gt; len(interp_lfp)-1:
-        continue
+    <span class="c1"># bounds checking</span>
+    <span class="k">if</span> <span class="n">start_idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">end_idx</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">interp_lfp</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">continue</span>
         
-    windows.append(interp_lfp[start_idx:end_idx])
+    <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interp_lfp</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
     
 
-windows = np.array(windows)
-print(windows.shape)
+<span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">windows</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1163,16 +1163,16 @@ print(windows.shape)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># get average of all windows
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get average of all windows</span>
 
-average_trace = np.average(windows, axis=0)
-print(average_trace.shape)
+<span class="n">average_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-# get standard error of the mean for confidence interval
+<span class="c1"># get standard error of the mean for confidence interval</span>
 
-n = windows.shape[0]
-ci = np.std(windows, axis=0) / sqrt(n)
-print(ci.shape)
+<span class="n">n</span> <span class="o">=</span> <span class="n">windows</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1189,8 +1189,8 @@ print(ci.shape)
 <p>Now you have the averaged LFP traces for each channel. Below are three views of the same data. There are many channels to view, so for convenience, you can view just a subset of all the channels. You can set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to the bounds of the subset you want to view.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># number of channels
-print(average_trace.shape[1])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of channels</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1202,11 +1202,11 @@ print(average_trace.shape[1])
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># start_channel = 0
-# end_channel = average_trace.shape[1]
-start_channel = 40
-end_channel = 80
-n_channels = end_channel - start_channel
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start_channel = 0</span>
+<span class="c1"># end_channel = average_trace.shape[1]</span>
+<span class="n">start_channel</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">end_channel</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">n_channels</span> <span class="o">=</span> <span class="n">end_channel</span> <span class="o">-</span> <span class="n">start_channel</span>
 </pre></div>
 </div>
 </div>
@@ -1215,17 +1215,17 @@ n_channels = end_channel - start_channel
 <h3>Traces from Channels Overlaid<a class="headerlink" href="#traces-from-channels-overlaid" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
-xaxis = np.linspace(start_time, end_time, len(average_trace))
-fig, ax = plt.subplots(figsize=(12,8))
-colors = plt.cm.viridis(np.linspace(0, 1, n_channels))
-ax.set_prop_cycle(color=colors)
-ax.plot(xaxis, average_trace[:,start_channel:end_channel])
+<span class="n">xaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">average_trace</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_prop_cycle</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">average_trace</span><span class="p">[:,</span><span class="n">start_channel</span><span class="p">:</span><span class="n">end_channel</span><span class="p">])</span>
 
-plt.xlabel(&quot;time&quot;)
-plt.ylabel(&quot;volts&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;volts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1238,29 +1238,29 @@ plt.show()
 <h3>Traces from Channels Stacked<a class="headerlink" href="#traces-from-channels-stacked" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Change this if the visualization below looks messy. The larger value the flatter
-amp_res = 0.00001
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change this if the visualization below looks messy. The larger value the flatter</span>
+<span class="n">amp_res</span> <span class="o">=</span> <span class="mf">0.00001</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
-xaxis = np.linspace(start_time, end_time, len(average_trace))
-colors = plt.cm.viridis(np.linspace(0, 1, n_channels))
-fig, ax = plt.subplots(figsize=(8, n_channels/2))
+<span class="n">xaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">average_trace</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_channels</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
 
-for i, channel in enumerate(range(start_channel, end_channel)):
-    offset_trace = average_trace[:,channel] + i*amp_res
-    plot = ax.plot(xaxis, offset_trace, color=colors[i])
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">start_channel</span><span class="p">,</span> <span class="n">end_channel</span><span class="p">)):</span>
+    <span class="n">offset_trace</span> <span class="o">=</span> <span class="n">average_trace</span><span class="p">[:,</span><span class="n">channel</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="n">amp_res</span>
+    <span class="n">plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">offset_trace</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-norm = mpl.colors.Normalize(vmin=start_channel, vmax=end_channel)
-cb = fig.colorbar(mpl.cm.ScalarMappable(norm=norm), location=&quot;left&quot;, anchor=(0,1), shrink=0.2, ax=ax, label=&#39;Depth (channel num)&#39;)
-ax.yaxis.set_ticks([])
-plt.xlabel(&quot;time&quot;)
-plt.show()
+<span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">start_channel</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">end_channel</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Depth (channel num)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1273,29 +1273,29 @@ plt.show()
 <h3>Traces from Channels with Confidence Intervals<a class="headerlink" href="#traces-from-channels-with-confidence-intervals" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 
-fig, axs = plt.subplots(n_channels//2, 2, figsize=(16, n_channels))
-xaxis = np.linspace(start_time, end_time, len(average_trace))
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_channels</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+<span class="n">xaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">average_trace</span><span class="p">))</span>
 
-min_yval = np.amin(average_trace[:,start_channel:end_channel])
-max_yval = np.amax(average_trace[:,start_channel:end_channel])
-upper_bound = average_trace + (ci)
-lower_bound = average_trace - (ci)
+<span class="n">min_yval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">average_trace</span><span class="p">[:,</span><span class="n">start_channel</span><span class="p">:</span><span class="n">end_channel</span><span class="p">])</span>
+<span class="n">max_yval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">average_trace</span><span class="p">[:,</span><span class="n">start_channel</span><span class="p">:</span><span class="n">end_channel</span><span class="p">])</span>
+<span class="n">upper_bound</span> <span class="o">=</span> <span class="n">average_trace</span> <span class="o">+</span> <span class="p">(</span><span class="n">ci</span><span class="p">)</span>
+<span class="n">lower_bound</span> <span class="o">=</span> <span class="n">average_trace</span> <span class="o">-</span> <span class="p">(</span><span class="n">ci</span><span class="p">)</span>
 
-for i in range(n_channels // 2):
-    for j in range(2):
-        channel = start_channel + i + j
-        ax = axs[i][j]
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">channel</span> <span class="o">=</span> <span class="n">start_channel</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
 
-        ax.plot(xaxis, average_trace[:,channel])
-        ax.fill_between(xaxis, lower_bound[:,channel], upper_bound[:,channel], color=&#39;b&#39;, alpha=.1)
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">average_trace</span><span class="p">[:,</span><span class="n">channel</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">[:,</span><span class="n">channel</span><span class="p">],</span> <span class="n">upper_bound</span><span class="p">[:,</span><span class="n">channel</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
         
-        ax.set_ylim([min_yval, max_yval])
-        ax.set_ylabel(&quot;volts&quot;)
-        ax.set_xlabel(&quot;time&quot;)
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">min_yval</span><span class="p">,</span> <span class="n">max_yval</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;volts&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
