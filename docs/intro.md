@@ -3,6 +3,8 @@ This repo is meant to store scripts and documentation used for brain data analys
 
 We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* standard.
 
+![artwork](../data/images/openscope.png)
+
 ## How Does it Work?
 
 Reproducible Analysis requires four components; 
