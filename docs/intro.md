@@ -5,7 +5,7 @@ We are releasing this code to the public as a tool we expect others to use. We a
 
 ![artwork](../data/images/openscope.png)
 
-## How Does it Work?
+## How Does It Work?
 
 Reproducible Analysis requires four components; 
 - Accessible Data
