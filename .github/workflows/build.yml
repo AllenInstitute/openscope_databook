@@ -34,6 +34,11 @@ jobs:
           pip install -U jupyter-book
           pip install nbmake
 
+      - name: Configuring Jupyter
+        run: |
+          mkdir %userprofile%\.jupyter
+          echo c.ExecutePreprocessor.timeout = None > %userprofile%\.jupyter\jupyter_nbconvert_config.py
+
       - name: Testing notebooks
         run: pytest --nbmake "./docs"
         
