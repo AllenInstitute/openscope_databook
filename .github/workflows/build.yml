@@ -36,7 +36,7 @@ jobs:
 
       - name: Configuring Jupyter
         run: |
-          if not exist %userprofile%\.jupyter mkdir %userprofile%\.jupyter
+          if not exist %userprofile%\.jupyter; mkdir %userprofile%\.jupyter
           echo c.ExecutePreprocessor.timeout = None > %userprofile%\.jupyter\jupyter_nbconvert_config.py
 
       - name: Testing notebooks
