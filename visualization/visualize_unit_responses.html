@@ -139,6 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
    Streaming an NWB File with fsspec
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/get_dandiset_metadata.html">
+   Getting Experimental Metadata from DANDI
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -449,13 +454,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probewise-activity-throughout-epochs">
+   Probewise Activity Throughout Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#showing-spike-times">
    Showing Spike Times
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#waveforms">
-   Waveforms
+  <a class="reference internal nav-link" href="#visualizing-waveforms">
+   Visualizing Waveforms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -464,7 +474,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
+    <a class="reference internal nav-link" href="#waveforms">
      Waveforms
     </a>
    </li>
@@ -525,13 +535,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probewise-activity-throughout-epochs">
+   Probewise Activity Throughout Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#showing-spike-times">
    Showing Spike Times
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#waveforms">
-   Waveforms
+  <a class="reference internal nav-link" href="#visualizing-waveforms">
+   Visualizing Waveforms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -540,7 +555,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
+    <a class="reference internal nav-link" href="#waveforms">
      Waveforms
     </a>
    </li>
@@ -623,7 +638,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.6
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
@@ -660,9 +675,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/srv/conda/envs/notebook/lib/python3.8/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+/srv/conda/envs/notebook/lib/python3.8/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -711,7 +726,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="p">[:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -903,152 +918,128 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>[[0.0, -0.9291749999999945, -6.120270000000007...</td>
     </tr>
     <tr>
-      <th>...</th>
+      <th>950927711</th>
+      <td>1.455946</td>
+      <td>482</td>
+      <td>850249273</td>
+      <td>2.46</td>
+      <td>0.000895</td>
+      <td>1.651500</td>
+      <td>-0.039932</td>
+      <td>39.400278</td>
+      <td>0.000033</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <td>464</td>
+      <td>100.0</td>
+      <td>0.274707</td>
+      <td>5.557479</td>
+      <td>0.37</td>
+      <td>0.467365</td>
+      <td>0.000000</td>
+      <td>[2613.8652081509977, 2624.5193369599215, 2734....</td>
+      <td>[0.00012946663895843286, 0.0001203425053985725...</td>
+      <td>[[0.0, 6.3216435986159105, 10.324204152249129,...</td>
     </tr>
     <tr>
-      <th>950958827</th>
-      <td>0.686767</td>
-      <td>327</td>
-      <td>850256505</td>
-      <td>425.47</td>
-      <td>0.013262</td>
-      <td>1.197137</td>
-      <td>-0.033924</td>
-      <td>47.100934</td>
-      <td>0.000569</td>
-      <td>0.003954</td>
+      <th>950921285</th>
+      <td>2.087772</td>
+      <td>11</td>
+      <td>850249273</td>
+      <td>318.53</td>
+      <td>0.036848</td>
+      <td>1.379817</td>
+      <td>NaN</td>
+      <td>27.472722</td>
+      <td>0.000903</td>
+      <td>0.291953</td>
       <td>...</td>
-      <td>323</td>
-      <td>70.0</td>
-      <td>0.219765</td>
-      <td>3.495039</td>
-      <td>0.99</td>
-      <td>0.166195</td>
-      <td>0.562500</td>
-      <td>[56.68879155534432, 56.71539151930708, 140.382...</td>
-      <td>[7.006826592238747e-05, 6.896932990521833e-05,...</td>
-      <td>[[0.0, 1.456064999999999, -2.1444149999999933,...</td>
+      <td>11</td>
+      <td>100.0</td>
+      <td>0.288442</td>
+      <td>2.751337</td>
+      <td>0.89</td>
+      <td>0.372116</td>
+      <td>0.258065</td>
+      <td>[39.04904580954626, 39.457346913598556, 40.495...</td>
+      <td>[7.768399792002802e-05, 8.405736507197006e-05,...</td>
+      <td>[[0.0, 5.330324999999991, 2.4261899999999486, ...</td>
     </tr>
     <tr>
-      <th>950958817</th>
-      <td>0.535678</td>
-      <td>326</td>
-      <td>850256505</td>
-      <td>391.97</td>
-      <td>0.029259</td>
-      <td>2.162418</td>
-      <td>-0.045889</td>
-      <td>44.871938</td>
-      <td>0.004134</td>
-      <td>-0.030602</td>
+      <th>950921271</th>
+      <td>0.947739</td>
+      <td>10</td>
+      <td>850249273</td>
+      <td>1008.50</td>
+      <td>0.001727</td>
+      <td>1.420617</td>
+      <td>-0.008204</td>
+      <td>30.027595</td>
+      <td>0.000707</td>
+      <td>0.406673</td>
       <td>...</td>
-      <td>322</td>
-      <td>50.0</td>
-      <td>0.164824</td>
-      <td>3.535095</td>
+      <td>10</td>
+      <td>100.0</td>
+      <td>0.288442</td>
+      <td>3.847234</td>
       <td>0.96</td>
-      <td>0.374690</td>
-      <td>0.618474</td>
-      <td>[32.77642395146384, 53.25072954651286, 53.3577...</td>
-      <td>[7.075155819535531e-05, 7.864810630992507e-05,...</td>
-      <td>[[0.0, 5.052254999999994, -0.3732300000000003,...</td>
+      <td>0.498618</td>
+      <td>0.796491</td>
+      <td>[16.751918851114475, 26.127977537450867, 28.65...</td>
+      <td>[0.00016516929470324686, 0.0001501058102103845...</td>
+      <td>[[0.0, -3.103230000000032, 5.680349999999983, ...</td>
     </tr>
     <tr>
-      <th>950958015</th>
-      <td>0.576884</td>
-      <td>236</td>
-      <td>850256505</td>
-      <td>195.00</td>
-      <td>0.003844</td>
-      <td>3.398071</td>
-      <td>-0.072890</td>
-      <td>43.340940</td>
-      <td>0.001142</td>
-      <td>-0.127013</td>
+      <th>950921260</th>
+      <td>0.453266</td>
+      <td>9</td>
+      <td>850249273</td>
+      <td>175.00</td>
+      <td>0.000081</td>
+      <td>4.969091</td>
+      <td>-0.184456</td>
+      <td>89.804006</td>
+      <td>0.000000</td>
+      <td>0.223876</td>
       <td>...</td>
-      <td>232</td>
-      <td>40.0</td>
-      <td>0.137353</td>
-      <td>4.977663</td>
-      <td>0.92</td>
-      <td>0.634695</td>
-      <td>0.767932</td>
-      <td>[171.13333650757914, 614.5358357924764, 895.59...</td>
-      <td>[9.143536229559716e-05, 0.00010639289111014194...</td>
-      <td>[[0.0, 7.7005500000000175, 12.612210000000019,...</td>
-    </tr>
-    <tr>
-      <th>950958038</th>
-      <td>0.137353</td>
-      <td>239</td>
-      <td>850256507</td>
-      <td>132.76</td>
-      <td>0.001628</td>
-      <td>3.938438</td>
-      <td>-0.121152</td>
-      <td>84.593734</td>
-      <td>0.000101</td>
-      <td>0.250970</td>
-      <td>...</td>
-      <td>235</td>
-      <td>40.0</td>
-      <td>0.082412</td>
-      <td>6.011525</td>
-      <td>0.71</td>
-      <td>0.613976</td>
-      <td>0.995134</td>
-      <td>[2625.1812451333517, 2625.195478447402, 2625.2...</td>
-      <td>[9.332805407085107e-05, 0.00011217241356378219...</td>
-      <td>[[0.0, -1.2247949999999905, 3.6318750000000044...</td>
-    </tr>
-    <tr>
-      <th>950958064</th>
-      <td>0.604355</td>
-      <td>242</td>
-      <td>850256511</td>
-      <td>314.21</td>
-      <td>0.084867</td>
-      <td>3.099177</td>
-      <td>-0.064093</td>
-      <td>49.170211</td>
-      <td>0.001985</td>
-      <td>0.153596</td>
-      <td>...</td>
-      <td>238</td>
+      <td>9</td>
       <td>60.0</td>
-      <td>0.151089</td>
-      <td>4.192806</td>
+      <td>0.192295</td>
+      <td>5.274090</td>
       <td>0.99</td>
-      <td>0.426358</td>
-      <td>0.947028</td>
-      <td>[8.229957206651436, 8.243390521785514, 9.81902...</td>
-      <td>[0.00021079520849161493, 0.0001983938878704022...</td>
-      <td>[[0.0, -4.4120700000000035, -6.431880000000012...</td>
+      <td>1.140487</td>
+      <td>0.997333</td>
+      <td>[0.9620761551434307, 2.092045877265143, 2.4040...</td>
+      <td>[0.0003836112198262231, 0.0004093908262843732,...</td>
+      <td>[[0.0, 1.9104149999999982, -7.270770000000016,...</td>
+    </tr>
+    <tr>
+      <th>950921248</th>
+      <td>0.439531</td>
+      <td>8</td>
+      <td>850249273</td>
+      <td>261.11</td>
+      <td>0.065478</td>
+      <td>2.147758</td>
+      <td>-0.085677</td>
+      <td>84.145512</td>
+      <td>0.005474</td>
+      <td>0.076346</td>
+      <td>...</td>
+      <td>8</td>
+      <td>60.0</td>
+      <td>0.274707</td>
+      <td>3.022387</td>
+      <td>0.99</td>
+      <td>0.463570</td>
+      <td>0.976667</td>
+      <td>[1.316477113448928, 1.779311698293908, 2.96088...</td>
+      <td>[0.00013780619334124896, 0.0001439873831056905...</td>
+      <td>[[0.0, -3.6761399999999953, 0.8334300000000014...</td>
     </tr>
   </tbody>
 </table>
-<p>3232 rows × 29 columns</p>
+<p>10 rows × 29 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1490,10 +1481,102 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x256673bfbb0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0b48eb7e80&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_unit_responses_21_1.png" src="../_images/visualize_unit_responses_21_1.png" />
+</div>
+</div>
+</section>
+<section id="probewise-activity-throughout-epochs">
+<h2>Probewise Activity Throughout Epochs<a class="headerlink" href="#probewise-activity-throughout-epochs" title="Permalink to this headline">#</a></h2>
+<p>It can also be useful to view the activity of an entire probe throughout epochs. The code below allows users to select a probe and a histogram is produced for the total of all unit spiking counts over time for one probe. Below is printed a list of the probe names to choose from. Set <code class="docutils literal notranslate"><span class="pre">probe_name</span></code> to one of these. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the start and ending times, in seconds, to view in the session.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;probeA&#39;, &#39;probeB&#39;, &#39;probeC&#39;, &#39;probeD&#39;, &#39;probeE&#39;, &#39;probeF&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probe_name</span> <span class="o">=</span> <span class="s2">&quot;probeC&quot;</span>
+<span class="n">time_start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">time_end</span> <span class="o">=</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get list of channels on this probe</span>
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">channel_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">electrodes</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">probe_name</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="c1"># get all spike times from units whose peak channel belongs to the selected probe</span>
+<span class="n">all_spike_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">channel_ids</span><span class="p">:</span>
+        <span class="n">all_spike_times</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_times&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+    
+<span class="nb">len</span><span class="p">(</span><span class="n">all_spike_times</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27741944
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make histogram of unit spikes per second over specified timeframe</span>
+<span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">all_spike_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate plot of spike histogram with colored epoch intervals and legend</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># assign unique color to each stimulus name</span>
+<span class="n">stim_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">epoch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">})</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">)))</span>
+<span class="n">stim_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">stim_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">))}</span>
+
+<span class="n">epoch_key</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="c1"># draw colored rectangles for each epoch</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+    <span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_end</span> <span class="o">=</span> <span class="n">epoch</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
+    <span class="n">epoch_key</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">height</span><span class="o">+</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;# spikes&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.12</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0b10b66be0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/visualize_unit_responses_27_1.png" src="../_images/visualize_unit_responses_27_1.png" />
 </div>
 </div>
 </section>
@@ -1572,12 +1655,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;unit spikes over time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_26_1.png" src="../_images/visualize_unit_responses_26_1.png" />
+<img alt="../_images/visualize_unit_responses_32_1.png" src="../_images/visualize_unit_responses_32_1.png" />
 </div>
 </div>
 </section>
-<section id="waveforms">
-<h2>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this headline">#</a></h2>
+<section id="visualizing-waveforms">
+<h2>Visualizing Waveforms<a class="headerlink" href="#visualizing-waveforms" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Units</span></code> table can also be used to view the waveforms of a units with the <code class="docutils literal notranslate"><span class="pre">waveform_mean</span></code> property, which consists of the mean waveform of that unit as measured by each channel along the probe. One channel will contain the peak waveform. With a bit of legwork, the <code class="docutils literal notranslate"><span class="pre">peak_channel_id</span></code> of the unit and the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> section can be used to get the single peak waveform as shown below. There is also a timewise and channelwise view of all the mean waveforms and an average of the waveforms across all channels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1655,12 +1738,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_33_0.png" src="../_images/visualize_unit_responses_33_0.png" />
+<img alt="../_images/visualize_unit_responses_39_0.png" src="../_images/visualize_unit_responses_39_0.png" />
 </div>
 </div>
 </section>
-<section id="id1">
-<h3>Waveforms<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<section id="waveforms">
+<h3>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_waveforms</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;waveform_mean&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
@@ -1697,7 +1780,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_36_0.png" src="../_images/visualize_unit_responses_36_0.png" />
+<img alt="../_images/visualize_unit_responses_42_0.png" src="../_images/visualize_unit_responses_42_0.png" />
 </div>
 </div>
 </section>
@@ -1734,10 +1817,10 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2570a95c370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f0b10874520&gt;
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_39_1.png" src="../_images/visualize_unit_responses_39_1.png" />
+<img alt="../_images/visualize_unit_responses_45_1.png" src="../_images/visualize_unit_responses_45_1.png" />
 </div>
 </div>
 </section>
@@ -1770,7 +1853,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_42_0.png" src="../_images/visualize_unit_responses_42_0.png" />
+<img alt="../_images/visualize_unit_responses_48_0.png" src="../_images/visualize_unit_responses_48_0.png" />
 </div>
 </div>
 </section>

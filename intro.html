@@ -138,6 +138,11 @@ const thebe_selector_output = ".output, .cell_output"
    Streaming an NWB File with fsspec
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basics/get_dandiset_metadata.html">
+   Getting Experimental Metadata from DANDI
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -359,7 +364,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-does-it-work">
-   How Does it Work?
+   How Does It Work?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -432,7 +437,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-does-it-work">
-   How Does it Work?
+   How Does It Work?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -496,11 +501,11 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="openscope-databook">
 <h1>OpenScope Databook<a class="headerlink" href="#openscope-databook" title="Permalink to this headline">#</a></h1>
-<p>This repo is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with <a class="reference external" href="https://www.nwb.org/how-to-use/">NWB files</a> and the <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a>. This codebase is provided by the Allen Institute’s <strong><a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/">OpenScope</a></strong> Project, an endeavor of The Allen Institute <a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/">Mindscope Program</a>. <strong>OpenScope</strong> is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through <a class="reference external" href="https://jupyterbook.org/">Jupyter Book</a>, this code is structured as a series of notebooks intended to explain and educate users on how to work with brain data.</p>
+<p>The OpenScope Databook is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with <a class="reference external" href="https://www.nwb.org/how-to-use/">NWB files</a> and the <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a>. It is provided by the Allen Institute’s <strong><a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/">OpenScope</a></strong> Project, an endeavor of The Allen Institute <a class="reference external" href="https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/">Mindscope Program</a>. <strong>OpenScope</strong> is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through <a class="reference external" href="https://jupyterbook.org/">Jupyter Book</a>, this code is structured as a series of notebooks intended to explain and educate users on how to work with brain data.</p>
 <p>We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to <a class="reference external" href="https://github.com/rcpeene">&#64;rcpeene</a> or <a class="reference external" href="https://github.com/jeromelecoq">&#64;jeromelecoq</a>. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the <em>NWB</em> standard.</p>
 <p><img alt="artwork" src="_images/openscope.png" /></p>
 <section id="how-does-it-work">
-<h2>How Does it Work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">#</a></h2>
+<h2>How Does It Work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">#</a></h2>
 <p>Reproducible Analysis requires four components;</p>
 <ul class="simple">
 <li><p>Accessible Data</p></li>
@@ -508,18 +513,18 @@ title="Print to PDF"
 <li><p>Reproducible environment</p></li>
 <li><p>Documentation of Usage</p></li>
 </ul>
-<p>This Databook leverages a number of technologies to combine those components into a web-application.</p>
+<p>The Databook leverages a number of technologies to combine those components into a web-application.</p>
 <section id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h3>
-<p>Data is accessed from The <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a> and downloaded via the DANDI Python API within notebooks. Most notebooks make use of publically available datasets on DANDI, but for some notebooks, there is no sufficient publically-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.</p>
+<p>Data is accessed from The <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a> and downloaded via the <a class="reference external" href="https://dandi.readthedocs.io/en/latest/modref/index.html">DANDI Python API</a> within notebooks. Most notebooks make use of publically available datasets on DANDI, but for some notebooks, there is no sufficient publically-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.</p>
 </section>
 <section id="computation">
 <h3>Computation<a class="headerlink" href="#computation" title="Permalink to this headline">#</a></h3>
-<p>This project utilizes <a class="reference external" href="https://mybinder.org/">Binder</a>, as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don’t have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally. Details about the different ways to run this code can be found in the section <a class="reference internal" href="#usage"><span class="std std-ref">How Can I Use It?</span></a> below.</p>
+<p>This project utilizes <a class="reference external" href="https://mybinder.org/">Binder</a>, as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don’t have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally or on other hosts. Details about the different ways to run this code can be found in the section <a class="reference internal" href="#usage"><span class="std std-ref">How Can I Use It?</span></a> below.</p>
 </section>
 <section id="environment">
 <h3>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">#</a></h3>
-<p>As mentioned above, Binder is capable of reproducing the environment in which to run this code. Instructions for running this code locally can be found in the section <a class="reference internal" href="#usage"><span class="std std-ref">How Can I Use It?</span></a> below.</p>
+<p>As mentioned above, Binder is capable of reproducing the environment in which to run this code. There are also other options for creating the necessary environment. Instructions for running this code locally can be found in the section <a class="reference internal" href="#usage"><span class="std std-ref">How Can I Use It?</span></a> below.</p>
 </section>
 <section id="documentation">
 <h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">#</a></h3>
@@ -531,7 +536,7 @@ title="Print to PDF"
 <p>There are four ways to run this code. With <strong>Binder</strong>, with <strong>Thebe</strong>, <strong>Dandihub</strong>, or <strong>Locally</strong>.</p>
 <section id="binder">
 <h3>Binder<a class="headerlink" href="#binder" title="Permalink to this headline">#</a></h3>
-<p>Binder will automatically setup the environment with <a class="reference external" href="https://github.com/jupyterhub/repo2docker">repo2docker</a> and then execute the code in an instance of JupyterHub where the kernel is run. JupyterHub offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">Binder</span></code>. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes.</p>
+<p>Binder will automatically setup the environment with <a class="reference external" href="https://github.com/jupyterhub/repo2docker">repo2docker</a> and then execute the code in an instance of <a class="reference external" href="https://jupyter.org/hub">JupyterHub</a> where the kernel is run. JupyterHub offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">Binder</span></code>. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes.</p>
 </section>
 <section id="thebe">
 <h3>Thebe<a class="headerlink" href="#thebe" title="Permalink to this headline">#</a></h3>

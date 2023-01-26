@@ -1,0 +1,1090 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Experimental Metadata from DANDI &#8212; OpenScope Databook</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Visualizing Eye Tracking" href="../visualization/visualize_eye_tracking.html" />
+    <link rel="prev" title="Streaming an NWB File with fsspec" href="stream_nwb.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OpenScope Databook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NWB Basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="download_nwb.html">
+   Downloading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="read_nwb.html">
+   Reading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="use_nwbwidgets.html">
+   Exploring an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stream_nwb.html">
+   Streaming an NWB File with fsspec
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Getting Experimental Metadata from DANDI
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Visualizing NWB Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_eye_tracking.html">
+   Visualizing Eye Tracking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">
+   Visualizing Neuropixel Probe Locations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_metrics.html">
+   Visualizing Unit Quality Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_responses.html">
+   Visualizing Neuronal Unit Spikes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_2p_responses.html">
+   Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/basics/get_dandiset_metadata.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/basics/get_dandiset_metadata.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fbasics/get_dandiset_metadata.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/basics/get_dandiset_metadata.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-dandiset-metadata">
+   Getting Dandiset Metadata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-nwb-info">
+   Get NWB Info
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-table">
+   Getting Table
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-files">
+   Selecting Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-selected-files">
+   Downloading Selected Files
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Experimental Metadata from DANDI</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-dandiset-metadata">
+   Getting Dandiset Metadata
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-nwb-info">
+   Get NWB Info
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-table">
+   Getting Table
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-files">
+   Selecting Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-selected-files">
+   Downloading Selected Files
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-experimental-metadata-from-dandi">
+<h1>Getting Experimental Metadata from DANDI<a class="headerlink" href="#getting-experimental-metadata-from-dandi" title="Permalink to this headline">#</a></h1>
+<p>It can be helpful to view general information about the experimental sessions that produced your data. Since typically, each NWB File represents one session, a Dandiset’s files can be examined to get an overview of each of the sessions. This can vary, depending on who produced the NWB file. In this notebook, each relevant NWB File within the Allen Institute’s <code class="docutils literal notranslate"><span class="pre">project</span> <span class="pre">name</span></code> dataset, are opened and some basic information is used to make a table of the experimental sessions and their properties.</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">fsspec</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-dandiset-metadata">
+<h2>Getting Dandiset Metadata<a class="headerlink" href="#getting-dandiset-metadata" title="Permalink to this headline">#</a></h2>
+<p>To view other data, change <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the id of the dandiset. If the dandiset is embargoed, have <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> set to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000248&quot;</span>
+<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DANDI_API_KEY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
+    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000248/draft
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-nwb-info">
+<h2>Get NWB Info<a class="headerlink" href="#get-nwb-info" title="Permalink to this headline">#</a></h2>
+<p>This function is tailored to our NWB Files. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">column</span></code> in the Pandas dataframe below to properly reflect this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within nwb file</span>
+<span class="k">def</span> <span class="nf">get_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+        <span class="n">session_time</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">session_start_time</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">subject</span>
+        <span class="n">probes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+        <span class="n">stim_types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">stim_tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">]</span>
+        <span class="c1"># gets highest value among final &quot;stop times&quot; of all stim tables in intervals</span>
+        <span class="n">session_end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">stim_tables</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">session_time</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">specimen_name</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">sex</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">age_in_days</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">genotype</span><span class="p">,</span> <span class="n">probes</span><span class="p">,</span> <span class="n">stim_types</span><span class="p">,</span> <span class="n">n_units</span><span class="p">,</span> <span class="n">session_end</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-table">
+<h2>Getting Table<a class="headerlink" href="#getting-table" title="Permalink to this headline">#</a></h2>
+<p>Here, each relevant file in the Dandiset is streamed and opened remotely to get the information of interest using the function <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>, defined above, and then it is added to a table of sessions and their metadata. Since some files are for specific probes rather than entire sessions, they are skipped. Opening each NWB File can take several minutes. Depending on how many files your Dandiset loops through, this step can take a very long time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up streaming filesystem</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
+
+<span class="n">nwb_table</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_assets</span><span class="p">():</span>
+    <span class="c1"># skip files that aren&#39;t main session files</span>
+    <span class="k">if</span> <span class="s2">&quot;probe&quot;</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examining file </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
+    <span class="c1"># get basic file metadata</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
+    
+    <span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">]</span>
+
+    <span class="c1"># open and read nwb file with streaming</span>
+    <span class="k">with</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">io</span><span class="p">:</span>
+                <span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="c1"># extract experimental info from within file</span>
+                <span class="n">row</span> <span class="o">+=</span> <span class="n">get_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+                <span class="n">nwb_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 67ff2b14-6f23-40f2-b811-57003aeea8e3
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file dbc426a0-aafa-460b-a25a-a86bb31b9ddc
+Examining file 181b7651-5f5c-491b-be70-e5d0354439d4
+Examining file 85bfd56c-f104-4c83-937c-be0d58fce48e
+Examining file c5e97840-4988-4da8-9f57-a24fb0a4a865
+Examining file 3de250b0-2fc6-40eb-ae51-2395d0062819
+Examining file 8c064e94-a858-4fad-a15a-5047d303e3f9
+Examining file 46a94a32-c5de-44ae-a2a5-2a38958ef0bf
+Examining file ec8dabd7-f925-48ba-9dbe-ab67dd6ba83f
+Examining file a2bd39ed-3f98-4f48-b34c-394db4ce15c3
+Examining file a7ff352c-0b00-47d6-a49f-97027d18264e
+Examining file a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84
+Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert table to pandas dataframe</span>
+<span class="n">sessions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nwb_table</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;session time&quot;</span><span class="p">,</span> <span class="s2">&quot;sub name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub sex&quot;</span><span class="p">,</span> <span class="s2">&quot;sub age&quot;</span><span class="p">,</span> <span class="s2">&quot;sub genotype&quot;</span><span class="p">,</span> <span class="s2">&quot;probes&quot;</span><span class="p">,</span> <span class="s2">&quot;stim types&quot;</span><span class="p">,</span> <span class="s2">&quot;# units&quot;</span><span class="p">,</span> <span class="s2">&quot;session length&quot;</span><span class="p">))</span>
+<span class="n">sessions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>size</th>
+      <th>path</th>
+      <th>session time</th>
+      <th>sub name</th>
+      <th>sub sex</th>
+      <th>sub age</th>
+      <th>sub genotype</th>
+      <th>probes</th>
+      <th>stim types</th>
+      <th># units</th>
+      <th>session length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>67ff2b14-6f23-40f2-b811-57003aeea8e3</td>
+      <td>2242666496</td>
+      <td>sub_1175512783/sub_1175512783sess_1187930705/s...</td>
+      <td>2022-06-29 00:00:00-07:00</td>
+      <td>619296</td>
+      <td>M</td>
+      <td>154.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>1918</td>
+      <td>7278.157990</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>dbc426a0-aafa-460b-a25a-a86bb31b9ddc</td>
+      <td>2242666496</td>
+      <td>sub_1175512783/sub_1175512783sess_1187930705/s...</td>
+      <td>2022-06-29 00:00:00-07:00</td>
+      <td>619296</td>
+      <td>M</td>
+      <td>154.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>1918</td>
+      <td>7278.157990</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>181b7651-5f5c-491b-be70-e5d0354439d4</td>
+      <td>2803525629</td>
+      <td>sub_1172968426/sub_1172968426sess_1182865981/s...</td>
+      <td>2022-06-08 00:00:00-07:00</td>
+      <td>625545</td>
+      <td>M</td>
+      <td>89.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2793</td>
+      <td>7279.234305</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>85bfd56c-f104-4c83-937c-be0d58fce48e</td>
+      <td>2372313526</td>
+      <td>sub_1172969394/sub_1172969394sess_1183070926/s...</td>
+      <td>2022-06-09 00:00:00-07:00</td>
+      <td>625555</td>
+      <td>F</td>
+      <td>90.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2621</td>
+      <td>7278.592876</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>c5e97840-4988-4da8-9f57-a24fb0a4a865</td>
+      <td>2466318464</td>
+      <td>sub_1181585608/sub_1181585608sess_1194644312/s...</td>
+      <td>2022-07-27 00:00:00-07:00</td>
+      <td>630507</td>
+      <td>F</td>
+      <td>99.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2464</td>
+      <td>7278.964870</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3de250b0-2fc6-40eb-ae51-2395d0062819</td>
+      <td>2451127136</td>
+      <td>sub_1186544726/sub_1186544726sess_1196157974/s...</td>
+      <td>2022-08-03 00:00:00-07:00</td>
+      <td>631510</td>
+      <td>F</td>
+      <td>99.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2386</td>
+      <td>7339.232324</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>8c064e94-a858-4fad-a15a-5047d303e3f9</td>
+      <td>2653386200</td>
+      <td>sub_1194090570/sub_1194090570sess_1208667752/s...</td>
+      <td>2022-09-08 00:00:00-07:00</td>
+      <td>637484</td>
+      <td>M</td>
+      <td>92.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2373</td>
+      <td>7349.272460</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>46a94a32-c5de-44ae-a2a5-2a38958ef0bf</td>
+      <td>2491394276</td>
+      <td>sub_1177693342/sub_1177693342sess_1189887297/s...</td>
+      <td>2022-07-06 00:00:00-07:00</td>
+      <td>620334</td>
+      <td>M</td>
+      <td>154.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2092</td>
+      <td>7279.915735</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ec8dabd7-f925-48ba-9dbe-ab67dd6ba83f</td>
+      <td>2483160990</td>
+      <td>sub_1182593231/sub_1182593231sess_1192952695/s...</td>
+      <td>2022-07-20 00:00:00-07:00</td>
+      <td>630506</td>
+      <td>F</td>
+      <td>92.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2517</td>
+      <td>7279.167735</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>a2bd39ed-3f98-4f48-b34c-394db4ce15c3</td>
+      <td>3393216313</td>
+      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
+      <td>2022-06-01 00:00:00-07:00</td>
+      <td>625554</td>
+      <td>M</td>
+      <td>82.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2930</td>
+      <td>7315.456085</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>a7ff352c-0b00-47d6-a49f-97027d18264e</td>
+      <td>2809532134</td>
+      <td>sub_1176214862/sub_1176214862sess_1188137866/s...</td>
+      <td>2022-06-30 00:00:00-07:00</td>
+      <td>620333</td>
+      <td>M</td>
+      <td>148.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2593</td>
+      <td>7283.108060</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84</td>
+      <td>3393216313</td>
+      <td>sub_1174569641/sub_1174569641sess_1184671550/s...</td>
+      <td>2022-06-01 00:00:00-07:00</td>
+      <td>625554</td>
+      <td>M</td>
+      <td>82.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2930</td>
+      <td>7315.456085</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>4e618045-9c11-48a0-9134-95e2f01b71dd</td>
+      <td>1825365161</td>
+      <td>sub_1183369803/sub_1183369803sess_1194857009/s...</td>
+      <td>2022-07-28 00:00:00-07:00</td>
+      <td>631570</td>
+      <td>F</td>
+      <td>92.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>1726</td>
+      <td>7278.942950</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="selecting-files">
+<h2>Selecting Files<a class="headerlink" href="#selecting-files" title="Permalink to this headline">#</a></h2>
+<p>Pandas syntax can be used to filter the table above and select individual sessions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># selected_sessions = sessions[sessions[&quot;size&quot;] &gt;= 2_500_000_000]</span>
+<span class="c1"># selected_sessions = sessions[sessions[&quot;sub sex&quot;] == &quot;F&quot;]</span>
+<span class="n">selected_sessions</span> <span class="o">=</span> <span class="n">sessions</span><span class="p">[</span><span class="n">sessions</span><span class="p">[</span><span class="s2">&quot;# units&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2900</span><span class="p">]</span>
+<span class="n">selected_sessions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>size</th>
+      <th>path</th>
+      <th>session time</th>
+      <th>sub name</th>
+      <th>sub sex</th>
+      <th>sub age</th>
+      <th>sub genotype</th>
+      <th>probes</th>
+      <th>stim types</th>
+      <th># units</th>
+      <th>session length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>a2bd39ed-3f98-4f48-b34c-394db4ce15c3</td>
+      <td>3393216313</td>
+      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
+      <td>2022-06-01 00:00:00-07:00</td>
+      <td>625554</td>
+      <td>M</td>
+      <td>82.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2930</td>
+      <td>7315.456085</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84</td>
+      <td>3393216313</td>
+      <td>sub_1174569641/sub_1174569641sess_1184671550/s...</td>
+      <td>2022-06-01 00:00:00-07:00</td>
+      <td>625554</td>
+      <td>M</td>
+      <td>82.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
+      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>2930</td>
+      <td>7315.456085</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="downloading-selected-files">
+<h2>Downloading Selected Files<a class="headerlink" href="#downloading-selected-files" title="Permalink to this headline">#</a></h2>
+<p>To download the files, we use the same method that is explained in <a class="reference internal" href="download_nwb.html"><span class="doc std std-doc">Downloading an NWB File</span></a>. This can be used with the paths from the selected sessions above to just download the files of interest. Note that if the files are large, this can take a long time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_paths</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">selected_sessions</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="n">selected_paths</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sub_1171903433/sub_1171903433sess_1181330601/sub_1171903433+sess_1181330601_ecephys.nwb&#39;,
+ &#39;sub_1174569641/sub_1174569641sess_1184671550/sub_1174569641+sess_1184671550_ecephys.nwb&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dandi_filepath</span> <span class="ow">in</span> <span class="n">selected_paths</span><span class="p">:</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">dandi_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub_1171903433+sess_1181330601_ecephys.nwb
+Downloaded file to ./sub_1174569641+sess_1184671550_ecephys.nwb
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="stream_nwb.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Streaming an NWB File with fsspec</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../visualization/visualize_eye_tracking.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizing Eye Tracking</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Carter Peene<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -139,6 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
    Streaming an NWB File with fsspec
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/get_dandiset_metadata.html">
+   Getting Experimental Metadata from DANDI
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -439,6 +444,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality">
+   Quality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#firing-rate">
    Firing Rate
   </a>
@@ -461,6 +471,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#snr">
    SNR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snr-over-depth">
+   SNR Over Depth
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -518,6 +533,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality">
+   Quality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#firing-rate">
    Firing Rate
   </a>
@@ -540,6 +560,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#snr">
    SNR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snr-over-depth">
+   SNR Over Depth
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -614,7 +639,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
 <span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
 <span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="c1"># dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -636,10 +661,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.0) of dandi/dandi-cli is available. You are using 0.46.3
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/ef6/6a8/ef66a8f3-9121-42b5-bdf7-3f892b8cb27c?response-content-disposition=attachment%3B%20filename%3D%22sub-703279277_ses-719161530.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230112%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230112T221610Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=47946b8ceabc2bd977e30a6e6d363a315a056f365dc7c014f33bfec0fc2d9d67
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/ef6/6a8/ef66a8f3-9121-42b5-bdf7-3f892b8cb27c?response-content-disposition=attachment%3B%20filename%3D%22sub-703279277_ses-719161530.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230126%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230126T184718Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=13cd737eff7f54529ca6f89bdadce815f390636293cf6fc0e3e352e61996972d
 </pre></div>
 </div>
 </div>
@@ -990,6 +1015,93 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div></div></div>
 </div>
 </section>
+<section id="quality">
+<h2>Quality<a class="headerlink" href="#quality" title="Permalink to this headline">#</a></h2>
+<p>Unit quality is a categorical property in the units table that can either be “good” or “noise”. It is based on the classification of the waveforms. The “noise” units are ones that are suspected not to be actual neurons or to be poor quality recordings of one or more neurons because their waveforms don’t look like action potentials. It is recommended that noise units are not analyzed. Below, a plot is made that shows probe yield. That is, the number of units from each probe which are good and noisy. Because probe information is not stored in the units table and is stored in an indirect way within the NWB file, we have to do a bit of work to arrange the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># map good and noise units to their related probe id using their &quot;peak waveform channel&quot;</span>
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">probe_units</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)):</span>
+    <span class="c1"># get probe id for unit from electrodes table</span>
+    <span class="n">peak_channel</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">peak_channel_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">probe</span> <span class="o">=</span> <span class="n">electrodes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">peak_channel</span><span class="p">]</span><span class="o">.</span><span class="n">probe_id</span>
+    <span class="c1"># mark if unit is good or bad</span>
+    <span class="k">if</span> <span class="n">probe</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">probe_units</span><span class="p">:</span>
+        <span class="n">probe_units</span><span class="p">[</span><span class="n">probe</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">quality</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span><span class="p">:</span>
+        <span class="n">probe_units</span><span class="p">[</span><span class="n">probe</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">units</span><span class="o">.</span><span class="n">quality</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;noise&quot;</span><span class="p">:</span>
+        <span class="n">probe_units</span><span class="p">[</span><span class="n">probe</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">probe_units</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{729445650: [405, 236],
+ 729445652: [420, 87],
+ 729445648: [233, 78],
+ 729445654: [386, 391],
+ 729445656: [308, 319],
+ 729445658: [100, 269]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># map probe id to probe name</span>
+<span class="n">probe_names</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">probe_name</span> <span class="ow">in</span> <span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="p">:</span>
+    <span class="n">probe_id</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="p">[</span><span class="n">probe_name</span><span class="p">]</span><span class="o">.</span><span class="n">probe_id</span>
+    <span class="n">probe_names</span><span class="p">[</span><span class="n">probe_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">probe_name</span>
+    
+<span class="n">probe_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{729445648: &#39;probeA&#39;,
+ 729445650: &#39;probeB&#39;,
+ 729445652: &#39;probeC&#39;,
+ 729445654: &#39;probeD&#39;,
+ 729445656: &#39;probeE&#39;,
+ 729445658: &#39;probeF&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">probe_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">probe_names</span><span class="p">):</span>
+    <span class="n">probe_name</span> <span class="o">=</span> <span class="n">probe_names</span><span class="p">[</span><span class="n">probe_id</span><span class="p">]</span>
+    <span class="n">good_units</span> <span class="o">=</span> <span class="n">probe_units</span><span class="p">[</span><span class="n">probe_id</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">bad_units</span> <span class="o">=</span> <span class="n">probe_units</span><span class="p">[</span><span class="n">probe_id</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">good_units</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">bad_units</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:brown&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">probe_names</span><span class="p">)))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">probe_names</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;bad&quot;</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Probe&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;# Units&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Probe Yield&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/visualize_unit_metrics_16_0.png" src="../_images/visualize_unit_metrics_16_0.png" />
+</div>
+</div>
+</section>
 <section id="firing-rate">
 <h2>Firing Rate<a class="headerlink" href="#firing-rate" title="Permalink to this headline">#</a></h2>
 <p><em>Firing rate</em> is equal to the total number of spikes divided by the number of seconds in the recording. Below is a density plot of firing rate across all units in the dataset as well as a log-scaled version.</p>
@@ -1009,7 +1121,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_14_0.png" src="../_images/visualize_unit_metrics_14_0.png" />
+<img alt="../_images/visualize_unit_metrics_18_0.png" src="../_images/visualize_unit_metrics_18_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1028,7 +1140,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_15_0.png" src="../_images/visualize_unit_metrics_15_0.png" />
+<img alt="../_images/visualize_unit_metrics_19_0.png" src="../_images/visualize_unit_metrics_19_0.png" />
 </div>
 </div>
 </section>
@@ -1051,7 +1163,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_17_0.png" src="../_images/visualize_unit_metrics_17_0.png" />
+<img alt="../_images/visualize_unit_metrics_21_0.png" src="../_images/visualize_unit_metrics_21_0.png" />
 </div>
 </div>
 </section>
@@ -1074,7 +1186,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_19_0.png" src="../_images/visualize_unit_metrics_19_0.png" />
+<img alt="../_images/visualize_unit_metrics_23_0.png" src="../_images/visualize_unit_metrics_23_0.png" />
 </div>
 </div>
 </section>
@@ -1098,7 +1210,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_21_0.png" src="../_images/visualize_unit_metrics_21_0.png" />
+<img alt="../_images/visualize_unit_metrics_25_0.png" src="../_images/visualize_unit_metrics_25_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1117,11 +1229,11 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_2204\3139914895.py:1: RuntimeWarning: divide by zero encountered in log10
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_8580\3139914895.py:1: RuntimeWarning: divide by zero encountered in log10
   data = np.log10(units[&#39;isi_violations&#39;])
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_metrics_22_1.png" src="../_images/visualize_unit_metrics_22_1.png" />
+<img alt="../_images/visualize_unit_metrics_26_1.png" src="../_images/visualize_unit_metrics_26_1.png" />
 </div>
 </div>
 </section>
@@ -1144,7 +1256,70 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_24_0.png" src="../_images/visualize_unit_metrics_24_0.png" />
+<img alt="../_images/visualize_unit_metrics_28_0.png" src="../_images/visualize_unit_metrics_28_0.png" />
+</div>
+</div>
+</section>
+<section id="snr-over-depth">
+<h2>SNR Over Depth<a class="headerlink" href="#snr-over-depth" title="Permalink to this headline">#</a></h2>
+<p>SNR is one way to represent the quality of the data measured. We can use this to evaluate the noisiness of data along a probe. Below is a plot that shows the SNR and Depth distribution of Units on an individual probe. Because of the way that probe and channel identities aren’t stored in the unit table, a little bit of extra work is required. Select the probe you want to make a plot for by setting <code class="docutils literal notranslate"><span class="pre">probe_name</span></code> to one of the options below. It’s worth noting that not all channels on a probe will have units, so not all depths on the plot will have valid average SNR values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;probeA&#39;, &#39;probeB&#39;, &#39;probeC&#39;, &#39;probeD&#39;, &#39;probeE&#39;, &#39;probeF&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probe_name</span> <span class="o">=</span> <span class="s2">&quot;probeB&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get list of channels on this probe</span>
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">channel_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">electrodes</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">probe_name</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="c1"># make scatterplot where each point is a unit, with a channel # and an SNR</span>
+<span class="n">channel</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">snrs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># for unit in table, if it belongs to this probe, get its local index (channel #) and its snr</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)):</span>
+    <span class="n">peak_channel_id</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">peak_channel_id</span> <span class="ow">in</span> <span class="n">channel_ids</span><span class="p">:</span>
+        <span class="c1"># get peak channel local index</span>
+        <span class="n">local_idx</span> <span class="o">=</span> <span class="n">electrodes</span><span class="o">.</span><span class="n">local_index</span><span class="p">[</span><span class="n">peak_channel_id</span><span class="p">]</span>
+        <span class="c1"># get snr</span>
+        <span class="n">snr</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">snr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">snrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">snr</span><span class="p">)</span>
+        <span class="n">channel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">local_idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Depth (Channel #)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;SNR&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">snrs</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x20f08940a00&gt;
+</pre></div>
+</div>
+<img alt="../_images/visualize_unit_metrics_33_1.png" src="../_images/visualize_unit_metrics_33_1.png" />
 </div>
 </div>
 </section>
@@ -1167,7 +1342,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_26_0.png" src="../_images/visualize_unit_metrics_26_0.png" />
+<img alt="../_images/visualize_unit_metrics_35_0.png" src="../_images/visualize_unit_metrics_35_0.png" />
 </div>
 </div>
 </section>
@@ -1190,7 +1365,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_28_0.png" src="../_images/visualize_unit_metrics_28_0.png" />
+<img alt="../_images/visualize_unit_metrics_37_0.png" src="../_images/visualize_unit_metrics_37_0.png" />
 </div>
 </div>
 </section>
@@ -1213,7 +1388,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_30_0.png" src="../_images/visualize_unit_metrics_30_0.png" />
+<img alt="../_images/visualize_unit_metrics_39_0.png" src="../_images/visualize_unit_metrics_39_0.png" />
 </div>
 </div>
 </section>
@@ -1245,7 +1420,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_32_0.png" src="../_images/visualize_unit_metrics_32_0.png" />
+<img alt="../_images/visualize_unit_metrics_41_0.png" src="../_images/visualize_unit_metrics_41_0.png" />
 </div>
 </div>
 </section>
