@@ -500,7 +500,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuropixel-probe-locations">
 <h1>Visualizing Neuropixel Probe Locations<a class="headerlink" href="#visualizing-neuropixel-probe-locations" title="Permalink to this headline">#</a></h1>
 <p><strong>Note: This notebook currently doesn’t work on remote locations. To run it, it should be downloaded and run locally. Instructions for this can be found on the <a class="reference internal" href="../intro.html"><span class="doc std std-doc">Main Page</span></a></strong></p>
-<p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <strong>CCF</strong> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which allows us to represent locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
+<p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <em>CCF</em> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which allows us to represent locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
 <p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. We use <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/ccf-widget">ccf-widget</a></strong> as the engine by which we 3D render the brain and the probe coordinates.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
@@ -560,7 +560,7 @@ title="Print to PDF"
 <section id="extracting-nwb-ccf-coordinates">
 <h2>Extracting NWB CCF Coordinates<a class="headerlink" href="#extracting-nwb-ccf-coordinates" title="Permalink to this headline">#</a></h2>
 <p>Here, you can read the NWB file you’re interested in viewing. Specify your file of interest’s relative file path in <code class="docutils literal notranslate"><span class="pre">nwb_filepath</span></code>. From there, the file will be read and the probe unit coordinates will be extracted and turned into a numpy array.</p>
-<p>Note that this will only work with ecephys NWB files which have a valid <strong>electrodes</strong> field.</p>
+<p>Note that this will only work with ecephys NWB files which have a valid <em>electrodes</em> field.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### read the nwb file</span>

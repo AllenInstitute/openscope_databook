@@ -519,7 +519,7 @@ title="Print to PDF"
   <section id="visualizing-2p-responses-to-stimulus">
 <h1>Visualizing 2P Responses to Stimulus<a class="headerlink" href="#visualizing-2p-responses-to-stimulus" title="Permalink to this headline">#</a></h1>
 <p>Some of this content is adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_session.html">Allen SDK Documentation</a>.</p>
-<p>DF/F is one measure of fluorescence. In 2-Photon NWB Files, DF/F is stored in the <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. The DF/F trace is measured for each region of interest (ROI) in the area being measured. This notebook uses DF/F traces with the stimulus information from the tables in the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section of the file to visualize neuron responses to stimulus.</p>
+<p>DF/F is one measure of fluorescence. In 2-Photon NWB Files, DF/F is stored in the <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. The DF/F trace is measured for each <em>region of interest</em> (ROI) in the area being measured. This notebook uses DF/F traces with the stimulus information from the tables in the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section of the file to visualize neuron responses to stimulus.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -1234,6 +1234,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;DF/F (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;DF/F Throughout Epochs&quot;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">[:],</span> <span class="n">trace_to_display</span><span class="p">)</span>
@@ -1241,7 +1242,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21453d8f640&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1bce07d5250&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_2p_responses_21_1.png" src="../_images/visualize_2p_responses_21_1.png" />
@@ -1302,12 +1303,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">NullLocator</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ROIs&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ROIs DF/F over time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ROIs DF/F Over Time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ROIs DF/F over time&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ROIs DF/F Over Time&#39;)
 </pre></div>
 </div>
 <img alt="../_images/visualize_2p_responses_25_1.png" src="../_images/visualize_2p_responses_25_1.png" />

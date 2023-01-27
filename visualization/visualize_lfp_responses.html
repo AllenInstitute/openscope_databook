@@ -573,7 +573,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-lfp-responses-to-stimulus">
 <h1>Visualizing LFP Responses to Stimulus<a class="headerlink" href="#visualizing-lfp-responses-to-stimulus" title="Permalink to this headline">#</a></h1>
-<p>A very useful view when working with ecephys data is the <strong>LFP trace</strong>. LFP, or Local Field Potential, is the electrical potential recorded in the extracellular space in brain tissue, and represents activity in regions of neurons. This is particularly useful when you examine LFP responses to stimulus events. The type of stimulus can vary, but in order to visualize this, you must have access to the times of the stimulus events you’re interested in. In this notebook, you can extract data from a stimulus nwb file and an LFP nwb file. Importantly, since the stimulus timestamps and the LFP timestamps are not likely to be aligned with each other and in perfectly regular intervals, they must be interpolated.</p>
+<p>A very useful view when working with ecephys data is the <em>LFP trace</em>. LFP, or Local Field Potential, is the electrical potential recorded in the extracellular space in brain tissue, and represents activity in regions of neurons. This is particularly useful when you examine LFP responses to stimulus events. The type of stimulus can vary, but in order to visualize this, you must have access to the times of the stimulus events you’re interested in. In this notebook, you can extract data from a stimulus NWB file and an LFP NWB file. Importantly, since the stimulus timestamps and the LFP timestamps are not likely to be aligned with each other and in perfectly regular intervals, they must be interpolated.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -593,7 +593,7 @@ title="Print to PDF"
 </section>
 <section id="downloading-nwb-files">
 <h2>Downloading NWB Files<a class="headerlink" href="#downloading-nwb-files" title="Permalink to this headline">#</a></h2>
-<p>If you don’t already have files to analyze, you can use data from The Allen Institute’s <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Coding</span> <span class="pre">-</span> <span class="pre">Neuropixels</span></code> dataset. If you want to choose your own files to download, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_stim_filepath</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_lfp_filepath</span></code> accordingly.</p>
+<p>If you don’t already have files to analyze, you can use data from The Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. If you want to choose your own files to download, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_stim_filepath</span></code>, <code class="docutils literal notranslate"><span class="pre">dandi_lfp_filepath</span></code> accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
@@ -617,7 +617,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
@@ -660,7 +660,7 @@ title="Print to PDF"
 </section>
 <section id="reading-data-from-files">
 <h2>Reading Data from Files<a class="headerlink" href="#reading-data-from-files" title="Permalink to this headline">#</a></h2>
-<p>Below you can read in the stimulus file from a filepath you specify. You can extract the <code class="docutils literal notranslate"><span class="pre">LFP.data</span></code> and associated <code class="docutils literal notranslate"><span class="pre">LFP.timestamps</span></code> from an LFP file as well. If you didn’t download new nwb files, you’ll have to set the value of <code class="docutils literal notranslate"><span class="pre">stim_filepath</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_filepath</span></code>. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_810755797_lfp_data</span></code>, but it may be named differently if you are using a different nwb file.</p>
+<p>Below you can read in the stimulus file from a filepath you specify. You can extract the <code class="docutils literal notranslate"><span class="pre">lfp.data</span></code> and associated <code class="docutils literal notranslate"><span class="pre">lfp.timestamps</span></code> from an LFP file as well. If you didn’t download new nwb files, you’ll have to set the value of <code class="docutils literal notranslate"><span class="pre">stim_filepath</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_filepath</span></code>. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_810755797_lfp_data</span></code>, but it may be named differently if you are using a different nwb file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">stim_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -681,12 +681,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">lfp_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">lfp_file</span> <span class="o">=</span> <span class="n">lfp_io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">lfp_file</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp_file</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;probe_810755797_lfp&#39;, &#39;probe_810755797_lfp_data&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;probe_810755797_lfp&#39;, &#39;probe_810755797_lfp_data&#39;])
 </pre></div>
 </div>
 </div>
@@ -1091,7 +1091,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="lfp-interpolation">
 <h2>LFP Interpolation<a class="headerlink" href="#lfp-interpolation" title="Permalink to this headline">#</a></h2>
-<p>After you have a valid list of stimulus timestamps, you can generate a linearly-spaced timestamp array called <code class="docutils literal notranslate"><span class="pre">time_axis</span></code>, and interpolate the LFP data along it, making interpolated LFP data called <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code>. This should be a 2D array with dimensions <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">channel</span></code>, where channels are the different measurement channels along the probe. Here, the timestamps are interpolated to 1000 Hz, but you can change this by setting <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code>.</p>
+<p>After you have a valid list of stimulus timestamps, you can generate a linearly-spaced timestamp array called <code class="docutils literal notranslate"><span class="pre">time_axis</span></code>, and interpolate the LFP data along it, making interpolated LFP data called <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code>. This should be a 2D array with dimensions <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">channel</span></code>, where channels are the different measurement channels along the probe. Here, the timestamps are interpolated to 250 Hertz, but you can change this by setting <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interp_hz</span> <span class="o">=</span> <span class="mi">250</span>
@@ -1244,8 +1244,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">ax</span><span class="o">.</span><span class="n">set_prop_cycle</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">average_trace</span><span class="p">[:,</span><span class="n">start_channel</span><span class="p">:</span><span class="n">end_channel</span><span class="p">])</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;volts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;LFP (volts)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LFP Trace Over Time&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1278,9 +1279,11 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     <span class="n">plot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">offset_trace</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
 <span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">start_channel</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">end_channel</span><span class="p">)</span>
-<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Depth (channel num)&#39;</span><span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Depth (channel #)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;LFP&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LFP Traces Shown By Depth&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1316,6 +1319,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;volts&quot;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

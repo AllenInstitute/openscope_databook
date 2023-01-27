@@ -601,14 +601,14 @@ title="Print to PDF"
 <h1>Visualizing Unit Quality Metrics<a class="headerlink" href="#visualizing-unit-quality-metrics" title="Permalink to this headline">#</a></h1>
 <p>This content is taken and adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_quality_metrics.html">Allen SDK Documentation</a>. Further explanation for each metric can be found there.</p>
 <p>This Jupyter notebook will provide a detailed explanation of the unit quality metrics included in ecephys NWB Files. It’s important to pay attention to quality metrics, because failing to apply them correctly could lead to invalid scientific conclusions, or could end up hiding potentially useful data. To help you avoid these pitfalls, this tutorial will explore how these metrics are calculated, how they can be biased, and how they should be applied to specific use cases. It’s important to keep in mind that none of these metrics are perfect, and that the use of unit quality metrics for filtering ephys data is still an evolving area of research. More work is required in order to establish general-purpose best practices and standards in this domain.</p>
-<p>All of the Allen Institute Neuropixels data has been sorted with <a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort2</a>, a template-matching algorithm developed by Marius Pachitariu at HHMI Janelia Research Campus. Because there is no “ground truth” information available in these datasets, any sorting algorithm is bound to make mistakes. Quality metrics allow us to understand the types of mistakes that are occurring, and obtain an estimate of their severity. Some common errors that can be identified by quality metrics include:</p>
+<p>All of the Allen Institute Neuropixels data has been sorted with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort2</a></strong>, a template-matching algorithm developed by Marius Pachitariu at HHMI Janelia Research Campus. Because there is no “ground truth” information available in these datasets, any sorting algorithm is bound to make mistakes. Quality metrics allow us to understand the types of mistakes that are occurring, and obtain an estimate of their severity. Some common errors that can be identified by quality metrics include:</p>
 <ul class="simple">
 <li><p>Assigning spikes from multiple neurons to the same cluster</p></li>
 <li><p>Missing spikes from neurons with waveform amplitude near the spike detection threshold</p></li>
 <li><p>Failing to track neurons with waveforms that change as a result of electrode drift</p></li>
 </ul>
 <p>These mistakes can occur even in units that appear to be extremely well isolated. It’s misleading to conceive of units as existing in two distinct categories, one with perfectly clean “single units” and one with impure “multiunits.” Instead, there’s a gradient of qualities, with mostly complete, uncontaminated units at one end, and incomplete, highly contaminated units at the other.</p>
-<p>Despite the fact that there’s not a clear division between single-unit and multi-unit activity, we still have to make a binary decision in every analysis we carry out: should this unit be included or not? Ideally this decision should be based on objective metrics that will not bias the end results. By default, the AllenSDK uses three quality metrics, isi_violations, amplitude_cutoff, and presence_ratio, to filter out units that are likely to be highly contaminated or missing lots of spikes. However, the default values of these filters may not be appropriate for your analysis, or you may want to disable them entirely. Reading through this tutorial will give you a better understanding of how these (and other) metrics should be applied, so you can apply them effectively throughout your own explorations of this dataset.</p>
+<p>Despite the fact that there’s not a clear division between single-unit and multi-unit activity, we still have to make a binary decision in every analysis we carry out: should this unit be included or not? Ideally this decision should be based on objective metrics that will not bias the end results. By default, the AllenSDK uses three quality metrics, <em>isi_violations</em>, <em>amplitude_cutoff</em>, and <em>presence_ratio</em>, to filter out units that are likely to be highly contaminated or missing lots of spikes. However, the default values of these filters may not be appropriate for your analysis, or you may want to disable them entirely. Reading through this tutorial will give you a better understanding of how these (and other) metrics should be applied, so you can apply them effectively throughout your own explorations of this dataset.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -633,7 +633,7 @@ title="Print to PDF"
 </section>
 <section id="streaming-an-nwb-file">
 <h2>Streaming an NWB File<a class="headerlink" href="#streaming-an-nwb-file" title="Permalink to this headline">#</a></h2>
-<p>The example file we use is from the Allen Institute’s <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Coding</span> <span class="pre">-</span> <span class="pre">Neuropixels</span></code> dataset. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the respective dandiset id and dandi filepath of the file you’re interested in. When accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your dandi api key.</p>
+<p>The example file we use is from the Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the respective dandiset id and dandi filepath of the file you’re interested in. When accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your dandi api key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
@@ -664,7 +664,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/ef6/6a8/ef66a8f3-9121-42b5-bdf7-3f892b8cb27c?response-content-disposition=attachment%3B%20filename%3D%22sub-703279277_ses-719161530.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230126%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230126T184718Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=13cd737eff7f54529ca6f89bdadce815f390636293cf6fc0e3e352e61996972d
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/ef6/6a8/ef66a8f3-9121-42b5-bdf7-3f892b8cb27c?response-content-disposition=attachment%3B%20filename%3D%22sub-703279277_ses-719161530.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230127%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230127T212315Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e524e532587ccb3fa59fc65da530ff50a83e4da52f490592091370b625238f21
 </pre></div>
 </div>
 </div>
@@ -1017,7 +1017,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="quality">
 <h2>Quality<a class="headerlink" href="#quality" title="Permalink to this headline">#</a></h2>
-<p>Unit quality is a categorical property in the units table that can either be “good” or “noise”. It is based on the classification of the waveforms. The “noise” units are ones that are suspected not to be actual neurons or to be poor quality recordings of one or more neurons because their waveforms don’t look like action potentials. It is recommended that noise units are not analyzed. Below, a plot is made that shows probe yield. That is, the number of units from each probe which are good and noisy. Because probe information is not stored in the units table and is stored in an indirect way within the NWB file, we have to do a bit of work to arrange the data.</p>
+<p>Unit quality is a categorical property in the units table that can either be “<em>good</em>” or “<em>noise</em>”. It is based on the classification of the waveforms. The “noise” units are ones that are suspected not to be actual neurons or to be poor quality recordings of one or more neurons because their waveforms don’t look like action potentials. It is recommended that noise units are not analyzed. Below, a plot is made that shows probe yield. That is, the number of units from each probe which are good and noisy. Because probe information is not stored in the units table and is stored in an indirect way within the NWB file, we have to do a bit of work to arrange the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># map good and noise units to their related probe id using their &quot;peak waveform channel&quot;</span>
@@ -1114,8 +1114,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ firing rate (Hz)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;firing rate (Hz)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Firing Rate Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1135,6 +1136,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ firing rate (Hz)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Log Firing Rate Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1158,6 +1160,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Presence ratio&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Presence Ratio Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1181,6 +1184,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Amplitude cutoff&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Amplitude Cutoff Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1205,6 +1209,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;ISI violations&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ISI Violations Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1224,12 +1229,13 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ ISI violations&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Log ISI Violations Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_8580\3139914895.py:1: RuntimeWarning: divide by zero encountered in log10
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_14816\3004415763.py:1: RuntimeWarning: divide by zero encountered in log10
   data = np.log10(units[&#39;isi_violations&#39;])
 </pre></div>
 </div>
@@ -1251,6 +1257,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;SNR&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;SNR Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1262,7 +1269,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="snr-over-depth">
 <h2>SNR Over Depth<a class="headerlink" href="#snr-over-depth" title="Permalink to this headline">#</a></h2>
-<p>SNR is one way to represent the quality of the data measured. We can use this to evaluate the noisiness of data along a probe. Below is a plot that shows the SNR and Depth distribution of Units on an individual probe. Because of the way that probe and channel identities aren’t stored in the unit table, a little bit of extra work is required. Select the probe you want to make a plot for by setting <code class="docutils literal notranslate"><span class="pre">probe_name</span></code> to one of the options below. It’s worth noting that not all channels on a probe will have units, so not all depths on the plot will have valid average SNR values.</p>
+<p>We can use SNR to evaluate the noisiness of data along a probe. Below is a plot that shows the SNR and depth distribution of units on an individual probe. Because of the way that probe and channel identities aren’t stored in the unit table, a little bit of extra work is required. Select the probe you want to make a plot for by setting <code class="docutils literal notranslate"><span class="pre">probe_name</span></code> to one of the options below. It’s worth noting that not all channels on a probe will have units, so not all depths on the plot will have valid average SNR values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -1309,14 +1316,15 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Depth (Channel #)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;depth (channel #)&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;SNR&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;SNR and Depth of Units&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">snrs</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x20f08940a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1dbaa77fac0&gt;
 </pre></div>
 </div>
 <img alt="../_images/visualize_unit_metrics_33_1.png" src="../_images/visualize_unit_metrics_33_1.png" />
@@ -1337,6 +1345,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Isolation distance&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Isolation Distance Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1360,6 +1369,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;d-prime&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;d-prime Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1383,6 +1393,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Nearest-neighbors hit rate&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;# units&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;nearest-Neighbors Hit Rate Distribution of Units&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

@@ -553,7 +553,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-eye-tracking">
 <h1>Visualizing Eye Tracking<a class="headerlink" href="#visualizing-eye-tracking" title="Permalink to this headline">#</a></h1>
-<p>As a measure of behavioral information, the Allen Institute tracks mouse eye motion during experiments, as well as other things like eye area and blink events. In this notebook, this information is extracted from an NWB file and visualized with matplotlib.</p>
+<p>As a measure of behavioral information, the Allen Institute tracks mouse eye motion during experiments, as well as other things like eye area and blink events. In this notebook, this information is extracted from an NWB file and visualized with <strong>matplotlib</strong>.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -577,7 +577,7 @@ title="Print to PDF"
 </section>
 <section id="streaming-nwb-files">
 <h2>Streaming NWB Files<a class="headerlink" href="#streaming-nwb-files" title="Permalink to this headline">#</a></h2>
-<p>Streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your dandi api key, otherwise, set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to False.</p>
+<p>Streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key, otherwise, set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to False.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000253&quot;</span>
@@ -599,7 +599,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000253/draft
@@ -618,7 +618,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive-embargo.s3.amazonaws.com/000253/blobs/f70/207/f702073d-2b05-4657-b3a2-2f69b0d674ee?response-content-disposition=attachment%3B%20filename%3D%22sub-1169714184_ses-1180116198.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20221206%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20221206T221743Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=811b4678f1e4bb7628dd3f78d5afbbaa37acd4042d8cd9bcfc8d382a1e2d8b3b
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive-embargo.s3.amazonaws.com/000253/blobs/d87/8c4/d878c49d-7c14-46db-bf02-51423ebbfd8a?response-content-disposition=attachment%3B%20filename%3D%22sub_1169714193%2Bsess_1180116198_ecephys.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230127%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230127T211440Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e5e96bcb31e2d8e2bf36d5fdc3bc266142f62adb9dceac0de77af9e690d7db66
 </pre></div>
 </div>
 </div>
@@ -665,7 +665,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eye_tracking abc.EllipseSeries at 0x2365230132480
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eye_tracking abc.EllipseSeries at 0x2425943429616
 Fields:
   angle: &lt;HDF5 dataset &quot;angle&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
   area: &lt;HDF5 dataset &quot;area&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
@@ -754,11 +754,13 @@ Fields:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">blink_times</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Blink Times&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x226b3304190&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Blink Times&#39;)
 </pre></div>
 </div>
 <img alt="../_images/visualize_eye_tracking_17_1.png" src="../_images/visualize_eye_tracking_17_1.png" />
@@ -767,21 +769,22 @@ Fields:
 </section>
 <section id="area">
 <h3>Area<a class="headerlink" href="#area" title="Permalink to this headline">#</a></h3>
-<p>Below, eye height and width are plotted together, and area, the product of height and width, is also plotted.</p>
+<p>Below, eye height and width are plotted together, and area, the product of height and width, is also plotted. The units of height and width are defined in terms of pixels on the eye tracking camera.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">width</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;width (pixels)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">height</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;height (pixels)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eye Height and Width Over Time&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;height&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Eye Height and Width Over Time&#39;)
 </pre></div>
 </div>
 <img alt="../_images/visualize_eye_tracking_19_1.png" src="../_images/visualize_eye_tracking_19_1.png" />
@@ -790,14 +793,14 @@ Fields:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;area&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;area (pixels)&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x226b2ceaf10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x234d6a55400&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_eye_tracking_20_1.png" src="../_images/visualize_eye_tracking_20_1.png" />
@@ -810,14 +813,15 @@ Fields:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eye_tracking</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;angle (degrees)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eye Angle Over Time&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_axis</span><span class="p">,</span> <span class="n">angle</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x226b33f21c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x234d59c7a30&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_eye_tracking_22_1.png" src="../_images/visualize_eye_tracking_22_1.png" />
@@ -846,6 +850,10 @@ Fields:
 <span class="c1"># set these to restrict the plot limits</span>
 <span class="c1"># ax.set_xlim(320,350)</span>
 <span class="c1"># ax.set_ylim(270,320)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eye Trace Through Time&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
