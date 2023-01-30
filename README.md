@@ -4,7 +4,7 @@ The OpenScope Databook is meant to store scripts and documentation used for brai
 
 We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). Below, you can see a working list of the content goals for this databook. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* standard.
 
-The databook can be found here
+The Databook can be found here
 https://alleninstitute.github.io/openscope_databook
 
 ## Content Goals
