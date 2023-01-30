@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     env:
@@ -33,6 +33,13 @@ jobs:
           pip install -U jupyter-book
           pip install nbmake
           pip install pytest-xdist
+      
+      - name: Get changed files
+        id: changed_files
+        uses: tj-actions/changed-files@v35
+
+      - name: Print changed files
+        run: echo ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Testing notebooks
-        run: pytest --nbmake --nbmake-timeout=5000 -n=auto "./docs"
+        run: pytest --nbmake --nbmake-timeout=5000 -n=auto $steps.changed_files.outputs.all_changed_files
