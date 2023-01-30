@@ -33,9 +33,10 @@ jobs:
           pip install jupyter
           pip install -U jupyter-book
           pip install nbmake
+          pip install pytest-xdist
 
       - name: Testing notebooks
-        run: pytest --nbmake --nbmake-timeout=5000 "./docs"
+        run: pytest --nbmake --nbmake-timeout=5000 -n=auto "./docs"
         
       - name: Build Jupyter book
         run: |
