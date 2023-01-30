@@ -33,22 +33,11 @@ jobs:
           pip install -U jupyter-book
           pip install nbmake
           pip install pytest-xdist
-      
-      - name: Get branch name
-        id: branch-name
-        uses: tj-actions/branch-names@v6
-
-      - uses: nrwl/nx-set-shas@v3
-        id: last_successful_commit_push
-        with:
-          main-branch-name: ${{ steps.branch-name.outputs.current_branch }} # Get the last successful commit for the current branch.
-          workflow-id: 'test.yml'
-      
+            
       - name: Get changed files
         id: changed_files
         uses: tj-actions/changed-files@v35
         with:
-          base_sha: ${{ steps.last_successful_commit_push.outputs.base }}
           files: |
             *.ipynb
 
