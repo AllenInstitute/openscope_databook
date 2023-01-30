@@ -16,6 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with: fetch-depth: 0
 
       - name: Upgrading pip
         run: pip install --upgrade pip
@@ -38,7 +39,6 @@ jobs:
         id: changed_files
         uses: tj-actions/changed-files@v35
         with:
-          fetch-depth: 0 
           files: |
             *.ipynb
 
