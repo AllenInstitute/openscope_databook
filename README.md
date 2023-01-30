@@ -7,7 +7,7 @@ We are releasing this code to the public as a tool we expect others to use. We a
 The databook can be found here
 https://alleninstitute.github.io/openscope_databook
 
-## Overall content goals
+## Content Goals
 
 ### Chapter 1: Using DANDI/getting data
 - [Downloading NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/download_nwb.ipynb)
