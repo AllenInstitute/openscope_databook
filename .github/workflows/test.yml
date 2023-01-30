@@ -38,7 +38,8 @@ jobs:
         id: changed_files
         uses: tj-actions/changed-files@v35
         with:
-          files: *.ipynb
+          files: |
+            *.ipynb
 
       - name: Print changed files
         run: echo "${{ steps.changed_files.outputs.all_changed_files }}"
