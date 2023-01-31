@@ -40,11 +40,11 @@ jobs:
         
       - name: Extracting notebooks to test
         run: |
-          filenames = ()
+          filenames=()
           for changed_file in ${{ steps.files.outputs.all }}; do
             echo "${changed_file}."
             if [[ "${changed_file}" == *".ipynb" ]]; then
-              filenames += (${changed_file})
+              filenames+=(${changed_file})
             fi
           done
           echo $filenames
