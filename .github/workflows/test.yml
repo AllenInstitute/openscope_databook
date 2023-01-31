@@ -41,6 +41,6 @@ jobs:
       - name: Testing notebooks
         run: |
           if [[ "${{ steps.changed_files.outputs.all }}" == *".ipynb"* ]]; then
-            pytest --nbmake --nbmake-timeout=5000 -n=auto ${{ steps.changed_files.outputs.all }}
+            pytest --nbmake --nbmake-timeout=5000 ${{ steps.changed_files.outputs.all }}
           fi
 
