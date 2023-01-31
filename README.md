@@ -43,5 +43,5 @@ https://alleninstitute.github.io/openscope_databook
 - Analysis of functional connectivity.
 
 ### Chapter 5: Replicating figures
-- Example notebook from past projects
+- Example notebooks from past projects
 - Guidelines for reproducible figures from NWB files
