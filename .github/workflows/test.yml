@@ -38,7 +38,7 @@ jobs:
         id: changed_files
         uses: jitterbit/get-changed-files@v1
         
-      - name: Extracting notebooks to test
+      - name: Identifying notebooks to test
         run: |
           filenames=()
           for changed_file in ${{ steps.files.outputs.all }}; do
