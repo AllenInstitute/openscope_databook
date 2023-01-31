@@ -36,23 +36,10 @@ jobs:
       
       - name: Getting changed files
         id: changed_files
-        uses: jitterbit/get-changed-files@v1
+        uses: Ana06/get-changed-files@v2.2.0
+        with:
+          filter: "*.ipynb"
         
-      - name: Identifying notebooks to test
-        run: |
-          echo ${{ steps.files.outputs.all }}
-          filenames=()
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            echo "${changed_file}."
-            if [[ "${changed_file}" == *".ipynb" ]]; then
-              filenames+=(${changed_file})
-            fi
-          done
-          echo {$filenames}
-
       - name: Testing notebooks
-        run: |
-          if [[ ${#filenames[@]} -gt 0 ]]; then
-            pytest --nbmake --nbmake-timeout=5000 $filenames
-          fi
+        run: pytest --nbmake --nbmake-timeout=5000 ${{ steps.changed_files.outputs.all }}
 
