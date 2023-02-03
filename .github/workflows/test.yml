@@ -1,15 +1,14 @@
-
-name: build
+name: test
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     env:
@@ -34,11 +33,13 @@ jobs:
           pip install -U jupyter-book
           pip install nbmake
           pip install pytest-xdist
-
-      - name: Testing notebooks
-        run: pytest --nbmake --nbmake-timeout=5000 -n=auto "./docs"
+      
+      - name: Getting changed files
+        id: changed_files
+        uses: Ana06/get-changed-files@v2.2.0
+        with:
+          filter: "*.ipynb"
         
-      - name: Build Jupyter book
-        run: |
-          jupyter-book clean ./docs
-          jupyter-book build ./docs
+      - name: Testing notebooks
+        run: pytest --nbmake --nbmake-timeout=5000 -n=auto ${{ steps.changed_files.outputs.all }}
+
