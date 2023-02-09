@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Eye Tracking" href="../visualization/visualize_eye_tracking.html" />
+    <link rel="next" title="Visualizing Raw 2-Photon Images" href="../visualization/visualize_2p_raw.html" />
     <link rel="prev" title="Streaming an NWB File with fsspec" href="stream_nwb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_eye_tracking.html">
-   Visualizing Eye Tracking
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -167,13 +162,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_lfp_responses.html">
-   Visualizing LFP Responses to Stimulus
+  <a class="reference internal" href="../visualization/visualize_unit_metrics.html">
+   Visualizing Unit Quality Metrics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_unit_metrics.html">
-   Visualizing Unit Quality Metrics
+  <a class="reference internal" href="../visualization/visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
   </a>
  </li>
  <li class="toctree-l1">
@@ -245,7 +240,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/basics/get_dandiset_metadata.ipynb"
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/basics/get_dandiset_metadata.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -263,7 +258,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/basics/get_dandiset_metadata.ipynb&branch=main"
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/basics/get_dandiset_metadata.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -519,7 +514,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="getting-experimental-metadata-from-dandi">
 <h1>Getting Experimental Metadata from DANDI<a class="headerlink" href="#getting-experimental-metadata-from-dandi" title="Permalink to this headline">#</a></h1>
-<p>It can be helpful to view general information about the experimental sessions that produced your data. Since typically, each NWB File represents one session, a Dandiset’s files can be examined to get an overview of each of the sessions. This can vary, depending on who produced the NWB file. In this notebook, each relevant NWB File within one of the Allen Institute’s datasets, are opened and some basic information is used to make a table of the experimental sessions and their properties.</p>
+<p>It can be helpful to view general information about the experimental sessions that produced your data. Since typically each NWB File represents one session, a dandiset’s files can be examined to get an overview of each of the sessions. This can vary, depending on who produced the NWB file. In this notebook, each relevant NWB File within one of the Allen Institute’s datasets, are opened and some basic information is used to make a table of the experimental sessions and their properties.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -596,7 +591,7 @@ title="Print to PDF"
 </section>
 <section id="getting-table">
 <h2>Getting Table<a class="headerlink" href="#getting-table" title="Permalink to this headline">#</a></h2>
-<p>Here, each relevant file in the Dandiset is streamed and opened remotely to get the information of interest using the function <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>, defined above, and then it is added to a table of sessions and their metadata. Since some files are for specific probes rather than entire sessions, they are skipped. Opening each NWB File can take several minutes. Depending on how many files your Dandiset loops through, this step can take a very long time.</p>
+<p>Here, each relevant file in the Dandiset is streamed and opened remotely to get the information of interest using the function <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>, defined above, and then it is added to a table of sessions and their metadata. Since some files are for specific probes rather than entire sessions, they are skipped. Opening each NWB File can take several minutes. Depending on how many files your dandiset loops through, this step can take a very long time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up streaming filesystem</span>
@@ -1033,7 +1028,7 @@ Downloaded file to ./sub_1174569641+sess_1184671550_ecephys.nwb
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./basics"
         },
         predefinedOutput: true
@@ -1055,10 +1050,10 @@ Downloaded file to ./sub_1174569641+sess_1184671550_ecephys.nwb
             <p class="prev-next-title">Streaming an NWB File with fsspec</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../visualization/visualize_eye_tracking.html" title="next page">
+    <a class='right-next' id="next-link" href="../visualization/visualize_2p_raw.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Eye Tracking</p>
+        <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

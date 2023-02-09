@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Neuronal Unit Spikes" href="visualize_unit_responses.html" />
-    <link rel="prev" title="Visualizing LFP Responses to Stimulus" href="visualize_lfp_responses.html" />
+    <link rel="next" title="Visualizing LFP Responses to Stimulus" href="visualize_lfp_responses.html" />
+    <link rel="prev" title="Visualizing Neuropixel Probe Locations" href="visualize_neuropixel_probes.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_eye_tracking.html">
-   Visualizing Eye Tracking
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -166,14 +161,14 @@ const thebe_selector_output = ".output, .cell_output"
    Visualizing Neuropixel Probe Locations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualize_lfp_responses.html">
-   Visualizing LFP Responses to Stimulus
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Visualizing Unit Quality Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
   </a>
  </li>
  <li class="toctree-l1">
@@ -245,7 +240,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_unit_metrics.ipynb"
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_unit_metrics.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -263,7 +258,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_unit_metrics.ipynb&branch=main"
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_unit_metrics.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -439,8 +434,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-a-stimulus-file">
-   Reading a Stimulus File
+  <a class="reference internal nav-link" href="#extracting-units-data">
+   Extracting Units Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -528,8 +523,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-a-stimulus-file">
-   Reading a Stimulus File
+  <a class="reference internal nav-link" href="#extracting-units-data">
+   Extracting Units Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -599,7 +594,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-unit-quality-metrics">
 <h1>Visualizing Unit Quality Metrics<a class="headerlink" href="#visualizing-unit-quality-metrics" title="Permalink to this headline">#</a></h1>
-<p>This content is taken and adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_quality_metrics.html">Allen SDK Documentation</a>. Further explanation for each metric can be found there.</p>
+<p>Note: This content is taken and adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_quality_metrics.html">Allen SDK Documentation</a>. Further explanation for each metric can be found there.</p>
 <p>This Jupyter notebook will provide a detailed explanation of the unit quality metrics included in ecephys NWB Files. It’s important to pay attention to quality metrics, because failing to apply them correctly could lead to invalid scientific conclusions, or could end up hiding potentially useful data. To help you avoid these pitfalls, this tutorial will explore how these metrics are calculated, how they can be biased, and how they should be applied to specific use cases. It’s important to keep in mind that none of these metrics are perfect, and that the use of unit quality metrics for filtering ephys data is still an evolving area of research. More work is required in order to establish general-purpose best practices and standards in this domain.</p>
 <p>All of the Allen Institute Neuropixels data has been sorted with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort2</a></strong>, a template-matching algorithm developed by Marius Pachitariu at HHMI Janelia Research Campus. Because there is no “ground truth” information available in these datasets, any sorting algorithm is bound to make mistakes. Quality metrics allow us to understand the types of mistakes that are occurring, and obtain an estimate of their severity. Some common errors that can be identified by quality metrics include:</p>
 <ul class="simple">
@@ -633,7 +628,7 @@ title="Print to PDF"
 </section>
 <section id="streaming-an-nwb-file">
 <h2>Streaming an NWB File<a class="headerlink" href="#streaming-an-nwb-file" title="Permalink to this headline">#</a></h2>
-<p>The example file we use is from the Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the respective dandiset id and dandi filepath of the file you’re interested in. When accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your dandi api key.</p>
+<p>The example file we use is from the Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the respective dandiset id and dandi filepath of the file you’re interested in. When accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
@@ -693,8 +688,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 </section>
-<section id="reading-a-stimulus-file">
-<h2>Reading a Stimulus File<a class="headerlink" href="#reading-a-stimulus-file" title="Permalink to this headline">#</a></h2>
+<section id="extracting-units-data">
+<h2>Extracting Units Data<a class="headerlink" href="#extracting-units-data" title="Permalink to this headline">#</a></h2>
+<p>Here we get the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table from the NWB file. This table contains all the recorded information about each unit. Also printed are the column names for the table. Not all of these unit properties are relevant, but many of them will be discussed and distributions of them will be displayed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">units</span>
@@ -1014,10 +1010,51 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>10 rows × 29 columns</p>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">.</span><span class="n">colnames</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;waveform_duration&#39;,
+ &#39;cluster_id&#39;,
+ &#39;peak_channel_id&#39;,
+ &#39;cumulative_drift&#39;,
+ &#39;amplitude_cutoff&#39;,
+ &#39;snr&#39;,
+ &#39;recovery_slope&#39;,
+ &#39;isolation_distance&#39;,
+ &#39;nn_miss_rate&#39;,
+ &#39;silhouette_score&#39;,
+ &#39;velocity_above&#39;,
+ &#39;quality&#39;,
+ &#39;PT_ratio&#39;,
+ &#39;l_ratio&#39;,
+ &#39;velocity_below&#39;,
+ &#39;max_drift&#39;,
+ &#39;isi_violations&#39;,
+ &#39;firing_rate&#39;,
+ &#39;amplitude&#39;,
+ &#39;local_index&#39;,
+ &#39;spread&#39;,
+ &#39;waveform_halfwidth&#39;,
+ &#39;d_prime&#39;,
+ &#39;presence_ratio&#39;,
+ &#39;repolarization_slope&#39;,
+ &#39;nn_hit_rate&#39;,
+ &#39;spike_times&#39;,
+ &#39;spike_amplitudes&#39;,
+ &#39;waveform_mean&#39;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="quality">
 <h2>Quality<a class="headerlink" href="#quality" title="Permalink to this headline">#</a></h2>
-<p>Unit quality is a categorical property in the units table that can either be “<em>good</em>” or “<em>noise</em>”. It is based on the classification of the waveforms. The “noise” units are ones that are suspected not to be actual neurons or to be poor quality recordings of one or more neurons because their waveforms don’t look like action potentials. It is recommended that noise units are not analyzed. Below, a plot is made that shows probe yield. That is, the number of units from each probe which are good and noisy. Because probe information is not stored in the units table and is stored in an indirect way within the NWB file, we have to do a bit of work to arrange the data.</p>
+<p>Unit quality is a categorical property in the units table that can either be “good” or “noise”. It is based on the classification of the waveforms. The “noise” units are ones that are suspected not to be actual neurons or to be poor quality recordings of one or more neurons because their waveforms don’t look like action potentials. It is recommended that noise units are not analyzed. Below, a plot is made that shows probe yield. That is, the number of units from each probe which are good and noisy.</p>
+<p>Because probe information is not stored in the units table and is stored in an indirect way within the NWB file, we have to do a bit of work with the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table. to arrange the data. To understand this notebook, you need not be familiar with the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table except that it can be used to map channel ids to probe ids.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># map good and noise units to their related probe id using their &quot;peak waveform channel&quot;</span>
@@ -1098,7 +1135,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_16_0.png" src="../_images/visualize_unit_metrics_16_0.png" />
+<img alt="../_images/visualize_unit_metrics_17_0.png" src="../_images/visualize_unit_metrics_17_0.png" />
 </div>
 </div>
 </section>
@@ -1122,7 +1159,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_18_0.png" src="../_images/visualize_unit_metrics_18_0.png" />
+<img alt="../_images/visualize_unit_metrics_19_0.png" src="../_images/visualize_unit_metrics_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1142,7 +1179,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_19_0.png" src="../_images/visualize_unit_metrics_19_0.png" />
+<img alt="../_images/visualize_unit_metrics_20_0.png" src="../_images/visualize_unit_metrics_20_0.png" />
 </div>
 </div>
 </section>
@@ -1166,7 +1203,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_21_0.png" src="../_images/visualize_unit_metrics_21_0.png" />
+<img alt="../_images/visualize_unit_metrics_22_0.png" src="../_images/visualize_unit_metrics_22_0.png" />
 </div>
 </div>
 </section>
@@ -1190,7 +1227,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_23_0.png" src="../_images/visualize_unit_metrics_23_0.png" />
+<img alt="../_images/visualize_unit_metrics_24_0.png" src="../_images/visualize_unit_metrics_24_0.png" />
 </div>
 </div>
 </section>
@@ -1215,7 +1252,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_25_0.png" src="../_images/visualize_unit_metrics_25_0.png" />
+<img alt="../_images/visualize_unit_metrics_26_0.png" src="../_images/visualize_unit_metrics_26_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1239,7 +1276,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   data = np.log10(units[&#39;isi_violations&#39;])
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_metrics_26_1.png" src="../_images/visualize_unit_metrics_26_1.png" />
+<img alt="../_images/visualize_unit_metrics_27_1.png" src="../_images/visualize_unit_metrics_27_1.png" />
 </div>
 </div>
 </section>
@@ -1263,7 +1300,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_28_0.png" src="../_images/visualize_unit_metrics_28_0.png" />
+<img alt="../_images/visualize_unit_metrics_29_0.png" src="../_images/visualize_unit_metrics_29_0.png" />
 </div>
 </div>
 </section>
@@ -1327,7 +1364,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1dbaa77fac0&gt;
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_metrics_33_1.png" src="../_images/visualize_unit_metrics_33_1.png" />
+<img alt="../_images/visualize_unit_metrics_34_1.png" src="../_images/visualize_unit_metrics_34_1.png" />
 </div>
 </div>
 </section>
@@ -1351,7 +1388,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_35_0.png" src="../_images/visualize_unit_metrics_35_0.png" />
+<img alt="../_images/visualize_unit_metrics_36_0.png" src="../_images/visualize_unit_metrics_36_0.png" />
 </div>
 </div>
 </section>
@@ -1375,7 +1412,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_37_0.png" src="../_images/visualize_unit_metrics_37_0.png" />
+<img alt="../_images/visualize_unit_metrics_38_0.png" src="../_images/visualize_unit_metrics_38_0.png" />
 </div>
 </div>
 </section>
@@ -1399,7 +1436,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_39_0.png" src="../_images/visualize_unit_metrics_39_0.png" />
+<img alt="../_images/visualize_unit_metrics_40_0.png" src="../_images/visualize_unit_metrics_40_0.png" />
 </div>
 </div>
 </section>
@@ -1431,7 +1468,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_41_0.png" src="../_images/visualize_unit_metrics_41_0.png" />
+<img alt="../_images/visualize_unit_metrics_42_0.png" src="../_images/visualize_unit_metrics_42_0.png" />
 </div>
 </div>
 </section>
@@ -1449,7 +1486,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./visualization"
         },
         predefinedOutput: true
@@ -1464,17 +1501,17 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="visualize_lfp_responses.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="visualize_neuropixel_probes.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Visualizing LFP Responses to Stimulus</p>
+            <p class="prev-next-title">Visualizing Neuropixel Probe Locations</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="visualize_unit_responses.html" title="next page">
+    <a class='right-next' id="next-link" href="visualize_lfp_responses.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Neuronal Unit Spikes</p>
+        <p class="prev-next-title">Visualizing LFP Responses to Stimulus</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing LFP Responses to Stimulus" href="visualize_lfp_responses.html" />
+    <link rel="next" title="Visualizing Unit Quality Metrics" href="visualize_unit_metrics.html" />
     <link rel="prev" title="Visualizing Raw 2-Photon Images" href="visualize_2p_raw.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_eye_tracking.html">
-   Visualizing Eye Tracking
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -167,13 +162,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_lfp_responses.html">
-   Visualizing LFP Responses to Stimulus
+  <a class="reference internal" href="visualize_unit_metrics.html">
+   Visualizing Unit Quality Metrics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_unit_metrics.html">
-   Visualizing Unit Quality Metrics
+  <a class="reference internal" href="visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
   </a>
  </li>
  <li class="toctree-l1">
@@ -245,7 +240,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_neuropixel_probes.ipynb"
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_neuropixel_probes.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -263,7 +258,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_neuropixel_probes.ipynb&branch=main"
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_neuropixel_probes.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -500,8 +495,8 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuropixel-probe-locations">
 <h1>Visualizing Neuropixel Probe Locations<a class="headerlink" href="#visualizing-neuropixel-probe-locations" title="Permalink to this headline">#</a></h1>
 <p><strong>Note: This notebook currently doesn’t work on remote locations. To run it, it should be downloaded and run locally. Instructions for this can be found on the <a class="reference internal" href="../intro.html"><span class="doc std std-doc">Main Page</span></a></strong></p>
-<p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <em>CCF</em> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which allows us to represent locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
-<p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. We use <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/ccf-widget">ccf-widget</a></strong> as the engine by which we 3D render the brain and the probe coordinates.</p>
+<p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <em>CCF</em> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which represents locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
+<p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. We use <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/ccf-widget">ccf-widget</a></strong> as the library by which we 3D render the brain and the probe coordinates.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -518,7 +513,7 @@ title="Print to PDF"
 </section>
 <section id="downloading-an-nwb-file">
 <h2>Downloading an NWB File<a class="headerlink" href="#downloading-an-nwb-file" title="Permalink to this headline">#</a></h2>
-<p>If you don’t already have a file to analyze, you can use a file from The Allen Institute’s <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Coding</span> <span class="pre">-</span> <span class="pre">Neuropixels</span></code> dataset. If you want to choose your own file to download, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> accordingly.</p>
+<p>If you don’t already have a file to analyze, you can use a file from The Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. If you want to choose your own file to download, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
@@ -637,7 +632,7 @@ Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is 
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./visualization"
         },
         predefinedOutput: true
@@ -659,10 +654,10 @@ Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is 
             <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="visualize_lfp_responses.html" title="next page">
+    <a class='right-next' id="next-link" href="visualize_unit_metrics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing LFP Responses to Stimulus</p>
+        <p class="prev-next-title">Visualizing Unit Quality Metrics</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

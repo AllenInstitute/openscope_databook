@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Raw 2-Photon Images" href="visualize_2p_raw.html" />
-    <link rel="prev" title="Getting Experimental Metadata from DANDI" href="../basics/get_dandiset_metadata.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -150,12 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   Visualizing NWB Files
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Visualizing Eye Tracking
-  </a>
- </li>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
@@ -167,13 +160,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_lfp_responses.html">
-   Visualizing LFP Responses to Stimulus
+  <a class="reference internal" href="visualize_unit_metrics.html">
+   Visualizing Unit Quality Metrics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_unit_metrics.html">
-   Visualizing Unit Quality Metrics
+  <a class="reference internal" href="visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
   </a>
  </li>
  <li class="toctree-l1">
@@ -245,7 +238,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_eye_tracking.ipynb"
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_eye_tracking.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -263,7 +256,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_eye_tracking.ipynb&branch=main"
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_eye_tracking.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -618,7 +611,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive-embargo.s3.amazonaws.com/000253/blobs/d87/8c4/d878c49d-7c14-46db-bf02-51423ebbfd8a?response-content-disposition=attachment%3B%20filename%3D%22sub_1169714193%2Bsess_1180116198_ecephys.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230127%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230127T211440Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e5e96bcb31e2d8e2bf36d5fdc3bc266142f62adb9dceac0de77af9e690d7db66
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive-embargo.s3.amazonaws.com/000253/blobs/410/08f/41008fb6-7baa-4511-ad94-c3528ee50484?response-content-disposition=attachment%3B%20filename%3D%22sub_1169714193%2Bsess_1180116198_ecephys.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230131%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230131T194120Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=abaf4473c98021353ddef55285d549ca12072ba6e5c9c3d3aa514a499c9027ca
 </pre></div>
 </div>
 </div>
@@ -665,7 +658,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eye_tracking abc.EllipseSeries at 0x2425943429616
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eye_tracking abc.EllipseSeries at 0x2025956764448
 Fields:
   angle: &lt;HDF5 dataset &quot;angle&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
   area: &lt;HDF5 dataset &quot;area&quot;: shape (478660,), type &quot;&lt;f8&quot;&gt;
@@ -695,7 +688,7 @@ Fields:
 </section>
 <section id="selecting-a-period">
 <h2>Selecting a Period<a class="headerlink" href="#selecting-a-period" title="Permalink to this headline">#</a></h2>
-<p>The data can be large or messy. In order to visualize the data more cleanly and efficiently, you can just select a period of time within the data to plot. To do this, specify the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> you’d like in terms of seconds. Below, the first and last timestamps from the data are printed to assist in this choice.</p>
+<p>The data can be large or messy. In order to visualize the data more cleanly and efficiently, you can just select a period of time within the data to plot. To do this, specify the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> you’d like in terms of seconds. Below, the first and last timestamps from the data are printed to inform this choice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -800,7 +793,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x234d6a55400&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d7b4afde20&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_eye_tracking_20_1.png" src="../_images/visualize_eye_tracking_20_1.png" />
@@ -821,7 +814,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x234d59c7a30&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d7b47babe0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_eye_tracking_22_1.png" src="../_images/visualize_eye_tracking_22_1.png" />
@@ -851,8 +844,8 @@ Fields:
 <span class="c1"># ax.set_xlim(320,350)</span>
 <span class="c1"># ax.set_ylim(270,320)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x pixel&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y pixel&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eye Trace Through Time&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -878,7 +871,7 @@ Fields:
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./visualization"
         },
         predefinedOutput: true
@@ -893,20 +886,6 @@ Fields:
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../basics/get_dandiset_metadata.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Getting Experimental Metadata from DANDI</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="visualize_2p_raw.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

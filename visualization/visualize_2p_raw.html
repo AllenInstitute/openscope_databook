@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing Neuropixel Probe Locations" href="visualize_neuropixel_probes.html" />
-    <link rel="prev" title="Visualizing Eye Tracking" href="visualize_eye_tracking.html" />
+    <link rel="prev" title="Getting Experimental Metadata from DANDI" href="../basics/get_dandiset_metadata.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -151,11 +151,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="visualize_eye_tracking.html">
-   Visualizing Eye Tracking
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Visualizing Raw 2-Photon Images
@@ -167,13 +162,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_lfp_responses.html">
-   Visualizing LFP Responses to Stimulus
+  <a class="reference internal" href="visualize_unit_metrics.html">
+   Visualizing Unit Quality Metrics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_unit_metrics.html">
-   Visualizing Unit Quality Metrics
+  <a class="reference internal" href="visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
   </a>
  </li>
  <li class="toctree-l1">
@@ -245,7 +240,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_2p_raw.ipynb"
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_2p_raw.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -263,7 +258,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_2p_raw.ipynb&branch=main"
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_2p_raw.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -573,7 +568,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-raw-2-photon-images">
 <h1>Visualizing Raw 2-Photon Images<a class="headerlink" href="#visualizing-raw-2-photon-images" title="Permalink to this headline">#</a></h1>
-<p>Some Ophys NWB Files contain the raw imaging data from 2-Photon calcium imaging. The raw images, taken over time, make up a movie. Using <strong>mpl_interactions</strong>, we can view the data interactively. Since the raw data are very large, it’s recommended that you stream it rather than download it.</p>
+<p>Some Ophys NWB Files contain the raw imaging data from 2-Photon calcium imaging. The raw images, taken over time, make up a movie. Using <strong>mpl_interactions</strong>, we can view the data interactively. Since the raw 2P image data are very large, it’s recommended that you stream it rather than download it.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -723,7 +718,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="selecting-a-period">
 <h2>Selecting a Period<a class="headerlink" href="#selecting-a-period" title="Permalink to this headline">#</a></h2>
-<p>Because the image data are so large, it is advised the you select a subsection of the data to view. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to the first image you want to be displayed, and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be the last. Below are printed the first and last timestamps from the 2P data to inform this choice. The larger the period, the longer it will take to display. It is recommended the period length is less than 100 seconds.</p>
+<p>Because the image data are so large, it is advised the you select a subsection of the data to view. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to the first image frame you want to be displayed, and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be the last. Below are printed the first and last timestamps from the 2P data to inform this choice. The larger the period, the longer it will take to display. It is recommended the period length is less than 100 seconds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start_time = flr_timestamps[0]</span>
@@ -753,7 +748,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="viewing-the-data">
 <h2>Viewing the Data<a class="headerlink" href="#viewing-the-data" title="Permalink to this headline">#</a></h2>
-<p>You can view the Fluorescence and DF/F traces below with <strong>matplotlib</strong>. You can set an individual <code class="docutils literal notranslate"><span class="pre">roi</span></code> whose fluorescence trace to view. If <code class="docutils literal notranslate"><span class="pre">roi</span></code> is None, it will plot all of them. You can also view the 2P video with <code class="docutils literal notranslate"><span class="pre">mpl_interactions.hyperslicer</span></code>.</p>
+<p>You can view the Fluorescence and DF/F traces below with <strong>matplotlib</strong>. You can set an individual <code class="docutils literal notranslate"><span class="pre">roi</span></code> whose fluorescence trace to view. If <code class="docutils literal notranslate"><span class="pre">roi</span></code> is None, it will plot all of them. You can also view the 2P video with <strong>mpl_interactions’</strong> <code class="docutils literal notranslate"><span class="pre">hyperslicer</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="kc">None</span>
@@ -872,7 +867,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./visualization"
         },
         predefinedOutput: true
@@ -887,11 +882,11 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="visualize_eye_tracking.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../basics/get_dandiset_metadata.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Visualizing Eye Tracking</p>
+            <p class="prev-next-title">Getting Experimental Metadata from DANDI</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="visualize_neuropixel_probes.html" title="next page">

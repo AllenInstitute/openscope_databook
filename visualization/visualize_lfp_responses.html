@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Unit Quality Metrics" href="visualize_unit_metrics.html" />
-    <link rel="prev" title="Visualizing Neuropixel Probe Locations" href="visualize_neuropixel_probes.html" />
+    <link rel="next" title="Visualizing Neuronal Unit Spikes" href="visualize_unit_responses.html" />
+    <link rel="prev" title="Visualizing Unit Quality Metrics" href="visualize_unit_metrics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_eye_tracking.html">
-   Visualizing Eye Tracking
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -166,14 +161,14 @@ const thebe_selector_output = ".output, .cell_output"
    Visualizing Neuropixel Probe Locations
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Visualizing LFP Responses to Stimulus
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualize_unit_metrics.html">
    Visualizing Unit Quality Metrics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Visualizing LFP Responses to Stimulus
   </a>
  </li>
  <li class="toctree-l1">
@@ -245,7 +240,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/visualization/visualize_lfp_responses.ipynb"
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_lfp_responses.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -263,7 +258,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/visualization/visualize_lfp_responses.ipynb&branch=main"
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_lfp_responses.ipynb&branch=main"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -573,7 +568,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-lfp-responses-to-stimulus">
 <h1>Visualizing LFP Responses to Stimulus<a class="headerlink" href="#visualizing-lfp-responses-to-stimulus" title="Permalink to this headline">#</a></h1>
-<p>A very useful view when working with ecephys data is the <em>LFP trace</em>. LFP, or Local Field Potential, is the electrical potential recorded in the extracellular space in brain tissue, and represents activity in regions of neurons. This is particularly useful when you examine LFP responses to stimulus events. The type of stimulus can vary, but in order to visualize this, you must have access to the times of the stimulus events you’re interested in. In this notebook, you can extract data from a stimulus NWB file and an LFP NWB file. Importantly, since the stimulus timestamps and the LFP timestamps are not likely to be aligned with each other and in perfectly regular intervals, they must be interpolated.</p>
+<p>A very useful view when working with ecephys data is the <em>LFP trace</em>. LFP, or Local Field Potential is the electrical potential recorded in the extracellular space in brain tissue that represents activity in regions of neurons. This is particularly useful when you examine LFP responses to stimulus events. The type of stimulus can vary, but in order to visualize this, you must have access to the times of the stimulus events you’re interested in. In this notebook, you can extract data from a stimulus NWB file and an LFP NWB file. Importantly, since the stimulus timestamps and the LFP timestamps are not likely to be aligned with each other and in perfectly regular intervals, they must be interpolated.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -660,7 +655,7 @@ title="Print to PDF"
 </section>
 <section id="reading-data-from-files">
 <h2>Reading Data from Files<a class="headerlink" href="#reading-data-from-files" title="Permalink to this headline">#</a></h2>
-<p>Below you can read in the stimulus file from a filepath you specify. You can extract the <code class="docutils literal notranslate"><span class="pre">lfp.data</span></code> and associated <code class="docutils literal notranslate"><span class="pre">lfp.timestamps</span></code> from an LFP file as well. If you didn’t download new nwb files, you’ll have to set the value of <code class="docutils literal notranslate"><span class="pre">stim_filepath</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_filepath</span></code>. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_810755797_lfp_data</span></code>, but it may be named differently if you are using a different nwb file.</p>
+<p>Below you can read in the stimulus file from a filepath you specify. You can extract the <code class="docutils literal notranslate"><span class="pre">lfp.data</span></code> and associated <code class="docutils literal notranslate"><span class="pre">lfp.timestamps</span></code> from an LFP file as well. If you didn’t download new nwb files, you’ll have to set the value of <code class="docutils literal notranslate"><span class="pre">stim_filepath</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_filepath</span></code>. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_810755797_lfp_data</span></code>, but it may be named differently if you are using a different nwb file. The LFP data should be a two-dimensional array with shape <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">t</span></code>, where n is the number of channels on the probe, and t is the number of measurements through time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">stim_filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -703,7 +698,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="extracting-stimulus-times">
 <h2>Extracting Stimulus Times<a class="headerlink" href="#extracting-stimulus-times" title="Permalink to this headline">#</a></h2>
-<p>First, you must take the stimulus table from your stimulus file. Since your stimulus table will be unique to your experiment, you’ll have to use some ingenuity to extract the timestamps that are of interest to you. Below, we display your stimulus names. Set <code class="docutils literal notranslate"><span class="pre">stim_name</span></code> to be the name that contains the associated stimulus table you want. Then we display the stimulus table. You can see that it contains the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> of each stimulus event. In the commented cell below showing <code class="docutils literal notranslate"><span class="pre">extract</span> <span class="pre">timestamps</span> <span class="pre">for</span> <span class="pre">given</span> <span class="pre">stimulus</span> <span class="pre">frame</span></code>, you should write code to iterate through this table and filter all but the rows that contain an important stimulus event. The output should be a list of timestamps.</p>
+<p>First, you must take a stimulus table from your stimulus file. Since your stimulus table will be unique to your experiment, you’ll have to use some ingenuity to extract the timestamps that are of interest to you. Below, the stimulus names of are displayed. Set <code class="docutils literal notranslate"><span class="pre">stim_name</span></code> to be the name that contains the associated stimulus table you want. Then we display the stimulus table. You can see that it contains the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> of each stimulus event. In the commented cell below showing <code class="docutils literal notranslate"><span class="pre">extract</span> <span class="pre">timestamps</span> <span class="pre">for</span> <span class="pre">given</span> <span class="pre">stimulus</span> <span class="pre">frame</span></code>, you should write code to iterate through this table and filter all but the rows that contain an important stimulus event. The output should be a list of timestamps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stimulus_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">stim_file</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -1091,7 +1086,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="lfp-interpolation">
 <h2>LFP Interpolation<a class="headerlink" href="#lfp-interpolation" title="Permalink to this headline">#</a></h2>
-<p>After you have a valid list of stimulus timestamps, you can generate a linearly-spaced timestamp array called <code class="docutils literal notranslate"><span class="pre">time_axis</span></code>, and interpolate the LFP data along it, making interpolated LFP data called <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code>. This should be a 2D array with dimensions <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">channel</span></code>, where channels are the different measurement channels along the probe. Here, the timestamps are interpolated to 250 Hertz, but you can change this by setting <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code>.</p>
+<p>Because we cannot be certain that the LFP trace is at a perfectly regular Hz, we will interpolate it to be able to compare stimulus timestamps to their approximate LFP times. After you have a valid list of stimulus timestamps, you can generate a linearly-spaced timestamp array called <code class="docutils literal notranslate"><span class="pre">time_axis</span></code>, and interpolate the LFP data along it, making interpolated LFP data called <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code>. This should be a 2D array with dimensions <code class="docutils literal notranslate"><span class="pre">time</span></code> and <code class="docutils literal notranslate"><span class="pre">channel</span></code>, where channels are the different measurement channels along the probe. Here, the timestamps are interpolated to 250 Hertz, but you can change this by setting <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interp_hz</span> <span class="o">=</span> <span class="mi">250</span>
@@ -1138,7 +1133,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="getting-stimulus-time-windows">
 <h2>Getting Stimulus Time Windows<a class="headerlink" href="#getting-stimulus-time-windows" title="Permalink to this headline">#</a></h2>
-<p>Now that you have your interpolated LFP data, you can use the stimulus times to identify the windows of time in the LFP data that exist around a stimulus event. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to be a negative number, representing the seconds before the stimulus event and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be number of seconds afterward. Then the <code class="docutils literal notranslate"><span class="pre">windows</span></code> array will be generated as a set of slices of the <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code> trace by using <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> to convert seconds to array indices. These will be averaged out for each measurement channel, and a confidence interval will be calculated.</p>
+<p>Now that you have your interpolated LFP data, you can use the stimulus times to identify the windows of time in the LFP data that exist around a stimulus event. Since the LFP data have been interpolated, we can easily translate timestamps to indices within the LFP trace array. Set <code class="docutils literal notranslate"><span class="pre">start_time</span></code> to be a negative number, representing the seconds before the stimulus event and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to be number of seconds afterward. Then the <code class="docutils literal notranslate"><span class="pre">windows</span></code> array will be generated as a set of slices of the <code class="docutils literal notranslate"><span class="pre">interp_lfp</span></code> trace by using <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> to convert seconds to array indices. These will be averaged out for each measurement channel, and a confidence interval will be calculated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_time</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.02</span>
@@ -1207,7 +1202,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="visualizing-lfp-traces">
 <h2>Visualizing LFP Traces<a class="headerlink" href="#visualizing-lfp-traces" title="Permalink to this headline">#</a></h2>
-<p>Now you have the averaged LFP traces for each channel. Below are three views of the same data. There are many channels to view, so for convenience, you can view just a subset of all the channels. You can set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to the bounds of the subset you want to view.</p>
+<p>Now you have the averaged LFP traces for each channel. Below are three views of the same data. There are many channels to view, so for convenience you can view just a subset of all the channels. You can set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to the bounds of the subset you want to view.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of channels</span>
@@ -1344,7 +1339,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./visualization"
         },
         predefinedOutput: true
@@ -1359,17 +1354,17 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="visualize_neuropixel_probes.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="visualize_unit_metrics.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Visualizing Neuropixel Probe Locations</p>
+            <p class="prev-next-title">Visualizing Unit Quality Metrics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="visualize_unit_metrics.html" title="next page">
+    <a class='right-next' id="next-link" href="visualize_unit_responses.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Unit Quality Metrics</p>
+        <p class="prev-next-title">Visualizing Neuronal Unit Spikes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
