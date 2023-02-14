@@ -153,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualize_behavior.html">
-   Visualizing Eye Tracking
+   Visualizing Behavioral Data
   </a>
  </li>
  <li class="toctree-l1">
@@ -694,8 +694,6 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span> <span class="o">=</span> <span class="n">lfp_file</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;probe_810755797_lfp_data&quot;</span><span class="p">]</span>
-<span class="n">lfp_timestamps</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span>
-<span class="n">lfp_data</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -1024,8 +1022,8 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">all_stim_timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">all_stim_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1052,6 +1050,8 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter stim_timestamps to just timestamps within period</span>
 <span class="n">stim_timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ts</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">all_stim_timestamps</span> <span class="k">if</span> <span class="n">ts</span> <span class="o">&gt;=</span> <span class="n">period_start</span> <span class="ow">and</span> <span class="n">ts</span> <span class="o">&lt;=</span> <span class="n">period_end</span><span class="p">])</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_timestamps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There are no stimulus timestamps in that period&quot;</span><span class="p">)</span>
 
 <span class="c1"># find indices within lfp data that correspond to period bounds</span>
 <span class="n">period_start_idx</span><span class="p">,</span> <span class="n">period_end_idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
@@ -1066,8 +1066,8 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Period bounds not found within lfp data&quot;</span><span class="p">)</span>
 
 <span class="c1"># get slice of LFP data corresponding to the period bounds</span>
-<span class="n">lfp_timestamps</span> <span class="o">=</span> <span class="n">lfp_timestamps</span><span class="p">[</span><span class="n">period_start_idx</span><span class="p">:</span><span class="n">period_end_idx</span><span class="p">]</span>
-<span class="n">lfp_data</span> <span class="o">=</span> <span class="n">lfp_data</span><span class="p">[</span><span class="n">period_start_idx</span><span class="p">:</span><span class="n">period_end_idx</span><span class="p">]</span>
+<span class="n">lfp_timestamps</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="n">period_start_idx</span><span class="p">:</span><span class="n">period_end_idx</span><span class="p">]</span>
+<span class="n">lfp_data</span> <span class="o">=</span> <span class="n">lfp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">period_start_idx</span><span class="p">:</span><span class="n">period_end_idx</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1170,6 +1170,8 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
         
     <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interp_lfp</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
     
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">windows</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>

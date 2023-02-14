@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Eye Tracking" href="../visualization/visualize_behavior.html" />
+    <link rel="next" title="Visualizing Behavioral Data" href="../visualization/visualize_behavior.html" />
     <link rel="prev" title="Streaming an NWB File with fsspec" href="stream_nwb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -153,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_behavior.html">
-   Visualizing Eye Tracking
+   Visualizing Behavioral Data
   </a>
  </li>
  <li class="toctree-l1">
@@ -574,7 +574,7 @@ title="Print to PDF"
 </section>
 <section id="get-nwb-info">
 <h2>Get NWB Info<a class="headerlink" href="#get-nwb-info" title="Permalink to this headline">#</a></h2>
-<p>This function is tailored to our NWB Files. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">column</span></code> in the pandas dataframe below to properly reflect this.</p>
+<p>This function is tailored to our NWB Files. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within nwb file</span>
@@ -596,7 +596,7 @@ title="Print to PDF"
 </section>
 <section id="getting-table">
 <h2>Getting Table<a class="headerlink" href="#getting-table" title="Permalink to this headline">#</a></h2>
-<p>Here, each relevant file in the Dandiset is streamed and opened remotely to get the information of interest using the function <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>, defined above, and then it is added to a table of sessions and their metadata. Since some files are for specific probes rather than entire sessions, they are skipped. Opening each NWB File can take several minutes. Depending on how many files your dandiset loops through, this step can take a very long time.</p>
+<p>Here, each relevant file in the dandiset is streamed and opened remotely to get the information of interest using the function <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>, defined above, and then it is added to a table of sessions and their metadata. Since some files are for specific probes rather than entire sessions, they are skipped. Opening each NWB File can take several minutes. Depending on how many files your dandiset loops through, this step can take a very long time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up streaming filesystem</span>
@@ -898,7 +898,7 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
 </section>
 <section id="selecting-files">
 <h2>Selecting Files<a class="headerlink" href="#selecting-files" title="Permalink to this headline">#</a></h2>
-<p>Pandas syntax can be used to filter the table above and select individual sessions.</p>
+<p><strong>Pandas</strong> syntax can be used to filter the table above and select individual sessions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># selected_sessions = sessions[sessions[&quot;size&quot;] &gt;= 2_500_000_000]</span>
@@ -979,7 +979,7 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
 </section>
 <section id="downloading-selected-files">
 <h2>Downloading Selected Files<a class="headerlink" href="#downloading-selected-files" title="Permalink to this headline">#</a></h2>
-<p>To download the files, we use the same method that is explained in <a class="reference internal" href="download_nwb.html"><span class="doc std std-doc">Downloading an NWB File</span></a>. This can be used with the paths from the selected sessions above to just download the files of interest. Note that if the files are large, this can take a long time.</p>
+<p>To download the files, we use the same method that is explained in <a class="reference internal" href="download_nwb.html"><span class="doc std std-doc">Downloading an NWB File</span></a>. This can be used with the paths from the selected sessions above to just download the files of interest.  Set <code class="docutils literal notranslate"><span class="pre">download_loc</span></code> to be the relative path of where the files should be downloaded. Note that if the files are large, this can take a long time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
@@ -1058,7 +1058,7 @@ Downloaded file to ./sub_1174569641+sess_1184671550_ecephys.nwb
     <a class='right-next' id="next-link" href="../visualization/visualize_behavior.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Eye Tracking</p>
+        <p class="prev-next-title">Visualizing Behavioral Data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

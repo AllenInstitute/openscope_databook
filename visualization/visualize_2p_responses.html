@@ -152,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualize_behavior.html">
-   Visualizing Eye Tracking
+   Visualizing Behavioral Data
   </a>
  </li>
  <li class="toctree-l1">
@@ -448,13 +448,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-df-f-activity-throughout-epochs">
-   Visualizing DF/F Activity Throughout Epochs
+  <a class="reference internal nav-link" href="#fluorescence-activity-throughout-epochs">
+   Fluorescence Activity Throughout Epochs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-fluorescence-over-time">
-   Visualizing Fluorescence Over Time
+  <a class="reference internal nav-link" href="#region-wise-fluorescence-over-time">
+   Region-wise Fluorescence Over Time
   </a>
  </li>
 </ul>
@@ -497,13 +497,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-df-f-activity-throughout-epochs">
-   Visualizing DF/F Activity Throughout Epochs
+  <a class="reference internal nav-link" href="#fluorescence-activity-throughout-epochs">
+   Fluorescence Activity Throughout Epochs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-fluorescence-over-time">
-   Visualizing Fluorescence Over Time
+  <a class="reference internal nav-link" href="#region-wise-fluorescence-over-time">
+   Region-wise Fluorescence Over Time
   </a>
  </li>
 </ul>
@@ -519,7 +519,7 @@ title="Print to PDF"
   <section id="visualizing-2p-responses-to-stimulus">
 <h1>Visualizing 2P Responses to Stimulus<a class="headerlink" href="#visualizing-2p-responses-to-stimulus" title="Permalink to this headline">#</a></h1>
 <p>Some of this content is adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_session.html">Allen SDK Documentation</a>.</p>
-<p>DF/F is one measure of fluorescence. In 2-Photon NWB Files, DF/F is stored in the <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. The DF/F trace is measured for each <em>region of interest</em> (ROI) in the area being measured. This notebook uses DF/F traces with the stimulus information from the tables in the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section of the file to visualize neuron responses to stimulus.</p>
+<p>In <em>2-Photon</em> Image NWB Files, the data stored measure fluorescence. From the raw 2P images, the The Allen Institute uses the <a class="reference external" href="https://github.com/MouseLand/suite2p">Suite2P</a> segmentation algorithm to identify <em>regions of interest</em> (ROIs). For more information on ROIs go to the <a class="reference internal" href="visualize_2p_raw.html"><span class="doc std std-doc">Visualizing Raw 2-Photon Images</span></a> notebook. For each ROI, two measures of fluorescence are stored; <em>corrected fluorescence</em> and <em>DF/F</em>. Corrected fluorescence (hereafter referred to as ‘fluorescence’) is the brightness of the region with unknown units. DF/F is a normalized metric that takes into account baseline fluorescence value in order to provide a measure that can be compared from cell to cell. These traces are stored in the <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. This notebook uses these fluorescence traces and the stimulus information from the tables in the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section of the file to visualize neuron responses to stimulus.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -603,7 +603,7 @@ title="Print to PDF"
 </section>
 <section id="extracting-2p-data-and-stimulus-data">
 <h2>Extracting 2P Data and Stimulus Data<a class="headerlink" href="#extracting-2p-data-and-stimulus-data" title="Permalink to this headline">#</a></h2>
-<p>Below, the DFF trace and timestamps are read from the file’s <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. Note that the exact format to access the dff trace can vary between newer and older NWB files, so some adjustments may be necessary. Additionally, the stimulus data is also read from the NWB file’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. Stimulus information is stored as a series of tables depending on the type of stimulus shown in the session. One such table is displayed below.</p>
+<p>Below, the fluorescence traces and timestamps are read from the file’s <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. Note that the exact format to access these traces can vary between newer and older NWB files, so some adjustments may be necessary. Additionally, the stimulus data is also read from the NWB file’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. Stimulus information is stored as a series of tables depending on the type of stimulus shown in the session. One such table is displayed below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -628,10 +628,16 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">dff_trace</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 <span class="n">dff_timestamps</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
 
+<span class="n">flr</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;corrected_fluorescence&quot;</span><span class="p">]</span>
+<span class="n">flr_trace</span> <span class="o">=</span> <span class="n">flr</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">flr_timestamps</span> <span class="o">=</span> <span class="n">flr</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
+
 <span class="c1"># accessing the above data may look different for older nwb files, like the following</span>
 <span class="c1"># dff_trace = dff.roi_response_series[&quot;RoiResponseSeries&quot;].data</span>
 <span class="c1"># dff_timestamps = dff.roi_response_series[&quot;RoiResponseSeries&quot;].timestamps</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="n">flr_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flr_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dff_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -639,6 +645,8 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42337, 103)
+(42337,)
+(42337, 103)
 (42337,)
 </pre></div>
 </div>
@@ -945,8 +953,8 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>Here, <em>epochs</em> are extracted from the stimulus tables. In this case, an epoch is a continuous period of time during a session where a particular type of stimulus is shown. The output here is a list of epochs, where an epoch is a tuple of four values; the stimulus name, the stimulus block, the starting time and the ending time. Since stimulus information can vary signifcantly between experiments and NWB files, you may need to tailor the code below to extract epochs for the file you’re interested in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
-<span class="c1"># returns list of epochs, where an epoch is of the form (stimulus name, stimulus block, start time, stop time)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
+<span class="c1">### returns list of epochs, where an epoch is of the form (stimulus name, stimulus block, start time, stop time)</span>
 <span class="k">def</span> <span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
     
     <span class="c1"># specify a current_epoch stop and start time</span>
@@ -978,7 +986,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epochs from all valid stimulus tables</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### extract epochs from all valid stimulus tables</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">stim_name</span> <span class="ow">in</span> <span class="n">stimulus_names</span><span class="p">:</span>
     <span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
@@ -1187,12 +1195,14 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 </section>
-<section id="visualizing-df-f-activity-throughout-epochs">
-<h2>Visualizing DF/F Activity Throughout Epochs<a class="headerlink" href="#visualizing-df-f-activity-throughout-epochs" title="Permalink to this headline">#</a></h2>
-<p>Below is a view of the dff activity of a channel throughout a session, where epochs are shown as colored sections. Set <code class="docutils literal notranslate"><span class="pre">roi_num</span></code> to be the id of the ROI you want to view. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> to the starting bound in seconds of the session, you’d like to see, and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the ending bound. You may want to use the output above to inform your choice. As mentioned above, if your file’s stimulus information differs signifcantly, this code may need to be modified to appropriately display the epochs. You may also change <code class="docutils literal notranslate"><span class="pre">trace_to_display</span></code> to select the average dff trace for all ROIs.</p>
+<section id="fluorescence-activity-throughout-epochs">
+<h2>Fluorescence Activity Throughout Epochs<a class="headerlink" href="#fluorescence-activity-throughout-epochs" title="Permalink to this headline">#</a></h2>
+<p>Below is a view of the fluorescence activity of a ROI throughout a session where epochs are shown as colored sections. First, set <code class="docutils literal notranslate"><span class="pre">trace_to_display</span></code> to choose “fluorescence” or “dff”. You can view the activity of individual ROIs, all ROIs, or an average of all ROIs. Set <code class="docutils literal notranslate"><span class="pre">roi_num</span></code> to be the ID of the ROI you want to view, or to None to view all ROIs. Alternatively, set <code class="docutils literal notranslate"><span class="pre">display_average</span></code> to True to see the average of all ROIs. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> to the starting bound in seconds of the session, you’d like to see, and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the ending bound. You may want to use the output above to inform this choice. As mentioned above, if your file’s stimulus information differs signifcantly, the plotting code below may need to be modified to appropriately display the epochs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi_num</span> <span class="o">=</span> <span class="mi">13</span> <span class="c1"># chosen from dff_trace.shape[1]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace_to_display</span> <span class="o">=</span> <span class="s2">&quot;fluorescence&quot;</span> <span class="c1"># or &quot;dff&quot;</span>
+<span class="n">roi_num</span> <span class="o">=</span> <span class="mi">13</span> <span class="c1"># chosen from flr_trace.shape[1]</span>
+<span class="n">display_average_trace</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">time_start</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">time_end</span> <span class="o">=</span> <span class="mi">1000</span>
 </pre></div>
@@ -1201,19 +1211,45 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_dff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">dff_trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### choose data and plot properties based on user input</span>
 
-<span class="c1"># swap these to view average trace of all ROIs</span>
-<span class="c1"># trace_to_display = avg_dff[:]*100</span>
-<span class="n">trace_to_display</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="p">[:,</span><span class="n">roi_num</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
-<span class="c1"># ^^^ * 100 to yield percentage</span>
+<span class="n">avg_dff_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">dff_trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">avg_flr_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">flr_trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;fluorescence&quot;</span><span class="p">:</span>
+    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence Throughout Epochs&quot;</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence&quot;</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">flr_timestamps</span>
+    <span class="k">if</span> <span class="n">display_average_trace</span><span class="p">:</span>
+        <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;Average Fluorescence Throughout Epochs&quot;</span>
+        <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Average Fluorescence&quot;</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">avg_flr_trace</span>
+    <span class="k">elif</span> <span class="n">roi_num</span><span class="p">:</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">flr_trace</span><span class="p">[:,</span><span class="n">roi_num</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">flr_trace</span>
+
+<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;dff&quot;</span><span class="p">:</span>
+    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;DF/F Throughout Epochs&quot;</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;DF/F (%)&quot;</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">dff_timestamps</span>
+    <span class="k">if</span> <span class="n">display_average_trace</span><span class="p">:</span>
+        <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;Average DF/F Throughout Epochs&quot;</span>
+        <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Average DF/F (%)&quot;</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">avg_dff_trace</span><span class="o">*</span><span class="mi">100</span>
+    <span class="k">elif</span> <span class="n">roi_num</span><span class="p">:</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="p">[:,</span><span class="n">roi_num</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="o">*</span><span class="mi">100</span>
+    <span class="c1"># ^^^ * 100 to yield percentage for DF/F</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate plot of spike histogram with colored epoch intervals and legend</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### make plot of chosen fluorescence trace over time with colored epoch sections</span>
+
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># assign unique color to each stimulus name</span>
@@ -1222,55 +1258,71 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">stim_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">stim_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">))}</span>
 
 <span class="n">epoch_key</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">trace_to_display</span><span class="p">)</span> <span class="c1"># change this to set height of the plot</span>
+<span class="n">y_hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span> <span class="c1"># change these to manually set height of the plot</span>
+<span class="n">y_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
 <span class="c1"># draw colored rectangles for each epoch</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
     <span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_end</span> <span class="o">=</span> <span class="n">epoch</span>
     <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
-    <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">y_lo</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">y_hi</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
     <span class="n">epoch_key</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;DF/F (%)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;DF/F Throughout Epochs&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_lo</span><span class="p">,</span> <span class="n">y_hi</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">[:],</span> <span class="n">trace_to_display</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timestamps</span><span class="p">[:],</span> <span class="n">trace</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">trace</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1bce07d5250&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3504.47852446745
 </pre></div>
 </div>
 <img alt="../_images/visualize_2p_responses_21_1.png" src="../_images/visualize_2p_responses_21_1.png" />
 </div>
 </div>
 </section>
-<section id="visualizing-fluorescence-over-time">
-<h2>Visualizing Fluorescence Over Time<a class="headerlink" href="#visualizing-fluorescence-over-time" title="Permalink to this headline">#</a></h2>
-<p>Here a 2D plot is made showing ROI DF/F values over time. Without organizing the ROIs, there are limits to how useful it can be. Set <code class="docutils literal notranslate"><span class="pre">interval_start</span></code> and <code class="docutils literal notranslate"><span class="pre">interval_end</span></code> to the bounds of time, in seconds, you’d like to see displayed. These bounds get translated into the indices of the dff trace that match most closely to the time that was provided. If the bounds are outside the measurement period, an error be thrown. You may also set <code class="docutils literal notranslate"><span class="pre">start_unit</span></code> and <code class="docutils literal notranslate"><span class="pre">end_unit</span></code> to narrow the number of ROIs that will be displayed.</p>
+<section id="region-wise-fluorescence-over-time">
+<h2>Region-wise Fluorescence Over Time<a class="headerlink" href="#region-wise-fluorescence-over-time" title="Permalink to this headline">#</a></h2>
+<p>Here a 2D image is made showing ROI fluorescence values over time. Without organizing the ROIs, there are limits to how useful it can be, but it can serve to show responses to stimulus times. Set <code class="docutils literal notranslate"><span class="pre">trace_to_display</span></code> to “fluorescence” or “dff” to select the trace you want to see. Set <code class="docutils literal notranslate"><span class="pre">interval_start</span></code> and <code class="docutils literal notranslate"><span class="pre">interval_end</span></code> to the bounds of time, in seconds, you’d like to see displayed. These bounds get translated into the indices of the trace that match most closely to the time that was provided. If the bounds are outside the measurement period, an error be thrown. You may also set <code class="docutils literal notranslate"><span class="pre">start_roi</span></code> and <code class="docutils literal notranslate"><span class="pre">end_roi</span></code> to narrow the number of ROIs that will be displayed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interval_start</span> <span class="o">=</span> <span class="mi">3700</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace_to_display</span> <span class="o">=</span> <span class="s2">&quot;fluorescence&quot;</span> <span class="c1"># or &quot;dff&quot;</span>
+<span class="n">interval_start</span> <span class="o">=</span> <span class="mi">3700</span>
 <span class="n">interval_end</span> <span class="o">=</span> <span class="mi">3900</span>
-
 <span class="n">start_roi</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">end_roi</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># show all units</span>
+<span class="n">end_roi</span> <span class="o">=</span> <span class="n">flr_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># show all units</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># translate interval time bounds into approximate data indices</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose plot properties based on user input</span>
+<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;fluorescence&quot;</span><span class="p">:</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">flr_trace</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">flr_timestamps</span>
+    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;ROIs Fluorescence Over Time&quot;</span>
+    <span class="n">bar_label</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence&quot;</span>
+<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;dff&quot;</span><span class="p">:</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">dff_trace</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">dff_timestamps</span>
+    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;ROIs DF/F Over Time&quot;</span>
+    <span class="n">bar_label</span> <span class="o">=</span> <span class="s2">&quot;DF/F (%)&quot;</span>
+
+<span class="c1"># translate interval time bounds into approximate data indices</span>
 <span class="n">interval_start_idx</span><span class="p">,</span> <span class="n">interval_end_idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_start</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_start_idx</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamps</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_start</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_start_idx</span><span class="p">:</span>
         <span class="n">interval_start_idx</span> <span class="o">=</span> <span class="n">i</span>
-    <span class="k">if</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_end</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_end_idx</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_end</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_end_idx</span><span class="p">:</span>
         <span class="n">interval_end_idx</span> <span class="o">=</span> <span class="n">i</span>
     <span class="k">if</span> <span class="n">interval_start_idx</span> <span class="ow">and</span> <span class="n">interval_end_idx</span><span class="p">:</span>
         <span class="k">break</span>
@@ -1292,23 +1344,23 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display array of ROI DF/F traces as 2D image with color</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### display array of ROI fluorescence traces as 2D image with color</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
-<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span> <span class="c1"># adjust these to change contrast of DF/F values in the plot</span>
+<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span> <span class="c1"># adjust these to change contrast of fluorescence values in the plot</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">dff_trace</span><span class="p">[</span><span class="n">interval_start_idx</span><span class="p">:</span><span class="n">interval_end_idx</span><span class="p">]),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">interval_start</span><span class="p">,</span><span class="n">interval_end</span><span class="p">,</span><span class="n">start_roi</span><span class="p">,</span><span class="n">end_roi</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;DF/F&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">bar_label</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">NullLocator</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ROIs&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ROIs DF/F Over Time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ROIs DF/F Over Time&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ROIs Fluorescence Over Time&#39;)
 </pre></div>
 </div>
 <img alt="../_images/visualize_2p_responses_25_1.png" src="../_images/visualize_2p_responses_25_1.png" />
