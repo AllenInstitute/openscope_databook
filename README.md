@@ -17,22 +17,22 @@ https://alleninstitute.github.io/openscope_databook
 - [Querying metadata across sessions from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/get_dandiset_metadata.ipynb)
 
 ### Chapter 2: Data visualization
+- [Visualizing eye-tracking gaze locations, eye area, and running speed](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_eye_tracking.ipynb)
+- [Visualizing 2P raw movie](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_raw.ipynb)
 - [Visualizing Neuropixel probe locations](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_neuropixel_probes.ipynb)
+- [Visualizing Neuropixel recorded unit qualirt metrics](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_metrics.ipynb)
 - [Visualizing LFP responses to stimulus events](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_lfp_responses.ipynb)
-- [Visualizing 2P fluorescence, dff, and raw movie](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_raw.ipynb)
-- [Visualizing eye-tracking gaze locations and eye area](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_eye_tracking.ipynb)
-- [Visualizing Neuropixel recorded unit metrics](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_metrics.ipynb)
 - [Visualizing neuronal unit responses to stimulus events in different epochs and spike waveforms](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_responses.ipynb)
 - [Visualizing 2P responses to stimulus events in different epochs](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_responses.ipynb)
 
 ### Chapter 3: First-order analysis
+- Neuropixel: plotting receptive fields
+- Neuropixel: Identifying opto-tagged cells
+- 2P: How to align timestamps across modalities.
 - 2P: Stimuli averages with 2P data
 - 2P: Cell matching across days
-- 2P: How to align timestamps across modalities.
-- Neuropixel: Identifying opto-tagged cells
 - Neuropixel: Stimuli averages with neuropixel data
 - Neuropixel: extracting Current Source Density plots
-- Neuropixel: plotting receptive fields
 
 ### Chapter 4: Higher-order analysis
 - Sending NWB raw data to a segmentation pipeline: example with Suite2p.
