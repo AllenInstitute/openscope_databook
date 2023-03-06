@@ -19,8 +19,8 @@ https://alleninstitute.github.io/openscope_databook
 ### Chapter 2: Data visualization
 - [Visualizing Neuropixel probe locations](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_neuropixel_probes.ipynb)
 - [Visualizing LFP responses to stimulus events](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_lfp_responses.ipynb)
-- [Visualizing 2P fluorescence, dff, and raw movie](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_raw.ipynb)
-- [Visualizing eye-tracking gaze locations and eye area](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_eye_tracking.ipynb)
+- [Visualizing 2P raw movie](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_raw.ipynb)
+- [Visualizing eye-tracking gaze locations, eye area, and running speed](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_eye_tracking.ipynb)
 - [Visualizing Neuropixel recorded unit metrics](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_metrics.ipynb)
 - [Visualizing neuronal unit responses to stimulus events in different epochs and spike waveforms](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_responses.ipynb)
 - [Visualizing 2P responses to stimulus events in different epochs](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_responses.ipynb)
