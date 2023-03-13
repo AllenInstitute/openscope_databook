@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Reading an NWB File &#8212; OpenScope Databook</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +61,93 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'basics/read_nwb';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exploring an NWB File" href="use_nwbwidgets.html" />
     <link rel="prev" title="Downloading an NWB File" href="download_nwb.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">OpenScope Databook</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,419 +156,312 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  NWB Basics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NWB Basics</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="download_nwb.html">
-   Downloading an NWB File
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Reading an NWB File
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="use_nwbwidgets.html">
-   Exploring an NWB File
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="stream_nwb.html">
-   Streaming an NWB File with fsspec
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="get_dandiset_metadata.html">
-   Getting Experimental Metadata from DANDI
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_nwbwidgets.html">Exploring an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream_nwb.html">Streaming an NWB File with fsspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Visualizing NWB Files
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_behavior.html">
-   Visualizing Behavioral Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_2p_raw.html">
-   Visualizing Raw 2-Photon Images
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">
-   Visualizing Neuropixel Probe Locations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_unit_metrics.html">
-   Visualizing Unit Quality Metrics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_lfp_responses.html">
-   Visualizing LFP Responses to Stimulus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_unit_responses.html">
-   Visualizing Neuronal Unit Spikes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_2p_responses.html">
-   Visualizing 2P Responses to Stimulus
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/basics/read_nwb.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/basics/read_nwb.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/basics/read_nwb.ipynb&branch=main"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on JupyterHub"
+      
+      
+      
+      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/basics/read_nwb.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_jupyterhub.svg">
   </span>
-<span class="headerbtn__text-container">JupyterHub</span>
+<span class="btn__text-container">JupyterHub</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
 <button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Live Code</span>
+<span class="btn__text-container">Live Code</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fbasics/read_nwb.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/basics/read_nwb.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/AllenInstitute/openscope_databook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fbasics/read_nwb.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/basics/read_nwb.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environment-setup">
-   Environment Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloading-an-nwb-file">
-   Downloading an NWB File
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Reading an NWB File
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openscope-s-file-schemas">
-   OpenScope’s File Schemas
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ecephys-file">
-     Ecephys File
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ophys-file">
-     Ophys File
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Reading an NWB File</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environment-setup">
-   Environment Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloading-an-nwb-file">
-   Downloading an NWB File
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Reading an NWB File
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openscope-s-file-schemas">
-   OpenScope’s File Schemas
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ecephys-file">
-     Ecephys File
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ophys-file">
-     Ophys File
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reading an NWB File</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-an-nwb-file">Downloading an NWB File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Reading an NWB File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openscope-s-file-schemas">OpenScope’s File Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ecephys-file">Ecephys File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophys-file">Ophys File</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="reading-an-nwb-file">
-<h1>Reading an NWB File<a class="headerlink" href="#reading-an-nwb-file" title="Permalink to this headline">#</a></h1>
+<h1>Reading an NWB File<a class="headerlink" href="#reading-an-nwb-file" title="Permalink to this heading">#</a></h1>
 <p>After downloading an NWB file, you <em>may</em> want to view the data inside. You can do basic reading of the file with <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/pynwb">PyNWB</a></strong>. This is a package designed to utilize, modify, and process NWB files. The basic read functionality of PyNWB is shown below.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -538,7 +474,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="downloading-an-nwb-file">
-<h2>Downloading an NWB File<a class="headerlink" href="#downloading-an-nwb-file" title="Permalink to this headline">#</a></h2>
+<h2>Downloading an NWB File<a class="headerlink" href="#downloading-an-nwb-file" title="Permalink to this heading">#</a></h2>
 <p>To read an NWB File, it must first be downloaded. <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">filepath</span></code> may be changed to select a different file off of DANDI. If the file of interest already downloaded, you don’t need to run the download cell again. When trying to download an embargoed file, refer to the code from the <a class="reference internal" href="download_nwb.html"><span class="doc std std-doc">Downloading an NWB File</span></a> notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -580,7 +516,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id1">
-<h2>Reading an NWB File<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Reading an NWB File<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>You can read in a NWB file with <code class="docutils literal notranslate"><span class="pre">NWBHDF5IO</span></code> to retrieve an io object. You can use the <code class="docutils literal notranslate"><span class="pre">.read</span></code> method to actually read it in. From there, you can see the raw data of the NWB file and can print the fields you are interested in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,7 +534,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2482363935760
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2086544454416
 Fields:
   acquisition: {
     raw_running_wheel_rotation &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
@@ -647,7 +583,7 @@ Fields:
   session_id: 715093703
   session_start_time: 2019-01-19 00:54:18-08:00
   stimulus_notes: brain_observatory_1.1
-  subject: subject abc.EcephysSpecimen at 0x2482364012384
+  subject: subject abc.EcephysSpecimen at 0x2086515792432
 Fields:
   age: P118D
   age_in_days: 118.0
@@ -679,7 +615,7 @@ Fields:
 </div>
 </section>
 <section id="openscope-s-file-schemas">
-<h2>OpenScope’s File Schemas<a class="headerlink" href="#openscope-s-file-schemas" title="Permalink to this headline">#</a></h2>
+<h2>OpenScope’s File Schemas<a class="headerlink" href="#openscope-s-file-schemas" title="Permalink to this heading">#</a></h2>
 <p>OpenScope works with two main types of brain data files for different experiments. There’s Extracellular Electrophysiology, <em>Ecephys</em>, which uses <strong>Neuropixel</strong> probes to gather electrical data, and Optical Physiology, <em>Ophys</em>, which uses <strong>2-Photon</strong> Calcium imaging to gather fluorescence data. Since the NWB Standard is very flexible, and these files are used for different needs, there are several differences between these data types. Below, <strong>pandas</strong> is used to display a general outline for each file type where every field within the NWB is described. Note that older NWB files or files from other institutions could vary from these significantly. These tables are just meant to be used as a reference, don’t be overwhelmed trying to understand all the fields!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,14 +627,14 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_8912\3249629881.py:4: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_15316\3249629881.py:4: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
   pd.set_option(&#39;display.max_colwidth&#39;, -1)
 </pre></div>
 </div>
 </div>
 </div>
 <section id="ecephys-file">
-<h3>Ecephys File<a class="headerlink" href="#ecephys-file" title="Permalink to this headline">#</a></h3>
+<h3>Ecephys File<a class="headerlink" href="#ecephys-file" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/ecephys_schema.csv&quot;</span><span class="p">)</span>
@@ -790,7 +726,7 @@ Fields:
     </tr>
     <tr>
       <th>7</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.conversion</td>
@@ -798,7 +734,7 @@ Fields:
     </tr>
     <tr>
       <th>8</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Description</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.description</td>
@@ -806,7 +742,7 @@ Fields:
     </tr>
     <tr>
       <th>9</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Interval</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.interval</td>
@@ -814,7 +750,7 @@ Fields:
     </tr>
     <tr>
       <th>10</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Offset</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.offset</td>
@@ -822,7 +758,7 @@ Fields:
     </tr>
     <tr>
       <th>11</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Reference Frame</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.reference_frame</td>
@@ -830,7 +766,7 @@ Fields:
     </tr>
     <tr>
       <th>12</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.resolution</td>
@@ -838,7 +774,7 @@ Fields:
     </tr>
     <tr>
       <th>13</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Unit</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.unit</td>
@@ -846,7 +782,7 @@ Fields:
     </tr>
     <tr>
       <th>14</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Angle</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.angle</td>
@@ -854,7 +790,7 @@ Fields:
     </tr>
     <tr>
       <th>15</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Height</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.height</td>
@@ -862,7 +798,7 @@ Fields:
     </tr>
     <tr>
       <th>16</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Width</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.width</td>
@@ -870,7 +806,7 @@ Fields:
     </tr>
     <tr>
       <th>17</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.area</td>
@@ -878,7 +814,7 @@ Fields:
     </tr>
     <tr>
       <th>18</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Raw Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.area_raw</td>
@@ -886,7 +822,7 @@ Fields:
     </tr>
     <tr>
       <th>19</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Data</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.data</td>
@@ -894,7 +830,7 @@ Fields:
     </tr>
     <tr>
       <th>20</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.timestamps</td>
@@ -902,7 +838,7 @@ Fields:
     </tr>
     <tr>
       <th>21</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Tracking Comments</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.comments</td>
@@ -910,7 +846,7 @@ Fields:
     </tr>
     <tr>
       <th>22</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.conversion</td>
@@ -918,7 +854,7 @@ Fields:
     </tr>
     <tr>
       <th>23</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Description</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.description</td>
@@ -926,7 +862,7 @@ Fields:
     </tr>
     <tr>
       <th>24</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Interval</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.interval</td>
@@ -934,7 +870,7 @@ Fields:
     </tr>
     <tr>
       <th>25</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Offset</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.offset</td>
@@ -942,7 +878,7 @@ Fields:
     </tr>
     <tr>
       <th>26</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Reference Frame</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.reference_frame</td>
@@ -950,7 +886,7 @@ Fields:
     </tr>
     <tr>
       <th>27</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.resolution</td>
@@ -958,7 +894,7 @@ Fields:
     </tr>
     <tr>
       <th>28</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Unit</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.unit</td>
@@ -966,7 +902,7 @@ Fields:
     </tr>
     <tr>
       <th>29</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Angle</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.angle</td>
@@ -974,7 +910,7 @@ Fields:
     </tr>
     <tr>
       <th>30</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Height</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.height</td>
@@ -982,7 +918,7 @@ Fields:
     </tr>
     <tr>
       <th>31</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Width</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.width</td>
@@ -990,7 +926,7 @@ Fields:
     </tr>
     <tr>
       <th>32</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.area</td>
@@ -998,7 +934,7 @@ Fields:
     </tr>
     <tr>
       <th>33</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Raw Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.area_raw</td>
@@ -1006,7 +942,7 @@ Fields:
     </tr>
     <tr>
       <th>34</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Data</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.data</td>
@@ -1014,7 +950,7 @@ Fields:
     </tr>
     <tr>
       <th>35</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.timestamps</td>
@@ -1022,7 +958,7 @@ Fields:
     </tr>
     <tr>
       <th>36</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Tracking Comments</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.comments</td>
@@ -1030,7 +966,7 @@ Fields:
     </tr>
     <tr>
       <th>37</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.conversion</td>
@@ -1038,7 +974,7 @@ Fields:
     </tr>
     <tr>
       <th>38</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Description</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.description</td>
@@ -1046,7 +982,7 @@ Fields:
     </tr>
     <tr>
       <th>39</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Interval</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.interval</td>
@@ -1054,7 +990,7 @@ Fields:
     </tr>
     <tr>
       <th>40</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Offset</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.offset</td>
@@ -1062,7 +998,7 @@ Fields:
     </tr>
     <tr>
       <th>41</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Reference Frame</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.reference_frame</td>
@@ -1070,7 +1006,7 @@ Fields:
     </tr>
     <tr>
       <th>42</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.resolution</td>
@@ -1078,7 +1014,7 @@ Fields:
     </tr>
     <tr>
       <th>43</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Unit</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.unit</td>
@@ -1086,7 +1022,7 @@ Fields:
     </tr>
     <tr>
       <th>44</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Angle</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.angle</td>
@@ -1094,7 +1030,7 @@ Fields:
     </tr>
     <tr>
       <th>45</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Height</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.height</td>
@@ -1102,7 +1038,7 @@ Fields:
     </tr>
     <tr>
       <th>46</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Width</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.width</td>
@@ -1110,7 +1046,7 @@ Fields:
     </tr>
     <tr>
       <th>47</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.area</td>
@@ -1118,7 +1054,7 @@ Fields:
     </tr>
     <tr>
       <th>48</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Raw Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.area_raw</td>
@@ -1126,7 +1062,7 @@ Fields:
     </tr>
     <tr>
       <th>49</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Data</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.data</td>
@@ -1134,7 +1070,7 @@ Fields:
     </tr>
     <tr>
       <th>50</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.timestamps</td>
@@ -1142,7 +1078,7 @@ Fields:
     </tr>
     <tr>
       <th>51</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Blink Times</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].likely_blink.data</td>
@@ -1150,7 +1086,7 @@ Fields:
     </tr>
     <tr>
       <th>52</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Blink Times Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].likely_blink.timestamps</td>
@@ -1158,71 +1094,71 @@ Fields:
     </tr>
     <tr>
       <th>53</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Comments</td>
       <td>string</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].comments</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].comments</td>
       <td>Comments</td>
     </tr>
     <tr>
       <th>54</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Conversion</td>
       <td>number</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].conversion</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
     </tr>
     <tr>
       <th>55</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Description</td>
       <td>string</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].description</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].description</td>
       <td>Description</td>
     </tr>
     <tr>
       <th>56</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Interval</td>
       <td>number</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].interval</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].interval</td>
       <td>Unexplained</td>
     </tr>
     <tr>
       <th>57</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Offset</td>
       <td>number</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].offset</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
     </tr>
     <tr>
       <th>58</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Resolution</td>
       <td>string</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].resolution</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
     </tr>
     <tr>
       <th>59</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Timestamps Units</td>
       <td>number</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].timestamps_unit</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].timestamps_unit</td>
       <td>Nameof the unit for the timestamps</td>
     </tr>
     <tr>
       <th>60</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Unit</td>
       <td>string</td>
-      <td>nwb.processing["running"]["raw_running_wheel_rotation"].unit</td>
+      <td>nwb.acquisition["raw_running_wheel_rotation"].unit</td>
       <td>Name of the unit for the data</td>
     </tr>
     <tr>
       <th>61</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Raw Running Wheel Rotation Data</td>
       <td>array</td>
       <td>nwb.acquisition["raw_running_wheel_rotation"].data</td>
@@ -1230,7 +1166,7 @@ Fields:
     </tr>
     <tr>
       <th>62</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Raw Running Wheel Rotation Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["raw_running_wheel_rotation"].timestamps</td>
@@ -1238,167 +1174,167 @@ Fields:
     </tr>
     <tr>
       <th>63</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Conversion</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].comments</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].comments</td>
       <td>Comments</td>
     </tr>
     <tr>
       <th>64</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Description</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].conversion</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
     </tr>
     <tr>
       <th>65</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Interval</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].description</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].description</td>
       <td>Description</td>
     </tr>
     <tr>
       <th>66</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Offset</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].interval</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].interval</td>
       <td>Unexplained</td>
     </tr>
     <tr>
       <th>67</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Resolution</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].offset</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
     </tr>
     <tr>
       <th>68</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Timestamps Units</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].resolution</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
     </tr>
     <tr>
       <th>69</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Unit</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].timestamps_unit</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].timestamps_unit</td>
       <td>Nameof the unit for the timestamps</td>
     </tr>
     <tr>
       <th>70</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Comments</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].unit</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].unit</td>
       <td>Name of the unit for the data</td>
     </tr>
     <tr>
       <th>71</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Data</td>
       <td>array</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].data</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].data</td>
       <td>Unused</td>
     </tr>
     <tr>
       <th>72</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Signal Voltage Timestamps</td>
       <td>array</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].timestamps</td>
+      <td>nwb.acquisition["running_wheel_signal_voltage"].timestamps</td>
       <td>Unused</td>
     </tr>
     <tr>
       <th>73</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Conversion</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].comments</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].comments</td>
       <td>Comments</td>
     </tr>
     <tr>
       <th>74</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Description</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].conversion</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
     </tr>
     <tr>
       <th>75</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Interval</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].description</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].description</td>
       <td>Description</td>
     </tr>
     <tr>
       <th>76</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Offset</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].interval</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].interval</td>
       <td>Unexplained</td>
     </tr>
     <tr>
       <th>77</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Resolution</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].offset</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
     </tr>
     <tr>
       <th>78</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Timestamps Units</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].resolution</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
     </tr>
     <tr>
       <th>79</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Unit</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].timestamps_unit</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].timestamps_unit</td>
       <td>Nameof the unit for the timestamps</td>
     </tr>
     <tr>
       <th>80</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Comments</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].unit</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].unit</td>
       <td>Name of the unit for the data</td>
     </tr>
     <tr>
       <th>81</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Data</td>
       <td>array</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].data</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].data</td>
       <td>Unused</td>
     </tr>
     <tr>
       <th>82</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Running Wheel Supply Voltage Timestamps</td>
       <td>array</td>
-      <td>nwb.processing["running"]["running_wheel_supply_voltage"].timestamps</td>
+      <td>nwb.acquisition["running_wheel_supply_voltage"].timestamps</td>
       <td>Unused</td>
     </tr>
     <tr>
       <th>83</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Comments</td>
       <td>string</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.comments</td>
@@ -1406,7 +1342,7 @@ Fields:
     </tr>
     <tr>
       <th>84</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.conversion</td>
@@ -1414,7 +1350,7 @@ Fields:
     </tr>
     <tr>
       <th>85</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Description</td>
       <td>string</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.description</td>
@@ -1422,7 +1358,7 @@ Fields:
     </tr>
     <tr>
       <th>86</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Interval</td>
       <td>number</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.interval</td>
@@ -1430,7 +1366,7 @@ Fields:
     </tr>
     <tr>
       <th>87</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Offset</td>
       <td>number</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.offset</td>
@@ -1438,7 +1374,7 @@ Fields:
     </tr>
     <tr>
       <th>88</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Resolution</td>
       <td>string</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.resolution</td>
@@ -1446,7 +1382,7 @@ Fields:
     </tr>
     <tr>
       <th>89</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Timestamps Unit</td>
       <td>number</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.timestamps_unit</td>
@@ -1454,7 +1390,7 @@ Fields:
     </tr>
     <tr>
       <th>90</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>LFP Unit</td>
       <td>string</td>
       <td>nwb.acquisition["probe_0_lfp"].electrical_series.unit</td>
@@ -1462,7 +1398,7 @@ Fields:
     </tr>
     <tr>
       <th>91</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Probe LFP Data</td>
       <td>array</td>
       <td>nwb.acquisition["lfp"].electrical_series[probe_name].data</td>
@@ -1470,7 +1406,7 @@ Fields:
     </tr>
     <tr>
       <th>92</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Probe LFP Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["lfp"].electrical_series[probe_name].timestamps</td>
@@ -1486,7 +1422,7 @@ Fields:
     </tr>
     <tr>
       <th>94</th>
-      <td>devices</td>
+      <td>NaN</td>
       <td>Probe Manufacturer</td>
       <td>string</td>
       <td>nwb.devices[probe_name].manufacturer</td>
@@ -1494,7 +1430,7 @@ Fields:
     </tr>
     <tr>
       <th>95</th>
-      <td>devices</td>
+      <td>NaN</td>
       <td>Probe ID</td>
       <td>number</td>
       <td>nwb.devices[probe_name].probe_id</td>
@@ -1502,7 +1438,7 @@ Fields:
     </tr>
     <tr>
       <th>96</th>
-      <td>devices</td>
+      <td>NaN</td>
       <td>Probe Sampling Rate</td>
       <td>number</td>
       <td>nwb.devices[probe_name].sampling_rate</td>
@@ -1518,7 +1454,7 @@ Fields:
     </tr>
     <tr>
       <th>98</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode IDs</td>
       <td>array</td>
       <td>nwb.electrodes.id</td>
@@ -1526,7 +1462,7 @@ Fields:
     </tr>
     <tr>
       <th>99</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode X Coordinates</td>
       <td>array</td>
       <td>nwb.electrodes.x</td>
@@ -1534,7 +1470,7 @@ Fields:
     </tr>
     <tr>
       <th>100</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Y Coordinates</td>
       <td>array</td>
       <td>nwb.electrodes.y</td>
@@ -1542,7 +1478,7 @@ Fields:
     </tr>
     <tr>
       <th>101</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Z Coordinates</td>
       <td>array</td>
       <td>nwb.electrodes.z</td>
@@ -1550,7 +1486,7 @@ Fields:
     </tr>
     <tr>
       <th>102</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Impedance</td>
       <td>array</td>
       <td>nwb.electrodes.imp</td>
@@ -1558,7 +1494,7 @@ Fields:
     </tr>
     <tr>
       <th>103</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Locations</td>
       <td>array</td>
       <td>nwb.electrodes.location</td>
@@ -1566,7 +1502,7 @@ Fields:
     </tr>
     <tr>
       <th>104</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Filters</td>
       <td>array</td>
       <td>nwb.electrodes.filtering</td>
@@ -1574,7 +1510,7 @@ Fields:
     </tr>
     <tr>
       <th>105</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Groups</td>
       <td>array</td>
       <td>nwb.electrodes.group</td>
@@ -1582,7 +1518,7 @@ Fields:
     </tr>
     <tr>
       <th>106</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Group Names</td>
       <td>array</td>
       <td>nwb.electrodes.group_name</td>
@@ -1590,7 +1526,7 @@ Fields:
     </tr>
     <tr>
       <th>107</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Probe Horizontal Position</td>
       <td>array</td>
       <td>nwb.electrodes.probe_vertical_position</td>
@@ -1598,7 +1534,7 @@ Fields:
     </tr>
     <tr>
       <th>108</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Probe Vertical Position</td>
       <td>array</td>
       <td>nwb.electrodes.probe_horizontal_position</td>
@@ -1606,7 +1542,7 @@ Fields:
     </tr>
     <tr>
       <th>109</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Probe IDs</td>
       <td>array</td>
       <td>nwb.electrodes.probe_id</td>
@@ -1614,7 +1550,7 @@ Fields:
     </tr>
     <tr>
       <th>110</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Local Indices</td>
       <td>array</td>
       <td>nwb.electrodes.local_index</td>
@@ -1622,7 +1558,7 @@ Fields:
     </tr>
     <tr>
       <th>111</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Valid Data Flags</td>
       <td>array</td>
       <td>nwb.electrodes.valid_data</td>
@@ -1630,7 +1566,7 @@ Fields:
     </tr>
     <tr>
       <th>112</th>
-      <td>electrodes</td>
+      <td>NaN</td>
       <td>Electrode Description</td>
       <td>string</td>
       <td>nwb.electrodes.description</td>
@@ -1646,7 +1582,7 @@ Fields:
     </tr>
     <tr>
       <th>114</th>
-      <td>electrode_groups</td>
+      <td>NaN</td>
       <td>Electrode Group Device</td>
       <td>Device</td>
       <td>nwb.electrode_groups[probeX].device</td>
@@ -1654,7 +1590,7 @@ Fields:
     </tr>
     <tr>
       <th>115</th>
-      <td>electrode_groups</td>
+      <td>NaN</td>
       <td>Electrode Group Has LFP Flag</td>
       <td>boolean</td>
       <td>nwb.electrode_groups[probeX].has_lfp</td>
@@ -1662,7 +1598,7 @@ Fields:
     </tr>
     <tr>
       <th>116</th>
-      <td>electrode_groups</td>
+      <td>NaN</td>
       <td>Electrode Group Sampling Rate</td>
       <td>number</td>
       <td>nwb.electrode_groups[probeX].lfp_sampling_rate</td>
@@ -1670,7 +1606,7 @@ Fields:
     </tr>
     <tr>
       <th>117</th>
-      <td>electrode_groups</td>
+      <td>NaN</td>
       <td>Electrode Group Location</td>
       <td>string</td>
       <td>nwb.electrode_groups[probeX].location</td>
@@ -1678,7 +1614,7 @@ Fields:
     </tr>
     <tr>
       <th>118</th>
-      <td>electrode_groups</td>
+      <td>NaN</td>
       <td>Electrode Group Probe ID</td>
       <td>number</td>
       <td>nwb.electrode_groups[probeX].probe_id</td>
@@ -1702,7 +1638,7 @@ Fields:
     </tr>
     <tr>
       <th>121</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Start Times</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].start_time</td>
@@ -1710,7 +1646,7 @@ Fields:
     </tr>
     <tr>
       <th>122</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stop Times</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stop_time</td>
@@ -1718,7 +1654,7 @@ Fields:
     </tr>
     <tr>
       <th>123</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Names</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stimulus_name</td>
@@ -1726,7 +1662,7 @@ Fields:
     </tr>
     <tr>
       <th>124</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Blocks</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stimulus_block</td>
@@ -1734,7 +1670,7 @@ Fields:
     </tr>
     <tr>
       <th>125</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Frames</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].frame</td>
@@ -1742,7 +1678,7 @@ Fields:
     </tr>
     <tr>
       <th>126</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Indices</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stimulus_index</td>
@@ -1750,7 +1686,7 @@ Fields:
     </tr>
     <tr>
       <th>127</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Tags</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].tags</td>
@@ -1758,7 +1694,7 @@ Fields:
     </tr>
     <tr>
       <th>128</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Timeseries Link</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].timeseries</td>
@@ -1766,7 +1702,7 @@ Fields:
     </tr>
     <tr>
       <th>129</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Intervals Description</td>
       <td>string</td>
       <td>nwb.intervals[stimulus].description</td>
@@ -1782,7 +1718,7 @@ Fields:
     </tr>
     <tr>
       <th>131</th>
-      <td>invalid_times</td>
+      <td>NaN</td>
       <td>Invalid Times Start Times</td>
       <td>array</td>
       <td>nwb.invalid_times.start_time</td>
@@ -1790,7 +1726,7 @@ Fields:
     </tr>
     <tr>
       <th>132</th>
-      <td>invalid_times</td>
+      <td>NaN</td>
       <td>Invalid Times Stop Times</td>
       <td>array</td>
       <td>nwb.invalid_times.stop_time</td>
@@ -1798,7 +1734,7 @@ Fields:
     </tr>
     <tr>
       <th>133</th>
-      <td>invalid_times</td>
+      <td>NaN</td>
       <td>Invalid Times Tags</td>
       <td>array</td>
       <td>nwb.invalid_times.tags</td>
@@ -1806,7 +1742,7 @@ Fields:
     </tr>
     <tr>
       <th>134</th>
-      <td>invalid_times</td>
+      <td>NaN</td>
       <td>Invalid Times Description</td>
       <td>string</td>
       <td>nwb.invalid_times.description</td>
@@ -1822,7 +1758,7 @@ Fields:
     </tr>
     <tr>
       <th>136</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus IDs</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].id</td>
@@ -1830,7 +1766,7 @@ Fields:
     </tr>
     <tr>
       <th>137</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Start Times</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].start_time</td>
@@ -1838,7 +1774,7 @@ Fields:
     </tr>
     <tr>
       <th>138</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Stop Times</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].stop_time</td>
@@ -1846,7 +1782,7 @@ Fields:
     </tr>
     <tr>
       <th>139</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Conditions</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].condition</td>
@@ -1854,7 +1790,7 @@ Fields:
     </tr>
     <tr>
       <th>140</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Levels</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].level</td>
@@ -1862,7 +1798,7 @@ Fields:
     </tr>
     <tr>
       <th>141</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Names</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].stimulus_name</td>
@@ -1870,7 +1806,7 @@ Fields:
     </tr>
     <tr>
       <th>142</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Duration</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].duration</td>
@@ -1878,7 +1814,7 @@ Fields:
     </tr>
     <tr>
       <th>143</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Tags</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].tags</td>
@@ -1886,7 +1822,7 @@ Fields:
     </tr>
     <tr>
       <th>144</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optogenetic Stimulus Timeseries Links</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optogenetic_stimulation"].timeseries</td>
@@ -1894,7 +1830,7 @@ Fields:
     </tr>
     <tr>
       <th>145</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optotagging Data</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optotagging"].data</td>
@@ -1902,7 +1838,7 @@ Fields:
     </tr>
     <tr>
       <th>146</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Optotagging Timestamps</td>
       <td>array</td>
       <td>nwb.processing["optotagging"]["optotagging"].timestamps</td>
@@ -1910,7 +1846,7 @@ Fields:
     </tr>
     <tr>
       <th>147</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Comments</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed"].comments</td>
@@ -1918,7 +1854,7 @@ Fields:
     </tr>
     <tr>
       <th>148</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Conversion</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed"].conversion</td>
@@ -1926,7 +1862,7 @@ Fields:
     </tr>
     <tr>
       <th>149</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Description</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed"].description</td>
@@ -1934,7 +1870,7 @@ Fields:
     </tr>
     <tr>
       <th>150</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Interval</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed"].interval</td>
@@ -1942,7 +1878,7 @@ Fields:
     </tr>
     <tr>
       <th>151</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Offset</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed"].offset</td>
@@ -1950,7 +1886,7 @@ Fields:
     </tr>
     <tr>
       <th>152</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Resolution</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed"].resolution</td>
@@ -1958,7 +1894,7 @@ Fields:
     </tr>
     <tr>
       <th>153</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Timestamps Units</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed"].timestamps_unit</td>
@@ -1966,7 +1902,7 @@ Fields:
     </tr>
     <tr>
       <th>154</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed"].unit</td>
@@ -1974,7 +1910,7 @@ Fields:
     </tr>
     <tr>
       <th>155</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Data</td>
       <td>array</td>
       <td>nwb.processing["running"]["running_speed"].data</td>
@@ -1982,7 +1918,7 @@ Fields:
     </tr>
     <tr>
       <th>156</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Timestamps</td>
       <td>array</td>
       <td>nwb.processing["running"]["running_speed"].timestamps</td>
@@ -1990,7 +1926,7 @@ Fields:
     </tr>
     <tr>
       <th>157</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Comments</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed_end_times"].comments</td>
@@ -1998,7 +1934,7 @@ Fields:
     </tr>
     <tr>
       <th>158</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Conversion</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed_end_times"].conversion</td>
@@ -2006,7 +1942,7 @@ Fields:
     </tr>
     <tr>
       <th>159</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Description</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed_end_times"].description</td>
@@ -2014,7 +1950,7 @@ Fields:
     </tr>
     <tr>
       <th>160</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Interval</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed_end_times"].interval</td>
@@ -2022,7 +1958,7 @@ Fields:
     </tr>
     <tr>
       <th>161</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Offset</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed_end_times"].offset</td>
@@ -2030,7 +1966,7 @@ Fields:
     </tr>
     <tr>
       <th>162</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Resolution</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed_end_times"].resolution</td>
@@ -2038,7 +1974,7 @@ Fields:
     </tr>
     <tr>
       <th>163</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Timestamps Units</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_speed_end_times"].timestamps_unit</td>
@@ -2046,7 +1982,7 @@ Fields:
     </tr>
     <tr>
       <th>164</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_speed_end_times"].unit</td>
@@ -2054,7 +1990,7 @@ Fields:
     </tr>
     <tr>
       <th>165</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Data</td>
       <td>array</td>
       <td>nwb.processing["running"]["running_speed_end_times"].data</td>
@@ -2062,7 +1998,7 @@ Fields:
     </tr>
     <tr>
       <th>166</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed End Times Timestamps</td>
       <td>array</td>
       <td>nwb.processing["running"]["running_speed_end_times"].timestamps</td>
@@ -2070,7 +2006,7 @@ Fields:
     </tr>
     <tr>
       <th>167</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Comments</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].comments</td>
@@ -2078,7 +2014,7 @@ Fields:
     </tr>
     <tr>
       <th>168</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Conversion</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].conversion</td>
@@ -2086,7 +2022,7 @@ Fields:
     </tr>
     <tr>
       <th>169</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Description</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].description</td>
@@ -2094,7 +2030,7 @@ Fields:
     </tr>
     <tr>
       <th>170</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Interval</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].interval</td>
@@ -2102,7 +2038,7 @@ Fields:
     </tr>
     <tr>
       <th>171</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Offset</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].offset</td>
@@ -2110,7 +2046,7 @@ Fields:
     </tr>
     <tr>
       <th>172</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Resolution</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].resolution</td>
@@ -2118,7 +2054,7 @@ Fields:
     </tr>
     <tr>
       <th>173</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Timestamps Units</td>
       <td>number</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].timestamps_unit</td>
@@ -2126,7 +2062,7 @@ Fields:
     </tr>
     <tr>
       <th>174</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].unit</td>
@@ -2134,7 +2070,7 @@ Fields:
     </tr>
     <tr>
       <th>175</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Data</td>
       <td>array</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].data</td>
@@ -2142,7 +2078,7 @@ Fields:
     </tr>
     <tr>
       <th>176</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Wheel Rotation Timestamps</td>
       <td>array</td>
       <td>nwb.processing["running"]["running_wheel_rotation"].timestamps</td>
@@ -2150,7 +2086,7 @@ Fields:
     </tr>
     <tr>
       <th>177</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Data</td>
       <td>array</td>
       <td>nwb.processing["stimulus"]["timestamps"].data</td>
@@ -2158,7 +2094,7 @@ Fields:
     </tr>
     <tr>
       <th>178</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Timestamps</td>
       <td>array</td>
       <td>nwb.processing["stimulus"]["timestamps"].timestamps</td>
@@ -2166,7 +2102,7 @@ Fields:
     </tr>
     <tr>
       <th>179</th>
-      <td>processing</td>
+      <td>subject</td>
       <td>Subject Age</td>
       <td>number</td>
       <td>nwb.subject.age</td>
@@ -2174,7 +2110,7 @@ Fields:
     </tr>
     <tr>
       <th>180</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Subject Age in Days</td>
       <td>number</td>
       <td>nwb.subject.age_in_days</td>
@@ -2182,7 +2118,7 @@ Fields:
     </tr>
     <tr>
       <th>181</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Subject Genotype</td>
       <td>string</td>
       <td>nwb.subject.genotype</td>
@@ -2190,7 +2126,7 @@ Fields:
     </tr>
     <tr>
       <th>182</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Subject Sex</td>
       <td>string</td>
       <td>nwb.subject.sex</td>
@@ -2198,7 +2134,7 @@ Fields:
     </tr>
     <tr>
       <th>183</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Subject Species</td>
       <td>string</td>
       <td>nwb.subject.species</td>
@@ -2206,7 +2142,7 @@ Fields:
     </tr>
     <tr>
       <th>184</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Subject Specimen Name</td>
       <td>string</td>
       <td>nwb.subject.specimen_name</td>
@@ -2214,7 +2150,7 @@ Fields:
     </tr>
     <tr>
       <th>185</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Subject Strain</td>
       <td>string</td>
       <td>nwb.subject.strain</td>
@@ -2222,7 +2158,7 @@ Fields:
     </tr>
     <tr>
       <th>186</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Subject ID</td>
       <td>string</td>
       <td>nwb.subject.subject_id</td>
@@ -2238,7 +2174,7 @@ Fields:
     </tr>
     <tr>
       <th>188</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit IDs</td>
       <td>array</td>
       <td>nwb.units.id</td>
@@ -2246,7 +2182,7 @@ Fields:
     </tr>
     <tr>
       <th>189</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Spreads</td>
       <td>array</td>
       <td>nwb.units.spread</td>
@@ -2254,7 +2190,7 @@ Fields:
     </tr>
     <tr>
       <th>190</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit PT Ratios</td>
       <td>array</td>
       <td>nwb.units.PT_ratio</td>
@@ -2262,7 +2198,7 @@ Fields:
     </tr>
     <tr>
       <th>191</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Waveform Durations</td>
       <td>array</td>
       <td>nwb.units.waveform_duration</td>
@@ -2270,7 +2206,7 @@ Fields:
     </tr>
     <tr>
       <th>192</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit D-Primes</td>
       <td>array</td>
       <td>nwb.units.d_prime</td>
@@ -2278,7 +2214,7 @@ Fields:
     </tr>
     <tr>
       <th>193</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Cumulative Drifts</td>
       <td>array</td>
       <td>nwb.units.cumulative_drift</td>
@@ -2286,7 +2222,7 @@ Fields:
     </tr>
     <tr>
       <th>194</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Silhouette Scores</td>
       <td>array</td>
       <td>nwb.units.silhouette_score</td>
@@ -2294,7 +2230,7 @@ Fields:
     </tr>
     <tr>
       <th>195</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Cluster IDs</td>
       <td>array</td>
       <td>nwb.units.cluster_id</td>
@@ -2302,7 +2238,7 @@ Fields:
     </tr>
     <tr>
       <th>196</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit L Ratios</td>
       <td>array</td>
       <td>nwb.units.l_ratio</td>
@@ -2310,7 +2246,7 @@ Fields:
     </tr>
     <tr>
       <th>197</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Qualities</td>
       <td>array</td>
       <td>nwb.units.quality</td>
@@ -2318,7 +2254,7 @@ Fields:
     </tr>
     <tr>
       <th>198</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit NN Miss Rates</td>
       <td>array</td>
       <td>nwb.units.nn_miss_rate</td>
@@ -2326,7 +2262,7 @@ Fields:
     </tr>
     <tr>
       <th>199</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Local Indices</td>
       <td>array</td>
       <td>nwb.units.local_index</td>
@@ -2334,7 +2270,7 @@ Fields:
     </tr>
     <tr>
       <th>200</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Amplitude Recovery Slopes</td>
       <td>array</td>
       <td>nwb.units.amplitude_recovery_slope</td>
@@ -2342,7 +2278,7 @@ Fields:
     </tr>
     <tr>
       <th>201</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit SNRs</td>
       <td>array</td>
       <td>nwb.units.snr</td>
@@ -2350,7 +2286,7 @@ Fields:
     </tr>
     <tr>
       <th>202</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Velocities Above</td>
       <td>array</td>
       <td>nwb.units.velocity_above</td>
@@ -2358,7 +2294,7 @@ Fields:
     </tr>
     <tr>
       <th>203</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Amplitude Cutoffs</td>
       <td>array</td>
       <td>nwb.units.amplitude_cutoff</td>
@@ -2366,7 +2302,7 @@ Fields:
     </tr>
     <tr>
       <th>204</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Isolation Distance</td>
       <td>array</td>
       <td>nwb.units.isolation_distance</td>
@@ -2374,7 +2310,7 @@ Fields:
     </tr>
     <tr>
       <th>205</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Peak Channel IDs</td>
       <td>array</td>
       <td>nwb.units.peak_channel_id</td>
@@ -2382,7 +2318,7 @@ Fields:
     </tr>
     <tr>
       <th>206</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Velocities Below</td>
       <td>array</td>
       <td>nwb.units.velocity_below</td>
@@ -2390,7 +2326,7 @@ Fields:
     </tr>
     <tr>
       <th>207</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit NN Hit Rates</td>
       <td>array</td>
       <td>nwb.units.nn_hit_rate</td>
@@ -2398,7 +2334,7 @@ Fields:
     </tr>
     <tr>
       <th>208</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Firing Rates</td>
       <td>array</td>
       <td>nwb.units.firing_rate</td>
@@ -2406,7 +2342,7 @@ Fields:
     </tr>
     <tr>
       <th>209</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit ISI Violations</td>
       <td>array</td>
       <td>nwb.units.isi_violations</td>
@@ -2414,7 +2350,7 @@ Fields:
     </tr>
     <tr>
       <th>210</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Repolarization Slopes</td>
       <td>array</td>
       <td>nwb.units.repolarization_slope</td>
@@ -2422,7 +2358,7 @@ Fields:
     </tr>
     <tr>
       <th>211</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Presence Ratios</td>
       <td>array</td>
       <td>nwb.units.presence_ratio</td>
@@ -2430,7 +2366,7 @@ Fields:
     </tr>
     <tr>
       <th>212</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Waveform Halfwidths</td>
       <td>array</td>
       <td>nwb.units.waveform_halfwidth</td>
@@ -2438,7 +2374,7 @@ Fields:
     </tr>
     <tr>
       <th>213</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Max Drifts</td>
       <td>array</td>
       <td>nwb.units.max_drift</td>
@@ -2446,7 +2382,7 @@ Fields:
     </tr>
     <tr>
       <th>214</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Spike Times</td>
       <td>array</td>
       <td>nwb.units.spike_times</td>
@@ -2454,7 +2390,7 @@ Fields:
     </tr>
     <tr>
       <th>215</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Spike Amplitudes</td>
       <td>array</td>
       <td>nwb.units.spike_amplitudes</td>
@@ -2462,7 +2398,7 @@ Fields:
     </tr>
     <tr>
       <th>216</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Waveform Means</td>
       <td>array</td>
       <td>nwb.units.waveform_mean</td>
@@ -2470,7 +2406,7 @@ Fields:
     </tr>
     <tr>
       <th>217</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Waveform Halfwidths</td>
       <td>array</td>
       <td>nwb.units.waveform_halfwidth</td>
@@ -2478,7 +2414,7 @@ Fields:
     </tr>
     <tr>
       <th>218</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Max Drifts</td>
       <td>array</td>
       <td>nwb.units.max_drift</td>
@@ -2486,7 +2422,7 @@ Fields:
     </tr>
     <tr>
       <th>219</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Spike Times</td>
       <td>array</td>
       <td>nwb.units.spike_times</td>
@@ -2494,7 +2430,7 @@ Fields:
     </tr>
     <tr>
       <th>220</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Spike Amplitudes</td>
       <td>array</td>
       <td>nwb.units.spike_amplitudes</td>
@@ -2502,7 +2438,7 @@ Fields:
     </tr>
     <tr>
       <th>221</th>
-      <td>units</td>
+      <td>NaN</td>
       <td>Unit Waveform Means</td>
       <td>array</td>
       <td>nwb.units.waveform_mean</td>
@@ -2514,7 +2450,7 @@ Fields:
 </div>
 </section>
 <section id="ophys-file">
-<h3>Ophys File<a class="headerlink" href="#ophys-file" title="Permalink to this headline">#</a></h3>
+<h3>Ophys File<a class="headerlink" href="#ophys-file" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/ophys_schema.csv&quot;</span><span class="p">)</span>
@@ -2545,6 +2481,7 @@ Fields:
       <th>Type</th>
       <th>Path</th>
       <th>Definition</th>
+      <th>Unnamed: 5</th>
     </tr>
   </thead>
   <tbody>
@@ -2555,6 +2492,7 @@ Fields:
       <td>string</td>
       <td>nwb.session_description</td>
       <td>Description of the Session</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
@@ -2563,6 +2501,7 @@ Fields:
       <td>string</td>
       <td>nwb.identifier</td>
       <td>Unique identifier of the session</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
@@ -2571,6 +2510,7 @@ Fields:
       <td>datetime</td>
       <td>nwb.session_start_time</td>
       <td>Datetime start of the session</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2579,6 +2519,7 @@ Fields:
       <td>datetime</td>
       <td>nwb.timestamps_reference_time</td>
       <td>Time that all timestamps are in reference to</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
@@ -2587,6 +2528,7 @@ Fields:
       <td>string</td>
       <td>nwb.experiment_description</td>
       <td>Description of the experiment</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>5</th>
@@ -2595,6 +2537,7 @@ Fields:
       <td>string</td>
       <td>nwb.institution</td>
       <td>Name of the institution that produced these data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>6</th>
@@ -2603,574 +2546,646 @@ Fields:
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Description</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Interval</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Offset</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Reference Frame</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.reference_frame</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Unit</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Angle</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.angle</td>
       <td>Angle of the eye in degrees over time as calculated with corneal reflection tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Height</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.height</td>
       <td>Height of the cornea, in pixels, over time as calculated with corneal reflection tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Width</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.width</td>
       <td>Width of the cornea, in pixels, over time as calculated with corneal reflection tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.area</td>
       <td>Area of the cornea, in pixels, over time as calculated with corneal reflection tracking and with outliers removed. Should generally be equal to corneal reflection tracking height times corneal reflection tracking width</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Raw Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.area_raw</td>
       <td>Area of the cornea, in pixels, over time as calculated with corneal reflection tracking. Should be equal to corneal reflection tracking height times corneal reflection tracking width.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Data</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.data</td>
       <td>2D array consisting of the X and Y locations of the eye, in pixels, over time as calculated by corneal reflection tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>20</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Corneal Reflection Tracking Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].corneal_reflection_tracking.timestamps</td>
       <td>Timestamps of the corneal reflection tracking arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>21</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Tracking Comments</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Description</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Interval</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Offset</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>26</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Reference Frame</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.reference_frame</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>27</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>28</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Unit</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Angle</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.angle</td>
       <td>Angle of the eye in degrees over time as calculated with eye tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>30</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Height</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.height</td>
       <td>Height of the eye, in pixels, over time as calculated with eye tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>31</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Width</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.width</td>
       <td>Width of the eye, in pixels, over time as calculated with eye tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>32</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.area</td>
       <td>Area of the eye, in pixels, over time as calculated with eye tracking with outliers removed. Should generally be equal to eye tracking height times eye tracking width</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>33</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Raw Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.area_raw</td>
       <td>Area of the eye, in pixels, over time as calculated with eye tracking. Should be equal to eye tracking height times eye tracking width</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>34</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Data</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.data</td>
       <td>2D array consisting of the X and Y locations of the eye, in pixels, over time as calculated by eye tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>35</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].eye_tracking.timestamps</td>
       <td>Timestamps of the eye tracking arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>36</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Tracking Comments</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>37</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>38</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Description</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>39</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Interval</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>40</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Offset</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>41</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Reference Frame</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.reference_frame</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>42</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>43</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Eye Tracking Unit</td>
       <td>string</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>44</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Angle</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.angle</td>
       <td>Angle of the pupil in degrees over time as calculated with pupil tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>45</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Height</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.height</td>
       <td>Height of the pupil, in pixels, over time as calculated with pupil tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>46</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Width</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.width</td>
       <td>Width of the pupil, in pixels, over time as calculated with pupil tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>47</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.area</td>
       <td>Area of the pupil, in pixels, over time as calculated with pupil tracking and with outliers removed. Should generally be equal to pupil tracking height times pupil tracking width</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>48</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Raw Area</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.area_raw</td>
       <td>Area of the pupil, in pixels, over time as calculated with pupil tracking. Should be equal to pupil tracking height times pupil tracking width</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>49</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Data</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.data</td>
       <td>2D array consisting of the X and Y locations of the pupil, in pixels, over time as calculated by eye tracking</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>50</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Pupil Tracking Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].pupil_tracking.timestamps</td>
       <td>Timestamps of the pupil tracking arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>51</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Blink Times</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].likely_blink.data</td>
       <td>Array of booleans indicating probable blink times</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>52</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Blink Times Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["EyeTracking"].likely_blink.timestamps</td>
       <td>Timestamps of the blink times array</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>53</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>2P Movie Data</td>
       <td>array</td>
       <td>nwb.acquisition["raw_suite2p_motion_corrected"].data</td>
       <td>3D array of the raw 2P movie where the dimensions are pixels height * pixels width * frame time</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>54</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>2P Movie Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["raw_suite2p_motion_corrected"].timestamps</td>
       <td>Timestamps of the frames in the 2P movie</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>55</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>2P Movie Rate</td>
       <td>number</td>
       <td>nwb.acquisition["raw_suite2p_motion_corrected"].rate</td>
       <td>Framerate of the 2P movie</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>56</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>2P Movie Device</td>
       <td>Device</td>
       <td>nwb.acquisition["raw_suite2p_motion_corrected"].device</td>
       <td>Device that produced the 2P movie data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>57</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>2P Movie Imaging Plane</td>
       <td>number</td>
       <td>nwb.acquisition["raw_suite2p_motion_corrected"].imaging_plane</td>
       <td>Imaging Plane of the 2P movie</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>58</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Comments</td>
       <td>string</td>
       <td>nwb.acquisition["v_in"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>59</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["v_in"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>60</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Description</td>
       <td>string</td>
       <td>nwb.acquisition["v_in"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>61</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Interval</td>
       <td>number</td>
       <td>nwb.acquisition["v_in"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>62</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Offset</td>
       <td>number</td>
       <td>nwb.acquisition["v_in"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>63</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["v_in"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>64</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Timestamps Unit</td>
       <td>string</td>
       <td>nwb.acquisition["v_in"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>65</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Unit</td>
       <td>string</td>
       <td>nwb.acquisition["v_in"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>66</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Data</td>
       <td>array</td>
       <td>nwb.acquisition["v_in"].data</td>
       <td>Unused</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>67</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Input Voltage Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["v_in"].timestamps</td>
       <td>Unused</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>68</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Comments</td>
       <td>string</td>
       <td>nwb.acquisition["v_sig"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>69</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Conversion</td>
       <td>number</td>
       <td>nwb.acquisition["v_sig"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>70</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Description</td>
       <td>string</td>
       <td>nwb.acquisition["v_sig"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>71</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Interval</td>
       <td>number</td>
       <td>nwb.acquisition["v_sig"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>72</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Offset</td>
       <td>number</td>
       <td>nwb.acquisition["v_sig"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>73</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Resolution</td>
       <td>number</td>
       <td>nwb.acquisition["v_sig"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>74</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Timestamps Unit</td>
       <td>string</td>
       <td>nwb.acquisition["v_sig"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>75</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Unit</td>
       <td>string</td>
       <td>nwb.acquisition["v_sig"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>76</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Data</td>
       <td>array</td>
       <td>nwb.acquisition["v_sig"].dat</td>
       <td>Unused</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>77</th>
-      <td>acquisition</td>
+      <td>NaN</td>
       <td>Signal Voltage Timestamps</td>
       <td>array</td>
       <td>nwb.acquisition["v_sig"].timestamps</td>
       <td>Unused</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>78</th>
@@ -3179,6 +3194,7 @@ Fields:
       <td>string</td>
       <td>nwb.devices[device_name].description</td>
       <td>Description of the device</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>79</th>
@@ -3187,6 +3203,7 @@ Fields:
       <td>number</td>
       <td>nwb.file_create_date</td>
       <td>Datetime time this file was created</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>80</th>
@@ -3195,54 +3212,61 @@ Fields:
       <td>string</td>
       <td>nwb.imaging_planes[imaging_plane_name].description</td>
       <td>Description of the instrument used.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>81</th>
-      <td>imaging_planes</td>
+      <td>NaN</td>
       <td>Imaging Plane Excitation Lambda</td>
       <td>number</td>
       <td>nwb.imaging_planes[imaging_plane_name].excitation_lambda</td>
       <td>Peak wavelength of the light excitation given by the pulsed Ti:Sa laser (nm).</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>82</th>
-      <td>imaging_planes</td>
+      <td>NaN</td>
       <td>Imaging Plane Imaging Rate</td>
       <td>number</td>
       <td>nwb.imaging_planes[imaging_plane_name].imaging_rate</td>
       <td>Frame rate to record each imaged plane.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>83</th>
-      <td>imaging_planes</td>
+      <td>NaN</td>
       <td>Imaging Plane Indicator</td>
       <td>string</td>
       <td>nwb.imaging_planes[imaging_plane_name].indicator</td>
       <td>Calcium indicator used to record neuronal activity.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>84</th>
-      <td>imaging_planes</td>
+      <td>NaN</td>
       <td>Imaging Plane Location</td>
       <td>string</td>
       <td>nwb.imaging_planes[imaging_plane_name].location</td>
       <td>Brain area imaged during the experiemnt.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>85</th>
-      <td>imaging_planes</td>
+      <td>NaN</td>
       <td>Imaging Plane Optical Channel</td>
       <td>OpticalChannel</td>
       <td>nwb.imaging_planes[imaging_plane_name].optical_channel</td>
       <td>Optical channel associated with this imaging plane. This provides a description of the fluorescence emission wavelength.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>86</th>
-      <td>imaging_planes</td>
+      <td>NaN</td>
       <td>Imaging Plane Unit</td>
       <td>string</td>
       <td>nwb.imaging_planes[imaging_plane_name].unit</td>
       <td>Unit of this imaging plane</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>87</th>
@@ -3251,86 +3275,97 @@ Fields:
       <td>array</td>
       <td>nwb.intervals[stimulus].colnames</td>
       <td>Column names of the stimulus table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>88</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval IDs</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].id</td>
       <td>IDs column of the stimulus table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>89</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Start Times</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].start_time</td>
       <td>Start times of the stimulus table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>90</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stop Times</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stop_time</td>
       <td>Stop times of the stimulus table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>91</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Names</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stimulus_name</td>
       <td>Names of stimulus types column of the stimulus table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>92</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Blocks</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stimulus_block</td>
       <td>Numbers representing stimulus blocks column of the stimulus table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>93</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Frames</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].frame</td>
       <td>Column of the stimulus table consisting of frame numbers of the stimulus</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>94</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Stimulus Indices</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].stimulus_index</td>
       <td>Column of the stimulus table which contains the stimulus index for each interval</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>95</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Tags</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].tags</td>
       <td>Column of the stimulus table which contains a list of tags for each interval</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Interval Timeseries Link</td>
       <td>array</td>
       <td>nwb.intervals[stimulus].timeseries</td>
       <td>Column of the stimulus table contain tuples of the form (i, c, r) where r is a reference to the complete timestamps array for the session, and i is the index within that array</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>intervals</td>
+      <td>NaN</td>
       <td>Stimulus Intervals Description</td>
       <td>string</td>
       <td>nwb.intervals[stimulus].description</td>
       <td>Description of the stimulus table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>98</th>
@@ -3339,1022 +3374,1150 @@ Fields:
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].experiment_container_id</td>
       <td>unique id associated with all experiments that were cell-matched</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>lab_meta_data</td>
+      <td>NaN</td>
       <td>FOV Width</td>
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].field_of_view_width</td>
       <td>Number of pixels in the horizontal direction</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>100</th>
-      <td>lab_meta_data</td>
+      <td>NaN</td>
       <td>FOV Height</td>
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].field_of_view_height</td>
       <td>Number of pixels in the vertical direction</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>101</th>
-      <td>lab_meta_data</td>
+      <td>NaN</td>
       <td>Imaging Depth</td>
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].imaging_depth</td>
       <td>Imaging depth from the surface of the brain in microns</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>102</th>
-      <td>lab_meta_data</td>
+      <td>NaN</td>
       <td>Imaging Plane Group</td>
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].imaging_plane_group</td>
       <td>The Allen Institute mesoscope simultaneously acquire planes in pair.  This number indicate which plane this experiment is associated with.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>103</th>
-      <td>lab_meta_data</td>
+      <td>NaN</td>
       <td>Imaging Plane Group Count</td>
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].imaging_plane_group_count</td>
       <td>Id of the imaging plane within the pair of simultateneously acquired planes.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>104</th>
-      <td>lab_meta_data</td>
+      <td>NaN</td>
       <td>Ophys Experiment ID</td>
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].ophys_experiment_id</td>
       <td>Unique id given to each imaging plane</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>105</th>
-      <td>lab_meta_data</td>
+      <td>NaN</td>
       <td>Ophys Session ID</td>
       <td>number</td>
       <td>nwb.lab_meta_data["metadata"].ophys_session_id</td>
       <td>Unique id given to each experimental session. Multiple experiemntal ids can have the same session id.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>106</th>
       <td>processing</td>
       <td>Fluorescence Trace Comments</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].comments</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>107</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Conversion</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].conversion</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>108</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Description</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].description</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>109</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Interval</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].interval</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>110</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Offset</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].offset</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>111</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Resolution</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].resolution</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>112</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Timestamps Unit</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].timestamps_unit</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>113</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Unit</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].unit</td>
+      <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>114</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Data</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.data</td>
       <td>Traces extracted from individual ROI, neuropil subtracted and demixed, but not normalized</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>115</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Fluorescence Trace Timestamps</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["corrected_fluorescence"].roi_response_series.timestamps</td>
       <td>Timestamps of the corrected_fluorescence arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>116</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Comments</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>117</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Conversion</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>118</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Description</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>119</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Interval</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>120</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Offset</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>121</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Resolution</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>122</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>123</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>124</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Data</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.data</td>
       <td>Traces extracted from individual ROI, baseline corrected, normalized fluorescence traces</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>125</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>DFF Trace Timestamps</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["dff"].roi_response_series.timestamps</td>
       <td>Timestamps of the dff arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>126</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Comments</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["event_detection"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>127</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Conversion</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["event_detection"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>128</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Description</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["event_detection"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>129</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Interval</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["event_detection"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>130</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Offset</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["event_detection"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>131</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Resolution</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["event_detection"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>132</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["event_detection"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>133</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["event_detection"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>134</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Data</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["event_detection"].data</td>
       <td>Calcium events (detected with an L0 event detection algorithm)</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>135</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Timestamps</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["event_detection"].timestamps</td>
       <td>Timestamps of the events_detection arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>136</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Lambdas</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["event_detection"].lambdas</td>
       <td>Lambda used in the event detection algorithm. lambda is chosen by finding smallest lambda such that the size of the smallest detected event is greater or equal to event_min_size*robust std of noise.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>137</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Event Detection Standard Deviation</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["event_detection"].noise_stds</td>
       <td>Estimates of the std of the noise for each trace</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>138</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Table Column Names</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].colnames</td>
       <td>Column names of the ROI table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>139</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI IDs</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].id</td>
       <td>Column of IDs in the ROI table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>140</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Cell Specimen IDs</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].cell_specimen_id</td>
       <td>Column of the ROI table consisting of the cell ID within a container for each ROI</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>141</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Heights</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].height</td>
       <td>ROI heights, in pixels, column of the ROIs table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>142</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Mask Image Planes</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].mask_image_plane</td>
       <td>Column of the ROI table consisting of the index of ROIs that overlap</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>143</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Max Corrections Down</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].max_correction_down</td>
       <td>Column of the ROI table consisting of the maximum motion correction downward for each ROI</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>144</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Max Corrections Left</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].max_correction_left</td>
       <td>Column of the ROI table consisting of the maximum motion correction to the left for each ROI</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>145</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Max Corrections Up</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].max_correction_up</td>
       <td>Maximum motion correction upward</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>146</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Max Corrections Right</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].max_correction_right</td>
       <td>Maximum motion correction to the right</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>147</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Valid Flags</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].valid_roi</td>
       <td>ROI validity flags column of the ROIs table, indicating if the ROI is classified as a cell</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>148</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Widths</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].width</td>
       <td>ROI widths, in pixels, column of the ROI table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>149</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI X Coordinates</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].x</td>
       <td>ROI X coordinates, in pixels, column of the ROI table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>150</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Y Coordinates</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].y</td>
       <td>ROI Y coordinates, in pixels, column of the ROI table</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>151</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>ROI Image Masks</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["image_segmentation"]["cell_specimen_table"].image_mask</td>
       <td>Column of the ROIs table consisting of the black/white segmentation mask image of each individual ROI</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>152</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>2P Image Description</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["images"].description</td>
       <td>Description of the Images</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>153</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>2P Average Image</td>
       <td>GrayscaleImage</td>
       <td>nwb.processing["ophys"]["images"]["average_image"]</td>
       <td>Average Image of the movie from the session</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>154</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>2P Max Projection</td>
       <td>GrayscaleImage</td>
       <td>nwb.processing["ophys"]["images"]["max_projection"]</td>
       <td>Maximum projection image of the movie from the session</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>155</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>2P Segmentation Mask</td>
       <td>GrayscaleImage</td>
       <td>nwb.processing["ophys"]["images"]["segmentation_mask"]</td>
       <td>Black/white Segmentation mask image of all ROIs in the movie</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>156</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Comments</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>157</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Conversion</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>158</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Description</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>159</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Interval</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>160</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Offset</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>161</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Resolution</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>162</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Timestamps Unit</td>
       <td>unit</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>163</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction X Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>164</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Motion Correction X Data</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].data</td>
       <td>horizontal correction applied to each frame of the two-photon raw movie using rigid-body motion correction</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>165</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Motion Correction X Timestamps</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_x"].timestamps</td>
       <td>Array of timestamps for the motion correction arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>166</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Comments</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>167</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Conversion</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>168</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Description</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>169</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Interval</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>170</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Offset</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>171</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Resolution</td>
       <td>number</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>172</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>173</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Motion Correction Y Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>174</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Motion Correction Y Data</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].data</td>
       <td>Vertical correction applied to each frame of the two-photon raw movie using rigid-body motion correction</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>175</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Motion Correction Y Timestamps</td>
       <td>array</td>
       <td>nwb.processing["ophys"]["ophys_motion_correction_y"].timestamps</td>
       <td>Array of timestamps for the motion correction arrays</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>176</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Comments</td>
       <td>string</td>
       <td>nwb.processing["stimulus"]["timestamps"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>177</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Conversion</td>
       <td>number</td>
       <td>nwb.processing["stimulus"]["timestamps"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>178</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Description</td>
       <td>string</td>
       <td>nwb.processing["stimulus"]["timestamps"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>179</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Interval</td>
       <td>number</td>
       <td>nwb.processing["stimulus"]["timestamps"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>180</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Offset</td>
       <td>number</td>
       <td>nwb.processing["stimulus"]["timestamps"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>181</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Resolution</td>
       <td>number</td>
       <td>nwb.processing["stimulus"]["timestamps"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>182</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["stimulus"]["timestamps"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>183</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["stimulus"]["timestamps"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>184</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Data</td>
       <td>array</td>
       <td>nwb.processing["stimulus"]["timestamps"].data</td>
       <td>Array of all the screen refresh timestamps during the session. Identical to Stimulus Timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>185</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Stimulus Timestamps Timestamps</td>
       <td>array</td>
       <td>nwb.processing["stimulus"]["timestamps"].timestamps</td>
       <td>Array of all the screen refresh timestamps during the session. Identical to Stimulus Timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>186</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Comments</td>
       <td>string</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>187</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Conversion</td>
       <td>number</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>188</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Description</td>
       <td>string</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>189</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Interval</td>
       <td>number</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>190</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Offset</td>
       <td>number</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>191</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Resolution</td>
       <td>number</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>192</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>193</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["ophys_stimulus"]["timestamps"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>194</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Data</td>
       <td>array</td>
       <td>nwb.processing["stimulus_ophys"]["timestamps"].data</td>
       <td>Timestamps associated with all visual stimuli presented on the strimulation screen.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>195</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Ophys Stimulus Timestamps Timestamps</td>
       <td>array</td>
       <td>nwb.processing["stimulus_ophys"]["timestamps"].timestamps</td>
       <td>Timestamps associated with all visual stimuli presented on the strimulation screen.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>196</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Comments</td>
       <td>string</td>
       <td>nwb.processing["running"]["dx"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>197</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Conversion</td>
       <td>number</td>
       <td>nwb.processing["running"]["dx"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>198</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Description</td>
       <td>string</td>
       <td>nwb.processing["running"]["dx"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>199</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Interval</td>
       <td>number</td>
       <td>nwb.processing["running"]["dx"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>200</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Offset</td>
       <td>number</td>
       <td>nwb.processing["running"]["dx"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>201</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Resolution</td>
       <td>number</td>
       <td>nwb.processing["running"]["dx"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>202</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["dx"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>203</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["dx"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>204</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Data</td>
       <td>array</td>
       <td>nwb.processing["running"]["dx"].data</td>
       <td>Array of differences, in degrees, between current and last wheel position</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>205</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running DX Timestamps</td>
       <td>array</td>
       <td>nwb.processing["running"]["dx"].timestamps</td>
       <td>Array of timestamps for the dx array</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>206</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Comments</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>207</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Conversion</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>208</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Description</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>209</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Interval</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>210</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Offset</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>211</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Resolution</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>212</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>213</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>214</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Data</td>
       <td>array</td>
       <td>nwb.processing["running"]["speed"].data</td>
       <td>Speed of the running wheel, measured at each timestamps. The data is filtered with a low-pass filter to remove noise artifacts (cm/s).</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>215</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Running Speed Timestamps</td>
       <td>array</td>
       <td>nwb.processing["running"]["speed"].timestamps</td>
       <td>Timestamps of the running speed.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>216</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Comments</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed_unfiltered"].comments</td>
       <td>Comments</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>217</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Conversion</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed_unfiltered"].conversion</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>218</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Description</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed_unfiltered"].description</td>
       <td>Description</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>219</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Interval</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed_unfiltered"].interval</td>
       <td>Unexplained</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>220</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Offset</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed_unfiltered"].offset</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>221</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Resolution</td>
       <td>number</td>
       <td>nwb.processing["running"]["speed_unfiltered"].resolution</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>222</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Timestamps Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed_unfiltered"].timestamps_unit</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>223</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Unit</td>
       <td>string</td>
       <td>nwb.processing["running"]["speed_unfiltered"].unit</td>
       <td>Name of the unit for the data</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>224</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Data</td>
       <td>array</td>
       <td>nwb.processing["running"]["speed_unfiltered"].data</td>
       <td>Speed of the running wheel, measured at each timestamps. The data is raw (cm/s).</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>225</th>
-      <td>processing</td>
+      <td>NaN</td>
       <td>Unfiltered Running Speed Timestamps</td>
       <td>array</td>
       <td>nwb.processing["running"]["speed_unfiltered"].timestamps</td>
       <td>Timestamps of the unfiltered running speed.</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>226</th>
@@ -4363,78 +4526,88 @@ Fields:
       <td>number</td>
       <td>nwb.subject.age</td>
       <td>Age of the subject</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>227</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject Age in Days</td>
       <td>number</td>
       <td>nwb.subject.age_in_days</td>
       <td>Age of the subject, in days</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>228</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject Genotype</td>
       <td>string</td>
       <td>nwb.subject.genotype</td>
       <td>Genotype of the subject</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>229</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject Sex</td>
       <td>string</td>
       <td>nwb.subject.sex</td>
       <td>Sex of the subject, M or F</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>230</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject Species</td>
       <td>string</td>
       <td>nwb.subject.species</td>
       <td>Species of the subject</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>231</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject Specimen Name</td>
       <td>string</td>
       <td>nwb.subject.specimen_name</td>
       <td>Specimen name of the subject</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>232</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject Strain</td>
       <td>string</td>
       <td>nwb.subject.strain</td>
       <td>Strain of the subject</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>233</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject ID</td>
       <td>string</td>
       <td>nwb.subject.subject_id</td>
       <td>Unique identifier of the subject</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>234</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject Strain</td>
       <td>string</td>
       <td>nwb.subject.strain</td>
       <td>Strain of the subject</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>235</th>
-      <td>subject</td>
+      <td>NaN</td>
       <td>Subject ID</td>
       <td>string</td>
       <td>nwb.subject.subject_id</td>
       <td>Unique identifier of the subject</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -4464,50 +4637,106 @@ Fields:
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="download_nwb.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Downloading an NWB File</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="download_nwb.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Downloading an NWB File</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="use_nwbwidgets.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="use_nwbwidgets.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Exploring an NWB File</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-an-nwb-file">Downloading an NWB File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Reading an NWB File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openscope-s-file-schemas">OpenScope’s File Schemas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ecephys-file">Ecephys File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophys-file">Ophys File</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Carter Peene<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Carter Peene
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
