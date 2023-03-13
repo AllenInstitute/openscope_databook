@@ -26,11 +26,11 @@ https://alleninstitute.github.io/openscope_databook
 - [Visualizing 2P responses to stimulus events in different epochs](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_responses.ipynb)
 
 ### Chapter 3: First-order analysis
-- Neuropixel: plotting receptive fields
-- Neuropixel: Identifying opto-tagged cells
+- [Neuropixel: plotting receptive fields](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/receptive_fields.ipynb)
+- [Neuropixel: Identifying opto-tagged cells](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/optotagging.ipynb)
+- 2P: Cell matching across days
 - 2P: How to align timestamps across modalities.
 - 2P: Stimuli averages with 2P data
-- 2P: Cell matching across days
 - Neuropixel: Stimuli averages with neuropixel data
 - Neuropixel: extracting Current Source Density plots
 
