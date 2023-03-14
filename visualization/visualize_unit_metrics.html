@@ -1,56 +1,48 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Visualizing Unit Quality Metrics &#8212; OpenScope Databook</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
+    
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -58,424 +50,61 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'visualization/visualize_unit_metrics';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing LFP Responses to Stimulus" href="visualize_lfp_responses.html" />
     <link rel="prev" title="Visualizing Neuropixel Probe Locations" href="visualize_neuropixel_probes.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
-
-  
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
-  </div>
-
-  
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
     
+    <div class="container-fluid" id="banner"></div>
+
     
-  
 
-
-<a class="navbar-brand logo" href="../intro.html">
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    
-  </div>
-
-  
-  <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/download_nwb.html">
-                        Downloading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/read_nwb.html">
-                        Reading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/use_nwbwidgets.html">
-                        Exploring an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/stream_nwb.html">
-                        Streaming an NWB File with fsspec
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/get_dandiset_metadata.html">
-                        Getting Experimental Metadata from DANDI
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_behavior.html">
-                        Visualizing Behavioral Data
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_raw.html">
-                        Visualizing Raw 2-Photon Images
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_neuropixel_probes.html">
-                        Visualizing Neuropixel Probe Locations
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Visualizing Unit Quality Metrics
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_lfp_responses.html">
-                        Visualizing LFP Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_unit_responses.html">
-                        Visualizing Neuronal Unit Spikes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_responses.html">
-                        Visualizing 2P Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/receptive_fields.html">
-                        Showing Receptive Fields
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/optotagging.html">
-                        Identifying Optotagged Units
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-    </div>
-
-    <div id="navbar-end">
-      
-        <div class="navbar-end-item navbar-persistent--container">
+    <div class="container-xl">
+      <div class="row">
           
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-        </div>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-
-
-  
-  
-    <div class="navbar-persistent--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-    </div>
-  
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
-</div>
-  </nav>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-      <div class="sidebar-header-items__center">
       
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/download_nwb.html">
-                        Downloading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/read_nwb.html">
-                        Reading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/use_nwbwidgets.html">
-                        Exploring an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/stream_nwb.html">
-                        Streaming an NWB File with fsspec
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/get_dandiset_metadata.html">
-                        Getting Experimental Metadata from DANDI
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_behavior.html">
-                        Visualizing Behavioral Data
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_raw.html">
-                        Visualizing Raw 2-Photon Images
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_neuropixel_probes.html">
-                        Visualizing Neuropixel Probe Locations
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Visualizing Unit Quality Metrics
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_lfp_responses.html">
-                        Visualizing LFP Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_unit_responses.html">
-                        Visualizing Neuronal Unit Spikes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_responses.html">
-                        Visualizing 2P Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/receptive_fields.html">
-                        Showing Receptive Fields
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/optotagging.html">
-                        Identifying Optotagged Units
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
       
-      </div>
-    
-
-    
-    
-    <div class="sidebar-header-items__end">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
       
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
+      <h1 class="site-logo" id="site-title">OpenScope Databook</h1>
       
-    </div>
-    
-  </div>
-
-  
-  <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
-  
-
-
-<a class="navbar-brand logo" href="../intro.html">
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    </div>
-    <div class="sidebar-start-items__item">
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
-    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -484,239 +113,338 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NWB Basics</span></p>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NWB Basics
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/download_nwb.html">
+   Downloading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/read_nwb.html">
+   Reading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/use_nwbwidgets.html">
+   Exploring an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/stream_nwb.html">
+   Streaming an NWB File with fsspec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/get_dandiset_metadata.html">
+   Getting Experimental Metadata from DANDI
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Visualizing NWB Files
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="visualize_behavior.html">Visualizing Behavioral Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_behavior.html">
+   Visualizing Behavioral Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_neuropixel_probes.html">
+   Visualizing Neuropixel Probe Locations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Visualizing Unit Quality Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_unit_responses.html">
+   Visualizing Neuronal Unit Spikes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_2p_responses.html">
+   Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-order Analysis</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  First-Order Analysis
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/receptive_fields.html">
+   Showing Receptive Fields
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/optotagging.html">
+   Identifying Optotagged Units
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav>
-    </div>
-  </div>
-  
-
-  
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
-  </div>
-
-  
-  <div id="rtd-footer-container"></div>
-
-      </div>
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-        <div class="bd-content">
-          <div class="bd-article-container">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <div class="bd-header-article">
-                
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
-            <span class="fa-solid fa-bars"></span>
-        </label>
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
     </div>
     <div class="header-article__right">
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_unit_metrics.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_unit_metrics.ipynb"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on Binder"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="btn__text-container">Binder</span>
+<span class="headerbtn__text-container">Binder</span>
 </a>
-</a>
+
+      </li>
       
-      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_unit_metrics.ipynb&branch=main" target="_blank"
-   class="btn btn-sm dropdown-item"
+      <li>
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_unit_metrics.ipynb&branch=main"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on JupyterHub"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   
     <img src="../_static/images/logo_jupyterhub.svg">
   </span>
-<span class="btn__text-container">JupyterHub</span>
+<span class="headerbtn__text-container">JupyterHub</span>
 </a>
-</a>
+
+      </li>
       
       <li>
+        
 <button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
+  class="headerbtn headerbtn-launch-thebe"
   data-toggle="tooltip"
 data-placement="left"
 title="Launch Thebe"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="btn__text-container">Live Code</span>
+<span class="headerbtn__text-container">Live Code</span>
 </button>
-</a>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm"
+  class="headerbtn"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-
-
-<div class="dropdown dropdown-repository-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
-   class="btn btn-sm dropdown-item"
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="btn__text-container">repository</span>
+<span class="headerbtn__text-container">repository</span>
 </a>
-</a>
+
+      </li>
       
-      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fvisualization/visualize_unit_metrics.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm dropdown-item"
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fvisualization/visualize_unit_metrics.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="btn__text-container">open issue</span>
+<span class="headerbtn__text-container">open issue</span>
 </a>
-</a>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
 
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="../_sources/visualization/visualize_unit_metrics.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/visualization/visualize_unit_metrics.ipynb"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
-</a>
+
+      </li>
       
       <li>
+        
 <button onclick="printPdf(this)"
-  class="btn btn-sm dropdown-item"
+  class="headerbtn"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="btn__text-container">.pdf</span>
+<span class="headerbtn__text-container">.pdf</span>
 </button>
-</a>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
-            <span class="fa-solid fa-list"></span>
-        </label>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
-            </div>
-            
-            
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Visualizing Unit Quality Metrics</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#environment-setup">
    Environment Setup
@@ -789,15 +517,105 @@ title="Print to PDF"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Visualizing Unit Quality Metrics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#streaming-an-nwb-file">
+   Streaming an NWB File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-units-data">
+   Extracting Units Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality">
+   Quality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#firing-rate">
+   Firing Rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presence-ratio">
+   Presence Ratio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#amplitude-cutoff">
+   Amplitude Cutoff
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#isi-violations">
+   ISI Violations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snr">
+   SNR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#snr-over-depth">
+   SNR Over Depth
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#isolation-distance">
+   Isolation Distance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-prime">
+   d-prime
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nearest-neighbors-hit-rate">
+   Nearest-neighbors hit-rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
 
-            <article class="bd-article" role="main">
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-unit-quality-metrics">
-<h1>Visualizing Unit Quality Metrics<a class="headerlink" href="#visualizing-unit-quality-metrics" title="Permalink to this heading">#</a></h1>
+<h1>Visualizing Unit Quality Metrics<a class="headerlink" href="#visualizing-unit-quality-metrics" title="Permalink to this headline">#</a></h1>
 <p>Note: This content is taken and adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_quality_metrics.html">Allen SDK Documentation</a>. Further explanation for each metric can be found there.</p>
 <p>This Jupyter notebook will provide a detailed explanation of the unit quality metrics included in ecephys NWB Files. It’s important to pay attention to quality metrics, because failing to apply them correctly could lead to invalid scientific conclusions, or could end up hiding potentially useful data. To help you avoid these pitfalls, this tutorial will explore how these metrics are calculated, how they can be biased, and how they should be applied to specific use cases. It’s important to keep in mind that none of these metrics are perfect, and that the use of unit quality metrics for filtering ephys data is still an evolving area of research. More work is required in order to establish general-purpose best practices and standards in this domain.</p>
 <p>All of the Allen Institute Neuropixels data has been sorted with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort2</a></strong>, a template-matching algorithm developed by Marius Pachitariu at HHMI Janelia Research Campus. Because there is no “ground truth” information available in these datasets, any sorting algorithm is bound to make mistakes. Quality metrics allow us to understand the types of mistakes that are occurring, and obtain an estimate of their severity. Some common errors that can be identified by quality metrics include:</p>
@@ -809,7 +627,7 @@ title="Print to PDF"
 <p>These mistakes can occur even in units that appear to be extremely well isolated. It’s misleading to conceive of units as existing in two distinct categories, one with perfectly clean “single units” and one with impure “multiunits.” Instead, there’s a gradient of qualities, with mostly complete, uncontaminated units at one end, and incomplete, highly contaminated units at the other.</p>
 <p>Despite the fact that there’s not a clear division between single-unit and multi-unit activity, we still have to make a binary decision in every analysis we carry out: should this unit be included or not? Ideally this decision should be based on objective metrics that will not bias the end results. By default, the AllenSDK uses three quality metrics, <em>isi_violations</em>, <em>amplitude_cutoff</em>, and <em>presence_ratio</em>, to filter out units that are likely to be highly contaminated or missing lots of spikes. However, the default values of these filters may not be appropriate for your analysis, or you may want to disable them entirely. Reading through this tutorial will give you a better understanding of how these (and other) metrics should be applied, so you can apply them effectively throughout your own explorations of this dataset.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -831,7 +649,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="streaming-an-nwb-file">
-<h2>Streaming an NWB File<a class="headerlink" href="#streaming-an-nwb-file" title="Permalink to this heading">#</a></h2>
+<h2>Streaming an NWB File<a class="headerlink" href="#streaming-an-nwb-file" title="Permalink to this headline">#</a></h2>
 <p>The example file we use is from the Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the respective dandiset id and dandi filepath of the file you’re interested in. When accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -893,7 +711,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="extracting-units-data">
-<h2>Extracting Units Data<a class="headerlink" href="#extracting-units-data" title="Permalink to this heading">#</a></h2>
+<h2>Extracting Units Data<a class="headerlink" href="#extracting-units-data" title="Permalink to this headline">#</a></h2>
 <p>Here we get the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table from the NWB file. This table contains all the recorded information about each unit. Also printed are the column names for the table. Not all of these unit properties are relevant, but many of them will be discussed and distributions of them will be displayed.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
@@ -1256,7 +1074,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="quality">
-<h2>Quality<a class="headerlink" href="#quality" title="Permalink to this heading">#</a></h2>
+<h2>Quality<a class="headerlink" href="#quality" title="Permalink to this headline">#</a></h2>
 <p>Prior to looking in-depth at unit metrics, the first level of quality control done is to evaluate <em>Unit Quality</em>. This is a categorical property in the units table that can either be “good” or “noise”, which based on the classification of the waveforms. The “noise” units are ones that are suspected not to be actual neurons or to be poor quality recordings of one or more neurons because their waveforms don’t look like action potentials. It is recommended that noise units are not analyzed. Below, a plot is made that shows probe yield. That is, the number of units from each probe which are good and noisy.</p>
 <p>Because probe information is not stored in the units table and is stored in an indirect way within the NWB file, we have to do a bit of work with the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table. to arrange the data. To understand this notebook, you need not be familiar with the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table except that it can be used to map channel ids to probe ids.</p>
 <div class="cell docutils container">
@@ -1339,12 +1157,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9ad4d0a3789b703cc9d673bb464000dbb806c2e678cb19a814ab4d517ef57653.png" src="../_images/9ad4d0a3789b703cc9d673bb464000dbb806c2e678cb19a814ab4d517ef57653.png" />
+<img alt="../_images/visualize_unit_metrics_17_0.png" src="../_images/visualize_unit_metrics_17_0.png" />
 </div>
 </div>
 </section>
 <section id="firing-rate">
-<h2>Firing Rate<a class="headerlink" href="#firing-rate" title="Permalink to this heading">#</a></h2>
+<h2>Firing Rate<a class="headerlink" href="#firing-rate" title="Permalink to this headline">#</a></h2>
 <p><em>Firing rate</em> is equal to the total number of spikes divided by the number of seconds in the recording. Below is a density plot of firing rate across all units in the dataset as well as a log-scaled version.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1363,7 +1181,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4ececa2b99a855bcd981d36ff8829cc56404d651234b1ad127caa0dd0cc22d0a.png" src="../_images/4ececa2b99a855bcd981d36ff8829cc56404d651234b1ad127caa0dd0cc22d0a.png" />
+<img alt="../_images/visualize_unit_metrics_19_0.png" src="../_images/visualize_unit_metrics_19_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1383,12 +1201,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f78f7fb8c366a62deaac39110ac6950fc9bea81ddb45bff6b83e635e925af674.png" src="../_images/f78f7fb8c366a62deaac39110ac6950fc9bea81ddb45bff6b83e635e925af674.png" />
+<img alt="../_images/visualize_unit_metrics_20_0.png" src="../_images/visualize_unit_metrics_20_0.png" />
 </div>
 </div>
 </section>
 <section id="presence-ratio">
-<h2>Presence Ratio<a class="headerlink" href="#presence-ratio" title="Permalink to this heading">#</a></h2>
+<h2>Presence Ratio<a class="headerlink" href="#presence-ratio" title="Permalink to this headline">#</a></h2>
 <p><em>Presence ratio</em> measures the fraction of time during a session in which a unit is spiking, and ranges from 0 to 0.99. This can be helpful for detecting units that drift out of the recording during a session.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1407,12 +1225,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8e21e8d5e7ce77573175635b43060b904a0dab199b88d45ac28f3b9669ec5b71.png" src="../_images/8e21e8d5e7ce77573175635b43060b904a0dab199b88d45ac28f3b9669ec5b71.png" />
+<img alt="../_images/visualize_unit_metrics_22_0.png" src="../_images/visualize_unit_metrics_22_0.png" />
 </div>
 </div>
 </section>
 <section id="amplitude-cutoff">
-<h2>Amplitude Cutoff<a class="headerlink" href="#amplitude-cutoff" title="Permalink to this heading">#</a></h2>
+<h2>Amplitude Cutoff<a class="headerlink" href="#amplitude-cutoff" title="Permalink to this headline">#</a></h2>
 <p><em>Amplitude cutoff</em> is a way to check for units that are missing spikes. Unlike presence ratio, which can detect units that drift out of the recording, amplitude cutoff provides an estimate of the false negative rate—e.g., the fraction of spikes below the spike detection threshold. Thus, amplitude cutoff is a measure of unit “completeness” that is complementary to presence ratio. If the amplitude cutoff for a unit is high, it indicates that the unit was poorly detected, which could be due to drift. Below is a distribution of amplitude cutoffs for all the units.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1431,7 +1249,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7c9ca117b1a797669f01f2e7f7ddda9bfc633cd364464d644a309cc30868a58f.png" src="../_images/7c9ca117b1a797669f01f2e7f7ddda9bfc633cd364464d644a309cc30868a58f.png" />
+<img alt="../_images/visualize_unit_metrics_24_0.png" src="../_images/visualize_unit_metrics_24_0.png" />
 </div>
 </div>
 <p>The plot below helps show the meaning of the amplitude cutoff for a unit by displaying the measured amplitudes of the unit’s spikes throughout the session. This plot can be a good way to illustrate unit drift; Units whose spike amplitudes suddenly change during a session are units that probably drifted farther or closer to the probe. When a unit’s spike amplitude trace spends a lot of time on the “floor” of the plot, it indicates that spikes are going undetected when the measured amplitudes get too low. The plot below of unit 3, with a high amplitude cutoff of 0.5, shows the unit drifting out of the recording until its measured amplitudes are too low and can’t always be detected around the 2000 seconds mark. The plot below that of unit 2348 has a very low amplitude cutoff, and it can be seen that it’s spikes stay at a consistent average amplitude over time and don’t spend any time at the “floor” of the plot.</p>
@@ -1454,7 +1272,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1743b523460&gt;
 </pre></div>
 </div>
-<img alt="../_images/a53ebc577f98b4f3de02d3015701b190b177c93e9bea4864558cfea8061ca0f2.png" src="../_images/a53ebc577f98b4f3de02d3015701b190b177c93e9bea4864558cfea8061ca0f2.png" />
+<img alt="../_images/visualize_unit_metrics_26_1.png" src="../_images/visualize_unit_metrics_26_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1476,12 +1294,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1743b7b6eb0&gt;
 </pre></div>
 </div>
-<img alt="../_images/650d4bcc6f20603ea4a8ebc66fe59cd252a3357ebf5a43b0820b6e0db222ef93.png" src="../_images/650d4bcc6f20603ea4a8ebc66fe59cd252a3357ebf5a43b0820b6e0db222ef93.png" />
+<img alt="../_images/visualize_unit_metrics_27_1.png" src="../_images/visualize_unit_metrics_27_1.png" />
 </div>
 </div>
 </section>
 <section id="isi-violations">
-<h2>ISI Violations<a class="headerlink" href="#isi-violations" title="Permalink to this heading">#</a></h2>
+<h2>ISI Violations<a class="headerlink" href="#isi-violations" title="Permalink to this headline">#</a></h2>
 <p><em>Inter-spike-interval violations</em> are a classic measure of unit contamination. Because all neurons have a biophysical refractory period, we can assume that any spikes occurring in rapid succession (&lt;1.5 ms intervals) come from two different neurons. Therefore, the more a unit is contaminated by spikes from multiple neurons, the higher its isi_violations value will be.</p>
 <p>The calculation for ISI violations comes from Hill et al. (2011) J Neurosci 31: 8699-8705. Rather than reporting the fraction of spikes with ISI violations, their metric reports the relative firing rate of the hypothetical neurons that are generating these violations. You can interpret an ISI violations value of 0.5 as meaning that contamining spikes are occurring at roughly half the rate of “true” spikes for that unit. In cases of highly contaminated units, the ISI violations value can sometimes be even greater than 1.</p>
 <div class="cell docutils container">
@@ -1501,7 +1319,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9f65152732e990a772ae39f1ba5cf56fa52a750ef9223fd9930faf90b7657ad4.png" src="../_images/9f65152732e990a772ae39f1ba5cf56fa52a750ef9223fd9930faf90b7657ad4.png" />
+<img alt="../_images/visualize_unit_metrics_29_0.png" src="../_images/visualize_unit_metrics_29_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1525,12 +1343,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   data = np.log10(units[&#39;isi_violations&#39;])
 </pre></div>
 </div>
-<img alt="../_images/45ea4b581be811858f0440ad23d742bf2bd7aab17e474356b1fb67bc022f1237.png" src="../_images/45ea4b581be811858f0440ad23d742bf2bd7aab17e474356b1fb67bc022f1237.png" />
+<img alt="../_images/visualize_unit_metrics_30_1.png" src="../_images/visualize_unit_metrics_30_1.png" />
 </div>
 </div>
 </section>
 <section id="snr">
-<h2>SNR<a class="headerlink" href="#snr" title="Permalink to this heading">#</a></h2>
+<h2>SNR<a class="headerlink" href="#snr" title="Permalink to this headline">#</a></h2>
 <p><em>Signal-to-noise ratio</em>, or SNR, is another classic metric of unit quality. It measures the ratio of the maximum amplitude of the mean spike waveform to the standard deviation of the background noise on one channel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1549,12 +1367,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3a61575696074565275a2bf0b84736f9729526921b87db9a62cb5ca6fcc78ef4.png" src="../_images/3a61575696074565275a2bf0b84736f9729526921b87db9a62cb5ca6fcc78ef4.png" />
+<img alt="../_images/visualize_unit_metrics_32_0.png" src="../_images/visualize_unit_metrics_32_0.png" />
 </div>
 </div>
 </section>
 <section id="snr-over-depth">
-<h2>SNR Over Depth<a class="headerlink" href="#snr-over-depth" title="Permalink to this heading">#</a></h2>
+<h2>SNR Over Depth<a class="headerlink" href="#snr-over-depth" title="Permalink to this headline">#</a></h2>
 <p>We can use SNR to evaluate the noisiness of data along a probe. Below is a plot that shows the SNR and depth distribution of units on an individual probe. Because of the way that probe and channel identities aren’t stored in the unit table, a little bit of extra work is required. Select the probe you want to make a plot for by setting <code class="docutils literal notranslate"><span class="pre">probe_name</span></code> to one of the options below. It’s worth noting that not all channels on a probe will have units, so not all depths on the plot will have valid average SNR values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1613,12 +1431,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1743b3f4550&gt;
 </pre></div>
 </div>
-<img alt="../_images/6a97f92db0f9a03b2b659f4352e8f1f5ebfe9e12b4f47fa9aa6ede2beea3356d.png" src="../_images/6a97f92db0f9a03b2b659f4352e8f1f5ebfe9e12b4f47fa9aa6ede2beea3356d.png" />
+<img alt="../_images/visualize_unit_metrics_37_1.png" src="../_images/visualize_unit_metrics_37_1.png" />
 </div>
 </div>
 </section>
 <section id="isolation-distance">
-<h2>Isolation Distance<a class="headerlink" href="#isolation-distance" title="Permalink to this heading">#</a></h2>
+<h2>Isolation Distance<a class="headerlink" href="#isolation-distance" title="Permalink to this headline">#</a></h2>
 <p><em>Isolation distance</em> is a metric based on the principal components (PCs) of a unit’s waveforms. After the spike sorting step is complete, the waveforms for every spike are projected into a lower-dimensional principal component space. The higher the isolation distance, the more a unit is separated from its neighbors in PC space, and therefore the lower the likelihood that it’s contamined by spikes from multiple units. For more information on this, read the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_quality_metrics.html#isolation_distance">Allen SDK Documentation</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1637,12 +1455,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/00cb03504c94a1a72ae42d4e1413b84ed3697d888d21f76635d0636f68566634.png" src="../_images/00cb03504c94a1a72ae42d4e1413b84ed3697d888d21f76635d0636f68566634.png" />
+<img alt="../_images/visualize_unit_metrics_39_0.png" src="../_images/visualize_unit_metrics_39_0.png" />
 </div>
 </div>
 </section>
 <section id="d-prime">
-<h2>d-prime<a class="headerlink" href="#d-prime" title="Permalink to this heading">#</a></h2>
+<h2>d-prime<a class="headerlink" href="#d-prime" title="Permalink to this headline">#</a></h2>
 <p>Like isolation distance, <em>d-prime</em> is another metric calculated for the waveform PCs. It uses linear discriminant analysis to calculate the separability of one unit’s PC cluster and all of the others. A higher d-prime value indicates that the unit is better isolated from its neighbors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1661,12 +1479,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9f636a4a411c6806bc530db8af35fa4fc59b14b2ce3245cc45ec99f6584d1cd2.png" src="../_images/9f636a4a411c6806bc530db8af35fa4fc59b14b2ce3245cc45ec99f6584d1cd2.png" />
+<img alt="../_images/visualize_unit_metrics_41_0.png" src="../_images/visualize_unit_metrics_41_0.png" />
 </div>
 </div>
 </section>
 <section id="nearest-neighbors-hit-rate">
-<h2>Nearest-neighbors hit-rate<a class="headerlink" href="#nearest-neighbors-hit-rate" title="Permalink to this heading">#</a></h2>
+<h2>Nearest-neighbors hit-rate<a class="headerlink" href="#nearest-neighbors-hit-rate" title="Permalink to this headline">#</a></h2>
 <p><em>Nearest-neighbors hit rate</em> is another PC-based quality metric. It’s derived from the ‘isolation’ metric originally reported in Chung, Magland et al. (2017). This metric looks at the PCs for one unit and calculates the fraction of their nearest neighbors that fall within the same cluster. If a unit is highly contaminated, then many of the closest spikes will come from other units. Nearest-neighbors hit rate is nice because it always falls between 0 and 1, making it straightforward to compare across different datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1685,12 +1503,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1f507e32fd892a6cc2d32e42dfdb95f01b72e43b856fc6c71ab47d67a7176278.png" src="../_images/1f507e32fd892a6cc2d32e42dfdb95f01b72e43b856fc6c71ab47d67a7176278.png" />
+<img alt="../_images/visualize_unit_metrics_43_0.png" src="../_images/visualize_unit_metrics_43_0.png" />
 </div>
 </div>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;firing_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;presence_ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;amplitude_cutoff&#39;</span><span class="p">,</span> <span class="s1">&#39;isi_violations&#39;</span><span class="p">,</span> <span class="s1">&#39;snr&#39;</span><span class="p">,</span> <span class="s1">&#39;isolation_distance&#39;</span><span class="p">,</span> <span class="s1">&#39;d_prime&#39;</span><span class="p">,</span> 
@@ -1717,7 +1535,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/99ab7b0e0ac80c9a32cc3e87510d4b5dcf2c72cf30c69e53978b98413daa3bf9.png" src="../_images/99ab7b0e0ac80c9a32cc3e87510d4b5dcf2c72cf30c69e53978b98413daa3bf9.png" />
+<img alt="../_images/visualize_unit_metrics_45_0.png" src="../_images/visualize_unit_metrics_45_0.png" />
 </div>
 </div>
 </section>
@@ -1743,170 +1561,50 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </script>
     <script>kernelName = 'python3'</script>
 
-            </article>
-            
-
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="visualize_neuropixel_probes.html" title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Visualizing Neuropixel Probe Locations</p>
-      </div>
-  </a>
-  <a class='right-next' id="next-link" href="visualize_lfp_responses.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Visualizing LFP Responses to Stimulus</p>
-  </div>
-  <i class="fa-solid fa-angle-right"></i>
-  </a>
+    <a class='left-prev' id="prev-link" href="visualize_neuropixel_probes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Visualizing Neuropixel Probe Locations</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="visualize_lfp_responses.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizing LFP Responses to Stimulus</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
-            
-          </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
-              
-<div class="toc-item">
-  
-<div class="tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-</div>
-<nav id="bd-toc-nav" class="page-toc">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environment-setup">
-   Environment Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#streaming-an-nwb-file">
-   Streaming an NWB File
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-units-data">
-   Extracting Units Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quality">
-   Quality
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#firing-rate">
-   Firing Rate
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#presence-ratio">
-   Presence Ratio
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#amplitude-cutoff">
-   Amplitude Cutoff
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#isi-violations">
-   ISI Violations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#snr">
-   SNR
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#snr-over-depth">
-   SNR Over Depth
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#isolation-distance">
-   Isolation Distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#d-prime">
-   d-prime
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nearest-neighbors-hit-rate">
-   Nearest-neighbors hit-rate
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-</nav>
-</div>
-
-            </div>
-          
-          
         </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By Carter Peene
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-<p class="copyright">
-
-    &copy; Copyright 2022.<br>
-
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    <p class="last-updated">
-Last updated on None.<br>
-</p>
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </div>
-        </footer>
-        
-
-      </main>
     </div>
-  </div>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
   
+    By Carter Peene<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
+</div>
+
+
+      </div>
+    </div>
+  
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -1,56 +1,48 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Visualizing Behavioral Data &#8212; OpenScope Databook</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
+    
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -58,424 +50,61 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'visualization/visualize_behavior';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing Raw 2-Photon Images" href="visualize_2p_raw.html" />
     <link rel="prev" title="Getting Experimental Metadata from DANDI" href="../basics/get_dandiset_metadata.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
-
-  
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
-  </div>
-
-  
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
     
+    <div class="container-fluid" id="banner"></div>
+
     
-  
 
-
-<a class="navbar-brand logo" href="../intro.html">
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    
-  </div>
-
-  
-  <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/download_nwb.html">
-                        Downloading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/read_nwb.html">
-                        Reading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/use_nwbwidgets.html">
-                        Exploring an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/stream_nwb.html">
-                        Streaming an NWB File with fsspec
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/get_dandiset_metadata.html">
-                        Getting Experimental Metadata from DANDI
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Visualizing Behavioral Data
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_raw.html">
-                        Visualizing Raw 2-Photon Images
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_neuropixel_probes.html">
-                        Visualizing Neuropixel Probe Locations
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_unit_metrics.html">
-                        Visualizing Unit Quality Metrics
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_lfp_responses.html">
-                        Visualizing LFP Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_unit_responses.html">
-                        Visualizing Neuronal Unit Spikes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_responses.html">
-                        Visualizing 2P Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/receptive_fields.html">
-                        Showing Receptive Fields
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/optotagging.html">
-                        Identifying Optotagged Units
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-    </div>
-
-    <div id="navbar-end">
-      
-        <div class="navbar-end-item navbar-persistent--container">
+    <div class="container-xl">
+      <div class="row">
           
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-        </div>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-
-
-  
-  
-    <div class="navbar-persistent--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-    </div>
-  
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
-</div>
-  </nav>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-      <div class="sidebar-header-items__center">
       
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/download_nwb.html">
-                        Downloading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/read_nwb.html">
-                        Reading an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/use_nwbwidgets.html">
-                        Exploring an NWB File
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/stream_nwb.html">
-                        Streaming an NWB File with fsspec
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../basics/get_dandiset_metadata.html">
-                        Getting Experimental Metadata from DANDI
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Visualizing Behavioral Data
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_raw.html">
-                        Visualizing Raw 2-Photon Images
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_neuropixel_probes.html">
-                        Visualizing Neuropixel Probe Locations
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_unit_metrics.html">
-                        Visualizing Unit Quality Metrics
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_lfp_responses.html">
-                        Visualizing LFP Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_unit_responses.html">
-                        Visualizing Neuronal Unit Spikes
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="visualize_2p_responses.html">
-                        Visualizing 2P Responses to Stimulus
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/receptive_fields.html">
-                        Showing Receptive Fields
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../first-order/optotagging.html">
-                        Identifying Optotagged Units
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
       
-      </div>
-    
-
-    
-    
-    <div class="sidebar-header-items__end">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
       
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
+      <h1 class="site-logo" id="site-title">OpenScope Databook</h1>
       
-    </div>
-    
-  </div>
-
-  
-  <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
-  
-
-
-<a class="navbar-brand logo" href="../intro.html">
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    </div>
-    <div class="sidebar-start-items__item">
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
-    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -484,239 +113,338 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NWB Basics</span></p>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NWB Basics
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/download_nwb.html">
+   Downloading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/read_nwb.html">
+   Reading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/use_nwbwidgets.html">
+   Exploring an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/stream_nwb.html">
+   Streaming an NWB File with fsspec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/get_dandiset_metadata.html">
+   Getting Experimental Metadata from DANDI
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Visualizing NWB Files
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Behavioral Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Visualizing Behavioral Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_neuropixel_probes.html">
+   Visualizing Neuropixel Probe Locations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_unit_metrics.html">
+   Visualizing Unit Quality Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_unit_responses.html">
+   Visualizing Neuronal Unit Spikes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_2p_responses.html">
+   Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-order Analysis</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  First-Order Analysis
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/receptive_fields.html">
+   Showing Receptive Fields
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/optotagging.html">
+   Identifying Optotagged Units
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav>
-    </div>
-  </div>
-  
-
-  
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
-  </div>
-
-  
-  <div id="rtd-footer-container"></div>
-
-      </div>
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-        <div class="bd-content">
-          <div class="bd-article-container">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <div class="bd-header-article">
-                
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
-            <span class="fa-solid fa-bars"></span>
-        </label>
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
     </div>
     <div class="header-article__right">
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_behavior.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_behavior.ipynb"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on Binder"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="btn__text-container">Binder</span>
+<span class="headerbtn__text-container">Binder</span>
 </a>
-</a>
+
+      </li>
       
-      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_behavior.ipynb&branch=main" target="_blank"
-   class="btn btn-sm dropdown-item"
+      <li>
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_behavior.ipynb&branch=main"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on JupyterHub"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   
     <img src="../_static/images/logo_jupyterhub.svg">
   </span>
-<span class="btn__text-container">JupyterHub</span>
+<span class="headerbtn__text-container">JupyterHub</span>
 </a>
-</a>
+
+      </li>
       
       <li>
+        
 <button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
+  class="headerbtn headerbtn-launch-thebe"
   data-toggle="tooltip"
 data-placement="left"
 title="Launch Thebe"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="btn__text-container">Live Code</span>
+<span class="headerbtn__text-container">Live Code</span>
 </button>
-</a>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm"
+  class="headerbtn"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-
-
-<div class="dropdown dropdown-repository-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
-   class="btn btn-sm dropdown-item"
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="btn__text-container">repository</span>
+<span class="headerbtn__text-container">repository</span>
 </a>
-</a>
+
+      </li>
       
-      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fvisualization/visualize_behavior.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm dropdown-item"
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fvisualization/visualize_behavior.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="btn__text-container">open issue</span>
+<span class="headerbtn__text-container">open issue</span>
 </a>
-</a>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
 
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="../_sources/visualization/visualize_behavior.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/visualization/visualize_behavior.ipynb"
+   class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
-</a>
+
+      </li>
       
       <li>
+        
 <button onclick="printPdf(this)"
-  class="btn btn-sm dropdown-item"
+  class="headerbtn"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="btn__text-container">.pdf</span>
+<span class="headerbtn__text-container">.pdf</span>
 </button>
-</a>
+
+      </li>
       
-  </ul>
+    </ul>
+  </div>
 </div>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
-            <span class="fa-solid fa-list"></span>
-        </label>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
-            </div>
-            
-            
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Visualizing Behavioral Data</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#environment-setup">
    Environment Setup
@@ -778,18 +506,97 @@ title="Print to PDF"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Visualizing Behavioral Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#streaming-nwb-files">
+   Streaming NWB Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-eye-tracking-data">
+   Extracting Eye Tracking Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-a-period">
+   Selecting a Period
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-data">
+   Visualizing the Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#blink-times">
+     Blink Times
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area">
+     Area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#angle">
+     Angle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eye-trace">
+     Eye Trace
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-data">
+   Running Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-speed">
+     Running Speed
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-            <article class="bd-article" role="main">
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-behavioral-data">
-<h1>Visualizing Behavioral Data<a class="headerlink" href="#visualizing-behavioral-data" title="Permalink to this heading">#</a></h1>
+<h1>Visualizing Behavioral Data<a class="headerlink" href="#visualizing-behavioral-data" title="Permalink to this headline">#</a></h1>
 <p>A number of different behavioral measurements during experiments and stored in NWB Files. These include various kinds of eye tracking. Eye tracking provides a proxy into the mouse visual attention and its overall brain state. Also included is data of the running wheel that the mouse is on during recording. Oftentimes other measurements are taken like mouse lick times, but this is not included here. This notebook just has basic code to take these behavioral data from an ecephys NWB file and plot them.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -810,7 +617,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="streaming-nwb-files">
-<h2>Streaming NWB Files<a class="headerlink" href="#streaming-nwb-files" title="Permalink to this heading">#</a></h2>
+<h2>Streaming NWB Files<a class="headerlink" href="#streaming-nwb-files" title="Permalink to this headline">#</a></h2>
 <p>Streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key, otherwise, set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to False.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -885,7 +692,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="extracting-eye-tracking-data">
-<h2>Extracting Eye Tracking Data<a class="headerlink" href="#extracting-eye-tracking-data" title="Permalink to this heading">#</a></h2>
+<h2>Extracting Eye Tracking Data<a class="headerlink" href="#extracting-eye-tracking-data" title="Permalink to this headline">#</a></h2>
 <p>Our datasets include eye data with eye tracking, corneal reflection tracking, and pupil tracking. These are different visual components identified in footage of the mouse during the experiment with code from <strong><a class="reference external" href="https://github.com/AllenInstitute/AllenSDK">The Allen SDK</a></strong>. Any of these could be usable for the following analyses. Below, you can set <code class="docutils literal notranslate"><span class="pre">eye_tracking</span></code> to one of those values commented out below. Each eye tracking type includes measurements of the angle of the eye and the height, width, and area (in terms of pixels on the camera), and the coordinates of the center of the component on the camera. The probable blink times are also grabbed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -932,7 +739,7 @@ Fields:
 </div>
 </section>
 <section id="selecting-a-period">
-<h2>Selecting a Period<a class="headerlink" href="#selecting-a-period" title="Permalink to this heading">#</a></h2>
+<h2>Selecting a Period<a class="headerlink" href="#selecting-a-period" title="Permalink to this headline">#</a></h2>
 <p>The data can be large or messy. In order to visualize the data more cleanly and efficiently, you can just select a period of time within the data to plot. To do this, specify the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> you’d like in terms of seconds. Below, the first and last timestamps from the data are printed to inform this choice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -984,10 +791,10 @@ Fields:
 </div>
 </section>
 <section id="visualizing-the-data">
-<h2>Visualizing the Data<a class="headerlink" href="#visualizing-the-data" title="Permalink to this heading">#</a></h2>
+<h2>Visualizing the Data<a class="headerlink" href="#visualizing-the-data" title="Permalink to this headline">#</a></h2>
 <p>Below, several types of measurements are visualized from the eye tracking data that was selected.</p>
 <section id="blink-times">
-<h3>Blink Times<a class="headerlink" href="#blink-times" title="Permalink to this heading">#</a></h3>
+<h3>Blink Times<a class="headerlink" href="#blink-times" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1001,12 +808,12 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Blink Times&#39;)
 </pre></div>
 </div>
-<img alt="../_images/eb11f09a301e2806777316a2c33c4ab802e2711d5404cca26a15202db5e3656c.png" src="../_images/eb11f09a301e2806777316a2c33c4ab802e2711d5404cca26a15202db5e3656c.png" />
+<img alt="../_images/visualize_behavior_17_1.png" src="../_images/visualize_behavior_17_1.png" />
 </div>
 </div>
 </section>
 <section id="area">
-<h3>Area<a class="headerlink" href="#area" title="Permalink to this heading">#</a></h3>
+<h3>Area<a class="headerlink" href="#area" title="Permalink to this headline">#</a></h3>
 <p>Below, eye height and width are plotted together, and area, the product of height and width, is also plotted. The units of height and width are defined in terms of pixels on the eye tracking camera.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1025,7 +832,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Eye Height and Width Over Time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/d251c48fe4f95bb555228de8cbda80df158b76d473c7fe73f19444f8d25ac991.png" src="../_images/d251c48fe4f95bb555228de8cbda80df158b76d473c7fe73f19444f8d25ac991.png" />
+<img alt="../_images/visualize_behavior_19_1.png" src="../_images/visualize_behavior_19_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1042,12 +849,12 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x28dfe3c3280&gt;]
 </pre></div>
 </div>
-<img alt="../_images/6d01d2df9a6011d25f08914cafdcae0cde86da37c47cf1a833ef6598693e3a62.png" src="../_images/6d01d2df9a6011d25f08914cafdcae0cde86da37c47cf1a833ef6598693e3a62.png" />
+<img alt="../_images/visualize_behavior_20_1.png" src="../_images/visualize_behavior_20_1.png" />
 </div>
 </div>
 </section>
 <section id="angle">
-<h3>Angle<a class="headerlink" href="#angle" title="Permalink to this heading">#</a></h3>
+<h3>Angle<a class="headerlink" href="#angle" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -1063,12 +870,12 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x28dff410220&gt;]
 </pre></div>
 </div>
-<img alt="../_images/2a6eccbf01eda3a003005b9f87ece792d4705afbbcb7d00449a6e022bdd56a46.png" src="../_images/2a6eccbf01eda3a003005b9f87ece792d4705afbbcb7d00449a6e022bdd56a46.png" />
+<img alt="../_images/visualize_behavior_22_1.png" src="../_images/visualize_behavior_22_1.png" />
 </div>
 </div>
 </section>
 <section id="eye-trace">
-<h3>Eye Trace<a class="headerlink" href="#eye-trace" title="Permalink to this heading">#</a></h3>
+<h3>Eye Trace<a class="headerlink" href="#eye-trace" title="Permalink to this headline">#</a></h3>
 <p>With marker color representing time, the x and y coordinates of the eye’s view are traced below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1098,13 +905,13 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6ed7ddd76cc55a9059eaf0dabfa6ea626212cec54874bb2ef6843e205503f361.png" src="../_images/6ed7ddd76cc55a9059eaf0dabfa6ea626212cec54874bb2ef6843e205503f361.png" />
+<img alt="../_images/visualize_behavior_25_0.png" src="../_images/visualize_behavior_25_0.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="running-data">
-<h2>Running Data<a class="headerlink" href="#running-data" title="Permalink to this heading">#</a></h2>
+<h2>Running Data<a class="headerlink" href="#running-data" title="Permalink to this headline">#</a></h2>
 <p>Apart from the Eye Tracking Data, the mouse’s running data is tracked in the <code class="docutils literal notranslate"><span class="pre">&quot;running&quot;</span></code> field of the <code class="docutils literal notranslate"><span class="pre">processing</span></code> section of the NWB File. Speed, in cm/s is tracked in the <code class="docutils literal notranslate"><span class="pre">&quot;speed&quot;</span></code> field. Another field, <code class="docutils literal notranslate"><span class="pre">&quot;dx&quot;</span></code> is also recorded which represents the number of degrees the wheel has turned between timestamp. These are plotted below. It is important to note that, at the moment, running data is stored in NWB differently in our Ecephys files and our Ophys files. Change the code in the cell below if you’re accessing a different type of file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1119,7 +926,7 @@ Fields:
 </div>
 </div>
 <section id="running-speed">
-<h3>Running Speed<a class="headerlink" href="#running-speed" title="Permalink to this heading">#</a></h3>
+<h3>Running Speed<a class="headerlink" href="#running-speed" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">speed_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">running_speed</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
@@ -1143,7 +950,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x28dfd589190&gt;]
 </pre></div>
 </div>
-<img alt="../_images/8451e37514db0fa04264adf571ea892a2a01f46027d496155e1987fb604b757c.png" src="../_images/8451e37514db0fa04264adf571ea892a2a01f46027d496155e1987fb604b757c.png" />
+<img alt="../_images/visualize_behavior_29_2.png" src="../_images/visualize_behavior_29_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1169,7 +976,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x28dfdc41fd0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/15c25e8ad668895522bf1a8c9e2892ac6322dd7e04646d1d64c55a10a743ffe0.png" src="../_images/15c25e8ad668895522bf1a8c9e2892ac6322dd7e04646d1d64c55a10a743ffe0.png" />
+<img alt="../_images/visualize_behavior_30_2.png" src="../_images/visualize_behavior_30_2.png" />
 </div>
 </div>
 </section>
@@ -1196,159 +1003,50 @@ Fields:
     </script>
     <script>kernelName = 'python3'</script>
 
-            </article>
-            
-
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="../basics/get_dandiset_metadata.html" title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Getting Experimental Metadata from DANDI</p>
-      </div>
-  </a>
-  <a class='right-next' id="next-link" href="visualize_2p_raw.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
-  </div>
-  <i class="fa-solid fa-angle-right"></i>
-  </a>
+    <a class='left-prev' id="prev-link" href="../basics/get_dandiset_metadata.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Getting Experimental Metadata from DANDI</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="visualize_2p_raw.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
-            
-          </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
-              
-<div class="toc-item">
-  
-<div class="tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-</div>
-<nav id="bd-toc-nav" class="page-toc">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environment-setup">
-   Environment Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#streaming-nwb-files">
-   Streaming NWB Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-eye-tracking-data">
-   Extracting Eye Tracking Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#selecting-a-period">
-   Selecting a Period
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-data">
-   Visualizing the Data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#blink-times">
-     Blink Times
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#area">
-     Area
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#angle">
-     Angle
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eye-trace">
-     Eye Trace
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-data">
-   Running Data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-speed">
-     Running Speed
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-</nav>
-</div>
-
-            </div>
-          
-          
         </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By Carter Peene
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-<p class="copyright">
-
-    &copy; Copyright 2022.<br>
-
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    <p class="last-updated">
-Last updated on None.<br>
-</p>
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </div>
-        </footer>
-        
-
-      </main>
     </div>
-  </div>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
   
+    By Carter Peene<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
+</div>
+
+
+      </div>
+    </div>
+  
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
