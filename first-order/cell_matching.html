@@ -1,0 +1,1014 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Cell Matching Across Days &#8212; OpenScope Databook</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Identifying Optotagged Units" href="optotagging.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">OpenScope Databook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NWB Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/download_nwb.html">
+   Downloading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/read_nwb.html">
+   Reading an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/use_nwbwidgets.html">
+   Exploring an NWB File
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/stream_nwb.html">
+   Streaming an NWB File with fsspec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/get_dandiset_metadata.html">
+   Getting Experimental Metadata from DANDI
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Visualizing NWB Files
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_behavior.html">
+   Visualizing Behavioral Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_2p_raw.html">
+   Visualizing Raw 2-Photon Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">
+   Visualizing Neuropixel Probe Locations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_metrics.html">
+   Visualizing Unit Quality Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_lfp_responses.html">
+   Visualizing LFP Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_responses.html">
+   Visualizing Neuronal Unit Spikes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_2p_responses.html">
+   Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  First-Order Analysis
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="receptive_fields.html">
+   Showing Receptive Fields
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="current_source_density.html">
+   Current Source Density Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optotagging.html">
+   Identifying Optotagged Units
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/first-order/cell_matching.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/first-order/cell_matching.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/first-order/cell_matching.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Ffirst-order/cell_matching.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/first-order/cell_matching.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-ophys-nwb-files">
+   Downloading Ophys NWB Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-cell-matching-input-file">
+   Generating Cell-Matching Input File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-the-algorithm">
+   Running the Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#showing-cell-matching-output">
+   Showing Cell Matching Output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-matching-cells">
+   Visualizing Matching Cells
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Cell Matching Across Days</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#environment-setup">
+   Environment Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-ophys-nwb-files">
+   Downloading Ophys NWB Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-cell-matching-input-file">
+   Generating Cell-Matching Input File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-the-algorithm">
+   Running the Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#showing-cell-matching-output">
+   Showing Cell Matching Output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-matching-cells">
+   Visualizing Matching Cells
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="cell-matching-across-days">
+<h1>Cell Matching Across Days<a class="headerlink" href="#cell-matching-across-days" title="Permalink to this headline">#</a></h1>
+<p>Experimental sessions are conducted across multiple days on the same mouse. When imaging the brain location on the same plane with <strong>2-Photon Imaging</strong>, the image will not be perfectly identical. The frame may be in a slighlty different location on the brain or at a slighlty different depth. Additionally, cells can move relative to eachother over time. Due to this, computational methods are required to identify which cell <em>Regions of Interest</em> (ROIs) are the same as the previous session.</p>
+<p>We use the Allen Institute’s <a class="reference external" href="https://github.com/AllenInstitute/ophys_nway_matching"><strong>Nway Matching</strong></a> pipeline for this which is described in more detail below.</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">nway</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">choice</span> <span class="k">as</span> <span class="n">randchoice</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="downloading-ophys-nwb-files">
+<h2>Downloading Ophys NWB Files<a class="headerlink" href="#downloading-ophys-nwb-files" title="Permalink to this headline">#</a></h2>
+<p>Here you can download several files for a subject that you can run nway matching on. The pipeline can take in any number of input <em>sessions</em>, however, the input ophys data should be from the same imaging plane of the same subject. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the dandiset id of the files you’re interested in. Also set <code class="docutils literal notranslate"><span class="pre">input_dandi_filepaths</span></code> to be a list of the filepaths on dandi of each file you’re interested in providing to <strong>Nway Matching</strong>. When accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your DANDI API key.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000336&quot;</span>
+<span class="n">dandi_filepath_1</span> <span class="o">=</span> <span class="s2">&quot;sub-1168633075/sub-1168633075_ses-1193555033-1193675753-_ophys.nwb&quot;</span>
+<span class="n">dandi_filepath_2</span> <span class="o">=</span> <span class="s2">&quot;sub-1168633075/sub-1168633075_ses-1194555869-1194754135-_ophys.nwb&quot;</span>
+<span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+
+<span class="c1"># here, specify the list dandi filepaths of the files you want to run cell matching on</span>
+<span class="c1"># the subject ids should be the same, but the session ids should be different</span>
+<span class="n">input_dandi_filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">dandi_filepath_1</span><span class="p">,</span> <span class="n">dandi_filepath_2</span><span class="p">]</span>
+
+<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span>
+<span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+
+
+<span class="n">filepaths</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">dandi_filepath</span> <span class="ow">in</span> <span class="n">input_dandi_filepaths</span><span class="p">:</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">dandi_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;./</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">filepaths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+
+    <span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+
+    <span class="c1"># this may take awhile, especially if the files to download are large</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.53.0) of dandi/dandi-cli is available. You are using 0.46.6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-1168633075_ses-1193555033-1193675753-_ophys.nwb
+Downloaded file to ./sub-1168633075_ses-1194555869-1194754135-_ophys.nwb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the nwbs list will be a list of opened nwb files which will be used below for analysis</span>
+<span class="n">nwbs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">filepaths</span><span class="p">:</span>
+    <span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">nwbs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.6.0-alpha is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># these should be similar values, indicating that the images are from the same imaging plane</span>
+<span class="k">for</span> <span class="n">nwb</span> <span class="ow">in</span> <span class="n">nwbs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">lab_meta_data</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">imaging_depth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>309
+309
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generating-cell-matching-input-file">
+<h2>Generating Cell-Matching Input File<a class="headerlink" href="#generating-cell-matching-input-file" title="Permalink to this headline">#</a></h2>
+<p>The Allen Institute has created a robust pipeline for conducting cell matching between 2 or more sessions called <a class="reference external" href="https://github.com/AllenInstitute/ophys_nway_matching"><strong>Nway Matching</strong></a>. For those who are inquisitive, the general algorithm is described in page 31 of <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2.full.pdf">this Visual Behavior paper</a>. In summary, the input images are aligned together with a euclidian image registration technique. Then the given input ROI masks are used with the <a class="reference external" href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom Algorithm</a> as a bipartite graph matching algorithm. This identifies which ROIs represent the same cells with high probability.</p>
+<p>The caveat to using this pipeline is that it requires input in a specific JSON format rather than an NWB File. The following functions are used to generate a file, <code class="docutils literal notranslate"><span class="pre">input.json</span></code>, which can be used to obtain important output. The input json contains an entry for each input experiment. 2 or more experiments can be used. The first experiment is called <em>fixed</em> and the other ones are <em>moving</em>. For each experiment, a unique experiment ID, a path to the experiment projection image, and a list of objects for each ROI are required.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_roi_entries</span><span class="p">(</span><span class="n">roi_table</span><span class="p">):</span>
+    <span class="n">roi_entries</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">roi_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_table</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
+        
+        <span class="n">mask_subimage</span> <span class="o">=</span> <span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;image_mask&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">][</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">height</span><span class="p">,</span><span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">width</span><span class="p">]</span>
+        
+        <span class="n">roi_entry</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">]),</span>
+            <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;valid_roi&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">]),</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span>
+            <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">height</span><span class="p">,</span>
+            <span class="c1"># convert 2D array to 2D list of bools</span>
+            <span class="s2">&quot;mask_matrix&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="nb">bool</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mask_subimage</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">roi_entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roi_entry</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">roi_entries</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize_to_16b</span><span class="p">(</span><span class="n">image_array</span><span class="p">):</span>
+    <span class="n">image_array</span> <span class="o">=</span> <span class="n">image_array</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">8</span>
+    <span class="k">return</span> <span class="n">image_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nwb_to_experiment_json</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+    <span class="c1"># save image here</span>
+    <span class="n">grayscale_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;images&quot;</span><span class="p">][</span><span class="s2">&quot;average_image&quot;</span><span class="p">])</span>
+    <span class="n">image_array</span> <span class="o">=</span> <span class="n">normalize_to_16b</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grayscale_image</span><span class="p">))</span>
+    <span class="n">image_file</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image_array</span><span class="p">)</span>
+    <span class="n">image_file</span> <span class="o">=</span> <span class="n">image_file</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+    <span class="n">image_file</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./</span><span class="si">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">_image.png&quot;</span><span class="p">)</span>
+
+    <span class="n">roi_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;image_segmentation&quot;</span><span class="p">][</span><span class="s2">&quot;cell_specimen_table&quot;</span><span class="p">]</span>
+    
+    <span class="n">experiment</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">nwb</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> 
+        <span class="s2">&quot;ophys_average_intensity_projection_image&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;./</span><span class="si">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">_image.png&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cell_rois&quot;</span><span class="p">:</span> <span class="n">make_roi_entries</span><span class="p">(</span><span class="n">roi_table</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">experiment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_exps</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;experiment_containers&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ophys_experiments&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">nwb</span> <span class="ow">in</span> <span class="n">nwbs</span><span class="p">:</span>
+    <span class="n">experiment</span> <span class="o">=</span> <span class="n">nwb_to_experiment_json</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+    <span class="n">input_exps</span><span class="p">[</span><span class="s2">&quot;experiment_containers&quot;</span><span class="p">][</span><span class="s2">&quot;ophys_experiments&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">experiment</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;input.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">input_exps</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-the-algorithm">
+<h2>Running the Algorithm<a class="headerlink" href="#running-the-algorithm" title="Permalink to this headline">#</a></h2>
+<p><strong>Nway Matching</strong> can be run as a command with the following parameters. From there, several output files are generated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m nway.nway_matching --input_json input.json --output_json output.json --output_dir matching_output
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:many=True not supported from argparse
+INFO:NwayMatching:NWAY_COMMIT_SHA None
+INFO:NwayMatching:Nway matching version 0.6.0
+WARNING:root:many=True not supported from argparse
+WARNING:root:many=True not supported from argparse
+INFO:PairwiseMatching:Matching 1193675753 to 1194754135
+INFO:PairwiseMatching:Matching 1193675753 to 1194754135: best registration was [&#39;Crop&#39;, &#39;CLAHE&#39;, &#39;PhaseCorrelate&#39;]
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\utils.py:48: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+  df = df.sort_index(0)
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\utils.py:49: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+  df = df.sort_index(1)
+INFO:NwayMatching:registration success(1) or failure (0):
+   0  1
+0  1  1
+1  1  1
+id map{
+  &quot;0&quot;: 1193675753,
+  &quot;1&quot;: 1194754135
+}
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\nway_matching.py:208: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  matching_frame = matching_frame.append(pairframe)
+INFO:NwayMatching:Nway matching is done!
+INFO:NwayMatching:Creating match summary plots
+WARNING:root:setting Dict fields not supported from argparse
+C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\argschema\utils.py:346: FutureWarning: &#39;--nway_output.nway_matches&#39; is using old-style command-line syntax with each element as a separate argument. This will not be supported in argschema after 2.0. See http://argschema.readthedocs.io/en/master/user/intro.html#command-line-specification for details.
+  warnings.warn(warn_msg, FutureWarning)
+WARNING:root:many=True not supported from argparse
+INFO:NwayMatching:wrote matching_output\nway_match_fraction_plot_2023_04_18_09_05_39.png
+INFO:NwayMatching:wrote matching_output\nway_warp_overlay_plot_2023_04_18_09_05_39.png
+INFO:NwayMatching:wrote matching_output\nway_warp_summary_plot_2023_04_18_09_05_39.png
+INFO:NwayMatching:wrote output.json
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="showing-cell-matching-output">
+<h2>Showing Cell Matching Output<a class="headerlink" href="#showing-cell-matching-output" title="Permalink to this headline">#</a></h2>
+<p>The cell matching pipeline outputs the data as a output JSON, and a few plots as <code class="docutils literal notranslate"><span class="pre">.png</span></code> images. The paths to the plots are fetched from the output JSON and displayed below. Additionally, the output json contains a list of matching ROI IDs from each image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_plot</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;nway_warp_summary_plot&quot;</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">summary_plot</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.5, 560.5, 2951.5, -0.5)
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_17_1.png" src="../_images/cell_matching_17_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_plot</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;nway_warp_overlay_plot&quot;</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">overlay_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x13e0648ee20&gt;
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_18_1.png" src="../_images/cell_matching_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fraction_plot</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s2">&quot;nway_match_fraction_plot&quot;</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fraction_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x13e06e35880&gt;
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_19_1.png" src="../_images/cell_matching_19_1.png" />
+</div>
+</div>
+</section>
+<section id="visualizing-matching-cells">
+<h2>Visualizing Matching Cells<a class="headerlink" href="#visualizing-matching-cells" title="Permalink to this headline">#</a></h2>
+<p>Apart from the image plots above, the main other part of the output is the <code class="docutils literal notranslate"><span class="pre">nway_matches</span></code> list, which contains a list of tuples the contain ROI IDs that <em>match</em> between session. The tuples are at most length n, where n is the number of experiments the <strong>Nway Matching</strong> pipeline was given, but some tuples will be shorter if a match wasn’t found. The code below uses these tuples of matching IDs, along with the ROI masks in each NWB file’s ROI tables, and generates n images that use color to show the matching ROIs between sessions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># takes an ROI mask, colors it, adds it onto image</span>
+<span class="k">def</span> <span class="nf">add_color_mask</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+    <span class="n">black</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">color_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[(</span><span class="n">color</span> <span class="k">if</span> <span class="n">boolean</span> <span class="k">else</span> <span class="n">black</span><span class="p">)</span> <span class="k">for</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mask</span><span class="p">])</span>
+    <span class="n">merged_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">color_mask</span><span class="o">!=</span><span class="n">black</span><span class="p">,</span> <span class="n">color_mask</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">merged_image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generates a &quot;random&quot; color based on n</span>
+<span class="k">def</span> <span class="nf">gen_color</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="mi">270</span> <span class="o">%</span> <span class="mi">255</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mi">610</span> <span class="o">%</span> <span class="mi">255</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mi">890</span> <span class="o">%</span> <span class="mi">255</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finds the table and image index that an ROI id belongs to</span>
+<span class="k">def</span> <span class="nf">get_image_num</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nwbs</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">roi_tables</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### for every match in the output, generate images which consist of ROI masks that supposedly match between sessions</span>
+
+<span class="c1"># roi_tables correspond to images based on index of nwb in nwds list</span>
+<span class="n">roi_tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;image_segmentation&quot;</span><span class="p">][</span><span class="s2">&quot;cell_specimen_table&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span> <span class="k">for</span> <span class="n">nwb</span> <span class="ow">in</span> <span class="n">nwbs</span><span class="p">]</span>
+<span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">nwb</span> <span class="ow">in</span> <span class="n">nwbs</span><span class="p">]</span>
+<span class="n">nway_matches</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s2">&quot;nway_matches&quot;</span><span class="p">]</span>
+
+<span class="c1"># for every list of matching IDs, generate a color, and add the ROI masks with those IDs to their respective images</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nway_matches</span><span class="p">)):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">nway_matches</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1"># unmatched ROIs will be shown white</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">match</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">gen_color</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">match</span><span class="p">:</span>
+        <span class="c1"># n is the index of which image and which ROI table this ROI belongs to</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">get_image_num</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>        
+        <span class="n">roi_table</span> <span class="o">=</span> <span class="n">roi_tables</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="c1"># casting mask entry from roi table into np array</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">roi_table</span><span class="p">[</span><span class="n">roi_table</span><span class="o">.</span><span class="n">index</span><span class="o">==</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">image_mask</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># add mask to image with given color</span>
+        <span class="n">images</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">add_color_mask</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">mask</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Matched ROIs between sessions</span><span class="se">\n</span><span class="s2">(White ROIs are unmatched)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Matched ROIs between sessions\n(White ROIs are unmatched)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_25_1.png" src="../_images/cell_matching_25_1.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./first-order"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="optotagging.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Identifying Optotagged Units</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Carter Peene<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

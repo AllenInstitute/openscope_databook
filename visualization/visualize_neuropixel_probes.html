@@ -199,8 +199,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/current_source_density.html">
+   Current Source Density Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../first-order/optotagging.html">
    Identifying Optotagged Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/cell_matching.html">
+   Cell Matching Across Days
   </a>
  </li>
 </ul>
@@ -293,6 +303,24 @@ title="Launch on JupyterHub"
     <img src="../_static/images/logo_jupyterhub.svg">
   </span>
 <span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_neuropixel_probes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
 
       </li>
@@ -516,7 +544,6 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuropixel-probe-locations">
 <h1>Visualizing Neuropixel Probe Locations<a class="headerlink" href="#visualizing-neuropixel-probe-locations" title="Permalink to this headline">#</a></h1>
-<p><strong>Note: This notebook currently doesn’t work on remote locations. To run it, it should be downloaded and run locally. Instructions for this can be found on the <a class="reference internal" href="../intro.html"><span class="doc std std-doc">Main Page</span></a></strong></p>
 <p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <em>CCF</em> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which represents locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
 <p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. We use <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/ccf-widget">ccf-widget</a></strong> as the library by which we 3D render the brain and the probe coordinates.</p>
 <section id="environment-setup">
