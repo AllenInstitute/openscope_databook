@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Current Source Density Analysis" href="current_source_density.html" />
+    <link rel="next" title="Identifying Optotagged Units" href="optotagging.html" />
     <link rel="prev" title="Visualizing 2P Responses to Stimulus" href="../visualization/visualize_2p_responses.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -199,13 +199,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="current_source_density.html">
-   Current Source Density Analysis
+  <a class="reference internal" href="optotagging.html">
+   Identifying Optotagged Units
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="optotagging.html">
-   Identifying Optotagged Units
+  <a class="reference internal" href="current_source_density.html">
+   Current Source Density Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -590,7 +590,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-707296975/sub-707296975_ses-721123822.nwb&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
 <span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
@@ -618,6 +618,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.53.0) of dandi/dandi-cli is available. You are using 0.46.6
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
 </pre></div>
 </div>
@@ -634,7 +637,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-707296975_ses-721123822.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-703279277_ses-719161530.nwb
 </pre></div>
 </div>
 </div>
@@ -685,24 +688,24 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>amplitude_cutoff</th>
-      <th>firing_rate</th>
-      <th>presence_ratio</th>
-      <th>snr</th>
-      <th>velocity_below</th>
-      <th>isolation_distance</th>
-      <th>silhouette_score</th>
-      <th>velocity_above</th>
-      <th>nn_miss_rate</th>
-      <th>PT_ratio</th>
-      <th>...</th>
-      <th>cluster_id</th>
-      <th>waveform_halfwidth</th>
       <th>waveform_duration</th>
+      <th>cluster_id</th>
+      <th>peak_channel_id</th>
+      <th>cumulative_drift</th>
+      <th>amplitude_cutoff</th>
+      <th>snr</th>
       <th>recovery_slope</th>
-      <th>amplitude</th>
+      <th>isolation_distance</th>
+      <th>nn_miss_rate</th>
+      <th>silhouette_score</th>
+      <th>...</th>
+      <th>local_index</th>
       <th>spread</th>
-      <th>isi_violations</th>
+      <th>waveform_halfwidth</th>
+      <th>d_prime</th>
+      <th>presence_ratio</th>
+      <th>repolarization_slope</th>
+      <th>nn_hit_rate</th>
       <th>spike_times</th>
       <th>spike_amplitudes</th>
       <th>waveform_mean</th>
@@ -734,244 +737,244 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   </thead>
   <tbody>
     <tr>
-      <th>950907203</th>
-      <td>0.376577</td>
-      <td>2.533384</td>
-      <td>0.99</td>
-      <td>2.830406</td>
-      <td>NaN</td>
-      <td>6.340840e+01</td>
-      <td>NaN</td>
-      <td>0.073582</td>
-      <td>0.000781</td>
-      <td>0.545221</td>
+      <th>950921187</th>
+      <td>0.604355</td>
+      <td>4</td>
+      <td>850249267</td>
+      <td>481.80</td>
+      <td>0.425574</td>
+      <td>2.209140</td>
+      <td>-0.118430</td>
+      <td>17.537571</td>
+      <td>0.009496</td>
+      <td>0.036369</td>
       <td>...</td>
-      <td>0</td>
-      <td>0.151089</td>
-      <td>0.274707</td>
-      <td>-0.044249</td>
-      <td>45.540300</td>
-      <td>70.0</td>
-      <td>0.06548</td>
-      <td>[1.8463237565528026, 1.9619905358580827, 2.311...</td>
-      <td>[8.327628219252525e-05, 8.367903428567035e-05,...</td>
-      <td>[[0.0, 1.4724449999999971, -0.393510000000004,...</td>
-    </tr>
-    <tr>
-      <th>950907522</th>
-      <td>0.022585</td>
-      <td>0.055246</td>
-      <td>0.65</td>
-      <td>0.622514</td>
-      <td>NaN</td>
-      <td>1.211930e+01</td>
-      <td>NaN</td>
-      <td>-0.171692</td>
-      <td>0.001937</td>
-      <td>0.354055</td>
-      <td>...</td>
-      <td>153</td>
-      <td>0.219765</td>
-      <td>0.480737</td>
-      <td>-0.007213</td>
-      <td>49.501937</td>
-      <td>70.0</td>
-      <td>0.00000</td>
-      <td>[75.19259518261279, 186.3849701306289, 191.589...</td>
-      <td>[7.996977585316541e-05, 6.97690878117426e-05, ...</td>
-      <td>[[0.0, -1.6420295202952053, 2.3475553505535047...</td>
-    </tr>
-    <tr>
-      <th>950907205</th>
-      <td>0.012123</td>
-      <td>14.739577</td>
-      <td>0.99</td>
-      <td>2.838052</td>
-      <td>NaN</td>
-      <td>1.291725e+02</td>
-      <td>0.193312</td>
-      <td>-0.892797</td>
-      <td>0.004831</td>
-      <td>1.054721</td>
-      <td>...</td>
-      <td>1</td>
-      <td>0.109883</td>
-      <td>0.151089</td>
-      <td>-0.244173</td>
-      <td>101.262915</td>
-      <td>40.0</td>
-      <td>0.00510</td>
-      <td>[0.6211892301590656, 0.9079561760850958, 1.081...</td>
-      <td>[5.270051606545425e-05, 5.0142859160195626e-05...</td>
-      <td>[[0.0, -0.9787049999999999, -4.640805000000003...</td>
-    </tr>
-    <tr>
-      <th>950907520</th>
-      <td>0.007576</td>
-      <td>1.098404</td>
-      <td>0.99</td>
-      <td>2.423808</td>
-      <td>NaN</td>
-      <td>6.282138e+01</td>
-      <td>0.137635</td>
-      <td>0.824121</td>
-      <td>0.001901</td>
-      <td>0.456900</td>
-      <td>...</td>
-      <td>152</td>
-      <td>0.206030</td>
-      <td>0.329648</td>
-      <td>-0.053915</td>
-      <td>85.989735</td>
+      <td>4</td>
       <td>50.0</td>
-      <td>0.00000</td>
-      <td>[2.1005573374638606, 3.85505904603257, 4.01682...</td>
-      <td>[7.694648306411865e-05, 7.492886255594172e-05,...</td>
-      <td>[[0.0, -1.4923350000000075, -1.402439999999998...</td>
-    </tr>
-    <tr>
-      <th>950907518</th>
-      <td>0.075400</td>
-      <td>0.062280</td>
-      <td>0.87</td>
-      <td>2.263385</td>
-      <td>NaN</td>
-      <td>3.500339e+01</td>
-      <td>0.173800</td>
-      <td>0.206030</td>
-      <td>0.000000</td>
-      <td>0.434353</td>
-      <td>...</td>
-      <td>151</td>
-      <td>0.178559</td>
-      <td>0.343384</td>
-      <td>-0.053040</td>
-      <td>84.470426</td>
-      <td>50.0</td>
-      <td>0.00000</td>
-      <td>[1.9085904838560483, 5.879527684167119, 31.678...</td>
-      <td>[7.178091557968419e-05, 6.456652055153236e-05,...</td>
-      <td>[[0.0, -3.4937234042553165, 3.7997872340425505...</td>
-    </tr>
-    <tr>
-      <th>950907524</th>
-      <td>0.002313</td>
-      <td>1.448536</td>
-      <td>0.99</td>
-      <td>4.285082</td>
-      <td>0.686767</td>
-      <td>5.045019e+01</td>
-      <td>0.143138</td>
-      <td>0.068677</td>
-      <td>0.001834</td>
-      <td>0.558508</td>
-      <td>...</td>
-      <td>154</td>
-      <td>0.164824</td>
       <td>0.357119</td>
-      <td>-0.123923</td>
-      <td>136.843200</td>
-      <td>60.0</td>
-      <td>0.00000</td>
-      <td>[2.348824245897788, 2.5458577711062924, 2.6720...</td>
-      <td>[0.00011948493821011336, 0.0001511098249575643...</td>
-      <td>[[0.0, 2.527005000000001, 1.158495000000003, 0...</td>
+      <td>2.962274</td>
+      <td>0.99</td>
+      <td>0.381716</td>
+      <td>0.473829</td>
+      <td>[1.0439430431793884, 1.543311060144649, 2.7287...</td>
+      <td>[0.0001908626967721937, 0.00016134635752077775...</td>
+      <td>[[0.0, 0.5961149999999966, 5.378099999999993, ...</td>
     </tr>
     <tr>
-      <th>950907209</th>
-      <td>0.084063</td>
-      <td>0.040263</td>
-      <td>0.96</td>
-      <td>3.343694</td>
-      <td>0.000000</td>
-      <td>1.992695e+01</td>
-      <td>NaN</td>
-      <td>0.156975</td>
-      <td>0.000467</td>
-      <td>0.637890</td>
+      <th>950921172</th>
+      <td>0.521943</td>
+      <td>3</td>
+      <td>850249267</td>
+      <td>681.53</td>
+      <td>0.390098</td>
+      <td>1.959983</td>
+      <td>-0.109729</td>
+      <td>14.677643</td>
+      <td>0.003857</td>
+      <td>0.103446</td>
       <td>...</td>
       <td>3</td>
-      <td>0.178559</td>
-      <td>0.343384</td>
-      <td>-0.115789</td>
-      <td>114.131278</td>
-      <td>70.0</td>
-      <td>0.00000</td>
-      <td>[10.606598954149941, 21.535109596551273, 52.97...</td>
-      <td>[9.775257470604628e-05, 9.453428297313494e-05,...</td>
-      <td>[[0.0, 3.588493670886069, 2.7976329113924, 1.2...</td>
+      <td>40.0</td>
+      <td>0.260972</td>
+      <td>2.067810</td>
+      <td>0.99</td>
+      <td>0.536663</td>
+      <td>0.445946</td>
+      <td>[10.406435026164546, 17.127986534673788, 18.48...</td>
+      <td>[0.00014485615850768024, 0.0001722424107984555...</td>
+      <td>[[0.0, -1.341600000000002, -0.4586399999999933...</td>
     </tr>
     <tr>
-      <th>950907207</th>
+      <th>950921152</th>
+      <td>0.467002</td>
+      <td>2</td>
+      <td>850249267</td>
+      <td>1070.71</td>
       <td>0.500000</td>
-      <td>0.007849</td>
-      <td>0.04</td>
-      <td>1.429174</td>
-      <td>-1.373534</td>
-      <td>1.143549e+02</td>
-      <td>NaN</td>
-      <td>1.178950</td>
-      <td>0.000067</td>
-      <td>1.086981</td>
+      <td>2.522905</td>
+      <td>-0.109867</td>
+      <td>15.783665</td>
+      <td>0.017776</td>
+      <td>0.027818</td>
       <td>...</td>
       <td>2</td>
-      <td>0.137353</td>
-      <td>0.467002</td>
-      <td>-0.087455</td>
-      <td>58.044156</td>
-      <td>100.0</td>
-      <td>0.00000</td>
-      <td>[9220.822768046102, 9221.122635004784, 9221.42...</td>
-      <td>[6.54109900575074e-05, 7.75283889854388e-05, 6...</td>
-      <td>[[0.0, 0.48370129870129897, 2.144999999999998,...</td>
-    </tr>
-    <tr>
-      <th>950907528</th>
-      <td>0.500000</td>
-      <td>0.003160</td>
-      <td>0.29</td>
-      <td>2.618464</td>
-      <td>0.343384</td>
-      <td>1.376060e+13</td>
-      <td>NaN</td>
-      <td>0.629537</td>
-      <td>0.000000</td>
-      <td>0.551650</td>
-      <td>...</td>
-      <td>156</td>
-      <td>0.164824</td>
-      <td>0.315913</td>
-      <td>-0.106002</td>
-      <td>82.516452</td>
-      <td>110.0</td>
-      <td>0.00000</td>
-      <td>[380.3052589740686, 1307.7695954906458, 1546.2...</td>
-      <td>[7.262832980570496e-05, 8.690587004932377e-05,...</td>
-      <td>[[0.0, -13.234838709677422, -15.53080645161290...</td>
-    </tr>
-    <tr>
-      <th>950907526</th>
-      <td>0.024568</td>
-      <td>0.376838</td>
+      <td>50.0</td>
+      <td>0.247236</td>
+      <td>2.220043</td>
       <td>0.99</td>
-      <td>2.697075</td>
-      <td>0.000000</td>
-      <td>6.677386e+01</td>
-      <td>0.092951</td>
-      <td>0.595198</td>
-      <td>0.000235</td>
-      <td>0.576049</td>
+      <td>0.566559</td>
+      <td>0.284058</td>
+      <td>[1.2775103414155262, 2.3915133536963493, 3.701...</td>
+      <td>[0.00014859435856024575, 0.0001531048673600236...</td>
+      <td>[[0.0, -0.6427199999999993, -2.836079999999998...</td>
+    </tr>
+    <tr>
+      <th>950921135</th>
+      <td>0.467002</td>
+      <td>1</td>
+      <td>850249267</td>
+      <td>253.42</td>
+      <td>0.500000</td>
+      <td>2.803475</td>
+      <td>-0.150379</td>
+      <td>26.666930</td>
+      <td>0.023742</td>
+      <td>0.076530</td>
       <td>...</td>
-      <td>155</td>
-      <td>0.123618</td>
+      <td>1</td>
+      <td>40.0</td>
+      <td>0.233501</td>
+      <td>2.339206</td>
+      <td>0.99</td>
+      <td>0.669090</td>
+      <td>0.590737</td>
+      <td>[9.473732504122962, 13.198542576065163, 18.302...</td>
+      <td>[0.00032386170367170055, 0.0004518112387675137...</td>
+      <td>[[0.0, -3.2800950000000078, -6.087510000000009...</td>
+    </tr>
+    <tr>
+      <th>950921111</th>
+      <td>0.439531</td>
+      <td>0</td>
+      <td>850249267</td>
+      <td>141.82</td>
+      <td>0.018056</td>
+      <td>4.647943</td>
+      <td>-0.328727</td>
+      <td>66.901065</td>
+      <td>0.006595</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0</td>
+      <td>30.0</td>
       <td>0.219765</td>
-      <td>-0.086945</td>
-      <td>85.886190</td>
-      <td>110.0</td>
-      <td>0.00000</td>
-      <td>[2.2609241602989334, 32.71425381635791, 55.055...</td>
-      <td>[5.304596375917082e-05, 0.00010119436098758314...</td>
-      <td>[[0.0, -1.1261249999999983, -2.767439999999997...</td>
+      <td>4.395994</td>
+      <td>0.99</td>
+      <td>1.261416</td>
+      <td>0.952667</td>
+      <td>[1.1677100445138795, 1.1707767194728813, 1.349...</td>
+      <td>[0.00015644521007973124, 0.000214412247939483,...</td>
+      <td>[[0.0, -0.9291749999999945, -6.120270000000007...</td>
+    </tr>
+    <tr>
+      <th>950927711</th>
+      <td>1.455946</td>
+      <td>482</td>
+      <td>850249273</td>
+      <td>2.46</td>
+      <td>0.000895</td>
+      <td>1.651500</td>
+      <td>-0.039932</td>
+      <td>39.400278</td>
+      <td>0.000033</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>464</td>
+      <td>100.0</td>
+      <td>0.274707</td>
+      <td>5.557479</td>
+      <td>0.37</td>
+      <td>0.467365</td>
+      <td>0.000000</td>
+      <td>[2613.8652081509977, 2624.5193369599215, 2734....</td>
+      <td>[0.00012946663895843286, 0.0001203425053985725...</td>
+      <td>[[0.0, 6.3216435986159105, 10.324204152249129,...</td>
+    </tr>
+    <tr>
+      <th>950921285</th>
+      <td>2.087772</td>
+      <td>11</td>
+      <td>850249273</td>
+      <td>318.53</td>
+      <td>0.036848</td>
+      <td>1.379817</td>
+      <td>NaN</td>
+      <td>27.472722</td>
+      <td>0.000903</td>
+      <td>0.291953</td>
+      <td>...</td>
+      <td>11</td>
+      <td>100.0</td>
+      <td>0.288442</td>
+      <td>2.751337</td>
+      <td>0.89</td>
+      <td>0.372116</td>
+      <td>0.258065</td>
+      <td>[39.04904580954626, 39.457346913598556, 40.495...</td>
+      <td>[7.768399792002802e-05, 8.405736507197006e-05,...</td>
+      <td>[[0.0, 5.330324999999991, 2.4261899999999486, ...</td>
+    </tr>
+    <tr>
+      <th>950921271</th>
+      <td>0.947739</td>
+      <td>10</td>
+      <td>850249273</td>
+      <td>1008.50</td>
+      <td>0.001727</td>
+      <td>1.420617</td>
+      <td>-0.008204</td>
+      <td>30.027595</td>
+      <td>0.000707</td>
+      <td>0.406673</td>
+      <td>...</td>
+      <td>10</td>
+      <td>100.0</td>
+      <td>0.288442</td>
+      <td>3.847234</td>
+      <td>0.96</td>
+      <td>0.498618</td>
+      <td>0.796491</td>
+      <td>[16.751918851114475, 26.127977537450867, 28.65...</td>
+      <td>[0.00016516929470324686, 0.0001501058102103845...</td>
+      <td>[[0.0, -3.103230000000032, 5.680349999999983, ...</td>
+    </tr>
+    <tr>
+      <th>950921260</th>
+      <td>0.453266</td>
+      <td>9</td>
+      <td>850249273</td>
+      <td>175.00</td>
+      <td>0.000081</td>
+      <td>4.969091</td>
+      <td>-0.184456</td>
+      <td>89.804006</td>
+      <td>0.000000</td>
+      <td>0.223876</td>
+      <td>...</td>
+      <td>9</td>
+      <td>60.0</td>
+      <td>0.192295</td>
+      <td>5.274090</td>
+      <td>0.99</td>
+      <td>1.140487</td>
+      <td>0.997333</td>
+      <td>[0.9620761551434307, 2.092045877265143, 2.4040...</td>
+      <td>[0.0003836112198262231, 0.0004093908262843732,...</td>
+      <td>[[0.0, 1.9104149999999982, -7.270770000000016,...</td>
+    </tr>
+    <tr>
+      <th>950921248</th>
+      <td>0.439531</td>
+      <td>8</td>
+      <td>850249273</td>
+      <td>261.11</td>
+      <td>0.065478</td>
+      <td>2.147758</td>
+      <td>-0.085677</td>
+      <td>84.145512</td>
+      <td>0.005474</td>
+      <td>0.076346</td>
+      <td>...</td>
+      <td>8</td>
+      <td>60.0</td>
+      <td>0.274707</td>
+      <td>3.022387</td>
+      <td>0.99</td>
+      <td>0.463570</td>
+      <td>0.976667</td>
+      <td>[1.316477113448928, 1.779311698293908, 2.96088...</td>
+      <td>[0.00013780619334124896, 0.0001439873831056905...</td>
+      <td>[[0.0, -3.6761399999999953, 0.8334300000000014...</td>
     </tr>
   </tbody>
 </table>
@@ -1062,12 +1065,56 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <tbody>
     <tr>
       <th>0</th>
-      <td>86.285852</td>
-      <td>86.519369</td>
+      <td>89.896827</td>
+      <td>90.130356</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
+      <td>10.0</td>
       <td>-10.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(1, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>90.130356</td>
+      <td>90.380565</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>-30.0</td>
+      <td>20.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(2, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>90.380565</td>
+      <td>90.630774</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>20.0</td>
       <td>-20.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
@@ -1076,20 +1123,130 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>[20.0, 20.0]</td>
       <td>deg</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(3, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>90.630774</td>
+      <td>90.880983</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>30.0</td>
+      <td>20.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(4, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>90.880983</td>
+      <td>91.131199</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>-40.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(5, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>91.131199</td>
+      <td>91.381415</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
       <td>45.0</td>
       <td>0.08</td>
       <td>0.8</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(1, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+      <td>[(6, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>86.519369</td>
-      <td>86.769565</td>
+      <th>6</th>
+      <td>91.381415</td>
+      <td>91.631631</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(7, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>91.631631</td>
+      <td>91.881847</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
       <td>-40.0</td>
+      <td>-20.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(8, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>91.881847</td>
+      <td>92.132049</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>-30.0</td>
       <td>-30.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
@@ -1098,161 +1255,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>[20.0, 20.0]</td>
       <td>deg</td>
       <td>0.0</td>
-      <td>45.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(2, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>86.769565</td>
-      <td>87.019762</td>
-      <td>gabors</td>
       <td>0.0</td>
-      <td>4.0</td>
-      <td>-10.0</td>
-      <td>-10.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>90.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(3, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>87.019762</td>
-      <td>87.269958</td>
-      <td>gabors</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>20.0</td>
-      <td>-10.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(4, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>87.269958</td>
-      <td>87.520172</td>
-      <td>gabors</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>40.0</td>
-      <td>10.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>45.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(5, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>87.520172</td>
-      <td>87.770385</td>
-      <td>gabors</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>30.0</td>
-      <td>10.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>90.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(6, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>87.770385</td>
-      <td>88.020599</td>
-      <td>gabors</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>-40.0</td>
-      <td>-40.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>45.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(7, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>88.020599</td>
-      <td>88.270812</td>
-      <td>gabors</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>-10.0</td>
-      <td>-10.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>45.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(8, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>88.270812</td>
-      <td>88.521016</td>
-      <td>gabors</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>40.0</td>
-      <td>0.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>90.0</td>
       <td>0.08</td>
       <td>0.8</td>
       <td>[stimulus_time_interval]</td>
@@ -1260,13 +1263,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>9</th>
-      <td>88.521016</td>
-      <td>88.771220</td>
+      <td>92.132049</td>
+      <td>92.382250</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>30.0</td>
-      <td>-10.0</td>
+      <td>10.0</td>
+      <td>-30.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1310,8 +1313,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;ProS&#39;, &#39;POL&#39;, &#39;LGd&#39;, &#39;APN&#39;, &#39;LGv&#39;, &#39;VISrl&#39;, &#39;VISp&#39;, &#39;SCig&#39;, &#39;PPT&#39;, &#39;DG&#39;, &#39;CA3&#39;, &#39;VIS&#39;, &#39;NOT&#39;, &#39;VISam&#39;, &#39;MB&#39;, &#39;VISl&#39;, &#39;VISal&#39;, &#39;LP&#39;, &#39;HPF&#39;, &#39;CA1&#39;}
-{&#39;probeA&#39;, &#39;probeB&#39;, &#39;probeC&#39;, &#39;probeD&#39;, &#39;probeE&#39;, &#39;probeF&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;LP&#39;, &#39;CA1&#39;, &#39;APN&#39;, &#39;DG&#39;, &#39;SUB&#39;, &#39;VISpm&#39;, &#39;MB&#39;, &#39;VISrl&#39;, &#39;CA2&#39;, &#39;VISal&#39;, &#39;CA3&#39;, &#39;LGd&#39;, &#39;Eth&#39;, &#39;POL&#39;, &#39;VISl&#39;, &#39;grey&#39;, &#39;VPM&#39;, &#39;TH&#39;, &#39;VISam&#39;, &#39;NOT&#39;, &#39;VL&#39;, &#39;VISp&#39;, &#39;PO&#39;}
+{&#39;probeB&#39;, &#39;probeF&#39;, &#39;probeE&#39;, &#39;probeC&#39;, &#39;probeD&#39;, &#39;probeA&#39;}
 </pre></div>
 </div>
 </div>
@@ -1342,7 +1345,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>70
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75
 </pre></div>
 </div>
 </div>
@@ -1484,10 +1487,10 @@ deg
             <p class="prev-next-title">Visualizing 2P Responses to Stimulus</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="current_source_density.html" title="next page">
+    <a class='right-next' id="next-link" href="optotagging.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Current Source Density Analysis</p>
+        <p class="prev-next-title">Identifying Optotagged Units</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Identifying Optotagged Units" href="optotagging.html" />
-    <link rel="prev" title="Showing Receptive Fields" href="receptive_fields.html" />
+    <link rel="next" title="Cell Matching Across Days" href="cell_matching.html" />
+    <link rel="prev" title="Identifying Optotagged Units" href="optotagging.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -198,14 +198,14 @@ const thebe_selector_output = ".output, .cell_output"
    Showing Receptive Fields
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Current Source Density Analysis
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="optotagging.html">
    Identifying Optotagged Units
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Current Source Density Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -652,8 +652,8 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">dandi_stim_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-730756767/sub-730756767_ses-757970808.nwb&quot;</span>
-<span class="n">dandi_lfp_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-730756767/sub-730756767_ses-757970808_probe-769322852_ecephys.nwb&quot;</span>
+<span class="n">dandi_stim_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
+<span class="n">dandi_lfp_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530_probe-729445648_ecephys.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 
 <span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
@@ -698,7 +698,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-730756767_ses-757970808.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-703279277_ses-719161530.nwb
 </pre></div>
 </div>
 </div>
@@ -714,7 +714,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-730756767_ses-757970808_probe-769322852_ecephys.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-703279277_ses-719161530_probe-729445648_ecephys.nwb
 </pre></div>
 </div>
 </div>
@@ -744,23 +744,23 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span> <span class="o">=</span> <span class="n">lfp_nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;probe_769322852_lfp_data&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span> <span class="o">=</span> <span class="n">lfp_nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;probe_729445648_lfp_data&quot;</span><span class="p">]</span>
 <span class="n">lfp</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_769322852_lfp_data pynwb.ecephys.ElectricalSeries at 0x2031477567936
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_729445648_lfp_data pynwb.ecephys.ElectricalSeries at 0x2647030529616
 Fields:
   comments: no comments
   conversion: 1.0
-  data: &lt;HDF5 dataset &quot;data&quot;: shape (12085040, 89), type &quot;&lt;f4&quot;&gt;
+  data: &lt;HDF5 dataset &quot;data&quot;: shape (12081228, 94), type &quot;&lt;f4&quot;&gt;
   description: no description
   electrodes: electrodes &lt;class &#39;hdmf.common.table.DynamicTableRegion&#39;&gt;
   interval: 1
   offset: 0.0
   resolution: -1.0
-  timestamps: &lt;HDF5 dataset &quot;timestamps&quot;: shape (12085040,), type &quot;&lt;f8&quot;&gt;
+  timestamps: &lt;HDF5 dataset &quot;timestamps&quot;: shape (12081228,), type &quot;&lt;f8&quot;&gt;
   timestamps_unit: seconds
   unit: volts
 </pre></div>
@@ -778,7 +778,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;drifting_gratings_presentations&#39;, &#39;flashes_presentations&#39;, &#39;gabors_presentations&#39;, &#39;natural_movie_one_presentations&#39;, &#39;natural_movie_three_presentations&#39;, &#39;natural_scenes_presentations&#39;, &#39;spontaneous_presentations&#39;, &#39;static_gratings_presentations&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;drifting_gratings_presentations&#39;, &#39;flashes_presentations&#39;, &#39;gabors_presentations&#39;, &#39;invalid_times&#39;, &#39;natural_movie_one_presentations&#39;, &#39;natural_movie_three_presentations&#39;, &#39;natural_scenes_presentations&#39;, &#39;spontaneous_presentations&#39;, &#39;static_gratings_presentations&#39;])
 </pre></div>
 </div>
 </div>
@@ -850,11 +850,11 @@ Fields:
   <tbody>
     <tr>
       <th>0</th>
-      <td>1285.577251</td>
-      <td>1285.827445</td>
+      <td>1290.883097</td>
+      <td>1291.133309</td>
       <td>flashes</td>
       <td>1.0</td>
-      <td>1.0</td>
+      <td>-1.0</td>
       <td>None</td>
       <td>1.0</td>
       <td>[0.0, 0.0]</td>
@@ -869,11 +869,11 @@ Fields:
     </tr>
     <tr>
       <th>1</th>
-      <td>1287.578841</td>
-      <td>1287.829058</td>
+      <td>1292.884817</td>
+      <td>1293.135016</td>
       <td>flashes</td>
       <td>1.0</td>
-      <td>-1.0</td>
+      <td>1.0</td>
       <td>None</td>
       <td>1.0</td>
       <td>[0.0, 0.0]</td>
@@ -888,11 +888,11 @@ Fields:
     </tr>
     <tr>
       <th>2</th>
-      <td>1289.580531</td>
-      <td>1289.830745</td>
+      <td>1294.886487</td>
+      <td>1295.136691</td>
       <td>flashes</td>
       <td>1.0</td>
-      <td>-1.0</td>
+      <td>1.0</td>
       <td>None</td>
       <td>1.0</td>
       <td>[0.0, 0.0]</td>
@@ -907,8 +907,8 @@ Fields:
     </tr>
     <tr>
       <th>3</th>
-      <td>1291.582241</td>
-      <td>1291.832440</td>
+      <td>1296.888137</td>
+      <td>1297.138344</td>
       <td>flashes</td>
       <td>1.0</td>
       <td>1.0</td>
@@ -926,11 +926,11 @@ Fields:
     </tr>
     <tr>
       <th>4</th>
-      <td>1293.583911</td>
-      <td>1293.834113</td>
+      <td>1298.889787</td>
+      <td>1299.140004</td>
       <td>flashes</td>
       <td>1.0</td>
-      <td>1.0</td>
+      <td>-1.0</td>
       <td>None</td>
       <td>1.0</td>
       <td>[0.0, 0.0]</td>
@@ -945,8 +945,8 @@ Fields:
     </tr>
     <tr>
       <th>5</th>
-      <td>1295.585541</td>
-      <td>1295.835753</td>
+      <td>1300.891467</td>
+      <td>1301.141676</td>
       <td>flashes</td>
       <td>1.0</td>
       <td>-1.0</td>
@@ -964,8 +964,8 @@ Fields:
     </tr>
     <tr>
       <th>6</th>
-      <td>1297.587271</td>
-      <td>1297.837468</td>
+      <td>1302.893127</td>
+      <td>1303.143344</td>
       <td>flashes</td>
       <td>1.0</td>
       <td>-1.0</td>
@@ -983,8 +983,8 @@ Fields:
     </tr>
     <tr>
       <th>7</th>
-      <td>1299.588921</td>
-      <td>1299.839125</td>
+      <td>1304.894807</td>
+      <td>1305.145019</td>
       <td>flashes</td>
       <td>1.0</td>
       <td>1.0</td>
@@ -1002,11 +1002,11 @@ Fields:
     </tr>
     <tr>
       <th>8</th>
-      <td>1301.590591</td>
-      <td>1301.840795</td>
+      <td>1306.896537</td>
+      <td>1307.146734</td>
       <td>flashes</td>
       <td>1.0</td>
-      <td>-1.0</td>
+      <td>1.0</td>
       <td>None</td>
       <td>1.0</td>
       <td>[0.0, 0.0]</td>
@@ -1021,11 +1021,11 @@ Fields:
     </tr>
     <tr>
       <th>9</th>
-      <td>1303.592261</td>
-      <td>1303.842470</td>
+      <td>1308.898167</td>
+      <td>1309.148374</td>
       <td>flashes</td>
       <td>1.0</td>
-      <td>-1.0</td>
+      <td>1.0</td>
       <td>None</td>
       <td>1.0</td>
       <td>[0.0, 0.0]</td>
@@ -1072,10 +1072,10 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1285.5772508695136
-1583.8263808695135
-3.727534675412933
-9671.771044169622
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1290.8830973815907
+1589.1321873815905
+0.6365185316449242
+9665.628622235403
 </pre></div>
 </div>
 </div>
@@ -1132,7 +1132,7 @@ Fields:
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150,)
 (387500,)
-(387500, 89)
+(387500, 94)
 </pre></div>
 </div>
 </div>
@@ -1157,7 +1157,7 @@ Fields:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(387500,)
-(387500, 89)
+(387500, 94)
 </pre></div>
 </div>
 </div>
@@ -1181,7 +1181,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(89, 77500)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(94, 77500)
 </pre></div>
 </div>
 </div>
@@ -1230,7 +1230,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 89, 62)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 94, 62)
 </pre></div>
 </div>
 </div>
@@ -1293,7 +1293,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(89, 62)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(94, 62)
 </pre></div>
 </div>
 </div>
@@ -1398,17 +1398,17 @@ R, lambda : 0.23 0.00012115276586285876
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="receptive_fields.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="optotagging.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Showing Receptive Fields</p>
+            <p class="prev-next-title">Identifying Optotagged Units</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="optotagging.html" title="next page">
+    <a class='right-next' id="next-link" href="cell_matching.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Identifying Optotagged Units</p>
+        <p class="prev-next-title">Cell Matching Across Days</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
