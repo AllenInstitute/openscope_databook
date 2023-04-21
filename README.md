@@ -27,8 +27,8 @@ https://alleninstitute.github.io/openscope_databook
 
 ### Chapter 3: First-order analysis
 - [Neuropixel: Plotting receptive fields](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/receptive_fields.ipynb)
-- [Neuropixel: Extracting Current Source Density plots](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/current_source_density.ipynb)
 - [Neuropixel: Identifying opto-tagged cells](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/optotagging.ipynb)
+- [Neuropixel: Extracting Current Source Density plots](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/current_source_density.ipynb)
 - [2P: Cell matching across days](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/cell_matching.ipynb)
 - 2P: How to align timestamps across modalities.
 - 2P: Stimuli averages with 2P data
