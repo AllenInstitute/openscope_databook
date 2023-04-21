@@ -569,8 +569,18 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">nway</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
+    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nway</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
@@ -630,9 +640,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.53.0) of dandi/dandi-cli is available. You are using 0.46.6
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-1168633075_ses-1193555033-1193675753-_ophys.nwb
 Downloaded file to ./sub-1168633075_ses-1194555869-1194754135-_ophys.nwb
 </pre></div>
@@ -641,7 +648,7 @@ Downloaded file to ./sub-1168633075_ses-1194555869-1194754135-_ophys.nwb
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the nwbs list will be a list of opened nwb files which will be used below for analysis</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the nwbs list will be a list of opened nwb objects which will be used below for analysis</span>
 <span class="n">nwbs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">filepaths</span><span class="p">:</span>
     <span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -651,11 +658,11 @@ Downloaded file to ./sub-1168633075_ses-1194555869-1194754135-_ophys.nwb
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.6.0-alpha is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -683,7 +690,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>The caveat to using this pipeline is that it requires input in a specific JSON format rather than an NWB File. The following functions are used to generate a file, <code class="docutils literal notranslate"><span class="pre">input.json</span></code>, which can be used to obtain important output. The input json contains an entry for each input experiment. 2 or more experiments can be used. The first experiment is called <em>fixed</em> and the other ones are <em>moving</em>. For each experiment, a unique experiment ID, a path to the experiment projection image, and a list of objects for each ROI are required.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_roi_entries</span><span class="p">(</span><span class="n">roi_table</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### for each ROI in an ROI table, create a JSON object containing its information, return a list of JSON objects</span>
+
+<span class="k">def</span> <span class="nf">make_roi_entries</span><span class="p">(</span><span class="n">roi_table</span><span class="p">):</span>
     <span class="n">roi_entries</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">roi_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_table</span><span class="p">)):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
@@ -712,7 +721,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize_to_16b</span><span class="p">(</span><span class="n">image_array</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### take in an image array and return it converted to uint16</span>
+
+<span class="k">def</span> <span class="nf">normalize_to_16b</span><span class="p">(</span><span class="n">image_array</span><span class="p">):</span>
     <span class="n">image_array</span> <span class="o">=</span> <span class="n">image_array</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="mi">8</span>
     <span class="k">return</span> <span class="n">image_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
 </pre></div>
@@ -721,7 +732,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nwb_to_experiment_json</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### convert an nwb object into a &#39;experiment&#39; JSON object with the required format</span>
+
+<span class="k">def</span> <span class="nf">nwb_to_experiment_json</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
     <span class="c1"># save image here</span>
     <span class="n">grayscale_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;images&quot;</span><span class="p">][</span><span class="s2">&quot;average_image&quot;</span><span class="p">])</span>
     <span class="n">image_array</span> <span class="o">=</span> <span class="n">normalize_to_16b</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grayscale_image</span><span class="p">))</span>
@@ -744,7 +757,9 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_exps</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### make the input json object, populate its experiments field with an experiment object for each nwb object</span>
+
+<span class="n">input_exps</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;experiment_containers&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;ophys_experiments&quot;</span><span class="p">:</span> <span class="p">[]</span>
     <span class="p">}</span>
@@ -778,9 +793,9 @@ WARNING:root:many=True not supported from argparse
 WARNING:root:many=True not supported from argparse
 INFO:PairwiseMatching:Matching 1193675753 to 1194754135
 INFO:PairwiseMatching:Matching 1193675753 to 1194754135: best registration was [&#39;Crop&#39;, &#39;CLAHE&#39;, &#39;PhaseCorrelate&#39;]
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\utils.py:48: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\utils.py:48: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
   df = df.sort_index(0)
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\utils.py:49: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\utils.py:49: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
   df = df.sort_index(1)
 INFO:NwayMatching:registration success(1) or failure (0):
    0  1
@@ -790,17 +805,17 @@ id map{
   &quot;0&quot;: 1193675753,
   &quot;1&quot;: 1194754135
 }
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\nway_matching.py:208: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\nway\nway_matching.py:208: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
   matching_frame = matching_frame.append(pairframe)
 INFO:NwayMatching:Nway matching is done!
 INFO:NwayMatching:Creating match summary plots
 WARNING:root:setting Dict fields not supported from argparse
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\argschema\utils.py:346: FutureWarning: &#39;--nway_output.nway_matches&#39; is using old-style command-line syntax with each element as a separate argument. This will not be supported in argschema after 2.0. See http://argschema.readthedocs.io/en/master/user/intro.html#command-line-specification for details.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\argschema\utils.py:346: FutureWarning: &#39;--nway_output.nway_matches&#39; is using old-style command-line syntax with each element as a separate argument. This will not be supported in argschema after 2.0. See http://argschema.readthedocs.io/en/master/user/intro.html#command-line-specification for details.
   warnings.warn(warn_msg, FutureWarning)
 WARNING:root:many=True not supported from argparse
-INFO:NwayMatching:wrote matching_output\nway_match_fraction_plot_2023_04_18_09_05_39.png
-INFO:NwayMatching:wrote matching_output\nway_warp_overlay_plot_2023_04_18_09_05_39.png
-INFO:NwayMatching:wrote matching_output\nway_warp_summary_plot_2023_04_18_09_05_39.png
+INFO:NwayMatching:wrote matching_output\nway_match_fraction_plot_2023_04_19_15_24_40.png
+INFO:NwayMatching:wrote matching_output\nway_warp_overlay_plot_2023_04_19_15_24_40.png
+INFO:NwayMatching:wrote matching_output\nway_warp_summary_plot_2023_04_19_15_24_40.png
 INFO:NwayMatching:wrote output.json
 </pre></div>
 </div>
@@ -831,7 +846,7 @@ INFO:NwayMatching:wrote output.json
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.5, 560.5, 2951.5, -0.5)
 </pre></div>
 </div>
-<img alt="../_images/cell_matching_17_1.png" src="../_images/cell_matching_17_1.png" />
+<img alt="../_images/cell_matching_18_1.png" src="../_images/cell_matching_18_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -844,10 +859,10 @@ INFO:NwayMatching:wrote output.json
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x13e0648ee20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21fdfae8bb0&gt;
 </pre></div>
 </div>
-<img alt="../_images/cell_matching_18_1.png" src="../_images/cell_matching_18_1.png" />
+<img alt="../_images/cell_matching_19_1.png" src="../_images/cell_matching_19_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -860,10 +875,10 @@ INFO:NwayMatching:wrote output.json
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x13e06e35880&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21fdfae8160&gt;
 </pre></div>
 </div>
-<img alt="../_images/cell_matching_19_1.png" src="../_images/cell_matching_19_1.png" />
+<img alt="../_images/cell_matching_20_1.png" src="../_images/cell_matching_20_1.png" />
 </div>
 </div>
 </section>
@@ -946,7 +961,7 @@ INFO:NwayMatching:wrote output.json
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Matched ROIs between sessions\n(White ROIs are unmatched)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/cell_matching_25_1.png" src="../_images/cell_matching_25_1.png" />
+<img alt="../_images/cell_matching_26_1.png" src="../_images/cell_matching_26_1.png" />
 </div>
 </div>
 </section>

@@ -549,6 +549,17 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
+    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dandi</span>
 <span class="kn">import</span> <span class="nn">fsspec</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
@@ -564,7 +575,7 @@ title="Print to PDF"
 </section>
 <section id="streaming-configuration">
 <h2>Streaming Configuration<a class="headerlink" href="#streaming-configuration" title="Permalink to this headline">#</a></h2>
-<p>Here you can configure the stream. Browse the DANDI Archive for a dandiset you’re interested in and use its ID in <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>. Set <code class="docutils literal notranslate"><span class="pre">filepath</span></code> to the path of the file you want to download within the dandiset. You can get this by navigating to the file you want to download on the DANDI Archive website and pressing on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon. There, you can copy the filepath from the field labeled <code class="docutils literal notranslate"><span class="pre">path</span></code>. Don’t include a leading <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
+<p>Here you can configure the stream. Browse the DANDI Archive for a dandiset you’re interested in and use its ID in <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>. Set <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to the path of the file you want to download within the dandiset. You can get this by navigating to the file you want to download on the DANDI Archive website and pressing on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon. There, you can copy the filepath from the field labeled <code class="docutils literal notranslate"><span class="pre">path</span></code>. Don’t include a leading <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
 <p>If you’re accessing an embargoed dandiset, you should set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key, which can be found if you click on your profile icon in the top-right corner on the DANDI Archive website.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,9 +600,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
 </pre></div>
 </div>
@@ -608,7 +616,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/f5f/175/f5f1752f-5227-47d5-8f75-cd71937878aa?response-content-disposition=attachment%3B%20filename%3D%22sub-699733573_ses-715093703.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20221206%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20221206T221524Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6ad49dd5fbfde4aca3bc0b5ca497dfa6b2652385798a3e14bf8886fe5bf24642
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/f5f/175/f5f1752f-5227-47d5-8f75-cd71937878aa?response-content-disposition=attachment%3B%20filename%3D%22sub-699733573_ses-715093703.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230419%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230419T212302Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8adf393c56367137b7a9b30b4dec0f51dc53bb1c644e0fc39e2bda5f8212772d
 </pre></div>
 </div>
 </div>
@@ -631,9 +639,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -665,7 +673,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "9479fe099bea414caab771bad52136ab", "version_major": 2, "version_minor": 0}
+{"model_id": "68ddf60862604864ae406df6da33989b", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>

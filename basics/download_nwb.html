@@ -549,6 +549,17 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
+    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
 </pre></div>
 </div>
@@ -581,9 +592,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.46.6) of dandi/dandi-cli is available. You are using 0.46.3
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
 </pre></div>
 </div>
@@ -634,6 +642,11 @@ title="Print to PDF"
 <span class="n">my_dandiset</span><span class="o">.</span><span class="n">download_directory</span><span class="p">(</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">dandiset_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded directory to </span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">dandiset_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded directory to ./000021
 </pre></div>
 </div>
 </div>

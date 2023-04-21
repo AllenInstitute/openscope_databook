@@ -564,14 +564,23 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="getting-experimental-metadata-from-dandi">
 <h1>Getting Experimental Metadata from DANDI<a class="headerlink" href="#getting-experimental-metadata-from-dandi" title="Permalink to this headline">#</a></h1>
-<p>It can be helpful to view general information about the experimental sessions that produced your data. Since typically each NWB File represents one session, a dandiset’s files can be examined to get an overview of each of the sessions. This can vary, depending on who produced the NWB file. In this notebook, each relevant NWB File within one of the Allen Institute’s datasets, are opened and some basic information is used to make a table of the experimental sessions and their properties.</p>
+<p>It can be helpful to view general information about the experimental sessions that produced your data. Since typically each NWB File represents one session, a dandiset’s files can be examined to get an overview of each of the sessions. This can vary, depending on who produced the NWB file. In this notebook, NWB Files within one of the Allen Institute’s datasets are opened and some basic information is used to make a table of the experimental sessions and their properties.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">import</span> <span class="nn">fsspec</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
+    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fsspec</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -587,12 +596,12 @@ title="Print to PDF"
 </section>
 <section id="getting-dandiset-metadata">
 <h2>Getting Dandiset Metadata<a class="headerlink" href="#getting-dandiset-metadata" title="Permalink to this headline">#</a></h2>
-<p>To view other data, change <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the id of the dandiset. If the dandiset is embargoed, have <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> set to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
+<p>To view other data, change <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the id of the dandiset you’re interested in. If the dandiset is embargoed, have <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> set to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000248&quot;</span>
 <span class="n">authenticate</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DANDI_API_KEY&#39;</span><span class="p">]</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -608,9 +617,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000248/draft
 </pre></div>
 </div>
@@ -619,7 +625,7 @@ title="Print to PDF"
 </section>
 <section id="get-nwb-info">
 <h2>Get NWB Info<a class="headerlink" href="#get-nwb-info" title="Permalink to this headline">#</a></h2>
-<p>This function is tailored to our NWB Files. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect this.</p>
+<p>This function is tailored to our NWB Files. It retrieves a series of important metadata values from the NWB file object. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within nwb file</span>
@@ -672,29 +678,30 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 67ff2b14-6f23-40f2-b811-57003aeea8e3
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file dbc426a0-aafa-460b-a25a-a86bb31b9ddc
-Examining file 181b7651-5f5c-491b-be70-e5d0354439d4
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.6.0-alpha is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 181b7651-5f5c-491b-be70-e5d0354439d4
 Examining file 85bfd56c-f104-4c83-937c-be0d58fce48e
 Examining file c5e97840-4988-4da8-9f57-a24fb0a4a865
-Examining file 3de250b0-2fc6-40eb-ae51-2395d0062819
-Examining file 8c064e94-a858-4fad-a15a-5047d303e3f9
-Examining file 46a94a32-c5de-44ae-a2a5-2a38958ef0bf
-Examining file ec8dabd7-f925-48ba-9dbe-ab67dd6ba83f
-Examining file a2bd39ed-3f98-4f48-b34c-394db4ce15c3
 Examining file a7ff352c-0b00-47d6-a49f-97027d18264e
 Examining file a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84
-Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
+Examining file 32af00b4-4aa6-48de-8210-26a5cf7935a9
+Examining file 016e7321-807f-4b59-be42-c33511f8f55c
+Examining file 7252ab67-7acd-4cb7-b7a6-600df600d8e7
+Examining file 3c6a7667-5f5d-432f-829c-e915dab15c27
+Examining file 9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6
+Examining file e0392a2a-0e07-4f7a-82dd-df354bf571d5
+Examining file 03eba9bf-f850-41a5-9e99-6f65fc5ea13d
+Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
 </pre></div>
 </div>
 </div>
@@ -743,21 +750,6 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
   <tbody>
     <tr>
       <th>0</th>
-      <td>67ff2b14-6f23-40f2-b811-57003aeea8e3</td>
-      <td>2242666496</td>
-      <td>sub_1175512783/sub_1175512783sess_1187930705/s...</td>
-      <td>2022-06-29 00:00:00-07:00</td>
-      <td>619296</td>
-      <td>M</td>
-      <td>154.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>1918</td>
-      <td>7278.157990</td>
-    </tr>
-    <tr>
-      <th>1</th>
       <td>dbc426a0-aafa-460b-a25a-a86bb31b9ddc</td>
       <td>2242666496</td>
       <td>sub_1175512783/sub_1175512783sess_1187930705/s...</td>
@@ -766,13 +758,13 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
       <td>M</td>
       <td>154.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
       <td>1918</td>
       <td>7278.157990</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>1</th>
       <td>181b7651-5f5c-491b-be70-e5d0354439d4</td>
       <td>2803525629</td>
       <td>sub_1172968426/sub_1172968426sess_1182865981/s...</td>
@@ -781,13 +773,13 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
       <td>M</td>
       <td>89.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
       <td>2793</td>
       <td>7279.234305</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>85bfd56c-f104-4c83-937c-be0d58fce48e</td>
       <td>2372313526</td>
       <td>sub_1172969394/sub_1172969394sess_1183070926/s...</td>
@@ -796,13 +788,13 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
       <td>F</td>
       <td>90.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
       <td>2621</td>
       <td>7278.592876</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>3</th>
       <td>c5e97840-4988-4da8-9f57-a24fb0a4a865</td>
       <td>2466318464</td>
       <td>sub_1181585608/sub_1181585608sess_1194644312/s...</td>
@@ -811,88 +803,13 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
       <td>F</td>
       <td>99.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
       <td>2464</td>
       <td>7278.964870</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>3de250b0-2fc6-40eb-ae51-2395d0062819</td>
-      <td>2451127136</td>
-      <td>sub_1186544726/sub_1186544726sess_1196157974/s...</td>
-      <td>2022-08-03 00:00:00-07:00</td>
-      <td>631510</td>
-      <td>F</td>
-      <td>99.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>2386</td>
-      <td>7339.232324</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>8c064e94-a858-4fad-a15a-5047d303e3f9</td>
-      <td>2653386200</td>
-      <td>sub_1194090570/sub_1194090570sess_1208667752/s...</td>
-      <td>2022-09-08 00:00:00-07:00</td>
-      <td>637484</td>
-      <td>M</td>
-      <td>92.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>2373</td>
-      <td>7349.272460</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>46a94a32-c5de-44ae-a2a5-2a38958ef0bf</td>
-      <td>2491394276</td>
-      <td>sub_1177693342/sub_1177693342sess_1189887297/s...</td>
-      <td>2022-07-06 00:00:00-07:00</td>
-      <td>620334</td>
-      <td>M</td>
-      <td>154.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>2092</td>
-      <td>7279.915735</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>ec8dabd7-f925-48ba-9dbe-ab67dd6ba83f</td>
-      <td>2483160990</td>
-      <td>sub_1182593231/sub_1182593231sess_1192952695/s...</td>
-      <td>2022-07-20 00:00:00-07:00</td>
-      <td>630506</td>
-      <td>F</td>
-      <td>92.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>2517</td>
-      <td>7279.167735</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>a2bd39ed-3f98-4f48-b34c-394db4ce15c3</td>
-      <td>3393216313</td>
-      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
-      <td>2022-06-01 00:00:00-07:00</td>
-      <td>625554</td>
-      <td>M</td>
-      <td>82.0</td>
-      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>2930</td>
-      <td>7315.456085</td>
-    </tr>
-    <tr>
-      <th>10</th>
+      <th>4</th>
       <td>a7ff352c-0b00-47d6-a49f-97027d18264e</td>
       <td>2809532134</td>
       <td>sub_1176214862/sub_1176214862sess_1188137866/s...</td>
@@ -901,13 +818,13 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
       <td>M</td>
       <td>148.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
       <td>2593</td>
       <td>7283.108060</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>5</th>
       <td>a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84</td>
       <td>3393216313</td>
       <td>sub_1174569641/sub_1174569641sess_1184671550/s...</td>
@@ -916,25 +833,130 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
       <td>M</td>
       <td>82.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
       <td>2930</td>
       <td>7315.456085</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>4e618045-9c11-48a0-9134-95e2f01b71dd</td>
-      <td>1825365161</td>
+      <th>6</th>
+      <td>32af00b4-4aa6-48de-8210-26a5cf7935a9</td>
+      <td>3556822422</td>
+      <td>sub_1181314060/sub_1181314060sess_1191383105/s...</td>
+      <td>2022-07-13 00:00:00-07:00</td>
+      <td>630502</td>
+      <td>M</td>
+      <td>85.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>2368</td>
+      <td>7277.548360</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>016e7321-807f-4b59-be42-c33511f8f55c</td>
+      <td>2491393884</td>
+      <td>sub_1177693342/sub_1177693342sess_1189887297/s...</td>
+      <td>2022-07-06 00:00:00-07:00</td>
+      <td>620334</td>
+      <td>M</td>
+      <td>154.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>2092</td>
+      <td>7279.915735</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7252ab67-7acd-4cb7-b7a6-600df600d8e7</td>
+      <td>3393216313</td>
+      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
+      <td>2022-06-01 00:00:00-07:00</td>
+      <td>625554</td>
+      <td>M</td>
+      <td>82.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>2930</td>
+      <td>7315.456085</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>3c6a7667-5f5d-432f-829c-e915dab15c27</td>
+      <td>2483160990</td>
+      <td>sub_1182593231/sub_1182593231sess_1192952695/s...</td>
+      <td>2022-07-20 00:00:00-07:00</td>
+      <td>630506</td>
+      <td>F</td>
+      <td>92.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>2517</td>
+      <td>7279.167735</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6</td>
+      <td>1882268693</td>
       <td>sub_1183369803/sub_1183369803sess_1194857009/s...</td>
       <td>2022-07-28 00:00:00-07:00</td>
       <td>631570</td>
       <td>F</td>
       <td>92.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>1726</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>1789</td>
       <td>7278.942950</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>e0392a2a-0e07-4f7a-82dd-df354bf571d5</td>
+      <td>3082458652</td>
+      <td>sub_1189891322/sub_1189891322sess_1199247593/s...</td>
+      <td>2022-08-17 00:00:00-07:00</td>
+      <td>633229</td>
+      <td>F</td>
+      <td>101.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>3026</td>
+      <td>7279.608875</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>03eba9bf-f850-41a5-9e99-6f65fc5ea13d</td>
+      <td>2653385824</td>
+      <td>sub_1194090570/sub_1194090570sess_1208667752/s...</td>
+      <td>2022-09-08 00:00:00-07:00</td>
+      <td>637484</td>
+      <td>M</td>
+      <td>92.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>2373</td>
+      <td>7349.272460</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0c343e3e-8f00-4ee8-9778-fc1d953e453b</td>
+      <td>2547345912</td>
+      <td>sub_1186544726/sub_1186544726sess_119615797/su...</td>
+      <td>2022-08-03 00:00:00-07:00</td>
+      <td>631510</td>
+      <td>F</td>
+      <td>99.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>2386</td>
+      <td>7339.232324</td>
     </tr>
   </tbody>
 </table>
@@ -988,22 +1010,7 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
   </thead>
   <tbody>
     <tr>
-      <th>9</th>
-      <td>a2bd39ed-3f98-4f48-b34c-394db4ce15c3</td>
-      <td>3393216313</td>
-      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
-      <td>2022-06-01 00:00:00-07:00</td>
-      <td>625554</td>
-      <td>M</td>
-      <td>82.0</td>
-      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
-      <td>2930</td>
-      <td>7315.456085</td>
-    </tr>
-    <tr>
-      <th>11</th>
+      <th>5</th>
       <td>a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84</td>
       <td>3393216313</td>
       <td>sub_1174569641/sub_1174569641sess_1184671550/s...</td>
@@ -1012,10 +1019,40 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
       <td>M</td>
       <td>82.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeE, probeB, probeD, probeA, probeC, probeF}</td>
-      <td>{ICwcfg0_presentations, ICkcfg0_presentations,...</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
       <td>2930</td>
       <td>7315.456085</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>7252ab67-7acd-4cb7-b7a6-600df600d8e7</td>
+      <td>3393216313</td>
+      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
+      <td>2022-06-01 00:00:00-07:00</td>
+      <td>625554</td>
+      <td>M</td>
+      <td>82.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>2930</td>
+      <td>7315.456085</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>e0392a2a-0e07-4f7a-82dd-df354bf571d5</td>
+      <td>3082458652</td>
+      <td>sub_1189891322/sub_1189891322sess_1199247593/s...</td>
+      <td>2022-08-17 00:00:00-07:00</td>
+      <td>633229</td>
+      <td>F</td>
+      <td>101.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
+      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>3026</td>
+      <td>7279.608875</td>
     </tr>
   </tbody>
 </table>
@@ -1041,7 +1078,8 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sub_1171903433/sub_1171903433sess_1181330601/sub_1171903433+sess_1181330601_ecephys.nwb&#39;,
- &#39;sub_1174569641/sub_1174569641sess_1184671550/sub_1174569641+sess_1184671550_ecephys.nwb&#39;}
+ &#39;sub_1174569641/sub_1174569641sess_1184671550/sub_1174569641+sess_1184671550_ecephys.nwb&#39;,
+ &#39;sub_1189891322/sub_1189891322sess_1199247593/sub_1189891322+sess_1199247593_ecephys.nwb&#39;}
 </pre></div>
 </div>
 </div>
@@ -1059,6 +1097,7 @@ Examining file 4e618045-9c11-48a0-9134-95e2f01b71dd
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub_1171903433+sess_1181330601_ecephys.nwb
 Downloaded file to ./sub_1174569641+sess_1184671550_ecephys.nwb
+Downloaded file to ./sub_1189891322+sess_1199247593_ecephys.nwb
 </pre></div>
 </div>
 </div>

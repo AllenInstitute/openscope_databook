@@ -479,8 +479,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#streaming-an-nwb-file">
-   Streaming an NWB File
+  <a class="reference internal nav-link" href="#streaming-ecephys-file">
+   Streaming Ecephys File
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -568,8 +568,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#streaming-an-nwb-file">
-   Streaming an NWB File
+  <a class="reference internal nav-link" href="#streaming-ecephys-file">
+   Streaming Ecephys File
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -658,9 +658,18 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">import</span> <span class="nn">fsspec</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
+    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fsspec</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -676,13 +685,13 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-<section id="streaming-an-nwb-file">
-<h2>Streaming an NWB File<a class="headerlink" href="#streaming-an-nwb-file" title="Permalink to this headline">#</a></h2>
+<section id="streaming-ecephys-file">
+<h2>Streaming Ecephys File<a class="headerlink" href="#streaming-ecephys-file" title="Permalink to this headline">#</a></h2>
 <p>The example file we use is from the Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the respective dandiset id and dandi filepath of the file you’re interested in. When accessing an embargoed dataset, change <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-707296975/sub-707296975_ses-721123822.nwb&quot;</span>
 <span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </pre></div>
@@ -706,10 +715,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.49.0) of dandi/dandi-cli is available. You are using 0.46.3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/ef6/6a8/ef66a8f3-9121-42b5-bdf7-3f892b8cb27c?response-content-disposition=attachment%3B%20filename%3D%22sub-703279277_ses-719161530.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230215%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230215T211000Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ded8d5f3b3b118994d3f15ebf47bc71ac28bfb1f41fff3b3adf750f04cbdb229
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/9f2/c60/9f2c6063-0bcf-4c5e-9039-c6d7144bcbe1?response-content-disposition=attachment%3B%20filename%3D%22sub-707296975_ses-721123822.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230420%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230420T015804Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4e74432913f87b16b1e4501db8f736c2db989f8f40a3132cc6086e73f28d9c7a
 </pre></div>
 </div>
 </div>
@@ -729,9 +735,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -767,24 +773,24 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>waveform_duration</th>
-      <th>cluster_id</th>
-      <th>peak_channel_id</th>
-      <th>cumulative_drift</th>
       <th>amplitude_cutoff</th>
-      <th>snr</th>
-      <th>recovery_slope</th>
-      <th>isolation_distance</th>
-      <th>nn_miss_rate</th>
-      <th>silhouette_score</th>
-      <th>...</th>
-      <th>local_index</th>
-      <th>spread</th>
-      <th>waveform_halfwidth</th>
-      <th>d_prime</th>
+      <th>firing_rate</th>
       <th>presence_ratio</th>
-      <th>repolarization_slope</th>
-      <th>nn_hit_rate</th>
+      <th>snr</th>
+      <th>velocity_below</th>
+      <th>isolation_distance</th>
+      <th>silhouette_score</th>
+      <th>velocity_above</th>
+      <th>nn_miss_rate</th>
+      <th>PT_ratio</th>
+      <th>...</th>
+      <th>cluster_id</th>
+      <th>waveform_halfwidth</th>
+      <th>waveform_duration</th>
+      <th>recovery_slope</th>
+      <th>amplitude</th>
+      <th>spread</th>
+      <th>isi_violations</th>
       <th>spike_times</th>
       <th>spike_amplitudes</th>
       <th>waveform_mean</th>
@@ -816,244 +822,244 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   </thead>
   <tbody>
     <tr>
-      <th>950921187</th>
-      <td>0.604355</td>
-      <td>4</td>
-      <td>850249267</td>
-      <td>481.80</td>
-      <td>0.425574</td>
-      <td>2.209140</td>
-      <td>-0.118430</td>
-      <td>17.537571</td>
-      <td>0.009496</td>
-      <td>0.036369</td>
-      <td>...</td>
-      <td>4</td>
-      <td>50.0</td>
-      <td>0.357119</td>
-      <td>2.962274</td>
+      <th>950907203</th>
+      <td>0.376577</td>
+      <td>2.533384</td>
       <td>0.99</td>
-      <td>0.381716</td>
-      <td>0.473829</td>
-      <td>[1.0439430431793884, 1.543311060144649, 2.7287...</td>
-      <td>[0.0001908626967721937, 0.00016134635752077775...</td>
-      <td>[[0.0, 0.5961149999999966, 5.378099999999993, ...</td>
-    </tr>
-    <tr>
-      <th>950921172</th>
-      <td>0.521943</td>
-      <td>3</td>
-      <td>850249267</td>
-      <td>681.53</td>
-      <td>0.390098</td>
-      <td>1.959983</td>
-      <td>-0.109729</td>
-      <td>14.677643</td>
-      <td>0.003857</td>
-      <td>0.103446</td>
-      <td>...</td>
-      <td>3</td>
-      <td>40.0</td>
-      <td>0.260972</td>
-      <td>2.067810</td>
-      <td>0.99</td>
-      <td>0.536663</td>
-      <td>0.445946</td>
-      <td>[10.406435026164546, 17.127986534673788, 18.48...</td>
-      <td>[0.00014485615850768024, 0.0001722424107984555...</td>
-      <td>[[0.0, -1.341600000000002, -0.4586399999999933...</td>
-    </tr>
-    <tr>
-      <th>950921152</th>
-      <td>0.467002</td>
-      <td>2</td>
-      <td>850249267</td>
-      <td>1070.71</td>
-      <td>0.500000</td>
-      <td>2.522905</td>
-      <td>-0.109867</td>
-      <td>15.783665</td>
-      <td>0.017776</td>
-      <td>0.027818</td>
-      <td>...</td>
-      <td>2</td>
-      <td>50.0</td>
-      <td>0.247236</td>
-      <td>2.220043</td>
-      <td>0.99</td>
-      <td>0.566559</td>
-      <td>0.284058</td>
-      <td>[1.2775103414155262, 2.3915133536963493, 3.701...</td>
-      <td>[0.00014859435856024575, 0.0001531048673600236...</td>
-      <td>[[0.0, -0.6427199999999993, -2.836079999999998...</td>
-    </tr>
-    <tr>
-      <th>950921135</th>
-      <td>0.467002</td>
-      <td>1</td>
-      <td>850249267</td>
-      <td>253.42</td>
-      <td>0.500000</td>
-      <td>2.803475</td>
-      <td>-0.150379</td>
-      <td>26.666930</td>
-      <td>0.023742</td>
-      <td>0.076530</td>
-      <td>...</td>
-      <td>1</td>
-      <td>40.0</td>
-      <td>0.233501</td>
-      <td>2.339206</td>
-      <td>0.99</td>
-      <td>0.669090</td>
-      <td>0.590737</td>
-      <td>[9.473732504122962, 13.198542576065163, 18.302...</td>
-      <td>[0.00032386170367170055, 0.0004518112387675137...</td>
-      <td>[[0.0, -3.2800950000000078, -6.087510000000009...</td>
-    </tr>
-    <tr>
-      <th>950921111</th>
-      <td>0.439531</td>
-      <td>0</td>
-      <td>850249267</td>
-      <td>141.82</td>
-      <td>0.018056</td>
-      <td>4.647943</td>
-      <td>-0.328727</td>
-      <td>66.901065</td>
-      <td>0.006595</td>
+      <td>2.830406</td>
       <td>NaN</td>
+      <td>6.340840e+01</td>
+      <td>NaN</td>
+      <td>0.073582</td>
+      <td>0.000781</td>
+      <td>0.545221</td>
       <td>...</td>
       <td>0</td>
-      <td>30.0</td>
+      <td>0.151089</td>
+      <td>0.274707</td>
+      <td>-0.044249</td>
+      <td>45.540300</td>
+      <td>70.0</td>
+      <td>0.06548</td>
+      <td>[1.8463237565528026, 1.9619905358580827, 2.311...</td>
+      <td>[8.327628219252525e-05, 8.367903428567035e-05,...</td>
+      <td>[[0.0, 1.4724449999999971, -0.393510000000004,...</td>
+    </tr>
+    <tr>
+      <th>950907522</th>
+      <td>0.022585</td>
+      <td>0.055246</td>
+      <td>0.65</td>
+      <td>0.622514</td>
+      <td>NaN</td>
+      <td>1.211930e+01</td>
+      <td>NaN</td>
+      <td>-0.171692</td>
+      <td>0.001937</td>
+      <td>0.354055</td>
+      <td>...</td>
+      <td>153</td>
       <td>0.219765</td>
-      <td>4.395994</td>
+      <td>0.480737</td>
+      <td>-0.007213</td>
+      <td>49.501937</td>
+      <td>70.0</td>
+      <td>0.00000</td>
+      <td>[75.19259518261279, 186.3849701306289, 191.589...</td>
+      <td>[7.996977585316541e-05, 6.97690878117426e-05, ...</td>
+      <td>[[0.0, -1.6420295202952053, 2.3475553505535047...</td>
+    </tr>
+    <tr>
+      <th>950907205</th>
+      <td>0.012123</td>
+      <td>14.739577</td>
       <td>0.99</td>
-      <td>1.261416</td>
-      <td>0.952667</td>
-      <td>[1.1677100445138795, 1.1707767194728813, 1.349...</td>
-      <td>[0.00015644521007973124, 0.000214412247939483,...</td>
-      <td>[[0.0, -0.9291749999999945, -6.120270000000007...</td>
+      <td>2.838052</td>
+      <td>NaN</td>
+      <td>1.291725e+02</td>
+      <td>0.193312</td>
+      <td>-0.892797</td>
+      <td>0.004831</td>
+      <td>1.054721</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0.109883</td>
+      <td>0.151089</td>
+      <td>-0.244173</td>
+      <td>101.262915</td>
+      <td>40.0</td>
+      <td>0.00510</td>
+      <td>[0.6211892301590656, 0.9079561760850958, 1.081...</td>
+      <td>[5.270051606545425e-05, 5.0142859160195626e-05...</td>
+      <td>[[0.0, -0.9787049999999999, -4.640805000000003...</td>
     </tr>
     <tr>
-      <th>950927711</th>
-      <td>1.455946</td>
-      <td>482</td>
-      <td>850249273</td>
-      <td>2.46</td>
-      <td>0.000895</td>
-      <td>1.651500</td>
-      <td>-0.039932</td>
-      <td>39.400278</td>
-      <td>0.000033</td>
+      <th>950907520</th>
+      <td>0.007576</td>
+      <td>1.098404</td>
+      <td>0.99</td>
+      <td>2.423808</td>
       <td>NaN</td>
+      <td>6.282138e+01</td>
+      <td>0.137635</td>
+      <td>0.824121</td>
+      <td>0.001901</td>
+      <td>0.456900</td>
       <td>...</td>
-      <td>464</td>
-      <td>100.0</td>
-      <td>0.274707</td>
-      <td>5.557479</td>
-      <td>0.37</td>
-      <td>0.467365</td>
+      <td>152</td>
+      <td>0.206030</td>
+      <td>0.329648</td>
+      <td>-0.053915</td>
+      <td>85.989735</td>
+      <td>50.0</td>
+      <td>0.00000</td>
+      <td>[2.1005573374638606, 3.85505904603257, 4.01682...</td>
+      <td>[7.694648306411865e-05, 7.492886255594172e-05,...</td>
+      <td>[[0.0, -1.4923350000000075, -1.402439999999998...</td>
+    </tr>
+    <tr>
+      <th>950907518</th>
+      <td>0.075400</td>
+      <td>0.062280</td>
+      <td>0.87</td>
+      <td>2.263385</td>
+      <td>NaN</td>
+      <td>3.500339e+01</td>
+      <td>0.173800</td>
+      <td>0.206030</td>
       <td>0.000000</td>
-      <td>[2613.8652081509977, 2624.5193369599215, 2734....</td>
-      <td>[0.00012946663895843286, 0.0001203425053985725...</td>
-      <td>[[0.0, 6.3216435986159105, 10.324204152249129,...</td>
+      <td>0.434353</td>
+      <td>...</td>
+      <td>151</td>
+      <td>0.178559</td>
+      <td>0.343384</td>
+      <td>-0.053040</td>
+      <td>84.470426</td>
+      <td>50.0</td>
+      <td>0.00000</td>
+      <td>[1.9085904838560483, 5.879527684167119, 31.678...</td>
+      <td>[7.178091557968419e-05, 6.456652055153236e-05,...</td>
+      <td>[[0.0, -3.4937234042553165, 3.7997872340425505...</td>
     </tr>
     <tr>
-      <th>950921285</th>
-      <td>2.087772</td>
-      <td>11</td>
-      <td>850249273</td>
-      <td>318.53</td>
-      <td>0.036848</td>
-      <td>1.379817</td>
-      <td>NaN</td>
-      <td>27.472722</td>
-      <td>0.000903</td>
-      <td>0.291953</td>
+      <th>950907524</th>
+      <td>0.002313</td>
+      <td>1.448536</td>
+      <td>0.99</td>
+      <td>4.285082</td>
+      <td>0.686767</td>
+      <td>5.045019e+01</td>
+      <td>0.143138</td>
+      <td>0.068677</td>
+      <td>0.001834</td>
+      <td>0.558508</td>
       <td>...</td>
-      <td>11</td>
-      <td>100.0</td>
-      <td>0.288442</td>
-      <td>2.751337</td>
-      <td>0.89</td>
-      <td>0.372116</td>
-      <td>0.258065</td>
-      <td>[39.04904580954626, 39.457346913598556, 40.495...</td>
-      <td>[7.768399792002802e-05, 8.405736507197006e-05,...</td>
-      <td>[[0.0, 5.330324999999991, 2.4261899999999486, ...</td>
+      <td>154</td>
+      <td>0.164824</td>
+      <td>0.357119</td>
+      <td>-0.123923</td>
+      <td>136.843200</td>
+      <td>60.0</td>
+      <td>0.00000</td>
+      <td>[2.348824245897788, 2.5458577711062924, 2.6720...</td>
+      <td>[0.00011948493821011336, 0.0001511098249575643...</td>
+      <td>[[0.0, 2.527005000000001, 1.158495000000003, 0...</td>
     </tr>
     <tr>
-      <th>950921271</th>
-      <td>0.947739</td>
-      <td>10</td>
-      <td>850249273</td>
-      <td>1008.50</td>
-      <td>0.001727</td>
-      <td>1.420617</td>
-      <td>-0.008204</td>
-      <td>30.027595</td>
-      <td>0.000707</td>
-      <td>0.406673</td>
-      <td>...</td>
-      <td>10</td>
-      <td>100.0</td>
-      <td>0.288442</td>
-      <td>3.847234</td>
+      <th>950907209</th>
+      <td>0.084063</td>
+      <td>0.040263</td>
       <td>0.96</td>
-      <td>0.498618</td>
-      <td>0.796491</td>
-      <td>[16.751918851114475, 26.127977537450867, 28.65...</td>
-      <td>[0.00016516929470324686, 0.0001501058102103845...</td>
-      <td>[[0.0, -3.103230000000032, 5.680349999999983, ...</td>
-    </tr>
-    <tr>
-      <th>950921260</th>
-      <td>0.453266</td>
-      <td>9</td>
-      <td>850249273</td>
-      <td>175.00</td>
-      <td>0.000081</td>
-      <td>4.969091</td>
-      <td>-0.184456</td>
-      <td>89.804006</td>
+      <td>3.343694</td>
       <td>0.000000</td>
-      <td>0.223876</td>
+      <td>1.992695e+01</td>
+      <td>NaN</td>
+      <td>0.156975</td>
+      <td>0.000467</td>
+      <td>0.637890</td>
       <td>...</td>
-      <td>9</td>
-      <td>60.0</td>
-      <td>0.192295</td>
-      <td>5.274090</td>
-      <td>0.99</td>
-      <td>1.140487</td>
-      <td>0.997333</td>
-      <td>[0.9620761551434307, 2.092045877265143, 2.4040...</td>
-      <td>[0.0003836112198262231, 0.0004093908262843732,...</td>
-      <td>[[0.0, 1.9104149999999982, -7.270770000000016,...</td>
+      <td>3</td>
+      <td>0.178559</td>
+      <td>0.343384</td>
+      <td>-0.115789</td>
+      <td>114.131278</td>
+      <td>70.0</td>
+      <td>0.00000</td>
+      <td>[10.606598954149941, 21.535109596551273, 52.97...</td>
+      <td>[9.775257470604628e-05, 9.453428297313494e-05,...</td>
+      <td>[[0.0, 3.588493670886069, 2.7976329113924, 1.2...</td>
     </tr>
     <tr>
-      <th>950921248</th>
-      <td>0.439531</td>
-      <td>8</td>
-      <td>850249273</td>
-      <td>261.11</td>
-      <td>0.065478</td>
-      <td>2.147758</td>
-      <td>-0.085677</td>
-      <td>84.145512</td>
-      <td>0.005474</td>
-      <td>0.076346</td>
+      <th>950907207</th>
+      <td>0.500000</td>
+      <td>0.007849</td>
+      <td>0.04</td>
+      <td>1.429174</td>
+      <td>-1.373534</td>
+      <td>1.143549e+02</td>
+      <td>NaN</td>
+      <td>1.178950</td>
+      <td>0.000067</td>
+      <td>1.086981</td>
       <td>...</td>
-      <td>8</td>
-      <td>60.0</td>
-      <td>0.274707</td>
-      <td>3.022387</td>
+      <td>2</td>
+      <td>0.137353</td>
+      <td>0.467002</td>
+      <td>-0.087455</td>
+      <td>58.044156</td>
+      <td>100.0</td>
+      <td>0.00000</td>
+      <td>[9220.822768046102, 9221.122635004784, 9221.42...</td>
+      <td>[6.54109900575074e-05, 7.75283889854388e-05, 6...</td>
+      <td>[[0.0, 0.48370129870129897, 2.144999999999998,...</td>
+    </tr>
+    <tr>
+      <th>950907528</th>
+      <td>0.500000</td>
+      <td>0.003160</td>
+      <td>0.29</td>
+      <td>2.618464</td>
+      <td>0.343384</td>
+      <td>1.376060e+13</td>
+      <td>NaN</td>
+      <td>0.629537</td>
+      <td>0.000000</td>
+      <td>0.551650</td>
+      <td>...</td>
+      <td>156</td>
+      <td>0.164824</td>
+      <td>0.315913</td>
+      <td>-0.106002</td>
+      <td>82.516452</td>
+      <td>110.0</td>
+      <td>0.00000</td>
+      <td>[380.3052589740686, 1307.7695954906458, 1546.2...</td>
+      <td>[7.262832980570496e-05, 8.690587004932377e-05,...</td>
+      <td>[[0.0, -13.234838709677422, -15.53080645161290...</td>
+    </tr>
+    <tr>
+      <th>950907526</th>
+      <td>0.024568</td>
+      <td>0.376838</td>
       <td>0.99</td>
-      <td>0.463570</td>
-      <td>0.976667</td>
-      <td>[1.316477113448928, 1.779311698293908, 2.96088...</td>
-      <td>[0.00013780619334124896, 0.0001439873831056905...</td>
-      <td>[[0.0, -3.6761399999999953, 0.8334300000000014...</td>
+      <td>2.697075</td>
+      <td>0.000000</td>
+      <td>6.677386e+01</td>
+      <td>0.092951</td>
+      <td>0.595198</td>
+      <td>0.000235</td>
+      <td>0.576049</td>
+      <td>...</td>
+      <td>155</td>
+      <td>0.123618</td>
+      <td>0.219765</td>
+      <td>-0.086945</td>
+      <td>85.886190</td>
+      <td>110.0</td>
+      <td>0.00000</td>
+      <td>[2.2609241602989334, 32.71425381635791, 55.055...</td>
+      <td>[5.304596375917082e-05, 0.00010119436098758314...</td>
+      <td>[[0.0, -1.1261249999999983, -2.767439999999997...</td>
     </tr>
   </tbody>
 </table>
@@ -1067,32 +1073,32 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;waveform_duration&#39;,
- &#39;cluster_id&#39;,
- &#39;peak_channel_id&#39;,
- &#39;cumulative_drift&#39;,
- &#39;amplitude_cutoff&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;amplitude_cutoff&#39;,
+ &#39;firing_rate&#39;,
+ &#39;presence_ratio&#39;,
  &#39;snr&#39;,
- &#39;recovery_slope&#39;,
+ &#39;velocity_below&#39;,
  &#39;isolation_distance&#39;,
- &#39;nn_miss_rate&#39;,
  &#39;silhouette_score&#39;,
  &#39;velocity_above&#39;,
- &#39;quality&#39;,
+ &#39;nn_miss_rate&#39;,
  &#39;PT_ratio&#39;,
- &#39;l_ratio&#39;,
- &#39;velocity_below&#39;,
- &#39;max_drift&#39;,
- &#39;isi_violations&#39;,
- &#39;firing_rate&#39;,
- &#39;amplitude&#39;,
- &#39;local_index&#39;,
- &#39;spread&#39;,
- &#39;waveform_halfwidth&#39;,
  &#39;d_prime&#39;,
- &#39;presence_ratio&#39;,
+ &#39;cumulative_drift&#39;,
+ &#39;l_ratio&#39;,
  &#39;repolarization_slope&#39;,
+ &#39;max_drift&#39;,
+ &#39;peak_channel_id&#39;,
  &#39;nn_hit_rate&#39;,
+ &#39;local_index&#39;,
+ &#39;quality&#39;,
+ &#39;cluster_id&#39;,
+ &#39;waveform_halfwidth&#39;,
+ &#39;waveform_duration&#39;,
+ &#39;recovery_slope&#39;,
+ &#39;amplitude&#39;,
+ &#39;spread&#39;,
+ &#39;isi_violations&#39;,
  &#39;spike_times&#39;,
  &#39;spike_amplitudes&#39;,
  &#39;waveform_mean&#39;)
@@ -1128,12 +1134,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{729445650: [405, 236],
- 729445652: [420, 87],
- 729445648: [233, 78],
- 729445654: [386, 391],
- 729445656: [308, 319],
- 729445658: [100, 269]}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{760213137: [156, 28],
+ 760213142: [177, 41],
+ 760213145: [250, 82],
+ 760213147: [159, 125],
+ 760213150: [236, 63],
+ 760213153: [213, 73]}
 </pre></div>
 </div>
 </div>
@@ -1151,12 +1157,12 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{729445648: &#39;probeA&#39;,
- 729445650: &#39;probeB&#39;,
- 729445652: &#39;probeC&#39;,
- 729445654: &#39;probeD&#39;,
- 729445656: &#39;probeE&#39;,
- 729445658: &#39;probeF&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{760213137: &#39;probeA&#39;,
+ 760213142: &#39;probeB&#39;,
+ 760213145: &#39;probeC&#39;,
+ 760213147: &#39;probeD&#39;,
+ 760213150: &#39;probeE&#39;,
+ 760213153: &#39;probeF&#39;}
 </pre></div>
 </div>
 </div>
@@ -1185,7 +1191,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_17_0.png" src="../_images/visualize_unit_metrics_17_0.png" />
+<img alt="../_images/visualize_unit_metrics_18_0.png" src="../_images/visualize_unit_metrics_18_0.png" />
 </div>
 </div>
 </section>
@@ -1209,7 +1215,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_19_0.png" src="../_images/visualize_unit_metrics_19_0.png" />
+<img alt="../_images/visualize_unit_metrics_20_0.png" src="../_images/visualize_unit_metrics_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1229,7 +1235,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_20_0.png" src="../_images/visualize_unit_metrics_20_0.png" />
+<img alt="../_images/visualize_unit_metrics_21_0.png" src="../_images/visualize_unit_metrics_21_0.png" />
 </div>
 </div>
 </section>
@@ -1253,7 +1259,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_22_0.png" src="../_images/visualize_unit_metrics_22_0.png" />
+<img alt="../_images/visualize_unit_metrics_23_0.png" src="../_images/visualize_unit_metrics_23_0.png" />
 </div>
 </div>
 </section>
@@ -1277,7 +1283,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_24_0.png" src="../_images/visualize_unit_metrics_24_0.png" />
+<img alt="../_images/visualize_unit_metrics_25_0.png" src="../_images/visualize_unit_metrics_25_0.png" />
 </div>
 </div>
 <p>The plot below helps show the meaning of the amplitude cutoff for a unit by displaying the measured amplitudes of the unit’s spikes throughout the session. This plot can be a good way to illustrate unit drift; Units whose spike amplitudes suddenly change during a session are units that probably drifted farther or closer to the probe. When a unit’s spike amplitude trace spends a lot of time on the “floor” of the plot, it indicates that spikes are going undetected when the measured amplitudes get too low. The plot below of unit 3, with a high amplitude cutoff of 0.5, shows the unit drifting out of the recording until its measured amplitudes are too low and can’t always be detected around the 2000 seconds mark. The plot below that of unit 2348 has a very low amplitude cutoff, and it can be seen that it’s spikes stay at a consistent average amplitude over time and don’t spend any time at the “floor” of the plot.</p>
@@ -1297,15 +1303,15 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1743b523460&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1a91eaa7e50&gt;
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_metrics_26_1.png" src="../_images/visualize_unit_metrics_26_1.png" />
+<img alt="../_images/visualize_unit_metrics_27_1.png" src="../_images/visualize_unit_metrics_27_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_select</span> <span class="o">=</span> <span class="mi">2348</span> <span class="c1"># very low amplitude_cutoff</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_select</span> <span class="o">=</span> <span class="mi">94</span> <span class="c1"># very low amplitude_cutoff</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_amplitudes&quot;</span><span class="p">][</span><span class="n">unit_select</span><span class="p">]</span>
 <span class="n">xaxis</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_times&quot;</span><span class="p">][</span><span class="n">unit_select</span><span class="p">]</span>
@@ -1319,17 +1325,17 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1743b7b6eb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1a9234da670&gt;
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_metrics_27_1.png" src="../_images/visualize_unit_metrics_27_1.png" />
+<img alt="../_images/visualize_unit_metrics_28_1.png" src="../_images/visualize_unit_metrics_28_1.png" />
 </div>
 </div>
 </section>
 <section id="isi-violations">
 <h2>ISI Violations<a class="headerlink" href="#isi-violations" title="Permalink to this headline">#</a></h2>
 <p><em>Inter-spike-interval violations</em> are a classic measure of unit contamination. Because all neurons have a biophysical refractory period, we can assume that any spikes occurring in rapid succession (&lt;1.5 ms intervals) come from two different neurons. Therefore, the more a unit is contaminated by spikes from multiple neurons, the higher its isi_violations value will be.</p>
-<p>The calculation for ISI violations comes from Hill et al. (2011) J Neurosci 31: 8699-8705. Rather than reporting the fraction of spikes with ISI violations, their metric reports the relative firing rate of the hypothetical neurons that are generating these violations. You can interpret an ISI violations value of 0.5 as meaning that contamining spikes are occurring at roughly half the rate of “true” spikes for that unit. In cases of highly contaminated units, the ISI violations value can sometimes be even greater than 1.</p>
+<p>The calculation for ISI violations comes from <a class="reference external" href="https://www.jneurosci.org/content/jneuro/31/24/8699.full.pdf">Hill et al. (2011) J Neurosci 31: 8699-8705</a>. Rather than reporting the fraction of spikes with ISI violations, their metric reports the relative firing rate of the hypothetical neurons that are generating these violations. You can interpret an ISI violations value of 0.5 as meaning that contamining spikes are occurring at roughly half the rate of “true” spikes for that unit. In cases of highly contaminated units, the ISI violations value can sometimes be even greater than 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s1">&#39;isi_violations&#39;</span><span class="p">]</span>
@@ -1347,7 +1353,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_29_0.png" src="../_images/visualize_unit_metrics_29_0.png" />
+<img alt="../_images/visualize_unit_metrics_30_0.png" src="../_images/visualize_unit_metrics_30_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1367,11 +1373,11 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_2616\3004415763.py:1: RuntimeWarning: divide by zero encountered in log10
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_5908\3004415763.py:1: RuntimeWarning: divide by zero encountered in log10
   data = np.log10(units[&#39;isi_violations&#39;])
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_metrics_30_1.png" src="../_images/visualize_unit_metrics_30_1.png" />
+<img alt="../_images/visualize_unit_metrics_31_1.png" src="../_images/visualize_unit_metrics_31_1.png" />
 </div>
 </div>
 </section>
@@ -1395,7 +1401,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_32_0.png" src="../_images/visualize_unit_metrics_32_0.png" />
+<img alt="../_images/visualize_unit_metrics_33_0.png" src="../_images/visualize_unit_metrics_33_0.png" />
 </div>
 </div>
 </section>
@@ -1456,10 +1462,10 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1743b3f4550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1a9238471c0&gt;
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_metrics_37_1.png" src="../_images/visualize_unit_metrics_37_1.png" />
+<img alt="../_images/visualize_unit_metrics_38_1.png" src="../_images/visualize_unit_metrics_38_1.png" />
 </div>
 </div>
 </section>
@@ -1483,7 +1489,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_39_0.png" src="../_images/visualize_unit_metrics_39_0.png" />
+<img alt="../_images/visualize_unit_metrics_40_0.png" src="../_images/visualize_unit_metrics_40_0.png" />
 </div>
 </div>
 </section>
@@ -1507,7 +1513,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_41_0.png" src="../_images/visualize_unit_metrics_41_0.png" />
+<img alt="../_images/visualize_unit_metrics_42_0.png" src="../_images/visualize_unit_metrics_42_0.png" />
 </div>
 </div>
 </section>
@@ -1531,7 +1537,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_43_0.png" src="../_images/visualize_unit_metrics_43_0.png" />
+<img alt="../_images/visualize_unit_metrics_44_0.png" src="../_images/visualize_unit_metrics_44_0.png" />
 </div>
 </div>
 </section>
@@ -1563,7 +1569,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_metrics_45_0.png" src="../_images/visualize_unit_metrics_45_0.png" />
+<img alt="../_images/visualize_unit_metrics_46_0.png" src="../_images/visualize_unit_metrics_46_0.png" />
 </div>
 </div>
 </section>

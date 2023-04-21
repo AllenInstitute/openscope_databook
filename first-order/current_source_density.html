@@ -509,6 +509,16 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#window-display-function">
+   Window Display Function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#averaging-lfp-response-windows">
+   Averaging LFP Response Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-elephant-to-estimate-csd">
    Using Elephant to Estimate CSD
   </a>
@@ -573,6 +583,16 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#window-display-function">
+   Window Display Function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#averaging-lfp-response-windows">
+   Averaging LFP Response Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-elephant-to-estimate-csd">
    Using Elephant to Estimate CSD
   </a>
@@ -598,6 +618,17 @@ title="Print to PDF"
 <p>It is typically more useful to view CSD as an average across many stimulus trials for more visible results. In this notebook, stimulus times are used to average the LFP responses of several trials. To do this, the relevant stimulus times are selected from the <code class="docutils literal notranslate"><span class="pre">stimulus</span> <span class="pre">table</span></code>, then the LFP data is interpolated. Next, time windows of the trials are taken from the LFP data and averaged. Finally, the average LFP response is used as input to the CSD calculation.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
+    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -639,24 +670,19 @@ title="Print to PDF"
     <span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span>
 <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">stim_filename</span> <span class="o">=</span> <span class="n">dandi_stim_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">lfp_filename</span> <span class="o">=</span> <span class="n">dandi_lfp_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">stim_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">stim_filename</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">lfp_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">lfp_filename</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.51.0) of dandi/dandi-cli is available. You are using 0.46.6
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.53.0) of dandi/dandi-cli is available. You are using 0.46.6
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_filename</span> <span class="o">=</span> <span class="n">dandi_stim_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">lfp_filename</span> <span class="o">=</span> <span class="n">dandi_lfp_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">stim_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">stim_filename</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">lfp_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">lfp_filename</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -708,9 +734,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -724,7 +750,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_769322852_lfp_data pynwb.ecephys.ElectricalSeries at 0x1962443235136
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_769322852_lfp_data pynwb.ecephys.ElectricalSeries at 0x2031477567936
 Fields:
   comments: no comments
   conversion: 1.0
@@ -757,7 +783,7 @@ Fields:
 </div>
 </div>
 </div>
-<div class="cell tag_output_scroll docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_name</span> <span class="o">=</span> <span class="s2">&quot;flashes_presentations&quot;</span>
 <span class="n">stim_table</span> <span class="o">=</span> <span class="n">stim_nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
@@ -1140,21 +1166,22 @@ Fields:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate regularly-space x values and interpolate along it</span>
 <span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lfp_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">step</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">interp_hz</span><span class="p">))</span>
-<span class="n">interp_channels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">interp_lfp</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># interpolate channel by channel to save RAM</span>
 <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lfp_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="p">,</span> <span class="n">lfp_data</span><span class="p">[:,</span><span class="n">channel</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)</span>
-    <span class="n">interp_channels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">time_axis</span><span class="p">))</span>
+    <span class="n">interp_lfp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">time_axis</span><span class="p">))</span>
 
-<span class="n">interp_lfp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">interp_channels</span><span class="p">)</span>
+<span class="n">interp_lfp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">interp_lfp</span><span class="p">)</span>
+<span class="c1"># interp_lfp = np.transpose(interp_channels)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">interp_lfp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(77500, 89)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(89, 77500)
 </pre></div>
 </div>
 </div>
@@ -1189,10 +1216,10 @@ Fields:
     <span class="n">end_idx</span> <span class="o">=</span> <span class="n">start_idx</span> <span class="o">+</span> <span class="n">window_length</span>
  
     <span class="c1"># bounds checking</span>
-    <span class="k">if</span> <span class="n">start_idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">end_idx</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">interp_lfp</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">start_idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">end_idx</span> <span class="o">&gt;</span> <span class="n">interp_lfp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
         <span class="k">continue</span>
         
-    <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interp_lfp</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
+    <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interp_lfp</span><span class="p">[:,</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
     
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There are no windows for these timestamps&quot;</span><span class="p">)</span>
@@ -1203,11 +1230,60 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 62, 89)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 89, 62)
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="window-display-function">
+<h2>Window Display Function<a class="headerlink" href="#window-display-function" title="Permalink to this headline">#</a></h2>
+<p>Here we define a function to display a stimulus response plot with axis labels and window time bounds. Below it is used to show a single LFP response window to the first stimulus timestamp. This function will be used to display the average LFP response to stimulus and the average CSD response to stimulus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display_response_window</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> 
+                    <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="mi">3840</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="c1"># probe is 3840 micrometers </span>
+                    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+                    <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+                    <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span>
+                <span class="p">)</span> <span class="c1"># set vmin and vmax here as needed</span>
+
+    <span class="c1"># make dotted line at stimulus onset</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3840</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_label</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_response_window</span><span class="p">(</span><span class="n">windows</span><span class="p">[</span><span class="mi">0</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="n">window_start_time</span><span class="p">,</span>
+                        <span class="n">window_end_time</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;First LFP Response to Stimulus&quot;</span><span class="p">,</span>
+                        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time relative to stimulus onset (s)&quot;</span><span class="p">,</span>
+                        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Approximate distance along probe (μm), </span><span class="se">\n</span><span class="s2">[low values toward surface]&quot;</span><span class="p">,</span>
+                        <span class="n">cbar_label</span><span class="o">=</span><span class="s2">&quot;Volts&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/current_source_density_31_0.png" src="../_images/current_source_density_31_0.png" />
+</div>
+</div>
+</section>
+<section id="averaging-lfp-response-windows">
+<h2>Averaging LFP Response Windows<a class="headerlink" href="#averaging-lfp-response-windows" title="Permalink to this headline">#</a></h2>
+<p>All the LFP response windows are averaged here to generate a view that illustrates how the LFP trace behaves before and after the onset of the stimulus events.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get average of all windows</span>
@@ -1217,9 +1293,25 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(62, 89)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(89, 62)
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_response_window</span><span class="p">(</span><span class="n">average_trace</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="n">window_start_time</span><span class="p">,</span>
+                        <span class="n">window_end_time</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average LFP Response To Stimulus&quot;</span><span class="p">,</span>
+                        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time relative to stimulus onset (s)&quot;</span><span class="p">,</span>
+                        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Approximate distance along probe (μm), </span><span class="se">\n</span><span class="s2">[low values toward surface]&quot;</span><span class="p">,</span>
+                        <span class="n">cbar_label</span><span class="o">=</span><span class="s2">&quot;Volts&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/current_source_density_34_0.png" src="../_images/current_source_density_34_0.png" />
 </div>
 </div>
 </section>
@@ -1228,8 +1320,8 @@ Fields:
 <p><strong>Elephant</strong> takes input in the form of a <strong>Neo</strong> <em>AnalogSignal</em>. Before analysis, we create the <em>AnalogSignal</em> object with the LFP trace as input, in addition to the <code class="docutils literal notranslate"><span class="pre">hz</span></code> valueas the <code class="docutils literal notranslate"><span class="pre">sampling_rate</span></code> of the data, and a list of numbers, <code class="docutils literal notranslate"><span class="pre">coords</span></code> representing the channels of the LFP data. After this, it is as simple as calling <code class="docutils literal notranslate"><span class="pre">estimate_csd</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="p">[(</span><span class="n">elem</span><span class="p">,)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">average_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-<span class="n">neo_lfp</span> <span class="o">=</span> <span class="n">AnalogSignal</span><span class="p">(</span><span class="n">average_trace</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">interp_hz</span><span class="o">*</span><span class="n">pq</span><span class="o">.</span><span class="n">Hz</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="p">[(</span><span class="n">elem</span><span class="p">,)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">average_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+<span class="n">neo_lfp</span> <span class="o">=</span> <span class="n">AnalogSignal</span><span class="p">(</span><span class="n">average_trace</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">interp_hz</span><span class="o">*</span><span class="n">pq</span><span class="o">.</span><span class="n">Hz</span><span class="p">)</span>
 <span class="n">neo_lfp</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">coords</span> <span class="o">*</span> <span class="n">pq</span><span class="o">.</span><span class="n">mm</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1260,32 +1352,20 @@ R, lambda : 0.23 0.00012115276586285876
 <p>The current source density over time can be shown below with <strong>matplotlib’s</strong> <code class="docutils literal notranslate"><span class="pre">imshow</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-
-<span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">csd</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> 
-                <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="mi">3840</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="c1"># probe is 3840 micrometers </span>
-                <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-                <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span>
-                <span class="n">vmax</span><span class="o">=</span><span class="mf">0.05</span>
-               <span class="p">)</span> <span class="c1"># set vmin and vmax here as needed</span>
-
-<span class="c1"># make dotted line at stimulus onset</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3840</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-
-<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;V / μm²&quot;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Current Source Density Over Time&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time relative to stimulus onset (s)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Approximate distance along probe (μm), </span><span class="se">\n</span><span class="s2">[low values toward surface]&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_response_window</span><span class="p">(</span><span class="n">csd</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="n">window_start_time</span><span class="p">,</span>
+                        <span class="n">window_end_time</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Current Source Density Over Time&quot;</span><span class="p">,</span>
+                        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time relative to stimulus onset (s)&quot;</span><span class="p">,</span>
+                        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Approximate distance along probe (μm), </span><span class="se">\n</span><span class="s2">[low values toward surface]&quot;</span><span class="p">,</span>
+                        <span class="n">cbar_label</span><span class="o">=</span><span class="s2">&quot;V / μm²&quot;</span><span class="p">,</span>
+                        <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span>
+                        <span class="n">vmax</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Approximate distance along probe (μm), \n[low values toward surface]&#39;)
-</pre></div>
-</div>
-<img alt="../_images/current_source_density_34_1.png" src="../_images/current_source_density_34_1.png" />
+<img alt="../_images/current_source_density_39_0.png" src="../_images/current_source_density_39_0.png" />
 </div>
 </div>
 </section>

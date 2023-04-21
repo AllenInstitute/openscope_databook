@@ -634,9 +634,18 @@ title="Print to PDF"
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
+    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -657,7 +666,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
 <span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
 <span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="c1"># dandi_api_key = os.environ[&#39;DANDI_API_KEY&#39;]</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 </pre></div>
 </div>
@@ -683,9 +692,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.48.1) of dandi/dandi-cli is available. You are using 0.46.3
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
 </pre></div>
 </div>
@@ -720,9 +726,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -1527,10 +1533,10 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cfacb559d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ae083bdbb0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_21_1.png" src="../_images/visualize_unit_responses_21_1.png" />
+<img alt="../_images/visualize_unit_responses_22_1.png" src="../_images/visualize_unit_responses_22_1.png" />
 </div>
 </div>
 </section>
@@ -1620,10 +1626,10 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cfac8741c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ae08a15580&gt;]
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_27_1.png" src="../_images/visualize_unit_responses_27_1.png" />
+<img alt="../_images/visualize_unit_responses_28_1.png" src="../_images/visualize_unit_responses_28_1.png" />
 </div>
 </div>
 </section>
@@ -1702,7 +1708,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Units Spikes Over Time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_32_1.png" src="../_images/visualize_unit_responses_32_1.png" />
+<img alt="../_images/visualize_unit_responses_33_1.png" src="../_images/visualize_unit_responses_33_1.png" />
 </div>
 </div>
 </section>
@@ -1785,7 +1791,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_39_0.png" src="../_images/visualize_unit_responses_39_0.png" />
+<img alt="../_images/visualize_unit_responses_40_0.png" src="../_images/visualize_unit_responses_40_0.png" />
 </div>
 </div>
 </section>
@@ -1827,7 +1833,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_42_0.png" src="../_images/visualize_unit_responses_42_0.png" />
+<img alt="../_images/visualize_unit_responses_43_0.png" src="../_images/visualize_unit_responses_43_0.png" />
 </div>
 </div>
 </section>
@@ -1864,10 +1870,10 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1d00cedb340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1ae8cac5700&gt;
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_45_1.png" src="../_images/visualize_unit_responses_45_1.png" />
+<img alt="../_images/visualize_unit_responses_46_1.png" src="../_images/visualize_unit_responses_46_1.png" />
 </div>
 </div>
 </section>
@@ -1904,7 +1910,7 @@ C:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_48_0.png" src="../_images/visualize_unit_responses_48_0.png" />
+<img alt="../_images/visualize_unit_responses_49_0.png" src="../_images/visualize_unit_responses_49_0.png" />
 </div>
 </div>
 </section>
