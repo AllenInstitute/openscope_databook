@@ -46,15 +46,3 @@ https://alleninstitute.github.io/openscope_databook
 ### Chapter 5: Replicating figures
 - Example notebooks from past projects
 - Guidelines for reproducible figures from NWB files
-
-<!-- prettier-ignore-start -->
-<!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
-
-
-- **[@rcpeene](https://github.com/rcpeene)**
-
-- **[@jeromelecoq](https://github.com/jeromelecoq)**
-
-<!-- DO NOT REMOVE - contributor_list:end -->
-<!-- prettier-ignore-end -->
