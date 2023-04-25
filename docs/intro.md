@@ -1,6 +1,23 @@
 # OpenScope Databook
 
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/rcpeene">
+            <img src="https://avatars.githubusercontent.com/u/23059582?v=4" width="100;" alt="rcpeene"/>
+            <br />
+            <sub><b>Carter Peene</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/jeromelecoq">
+            <img src="https://avatars.githubusercontent.com/u/2491343?v=4" width="100;" alt="jeromelecoq"/>
+            <br />
+            <sub><b>Jerome Lecoq</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
 
 The OpenScope Databook is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with [NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). It is provided by the Allen Institute's **[OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/)** Project, an endeavor of The Allen Institute [Mindscope Program](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through [Jupyter Book](https://jupyterbook.org/), this code is structured as a series of notebooks intended to explain and educate users on how to work with brain data.
