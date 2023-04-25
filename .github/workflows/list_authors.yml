@@ -1,0 +1,16 @@
+name: Getting Authors List
+on:
+  workflow_dispatch:
+
+jobs:
+  contributor_list:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Getting contributor names
+      - id: contributor_list
+      - uses: actions/checkout@master
+      - uses: docker://cjdenio/contributor_list:latest
+
+      - name: Editing intro.md
+      - run: cat $${{ steps.contributor_list.outputs.contributors }}
