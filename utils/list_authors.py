@@ -23,6 +23,6 @@ def getContributors():
 def main():
 	contributors = getContributors()
 	authors = contributors - blacklist
-	insertAuthors("./docs/intro.md", "<!-- authors -->", authors)
+	insertAuthors("./docs/intro_template.md", "<!-- authors -->", authors)
 
 main()
