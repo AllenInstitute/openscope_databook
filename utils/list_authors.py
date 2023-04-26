@@ -12,7 +12,7 @@ def insertAuthors(filename, placeholder, authors):
 		if placeholder in lines[i]:
 			lines[i] = "### " + ", ".join(authors)
 
-	with open("../docs/intro.md", "w") as md:
+	with open("./docs/intro.md", "w") as md:
 		md.write("\n".join(lines))
 
 def getContributors():
@@ -23,6 +23,6 @@ def getContributors():
 def main():
 	contributors = getContributors()
 	authors = contributors - blacklist
-	insertAuthors("../docs/intro.md", "<!-- authors -->", authors)
+	insertAuthors("./docs/intro.md", "<!-- authors -->", authors)
 
 main()
