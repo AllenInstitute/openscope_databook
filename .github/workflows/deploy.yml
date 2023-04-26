@@ -19,6 +19,9 @@ jobs:
       - name: Installing Jupyter book
         run: pip install -U jupyter-book==0.13.2
 
+      - name: Inserting authors
+        run: python ./utils/list_authors.py
+
       - name: Build Jupyter book
         run: |
           jupyter-book clean ./docs

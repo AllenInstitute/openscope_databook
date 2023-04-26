@@ -26,5 +26,3 @@ def main():
 	insertAuthors("../docs/intro.md", "<!-- authors -->", authors)
 
 main()
-
-# <!-- authors -->
