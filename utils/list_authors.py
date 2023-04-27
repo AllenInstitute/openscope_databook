@@ -2,6 +2,7 @@ import os
 import subprocess
 
 blacklist = {"Publishing Bot", "github-actions[bot]", "Ross Carter Peene"}
+additional_authors = ["Josh Siegle"]
 
 # a function that inserts text into a markdown file
 def insertAuthors(filename, placeholder_start, placeholder_end, authors):
@@ -32,6 +33,7 @@ def getContributors():
 def main():
 	contributors = getContributors()
 	authors = contributors - blacklist
+	authors = list(authors) + additional_authors
 	print("Authors:", authors)
 	insertAuthors("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors)
 
