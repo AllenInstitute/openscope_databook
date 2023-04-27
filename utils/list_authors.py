@@ -4,13 +4,20 @@ import subprocess
 blacklist = {"Publishing Bot", "github-actions[bot]", "Ross Carter Peene"}
 
 # a function that inserts text into a markdown file
-def insertAuthors(filename, placeholder, authors):
+def insertAuthors(filename, placeholder_start, placeholder_end, authors):
 	with open(filename, "r") as md:
 		lines = md.read().splitlines()
 		
+	insert_start, insert_end = None, None
 	for i in range(len(lines)):
-		if placeholder in lines[i]:
-			lines[i] = "### " + ", ".join(authors)
+		if placeholder_start in lines[i] and insert_start == None:
+			insert_start = i
+		if placeholder_end in lines[i] and insert_start != None:
+			insert_end = i
+			break
+
+	if insert_start != None and insert_end != None:
+		lines[insert_start+1:insert_end] = ["### " + ", ".join(authors)]
 
 	with open("./docs/intro.md", "w") as md:
 		md.write("\n".join(lines))
@@ -23,6 +30,6 @@ def getContributors():
 def main():
 	contributors = getContributors()
 	authors = contributors - blacklist
-	insertAuthors("./docs/intro_template.md", "<!-- authors -->", authors)
+	insertAuthors("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors)
 
 main()
