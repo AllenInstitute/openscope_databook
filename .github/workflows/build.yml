@@ -41,7 +41,10 @@ jobs:
         run: python ./utils/list_authors.py
         
       - name: printing shortlog
-        run: echo $(git shortlog -sn)
+        run: |
+          pwd
+          ls
+          git shortlog -sn
 
       - name: Testing notebooks
         run: pytest --nbmake --nbmake-timeout=5000 "./docs"
