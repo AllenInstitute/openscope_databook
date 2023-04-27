@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-blacklist = {"Publishing Bot", "github-actions[bot]", "Ross Carter Peene"}
+blacklist = {"Publishing Bot", "github-actions[bot]", "GitHub Authors Action", "Ross Carter Peene"}
 additional_authors = ["Josh Siegle"]
 
 # a function that inserts text into a markdown file
