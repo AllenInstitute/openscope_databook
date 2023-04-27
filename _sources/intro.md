@@ -1,7 +1,7 @@
 # OpenScope Databook
 
 <!-- authors start -->
-### 
+### Carter Peene, Jerome Lecoq, Josh Siegle
 <!-- authors end -->
 
 The OpenScope Databook is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with [NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). It is provided by the Allen Institute's **[OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/)** Project, an endeavor of The Allen Institute [Mindscope Program](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through [Jupyter Book](https://jupyterbook.org/), this code is structured as a series of notebooks intended to explain and educate users on how to work with brain data.
