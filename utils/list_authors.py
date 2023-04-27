@@ -28,12 +28,13 @@ def getContributors():
 	shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
 	print(shortlog)
 	contributions = shortlog.split("\n")[:-1]
-	return {contribution.split("\t")[1] for contribution in contributions}
+	contributors = {contribution.split("\t")[1] : contribution.split("\t")[0].strip() for contribution in contributions}
+	return contributors
 
 def main():
 	contributors = getContributors()
-	authors = contributors - blacklist
-	authors = list(authors) + additional_authors
+	authors = [contributor + " (" + str(n) + ")" for contributor, n in contributors.items() if contributor not in blacklist]
+	authors += additional_authors
 	print("Authors:", authors)
 	insertAuthors("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors)
 
