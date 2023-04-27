@@ -18,7 +18,7 @@ def insertAuthors(filename, placeholder_start, placeholder_end, authors):
 			break
 
 	if insert_start != None and insert_end != None:
-		lines[insert_start+1:insert_end] = ["### " + ", ".join(authors)]
+		lines[insert_start+1:insert_end] = ["#### " + ", ".join(authors)]
 
 	with open("./docs/intro.md", "w") as md:
 		md.write("\n".join(lines))
