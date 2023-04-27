@@ -30,6 +30,7 @@ def getContributors():
 def main():
 	contributors = getContributors()
 	authors = contributors - blacklist
+	print("Authors:", authors)
 	insertAuthors("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors)
 
 main()
