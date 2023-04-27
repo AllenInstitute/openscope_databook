@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bibliography" href="../bibliography.html" />
     <link rel="prev" title="Current Source Density Analysis" href="current_source_density.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -210,6 +211,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  bibliography
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -686,7 +699,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="generating-cell-matching-input-file">
 <h2>Generating Cell-Matching Input File<a class="headerlink" href="#generating-cell-matching-input-file" title="Permalink to this headline">#</a></h2>
-<p>The Allen Institute has created a robust pipeline for conducting cell matching between 2 or more sessions called <a class="reference external" href="https://github.com/AllenInstitute/ophys_nway_matching"><strong>Nway Matching</strong></a>. For those who are inquisitive, the general algorithm is described in page 31 of <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2.full.pdf">this Visual Behavior paper</a>. In summary, the input images are aligned together with a euclidian image registration technique. Then the given input ROI masks are used with the <a class="reference external" href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom Algorithm</a> as a bipartite graph matching algorithm. This identifies which ROIs represent the same cells with high probability.</p>
+<p>The Allen Institute has created a robust pipeline for conducting cell matching between 2 or more sessions called <a class="reference external" href="https://github.com/AllenInstitute/ophys_nway_matching"><strong>Nway Matching</strong></a>. For those who are inquisitive, the general algorithm is described in page 31 of <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2.full.pdf"><span id="id1">[<a class="reference internal" href="../bibliography.html#id4" title="Marina Garrett, Peter Groblewski, Alex Piet, Doug Ollerenshaw, Farzaneh Najafi, and Iryna Yavorska. Stimulus novelty uncovers coding diversity in visual cortical circuits. BioRxiv, 2023. URL: https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2.full.pdf.">Garrett <em>et al.</em>, 2023</a>]</span></a>. In summary, the input images are aligned together with a euclidian image registration technique. Then the given input ROI masks are used with the <a class="reference external" href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom Algorithm</a> as a bipartite graph matching algorithm. This identifies which ROIs represent the same cells with high probability.</p>
 <p>The caveat to using this pipeline is that it requires input in a specific JSON format rather than an NWB File. The following functions are used to generate a file, <code class="docutils literal notranslate"><span class="pre">input.json</span></code>, which can be used to obtain important output. The input json contains an entry for each input experiment. 2 or more experiments can be used. The first experiment is called <em>fixed</em> and the other ones are <em>moving</em>. For each experiment, a unique experiment ID, a path to the experiment projection image, and a list of objects for each ROI are required.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1000,6 +1013,13 @@ INFO:NwayMatching:wrote output.json
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Current Source Density Analysis</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../bibliography.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
