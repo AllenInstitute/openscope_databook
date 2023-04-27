@@ -19,7 +19,7 @@ jobs:
         run: git log
       
       - name: Printing shortlog
-        run: git shortlog -sn
+        run: git log | git shortlog -sn
 
       - name: Inserting authors
         run: python ./utils/list_authors.py
