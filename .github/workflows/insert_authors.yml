@@ -23,15 +23,7 @@ jobs:
 
       - name: Inserting authors
         run: python ./utils/list_authors.py
-        
-      - name: Setting git config
-        run: |
-          git config user.name "GitHub Authors Action"
-          git config user.email "<>"
-        
-      - name: Committing changes
-        run: |
-          git status
-          git add ./docs/intro.md
-          git commit -m "Inserting authors into intro"
-          git push origin main
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply php-cs-fixer changes
