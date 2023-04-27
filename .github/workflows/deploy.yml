@@ -9,6 +9,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - uses: ./.github/workflows/insert_authors.yml
 
       - name: Upgrading pip
         run: pip install --upgrade pip
