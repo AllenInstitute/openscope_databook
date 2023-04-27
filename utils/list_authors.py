@@ -23,7 +23,7 @@ def insertAuthors(filename, placeholder_start, placeholder_end, authors):
 		md.write("\n".join(lines))
 
 def getContributors():
-	shortlog = subprocess.run(["git", "shortlog", "-sn"], shell=True, capture_output=True, encoding="utf8").stdout
+	shortlog = subprocess.run(["git shortlog -sn"], shell=True, capture_output=True, encoding="utf8").stdout
 	contributions = shortlog.split("\n")[:-1]
 	print(contributions)
 	return {contribution.split("\t")[1] for contribution in contributions}
