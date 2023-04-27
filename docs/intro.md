@@ -2,7 +2,7 @@
 
 <!-- authors start -->
 
- *Carter Peene, Jerome Lecoq, Josh Siegle, Ahad Bawany*
+ *Carter Peene (669), Jerome Lecoq (7), Josh Siegle, Ahad Bawany*
 
 <!-- authors end -->
 
