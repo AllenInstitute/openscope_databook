@@ -2,7 +2,7 @@
 
 <!-- authors start -->
 
-#### Jerome Lecoq, Carter Peene, Josh Siegle, Ahad Bawany
+ *Carter Peene, Jerome Lecoq, Josh Siegle, Ahad Bawany*
 
 <!-- authors end -->
 
