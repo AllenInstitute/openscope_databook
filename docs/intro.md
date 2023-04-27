@@ -1,4 +1,6 @@
-# OpenScope Databook: Addressing the Reproducibility Challenge in Neuroscience through the Integration of Text, Data, and Code into a Comprehensive, Collaborative, and Version-Controlled Publication
+# OpenScope Databook
+
+### Addressing the Reproducibility Challenge in Neuroscience through the Integration of Text, Data, and Code into a Comprehensive, Collaborative, and Version-Controlled Publication
 
 <!-- authors start -->
 
