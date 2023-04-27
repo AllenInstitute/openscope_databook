@@ -4,14 +4,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  list_authors:
+    - uses: ./.github/workflows/insert_authors.yml
+
   deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
       
-      - uses: ./.github/workflows/insert_authors.yml
-
       - name: Upgrading pip
         run: pip install --upgrade pip
 
