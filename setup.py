@@ -10,7 +10,7 @@ with open("requirements.txt", "r") as f:
     required = f.read().splitlines()
 
 setup(
-    name="openscope_databook",
+    name="databook_utils",
     description="Library of Jupyter notebooks for reproducible neuroscience analysis",
     long_description_content_type="text/markdown",
     long_description=readme,
@@ -19,7 +19,7 @@ setup(
     author_email="carter.peene@alleninstitute.org",
     url="https://github.com/AllenInstitute/openscope_databook",
     license=license,
-    packages=find_packages(where="utils"),
-    package_dir={"": "utils"},
+    packages=find_packages(where="databook_utils"),
+    package_dir={"": "databook_utils"},
     install_requires=required
 )
