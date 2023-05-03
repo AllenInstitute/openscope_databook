@@ -1,5 +1,6 @@
 
 import h5py
+import os
 
 from dandi import download
 from dandi import dandiapi
@@ -16,12 +17,16 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
     file = dandiset.get_asset_by_path(dandi_filepath)
     file_url = file.download_url
 
-    download.download(file_url, output_dir=download_loc)
-    
     filename = dandi_filepath.split("/")[-1]
     filepath = f"{download_loc}/{filename}"
-    print(f"Downloaded file to {filepath}")
 
+    if os.path.exists(filepath):
+        print("File already exists")
+    else:
+        download.download(file_url, output_dir=download_loc)
+        print(f"Downloaded file to {filepath}")
+
+    print("Opening file")
     io = NWBHDF5IO(filepath, mode="r", load_namespaces=True)
     nwb = io.read()
     return nwb
