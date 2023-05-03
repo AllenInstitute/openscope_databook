@@ -10,7 +10,7 @@ from pynwb import NWBHDF5IO
 
 # downloads an NWB file from DANDI to download_loc, opens it, and returns the NWB object
 # dandi_api_key is required to access files from embargoed dandisets
-def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key=None):
+def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key=None, force_overwrite=False):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
     dandiset = client.get_dandiset(dandiset_id)
 
@@ -20,7 +20,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
     filename = dandi_filepath.split("/")[-1]
     filepath = f"{download_loc}/{filename}"
 
-    if os.path.exists(filepath):
+    if os.path.exists(filepath) and not force_overwrite:
         print("File already exists")
     else:
         download.download(file_url, output_dir=download_loc)
