@@ -6,7 +6,7 @@ with open("README.md", encoding="utf-8") as f:
 with open("LICENSE.txt") as f:
     license = f.read()
 
-with open("requirements.txt", "r") as f:
+with open("docs/requirements.txt", "r") as f:
     required = f.read().splitlines()
 
 setup(
