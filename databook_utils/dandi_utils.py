@@ -8,6 +8,7 @@ from fsspec.implementations.cached import CachingFileSystem
 from fsspec import filesystem
 from pynwb import NWBHDF5IO
 
+
 # downloads an NWB file from DANDI to download_loc, opens it, and returns the NWB object
 # dandi_api_key is required to access files from embargoed dandisets
 def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key=None, force_overwrite=False):
@@ -30,6 +31,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
     io = NWBHDF5IO(filepath, mode="r", load_namespaces=True)
     nwb = io.read()
     return nwb
+
 
 # streams an NWB file remotely from DANDI, opens it, and returns the NWB object
 # dandi_api_key is required to access files from embargoed dandisets
