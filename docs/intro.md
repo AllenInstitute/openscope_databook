@@ -1,7 +1,29 @@
 # OpenScope Databook
-The OpenScope Databook is meant to store scripts and documentation used for brain data analysis and visualization, primarily working with [NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). It is provided by the Allen Institute's **[OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/)** Project, an endeavor of The Allen Institute [Mindscope Program](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through [Jupyter Book](https://jupyterbook.org/), this code is structured as a series of notebooks intended to explain and educate users on how to work with brain data.
+
+### Addressing the Reproducibility Challenge in Neuroscience through the Integration of Text, Data, and Code into a Comprehensive, Collaborative, and Version-Controlled Publication
+
+<!-- authors start -->
+
+ *Carter Peene (675), Jerome Lecoq (7), Josh Siegle, Ahad Bawany*
+
+<!-- authors end -->
+
+## Abstract
+
+Reproducibility is a significant challenge in neuroscience, as analysis and visualization methods are often difficult to replicate due to a lack of accessible code, separation of code from published figures, or unavailability of code altogether. This issue may arise from the complex nature of neuroscience research, the use of diverse data formats and analysis techniques, and insufficient emphasis on open-source, collaborative practices. In addition, key neuroscience analyses are typically rewritten at the start of new scientific projects, slowing down the initiation of research efforts.
+
+Four key components are essential for reproducible analysis: accessible data, accessible computational resources, a reproducible environment, and usage documentation. The OpenScope Databook, provided by the Allen Institute's OpenScope Project, offers a solution to these challenges by facilitating the analysis and visualization of brain data, primarily using [NWB files](https://www.nwb.org/) and the [DANDI archive](https://dandiarchive.org/). Hosted on Github, the entire publication – including code, data access, text, references, and revisions from reviewers and contributors – is readily available for collaboration and version control, promoting transparency and collective knowledge growth. The OpenScope Databook addresses these components by leveraging a combination of open-source Python libraries, such as DANDI, [Binder](https://mybinder.org/), [Jupyter Book](https://jupyterbook.org/en/stable/intro.html), [Google Colab](https://colab.research.google.com/), LaTeX references, Python scripts, Git versioning, and scientific revision through approved pull requests. The entire publication can be recreated by running the code locally, on distributed servers such as Binder, [DandiHub](https://hub.dandiarchive.org/), or Google Colab, or on any host running Jupyter notebooks.
+
+We cover several broadly used analyses across the community, providing a missing component for system neuroscience. Our key analyses are organized into chapters, including NWB basics such as downloading, streaming, and visualizing NWB files from data archives. We document essential analyses typically performed in all neuroscience laboratories, such as temporal alignment, alignment to sensory stimuli, and association with experimental metadata. We cover the two leading neuronal recording techniques: two-photon calcium imaging and electrophysiological recordings, and share example analyses of stimulus-averaged responses. Advanced first-order analyses include showing receptive fields, identifying optotagged units, current source density analysis, and cell matching across days.
+
+This resource is actively maintained and can be updated by the community, providing a living document that will grow over time. We anticipate this open publication model, where the code absorbs the text, will present an alternative publication route for the entire community, addressing the reproducibility challenge, promoting collaborative research, and facilitating transparent knowledge sharing through Git.
+
+
+## Statement of Support
 
 We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions [here](https://github.com/AllenInstitute/openscope_databook/issues) are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* standard.
+
+
 
 ![artwork](../data/images/openscope.png)
 
