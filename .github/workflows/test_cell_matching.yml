@@ -1,0 +1,37 @@
+
+name: test_cell_matching
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Upgrading pip
+        run: pip install --upgrade pip
+
+      - name: print environment
+        run: pip freeze
+
+      # - name: Installing package
+      #   run: pip install -e .
+
+      - name: Installing requirements
+        run: pip install -r docs/requirements.txt
+
+      - name: Installing build dependencies
+        run: |
+          pip install markupsafe==2.0.1
+          pip install jupyter
+          pip install -U jupyter-book
+          pip install nbmake
+          pip install pytest-xdist
+        
+      - name: Testing notebooks
+        run: pytest --nbmake --nbmake-timeout=5000 "./docs/first-order/cell_matching.ipynb"
