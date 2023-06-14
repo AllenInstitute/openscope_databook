@@ -1,14 +1,10 @@
-name: test
-on:
-  push:
-    branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
 
+name: test_cell_matching
+on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     env:
@@ -20,14 +16,14 @@ jobs:
       - name: Upgrading pip
         run: pip install --upgrade pip
 
-      - name: print environment
-        run: pip freeze
-
       - name: Installing package
         run: pip install -e .
 
       - name: Installing requirements
         run: pip install -r ./requirements.txt
+
+      - name: Printing environment
+        run: pip freeze
 
       - name: Installing build dependencies
         run: |
@@ -36,17 +32,6 @@ jobs:
           pip install -U jupyter-book
           pip install nbmake
           pip install pytest-xdist
-
-      - name: Printing environment
-        run: pip freeze
-      
-      - name: Getting changed files
-        id: changed_files
-        uses: Ana06/get-changed-files@v2.2.0
-        with:
-          filter: "*.ipynb"
         
       - name: Testing notebooks
-        if: ${{ steps.changed_files.outputs.added_modified  != '' }}
-        run: pytest --nbmake --nbmake-timeout=5000 -n=auto ${{ steps.changed_files.outputs.added_modified }}
-
+        run: pytest --nbmake --nbmake-timeout=5000 "./docs/first-order/cell_matching.ipynb"
