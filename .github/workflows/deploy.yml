@@ -4,12 +4,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  list_authors:
+    uses: ./.github/workflows/insert_authors.yml
+
   deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-
+      
       - name: Upgrading pip
         run: pip install --upgrade pip
 
@@ -17,7 +20,7 @@ jobs:
         run: pip install markupsafe==2.0.1
 
       - name: Installing Jupyter book
-        run: pip install -U jupyter-book
+        run: pip install -U jupyter-book==0.13.2
 
       - name: Build Jupyter book
         run: |

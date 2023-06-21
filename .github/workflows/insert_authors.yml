@@ -1,0 +1,27 @@
+name: list_authors
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  list_authors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+      
+      - name: Printing log
+        run: git status
+      
+      - name: Printing shortlog
+        run: git log | git shortlog -sn
+
+      - name: Inserting authors
+        run: python ./databook_utils/list_authors.py
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update authors list in intro.md

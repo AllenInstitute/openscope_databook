@@ -23,8 +23,11 @@ jobs:
       - name: print environment
         run: pip freeze
 
+      - name: Installing package
+        run: pip install -e .
+
       - name: Installing requirements
-        run: pip install -r .binder/requirements.txt --user
+        run: pip install -r ./requirements.txt
 
       - name: Installing build dependencies
         run: |
@@ -33,6 +36,9 @@ jobs:
           pip install -U jupyter-book
           pip install nbmake
           pip install pytest-xdist
+
+      - name: Printing environment
+        run: pip freeze
       
       - name: Getting changed files
         id: changed_files
@@ -41,5 +47,6 @@ jobs:
           filter: "*.ipynb"
         
       - name: Testing notebooks
+        if: ${{ steps.changed_files.outputs.added_modified  != '' }}
         run: pytest --nbmake --nbmake-timeout=5000 -n=auto ${{ steps.changed_files.outputs.added_modified }}
 
