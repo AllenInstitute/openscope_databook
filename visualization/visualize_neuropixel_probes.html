@@ -216,6 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Replicating Figures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../replication/cred_assign_figures.html">
+   Replicating OpenScope Credit Assignment project figures
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Bibliography and FAQ
  </span>
 </p>
@@ -611,7 +623,11 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                            SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
+sub-730756767_ses-757970808.nwb 2.4 GB 2.4 GB           100%    ok    done                   
+Summary:                        2.4 GB 2.4 GB                         1 done                 
+                                       100.00%                                               
+Downloaded file to ./sub-730756767_ses-757970808.nwb
 Opening file
 </pre></div>
 </div>
@@ -640,7 +656,8 @@ Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># each point has 3 coordinates assocaited with it</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -656,7 +673,8 @@ Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alp
 <p>Rendering is as simple as generating the widget and displaying it. This will create embedded window with the interactive 3D rendering of your scene.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccf</span> <span class="o">=</span> <span class="n">CCFWidget</span><span class="p">(</span><span class="n">markers</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the &#39;markers&#39; parameter will expect an iterable where each point is represented as [x,y,z]</span>
+<span class="n">ccf</span> <span class="o">=</span> <span class="n">CCFWidget</span><span class="p">(</span><span class="n">markers</span><span class="o">=</span><span class="p">[</span><span class="n">points</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

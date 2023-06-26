@@ -216,6 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Replicating Figures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../replication/cred_assign_figures.html">
+   Replicating OpenScope Credit Assignment project figures
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Bibliography and FAQ
  </span>
 </p>
@@ -622,16 +634,20 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.54.0) of dandi/dandi-cli is available. You are using 0.46.6
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                            SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
+sub-703279277_ses-719161530.nwb 3.1 GB 3.1 GB           100%    ok    done                   
+Summary:                        3.1 GB 3.1 GB                         1 done                 
+                                       100.00%                                               
+Downloaded file to ./sub-703279277_ses-719161530.nwb
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.6.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
+c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -640,7 +656,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="reading-data">
 <h2>Reading Data<a class="headerlink" href="#reading-data" title="Permalink to this headline">#</a></h2>
-<p>We need two components of data for this analysis; The <code class="docutils literal notranslate"><span class="pre">Units</span></code> table, which is discussed more in depth in <a class="reference internal" href="../visualization/visualize_unit_metrics.html"><span class="doc std std-doc">Visualizing Unit Quality Metrics</span></a>. In particular we need the <code class="docutils literal notranslate"><span class="pre">spike_times</span></code> property for the units. We also need the stimulus table from the NWB File’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. Because receptive field analysis is so central to interpreting results related to visual coding, experiments include some <a class="reference external" href="http://neuroanatody.com/2016/05/whats-in-a-gabor-patch/">Gabor patches</a>, shown repeatedly at a set of different coordinates within the mouse’s visual field. This stimulus is usually shown at the beginning of the session, and typically uses the same parameters for every mouse. So for our purposes, we select the stimulus table named <code class="docutils literal notranslate"><span class="pre">gabors_presentations</span></code>. Below the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table and the <em>gabors stimulus table</em> are shown.</p>
+<p>We need two components of data for this analysis; The <code class="docutils literal notranslate"><span class="pre">Units</span></code> table, which is discussed more in depth in <a class="reference internal" href="../visualization/visualize_unit_metrics.html"><span class="doc std std-doc">Visualizing Unit Quality Metrics</span></a>. In particular we need the <code class="docutils literal notranslate"><span class="pre">spike_times</span></code> property for the units. We also need the stimulus table from the NWB File’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. !Reword this sentence!: Because receptive field analysis is so central to interpreting results related to visual coding, experiments include some <a class="reference external" href="http://neuroanatody.com/2016/05/whats-in-a-gabor-patch/">Gabor patches</a>, shown repeatedly at a set of different coordinates within the mouse’s visual field. This stimulus is usually shown at the beginning of the session, and typically uses the same parameters for every mouse. So for our purposes, we select the stimulus table named <code class="docutils literal notranslate"><span class="pre">gabors_presentations</span></code>. Below the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table and the <em>gabors stimulus table</em> are shown.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">units</span>
@@ -1275,13 +1291,17 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### helper functions made from electrodes table to get brain location of unit or probe name of unit</span>
 
 <span class="c1"># map channel ids to brain location and probe group name</span>
+<span class="c1"># creates a dictionary that iterates over indices of the dataset, assigns &quot;id&quot; as the key, and makes the location the value</span>
 <span class="n">channel_locations</span> <span class="o">=</span> <span class="p">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]:</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">))}</span>
+<span class="c1"># creates similar dictionary as previous line, but with the group name/probe name as the value</span>
 <span class="n">channel_probes</span> <span class="o">=</span> <span class="p">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]:</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">))}</span>
 
+<span class="c1"># function retrieves peak channel ID for given unit index from &quot;units&quot; dataset and looks up corresponding probe from dictionary</span>
 <span class="k">def</span> <span class="nf">get_unit_location</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
     <span class="n">peak_channel_id</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">channel_locations</span><span class="p">[</span><span class="n">peak_channel_id</span><span class="p">]</span>
 
+<span class="c1"># function retrieves peak channel ID from &quot;units&quot; dataset, looks up corresponding group name, returns probe assocaited with peak channel</span>
 <span class="k">def</span> <span class="nf">get_unit_probe</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
     <span class="n">peak_channel_id</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">channel_probes</span><span class="p">[</span><span class="n">peak_channel_id</span><span class="p">]</span>
@@ -1292,8 +1312,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;LP&#39;, &#39;CA2&#39;, &#39;LGd&#39;, &#39;PO&#39;, &#39;APN&#39;, &#39;Eth&#39;, &#39;VISl&#39;, &#39;VISam&#39;, &#39;NOT&#39;, &#39;SUB&#39;, &#39;CA1&#39;, &#39;CA3&#39;, &#39;TH&#39;, &#39;VISal&#39;, &#39;VISp&#39;, &#39;DG&#39;, &#39;VISpm&#39;, &#39;VL&#39;, &#39;VISrl&#39;, &#39;MB&#39;, &#39;grey&#39;, &#39;VPM&#39;, &#39;POL&#39;}
-{&#39;probeD&#39;, &#39;probeE&#39;, &#39;probeB&#39;, &#39;probeC&#39;, &#39;probeA&#39;, &#39;probeF&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;DG&#39;, &#39;VISal&#39;, &#39;CA2&#39;, &#39;VPM&#39;, &#39;VISp&#39;, &#39;TH&#39;, &#39;LGd&#39;, &#39;VISrl&#39;, &#39;POL&#39;, &#39;VISam&#39;, &#39;CA3&#39;, &#39;grey&#39;, &#39;Eth&#39;, &#39;APN&#39;, &#39;SUB&#39;, &#39;LP&#39;, &#39;NOT&#39;, &#39;VISpm&#39;, &#39;VISl&#39;, &#39;PO&#39;, &#39;VL&#39;, &#39;CA1&#39;, &#39;MB&#39;}
+{&#39;probeF&#39;, &#39;probeD&#39;, &#39;probeC&#39;, &#39;probeE&#39;, &#39;probeB&#39;, &#39;probeA&#39;}
 </pre></div>
 </div>
 </div>
@@ -1359,6 +1379,7 @@ deg
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### get receptive field of a unit using its spike times and the stim table</span>
 
 <span class="k">def</span> <span class="nf">get_rf</span><span class="p">(</span><span class="n">spike_times</span><span class="p">):</span>
+    <span class="c1"># creates 2D array that stores response spike counts for each coordinate of the receptive field</span>
     <span class="n">unit_rf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">xs</span><span class="o">.</span><span class="n">size</span><span class="p">])</span>
     <span class="c1"># for every x and y coordinate in the field</span>
     <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>

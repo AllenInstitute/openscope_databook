@@ -216,6 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Replicating Figures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../replication/cred_assign_figures.html">
+   Replicating OpenScope Credit Assignment project figures
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Bibliography and FAQ
  </span>
 </p>
@@ -687,21 +699,21 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.54.0) of dandi/dandi-cli is available. You are using 0.46.6
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.6.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
+c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                                    SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
-sub-730756767_ses-757970808_probe-769322852_ecephys.nwb 2.3 GB 2.3 GB           100%    -     done                   
+sub-730756767_ses-757970808_probe-769322852_ecephys.nwb 2.3 GB 2.3 GB           100%    ok    done                   
 Summary:                                                2.3 GB 2.3 GB                         1 done                 
                                                                100.00%                                               
 Downloaded file to ./sub-730756767_ses-757970808_probe-769322852_ecephys.nwb
@@ -722,7 +734,7 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_769322852_lfp_data pynwb.ecephys.ElectricalSeries at 0x1906531171152
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_769322852_lfp_data pynwb.ecephys.ElectricalSeries at 0x2957991865600
 Fields:
   comments: no comments
   conversion: 1.0
@@ -757,7 +769,8 @@ Fields:
 </div>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_name</span> <span class="o">=</span> <span class="s2">&quot;static_gratings_presentations&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select stimulus table from above and insert here</span>
+<span class="n">stim_name</span> <span class="o">=</span> <span class="s2">&quot;static_gratings_presentations&quot;</span>
 <span class="n">stim_table</span> <span class="o">=</span> <span class="n">stim_nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
 <span class="n">stim_table</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -1019,13 +1032,14 @@ Fields:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### select start times from table that fit certain critera here</span>
 
 <span class="n">stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span> <span class="o">==</span> <span class="mf">150.0</span>
+<span class="c1"># for rows that satisfy condition above, extracts the start time and adds it to &#39;all_stim_times&#39; list</span>
 <span class="n">all_stim_times</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">stim_table</span> <span class="k">if</span> <span class="n">stim_select</span><span class="p">(</span><span class="n">row</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_stim_times</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_stim_times</span><span class="p">),</span> <span class="s2">&quot;stimulus times from rows that satisfy the condition.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>976
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 976 stimulus times from rows that satisfy the condition.
 </pre></div>
 </div>
 </div>
@@ -1033,21 +1047,21 @@ Fields:
 </section>
 <section id="selecting-a-period">
 <h2>Selecting a Period<a class="headerlink" href="#selecting-a-period" title="Permalink to this headline">#</a></h2>
-<p>Oftentimes, the LFP data can be very large. Depending on the machine this analysis is performed on, there may not be enough memory to perform this interpolation. This can be mitigated in two ways. Firstly, the <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> variable in the following section can be decreased. Otherwise, the analysis can be performed with some smaller period of time within the LFP data. If you wish to do this, set <code class="docutils literal notranslate"><span class="pre">period_start</span></code> and <code class="docutils literal notranslate"><span class="pre">period_end</span></code> to be reasonable times (in seconds) within the experiment to look at. Below are printed the first and last timestamps from the stimulus data and LFP data to inform this choice.</p>
+<p>Oftentimes, the LFP data can be very large. Depending on the machine this analysis is performed on, there may not be enough memory to perform this interpolation. This can be mitigated in two ways. Firstly, the <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> variable in the following section can be decreased. Otherwise, the analysis can be performed with some smaller period of time within the LFP data. If you wish to do this, set <code class="docutils literal notranslate"><span class="pre">period_start</span></code> and <code class="docutils literal notranslate"><span class="pre">period_end</span></code> to be reasonable times (in seconds) within the experiment to look at. Below are printed the first and last timestamps from the stimulus data and LFP data to inform this choice. Also printed below are the shapes of <code class="docutils literal notranslate"><span class="pre">lfp_timestamps</span></code> and <code class="docutils literal notranslate"><span class="pre">lfp_data</span></code>. <code class="docutils literal notranslate"><span class="pre">lfp_timestamps</span></code> is a 1D array with a length of n, where n is the number of timestamps for the given period. <code class="docutils literal notranslate"><span class="pre">lfp_data</span></code> is a 2D array with a shape of n * p, where p is the number of probes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">all_stim_times</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">all_stim_times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First timestamp stimulus data: &quot;</span><span class="p">,</span> <span class="n">all_stim_times</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last timestamp stimulus data: &quot;</span><span class="p">,</span> <span class="n">all_stim_times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First timestamp LFP data: &quot;</span><span class="p">,</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last timestamp LFP data: &quot;</span><span class="p">,</span> <span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5399.264360458158
-9151.149149224091
-3.727534675412933
-9671.771044169622
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First timestamp stimulus data:  5399.264360458158
+Last timestamp stimulus data:  9151.149149224091
+First timestamp LFP data:  3.727534675412933
+Last timestamp LFP data:  9671.771044169622
 </pre></div>
 </div>
 </div>
@@ -1069,6 +1083,7 @@ Fields:
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There are no stimulus timestamps in that period&quot;</span><span class="p">)</span>
 
+
 <span class="c1"># find indices within lfp data that correspond to period bounds</span>
 <span class="n">period_start_idx</span><span class="p">,</span> <span class="n">period_end_idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lfp</span><span class="o">.</span><span class="n">timestamps</span><span class="p">):</span>
@@ -1087,17 +1102,22 @@ Fields:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stim_times</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;number of times selected stimulus was presented during this period: &quot;</span><span class="p">,</span> <span class="n">stim_times</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lfp_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(267,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of times stimulus was presented during this period:  (267,)
 (999999,)
 (999999, 89)
 </pre></div>
