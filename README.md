@@ -11,8 +11,8 @@ We are releasing this code to the public as a tool we expect others to use and a
 ### Chapter 1: Using DANDI/getting data
 - [Downloading NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/download_nwb.ipynb)
 - [Reading NWB files](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/read_nwb.ipynb)
-- [Streaming NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/stream_nwb.ipynb)
 - [Exploring NWB files with NWBWidgets](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/use_nwbwidgets.ipynb)
+- [Streaming NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/stream_nwb.ipynb)
 - [Querying metadata across sessions from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/get_dandiset_metadata.ipynb)
 
 ### Chapter 2: Data visualization
