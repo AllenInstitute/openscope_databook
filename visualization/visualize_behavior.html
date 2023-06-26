@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Visualizing Raw 2-Photon Images" href="visualize_2p_raw.html" />
     <link rel="prev" title="Getting Experimental Metadata from DANDI" href="../basics/get_dandiset_metadata.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -216,13 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  bibliography
+  Bibliography and FAQ
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../bibliography.html">
    Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../FAQ.html">
+   FAQ
   </a>
  </li>
 </ul>
@@ -642,22 +647,19 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
-    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">%</span><span class="k">cd</span> openscope_databook
+    <span class="o">%</span><span class="k">pip</span> install -e .
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fsspec</span>
-<span class="kn">import</span> <span class="nn">h5py</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
-<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
-<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+<span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -667,12 +669,11 @@ title="Print to PDF"
 </section>
 <section id="streaming-nwb-file">
 <h2>Streaming NWB File<a class="headerlink" href="#streaming-nwb-file" title="Permalink to this headline">#</a></h2>
-<p>Remotely streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key, otherwise, set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to False.</p>
+<p>Streaming a file from DANDI requires information about the file of interest. The current information below is for data that is private to the Allen Institute. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the ID of the dandiset you want, and set <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to be the path of the file within the dandiset. The filepath can be found if you press on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon of a file and copy the <code class="docutils literal notranslate"><span class="pre">path</span></code> field that shows up in the resulting JSON. If you are accessing embargoed data, you will need to set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000336&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub_1170622509/sub_1170622509sess_1194683535/sub_1170622509+sess_1194683535+exp_1194752582_ophys.nwb&quot;</span>
-<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-621602/sub-621602_ses-1193555033-acq-1193675745_ophys.nwb&quot;</span>
 <span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -680,58 +681,17 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
-    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">dandi_stream_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.53.0) of dandi/dandi-cli is available. You are using 0.46.6
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000336/draft
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
-<span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrieved file url </span><span class="si">{</span><span class="n">file_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive-embargo.s3.amazonaws.com/000336/blobs/f90/e73/f90e733c-0ddb-4658-a383-6452ca637808?response-content-disposition=attachment%3B%20filename%3D%22sub_1170622509%2Bsess_1194683535%2Bexp_1194752582_ophys.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230420%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230420T201355Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=40b31642bd36f8cd757b2938553118d20fabf4bce0d9423a1ca2743b46203031
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">CachingFileSystem</span><span class="p">(</span>
-    <span class="n">fs</span><span class="o">=</span><span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
-<span class="n">file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.6.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.3.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -756,17 +716,17 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(239137,)
-eye_tracking abc.EllipseSeries at 0x2356231785872
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(241673,)
+eye_tracking abc.EllipseSeries at 0x1690633527104
 Fields:
-  angle: &lt;HDF5 dataset &quot;angle&quot;: shape (239137,), type &quot;&lt;f8&quot;&gt;
-  area: &lt;HDF5 dataset &quot;area&quot;: shape (239137,), type &quot;&lt;f8&quot;&gt;
-  area_raw: &lt;HDF5 dataset &quot;area_raw&quot;: shape (239137,), type &quot;&lt;f8&quot;&gt;
+  angle: &lt;HDF5 dataset &quot;angle&quot;: shape (241673,), type &quot;&lt;f8&quot;&gt;
+  area: &lt;HDF5 dataset &quot;area&quot;: shape (241673,), type &quot;&lt;f8&quot;&gt;
+  area_raw: &lt;HDF5 dataset &quot;area_raw&quot;: shape (241673,), type &quot;&lt;f8&quot;&gt;
   comments: no comments
   conversion: 1.0
-  data: &lt;HDF5 dataset &quot;data&quot;: shape (239137, 2), type &quot;&lt;f8&quot;&gt;
+  data: &lt;HDF5 dataset &quot;data&quot;: shape (241673, 2), type &quot;&lt;f8&quot;&gt;
   description: no description
-  height: &lt;HDF5 dataset &quot;height&quot;: shape (239137,), type &quot;&lt;f8&quot;&gt;
+  height: &lt;HDF5 dataset &quot;height&quot;: shape (241673,), type &quot;&lt;f8&quot;&gt;
   interval: 1
   offset: 0.0
   reference_frame: nose
@@ -776,10 +736,10 @@ Fields:
     corneal_reflection_tracking &lt;class &#39;abc.EllipseSeries&#39;&gt;,
     likely_blink &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;
   )
-  timestamps: &lt;HDF5 dataset &quot;timestamps&quot;: shape (239137,), type &quot;&lt;f8&quot;&gt;
+  timestamps: &lt;HDF5 dataset &quot;timestamps&quot;: shape (241673,), type &quot;&lt;f8&quot;&gt;
   timestamps_unit: seconds
   unit: meters
-  width: &lt;HDF5 dataset &quot;width&quot;: shape (239137,), type &quot;&lt;f8&quot;&gt;
+  width: &lt;HDF5 dataset &quot;width&quot;: shape (241673,), type &quot;&lt;f8&quot;&gt;
 </pre></div>
 </div>
 </div>
@@ -796,8 +756,8 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.17066
-3985.587
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20801
+4027.98269
 </pre></div>
 </div>
 </div>
@@ -855,7 +815,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Blink Times&#39;)
 </pre></div>
 </div>
-<img alt="../_images/visualize_behavior_18_1.png" src="../_images/visualize_behavior_18_1.png" />
+<img alt="../_images/visualize_behavior_16_1.png" src="../_images/visualize_behavior_16_1.png" />
 </div>
 </div>
 </section>
@@ -879,7 +839,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Eye Height and Width Over Time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/visualize_behavior_20_1.png" src="../_images/visualize_behavior_20_1.png" />
+<img alt="../_images/visualize_behavior_18_1.png" src="../_images/visualize_behavior_18_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -893,10 +853,10 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2249b733ca0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x189fffde040&gt;]
 </pre></div>
 </div>
-<img alt="../_images/visualize_behavior_21_1.png" src="../_images/visualize_behavior_21_1.png" />
+<img alt="../_images/visualize_behavior_19_1.png" src="../_images/visualize_behavior_19_1.png" />
 </div>
 </div>
 </section>
@@ -914,10 +874,10 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2249ec93550&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x189a25b55b0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/visualize_behavior_23_1.png" src="../_images/visualize_behavior_23_1.png" />
+<img alt="../_images/visualize_behavior_21_1.png" src="../_images/visualize_behavior_21_1.png" />
 </div>
 </div>
 </section>
@@ -952,7 +912,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_behavior_26_0.png" src="../_images/visualize_behavior_26_0.png" />
+<img alt="../_images/visualize_behavior_24_0.png" src="../_images/visualize_behavior_24_0.png" />
 </div>
 </div>
 </section>
@@ -994,10 +954,10 @@ Fields:
 (236232,)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x224999489a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x189a1b28ee0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/visualize_behavior_30_2.png" src="../_images/visualize_behavior_30_2.png" />
+<img alt="../_images/visualize_behavior_28_2.png" src="../_images/visualize_behavior_28_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1020,10 +980,10 @@ Fields:
 (236231,)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x22499d51b50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x189a1667460&gt;]
 </pre></div>
 </div>
-<img alt="../_images/visualize_behavior_31_2.png" src="../_images/visualize_behavior_31_2.png" />
+<img alt="../_images/visualize_behavior_29_2.png" src="../_images/visualize_behavior_29_2.png" />
 </div>
 </div>
 </section>

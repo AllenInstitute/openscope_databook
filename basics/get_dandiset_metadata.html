@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Visualizing Behavioral Data" href="../visualization/visualize_behavior.html" />
     <link rel="prev" title="Streaming an NWB File with fsspec" href="stream_nwb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -216,13 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  bibliography
+  Bibliography and FAQ
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../bibliography.html">
    Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../FAQ.html">
+   FAQ
   </a>
  </li>
 </ul>
@@ -584,8 +589,9 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenInstitute/openscope_databook/main/requirements.txt
-    <span class="o">%</span><span class="k">pip</span> install -r requirements.txt --user
+    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">%</span><span class="k">cd</span> openscope_databook
+    <span class="o">%</span><span class="k">pip</span> install -e .
 </pre></div>
 </div>
 </div>
@@ -637,21 +643,72 @@ title="Print to PDF"
 </section>
 <section id="get-nwb-info">
 <h2>Get NWB Info<a class="headerlink" href="#get-nwb-info" title="Permalink to this headline">#</a></h2>
-<p>This function is tailored to our NWB Files. It retrieves a series of important metadata values from the NWB file object. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect this.</p>
+<p>Below are two definitions of thefunction <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>. These function are tailored to our NWB Files; Our <em>Ophys</em> and our <em>Ecephys</em> datasets respectively. It retrieves a series of important metadata values from the NWB file object. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want as long as you’re familiar with the internal layout of your files. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect any changes to the function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within nwb file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within ophys file</span>
+<span class="c1"># getattr is used because not all nwb files have all properties. If not handled like this, errors will arise</span>
+<span class="c1"># def get_nwb_info(nwb):</span>
+<span class="c1">#         session_time = getattr(nwb, &quot;session_start_time&quot;, None)</span>
+
+<span class="c1">#         metadata_obj = getattr(nwb, &quot;lab_meta_data&quot;, {})</span>
+<span class="c1">#         metadata = metadata_obj.get(&quot;metadata&quot;, None)</span>
+<span class="c1">#         session_id = getattr(metadata, &quot;ophys_session_id&quot;, None)</span>
+<span class="c1">#         experiment_id = getattr(metadata, &quot;ophys_experiment_id&quot;, None)</span>
+
+<span class="c1">#         fov_height = getattr(metadata, &quot;field_of_view_height&quot;, None)</span>
+<span class="c1">#         fov_width = getattr(metadata, &quot;field_of_view_width&quot;, None)</span>
+<span class="c1">#         imaging_depth = getattr(metadata, &quot;imaging_depth&quot;, None)</span>
+<span class="c1">#         group = getattr(metadata, &quot;imaging_plane_group&quot;, None)</span>
+<span class="c1">#         group_count = getattr(metadata, &quot;imaging_plane_group_count&quot;, None)</span>
+<span class="c1">#         container_id = getattr(metadata, &quot;experiment_container_id&quot;, None)</span>
+        
+<span class="c1">#         subject = getattr(nwb, &quot;subject&quot;, None)</span>
+<span class="c1">#         specimen_name = getattr(subject, &quot;subject_id&quot;, None)</span>
+<span class="c1">#         age = getattr(subject, &quot;age&quot;, None)</span>
+<span class="c1">#         sex = getattr(subject, &quot;sex&quot;, None)</span>
+<span class="c1">#         genotype = getattr(subject, &quot;genotype&quot;, None)</span>
+        
+<span class="c1">#         try: n_rois = nwb.processing[&quot;ophys&quot;][&quot;dff&quot;].roi_response_series[&quot;traces&quot;].data.shape[1]</span>
+<span class="c1">#         except: n_rois = None</span>
+<span class="c1">#         try: location = list(nwb.imaging_planes.values())[0].location</span>
+<span class="c1">#         except: location = None</span>
+        
+<span class="c1">#         intervals = getattr(nwb, &quot;intervals&quot;, {})</span>
+<span class="c1">#         stim_types = set(intervals.keys())</span>
+<span class="c1">#         stim_tables = [intervals[table_name] for table_name in intervals]</span>
+<span class="c1">#         # gets highest value among final &quot;stop times&quot; of all stim tables in intervals</span>
+<span class="c1">#         session_end = max([table.stop_time[-1] for table in stim_tables if len(table) &gt; 1])</span>
+
+<span class="c1">#         return [session_time, session_id, experiment_id, container_id, group, group_count, imaging_depth, location, fov_height, fov_width, specimen_name, sex, age, genotype, stim_types, n_rois, session_end]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within ecephys file</span>
+<span class="c1"># getattr is used because not all nwb files have all properties. If not handled like this, errors will arise</span>
 <span class="k">def</span> <span class="nf">get_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
-        <span class="n">session_time</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">session_start_time</span>
-        <span class="n">sub</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">subject</span>
-        <span class="n">probes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-        <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
-        <span class="n">stim_types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-        <span class="n">stim_tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">]</span>
+        <span class="n">session_time</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;session_start_time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">subject</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">specimen_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;specimen_name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;age_in_days&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">genotype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;genotype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">probes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;devices&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>        
+        
+        <span class="n">intervals</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;intervals&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">stim_types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">stim_tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">intervals</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">]</span>
         <span class="c1"># gets highest value among final &quot;stop times&quot; of all stim tables in intervals</span>
         <span class="n">session_end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">stim_tables</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">])</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">session_time</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">specimen_name</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">sex</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">age_in_days</span><span class="p">,</span> <span class="n">sub</span><span class="o">.</span><span class="n">genotype</span><span class="p">,</span> <span class="n">probes</span><span class="p">,</span> <span class="n">stim_types</span><span class="p">,</span> <span class="n">n_units</span><span class="p">,</span> <span class="n">session_end</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">session_time</span><span class="p">,</span> <span class="n">specimen_name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">genotype</span><span class="p">,</span> <span class="n">probes</span><span class="p">,</span> <span class="n">stim_types</span><span class="p">,</span> <span class="n">n_units</span><span class="p">,</span> <span class="n">session_end</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -666,22 +723,25 @@ title="Print to PDF"
 <span class="n">fs</span> <span class="o">=</span> <span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
 
 <span class="n">nwb_table</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_assets</span><span class="p">():</span>
-    <span class="c1"># skip files that aren&#39;t main session files</span>
-    <span class="k">if</span> <span class="s2">&quot;probe&quot;</span> <span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-        <span class="k">continue</span>
+<span class="c1"># skip files that aren&#39;t main session files</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">asset</span> <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_assets</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;probe&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">asset</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
+<span class="c1"># swap this with line above for one of our ophys dandisets</span>
+<span class="c1"># files = [asset for asset in my_dandiset.get_assets() if &quot;raw&quot; not in asset.path]</span>
+<span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2"> files retrieved&quot;</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examining file </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examining file </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
     <span class="c1"># get basic file metadata</span>
     <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
     
     <span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
-    <span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Location&#39;</span><span class="p">]</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Location&quot;</span><span class="p">]</span>
 
     <span class="c1"># open and read nwb file with streaming</span>
     <span class="k">with</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">io</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">io</span><span class="p">:</span>
                 <span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
                 <span class="c1"># extract experimental info from within file</span>
                 <span class="n">row</span> <span class="o">+=</span> <span class="n">get_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
@@ -690,30 +750,45 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file dbc426a0-aafa-460b-a25a-a86bb31b9ddc
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16 files retrieved
+Examining file 0/16: dbc426a0-aafa-460b-a25a-a86bb31b9ddc
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.6.0-alpha is already loaded.
+/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
+/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 181b7651-5f5c-491b-be70-e5d0354439d4
-Examining file 85bfd56c-f104-4c83-937c-be0d58fce48e
-Examining file c5e97840-4988-4da8-9f57-a24fb0a4a865
-Examining file a7ff352c-0b00-47d6-a49f-97027d18264e
-Examining file a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84
-Examining file 32af00b4-4aa6-48de-8210-26a5cf7935a9
-Examining file 016e7321-807f-4b59-be42-c33511f8f55c
-Examining file 7252ab67-7acd-4cb7-b7a6-600df600d8e7
-Examining file 3c6a7667-5f5d-432f-829c-e915dab15c27
-Examining file 9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6
-Examining file e0392a2a-0e07-4f7a-82dd-df354bf571d5
-Examining file 03eba9bf-f850-41a5-9e99-6f65fc5ea13d
-Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 1/16: 181b7651-5f5c-491b-be70-e5d0354439d4
+Examining file 2/16: 85bfd56c-f104-4c83-937c-be0d58fce48e
+Examining file 3/16: c5e97840-4988-4da8-9f57-a24fb0a4a865
+Examining file 4/16: a7ff352c-0b00-47d6-a49f-97027d18264e
+Examining file 5/16: a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84
+Examining file 6/16: 32af00b4-4aa6-48de-8210-26a5cf7935a9
+Examining file 7/16: 016e7321-807f-4b59-be42-c33511f8f55c
+Examining file 8/16: 7252ab67-7acd-4cb7-b7a6-600df600d8e7
+Examining file 9/16: 3c6a7667-5f5d-432f-829c-e915dab15c27
+Examining file 10/16: 9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6
+Examining file 11/16: e0392a2a-0e07-4f7a-82dd-df354bf571d5
+Examining file 12/16: 03eba9bf-f850-41a5-9e99-6f65fc5ea13d
+Examining file 13/16: 0c343e3e-8f00-4ee8-9778-fc1d953e453b
+Examining file 14/16: 348b1e83-4fde-480a-9e4d-ef55b5cac7c5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.5.0 because version 2.6.0-alpha is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 15/16: 46f9bf9b-f799-4af9-b7b8-d6ed95a5446d
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.2.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
 </div>
@@ -722,6 +797,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert table to pandas dataframe</span>
 <span class="n">sessions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nwb_table</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;session time&quot;</span><span class="p">,</span> <span class="s2">&quot;sub name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub sex&quot;</span><span class="p">,</span> <span class="s2">&quot;sub age&quot;</span><span class="p">,</span> <span class="s2">&quot;sub genotype&quot;</span><span class="p">,</span> <span class="s2">&quot;probes&quot;</span><span class="p">,</span> <span class="s2">&quot;stim types&quot;</span><span class="p">,</span> <span class="s2">&quot;# units&quot;</span><span class="p">,</span> <span class="s2">&quot;session length&quot;</span><span class="p">))</span>
+<span class="c1"># swap this with line above for one of our ophys dandisets</span>
+<span class="c1"># sessions = pd.DataFrame(nwb_table, columns=(&quot;identifier&quot;, &quot;size&quot;, &quot;path&quot;, &quot;session time&quot;, &quot;session id&quot;, &quot;experiment id&quot;, &quot;container id&quot;, &quot;group&quot;, &quot;group count&quot;, &quot;imaging depth&quot;, &quot;location&quot;, &quot;fov height&quot;, &quot;fov width&quot;, &quot;specimen name&quot;, &quot;sex&quot;, &quot;age&quot;, &quot;genotype&quot;, &quot;stim types&quot;, &quot;# rois&quot;, &quot;session end&quot;))</span>
 <span class="n">sessions</span>
 </pre></div>
 </div>
@@ -770,8 +847,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>154.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>1918</td>
       <td>7278.157990</td>
     </tr>
@@ -785,8 +862,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>89.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2793</td>
       <td>7279.234305</td>
     </tr>
@@ -800,8 +877,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>F</td>
       <td>90.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2621</td>
       <td>7278.592876</td>
     </tr>
@@ -815,8 +892,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>F</td>
       <td>99.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2464</td>
       <td>7278.964870</td>
     </tr>
@@ -830,8 +907,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>148.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2593</td>
       <td>7283.108060</td>
     </tr>
@@ -845,8 +922,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>82.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2930</td>
       <td>7315.456085</td>
     </tr>
@@ -860,8 +937,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>85.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2368</td>
       <td>7277.548360</td>
     </tr>
@@ -875,8 +952,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>154.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2092</td>
       <td>7279.915735</td>
     </tr>
@@ -890,8 +967,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>82.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2930</td>
       <td>7315.456085</td>
     </tr>
@@ -905,8 +982,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>F</td>
       <td>92.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2517</td>
       <td>7279.167735</td>
     </tr>
@@ -920,8 +997,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>F</td>
       <td>92.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>1789</td>
       <td>7278.942950</td>
     </tr>
@@ -935,8 +1012,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>F</td>
       <td>101.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>3026</td>
       <td>7279.608875</td>
     </tr>
@@ -950,8 +1027,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>M</td>
       <td>92.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2373</td>
       <td>7349.272460</td>
     </tr>
@@ -965,14 +1042,52 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
       <td>F</td>
       <td>99.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
       <td>2386</td>
       <td>7339.232324</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>348b1e83-4fde-480a-9e4d-ef55b5cac7c5</td>
+      <td>20274810263</td>
+      <td>sub-1181585601/sub-1181585601_ses-1194644312_i...</td>
+      <td>2022-07-27 00:00:00-07:00</td>
+      <td>external: 630507 donor_id: 1181585601 specimen...</td>
+      <td>F</td>
+      <td>99.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{OptogeneticStimulusDevice, probeF, probeB, pr...</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
+      <td>2464</td>
+      <td>7278.964870</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>46f9bf9b-f799-4af9-b7b8-d6ed95a5446d</td>
+      <td>2571025511</td>
+      <td>sub-1181585601/sub-1181585601_ses-1194644312_o...</td>
+      <td>2022-07-27 00:00:00-07:00</td>
+      <td>external: 630507 donor_id: 1181585601 specimen...</td>
+      <td>F</td>
+      <td>99.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{OptogeneticStimulusDevice, probeF, probeB, pr...</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
+      <td>2464</td>
+      <td>7278.964870</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output all session metadata to local CSV file</span>
+<span class="n">sessions</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;sessions.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="selecting-files">
@@ -980,9 +1095,9 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
 <p><strong>Pandas</strong> syntax can be used to filter the table above and select individual sessions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># selected_sessions = sessions[sessions[&quot;size&quot;] &gt;= 2_500_000_000]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_sessions</span> <span class="o">=</span> <span class="n">sessions</span><span class="p">[</span><span class="n">sessions</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2_300_000_000</span><span class="p">]</span>
 <span class="c1"># selected_sessions = sessions[sessions[&quot;sub sex&quot;] == &quot;F&quot;]</span>
-<span class="n">selected_sessions</span> <span class="o">=</span> <span class="n">sessions</span><span class="p">[</span><span class="n">sessions</span><span class="p">[</span><span class="s2">&quot;# units&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2900</span><span class="p">]</span>
+<span class="c1"># selected_sessions = sessions[sessions[&quot;# units&quot;] &gt; 2900]</span>
 <span class="n">selected_sessions</span>
 </pre></div>
 </div>
@@ -1022,49 +1137,34 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
   </thead>
   <tbody>
     <tr>
-      <th>5</th>
-      <td>a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84</td>
-      <td>3393216313</td>
-      <td>sub_1174569641/sub_1174569641sess_1184671550/s...</td>
-      <td>2022-06-01 00:00:00-07:00</td>
-      <td>625554</td>
+      <th>0</th>
+      <td>dbc426a0-aafa-460b-a25a-a86bb31b9ddc</td>
+      <td>2242666496</td>
+      <td>sub_1175512783/sub_1175512783sess_1187930705/s...</td>
+      <td>2022-06-29 00:00:00-07:00</td>
+      <td>619296</td>
       <td>M</td>
-      <td>82.0</td>
-      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
-      <td>2930</td>
-      <td>7315.456085</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>7252ab67-7acd-4cb7-b7a6-600df600d8e7</td>
-      <td>3393216313</td>
-      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
-      <td>2022-06-01 00:00:00-07:00</td>
-      <td>625554</td>
-      <td>M</td>
-      <td>82.0</td>
-      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
-      <td>2930</td>
-      <td>7315.456085</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>e0392a2a-0e07-4f7a-82dd-df354bf571d5</td>
-      <td>3082458652</td>
-      <td>sub_1189891322/sub_1189891322sess_1199247593/s...</td>
-      <td>2022-08-17 00:00:00-07:00</td>
-      <td>633229</td>
-      <td>F</td>
-      <td>101.0</td>
+      <td>154.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeA, probeD, probeE, probeB, probeF}</td>
-      <td>{RFCI_presentations, ICkcfg1_presentations, IC...</td>
-      <td>3026</td>
-      <td>7279.608875</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
+      <td>1918</td>
+      <td>7278.15799</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6</td>
+      <td>1882268693</td>
+      <td>sub_1183369803/sub_1183369803sess_1194857009/s...</td>
+      <td>2022-07-28 00:00:00-07:00</td>
+      <td>631570</td>
+      <td>F</td>
+      <td>92.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
+      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
+      <td>1789</td>
+      <td>7278.94295</td>
     </tr>
   </tbody>
 </table>
@@ -1089,9 +1189,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sub_1171903433/sub_1171903433sess_1181330601/sub_1171903433+sess_1181330601_ecephys.nwb&#39;,
- &#39;sub_1174569641/sub_1174569641sess_1184671550/sub_1174569641+sess_1184671550_ecephys.nwb&#39;,
- &#39;sub_1189891322/sub_1189891322sess_1199247593/sub_1189891322+sess_1199247593_ecephys.nwb&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sub_1175512783/sub_1175512783sess_1187930705/sub_1175512783+sess_1187930705_ecephys.nwb&#39;,
+ &#39;sub_1183369803/sub_1183369803sess_1194857009/sub_1183369803+sess_1194857009_ecephys.nwb&#39;}
 </pre></div>
 </div>
 </div>
@@ -1107,9 +1206,8 @@ Examining file 0c343e3e-8f00-4ee8-9778-fc1d953e453b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub_1171903433+sess_1181330601_ecephys.nwb
-Downloaded file to ./sub_1174569641+sess_1184671550_ecephys.nwb
-Downloaded file to ./sub_1189891322+sess_1199247593_ecephys.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub_1175512783+sess_1187930705_ecephys.nwb
+Downloaded file to ./sub_1183369803+sess_1194857009_ecephys.nwb
 </pre></div>
 </div>
 </div>
