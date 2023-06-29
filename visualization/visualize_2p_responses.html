@@ -213,16 +213,14 @@ const thebe_selector_output = ".output, .cell_output"
    Cell Matching Across Days
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Replicating Figures
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../replication/cred_assign_figures.html">
-   Replicating OpenScope Credit Assignment project figures
+  <a class="reference internal" href="../first-order/test_2p_responses.html">
+   Statistically Testing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/test_spike_responses.html">
+   Statistically Testing Spike Responses to Stimulus
   </a>
  </li>
 </ul>
@@ -629,10 +627,10 @@ title="Print to PDF"
 <p>Change the values below to download the file you’re interested in. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to correspond to the dandiset id and filepath of the file you want. If you’re accessing an embargoed dataset, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key. If you want to stream a file instead of downloading it, use <code class="docutils literal notranslate"><span class="pre">dandi_stream_open</span></code> intead. Checkout <a class="reference internal" href="../basics/stream_nwb.html"><span class="doc std std-doc">Streaming an NWB File with fsspec</span></a> for more details on this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000336&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-621603/sub-621603_ses-1194683535-acq-1194752582_ophys.nwb&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000488&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-416366/sub-416366_ses-768476976_behavior+image+ophys.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -640,20 +638,20 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
-<span class="n">nwb</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.6.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.3.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -669,26 +667,18 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">dff_trace</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 <span class="n">dff_timestamps</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
 
-<span class="n">flr</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;corrected_fluorescence&quot;</span><span class="p">]</span>
-<span class="n">flr_trace</span> <span class="o">=</span> <span class="n">flr</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-<span class="n">flr_timestamps</span> <span class="o">=</span> <span class="n">flr</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
-
 <span class="c1"># accessing the above data may look different for older nwb files, like the following</span>
 <span class="c1"># dff_trace = dff.roi_response_series[&quot;RoiResponseSeries&quot;].data</span>
 <span class="c1"># dff_timestamps = dff.roi_response_series[&quot;RoiResponseSeries&quot;].timestamps</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">flr_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">flr_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dff_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42337, 103)
-(42337,)
-(42337, 103)
-(42337,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(115870, 178)
+(115870,)
 </pre></div>
 </div>
 </div>
@@ -701,21 +691,21 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;fixed_gabors_presentations&#39;, &#39;gratings_presentations&#39;, &#39;movie_flower_fwd_presentations&#39;, &#39;movie_touch_of_evil_fwd_presentations&#39;, &#39;movie_worms_fwd_presentations&#39;, &#39;rotate_gabors_presentations&#39;, &#39;spontaneous_presentations&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;trials&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="s1">&#39;gratings_presentations&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="s2">&quot;trials&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stim_table</span><span class="o">.</span><span class="n">colnames</span><span class="p">)</span>
 <span class="n">stim_table</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;start_time&#39;, &#39;stop_time&#39;, &#39;stimulus_name&#39;, &#39;stimulus_block&#39;, &#39;color&#39;, &#39;contrast&#39;, &#39;mask&#39;, &#39;opacity&#39;, &#39;ori&#39;, &#39;size&#39;, &#39;units&#39;, &#39;stimulus_index&#39;, &#39;spatial_frequency&#39;, &#39;phase&#39;, &#39;tags&#39;, &#39;timeseries&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;start_time&#39;, &#39;stop_time&#39;, &#39;stimulus_type&#39;, &#39;image_id&#39;, &#39;repeat&#39;, &#39;stimulus_key&#39;, &#39;fraction_occlusion&#39;, &#39;duration&#39;, &#39;sweep&#39;)
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -738,30 +728,16 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <th></th>
       <th>start_time</th>
       <th>stop_time</th>
-      <th>stimulus_name</th>
-      <th>stimulus_block</th>
-      <th>color</th>
-      <th>contrast</th>
-      <th>mask</th>
-      <th>opacity</th>
-      <th>ori</th>
-      <th>size</th>
-      <th>units</th>
-      <th>stimulus_index</th>
-      <th>spatial_frequency</th>
-      <th>phase</th>
-      <th>tags</th>
-      <th>timeseries</th>
+      <th>stimulus_type</th>
+      <th>image_id</th>
+      <th>repeat</th>
+      <th>stimulus_key</th>
+      <th>fraction_occlusion</th>
+      <th>duration</th>
+      <th>sweep</th>
     </tr>
     <tr>
       <th>id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -776,193 +752,123 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <tbody>
     <tr>
       <th>0</th>
-      <td>3723.084780</td>
-      <td>3723.385052</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>60.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.50</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222259, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>102.580917</td>
+      <td>102.814461</td>
+      <td>randomized_control_pre</td>
+      <td>103.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>3723.385052</td>
-      <td>3723.685324</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>90.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
+      <td>102.831096</td>
+      <td>103.064622</td>
+      <td>randomized_control_pre</td>
+      <td>68.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
       <td>0.25</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222277, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3723.685324</td>
-      <td>3723.985596</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>150.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.75</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222295, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>103.081333</td>
+      <td>103.314856</td>
+      <td>randomized_control_pre</td>
+      <td>26.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3723.985596</td>
-      <td>3724.285858</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>120.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.75</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222313, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>103.331516</td>
+      <td>103.565072</td>
+      <td>randomized_control_pre</td>
+      <td>71.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3724.285858</td>
-      <td>3724.586114</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.00</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222331, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>103.581687</td>
+      <td>103.815235</td>
+      <td>randomized_control_pre</td>
+      <td>110.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>3724.586114</td>
-      <td>3724.886369</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>30.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.75</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222349, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>103.831911</td>
+      <td>104.065457</td>
+      <td>randomized_control_pre</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>3724.886369</td>
-      <td>3725.186622</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>150.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.00</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222367, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>104.082153</td>
+      <td>104.315617</td>
+      <td>randomized_control_pre</td>
+      <td>112.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>3725.186622</td>
-      <td>3725.486867</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>120.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.00</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222385, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>104.332359</td>
+      <td>104.565821</td>
+      <td>randomized_control_pre</td>
+      <td>17.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>3725.486867</td>
-      <td>3725.787112</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>60.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.00</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222403, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>104.582515</td>
+      <td>104.816081</td>
+      <td>randomized_control_pre</td>
+      <td>13.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>8</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>3725.787112</td>
-      <td>3726.087357</td>
-      <td>gratings</td>
-      <td>184.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>0.8</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>120.0</td>
-      <td>[250.0, 250.0]</td>
-      <td>deg</td>
-      <td>7.0</td>
-      <td>0.08</td>
-      <td>0.50</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(222421, 18, timestamps pynwb.base.TimeSeries...</td>
+      <td>104.832731</td>
+      <td>105.066273</td>
+      <td>randomized_control_pre</td>
+      <td>111.0</td>
+      <td>NaN</td>
+      <td>ophys_pilot_randomized_control_A</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>9</td>
     </tr>
   </tbody>
 </table>
@@ -971,7 +877,14 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="getting-stimulus-epochs">
 <h2>Getting Stimulus Epochs<a class="headerlink" href="#getting-stimulus-epochs" title="Permalink to this headline">#</a></h2>
-<p>Here, <em>epochs</em> are extracted from the stimulus tables. In this case, an epoch is a continuous period of time during a session where a particular type of stimulus is shown. The output here is a list of epochs, where an epoch is a tuple of four values; the stimulus name, the stimulus block, the starting time and the ending time. Since stimulus information can vary signifcantly between experiments and NWB files, you may need to tailor the code below to extract epochs for the file you’re interested in.</p>
+<p>Here, <em>epochs</em> are extracted from the stimulus tables. In this case, an epoch is a continuous period of time during a session where a particular type of stimulus is shown. The output here is a list of epochs, where an epoch is a tuple of four values; the stimulus name, the stimulus block, the starting time and the ending time. Since stimulus information can vary signifcantly between experiments and NWB files, you may need to tailor the code below to extract epochs for the file you’re interested in. For normally, formatted stimulus tables, the code below should work, provided you set <code class="docutils literal notranslate"><span class="pre">epoch_criterion</span></code> to be the name of a valid column in the stimulus tables above. In this example, we define an epoch as ending when the “stimulus_type” value changes for a row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epoch_criterion</span> <span class="o">=</span> <span class="s2">&quot;stimulus_type&quot;</span> <span class="c1"># also try &quot;stimulus_key&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
@@ -984,13 +897,13 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
     <span class="c1"># for each row, try to extend current epoch stop_time</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">)):</span>
-        <span class="n">this_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stimulus_block</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">this_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="n">epoch_criterion</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
         <span class="c1"># if end of table, end the current epoch</span>
         <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">):</span>
             <span class="n">epochs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">this_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_stop</span><span class="p">))</span>
             <span class="k">break</span>
             
-        <span class="n">next_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stimulus_block</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">next_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="n">epoch_criterion</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
         <span class="c1"># if next row is the same stim block, push back epoch_stop time</span>
         <span class="k">if</span> <span class="n">next_block</span> <span class="o">==</span> <span class="n">this_block</span><span class="p">:</span>
             <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
@@ -1026,192 +939,13 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 0.0, 30.02491, 39.03236712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 1.0, 40.03322000000001, 49.04066712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 2.0, 50.041520000000006, 59.04897712068045)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 3.0, 60.04983, 69.05729712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 4.0, 70.05813, 79.06559712068045)
-(&#39;movie_worms_fwd_presentations&#39;, 5.0, 80.06644, 89.07389712068046)
-(&#39;movie_worms_fwd_presentations&#39;, 6.0, 90.07477, 99.08223712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 7.0, 100.08306, 109.09053712068044)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 8.0, 110.09139, 119.09884712068046)
-(&#39;movie_worms_fwd_presentations&#39;, 9.0, 120.0997, 129.10716712068046)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 10.0, 130.10802, 139.11548712068046)
-(&#39;movie_worms_fwd_presentations&#39;, 11.0, 140.11631, 149.12378712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 12.0, 150.12465, 159.13208712068044)
-(&#39;movie_worms_fwd_presentations&#39;, 13.0, 160.13294, 169.14042712068044)
-(&#39;movie_worms_fwd_presentations&#39;, 14.0, 170.14127, 179.14872712068046)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 15.0, 180.14956, 189.15702712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 16.0, 190.15788, 199.16532712068044)
-(&#39;movie_worms_fwd_presentations&#39;, 17.0, 200.16617, 209.1736271206805)
-(&#39;movie_flower_fwd_presentations&#39;, 18.0, 210.17446, 219.18189712068045)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 19.0, 220.18276, 229.19022712068045)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 20.0, 230.19107, 239.19848712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 21.0, 240.19935, 249.2067771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 22.0, 250.20764, 259.2150771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 23.0, 260.21593, 269.2233771206804)
-(&#39;movie_flower_fwd_presentations&#39;, 24.0, 270.22421, 279.2316471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 25.0, 280.23247999999995, 289.2399371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 26.0, 290.24078999999995, 299.2482271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 27.0, 300.24907999999994, 309.2565171206804)
-(&#39;movie_worms_fwd_presentations&#39;, 28.0, 310.25738, 319.2648171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 29.0, 320.26564999999994, 329.2730971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 30.0, 330.27396, 339.2813771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 31.0, 340.28223, 349.2896671206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 32.0, 350.2905099999999, 359.2979671206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 33.0, 360.29881, 369.3062571206804)
-(&#39;movie_worms_fwd_presentations&#39;, 34.0, 370.30709999999993, 379.3145371206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 35.0, 380.31538, 389.3228271206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 36.0, 390.32367, 399.3311171206804)
-(&#39;movie_worms_fwd_presentations&#39;, 37.0, 400.3319599999999, 409.3394071206804)
-(&#39;movie_flower_fwd_presentations&#39;, 38.0, 410.34025, 419.3476671206804)
-(&#39;movie_worms_fwd_presentations&#39;, 39.0, 420.34854, 429.3560071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 40.0, 430.3568399999999, 439.3642371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 41.0, 440.36513, 449.3725371206804)
-(&#39;movie_worms_fwd_presentations&#39;, 42.0, 450.3734099999999, 459.3808471206804)
-(&#39;movie_flower_fwd_presentations&#39;, 43.0, 460.3817, 469.3891071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 44.0, 470.38999, 479.3974371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 45.0, 480.39829, 489.4056971206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 46.0, 490.40656, 499.4139971206804)
-(&#39;movie_worms_fwd_presentations&#39;, 47.0, 500.41485, 509.4222971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 48.0, 510.42314, 519.4305771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 49.0, 520.43143, 529.4388771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 50.0, 530.43973, 539.4471771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 51.0, 540.44801, 549.4554571206804)
-(&#39;movie_flower_fwd_presentations&#39;, 52.0, 550.4563, 559.4637371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 53.0, 560.4646, 569.4720271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 54.0, 570.47289, 579.4803171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 55.0, 580.48118, 589.4885971206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 56.0, 590.48947, 599.4968871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 57.0, 600.4977700000001, 609.5051871206804)
-(&#39;movie_worms_fwd_presentations&#39;, 58.0, 610.50605, 619.5135071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 59.0, 620.51433, 629.5217671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 60.0, 630.52261, 639.5300471206804)
-(&#39;movie_flower_fwd_presentations&#39;, 61.0, 640.53093, 649.5383571206804)
-(&#39;movie_worms_fwd_presentations&#39;, 62.0, 650.5392, 659.5466571206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 63.0, 660.54749, 669.5549371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 64.0, 670.55576, 679.5632271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 65.0, 680.56408, 689.5715271206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 66.0, 690.57238, 699.5798271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 67.0, 700.58067, 709.5881171206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 68.0, 710.58895, 719.5963871206804)
-(&#39;movie_worms_fwd_presentations&#39;, 69.0, 720.59725, 729.6046971206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 70.0, 730.60552, 739.6129571206804)
-(&#39;movie_flower_fwd_presentations&#39;, 71.0, 740.6138100000001, 749.6212471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 72.0, 750.62211, 759.6295671206803)
-(&#39;movie_flower_fwd_presentations&#39;, 73.0, 760.6304, 769.6378371206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 74.0, 770.63868, 779.6461371206804)
-(&#39;movie_worms_fwd_presentations&#39;, 75.0, 780.64696, 789.6544371206804)
-(&#39;movie_worms_fwd_presentations&#39;, 76.0, 790.65526, 799.6627271206804)
-(&#39;movie_flower_fwd_presentations&#39;, 77.0, 800.66357, 809.6709871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 78.0, 810.67185, 819.6793071206804)
-(&#39;movie_worms_fwd_presentations&#39;, 79.0, 820.68013, 829.6876071206804)
-(&#39;movie_flower_fwd_presentations&#39;, 80.0, 830.68844, 839.6958671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 81.0, 840.69673, 849.7041571206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 82.0, 850.70502, 859.7124671206803)
-(&#39;movie_worms_fwd_presentations&#39;, 83.0, 860.71331, 869.7207571206804)
-(&#39;movie_worms_fwd_presentations&#39;, 84.0, 870.7216, 879.7290471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 85.0, 880.72988, 889.7373271206804)
-(&#39;movie_flower_fwd_presentations&#39;, 86.0, 890.73816, 899.7456271206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 87.0, 900.74646, 909.7539271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 88.0, 910.75475, 919.7622071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 89.0, 920.76304, 929.7705171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 90.0, 930.77134, 939.7787871206804)
-(&#39;movie_worms_fwd_presentations&#39;, 91.0, 940.77963, 949.7870871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 92.0, 950.78792, 959.7953671206805)
-(&#39;movie_flower_fwd_presentations&#39;, 93.0, 960.79624, 969.8036671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 94.0, 970.8045, 979.8119371206805)
-(&#39;movie_worms_fwd_presentations&#39;, 95.0, 980.81278, 989.8202471206804)
-(&#39;movie_worms_fwd_presentations&#39;, 96.0, 990.82106, 999.8285471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 97.0, 1000.82935, 1009.8368171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 98.0, 1010.83766, 1019.8450971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 99.0, 1020.84594, 1029.8533671206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 100.0, 1030.85422, 1039.8616971206802)
-(&#39;movie_flower_fwd_presentations&#39;, 101.0, 1040.86252, 1049.8699771206802)
-(&#39;movie_flower_fwd_presentations&#39;, 102.0, 1050.87082, 1059.8782671206802)
-(&#39;movie_worms_fwd_presentations&#39;, 103.0, 1060.8791199999998, 1069.8865671206802)
-(&#39;movie_worms_fwd_presentations&#39;, 104.0, 1070.8874099999998, 1079.8948671206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 105.0, 1080.8956999999998, 1089.9031371206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 106.0, 1090.9039899999998, 1099.9114271206802)
-(&#39;movie_worms_fwd_presentations&#39;, 107.0, 1100.9122599999998, 1109.9197171206804)
-(&#39;movie_worms_fwd_presentations&#39;, 108.0, 1110.92057, 1119.9280171206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 109.0, 1120.9288499999998, 1129.9363171206803)
-(&#39;movie_worms_fwd_presentations&#39;, 110.0, 1130.9371299999998, 1139.9446171206805)
-(&#39;movie_flower_fwd_presentations&#39;, 111.0, 1140.94543, 1149.9528871206803)
-(&#39;movie_flower_fwd_presentations&#39;, 112.0, 1150.9536999999998, 1159.9611871206805)
-(&#39;movie_flower_fwd_presentations&#39;, 113.0, 1160.96202, 1169.9694571206803)
-(&#39;movie_flower_fwd_presentations&#39;, 114.0, 1170.9703, 1179.9777571206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 115.0, 1180.97859, 1189.9860571206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 116.0, 1190.98688, 1199.9943271206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 117.0, 1200.99518, 1210.0026271206802)
-(&#39;movie_worms_fwd_presentations&#39;, 118.0, 1211.00346, 1220.0109071206805)
-(&#39;movie_worms_fwd_presentations&#39;, 119.0, 1221.01175, 1230.0192071206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 120.0, 1231.02005, 1240.0274771206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 121.0, 1241.0283499999998, 1250.0358071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 122.0, 1251.0366299999998, 1260.0440771206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 123.0, 1261.0449199999998, 1270.0523571206802)
-(&#39;movie_worms_fwd_presentations&#39;, 124.0, 1271.05323, 1280.0606571206804)
-(&#39;movie_flower_fwd_presentations&#39;, 125.0, 1281.0614899999998, 1290.0689271206802)
-(&#39;movie_flower_fwd_presentations&#39;, 126.0, 1291.0697899999998, 1300.0772371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 127.0, 1301.07809, 1310.0855071206802)
-(&#39;movie_flower_fwd_presentations&#39;, 128.0, 1311.08637, 1320.0938171206803)
-(&#39;movie_worms_fwd_presentations&#39;, 129.0, 1321.09465, 1330.1021071206803)
-(&#39;movie_worms_fwd_presentations&#39;, 130.0, 1331.10294, 1340.1104171206805)
-(&#39;movie_worms_fwd_presentations&#39;, 131.0, 1341.11124, 1350.1186971206805)
-(&#39;movie_worms_fwd_presentations&#39;, 132.0, 1351.11954, 1360.1269871206805)
-(&#39;movie_worms_fwd_presentations&#39;, 133.0, 1361.12782, 1370.1352771206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 134.0, 1371.13612, 1380.1435571206805)
-(&#39;movie_flower_fwd_presentations&#39;, 135.0, 1381.1444299999998, 1390.1518571206802)
-(&#39;movie_flower_fwd_presentations&#39;, 136.0, 1391.15268, 1400.1601371206802)
-(&#39;movie_worms_fwd_presentations&#39;, 137.0, 1401.1609999999998, 1410.1684471206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 138.0, 1411.16926, 1420.1767071206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 139.0, 1421.17754, 1430.1849871206805)
-(&#39;movie_flower_fwd_presentations&#39;, 140.0, 1431.18583, 1440.1932871206802)
-(&#39;movie_flower_fwd_presentations&#39;, 141.0, 1441.19413, 1450.2015671206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 142.0, 1451.2024299999998, 1460.2098671206802)
-(&#39;movie_worms_fwd_presentations&#39;, 143.0, 1461.2107099999998, 1470.2181771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 144.0, 1471.21903, 1480.2264671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 145.0, 1481.2272999999998, 1490.2347371206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 146.0, 1491.2355799999998, 1500.2430471206803)
-(&#39;movie_flower_fwd_presentations&#39;, 147.0, 1501.24389, 1510.2513171206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 148.0, 1511.25217, 1520.2596071206804)
-(&#39;movie_flower_fwd_presentations&#39;, 149.0, 1521.2604399999998, 1530.2679071206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 150.0, 1531.26875, 1540.2762071206805)
-(&#39;movie_flower_fwd_presentations&#39;, 151.0, 1541.27703, 1550.2844971206805)
-(&#39;movie_worms_fwd_presentations&#39;, 152.0, 1551.28533, 1560.2928071206802)
-(&#39;movie_worms_fwd_presentations&#39;, 153.0, 1561.29363, 1570.3010971206802)
-(&#39;movie_worms_fwd_presentations&#39;, 154.0, 1571.30192, 1580.3093771206802)
-(&#39;movie_worms_fwd_presentations&#39;, 155.0, 1581.3102, 1590.3176571206802)
-(&#39;movie_flower_fwd_presentations&#39;, 156.0, 1591.31848, 1600.3259371206802)
-(&#39;movie_worms_fwd_presentations&#39;, 157.0, 1601.3267899999998, 1610.3342271206802)
-(&#39;movie_worms_fwd_presentations&#39;, 158.0, 1611.33505, 1620.3425171206802)
-(&#39;movie_worms_fwd_presentations&#39;, 159.0, 1621.3433599999998, 1630.3508471206803)
-(&#39;movie_flower_fwd_presentations&#39;, 160.0, 1631.35164, 1640.3590871206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 161.0, 1641.3599299999998, 1650.3673971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 162.0, 1651.3682299999998, 1660.3756871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 163.0, 1661.37654, 1670.3839771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 164.0, 1671.3847999999998, 1680.3922771206803)
-(&#39;movie_worms_fwd_presentations&#39;, 165.0, 1681.39311, 1690.4005571206803)
-(&#39;movie_flower_fwd_presentations&#39;, 166.0, 1691.4014, 1700.4088471206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 167.0, 1701.40968, 1710.4171471206805)
-(&#39;movie_worms_fwd_presentations&#39;, 168.0, 1711.41797, 1720.4254271206803)
-(&#39;movie_flower_fwd_presentations&#39;, 169.0, 1721.4262399999998, 1730.4336971206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 170.0, 1731.43455, 1740.4420371206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 171.0, 1741.44283, 1750.4502771206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 172.0, 1751.45114, 1760.4585871206802)
-(&#39;movie_worms_fwd_presentations&#39;, 173.0, 1761.45942, 1770.4668771206802)
-(&#39;movie_worms_fwd_presentations&#39;, 174.0, 1771.46771, 1780.4751671206802)
-(&#39;movie_flower_fwd_presentations&#39;, 175.0, 1781.47601, 1790.4834471206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 176.0, 1791.4842999999998, 1800.4917371206802)
-(&#39;movie_worms_fwd_presentations&#39;, 177.0, 1801.49257, 1810.50002712068)
-(&#39;movie_flower_fwd_presentations&#39;, 178.0, 1811.50087, 1820.50830712068)
-(&#39;movie_flower_fwd_presentations&#39;, 179.0, 1821.50917, 1830.51660712068)
-(&#39;rotate_gabors_presentations&#39;, 180.0, 1861.54234, 2311.9154499999995)
-(&#39;rotate_gabors_presentations&#39;, 181.0, 2311.9154499999995, 2762.28866)
-(&#39;fixed_gabors_presentations&#39;, 182.0, 2792.31355, 3242.6867299999994)
-(&#39;fixed_gabors_presentations&#39;, 183.0, 3242.6867299999994, 3693.05993)
-(&#39;gratings_presentations&#39;, 184.0, 3723.08478, 3910.489990933901)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+(&#39;trials&#39;, &#39;randomized_control_pre&#39;, 102.58091661959725, 207.73271267031623)
+(&#39;trials&#39;, &#39;oddball&#39;, 267.7980219847227, 2269.8206912029705)
+(&#39;trials&#39;, &#39;transition_control&#39;, 2329.885995836317, 2690.2113244542556)
+(&#39;trials&#39;, &#39;occlusion&#39;, 2750.777092659118, 3350.829824249638)
+(&#39;trials&#39;, &#39;natural_movie_one&#39;, 3410.895166331465, 3711.1216876550166)
+(&#39;trials&#39;, &#39;randomized_control_post&#39;, 3771.2371179895413, 3876.3055732709176)
 </pre></div>
 </div>
 </div>
@@ -1222,11 +956,10 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>Below is a view of the fluorescence activity of ROIs throughout a session where epochs are shown as colored sections. First, set <code class="docutils literal notranslate"><span class="pre">trace_to_display</span></code> to choose “fluorescence” or “dff”. You can view the activity of individual ROIs, all ROIs, or an average of all ROIs. Set <code class="docutils literal notranslate"><span class="pre">roi_num</span></code> to be the ID of the ROI you want to view, or to None to view all ROIs. Alternatively, set <code class="docutils literal notranslate"><span class="pre">display_average</span></code> to True to see the average of all ROIs. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> to the starting bound in seconds of the session, you’d like to see, and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the ending bound. You may want to use the output above to inform this choice. As mentioned above, if your file’s stimulus information differs signifcantly, the plotting code below may need to be modified to appropriately display the epochs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace_to_display</span> <span class="o">=</span> <span class="s2">&quot;fluorescence&quot;</span> <span class="c1"># or &quot;dff&quot;</span>
-<span class="n">roi_num</span> <span class="o">=</span> <span class="mi">13</span> <span class="c1"># chosen from flr_trace.shape[1]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi_num</span> <span class="o">=</span> <span class="mi">13</span> <span class="c1"># chosen from dff_trace.shape[1]</span>
 <span class="n">display_average_trace</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">time_start</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">time_end</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">time_end</span> <span class="o">=</span> <span class="mi">4000</span>
 </pre></div>
 </div>
 </div>
@@ -1236,34 +969,19 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### choose data and plot properties based on user input</span>
 
 <span class="n">avg_dff_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">dff_trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">avg_flr_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">flr_trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;fluorescence&quot;</span><span class="p">:</span>
-    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence Throughout Epochs&quot;</span>
-    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence&quot;</span>
-    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">flr_timestamps</span>
-    <span class="k">if</span> <span class="n">display_average_trace</span><span class="p">:</span>
-        <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;Average Fluorescence Throughout Epochs&quot;</span>
-        <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Average Fluorescence&quot;</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="n">avg_flr_trace</span>
-    <span class="k">elif</span> <span class="n">roi_num</span><span class="p">:</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="n">flr_trace</span><span class="p">[:,</span><span class="n">roi_num</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="n">flr_trace</span>
-
-<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;dff&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">display_average_trace</span><span class="p">:</span>
+    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;Average DF/F Throughout Epochs&quot;</span>
+    <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Average DF/F (%)&quot;</span>
+    <span class="n">display_trace</span> <span class="o">=</span> <span class="n">avg_dff_trace</span><span class="o">*</span><span class="mi">100</span>
+<span class="k">else</span><span class="p">:</span>
     <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;DF/F Throughout Epochs&quot;</span>
     <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;DF/F (%)&quot;</span>
-    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">dff_timestamps</span>
-    <span class="k">if</span> <span class="n">display_average_trace</span><span class="p">:</span>
-        <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;Average DF/F Throughout Epochs&quot;</span>
-        <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Average DF/F (%)&quot;</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="n">avg_dff_trace</span><span class="o">*</span><span class="mi">100</span>
-    <span class="k">elif</span> <span class="n">roi_num</span><span class="p">:</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="p">[:,</span><span class="n">roi_num</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
+    <span class="k">if</span> <span class="n">roi_num</span><span class="p">:</span>
+        <span class="n">display_trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="p">[:,</span><span class="n">roi_num</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="o">*</span><span class="mi">100</span>
-    <span class="c1"># ^^^ * 100 to yield percentage for DF/F</span>
+        <span class="n">display_trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="o">*</span><span class="mi">100</span>
+        <span class="c1"># ^^^ * 100 to yield percentage for DF/F</span>
 </pre></div>
 </div>
 </div>
@@ -1274,20 +992,23 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
+<span class="c1"># filter epochs which aren&#39;t at least partially in the time window</span>
+<span class="n">bounded_epochs</span> <span class="o">=</span> <span class="p">{</span><span class="n">epoch</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span> <span class="k">if</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">time_end</span> <span class="ow">and</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">time_start</span><span class="p">}</span>
+
 <span class="c1"># assign unique color to each stimulus name</span>
-<span class="n">stim_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">epoch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">})</span>
+<span class="n">stim_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({(</span><span class="n">epoch</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">bounded_epochs</span><span class="p">})</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">)))</span>
 <span class="n">stim_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">stim_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">))}</span>
 
 <span class="n">epoch_key</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">y_hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span> <span class="c1"># change these to manually set height of the plot</span>
-<span class="n">y_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+<span class="n">y_hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">display_trace</span><span class="p">)</span> <span class="c1"># change these to manually set height of the plot</span>
+<span class="n">y_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">display_trace</span><span class="p">)</span>
 <span class="c1"># draw colored rectangles for each epoch</span>
-<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">bounded_epochs</span><span class="p">:</span>
     <span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_end</span> <span class="o">=</span> <span class="n">epoch</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">)]</span>
     <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">y_lo</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">y_hi</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
-    <span class="n">epoch_key</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span>
+    <span class="n">epoch_key</span><span class="p">[(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">)]</span> <span class="o">=</span> <span class="n">rec</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_lo</span><span class="p">,</span> <span class="n">y_hi</span><span class="p">)</span>
@@ -1295,19 +1016,20 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.14</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timestamps</span><span class="p">[:],</span> <span class="n">trace</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">[:],</span> <span class="n">display_trace</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">trace</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">display_trace</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3504.47852446745
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174.87656701939662
 </pre></div>
 </div>
-<img alt="../_images/visualize_2p_responses_19_1.png" src="../_images/visualize_2p_responses_19_1.png" />
+<img alt="../_images/visualize_2p_responses_20_1.png" src="../_images/visualize_2p_responses_20_1.png" />
 </div>
 </div>
 </section>
@@ -1316,35 +1038,22 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>Here a 2D image is made showing ROI fluorescence values over time. Without organizing the ROIs, there are limits to how useful it can be, but it can serve to show responses to stimulus times. Set <code class="docutils literal notranslate"><span class="pre">trace_to_display</span></code> to “fluorescence” or “dff” to select the trace you want to see. Set <code class="docutils literal notranslate"><span class="pre">interval_start</span></code> and <code class="docutils literal notranslate"><span class="pre">interval_end</span></code> to the bounds of time, in seconds, you’d like to see displayed. These bounds get translated into the indices of the trace that match most closely to the time that was provided. If the bounds are outside the measurement period, an error will be thrown. You may also set <code class="docutils literal notranslate"><span class="pre">start_roi</span></code> and <code class="docutils literal notranslate"><span class="pre">end_roi</span></code> to narrow the number of ROIs that will be displayed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace_to_display</span> <span class="o">=</span> <span class="s2">&quot;fluorescence&quot;</span> <span class="c1"># or &quot;dff&quot;</span>
-<span class="n">interval_start</span> <span class="o">=</span> <span class="mi">3700</span>
-<span class="n">interval_end</span> <span class="o">=</span> <span class="mi">3900</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interval_start</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">interval_end</span> <span class="o">=</span> <span class="mi">800</span>
 <span class="n">start_roi</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">end_roi</span> <span class="o">=</span> <span class="n">flr_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># show all ROIs</span>
+<span class="n">end_roi</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># show all ROIs</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose plot properties based on user input</span>
-<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;fluorescence&quot;</span><span class="p">:</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">flr_trace</span>
-    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">flr_timestamps</span>
-    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;ROIs Fluorescence Over Time&quot;</span>
-    <span class="n">bar_label</span> <span class="o">=</span> <span class="s2">&quot;Fluorescence&quot;</span>
-<span class="k">if</span> <span class="n">trace_to_display</span> <span class="o">==</span> <span class="s2">&quot;dff&quot;</span><span class="p">:</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">dff_trace</span>
-    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">dff_timestamps</span>
-    <span class="n">plot_title</span> <span class="o">=</span> <span class="s2">&quot;ROIs DF/F Over Time&quot;</span>
-    <span class="n">bar_label</span> <span class="o">=</span> <span class="s2">&quot;DF/F (%)&quot;</span>
-
-<span class="c1"># translate interval time bounds into approximate data indices</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># translate interval time bounds into approximate data indices</span>
 <span class="n">interval_start_idx</span><span class="p">,</span> <span class="n">interval_end_idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamps</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_start</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_start_idx</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_start</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_start_idx</span><span class="p">:</span>
         <span class="n">interval_start_idx</span> <span class="o">=</span> <span class="n">i</span>
-    <span class="k">if</span> <span class="n">timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_end</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_end_idx</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">interval_end</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">interval_end_idx</span><span class="p">:</span>
         <span class="n">interval_end_idx</span> <span class="o">=</span> <span class="n">i</span>
     <span class="k">if</span> <span class="n">interval_start_idx</span> <span class="ow">and</span> <span class="n">interval_end_idx</span><span class="p">:</span>
         <span class="k">break</span>
@@ -1352,14 +1061,14 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Interval start and Interval end times were not found within the data duration&quot;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">interval_start_idx</span> <span class="o">==</span> <span class="n">interval_end_idx</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;Interval bounds are equal; Interval has length 0&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Interval bounds are equal; (</span><span class="si">{</span><span class="n">interval_start_idx</span><span class="p">,</span><span class="n">interval_end_idx</span><span class="si">}</span><span class="s2">); Interval has length 0&quot;</span><span class="p">)</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="n">interval_start_idx</span><span class="p">,</span> <span class="n">interval_end_idx</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39579 41727
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13924 22968
 </pre></div>
 </div>
 </div>
@@ -1370,22 +1079,22 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
 <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span> <span class="c1"># adjust these to change contrast of fluorescence values in the plot</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">dff_trace</span><span class="p">[</span><span class="n">interval_start_idx</span><span class="p">:</span><span class="n">interval_end_idx</span><span class="p">]),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">interval_start</span><span class="p">,</span><span class="n">interval_end</span><span class="p">,</span><span class="n">start_roi</span><span class="p">,</span><span class="n">end_roi</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">dff_trace</span><span class="p">[</span><span class="n">interval_start_idx</span><span class="p">:</span><span class="n">interval_end_idx</span><span class="p">]),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">interval_start</span><span class="p">,</span><span class="n">interval_end</span><span class="p">,</span><span class="n">start_roi</span><span class="p">,</span><span class="n">end_roi</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">bar_label</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;DF/F (%)&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">NullLocator</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ROIs&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ROIs DF/F Over Time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ROIs Fluorescence Over Time&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ROIs DF/F Over Time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/visualize_2p_responses_23_1.png" src="../_images/visualize_2p_responses_23_1.png" />
+<img alt="../_images/visualize_2p_responses_24_1.png" src="../_images/visualize_2p_responses_24_1.png" />
 </div>
 </div>
 </section>

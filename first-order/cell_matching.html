@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Replicating OpenScope Credit Assignment project figures" href="../replication/cred_assign_figures.html" />
+    <link rel="next" title="Statistically Testing 2P Responses to Stimulus" href="test_2p_responses.html" />
     <link rel="prev" title="Current Source Density Analysis" href="current_source_density.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -213,16 +213,14 @@ const thebe_selector_output = ".output, .cell_output"
    Cell Matching Across Days
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Replicating Figures
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../replication/cred_assign_figures.html">
-   Replicating OpenScope Credit Assignment project figures
+  <a class="reference internal" href="test_2p_responses.html">
+   Statistically Testing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="test_spike_responses.html">
+   Statistically Testing Spike Responses to Stimulus
   </a>
  </li>
 </ul>
@@ -646,24 +644,28 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwbs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span> <span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">input_dandi_filepaths</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ios</span> <span class="o">=</span> <span class="p">[</span><span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span> <span class="k">for</span> <span class="n">filepath</span> <span class="ow">in</span> <span class="n">input_dandi_filepaths</span><span class="p">]</span>
+<span class="n">nwbs</span> <span class="o">=</span> <span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">io</span> <span class="ow">in</span> <span class="n">ios</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.6.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.6.0-alpha is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.3.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+Opening file
+File already exists
+Opening file
+File already exists
 Opening file
 </pre></div>
 </div>
@@ -678,8 +680,19 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>309
-309
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># these should be similar values, indicating that the images are from the same imaging plane</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">nwb</span> <span class="ow">in</span> <span class="n">nwbs</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">lab_meta_data</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">imaging_depth</span><span class="p">)</span>
+
+<span class="nn">File c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\utils.py:1009,</span> in <span class="ni">LabelledDict.__getitem__</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1007</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1008</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1009</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &#39;metadata&#39;
 </pre></div>
 </div>
 </div>
@@ -785,41 +798,6 @@ Opening file
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:many=True not supported from argparse
-INFO:NwayMatching:NWAY_COMMIT_SHA None
-INFO:NwayMatching:Nway matching version 0.6.0
-WARNING:root:many=True not supported from argparse
-WARNING:root:many=True not supported from argparse
-INFO:PairwiseMatching:Matching 1193675753 to 1194754135
-INFO:PairwiseMatching:Matching 1193675753 to 1194754135: best registration was [&#39;Crop&#39;, &#39;CLAHE&#39;, &#39;PhaseCorrelate&#39;]
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\nway\utils.py:48: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
-  df = df.sort_index(0)
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\nway\utils.py:49: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
-  df = df.sort_index(1)
-INFO:NwayMatching:registration success(1) or failure (0):
-   0  1
-0  1  1
-1  1  1
-id map{
-  &quot;0&quot;: 1193675753,
-  &quot;1&quot;: 1194754135
-}
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\nway\nway_matching.py:208: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  matching_frame = matching_frame.append(pairframe)
-INFO:NwayMatching:Nway matching is done!
-INFO:NwayMatching:Creating match summary plots
-WARNING:root:setting Dict fields not supported from argparse
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\argschema\utils.py:346: FutureWarning: &#39;--nway_output.nway_matches&#39; is using old-style command-line syntax with each element as a separate argument. This will not be supported in argschema after 2.0. See http://argschema.readthedocs.io/en/master/user/intro.html#command-line-specification for details.
-  warnings.warn(warn_msg, FutureWarning)
-WARNING:root:many=True not supported from argparse
-INFO:NwayMatching:wrote matching_output\nway_match_fraction_plot_2023_06_06_16_05_55.png
-INFO:NwayMatching:wrote matching_output\nway_warp_overlay_plot_2023_06_06_16_05_55.png
-INFO:NwayMatching:wrote matching_output\nway_warp_summary_plot_2023_06_06_16_05_55.png
-INFO:NwayMatching:wrote ./output.json
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="showing-cell-matching-output">
@@ -842,12 +820,6 @@ INFO:NwayMatching:wrote ./output.json
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.5, 560.5, 2951.5, -0.5)
-</pre></div>
-</div>
-<img alt="../_images/cell_matching_17_1.png" src="../_images/cell_matching_17_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -858,12 +830,6 @@ INFO:NwayMatching:wrote ./output.json
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1e1c5cb9d30&gt;
-</pre></div>
-</div>
-<img alt="../_images/cell_matching_18_1.png" src="../_images/cell_matching_18_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -873,12 +839,6 @@ INFO:NwayMatching:wrote ./output.json
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fraction_plot</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1e1c5cfda60&gt;
-</pre></div>
-</div>
-<img alt="../_images/cell_matching_19_1.png" src="../_images/cell_matching_19_1.png" />
 </div>
 </div>
 </section>
@@ -957,12 +917,6 @@ INFO:NwayMatching:wrote ./output.json
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Matched ROIs between sessions\n(White ROIs are unmatched)&#39;)
-</pre></div>
-</div>
-<img alt="../_images/cell_matching_25_1.png" src="../_images/cell_matching_25_1.png" />
-</div>
 </div>
 </section>
 </section>
@@ -1001,10 +955,10 @@ INFO:NwayMatching:wrote ./output.json
             <p class="prev-next-title">Current Source Density Analysis</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../replication/cred_assign_figures.html" title="next page">
+    <a class='right-next' id="next-link" href="test_2p_responses.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Replicating OpenScope Credit Assignment project figures</p>
+        <p class="prev-next-title">Statistically Testing 2P Responses to Stimulus</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

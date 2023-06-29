@@ -213,16 +213,14 @@ const thebe_selector_output = ".output, .cell_output"
    Cell Matching Across Days
   </a>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Replicating Figures
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../replication/cred_assign_figures.html">
-   Replicating OpenScope Credit Assignment project figures
+  <a class="reference internal" href="../first-order/test_2p_responses.html">
+   Statistically Testing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-order/test_spike_responses.html">
+   Statistically Testing Spike Responses to Stimulus
   </a>
  </li>
 </ul>
@@ -615,7 +613,8 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
-<span class="n">nwb</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">)</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -631,8 +630,8 @@ Downloaded file to ./sub-730756767_ses-757970808.nwb
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.6.0 is already loaded.
-Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
 </pre></div>
 </div>
 </div>
@@ -687,7 +686,7 @@ Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alp
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5676dccfd1fc4b729283aa74d1b1a19b", "version_major": 2, "version_minor": 0}
+{"model_id": "be0c2f85b2664ed8b3db8896996733fd", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
