@@ -1,19 +1,18 @@
 # OpenScope Databook
 
+### **The Deployed Databook can be found here: https://alleninstitute.github.io/openscope_databook**
+
 The OpenScope Databook is meant to store code and documentation used for reproducible brain data analysis and visualization, primarily working with [NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). It is provided by the Allen Institute's **[OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/)** Project, a component of The Allen Institute [Mindscope Program](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through [Jupyter Book](https://jupyterbook.org/), this code is structured as a series of documented Jupyter notebooks intended to explain and educate users on how to work with brain data.
 
 We are releasing this code to the public as a tool we expect others to use and are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). Below, you can see a working list of the content goals for this databook. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* file standard.
-
-The Databook can be found here:
-https://alleninstitute.github.io/openscope_databook
 
 ## Content Goals
 
 ### Chapter 1: Using DANDI/getting data
 - [Downloading NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/download_nwb.ipynb)
 - [Reading NWB files](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/read_nwb.ipynb)
-- [Streaming NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/stream_nwb.ipynb)
 - [Exploring NWB files with NWBWidgets](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/use_nwbwidgets.ipynb)
+- [Streaming NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/stream_nwb.ipynb)
 - [Querying metadata across sessions from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/get_dandiset_metadata.ipynb)
 
 ### Chapter 2: Data visualization
@@ -30,9 +29,9 @@ https://alleninstitute.github.io/openscope_databook
 - [Neuropixel: Identifying opto-tagged cells](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/optotagging.ipynb)
 - [Neuropixel: Extracting Current Source Density plots](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/current_source_density.ipynb)
 - [2P: Cell matching across days](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/cell_matching.ipynb)
+- [Neuropixel: Stimuli averages with neuropixel data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_spike_responses.ipynb)
+- [2P: Stimuli averages with 2P data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_2p_responses.ipynb)
 - 2P: How to align timestamps across modalities.
-- 2P: Stimuli averages with 2P data
-- Neuropixel: Stimuli averages with neuropixel data
 
 ### Chapter 4: Higher-order analysis
 - Sending NWB raw data to a segmentation pipeline: example with Suite2p.

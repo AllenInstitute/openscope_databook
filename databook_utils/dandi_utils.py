@@ -9,7 +9,7 @@ from fsspec import filesystem
 from pynwb import NWBHDF5IO
 
 
-# downloads an NWB file from DANDI to download_loc, opens it, and returns the io object of the NWB
+# downloads an NWB file from DANDI to download_loc, opens it, and returns the IO object for the NWB
 # dandi_api_key is required to access files from embargoed dandisets
 def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key=None, force_overwrite=False):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
@@ -32,7 +32,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
     return io
 
 
-# streams an NWB file remotely from DANDI, opens it, and returns the IO object of the NWB
+# streams an NWB file remotely from DANDI, opens it, and returns the IO object for the NWB
 # dandi_api_key is required to access files from embargoed dandisets
 def dandi_stream_open(dandiset_id, dandi_filepath, dandi_api_key=None):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
