@@ -4,7 +4,7 @@
 
 <!-- authors start -->
 
- *Carter Peene (824), Katrina Ager (49), Jerome Lecoq (7), colleenjg (5), Josh Siegle, Ahad Bawany*
+ *R. Carter Peene (857), Katrina Ager (49), Jerome Lecoq (7), Colleen J. Gillon (5), Josh Siegle, Ahad Bawany*
 
 <!-- authors end -->
 
