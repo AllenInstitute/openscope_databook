@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_behavior.html">
-   Visualizing Behavioral Data
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -209,11 +204,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/cell_matching.html">
-   Cell Matching Across Days
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../first-order/test_2p_responses.html">
    Statistically Testing 2P Responses to Stimulus
   </a>
@@ -221,6 +211,33 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../first-order/test_spike_responses.html">
    Statistically Testing Spike Responses to Stimulus
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Embargoed Datasets
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/modality_alignment.html">
+   Aligning Data across Modalities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/visualize_behavior.html">
+   Visualizing Behavioral Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">
+   Statistically Testing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/cell_matching.html">
+   Cell Matching Across Days
   </a>
  </li>
 </ul>
@@ -706,7 +723,7 @@ title="Print to PDF"
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.6.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
@@ -721,7 +738,20 @@ Opening file
 </section>
 <section id="reading-lfp-data-and-stimulus-data">
 <h2>Reading LFP Data and Stimulus Data<a class="headerlink" href="#reading-lfp-data-and-stimulus-data" title="Permalink to this headline">#</a></h2>
-<p>Below, the stimulus data and the LFP data are read from their respective files. The LFP object, which contains a <code class="docutils literal notranslate"><span class="pre">data</span></code> and a <code class="docutils literal notranslate"><span class="pre">timestamps</span></code> array, is read in from the probe file. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_769322852_lfp_data</span></code>, but it will be named differently if you are using a different nwb file. The LFP <code class="docutils literal notranslate"><span class="pre">data</span></code> array should be a two-dimensional array with shape <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">t</span></code>, where n is the number of channels on the probe, and t is the number of measurements through time.</p>
+<p>Below, the stimulus data and the LFP data are read from their respective files. The LFP object, which contains a <code class="docutils literal notranslate"><span class="pre">data</span></code> and a <code class="docutils literal notranslate"><span class="pre">timestamps</span></code> array, is read in from the probe file. In this example, the lfp information is stored in an item called <code class="docutils literal notranslate"><span class="pre">probe_769322852_lfp_data</span></code>, but it will be named differently if you are using a different nwb file. The list of probes available in this file are printed below to assist you in your usage. The LFP <code class="docutils literal notranslate"><span class="pre">data</span></code> array should be a two-dimensional array with shape <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">t</span></code>, where n is the number of channels on the probe, and t is the number of measurements through time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># show probes in this file</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lfp_nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;probe_769322852_lfp&#39;, &#39;probe_769322852_lfp_data&#39;])
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lfp</span> <span class="o">=</span> <span class="n">lfp_nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;probe_769322852_lfp_data&quot;</span><span class="p">]</span>
@@ -730,7 +760,7 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_769322852_lfp_data pynwb.ecephys.ElectricalSeries at 0x1438475626240
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_769322852_lfp_data pynwb.ecephys.ElectricalSeries at 0x1211404787824
 Fields:
   comments: no comments
   conversion: 1.0
@@ -1098,22 +1128,17 @@ Last timestamp LFP data:  9671.771044169622
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;number of times selected stimulus was presented during this period: &quot;</span><span class="p">,</span> <span class="n">stim_times</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of times selected stimulus was presented during this period: &quot;</span><span class="p">,</span> <span class="n">stim_times</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lfp_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of times stimulus was presented during this period:  (267,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of times selected stimulus was presented during this period:  (267,)
 (999999,)
 (999999, 89)
 </pre></div>
@@ -1127,20 +1152,6 @@ Last timestamp LFP data:  9671.771044169622
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interp_hz</span> <span class="o">=</span> <span class="mi">250</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lfp_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lfp_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(999999,)
-(999999, 89)
 </pre></div>
 </div>
 </div>

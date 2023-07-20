@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Behavioral Data" href="../visualization/visualize_behavior.html" />
+    <link rel="next" title="Visualizing Raw 2-Photon Images" href="../visualization/visualize_2p_raw.html" />
     <link rel="prev" title="Streaming an NWB File with fsspec" href="stream_nwb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_behavior.html">
-   Visualizing Behavioral Data
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -209,11 +204,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/cell_matching.html">
-   Cell Matching Across Days
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../first-order/test_2p_responses.html">
    Statistically Testing 2P Responses to Stimulus
   </a>
@@ -221,6 +211,33 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../first-order/test_spike_responses.html">
    Statistically Testing Spike Responses to Stimulus
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Embargoed Datasets
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/modality_alignment.html">
+   Aligning Data across Modalities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/visualize_behavior.html">
+   Visualizing Behavioral Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">
+   Statistically Testing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/cell_matching.html">
+   Cell Matching Across Days
   </a>
  </li>
 </ul>
@@ -624,28 +641,24 @@ title="Print to PDF"
 </section>
 <section id="getting-dandiset-metadata">
 <h2>Getting Dandiset Metadata<a class="headerlink" href="#getting-dandiset-metadata" title="Permalink to this headline">#</a></h2>
-<p>To view other data, change <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the id of the dandiset you’re interested in. If the dandiset is embargoed, have <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> set to True, and <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
+<p>To view other data, change <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the id of the dandiset you’re interested in. If the dandiset is embargoed, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000248&quot;</span>
-<span class="n">authenticate</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">authenticate</span><span class="p">:</span>
-    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">()</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000248/draft
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
 </pre></div>
 </div>
 </div>
@@ -741,7 +754,7 @@ title="Print to PDF"
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2"> files retrieved&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examining file </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examining file </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
     <span class="c1"># get basic file metadata</span>
     <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
     
@@ -760,45 +773,47 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16 files retrieved
-Examining file 0/16: dbc426a0-aafa-460b-a25a-a86bb31b9ddc
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32 files retrieved
+Examining file 1/32: 58703c97-c0a9-4736-b684-73c85c1a444a
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.4.0 because version 2.6.0-alpha is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 1/16: 181b7651-5f5c-491b-be70-e5d0354439d4
-Examining file 2/16: 85bfd56c-f104-4c83-937c-be0d58fce48e
-Examining file 3/16: c5e97840-4988-4da8-9f57-a24fb0a4a865
-Examining file 4/16: a7ff352c-0b00-47d6-a49f-97027d18264e
-Examining file 5/16: a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84
-Examining file 6/16: 32af00b4-4aa6-48de-8210-26a5cf7935a9
-Examining file 7/16: 016e7321-807f-4b59-be42-c33511f8f55c
-Examining file 8/16: 7252ab67-7acd-4cb7-b7a6-600df600d8e7
-Examining file 9/16: 3c6a7667-5f5d-432f-829c-e915dab15c27
-Examining file 10/16: 9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6
-Examining file 11/16: e0392a2a-0e07-4f7a-82dd-df354bf571d5
-Examining file 12/16: 03eba9bf-f850-41a5-9e99-6f65fc5ea13d
-Examining file 13/16: 0c343e3e-8f00-4ee8-9778-fc1d953e453b
-Examining file 14/16: 348b1e83-4fde-480a-9e4d-ef55b5cac7c5
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.5.0 because version 2.6.0-alpha is already loaded.
+/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 15/16: 46f9bf9b-f799-4af9-b7b8-d6ed95a5446d
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.5.1 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-/opt/conda/lib/python3.10/site-packages/hdmf/spec/namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.2.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 2/32: 02291b99-e583-498b-9929-b68bba2c50e2
+Examining file 3/32: 224b57e5-c9a3-46ef-85db-966713f3ccbe
+Examining file 4/32: c7f32379-adce-4961-9211-d07790be9cab
+Examining file 5/32: b4aeeb19-cdc6-4895-ab7b-bc8a688cf6f5
+Examining file 6/32: 106e84a7-1c41-43f1-a675-7df17e4aba69
+Examining file 7/32: eb36f94f-d6e7-45c6-aa02-7d4ed23453d3
+Examining file 8/32: 5a58bf3d-a1b9-444b-8ab0-ef5478aa42a6
+Examining file 9/32: 522e8054-34ca-4579-ae80-350d0b24e0f4
+Examining file 10/32: 96c200cf-29c2-457a-b2f3-99f11de5b039
+Examining file 11/32: 286c7b06-3cde-4261-9090-e6fbe6c81945
+Examining file 12/32: 3876c5f1-f38a-4c89-8f54-6128538f0066
+Examining file 13/32: 2e6df882-f31a-440b-a572-ba717a95bf80
+Examining file 14/32: 488a9bea-96fb-4028-a33a-08650f50be63
+Examining file 15/32: dfc3db15-066a-4a07-b615-a4d7e85c44e1
+Examining file 16/32: edf10182-5a4c-454f-ad23-47987a5ca256
+Examining file 17/32: be9f8fd8-8f16-4a66-acc6-9e04697650f3
+Examining file 18/32: 5f204c90-2005-4143-b880-07d80aa32b20
+Examining file 19/32: e0037b53-6d0e-4756-8ca4-f0dcb51ad339
+Examining file 20/32: de872cf2-942d-4695-88b1-f7f89cb764fd
+Examining file 21/32: 4513d0c9-1e2b-4c8a-aa22-ae81822537c9
+Examining file 22/32: 47634abd-db85-48f5-9c33-01887a59d3bc
+Examining file 23/32: c9fc315f-5145-45a3-8183-3ad8fe499c4d
+Examining file 24/32: 8a17b967-2aa9-4d6a-812c-92b62cf799d7
+Examining file 25/32: cdeec90c-9ebe-431c-b3f7-b9f7d93ff37f
+Examining file 26/32: cea32745-0d1a-4884-b06f-158d830bcbf3
+Examining file 27/32: d6f3e82b-aca9-43fb-9810-048fc2124d50
+Examining file 28/32: 17a5432b-7193-42dd-a9ae-e9e8b3fef19c
+Examining file 29/32: 3adbba7c-3feb-468b-9829-33fcaa27aacd
+Examining file 30/32: 264f3b24-10d9-4100-98cf-d40b6c2a2068
+Examining file 31/32: dcafeb62-82af-48c7-87fc-2a2481daf462
+Examining file 32/32: 0d8cb49c-8354-4081-8acb-257821aa8413
 </pre></div>
 </div>
 </div>
@@ -849,243 +864,483 @@ Examining file 14/16: 348b1e83-4fde-480a-9e4d-ef55b5cac7c5
   <tbody>
     <tr>
       <th>0</th>
-      <td>dbc426a0-aafa-460b-a25a-a86bb31b9ddc</td>
-      <td>2242666496</td>
-      <td>sub_1175512783/sub_1175512783sess_1187930705/s...</td>
-      <td>2022-06-29 00:00:00-07:00</td>
-      <td>619296</td>
+      <td>58703c97-c0a9-4736-b684-73c85c1a444a</td>
+      <td>2856232912</td>
+      <td>sub-699733573/sub-699733573_ses-715093703.nwb</td>
+      <td>2019-01-19 00:54:18-08:00</td>
+      <td>Sst-IRES-Cre;Ai32-386129</td>
       <td>M</td>
-      <td>154.0</td>
+      <td>118.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>1918</td>
-      <td>7278.157990</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2779</td>
+      <td>9135.140323</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>181b7651-5f5c-491b-be70-e5d0354439d4</td>
-      <td>2803525629</td>
-      <td>sub_1172968426/sub_1172968426sess_1182865981/s...</td>
-      <td>2022-06-08 00:00:00-07:00</td>
-      <td>625545</td>
+      <td>02291b99-e583-498b-9929-b68bba2c50e2</td>
+      <td>3071442940</td>
+      <td>sub-703279277/sub-703279277_ses-719161530.nwb</td>
+      <td>2019-01-08 16:25:16-08:00</td>
+      <td>Sst-IRES-Cre;Ai32-387858</td>
       <td>M</td>
-      <td>89.0</td>
+      <td>122.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2793</td>
-      <td>7279.234305</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>3232</td>
+      <td>9151.497467</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>85bfd56c-f104-4c83-937c-be0d58fce48e</td>
-      <td>2372313526</td>
-      <td>sub_1172969394/sub_1172969394sess_1183070926/s...</td>
-      <td>2022-06-09 00:00:00-07:00</td>
-      <td>625555</td>
-      <td>F</td>
-      <td>90.0</td>
+      <td>224b57e5-c9a3-46ef-85db-966713f3ccbe</td>
+      <td>1736516600</td>
+      <td>sub-707296975/sub-707296975_ses-721123822.nwb</td>
+      <td>2019-01-08 16:25:35-08:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-388521</td>
+      <td>M</td>
+      <td>125.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2621</td>
-      <td>7278.592876</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1603</td>
+      <td>9420.860000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>c5e97840-4988-4da8-9f57-a24fb0a4a865</td>
-      <td>2466318464</td>
-      <td>sub_1181585608/sub_1181585608sess_1194644312/s...</td>
-      <td>2022-07-27 00:00:00-07:00</td>
-      <td>630507</td>
-      <td>F</td>
-      <td>99.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2464</td>
-      <td>7278.964870</td>
+      <td>c7f32379-adce-4961-9211-d07790be9cab</td>
+      <td>2156671312</td>
+      <td>sub-716813540/sub-716813540_ses-739448407.nwb</td>
+      <td>2019-01-08 16:27:24-08:00</td>
+      <td>C57BL/6J-404551</td>
+      <td>M</td>
+      <td>112.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2370</td>
+      <td>9156.676490</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>a7ff352c-0b00-47d6-a49f-97027d18264e</td>
-      <td>2809532134</td>
-      <td>sub_1176214862/sub_1176214862sess_1188137866/s...</td>
-      <td>2022-06-30 00:00:00-07:00</td>
-      <td>620333</td>
+      <td>b4aeeb19-cdc6-4895-ab7b-bc8a688cf6f5</td>
+      <td>2912508032</td>
+      <td>sub-717038285/sub-717038285_ses-732592105.nwb</td>
+      <td>2019-01-08 16:26:20-08:00</td>
+      <td>C57BL/6J-404553</td>
       <td>M</td>
-      <td>148.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2593</td>
-      <td>7283.108060</td>
+      <td>100.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>3076</td>
+      <td>9143.415844</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>a8bc8aaf-ccba-4c27-bb5c-f1bc3c232c84</td>
-      <td>3393216313</td>
-      <td>sub_1174569641/sub_1174569641sess_1184671550/s...</td>
-      <td>2022-06-01 00:00:00-07:00</td>
-      <td>625554</td>
+      <td>106e84a7-1c41-43f1-a675-7df17e4aba69</td>
+      <td>2182040332</td>
+      <td>sub-718643564/sub-718643564_ses-737581020.nwb</td>
+      <td>2018-09-25 14:03:59-07:00</td>
+      <td>C57BL/6J-404568</td>
       <td>M</td>
-      <td>82.0</td>
-      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2930</td>
-      <td>7315.456085</td>
+      <td>108.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2055</td>
+      <td>9156.655390</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>32af00b4-4aa6-48de-8210-26a5cf7935a9</td>
-      <td>3556822422</td>
-      <td>sub_1181314060/sub_1181314060sess_1191383105/s...</td>
-      <td>2022-07-13 00:00:00-07:00</td>
-      <td>630502</td>
+      <td>eb36f94f-d6e7-45c6-aa02-7d4ed23453d3</td>
+      <td>2646264724</td>
+      <td>sub-719817799/sub-719817799_ses-744228101.nwb</td>
+      <td>2018-09-25 11:43:40-07:00</td>
+      <td>C57BL/6J-404569</td>
       <td>M</td>
-      <td>85.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2368</td>
-      <td>7277.548360</td>
+      <td>122.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2695</td>
+      <td>9152.193170</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>016e7321-807f-4b59-be42-c33511f8f55c</td>
-      <td>2491393884</td>
-      <td>sub_1177693342/sub_1177693342sess_1189887297/s...</td>
-      <td>2022-07-06 00:00:00-07:00</td>
-      <td>620334</td>
+      <td>5a58bf3d-a1b9-444b-8ab0-ef5478aa42a6</td>
+      <td>1859545192</td>
+      <td>sub-719828686/sub-719828686_ses-754312389.nwb</td>
+      <td>2018-09-25 11:02:57-07:00</td>
+      <td>C57BL/6J-404570</td>
       <td>M</td>
-      <td>154.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2092</td>
-      <td>7279.915735</td>
+      <td>140.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1891</td>
+      <td>9152.415139</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>7252ab67-7acd-4cb7-b7a6-600df600d8e7</td>
-      <td>3393216313</td>
-      <td>sub_1171903433/sub_1171903433sess_1181330601/s...</td>
-      <td>2022-06-01 00:00:00-07:00</td>
-      <td>625554</td>
+      <td>522e8054-34ca-4579-ae80-350d0b24e0f4</td>
+      <td>2120570640</td>
+      <td>sub-722882751/sub-722882751_ses-743475441.nwb</td>
+      <td>2018-10-26 12:50:58-07:00</td>
+      <td>C57BL/6J-404555</td>
       <td>M</td>
-      <td>82.0</td>
-      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2930</td>
-      <td>7315.456085</td>
+      <td>121.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2133</td>
+      <td>9152.251155</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>3c6a7667-5f5d-432f-829c-e915dab15c27</td>
-      <td>2483160990</td>
-      <td>sub_1182593231/sub_1182593231sess_1192952695/s...</td>
-      <td>2022-07-20 00:00:00-07:00</td>
-      <td>630506</td>
-      <td>F</td>
-      <td>92.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2517</td>
-      <td>7279.167735</td>
+      <td>96c200cf-29c2-457a-b2f3-99f11de5b039</td>
+      <td>2917686364</td>
+      <td>sub-723627600/sub-723627600_ses-742951821.nwb</td>
+      <td>2018-10-26 12:47:04-07:00</td>
+      <td>C57BL/6J-404571</td>
+      <td>M</td>
+      <td>120.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>3008</td>
+      <td>9152.343504</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6</td>
-      <td>1882268693</td>
-      <td>sub_1183369803/sub_1183369803sess_1194857009/s...</td>
-      <td>2022-07-28 00:00:00-07:00</td>
-      <td>631570</td>
-      <td>F</td>
-      <td>92.0</td>
-      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>1789</td>
-      <td>7278.942950</td>
+      <td>286c7b06-3cde-4261-9090-e6fbe6c81945</td>
+      <td>3240335928</td>
+      <td>sub-726141242/sub-726141242_ses-750332458.nwb</td>
+      <td>2018-09-25 11:44:22-07:00</td>
+      <td>C57BL/6J-412791</td>
+      <td>M</td>
+      <td>91.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>3047</td>
+      <td>9152.001828</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>e0392a2a-0e07-4f7a-82dd-df354bf571d5</td>
-      <td>3082458652</td>
-      <td>sub_1189891322/sub_1189891322sess_1199247593/s...</td>
-      <td>2022-08-17 00:00:00-07:00</td>
-      <td>633229</td>
-      <td>F</td>
-      <td>101.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>3026</td>
-      <td>7279.608875</td>
+      <td>3876c5f1-f38a-4c89-8f54-6128538f0066</td>
+      <td>2818447324</td>
+      <td>sub-726162193/sub-726162193_ses-750749662.nwb</td>
+      <td>2018-10-26 12:58:51-07:00</td>
+      <td>C57BL/6J-412792</td>
+      <td>M</td>
+      <td>92.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2489</td>
+      <td>9151.908429</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>03eba9bf-f850-41a5-9e99-6f65fc5ea13d</td>
-      <td>2653385824</td>
-      <td>sub_1194090570/sub_1194090570sess_1208667752/s...</td>
-      <td>2022-09-08 00:00:00-07:00</td>
-      <td>637484</td>
-      <td>M</td>
-      <td>92.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2373</td>
-      <td>7349.272460</td>
+      <td>2e6df882-f31a-440b-a572-ba717a95bf80</td>
+      <td>2562070092</td>
+      <td>sub-726170927/sub-726170927_ses-746083955.nwb</td>
+      <td>2018-10-26 12:58:43-07:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-403407</td>
+      <td>F</td>
+      <td>98.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2098</td>
+      <td>9162.410584</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>0c343e3e-8f00-4ee8-9778-fc1d953e453b</td>
-      <td>2547345912</td>
-      <td>sub_1186544726/sub_1186544726sess_119615797/su...</td>
-      <td>2022-08-03 00:00:00-07:00</td>
-      <td>631510</td>
-      <td>F</td>
-      <td>99.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2386</td>
-      <td>7339.232324</td>
+      <td>488a9bea-96fb-4028-a33a-08650f50be63</td>
+      <td>2696702864</td>
+      <td>sub-726298249/sub-726298249_ses-754829445.nwb</td>
+      <td>2018-10-26 12:18:13-07:00</td>
+      <td>C57BL/6J-404554</td>
+      <td>M</td>
+      <td>141.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2299</td>
+      <td>9152.206060</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>348b1e83-4fde-480a-9e4d-ef55b5cac7c5</td>
-      <td>20274810263</td>
-      <td>sub-1181585601/sub-1181585601_ses-1194644312_i...</td>
-      <td>2022-07-27 00:00:00-07:00</td>
-      <td>external: 630507 donor_id: 1181585601 specimen...</td>
-      <td>F</td>
-      <td>99.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{OptogeneticStimulusDevice, probeF, probeB, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2464</td>
-      <td>7278.964870</td>
+      <td>dfc3db15-066a-4a07-b615-a4d7e85c44e1</td>
+      <td>2376304984</td>
+      <td>sub-730756767/sub-730756767_ses-757970808.nwb</td>
+      <td>2018-10-26 12:58:48-07:00</td>
+      <td>C57BL/6J-412793</td>
+      <td>M</td>
+      <td>106.0</td>
+      <td>wt/wt</td>
+      <td>{probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2422</td>
+      <td>9152.150001</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>46f9bf9b-f799-4af9-b7b8-d6ed95a5446d</td>
-      <td>2571025511</td>
-      <td>sub-1181585601/sub-1181585601_ses-1194644312_o...</td>
-      <td>2022-07-27 00:00:00-07:00</td>
-      <td>external: 630507 donor_id: 1181585601 specimen...</td>
+      <td>edf10182-5a4c-454f-ad23-47987a5ca256</td>
+      <td>2235680540</td>
+      <td>sub-730760263/sub-730760263_ses-755434585.nwb</td>
+      <td>2018-10-26 12:58:07-07:00</td>
+      <td>Vip-IRES-Cre;Ai32-405751</td>
+      <td>M</td>
+      <td>100.0</td>
+      <td>Vip-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2127</td>
+      <td>9152.216507</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>be9f8fd8-8f16-4a66-acc6-9e04697650f3</td>
+      <td>3073327756</td>
+      <td>sub-732548371/sub-732548371_ses-751348571.nwb</td>
+      <td>2018-09-25 13:40:29-07:00</td>
+      <td>Vip-IRES-Cre;Ai32-405755</td>
       <td>F</td>
-      <td>99.0</td>
+      <td>93.0</td>
+      <td>Vip-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2645</td>
+      <td>9151.846666</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>5f204c90-2005-4143-b880-07d80aa32b20</td>
+      <td>3039748856</td>
+      <td>sub-733457986/sub-733457986_ses-757216464.nwb</td>
+      <td>2018-10-26 12:55:34-07:00</td>
+      <td>C57BL/6J-412794</td>
+      <td>M</td>
+      <td>105.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2812</td>
+      <td>9152.436465</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>e0037b53-6d0e-4756-8ca4-f0dcb51ad339</td>
+      <td>2581201976</td>
+      <td>sub-734865729/sub-734865729_ses-756029989.nwb</td>
+      <td>2018-10-26 12:59:18-07:00</td>
+      <td>Sst-IRES-Cre;Ai32-406807</td>
+      <td>M</td>
+      <td>96.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{OptogeneticStimulusDevice, probeF, probeB, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>2464</td>
-      <td>7278.964870</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2169</td>
+      <td>9152.076028</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>de872cf2-942d-4695-88b1-f7f89cb764fd</td>
+      <td>2198584804</td>
+      <td>sub-735109599/sub-735109599_ses-758798717.nwb</td>
+      <td>2018-10-31 10:39:23-07:00</td>
+      <td>Sst-IRES-Cre;Ai32-406805</td>
+      <td>M</td>
+      <td>102.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeA, probeC, probeE, probeB}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1702</td>
+      <td>9152.213369</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>4513d0c9-1e2b-4c8a-aa22-ae81822537c9</td>
+      <td>2864072620</td>
+      <td>sub-738651046/sub-738651046_ses-760693773.nwb</td>
+      <td>2018-10-26 12:59:23-07:00</td>
+      <td>Sst-IRES-Cre;Ai32-406808</td>
+      <td>F</td>
+      <td>110.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2285</td>
+      <td>9146.395044</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>47634abd-db85-48f5-9c33-01887a59d3bc</td>
+      <td>1960982972</td>
+      <td>sub-739783158/sub-739783158_ses-760345702.nwb</td>
+      <td>2019-01-19 00:36:58-08:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-407972</td>
+      <td>M</td>
+      <td>103.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1784</td>
+      <td>9152.378596</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>c9fc315f-5145-45a3-8183-3ad8fe499c4d</td>
+      <td>1862261144</td>
+      <td>sub-740268983/sub-740268983_ses-759883607.nwb</td>
+      <td>2018-10-26 12:55:45-07:00</td>
+      <td>C57BL/6J-412799</td>
+      <td>M</td>
+      <td>113.0</td>
+      <td>wt/wt</td>
+      <td>{probeA, probeC, probeE, probeB}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1763</td>
+      <td>9152.463399</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>8a17b967-2aa9-4d6a-812c-92b62cf799d7</td>
+      <td>2537645144</td>
+      <td>sub-742602884/sub-742602884_ses-763673393.nwb</td>
+      <td>2018-12-06 12:48:16-08:00</td>
+      <td>C57BL/6J-412803</td>
+      <td>M</td>
+      <td>126.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2455</td>
+      <td>9725.660740</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>cdeec90c-9ebe-431c-b3f7-b9f7d93ff37f</td>
+      <td>2674791348</td>
+      <td>sub-742714472/sub-742714472_ses-761418226.nwb</td>
+      <td>2018-10-26 00:48:22-07:00</td>
+      <td>C57BL/6J-412802</td>
+      <td>M</td>
+      <td>119.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2371</td>
+      <td>9729.131700</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>cea32745-0d1a-4884-b06f-158d830bcbf3</td>
+      <td>2021557700</td>
+      <td>sub-744915196/sub-744915196_ses-762602078.nwb</td>
+      <td>2018-10-26 00:58:47-07:00</td>
+      <td>Sst-IRES-Cre;Ai32-408152</td>
+      <td>M</td>
+      <td>110.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2159</td>
+      <td>9727.980945</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>d6f3e82b-aca9-43fb-9810-048fc2124d50</td>
+      <td>2865464220</td>
+      <td>sub-745276220/sub-745276220_ses-762120172.nwb</td>
+      <td>2018-10-26 00:38:26-07:00</td>
+      <td>Vip-IRES-Cre;Ai32-410343</td>
+      <td>M</td>
+      <td>100.0</td>
+      <td>Vip-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2361</td>
+      <td>9729.247966</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>17a5432b-7193-42dd-a9ae-e9e8b3fef19c</td>
+      <td>1928749868</td>
+      <td>sub-757329617/sub-757329617_ses-773418906.nwb</td>
+      <td>2018-12-10 15:16:20-08:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-410315</td>
+      <td>F</td>
+      <td>124.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1880</td>
+      <td>9157.163520</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>3adbba7c-3feb-468b-9829-33fcaa27aacd</td>
+      <td>2317463664</td>
+      <td>sub-769360771/sub-769360771_ses-791319847.nwb</td>
+      <td>2019-01-08 13:55:01-08:00</td>
+      <td>Vip-IRES-Cre;Ai32-417678</td>
+      <td>M</td>
+      <td>116.0</td>
+      <td>Vip-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2020</td>
+      <td>9726.770955</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>264f3b24-10d9-4100-98cf-d40b6c2a2068</td>
+      <td>2737981244</td>
+      <td>sub-772616820/sub-772616820_ses-799864342.nwb</td>
+      <td>2019-01-08 13:26:07-08:00</td>
+      <td>C57BL/6J-424448</td>
+      <td>M</td>
+      <td>129.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2249</td>
+      <td>9726.645245</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>dcafeb62-82af-48c7-87fc-2a2481daf462</td>
+      <td>2864276308</td>
+      <td>sub-775876808/sub-775876808_ses-798911424.nwb</td>
+      <td>2018-12-21 00:02:57-08:00</td>
+      <td>Vip-IRES-Cre;Ai32-421338</td>
+      <td>F</td>
+      <td>110.0</td>
+      <td>Vip-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2525</td>
+      <td>9722.497795</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0d8cb49c-8354-4081-8acb-257821aa8413</td>
+      <td>2545679280</td>
+      <td>sub-776061236/sub-776061236_ses-797828357.nwb</td>
+      <td>2019-01-08 13:26:13-08:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-421529</td>
+      <td>M</td>
+      <td>107.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2154</td>
+      <td>9726.918315</td>
     </tr>
   </tbody>
 </table>
@@ -1105,7 +1360,7 @@ Examining file 14/16: 348b1e83-4fde-480a-9e4d-ef55b5cac7c5
 <p><strong>Pandas</strong> syntax can be used to filter the table above and select individual sessions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_sessions</span> <span class="o">=</span> <span class="n">sessions</span><span class="p">[</span><span class="n">sessions</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2_300_000_000</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_sessions</span> <span class="o">=</span> <span class="n">sessions</span><span class="p">[</span><span class="n">sessions</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1_900_000_000</span><span class="p">]</span>
 <span class="c1"># selected_sessions = sessions[sessions[&quot;sub sex&quot;] == &quot;F&quot;]</span>
 <span class="c1"># selected_sessions = sessions[sessions[&quot;# units&quot;] &gt; 2900]</span>
 <span class="n">selected_sessions</span>
@@ -1147,34 +1402,94 @@ Examining file 14/16: 348b1e83-4fde-480a-9e4d-ef55b5cac7c5
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>dbc426a0-aafa-460b-a25a-a86bb31b9ddc</td>
-      <td>2242666496</td>
-      <td>sub_1175512783/sub_1175512783sess_1187930705/s...</td>
-      <td>2022-06-29 00:00:00-07:00</td>
-      <td>619296</td>
+      <th>2</th>
+      <td>224b57e5-c9a3-46ef-85db-966713f3ccbe</td>
+      <td>1736516600</td>
+      <td>sub-707296975/sub-707296975_ses-721123822.nwb</td>
+      <td>2019-01-08 16:25:35-08:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-388521</td>
       <td>M</td>
-      <td>154.0</td>
-      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>1918</td>
-      <td>7278.15799</td>
+      <td>125.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1603</td>
+      <td>9420.860000</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>9d0ed5c2-f9e4-4c5e-b5ab-cb4a9d4e7ef6</td>
-      <td>1882268693</td>
-      <td>sub_1183369803/sub_1183369803sess_1194857009/s...</td>
-      <td>2022-07-28 00:00:00-07:00</td>
-      <td>631570</td>
-      <td>F</td>
-      <td>92.0</td>
+      <th>7</th>
+      <td>5a58bf3d-a1b9-444b-8ab0-ef5478aa42a6</td>
+      <td>1859545192</td>
+      <td>sub-719828686/sub-719828686_ses-754312389.nwb</td>
+      <td>2018-09-25 11:02:57-07:00</td>
+      <td>C57BL/6J-404570</td>
+      <td>M</td>
+      <td>140.0</td>
+      <td>wt/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1891</td>
+      <td>9152.415139</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>47634abd-db85-48f5-9c33-01887a59d3bc</td>
+      <td>1960982972</td>
+      <td>sub-739783158/sub-739783158_ses-760345702.nwb</td>
+      <td>2019-01-19 00:36:58-08:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-407972</td>
+      <td>M</td>
+      <td>103.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeF, probeB, probeD, probeA, probeC, probeE}</td>
-      <td>{RFCI_presentations, invalid_times, ICwcfg1_pr...</td>
-      <td>1789</td>
-      <td>7278.94295</td>
+      <td>{probeB, probeD, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1784</td>
+      <td>9152.378596</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>c9fc315f-5145-45a3-8183-3ad8fe499c4d</td>
+      <td>1862261144</td>
+      <td>sub-740268983/sub-740268983_ses-759883607.nwb</td>
+      <td>2018-10-26 12:55:45-07:00</td>
+      <td>C57BL/6J-412799</td>
+      <td>M</td>
+      <td>113.0</td>
+      <td>wt/wt</td>
+      <td>{probeA, probeC, probeE, probeB}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1763</td>
+      <td>9152.463399</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>cea32745-0d1a-4884-b06f-158d830bcbf3</td>
+      <td>2021557700</td>
+      <td>sub-744915196/sub-744915196_ses-762602078.nwb</td>
+      <td>2018-10-26 00:58:47-07:00</td>
+      <td>Sst-IRES-Cre;Ai32-408152</td>
+      <td>M</td>
+      <td>110.0</td>
+      <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>2159</td>
+      <td>9727.980945</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>17a5432b-7193-42dd-a9ae-e9e8b3fef19c</td>
+      <td>1928749868</td>
+      <td>sub-757329617/sub-757329617_ses-773418906.nwb</td>
+      <td>2018-12-10 15:16:20-08:00</td>
+      <td>Pvalb-IRES-Cre;Ai32-410315</td>
+      <td>F</td>
+      <td>124.0</td>
+      <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
+      <td>{probeB, probeD, probeF, probeE, probeA, probeC}</td>
+      <td>{gabors_presentations, natural_movie_three_pre...</td>
+      <td>1880</td>
+      <td>9157.163520</td>
     </tr>
   </tbody>
 </table>
@@ -1199,8 +1514,12 @@ Examining file 14/16: 348b1e83-4fde-480a-9e4d-ef55b5cac7c5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sub_1175512783/sub_1175512783sess_1187930705/sub_1175512783+sess_1187930705_ecephys.nwb&#39;,
- &#39;sub_1183369803/sub_1183369803sess_1194857009/sub_1183369803+sess_1194857009_ecephys.nwb&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sub-707296975/sub-707296975_ses-721123822.nwb&#39;,
+ &#39;sub-719828686/sub-719828686_ses-754312389.nwb&#39;,
+ &#39;sub-739783158/sub-739783158_ses-760345702.nwb&#39;,
+ &#39;sub-740268983/sub-740268983_ses-759883607.nwb&#39;,
+ &#39;sub-744915196/sub-744915196_ses-762602078.nwb&#39;,
+ &#39;sub-757329617/sub-757329617_ses-773418906.nwb&#39;}
 </pre></div>
 </div>
 </div>
@@ -1216,8 +1535,12 @@ Examining file 14/16: 348b1e83-4fde-480a-9e4d-ef55b5cac7c5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub_1175512783+sess_1187930705_ecephys.nwb
-Downloaded file to ./sub_1183369803+sess_1194857009_ecephys.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-757329617_ses-773418906.nwb
+Downloaded file to ./sub-744915196_ses-762602078.nwb
+Downloaded file to ./sub-707296975_ses-721123822.nwb
+Downloaded file to ./sub-719828686_ses-754312389.nwb
+Downloaded file to ./sub-740268983_ses-759883607.nwb
+Downloaded file to ./sub-739783158_ses-760345702.nwb
 </pre></div>
 </div>
 </div>
@@ -1259,10 +1582,10 @@ Downloaded file to ./sub_1183369803+sess_1194857009_ecephys.nwb
             <p class="prev-next-title">Streaming an NWB File with fsspec</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../visualization/visualize_behavior.html" title="next page">
+    <a class='right-next' id="next-link" href="../visualization/visualize_2p_raw.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Behavioral Data</p>
+        <p class="prev-next-title">Visualizing Raw 2-Photon Images</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

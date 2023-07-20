@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_behavior.html">
-   Visualizing Behavioral Data
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -209,11 +204,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="cell_matching.html">
-   Cell Matching Across Days
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="test_2p_responses.html">
    Statistically Testing 2P Responses to Stimulus
   </a>
@@ -221,6 +211,33 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="test_spike_responses.html">
    Statistically Testing Spike Responses to Stimulus
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Embargoed Datasets
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/modality_alignment.html">
+   Aligning Data across Modalities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/visualize_behavior.html">
+   Visualizing Behavioral Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">
+   Statistically Testing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/cell_matching.html">
+   Cell Matching Across Days
   </a>
  </li>
 </ul>
@@ -617,7 +634,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-716813540/sub-716813540_ses-739448407.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 <span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
@@ -636,15 +653,15 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                            SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
-sub-703279277_ses-719161530.nwb 3.1 GB 3.1 GB           100%    ok    done                   
-Summary:                        3.1 GB 3.1 GB                         1 done                 
-                                       100.00%                                               
-Downloaded file to ./sub-703279277_ses-719161530.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                            SIZE   DONE         DONE% CHECKSUM STATUS          MESSAGE
+sub-716813540_ses-739448407.nwb 2.2 GB 2.2 GB        100%    ok    done                   
+Summary:                        2.2 GB 2.2 GB                      1 done                 
+                                       100.00%                                            
+Downloaded file to ./sub-716813540_ses-739448407.nwb
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.6.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
@@ -682,24 +699,24 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>waveform_duration</th>
-      <th>cluster_id</th>
       <th>peak_channel_id</th>
-      <th>cumulative_drift</th>
-      <th>amplitude_cutoff</th>
-      <th>snr</th>
-      <th>recovery_slope</th>
-      <th>isolation_distance</th>
-      <th>nn_miss_rate</th>
-      <th>silhouette_score</th>
-      <th>...</th>
-      <th>local_index</th>
-      <th>spread</th>
+      <th>quality</th>
       <th>waveform_halfwidth</th>
-      <th>d_prime</th>
-      <th>presence_ratio</th>
-      <th>repolarization_slope</th>
-      <th>nn_hit_rate</th>
+      <th>amplitude</th>
+      <th>velocity_below</th>
+      <th>l_ratio</th>
+      <th>snr</th>
+      <th>amplitude_cutoff</th>
+      <th>spread</th>
+      <th>nn_miss_rate</th>
+      <th>...</th>
+      <th>isolation_distance</th>
+      <th>silhouette_score</th>
+      <th>velocity_above</th>
+      <th>cumulative_drift</th>
+      <th>firing_rate</th>
+      <th>waveform_duration</th>
+      <th>recovery_slope</th>
       <th>spike_times</th>
       <th>spike_amplitudes</th>
       <th>waveform_mean</th>
@@ -731,244 +748,244 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   </thead>
   <tbody>
     <tr>
-      <th>950921187</th>
-      <td>0.604355</td>
-      <td>4</td>
-      <td>850249267</td>
-      <td>481.80</td>
-      <td>0.425574</td>
-      <td>2.209140</td>
-      <td>-0.118430</td>
-      <td>17.537571</td>
-      <td>0.009496</td>
-      <td>0.036369</td>
-      <td>...</td>
-      <td>4</td>
-      <td>50.0</td>
-      <td>0.357119</td>
-      <td>2.962274</td>
-      <td>0.99</td>
-      <td>0.381716</td>
-      <td>0.473829</td>
-      <td>[1.0439430431793884, 1.543311060144649, 2.7287...</td>
-      <td>[0.0001908626967721937, 0.00016134635752077775...</td>
-      <td>[[0.0, 0.5961149999999966, 5.378099999999993, ...</td>
-    </tr>
-    <tr>
-      <th>950921172</th>
-      <td>0.521943</td>
-      <td>3</td>
-      <td>850249267</td>
-      <td>681.53</td>
-      <td>0.390098</td>
-      <td>1.959983</td>
-      <td>-0.109729</td>
-      <td>14.677643</td>
-      <td>0.003857</td>
-      <td>0.103446</td>
-      <td>...</td>
-      <td>3</td>
-      <td>40.0</td>
-      <td>0.260972</td>
-      <td>2.067810</td>
-      <td>0.99</td>
-      <td>0.536663</td>
-      <td>0.445946</td>
-      <td>[10.406435026164546, 17.127986534673788, 18.48...</td>
-      <td>[0.00014485615850768024, 0.0001722424107984555...</td>
-      <td>[[0.0, -1.341600000000002, -0.4586399999999933...</td>
-    </tr>
-    <tr>
-      <th>950921152</th>
-      <td>0.467002</td>
-      <td>2</td>
-      <td>850249267</td>
-      <td>1070.71</td>
-      <td>0.500000</td>
-      <td>2.522905</td>
-      <td>-0.109867</td>
-      <td>15.783665</td>
-      <td>0.017776</td>
-      <td>0.027818</td>
-      <td>...</td>
-      <td>2</td>
-      <td>50.0</td>
+      <th>951791104</th>
+      <td>850216277</td>
+      <td>good</td>
       <td>0.247236</td>
-      <td>2.220043</td>
-      <td>0.99</td>
-      <td>0.566559</td>
-      <td>0.284058</td>
-      <td>[1.2775103414155262, 2.3915133536963493, 3.701...</td>
-      <td>[0.00014859435856024575, 0.0001531048673600236...</td>
-      <td>[[0.0, -0.6427199999999993, -2.836079999999998...</td>
-    </tr>
-    <tr>
-      <th>950921135</th>
-      <td>0.467002</td>
-      <td>1</td>
-      <td>850249267</td>
-      <td>253.42</td>
+      <td>90.180675</td>
+      <td>-0.343384</td>
+      <td>1.383148e-02</td>
+      <td>0.763260</td>
       <td>0.500000</td>
-      <td>2.803475</td>
-      <td>-0.150379</td>
-      <td>26.666930</td>
-      <td>0.023742</td>
-      <td>0.076530</td>
+      <td>100.0</td>
+      <td>0.004499</td>
       <td>...</td>
-      <td>1</td>
-      <td>40.0</td>
-      <td>0.233501</td>
-      <td>2.339206</td>
-      <td>0.99</td>
-      <td>0.669090</td>
-      <td>0.590737</td>
-      <td>[9.473732504122962, 13.198542576065163, 18.302...</td>
-      <td>[0.00032386170367170055, 0.0004518112387675137...</td>
-      <td>[[0.0, -3.2800950000000078, -6.087510000000009...</td>
+      <td>47.188066</td>
+      <td>0.104118</td>
+      <td>0.392438</td>
+      <td>418.06</td>
+      <td>2.341833</td>
+      <td>0.741709</td>
+      <td>-0.022793</td>
+      <td>[3.2095355441515783, 6.124035954291701, 17.051...</td>
+      <td>[0.00010742085654993536, 0.0001035669805512930...</td>
+      <td>[[0.0, -0.3348150000001908, 10.006815000000017...</td>
     </tr>
     <tr>
-      <th>950921111</th>
-      <td>0.439531</td>
-      <td>0</td>
-      <td>850249267</td>
-      <td>141.82</td>
-      <td>0.018056</td>
-      <td>4.647943</td>
-      <td>-0.328727</td>
-      <td>66.901065</td>
-      <td>0.006595</td>
-      <td>NaN</td>
+      <th>951790926</th>
+      <td>850216277</td>
+      <td>noise</td>
+      <td>0.549414</td>
+      <td>96.975255</td>
+      <td>0.000000</td>
+      <td>2.362854e-01</td>
+      <td>0.676006</td>
+      <td>0.306994</td>
+      <td>140.0</td>
+      <td>0.009977</td>
       <td>...</td>
-      <td>0</td>
-      <td>30.0</td>
+      <td>25.190298</td>
+      <td>0.029867</td>
+      <td>0.171692</td>
+      <td>392.19</td>
+      <td>2.613414</td>
+      <td>1.167504</td>
+      <td>-0.032515</td>
+      <td>[2.7148354745354113, 3.1582355369324366, 3.193...</td>
+      <td>[9.173462781002884e-05, 8.000884789421282e-05,...</td>
+      <td>[[0.0, -5.414564999999925, 5.5407299999999395,...</td>
+    </tr>
+    <tr>
+      <th>951790903</th>
+      <td>850216277</td>
+      <td>good</td>
       <td>0.219765</td>
-      <td>4.395994</td>
-      <td>0.99</td>
-      <td>1.261416</td>
-      <td>0.952667</td>
-      <td>[1.1677100445138795, 1.1707767194728813, 1.349...</td>
-      <td>[0.00015644521007973124, 0.000214412247939483,...</td>
-      <td>[[0.0, -0.9291749999999945, -6.120270000000007...</td>
-    </tr>
-    <tr>
-      <th>950927711</th>
-      <td>1.455946</td>
-      <td>482</td>
-      <td>850249273</td>
-      <td>2.46</td>
-      <td>0.000895</td>
-      <td>1.651500</td>
-      <td>-0.039932</td>
-      <td>39.400278</td>
-      <td>0.000033</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>464</td>
-      <td>100.0</td>
-      <td>0.274707</td>
-      <td>5.557479</td>
-      <td>0.37</td>
-      <td>0.467365</td>
-      <td>0.000000</td>
-      <td>[2613.8652081509977, 2624.5193369599215, 2734....</td>
-      <td>[0.00012946663895843286, 0.0001203425053985725...</td>
-      <td>[[0.0, 6.3216435986159105, 10.324204152249129,...</td>
-    </tr>
-    <tr>
-      <th>950921285</th>
-      <td>2.087772</td>
-      <td>11</td>
-      <td>850249273</td>
-      <td>318.53</td>
-      <td>0.036848</td>
-      <td>1.379817</td>
-      <td>NaN</td>
-      <td>27.472722</td>
-      <td>0.000903</td>
-      <td>0.291953</td>
-      <td>...</td>
-      <td>11</td>
-      <td>100.0</td>
-      <td>0.288442</td>
-      <td>2.751337</td>
-      <td>0.89</td>
-      <td>0.372116</td>
-      <td>0.258065</td>
-      <td>[39.04904580954626, 39.457346913598556, 40.495...</td>
-      <td>[7.768399792002802e-05, 8.405736507197006e-05,...</td>
-      <td>[[0.0, 5.330324999999991, 2.4261899999999486, ...</td>
-    </tr>
-    <tr>
-      <th>950921271</th>
-      <td>0.947739</td>
-      <td>10</td>
-      <td>850249273</td>
-      <td>1008.50</td>
-      <td>0.001727</td>
-      <td>1.420617</td>
-      <td>-0.008204</td>
-      <td>30.027595</td>
-      <td>0.000707</td>
-      <td>0.406673</td>
-      <td>...</td>
-      <td>10</td>
-      <td>100.0</td>
-      <td>0.288442</td>
-      <td>3.847234</td>
-      <td>0.96</td>
-      <td>0.498618</td>
-      <td>0.796491</td>
-      <td>[16.751918851114475, 26.127977537450867, 28.65...</td>
-      <td>[0.00016516929470324686, 0.0001501058102103845...</td>
-      <td>[[0.0, -3.103230000000032, 5.680349999999983, ...</td>
-    </tr>
-    <tr>
-      <th>950921260</th>
-      <td>0.453266</td>
-      <td>9</td>
-      <td>850249273</td>
-      <td>175.00</td>
-      <td>0.000081</td>
-      <td>4.969091</td>
-      <td>-0.184456</td>
-      <td>89.804006</td>
-      <td>0.000000</td>
-      <td>0.223876</td>
-      <td>...</td>
-      <td>9</td>
+      <td>244.056540</td>
+      <td>-0.686767</td>
+      <td>6.284489e-02</td>
+      <td>0.867047</td>
+      <td>0.500000</td>
       <td>60.0</td>
-      <td>0.192295</td>
-      <td>5.274090</td>
-      <td>0.99</td>
-      <td>1.140487</td>
-      <td>0.997333</td>
-      <td>[0.9620761551434307, 2.092045877265143, 2.4040...</td>
-      <td>[0.0003836112198262231, 0.0004093908262843732,...</td>
-      <td>[[0.0, 1.9104149999999982, -7.270770000000016,...</td>
+      <td>0.000905</td>
+      <td>...</td>
+      <td>30.063412</td>
+      <td>-0.036832</td>
+      <td>0.343384</td>
+      <td>483.90</td>
+      <td>0.744933</td>
+      <td>0.865327</td>
+      <td>-0.044864</td>
+      <td>[1.6110686525422746, 2.9030355010196693, 2.907...</td>
+      <td>[0.00026998475697199466, 0.0002846940383350162...</td>
+      <td>[[0.0, -13.258049999999884, -18.07259999999988...</td>
     </tr>
     <tr>
-      <th>950921248</th>
-      <td>0.439531</td>
-      <td>8</td>
-      <td>850249273</td>
-      <td>261.11</td>
-      <td>0.065478</td>
-      <td>2.147758</td>
-      <td>-0.085677</td>
-      <td>84.145512</td>
-      <td>0.005474</td>
-      <td>0.076346</td>
+      <th>951790894</th>
+      <td>850216277</td>
+      <td>good</td>
+      <td>0.164824</td>
+      <td>367.934580</td>
+      <td>-0.274707</td>
+      <td>3.215116e-05</td>
+      <td>3.188863</td>
+      <td>0.001455</td>
+      <td>70.0</td>
+      <td>0.000100</td>
       <td>...</td>
-      <td>8</td>
-      <td>60.0</td>
-      <td>0.274707</td>
-      <td>3.022387</td>
-      <td>0.99</td>
-      <td>0.463570</td>
-      <td>0.976667</td>
-      <td>[1.316477113448928, 1.779311698293908, 2.96088...</td>
-      <td>[0.00013780619334124896, 0.0001439873831056905...</td>
-      <td>[[0.0, -3.6761399999999953, 0.8334300000000014...</td>
+      <td>72.605985</td>
+      <td>0.005048</td>
+      <td>-0.343384</td>
+      <td>71.55</td>
+      <td>0.640379</td>
+      <td>0.824121</td>
+      <td>-0.033171</td>
+      <td>[1281.742282131046, 1349.6264583506447, 1405.8...</td>
+      <td>[0.00025149672984953213, 0.0004496466043690103...</td>
+      <td>[[0.0, 0.71097000000006, -3.5579700000000116, ...</td>
+    </tr>
+    <tr>
+      <th>951790884</th>
+      <td>850216277</td>
+      <td>good</td>
+      <td>0.329648</td>
+      <td>188.990015</td>
+      <td>0.537968</td>
+      <td>7.274902e-02</td>
+      <td>0.588863</td>
+      <td>0.074423</td>
+      <td>160.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>24.436355</td>
+      <td>NaN</td>
+      <td>1.291776</td>
+      <td>0.00</td>
+      <td>0.034851</td>
+      <td>2.060302</td>
+      <td>NaN</td>
+      <td>[7.834769528366286, 245.91720303227598, 438.41...</td>
+      <td>[9.431834274924923e-05, 0.00010953675617822429...</td>
+      <td>[[0.0, -13.237058823529424, -24.38345201238388...</td>
+    </tr>
+    <tr>
+      <th>951790873</th>
+      <td>850216277</td>
+      <td>noise</td>
+      <td>1.249916</td>
+      <td>392.734333</td>
+      <td>1.041597</td>
+      <td>2.236291e-07</td>
+      <td>0.446848</td>
+      <td>0.500000</td>
+      <td>140.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>94.253021</td>
+      <td>NaN</td>
+      <td>-0.196219</td>
+      <td>0.00</td>
+      <td>0.004855</td>
+      <td>1.565829</td>
+      <td>NaN</td>
+      <td>[488.6720371937045, 1581.39612429953, 1760.856...</td>
+      <td>[0.00011043706542136272, 8.223885328261097e-05...</td>
+      <td>[[0.0, 15.990000000000009, 46.18466666666663, ...</td>
+    </tr>
+    <tr>
+      <th>951790864</th>
+      <td>850216277</td>
+      <td>noise</td>
+      <td>1.318593</td>
+      <td>277.943055</td>
+      <td>6.364042</td>
+      <td>NaN</td>
+      <td>1.465630</td>
+      <td>0.011230</td>
+      <td>160.0</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>-0.056607</td>
+      <td>-8.328692</td>
+      <td>1810.38</td>
+      <td>0.542730</td>
+      <td>2.225126</td>
+      <td>-4.514536</td>
+      <td>[51.122208953280754, 65.47991097375385, 65.491...</td>
+      <td>[0.00017703212276047242, 0.0001768216167308391...</td>
+      <td>[[0.0, -1.7390099999999222, -5.484569999999962...</td>
+    </tr>
+    <tr>
+      <th>951790850</th>
+      <td>850216277</td>
+      <td>noise</td>
+      <td>1.648241</td>
+      <td>189.359235</td>
+      <td>-0.457845</td>
+      <td>2.436327e-01</td>
+      <td>0.850077</td>
+      <td>0.172105</td>
+      <td>160.0</td>
+      <td>0.001341</td>
+      <td>...</td>
+      <td>16.992300</td>
+      <td>-0.070661</td>
+      <td>2.583553</td>
+      <td>999.03</td>
+      <td>0.765002</td>
+      <td>1.881742</td>
+      <td>-3.234939</td>
+      <td>[51.113175618676216, 51.12444228692837, 62.794...</td>
+      <td>[0.00012096045820642862, 0.0001094972500522143...</td>
+      <td>[[0.0, -0.875939999999872, -4.936424999999701,...</td>
+    </tr>
+    <tr>
+      <th>951790836</th>
+      <td>850216277</td>
+      <td>good</td>
+      <td>0.329648</td>
+      <td>106.165605</td>
+      <td>-0.529792</td>
+      <td>3.770473e-02</td>
+      <td>0.775795</td>
+      <td>0.500000</td>
+      <td>90.0</td>
+      <td>0.006340</td>
+      <td>...</td>
+      <td>36.216320</td>
+      <td>0.042926</td>
+      <td>-0.892797</td>
+      <td>280.11</td>
+      <td>2.340107</td>
+      <td>0.769179</td>
+      <td>-0.020140</td>
+      <td>[0.6329351815620978, 0.6378018489136213, 1.041...</td>
+      <td>[0.0001462638799394556, 0.00011085512769588882...</td>
+      <td>[[0.0, 0.19090500000024235, -2.333954999999832...</td>
+    </tr>
+    <tr>
+      <th>951790820</th>
+      <td>850216277</td>
+      <td>good</td>
+      <td>0.178559</td>
+      <td>190.294455</td>
+      <td>-0.480737</td>
+      <td>3.121674e-02</td>
+      <td>1.488400</td>
+      <td>0.110186</td>
+      <td>70.0</td>
+      <td>0.007238</td>
+      <td>...</td>
+      <td>36.992078</td>
+      <td>0.047044</td>
+      <td>-0.480737</td>
+      <td>232.88</td>
+      <td>1.997528</td>
+      <td>0.796650</td>
+      <td>-0.037071</td>
+      <td>[8.167536241861212, 56.18294299878077, 56.1983...</td>
+      <td>[0.00017325089170459892, 0.0002418117123045365...</td>
+      <td>[[0.0, 2.8191149999998117, -4.932915000000207,...</td>
     </tr>
   </tbody>
 </table>
@@ -1059,13 +1076,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <tbody>
     <tr>
       <th>0</th>
-      <td>89.896827</td>
-      <td>90.130356</td>
+      <td>88.684670</td>
+      <td>88.918188</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>10.0</td>
-      <td>-10.0</td>
+      <td>30.0</td>
+      <td>-40.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1081,13 +1098,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>1</th>
-      <td>90.130356</td>
-      <td>90.380565</td>
+      <td>88.918188</td>
+      <td>89.168385</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>-30.0</td>
-      <td>20.0</td>
+      <td>-20.0</td>
+      <td>30.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1103,34 +1120,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>2</th>
-      <td>90.380565</td>
-      <td>90.630774</td>
+      <td>89.168385</td>
+      <td>89.418582</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>20.0</td>
       <td>-20.0</td>
-      <td>[1.0, 1.0, 1.0]</td>
-      <td>circle</td>
-      <td>1.0</td>
-      <td>[3644.93333333, 3644.93333333]</td>
-      <td>[20.0, 20.0]</td>
-      <td>deg</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.08</td>
-      <td>0.8</td>
-      <td>[stimulus_time_interval]</td>
-      <td>[(3, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>90.630774</td>
-      <td>90.880983</td>
-      <td>gabors</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>30.0</td>
       <td>20.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
@@ -1143,17 +1138,39 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>0.08</td>
       <td>0.8</td>
       <td>[stimulus_time_interval]</td>
+      <td>[(3, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>89.418582</td>
+      <td>89.668780</td>
+      <td>gabors</td>
+      <td>0.0</td>
+      <td>4.0</td>
+      <td>-20.0</td>
+      <td>40.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>circle</td>
+      <td>1.0</td>
+      <td>[3644.93333333, 3644.93333333]</td>
+      <td>[20.0, 20.0]</td>
+      <td>deg</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.08</td>
+      <td>0.8</td>
+      <td>[stimulus_time_interval]</td>
       <td>[(4, 1, timestamps pynwb.base.TimeSeries at 0x...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>90.880983</td>
-      <td>91.131199</td>
+      <td>89.668780</td>
+      <td>89.918990</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>0.0</td>
-      <td>-40.0</td>
+      <td>10.0</td>
+      <td>20.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1169,13 +1186,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>5</th>
-      <td>91.131199</td>
-      <td>91.381415</td>
+      <td>89.918990</td>
+      <td>90.169200</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>30.0</td>
-      <td>30.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1191,13 +1208,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>6</th>
-      <td>91.381415</td>
-      <td>91.631631</td>
+      <td>90.169200</td>
+      <td>90.419410</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>0.0</td>
-      <td>10.0</td>
+      <td>-30.0</td>
+      <td>30.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1205,7 +1222,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>[20.0, 20.0]</td>
       <td>deg</td>
       <td>0.0</td>
-      <td>90.0</td>
+      <td>45.0</td>
       <td>0.08</td>
       <td>0.8</td>
       <td>[stimulus_time_interval]</td>
@@ -1213,13 +1230,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>7</th>
-      <td>91.631631</td>
-      <td>91.881847</td>
+      <td>90.419410</td>
+      <td>90.669620</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>-40.0</td>
-      <td>-20.0</td>
+      <td>20.0</td>
+      <td>0.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1235,13 +1252,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>8</th>
-      <td>91.881847</td>
-      <td>92.132049</td>
+      <td>90.669620</td>
+      <td>90.919822</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>-30.0</td>
-      <td>-30.0</td>
+      <td>30.0</td>
+      <td>-40.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1249,7 +1266,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>[20.0, 20.0]</td>
       <td>deg</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>90.0</td>
       <td>0.08</td>
       <td>0.8</td>
       <td>[stimulus_time_interval]</td>
@@ -1257,13 +1274,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>9</th>
-      <td>92.132049</td>
-      <td>92.382250</td>
+      <td>90.919822</td>
+      <td>91.170025</td>
       <td>gabors</td>
       <td>0.0</td>
       <td>4.0</td>
-      <td>10.0</td>
-      <td>-30.0</td>
+      <td>-10.0</td>
+      <td>40.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>circle</td>
       <td>1.0</td>
@@ -1311,8 +1328,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISam&#39;, &#39;MB&#39;, &#39;POL&#39;, &#39;VL&#39;, &#39;grey&#39;, &#39;TH&#39;, &#39;NOT&#39;, &#39;APN&#39;, &#39;LGd&#39;, &#39;VISp&#39;, &#39;DG&#39;, &#39;LP&#39;, &#39;CA2&#39;, &#39;CA1&#39;, &#39;PO&#39;, &#39;VPM&#39;, &#39;VISal&#39;, &#39;VISrl&#39;, &#39;VISl&#39;, &#39;VISpm&#39;, &#39;Eth&#39;, &#39;SUB&#39;, &#39;CA3&#39;}
-{&#39;probeB&#39;, &#39;probeC&#39;, &#39;probeE&#39;, &#39;probeA&#39;, &#39;probeF&#39;, &#39;probeD&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISam&#39;, &#39;VISrl&#39;, &#39;VISl&#39;, &#39;VIS&#39;, &#39;VISp&#39;, &#39;grey&#39;}
+{&#39;probeF&#39;, &#39;probeC&#39;, &#39;probeA&#39;, &#39;probeB&#39;, &#39;probeD&#39;, &#39;probeE&#39;}
 </pre></div>
 </div>
 </div>
@@ -1343,7 +1360,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>111
 </pre></div>
 </div>
 </div>

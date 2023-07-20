@@ -152,11 +152,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="visualize_behavior.html">
-   Visualizing Behavioral Data
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="visualize_2p_raw.html">
    Visualizing Raw 2-Photon Images
   </a>
@@ -209,11 +204,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/cell_matching.html">
-   Cell Matching Across Days
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../first-order/test_2p_responses.html">
    Statistically Testing 2P Responses to Stimulus
   </a>
@@ -221,6 +211,33 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../first-order/test_spike_responses.html">
    Statistically Testing Spike Responses to Stimulus
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Embargoed Datasets
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/modality_alignment.html">
+   Aligning Data across Modalities
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/visualize_behavior.html">
+   Visualizing Behavioral Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">
+   Statistically Testing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../embargoed/cell_matching.html">
+   Cell Matching Across Days
   </a>
  </li>
 </ul>
@@ -571,6 +588,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuropixel-probe-locations">
 <h1>Visualizing Neuropixel Probe Locations<a class="headerlink" href="#visualizing-neuropixel-probe-locations" title="Permalink to this headline">#</a></h1>
+<p><strong>Note: This notebook currently does not work on Google Colab, considering running it on <span class="xref myst">Dandihub</span></strong></p>
 <p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <em>CCF</em> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which represents locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
 <p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. We use the <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/ccf-widget">ccf-widget</a></strong> library to 3D render the brain and the probe coordinates.</p>
 <section id="environment-setup">
@@ -655,7 +673,7 @@ Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># each point has 3 coordinates assocaited with it</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># each point has 3 coordinates associated with it</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
