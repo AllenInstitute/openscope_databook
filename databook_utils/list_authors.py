@@ -3,6 +3,7 @@ import subprocess
 
 blacklist = {"Publishing Bot", "github-actions[bot]", "GitHub Authors Action", "Ross Carter Peene", "rcpeene"}
 additional_authors = ["Josh Siegle", "Ahad Bawany"]
+aliases = {"colleenjg": "Colleen J. Gillon", "Carter Peene": "R. Carter Peene"}
 
 # a function that inserts text into a markdown file
 def insertAuthors(filename, placeholder_start, placeholder_end, authors):
@@ -29,6 +30,7 @@ def getContributors():
 	print(shortlog)
 	contributions = shortlog.split("\n")[:-1]
 	contributors = {contribution.split("\t")[1] : contribution.split("\t")[0].strip() for contribution in contributions}
+	contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
 	return contributors
 
 def main():
