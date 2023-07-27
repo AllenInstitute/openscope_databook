@@ -1,5 +1,3 @@
-# Methods
-
 ## DANDI
 At the Allen Institute, we frequently utilize a platform called [DANDI](https://dandiarchive.org/) (Data Archive and Neurophysiology Imaging). DANDI is a platform that allows open-source data sharing and archiving and acts as a centralized repository where researchers can deposit data. While some of these notebooks use pre-loaded data from DANDI, the ultimate purpose of this Databook is to teach users to take any dataset off DANDI and reproduce the analysis within these notebooks.
 
@@ -16,8 +14,9 @@ Throughout these notebooks, we analyze data that is stored in NWB (Neurodata Wit
 
  In order to do basic reading of NWB files we utilize [PyNWB](https://github.com/NeurodataWithoutBorders/pynwb), which is a Python package that allows users to read, write, and manipulate NWB files. We explain how to utilize PyNWB and how to explore NWB files in our [Reading an NWB file](./read_nwb.ipynb) notebook. In addition to viewing raw data, it is also useful to graphically visualize data that is stored in NWB files. In our notebooks, we do so by utilizing [NWBWidgets](https://github.com/NeurodataWithoutBorders/nwbwidgets), which is an interactive package that can be used in Jupyter notebooks to easily visualize data. Some examples of what this package can do is display time series data, spatial data, and spike trains. To visualize data from NWB files using methods that don't require Jupyter, you can utilize [HDFView](https://www.hdfgroup.org/downloads/hdfview/), a graphical user interface tool. To explore how to use these methods to visualize data from NWB files, please reference our [Explore an NWB file](./use_newwidgets.ipynb) notebook.
 
+
  ## Understanding Data Collection Techniques
-In this databook, we will be analyzing data from two different types of experimental techniques: two-photon calcium imaging (ophys) and extracellular electrophysiology (ecephys).
+In this Databook, we will be analyzing data from two different types of experimental techniques: two-photon calcium imaging (ophys) and extracellular electrophysiology (ecephys).
 
 Two-photon calcium imaging utilizes a fluorescence indicator that emits fluorescence when bound to calcium ions. The intensity of fluorescence is proportional to the concentration of calcium, and this allows us to measure and visualize neural activity at the cellular level. A specialized microscope detects the fluorescence and the data is converted to a visual image. The Allen Institute uses the [Suite2P](https://github.com/MouseLand/suite2p) algorithm to identify regions of interest, ROIs, from the images that are putative neurons, and each neuron's activity can be studied over the duration of an experiment.
 
