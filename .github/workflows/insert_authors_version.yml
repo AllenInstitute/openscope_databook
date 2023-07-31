@@ -21,7 +21,7 @@ jobs:
           repo: openscope_databook
 
       - name: Printing Latest Version
-        run: echo "$${{steps.get_version.outputs.release}}"
+        run: echo ${{ steps.get_version.outputs.release }}
 
       - name: Printing log
         run: git status
@@ -29,9 +29,11 @@ jobs:
       - name: Printing shortlog
         run: git log | git shortlog -sn
 
-      - name: Inserting authors
-        run: python ./databook_utils/list_authors.py
+      - name: Inserting authors and version
+        run: python ./databook_utils/list_authors_version.py
+        env:
+          LATEST_VERSION: ${{ steps.get_version.outputs.release }}
       
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update authors list in intro.md
+          commit_message: Update authors list and version in intro.md
