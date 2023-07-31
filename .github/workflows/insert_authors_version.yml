@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  list_authors:
+  insert_authors_version:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,7 @@ jobs:
           repo: openscope_databook
 
       - name: Printing Latest Version
-        run: echo steps.get_version.outputs.release
+        run: echo $${{steps.get_version.outputs.release}}
 
       - name: Printing log
         run: git status
