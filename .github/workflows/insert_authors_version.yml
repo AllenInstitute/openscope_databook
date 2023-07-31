@@ -30,7 +30,7 @@ jobs:
         run: git log | git shortlog -sn
 
       - name: Inserting authors and version
-        run: python ./databook_utils/list_authors_version.py
+        run: python ./databook_utils/insert_authors_version.py
         env:
           LATEST_VERSION: ${{ steps.get_version.outputs.release }}
       
