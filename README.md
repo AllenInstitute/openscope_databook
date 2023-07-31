@@ -42,5 +42,6 @@ We are releasing this code to the public as a tool we expect others to use and a
 - Analysis of functional connectivity.
 
 ### Chapter 5: Replicating figures
+- [Openscope Credit Assignment](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/replication/cred_assign_figures.ipynb)
 - Example notebooks from past projects
 - Guidelines for reproducible figures from NWB files
