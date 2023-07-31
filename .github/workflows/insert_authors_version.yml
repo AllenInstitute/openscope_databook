@@ -12,7 +12,14 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      
+
+      - name: Getting Version
+        id: get_version
+        uses: pozetroninc/github-action-get-latest-release@master
+
+      - name: Printing Latest Version
+        run: echo steps.get_version.outputs.release
+
       - name: Printing log
         run: git status
       
