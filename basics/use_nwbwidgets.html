@@ -115,10 +115,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  NWB Basics
+  Basics
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="background.html">
+   DANDI
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="download_nwb.html">
    Downloading an NWB File
@@ -179,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_responses.html">
    Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_spikes.html">
+   Visualizing Unit Spikes
   </a>
  </li>
 </ul>
@@ -250,6 +260,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../embargoed/cell_matching.html">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/jupyter_book.html">
+   Jupyter/Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/github.html">
+   Git/Github:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/environments.html">
+   Managing Environments on Multiple Platforms:
   </a>
  </li>
 </ul>
@@ -593,11 +625,12 @@ title="Print to PDF"
 <p>It can get cumbersome to manually dissect an NWB file with print statements. There are a few ways to view an NWB graphically instead. A great way to do this in a Jupyter notebook is with <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/nwbwidgets">NWBWidgets</a></strong>. Here, you can use NWBWidgets to view a file from a location on your machine. If you don’t want to download a file just to view it, you can still use NWBWidgets to view it remotely. Check out <a class="reference internal" href="stream_nwb.html"><span class="doc std std-doc">Streaming an NWB File with fsspec</span></a> to learn how to do this. Another way to explore an NWB file, that doesn’t require Jupyter, is with <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDFView</a>.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
+<span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
@@ -677,13 +710,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.6.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2179856764832
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2771337624112
 Fields:
   acquisition: {
     raw_running_wheel_rotation &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
@@ -732,7 +765,7 @@ Fields:
   session_id: 715093703
   session_start_time: 2019-01-19 00:54:18-08:00
   stimulus_notes: brain_observatory_1.1
-  subject: subject abc.EcephysSpecimen at 0x2179856428960
+  subject: subject abc.EcephysSpecimen at 0x2771337350064
 Fields:
   age: P118D
   age_in_days: 118.0
@@ -756,7 +789,7 @@ Fields:
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "fb037fcb861e489896b6812becc84a8e", "version_major": 2, "version_minor": 0}
+{"model_id": "41ce4ea97cb54ac8a6694703e81126aa", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>

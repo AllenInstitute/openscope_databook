@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bibliography" href="../bibliography.html" />
+    <link rel="next" title="Jupyter/Jupyter Book" href="../methods/jupyter_book.html" />
     <link rel="prev" title="Statistically Testing 2P Responses to Stimulus" href="test_2p_responses_embargoed.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -115,10 +115,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  NWB Basics
+  Basics
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/background.html">
+   DANDI
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/download_nwb.html">
    Downloading an NWB File
@@ -179,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_responses.html">
    Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_spikes.html">
+   Visualizing Unit Spikes
   </a>
  </li>
 </ul>
@@ -250,6 +260,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/jupyter_book.html">
+   Jupyter/Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/github.html">
+   Git/Github:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/environments.html">
+   Managing Environments on Multiple Platforms:
   </a>
  </li>
 </ul>
@@ -624,11 +656,12 @@ title="Print to PDF"
 <p>We use the Allen Institute’s <a class="reference external" href="https://github.com/AllenInstitute/ophys_nway_matching"><strong>Nway Matching</strong></a> pipeline for this which is described in more detail below.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
@@ -639,12 +672,12 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 </pre></div>
@@ -679,22 +712,19 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.5.1 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.2.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
-Opening file
-File already exists
-Opening file
-File already exists
 Opening file
 </pre></div>
 </div>
@@ -709,19 +739,8 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># these should be similar values, indicating that the images are from the same imaging plane</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">nwb</span> <span class="ow">in</span> <span class="n">nwbs</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">lab_meta_data</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">imaging_depth</span><span class="p">)</span>
-
-<span class="nn">File c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\utils.py:1009,</span> in <span class="ni">LabelledDict.__getitem__</span><span class="nt">(self, args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1007</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1008</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1009</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="ne">KeyError</span>: &#39;metadata&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>309
+309
 </pre></div>
 </div>
 </div>
@@ -738,23 +757,16 @@ Opening file
 <span class="k">def</span> <span class="nf">make_roi_entries</span><span class="p">(</span><span class="n">roi_table</span><span class="p">):</span>
     <span class="n">roi_entries</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">roi_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_table</span><span class="p">)):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
-        <span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
-        <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">])</span>
-        
-        <span class="n">mask_subimage</span> <span class="o">=</span> <span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;image_mask&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">][</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">height</span><span class="p">,</span><span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">width</span><span class="p">]</span>
-        
         <span class="n">roi_entry</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">]),</span>
-            <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;valid_roi&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">]),</span>
-            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
-            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span>
+            <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span>
-            <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="n">height</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+            <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
             <span class="c1"># convert 2D array to 2D list of bools</span>
-            <span class="s2">&quot;mask_matrix&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="nb">bool</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mask_subimage</span><span class="p">]</span>
+            <span class="s2">&quot;mask_matrix&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="nb">bool</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">roi_table</span><span class="p">[</span><span class="s2">&quot;image_mask&quot;</span><span class="p">][</span><span class="n">roi_idx</span><span class="p">]]</span>
         <span class="p">}</span>
         <span class="n">roi_entries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roi_entry</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">roi_entries</span>
@@ -827,6 +839,41 @@ Opening file
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:many=True not supported from argparse
+INFO:NwayMatching:NWAY_COMMIT_SHA None
+INFO:NwayMatching:Nway matching version 0.6.0
+WARNING:root:many=True not supported from argparse
+WARNING:root:many=True not supported from argparse
+INFO:PairwiseMatching:Matching 1193675753 to 1194754135
+INFO:PairwiseMatching:Matching 1193675753 to 1194754135: best registration was [&#39;Crop&#39;, &#39;CLAHE&#39;, &#39;PhaseCorrelate&#39;]
+C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\nway\utils.py:48: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+  df = df.sort_index(0)
+C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\nway\utils.py:49: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+  df = df.sort_index(1)
+INFO:NwayMatching:registration success(1) or failure (0):
+   0  1
+0  1  1
+1  1  1
+id map{
+  &quot;0&quot;: 1193675753,
+  &quot;1&quot;: 1194754135
+}
+C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\nway\nway_matching.py:208: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  matching_frame = matching_frame.append(pairframe)
+INFO:NwayMatching:Nway matching is done!
+INFO:NwayMatching:Creating match summary plots
+WARNING:root:setting Dict fields not supported from argparse
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\argschema\utils.py:346: FutureWarning: &#39;--nway_output.nway_matches&#39; is using old-style command-line syntax with each element as a separate argument. This will not be supported in argschema after 2.0. See http://argschema.readthedocs.io/en/master/user/intro.html#command-line-specification for details.
+  warnings.warn(warn_msg, FutureWarning)
+WARNING:root:many=True not supported from argparse
+INFO:NwayMatching:wrote matching_output\nway_match_fraction_plot_2023_07_26_10_18_15.png
+INFO:NwayMatching:wrote matching_output\nway_warp_overlay_plot_2023_07_26_10_18_15.png
+INFO:NwayMatching:wrote matching_output\nway_warp_summary_plot_2023_07_26_10_18_15.png
+INFO:NwayMatching:wrote ./output.json
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="showing-cell-matching-output">
@@ -849,6 +896,12 @@ Opening file
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.5, 560.5, 2951.5, -0.5)
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_17_1.png" src="../_images/cell_matching_17_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -859,6 +912,12 @@ Opening file
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x20d4b9b8fa0&gt;
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_18_1.png" src="../_images/cell_matching_18_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -868,6 +927,12 @@ Opening file
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fraction_plot</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x20d4b9a1400&gt;
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_19_1.png" src="../_images/cell_matching_19_1.png" />
 </div>
 </div>
 </section>
@@ -946,6 +1011,12 @@ Opening file
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Matched ROIs between sessions\n(White ROIs are unmatched)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/cell_matching_25_1.png" src="../_images/cell_matching_25_1.png" />
+</div>
 </div>
 </section>
 </section>
@@ -984,10 +1055,10 @@ Opening file
             <p class="prev-next-title">Statistically Testing 2P Responses to Stimulus</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../bibliography.html" title="next page">
+    <a class='right-next' id="next-link" href="../methods/jupyter_book.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bibliography</p>
+        <p class="prev-next-title">Jupyter/Jupyter Book</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

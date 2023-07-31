@@ -115,10 +115,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  NWB Basics
+  Basics
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/background.html">
+   DANDI
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/download_nwb.html">
    Downloading an NWB File
@@ -179,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_responses.html">
    Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_spikes.html">
+   Visualizing Unit Spikes
   </a>
  </li>
 </ul>
@@ -250,6 +260,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../embargoed/cell_matching.html">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/jupyter_book.html">
+   Jupyter/Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/github.html">
+   Git/Github:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/environments.html">
+   Managing Environments on Multiple Platforms:
   </a>
  </li>
 </ul>
@@ -717,11 +749,12 @@ title="Print to PDF"
 <p>In most analyses, some form of <em>inclusion criteria</em> is used to select neurons that are “responsive” to the stimulus conditions presented. There are no universally agreed upon inclusion criteria for this type of selection. In <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8114876/"><span id="id1">[<a class="reference internal" href="../bibliography.html#id6" title="Natalia Mesa, Jack Waters, and Saskia E. J. de Vries. The effect of inclusion criteria on the functional properties reported in mouse visual cortex. eNeuro, 2021. URL: https://www.eneuro.org/content/eneuro/8/1/ENEURO.0188-20.2021.full.pdf.">Mesa <em>et al.</em>, 2021</a>]</span></a>, it is demonstrated that the choice of inclusion criteria can dramatically affect what neurons are selected as responsive. This notebook does a similar demonstration, using the same five inclusion criteria on Ophys dF/F recordings to select responsive neurons from one experimental session. It can be seen that very different selections are made depending on the criteria used. This also underscores how different critera might be more or less appropriate for the type of stimulus and the type of measurements being used for analysis. We are sharing these so that this comparison can be reproduced on data and so results can more effectively use this choice to make their results more robust. For more information about dF/F data, see <a class="reference internal" href="../visualization/visualize_2p_responses.html"><span class="doc std std-doc">Visualizing 2P Responses to Stimulus</span></a>.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
@@ -736,7 +769,6 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
 
@@ -754,7 +786,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000036&quot;</span>
 <span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-389014/sub-389014_ses-20180705T152908_behavior+image+ophys.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;0bb3196c6d5e115d1adb92853c748c450fb6e78c&quot;</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -817,22 +849,6 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\p
 <section id="getting-2p-data-and-stimulus-data">
 <h2>Getting 2P Data and Stimulus Data<a class="headerlink" href="#getting-2p-data-and-stimulus-data" title="Permalink to this headline">#</a></h2>
 <p>Below, the fluorescence traces and timestamps are read from the file’s <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. In this notebook, we will be interested in the DFF trace specifically. Note that the exact format to access these traces can vary between newer and older NWB files, so some adjustments may be necessary. Additionally, the stimulus data is also read from the NWB file’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. Stimulus information is stored as a series of tables depending on the type of stimulus shown in the session. One such table is displayed below, as well as the names of all the tables. For more information on the dF/F data, see <a class="reference internal" href="../visualization/visualize_2p_responses.html"><span class="doc std std-doc">Visualizing 2P Responses to Stimulus</span></a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;DfOverF&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DfOverF pynwb.ophys.DfOverF at 0x1925033366864
-Fields:
-  roi_response_series: {
-    imaging_plane_1 &lt;class &#39;pynwb.ophys.RoiResponseSeries&#39;&gt;
-  }
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dff = nwb.processing[&quot;ophys&quot;][&quot;dff&quot;]</span>
@@ -1261,7 +1277,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ROI (neuron)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_28_2.png" src="../_images/test_2p_responses_28_2.png" />
+<img alt="../_images/test_2p_responses_27_2.png" src="../_images/test_2p_responses_27_2.png" />
 </div>
 </div>
 </section>
@@ -1282,7 +1298,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_30_0.png" src="../_images/test_2p_responses_30_0.png" />
+<img alt="../_images/test_2p_responses_29_0.png" src="../_images/test_2p_responses_29_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1300,7 +1316,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_31_0.png" src="../_images/test_2p_responses_31_0.png" />
+<img alt="../_images/test_2p_responses_30_0.png" src="../_images/test_2p_responses_30_0.png" />
 </div>
 </div>
 </section>
@@ -1359,7 +1375,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_36_0.png" src="../_images/test_2p_responses_36_0.png" />
+<img alt="../_images/test_2p_responses_35_0.png" src="../_images/test_2p_responses_35_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1381,7 +1397,7 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22 / 41 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_37_1.png" src="../_images/test_2p_responses_37_1.png" />
+<img alt="../_images/test_2p_responses_36_1.png" src="../_images/test_2p_responses_36_1.png" />
 </div>
 </div>
 </section>
@@ -1428,7 +1444,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_40_0.png" src="../_images/test_2p_responses_40_0.png" />
+<img alt="../_images/test_2p_responses_39_0.png" src="../_images/test_2p_responses_39_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1450,7 +1466,7 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15 / 41 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_41_1.png" src="../_images/test_2p_responses_41_1.png" />
+<img alt="../_images/test_2p_responses_40_1.png" src="../_images/test_2p_responses_40_1.png" />
 </div>
 </div>
 </section>
@@ -1498,7 +1514,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function matplotlib.pyplot.show(close=None, block=None)&gt;
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_44_1.png" src="../_images/test_2p_responses_44_1.png" />
+<img alt="../_images/test_2p_responses_43_1.png" src="../_images/test_2p_responses_43_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1514,7 +1530,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_45_0.png" src="../_images/test_2p_responses_45_0.png" />
+<img alt="../_images/test_2p_responses_44_0.png" src="../_images/test_2p_responses_44_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1536,7 +1552,7 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 / 41 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_46_1.png" src="../_images/test_2p_responses_46_1.png" />
+<img alt="../_images/test_2p_responses_45_1.png" src="../_images/test_2p_responses_45_1.png" />
 </div>
 </div>
 </section>
@@ -1581,7 +1597,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_49_0.png" src="../_images/test_2p_responses_49_0.png" />
+<img alt="../_images/test_2p_responses_48_0.png" src="../_images/test_2p_responses_48_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1603,7 +1619,7 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 / 41 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_50_1.png" src="../_images/test_2p_responses_50_1.png" />
+<img alt="../_images/test_2p_responses_49_1.png" src="../_images/test_2p_responses_49_1.png" />
 </div>
 </div>
 </section>
@@ -1638,7 +1654,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_53_0.png" src="../_images/test_2p_responses_53_0.png" />
+<img alt="../_images/test_2p_responses_52_0.png" src="../_images/test_2p_responses_52_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1660,7 +1676,7 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41 / 41 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_54_1.png" src="../_images/test_2p_responses_54_1.png" />
+<img alt="../_images/test_2p_responses_53_1.png" src="../_images/test_2p_responses_53_1.png" />
 </div>
 </div>
 </section>

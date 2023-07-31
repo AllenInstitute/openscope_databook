@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Showing Receptive Fields" href="../first-order/receptive_fields.html" />
+    <link rel="next" title="Visualizing Unit Spikes" href="visualize_unit_spikes.html" />
     <link rel="prev" title="Visualizing Neuronal Unit Spikes" href="visualize_unit_responses.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -115,10 +115,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  NWB Basics
+  Basics
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/background.html">
+   DANDI
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/download_nwb.html">
    Downloading an NWB File
@@ -179,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_unit_spikes.html">
+   Visualizing Unit Spikes
   </a>
  </li>
 </ul>
@@ -250,6 +260,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../embargoed/cell_matching.html">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/jupyter_book.html">
+   Jupyter/Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/github.html">
+   Git/Github:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/environments.html">
+   Managing Environments on Multiple Platforms:
   </a>
  </li>
 </ul>
@@ -624,11 +656,12 @@ title="Print to PDF"
 <p>In <em>2-Photon</em> Image NWB Files, the data stored measure fluorescence. From the raw 2P images, the The Allen Institute uses the <a class="reference external" href="https://github.com/MouseLand/suite2p"><strong>Suite2P</strong></a> segmentation algorithm to identify <em>regions of interest</em> (ROIs). For more information on ROIs go to the <a class="reference internal" href="visualize_2p_raw.html"><span class="doc std std-doc">Visualizing Raw 2-Photon Images</span></a> notebook. For each ROI, two measures of fluorescence are stored; <em>corrected fluorescence</em> and <em>DF/F</em>. Corrected fluorescence (hereafter referred to as ‘fluorescence’) is the brightness of the region with unknown units. DF/F is a normalized metric that takes into account baseline fluorescence value in order to provide a measure that can be compared from cell to cell. These traces are stored in the <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. This notebook uses these fluorescence traces and the stimulus information from the tables in the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section of the file to visualize neuron responses to stimulus.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
@@ -642,7 +675,6 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -673,10 +705,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                              SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
+sub-416366_ses-768476976_behavior+image+ophys.nwb 1.5 GB 1.5 GB           100%    -     done                   
+Summary:                                          1.5 GB 1.5 GB                         1 done                 
+                                                         100.00%                                               
+Downloaded file to ./sub-416366_ses-768476976_behavior+image+ophys.nwb
 Opening file
 </pre></div>
 </div>
@@ -1163,10 +1196,10 @@ Opening file
             <p class="prev-next-title">Visualizing Neuronal Unit Spikes</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../first-order/receptive_fields.html" title="next page">
+    <a class='right-next' id="next-link" href="visualize_unit_spikes.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Showing Receptive Fields</p>
+        <p class="prev-next-title">Visualizing Unit Spikes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

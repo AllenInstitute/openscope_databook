@@ -115,10 +115,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  NWB Basics
+  Basics
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="background.html">
+   DANDI
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="download_nwb.html">
    Downloading an NWB File
@@ -179,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_responses.html">
    Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_spikes.html">
+   Visualizing Unit Spikes
   </a>
  </li>
 </ul>
@@ -250,6 +260,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../embargoed/cell_matching.html">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/jupyter_book.html">
+   Jupyter/Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/github.html">
+   Git/Github:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/environments.html">
+   Managing Environments on Multiple Platforms:
   </a>
  </li>
 </ul>
@@ -627,11 +659,12 @@ title="Print to PDF"
 <p>After downloading an NWB file, you <em>may</em> want to view the data inside. You can do basic reading of the file with <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/pynwb">PyNWB</a></strong>. This is a package designed to utilize, modify, and process NWB files. The basic read functionality of PyNWB is shown below.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
+<span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
@@ -672,6 +705,12 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sub-699733573_ses-715093703.nwb
+./sub-699733573_ses-715093703.nwb
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -686,9 +725,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.53.0) of dandi/dandi-cli is available. You are using 0.46.6
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-699733573_ses-715093703.nwb
 </pre></div>
 </div>
@@ -710,11 +746,11 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.6.0-alpha is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x1716049481344
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2616661374288
 Fields:
   acquisition: {
     raw_running_wheel_rotation &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
@@ -763,7 +799,7 @@ Fields:
   session_id: 715093703
   session_start_time: 2019-01-19 00:54:18-08:00
   stimulus_notes: brain_observatory_1.1
-  subject: subject abc.EcephysSpecimen at 0x1716049229424
+  subject: subject abc.EcephysSpecimen at 0x2616662385568
 Fields:
   age: P118D
   age_in_days: 118.0
@@ -809,7 +845,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_16628\3249629881.py:4: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_8728\3249629881.py:4: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
   pd.set_option(&#39;display.max_colwidth&#39;, -1)
 </pre></div>
 </div>
@@ -3626,7 +3662,7 @@ Fields:
       <td>processing</td>
       <td>Fluorescence Trace Comments</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].comments</td>
+      <td>nwb.processing["ophys"][c"orrected_fluorescence""].roi_response_series[""traces""].comments"</td>
       <td>Comments</td>
       <td>NaN</td>
     </tr>
@@ -3635,7 +3671,7 @@ Fields:
       <td>processing</td>
       <td>Fluorescence Trace Conversion</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].conversion</td>
+      <td>nwb.processing["ophys"][c"orrected_fluorescence""].roi_response_series[""traces""].conversion"</td>
       <td>Scalar to multiply each element in data to convert it to the specified unit</td>
       <td>NaN</td>
     </tr>
@@ -3644,7 +3680,7 @@ Fields:
       <td>processing</td>
       <td>Fluorescence Trace Description</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].description</td>
+      <td>nwb.processing["ophys"][c"orrected_fluorescence""].roi_response_series[""traces""].description"</td>
       <td>Description</td>
       <td>NaN</td>
     </tr>
@@ -3653,7 +3689,7 @@ Fields:
       <td>processing</td>
       <td>Fluorescence Trace Interval</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].interval</td>
+      <td>nwb.processing["ophys"][c"orrected_fluorescence""].roi_response_series[""traces""].interval"</td>
       <td>Unexplained</td>
       <td>NaN</td>
     </tr>
@@ -3662,7 +3698,7 @@ Fields:
       <td>processing</td>
       <td>Fluorescence Trace Offset</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].offset</td>
+      <td>nwb.processing["ophys"][c"orrected_fluorescence""].roi_response_series[""traces""]</td>
       <td>Scalar to add to each element in the data scaled by ‘conversion’ to finish converting it to the specified unit.</td>
       <td>NaN</td>
     </tr>
@@ -3671,7 +3707,7 @@ Fields:
       <td>processing</td>
       <td>Fluorescence Trace Resolution</td>
       <td>number</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].resolution</td>
+      <td>nwb.processing["ophys"][c"orrected_fluorescence""].roi_response_series[""traces""].resolution"</td>
       <td>The smallest meaningful difference (in specified unit) between values in data</td>
       <td>NaN</td>
     </tr>
@@ -3679,9 +3715,9 @@ Fields:
       <th>112</th>
       <td>processing</td>
       <td>Fluorescence Trace Timestamps Unit</td>
-      <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].timestamps_unit</td>
+      <td>string"nwb.processing[""ophys""]["c"orrected_fluorescence""].roi_response_series[""traces""].timestamps_unit"</td>
       <td>Name of the unit for the timestamps</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -3689,7 +3725,7 @@ Fields:
       <td>processing</td>
       <td>Fluorescence Trace Unit</td>
       <td>string</td>
-      <td>nwb.processing["running"]["running_wheel_signal_voltage"].unit</td>
+      <td>nwb.processing["ophys"][c"orrected_fluorescence""].roi_response_series[""traces""].unit"</td>
       <td>Name of the unit for the data</td>
       <td>NaN</td>
     </tr>

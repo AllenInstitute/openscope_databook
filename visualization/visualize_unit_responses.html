@@ -115,10 +115,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  NWB Basics
+  Basics
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/background.html">
+   DANDI
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/download_nwb.html">
    Downloading an NWB File
@@ -179,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="visualize_2p_responses.html">
    Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualize_unit_spikes.html">
+   Visualizing Unit Spikes
   </a>
  </li>
 </ul>
@@ -250,6 +260,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../embargoed/cell_matching.html">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/jupyter_book.html">
+   Jupyter/Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/github.html">
+   Git/Github:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/environments.html">
+   Managing Environments on Multiple Platforms:
   </a>
  </li>
 </ul>
@@ -560,6 +592,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regionwise-activity-throughout-epochs">
+   Regionwise Activity Throughout Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#showing-spike-times">
    Showing Spike Times
   </a>
@@ -641,6 +678,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regionwise-activity-throughout-epochs">
+   Regionwise Activity Throughout Epochs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#showing-spike-times">
    Showing Spike Times
   </a>
@@ -688,11 +730,12 @@ title="Print to PDF"
 <p>After processing Neuropixel ecephys data with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort</a></strong>, individual neuronal units have been identified and are stored in the units table, in the <code class="docutils literal notranslate"><span class="pre">Units</span></code> section of the NWB file. The units table contains information about hypothetical neurons determined by Kilosort. With this information and the stimulus information found in the stimulus tables of the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, this notebook helps examine the spiking behavior of these units in response to stimulus and their associated waveforms</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
@@ -705,8 +748,6 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -722,7 +763,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
 <span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-703279277/sub-703279277_ses-719161530.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -736,14 +777,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.6.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
@@ -1555,7 +1593,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14459dfc550&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21ca7568760&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_unit_responses_19_1.png" src="../_images/visualize_unit_responses_19_1.png" />
@@ -1593,12 +1631,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">channel_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">electrodes</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">probe_name</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
 <span class="c1"># get all spike times from units whose peak channel belongs to the selected probe</span>
-<span class="n">all_spike_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">probe_spike_times</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">channel_ids</span><span class="p">:</span>
-        <span class="n">all_spike_times</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_times&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">probe_spike_times</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_times&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
     
-<span class="nb">len</span><span class="p">(</span><span class="n">all_spike_times</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">probe_spike_times</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1612,7 +1650,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make histogram of unit spikes per second over specified timeframe</span>
 <span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">))</span>
-<span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">all_spike_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">probe_spike_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1640,7 +1678,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">height</span><span class="o">+</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;# spikes&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Probe Spikes Per Second Throughout Epochs&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">probe_name</span><span class="si">}</span><span class="s2"> Spikes Per Second Throughout Epochs&quot;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.12</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist</span><span class="p">)</span>
@@ -1648,10 +1686,324 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x144843ff340&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21d04bdc610&gt;]
 </pre></div>
 </div>
 <img alt="../_images/visualize_unit_responses_25_1.png" src="../_images/visualize_unit_responses_25_1.png" />
+</div>
+</div>
+</section>
+<section id="regionwise-activity-throughout-epochs">
+<h2>Regionwise Activity Throughout Epochs<a class="headerlink" href="#regionwise-activity-throughout-epochs" title="Permalink to this headline">#</a></h2>
+<p>We can also break down our activity based on brain regions (with a bit of work). To do this, we must first be able to retrieve the brain region of each unit. The trick to do this lay in the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table, shown below. The <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table contains the brain region for each electrode id, while the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table (shown above) contains the <code class="docutils literal notranslate"><span class="pre">Peak</span> <span class="pre">Channel</span> <span class="pre">ID</span></code> for each Unit. These can be used together to get the brain region of each unit’s peak channel. Once this is done, this information can be used just like the Probe selection above to get to get spike counts over time of each Unit in a selected region. Below, set <code class="docutils literal notranslate"><span class="pre">brain_region</span></code>, <code class="docutils literal notranslate"><span class="pre">start_time</span></code>, and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to view such a plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>imp</th>
+      <th>location</th>
+      <th>filtering</th>
+      <th>group</th>
+      <th>group_name</th>
+      <th>probe_vertical_position</th>
+      <th>probe_horizontal_position</th>
+      <th>probe_id</th>
+      <th>local_index</th>
+      <th>valid_data</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>850249265</th>
+      <td>7955.0</td>
+      <td>3766.0</td>
+      <td>3766.0</td>
+      <td>NaN</td>
+      <td>Eth</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>20</td>
+      <td>43</td>
+      <td>729445650</td>
+      <td>0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>850249267</th>
+      <td>7955.0</td>
+      <td>3756.0</td>
+      <td>3756.0</td>
+      <td>NaN</td>
+      <td>TH</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>20</td>
+      <td>11</td>
+      <td>729445650</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249273</th>
+      <td>7955.0</td>
+      <td>3727.0</td>
+      <td>3727.0</td>
+      <td>NaN</td>
+      <td>TH</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>60</td>
+      <td>43</td>
+      <td>729445650</td>
+      <td>4</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249277</th>
+      <td>7954.0</td>
+      <td>3708.0</td>
+      <td>3708.0</td>
+      <td>NaN</td>
+      <td>APN</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>80</td>
+      <td>59</td>
+      <td>729445650</td>
+      <td>6</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249283</th>
+      <td>7954.0</td>
+      <td>3679.0</td>
+      <td>3679.0</td>
+      <td>NaN</td>
+      <td>APN</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>100</td>
+      <td>11</td>
+      <td>729445650</td>
+      <td>9</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249289</th>
+      <td>7953.0</td>
+      <td>3640.0</td>
+      <td>3640.0</td>
+      <td>NaN</td>
+      <td>APN</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>140</td>
+      <td>43</td>
+      <td>729445650</td>
+      <td>12</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249295</th>
+      <td>7952.0</td>
+      <td>3612.0</td>
+      <td>3612.0</td>
+      <td>NaN</td>
+      <td>APN</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>160</td>
+      <td>27</td>
+      <td>729445650</td>
+      <td>15</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249299</th>
+      <td>7952.0</td>
+      <td>3593.0</td>
+      <td>3593.0</td>
+      <td>NaN</td>
+      <td>APN</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>180</td>
+      <td>11</td>
+      <td>729445650</td>
+      <td>17</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249305</th>
+      <td>7951.0</td>
+      <td>3565.0</td>
+      <td>3565.0</td>
+      <td>NaN</td>
+      <td>APN</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>220</td>
+      <td>43</td>
+      <td>729445650</td>
+      <td>20</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>850249311</th>
+      <td>7950.0</td>
+      <td>3537.0</td>
+      <td>3537.0</td>
+      <td>NaN</td>
+      <td>APN</td>
+      <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB</td>
+      <td>240</td>
+      <td>27</td>
+      <td>729445650</td>
+      <td>23</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># map electrode ids to brain region acronyms</span>
+<span class="n">electrode_locations</span> <span class="o">=</span> <span class="p">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]:</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">))}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">electrode_locations</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISpm&#39;, &#39;CA2&#39;, &#39;NOT&#39;, &#39;VISp&#39;, &#39;Eth&#39;, &#39;VISal&#39;, &#39;VISrl&#39;, &#39;MB&#39;, &#39;DG&#39;, &#39;VPM&#39;, &#39;CA3&#39;, &#39;PO&#39;, &#39;APN&#39;, &#39;LP&#39;, &#39;VISl&#39;, &#39;grey&#39;, &#39;TH&#39;, &#39;SUB&#39;, &#39;LGd&#39;, &#39;VISam&#39;, &#39;POL&#39;, &#39;CA1&#39;, &#39;VL&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brain_region</span> <span class="o">=</span> <span class="s2">&quot;VISpm&quot;</span>
+<span class="n">time_start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">time_end</span> <span class="o">=</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get all spike times from units whose peak channel belongs to the selected brain region</span>
+<span class="n">region_spike_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)):</span>
+    <span class="n">unit_channel</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">unit_location</span> <span class="o">=</span> <span class="n">electrode_locations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">unit_channel</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">unit_location</span> <span class="o">==</span> <span class="n">brain_region</span><span class="p">:</span>
+        <span class="n">region_spike_times</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="s2">&quot;spike_times&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+    
+<span class="nb">len</span><span class="p">(</span><span class="n">region_spike_times</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4178172
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make histogram of unit spikes per second over specified timeframe</span>
+<span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">region_spike_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate plot of spike histogram with colored epoch intervals and legend</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># assign unique color to each stimulus name</span>
+<span class="n">stim_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">epoch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">})</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">)))</span>
+<span class="n">stim_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">stim_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">))}</span>
+
+<span class="n">epoch_key</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="c1"># draw colored rectangles for each epoch</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+    <span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_end</span> <span class="o">=</span> <span class="n">epoch</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
+    <span class="n">epoch_key</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">height</span><span class="o">+</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;# spikes&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">brain_region</span><span class="si">}</span><span class="s2"> Spikes Per Second Throughout Epochs&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.12</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21d0c9b2760&gt;]
+</pre></div>
+</div>
+<img alt="../_images/visualize_unit_responses_32_1.png" src="../_images/visualize_unit_responses_32_1.png" />
 </div>
 </div>
 </section>
@@ -1730,7 +2082,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Units Spikes Over Time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_30_1.png" src="../_images/visualize_unit_responses_30_1.png" />
+<img alt="../_images/visualize_unit_responses_37_1.png" src="../_images/visualize_unit_responses_37_1.png" />
 </div>
 </div>
 </section>
@@ -1813,7 +2165,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_37_0.png" src="../_images/visualize_unit_responses_37_0.png" />
+<img alt="../_images/visualize_unit_responses_44_0.png" src="../_images/visualize_unit_responses_44_0.png" />
 </div>
 </div>
 </section>
@@ -1855,7 +2207,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_40_0.png" src="../_images/visualize_unit_responses_40_0.png" />
+<img alt="../_images/visualize_unit_responses_47_0.png" src="../_images/visualize_unit_responses_47_0.png" />
 </div>
 </div>
 </section>
@@ -1892,10 +2244,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x14459b5e5e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21d0d3b57c0&gt;
 </pre></div>
 </div>
-<img alt="../_images/visualize_unit_responses_43_1.png" src="../_images/visualize_unit_responses_43_1.png" />
+<img alt="../_images/visualize_unit_responses_50_1.png" src="../_images/visualize_unit_responses_50_1.png" />
 </div>
 </div>
 </section>
@@ -1932,7 +2284,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/visualize_unit_responses_46_0.png" src="../_images/visualize_unit_responses_46_0.png" />
+<img alt="../_images/visualize_unit_responses_53_0.png" src="../_images/visualize_unit_responses_53_0.png" />
 </div>
 </div>
 </section>

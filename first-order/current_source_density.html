@@ -115,10 +115,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  NWB Basics
+  Basics
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/background.html">
+   DANDI
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../basics/download_nwb.html">
    Downloading an NWB File
@@ -179,6 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../visualization/visualize_2p_responses.html">
    Visualizing 2P Responses to Stimulus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../visualization/visualize_unit_spikes.html">
+   Visualizing Unit Spikes
   </a>
  </li>
 </ul>
@@ -250,6 +260,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../embargoed/cell_matching.html">
    Cell Matching Across Days
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/jupyter_book.html">
+   Jupyter/Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/github.html">
+   Git/Github:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../methods/environments.html">
+   Managing Environments on Multiple Platforms:
   </a>
  </li>
 </ul>
@@ -674,11 +706,12 @@ title="Print to PDF"
 <p>It is typically more useful to view CSD as an average across many stimulus trials for more visible results. In this notebook, stimulus times are used to average the LFP responses of several trials. To do this, the relevant stimulus times are selected from the <code class="docutils literal notranslate"><span class="pre">stimulus</span> <span class="pre">table</span></code>, then the LFP data is interpolated. Next, time windows of the trials are taken from the LFP data and averaged. Finally, the average LFP response is used as input to the CSD calculation.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### if running on Google Colab, run this cell once, then restart the runtime and run the rest of the notebook</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">if</span> <span class="s2">&quot;COLAB_GPU&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
@@ -692,7 +725,6 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">pq</span>
 
-<span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="kn">from</span> <span class="nn">elephant.current_source_density</span> <span class="kn">import</span> <span class="n">generate_lfp</span><span class="p">,</span> <span class="n">estimate_csd</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">from</span> <span class="nn">neo</span> <span class="kn">import</span> <span class="n">AnalogSignal</span>
@@ -726,14 +758,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.55.1) of dandi/dandi-cli is available. You are using 0.46.6
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                            SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
-sub-703279277_ses-719161530.nwb 3.1 GB 3.1 GB           100%    ok    done                   
-Summary:                        3.1 GB 3.1 GB                         1 done                 
-                                       100.00%                                               
-Downloaded file to ./sub-703279277_ses-719161530.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
@@ -743,11 +768,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                                    SIZE   DONE           DONE% CHECKSUM STATUS          MESSAGE
-sub-703279277_ses-719161530_probe-729445648_ecephys.nwb 2.4 GB 2.4 GB          100%    ok    done                   
-Summary:                                                2.4 GB 2.4 GB                        1 done                 
-                                                               100.00%                                              
-Downloaded file to ./sub-703279277_ses-719161530_probe-729445648_ecephys.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
@@ -765,7 +786,7 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_729445648_lfp_data pynwb.ecephys.ElectricalSeries at 0x1916788174128
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probe_729445648_lfp_data pynwb.ecephys.ElectricalSeries at 0x2214435636512
 Fields:
   comments: no comments
   conversion: 1.0
