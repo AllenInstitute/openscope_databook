@@ -53,7 +53,7 @@ def main():
 	insertIntoMarkdown("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors_text)
 
 	# insert version number with link into intro file
-	version_text = "[](https://github.com/AllenInstitute/openscope_databook/releases)"
+	version_text = f"[{getLatestRelease}](https://github.com/AllenInstitute/openscope_databook/releases)"
 	insertIntoMarkdown("./docs/intro.md", "<!-- version start -->", "<!-- version end -->", version_text)
 
 
