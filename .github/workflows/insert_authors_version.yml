@@ -1,0 +1,39 @@
+name: insert authors and version
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  insert_authors_version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Getting Version
+        id: get_version
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: AllenInstitute
+          repo: openscope_databook
+
+      - name: Printing Latest Version
+        run: echo ${{ steps.get_version.outputs.release }}
+
+      - name: Printing log
+        run: git status
+      
+      - name: Printing shortlog
+        run: git log | git shortlog -sn
+
+      - name: Inserting authors and version
+        run: python ./databook_utils/list_authors_version.py
+        env:
+          LATEST_VERSION: ${{ steps.get_version.outputs.release }}
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update authors list and version in intro.md
