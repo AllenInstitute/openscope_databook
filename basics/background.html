@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>DANDI &#8212; OpenScope Databook</title>
+    <title>BACKGROUND &#8212; OpenScope Databook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   DANDI
+   BACKGROUND
   </a>
  </li>
  <li class="toctree-l1">
@@ -276,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../methods/github.html">
-   Git/Github:
+   Git/Github
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,17 +478,17 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dandi">
    DANDI
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nwb-files">
    NWB FILES
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#understanding-data-collection-techniques">
    Understanding Data Collection Techniques
   </a>
@@ -502,7 +502,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>DANDI</h1>
+                <h1>BACKGROUND</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -512,17 +512,17 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dandi">
    DANDI
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nwb-files">
    NWB FILES
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#understanding-data-collection-techniques">
    Understanding Data Collection Techniques
   </a>
@@ -537,8 +537,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="dandi">
-<h1>DANDI<a class="headerlink" href="#dandi" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="background">
+<h1>BACKGROUND<a class="headerlink" href="#background" title="Permalink to this headline">#</a></h1>
+<section id="dandi">
+<h2>DANDI<a class="headerlink" href="#dandi" title="Permalink to this headline">#</a></h2>
 <p>At the Allen Institute, we frequently utilize a platform called <a class="reference external" href="https://dandiarchive.org/">DANDI</a> (Data Archive and Neurophysiology Imaging). DANDI is a platform that allows open-source data sharing and archiving and acts as a centralized repository where researchers can deposit data. While some of these notebooks use pre-loaded data from DANDI, the ultimate purpose of this Databook is to teach users to take any dataset off DANDI and reproduce the analysis within these notebooks.</p>
 <p>At the beginning of each notebook, we need to download the data that we will be analyzing. Our data is stored in NWB files (explained below), and the NWB files for a given experiment are contained in datasets called dandisets which are available for download from the <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a>. First, we identify what dandiset we want to access, and from there we identify the filepath for the specific NWB file we want to download. While these notebooks provide most of the steps to download and access an NWB file, here are instruction for accessing a particular filepath for any file stored on DANDI:</p>
 <ol class="simple">
@@ -550,25 +552,26 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="nwb-files">
-<h1>NWB FILES<a class="headerlink" href="#nwb-files" title="Permalink to this headline">#</a></h1>
+<h2>NWB FILES<a class="headerlink" href="#nwb-files" title="Permalink to this headline">#</a></h2>
 <p>Throughout these notebooks, we analyze data that is stored in NWB (Neurodata Without Borders) files. NWB files utilize a standardized format for storing and sharing optical data, behavioral data, and neurophysiology data. Their purpose is to address the need for a universal data format that makes analysis accessible across different experimental techniques. NWB files contain raw data, processed data, analysis results, and metadata all organized in a uniform manner across different research projects. During analysis within these notebooks, we often need to access data within different parts of an NWB file. To explore the specifications of NWB format or to clarify the documentation used within NWB files, you can explore the <a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/">NWB Format Specification</a> website. This is a helpful resource to understand how to access different parts of an NWB file that may not be provided in examples within our notebooks.</p>
 <p>In order to do basic reading of NWB files we utilize <a class="reference external" href="https://github.com/NeurodataWithoutBorders/pynwb">PyNWB</a>, which is a Python package that allows users to read, write, and manipulate NWB files. We explain how to utilize PyNWB and how to explore NWB files in our <a class="reference internal" href="read_nwb.html"><span class="doc std std-doc">Reading an NWB file</span></a> notebook. In addition to viewing raw data, it is also useful to graphically visualize data that is stored in NWB files. In our notebooks, we do so by utilizing <a class="reference external" href="https://github.com/NeurodataWithoutBorders/nwbwidgets">NWBWidgets</a>, which is an interactive package that can be used in Jupyter notebooks to easily visualize data. Some examples of what this package can do is display time series data, spatial data, and spike trains. To visualize data from NWB files using methods that don’t require Jupyter, you can utilize <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDFView</a>, a graphical user interface tool. To explore how to use these methods to visualize data from NWB files, please reference our <span class="xref myst">Explore an NWB file</span> notebook.</p>
 </section>
 <section id="understanding-data-collection-techniques">
-<h1>Understanding Data Collection Techniques<a class="headerlink" href="#understanding-data-collection-techniques" title="Permalink to this headline">#</a></h1>
+<h2>Understanding Data Collection Techniques<a class="headerlink" href="#understanding-data-collection-techniques" title="Permalink to this headline">#</a></h2>
 <p>In this Databook, we will be analyzing data from two different types of experimental techniques: two-photon calcium imaging (ophys) and extracellular electrophysiology (ecephys).</p>
 <p>Two-photon calcium imaging utilizes a fluorescence indicator that emits fluorescence when bound to calcium ions. The intensity of fluorescence is proportional to the concentration of calcium, and this allows us to measure and visualize neural activity at the cellular level. A specialized microscope detects the fluorescence and the data is converted to a visual image. The Allen Institute uses the <a class="reference external" href="https://github.com/MouseLand/suite2p">Suite2P</a> algorithm to identify regions of interest, ROIs, from the images that are putative neurons, and each neuron’s activity can be studied over the duration of an experiment.</p>
 <p>Extracellular electrophysiology is a technique that analyzes the electrical activity of neurons in the brain. At the Allen Institute, we use Neuropixel probes which are inserted into the brain and record the local electrical activity of neurons in a specific location. The probe is only 10mm long and 70 microns wide, but has hundreds of channels that run along its length. Each channel can record electrical activity from a singular neuron or a group of neurons in the form of action potential (spikes) or local field potentials (LFPs).</p>
 <p>Ultimately, both experimental techniques are used to collect information about neuronal activity in the brain, but the way the data is analyzed for each technique is different. We provide notebooks that explain the analysis for both ophys and ecephys. The first notebook that discusses ophys analysis is <span class="xref myst">Visualizing Raw 2-Photon Images</span> and the first notebook that discusses ecephys analysis is <span class="xref myst">Visualizing LFP responses to Stimulus</span>.</p>
-<p>Resources for ophys:</p>
+<p><strong>Resources for Ophys:</strong></p>
 <ol class="simple">
 <li><p><a class="reference external" href="https://www.pnas.org/doi/epdf/10.1073/pnas.1232232100">In vivo two photon calcium imaging of neuronal networks</a>  is a paper that can provide an introduction to two-photon calcium imaging techniques</p></li>
 </ol>
-<p>Resources for ecephys:</p>
+<p><strong>Resources for Ecephys:</strong></p>
 <ol class="simple">
 <li><p><a class="reference external" href="https://www.nature.com/articles/s41586-020-03171-x">Survey of spiking in the mouse visual system reveals functional hierarchy</a> is a paper from the Allen Institute that can provide an introduction to ecephys and the use of neuropixel probes.</p></li>
 <li><p><a class="reference external" href="https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels">here</a> is a visualization of the neuropixel probes that may come in handy when trying to visualize how the data is collected from the probe itself.</p></li>
 </ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

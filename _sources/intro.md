@@ -4,12 +4,12 @@
 
 <!-- authors start -->
 
- *R. Carter Peene (927), Katrina Ager (52), Jerome Lecoq (7), Colleen J. Gillon (5), Josh Siegle, Ahad Bawany*
+ *R. Carter Peene (932), Katrina Ager (52), Jerome Lecoq (7), Colleen J. Gillon (5), Josh Siegle, Ahad Bawany*
 
 <!-- authors end -->
 <!-- version start -->
 
- [v0.6.0](https://github.com/AllenInstitute/openscope_databook/releases)
+ [v0.7.0](https://github.com/AllenInstitute/openscope_databook/releases)
 
 <!-- version end -->
 
@@ -69,13 +69,13 @@ Binder will automatically setup the environment with [repo2docker](https://githu
 ### Dandihub
 [Dandihub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by DANDI. Dandihub does not automatically reproduce the environment required for these notebooks, but importantly, Dandihub allows for persistent storage of your files, so you can leave your work and come back to it later. It can be used by hovering over the `Launch` button in the top-right of a notebook and selecting `JupyterHub`. In order to run notebooks on Dandihub, you must sign in with your Github account. To set up the correct environment on Dandihub, open a `terminal` tab, navigate to the directory `openscope_databook` and run the command
 ```
-pip install -r ./requirements.txt --user
+pip install -e .
 ```
 
 ### Locally
 You can download an individual notebook by pressing the `Download` button in the top-right and selecting `.ipynb`. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the `Github` button in the top-right and selecting `repository`. When run locally, the environment can be replicated with our [requirements.txt](https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt) file using the command 
 ```
-pip install -r ./requirements.txt --user
+pip install -e .
 ```
 It is recommended that this is done within a conda environment using Python 3.8 to minimize any interference with local machine environments.
 From there, you can execute the notebook in Jupyter by running the following command within the repo directory;
