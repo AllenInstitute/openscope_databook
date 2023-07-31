@@ -1,4 +1,4 @@
-name: list_authors
+name: insert authors and version
 on:
   workflow_call:
   workflow_dispatch:
@@ -16,6 +16,9 @@ jobs:
       - name: Getting Version
         id: get_version
         uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: AllenInstitute
+          repo: openscope_databook
 
       - name: Printing Latest Version
         run: echo steps.get_version.outputs.release
