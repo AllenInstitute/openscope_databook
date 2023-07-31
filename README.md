@@ -31,7 +31,7 @@ We are releasing this code to the public as a tool we expect others to use and a
 - [2P: Cell matching across days](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/cell_matching.ipynb)
 - [Neuropixel: Stimuli averages with neuropixel data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_spike_responses.ipynb)
 - [2P: Stimuli averages with 2P data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_2p_responses.ipynb)
-- 2P: How to align timestamps across modalities.
+- [2P: How to align timestamps across modalities](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/embargoed/modality_alignment.ipynb)
 
 ### Chapter 4: Higher-order analysis
 - Sending NWB raw data to a segmentation pipeline: example with Suite2p.
@@ -42,5 +42,6 @@ We are releasing this code to the public as a tool we expect others to use and a
 - Analysis of functional connectivity.
 
 ### Chapter 5: Replicating figures
+- [Openscope Credit Assignment](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/replication/cred_assign_figures.ipynb)
 - Example notebooks from past projects
 - Guidelines for reproducible figures from NWB files
