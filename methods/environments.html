@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Managing Environments on Multiple Platforms: &#8212; OpenScope Databook</title>
+    <title>Managing Environments on Multiple Platforms &#8212; OpenScope Databook</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -281,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Managing Environments on Multiple Platforms:
+   Managing Environments on Multiple Platforms
   </a>
  </li>
 </ul>
@@ -468,7 +468,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Managing Environments on Multiple Platforms:</h1>
+                <h1>Managing Environments on Multiple Platforms</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -480,8 +480,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="managing-environments-on-multiple-platforms">
-<h1>Managing Environments on Multiple Platforms:<a class="headerlink" href="#managing-environments-on-multiple-platforms" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="managing-environments-on-multiple-platforms">
+<h1>Managing Environments on Multiple Platforms<a class="headerlink" href="#managing-environments-on-multiple-platforms" title="Permalink to this headline">#</a></h1>
 <p>As briefly mentioned in <a class="reference internal" href="jupyter_book.html"><span class="doc std std-doc">Jupyter/Jupyter Book</span></a>, Jupyter Book allows users to launch notebooks in the Databook onto other computing platforms. Namely, <span class="xref myst">Dandihub</span>, <span class="xref myst">Binder</span>, and <span class="xref myst">Google Colab</span>. In the case of Binder, clicking the launch button automatically produces a docker container with the necessary environment installed by using the files <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/apt.txt">apt.txt</a>, <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/setup.py">setup.py</a>, and <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/postBuild">postBuild</a> from the root directory. In the case of Dandihub, once a user has made an account, the environment should be persistent between runtimes, but it must still be setup once. As for Google Colab, the environment must be setup every runtime. If a notebook is being run locally, the environment may or may not be installed depending on the user.</p>
 <p>The measure we employed to solve this is to have an <em>“Environment Setup”</em> cell at the top of every notebook. This cell checks to see if the <code class="docutils literal notranslate"><span class="pre">databook_utils</span></code> package exists. databook_utils consists of merely a few small Python modules which handle DANDI operations that are used in nearly every Notebook in the databook. It can be presumed that the presence of databook_utils is a reliable indicator of whether or not the proper environment of the Databook is installed in the local environment of a notebook. Therefore, if importing databook_utils succeeds, the notebook continues. If it fails, the databook is cloned from Github and the necessary environment is installed from within the Databook’s root directory using the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>. This installs all the necessary pip dependencies as well as the databook_utils package which is stored within the Databook at <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/tree/main/databook_utils">/databook_utils</a>. However, the Jupyter kernel does not update its environment with the local environment until it has been restarted. In the case that the environment was installed by the Environment Setup, the Jupyter kernel must be restarted by the user and run again.</p>
 <p>Finally, Jupyter Book allows for <a class="reference external" href="https://jupyterbook.org/en/stable/interactive/thebe.html">Thebe integration</a>. Thebe is a platform which allows Jupyter Book to run notebooks within its own UI, using Binder as its backend runtime. Just as with the other launch buttons, Thebe can be activate by pressing the its button, labeled “Live Code” in the top right of the UI. Just as with Binder, the environment is setup automatically using files from the Databook repository.</p>
