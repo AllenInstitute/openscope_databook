@@ -1,4 +1,4 @@
-### Jupyter/Jupyter Book
+# Jupyter/Jupyter Book
 
 The Databook primarily functions as a repository comprised of [Jupyter notebooks](jupyter.org) that each demonstrate a concept (or series of related concepts) within Neuroscience Analysis. The notebooks are written integrated with informative markdown cells that serve to explain the purpose and meaning of the code in the code cells of the notebook. Each notebook produces plots which are meant to assist in the demonstration of the analytical concepts used as well as yield meaningful scientific information about the data which was analyzed.
 
