@@ -1,4 +1,4 @@
-### Git/Github:
+# Git/Github
 
 The main code repository and development location of the Databook is on [Github](https://github.com/), and the project is version-controlled with [Git](https://git-scm.com/). The Databook is developed with version-control practices in mind. Branches are used for developing separate features and commits are pushed from local machines to the remote repo. A `dev` branch is used as the basis for all continuous integration and merging separate feature branches. During deployments, if the dev branch passes the build test, it may be merged into the `main` branch, intended to host the latest working release of the Databook. Finally, from the main branch, the Databook is deployed to the public website and a release is made manually using the Github release feature.
 
