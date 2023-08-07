@@ -1,4 +1,4 @@
-### Managing Environments on Multiple Platforms:
+# Managing Environments on Multiple Platforms
 
 As briefly mentioned in [Jupyter/Jupyter Book](./jupyter_book.md), Jupyter Book allows users to launch notebooks in the Databook onto other computing platforms. Namely, [Dandihub](hub.dandiarchive.org), [Binder](mybinder.org), and [Google Colab](colab.research.google.com). In the case of Binder, clicking the launch button automatically produces a docker container with the necessary environment installed by using the files [apt.txt](https://github.com/AllenInstitute/openscope_databook/blob/main/apt.txt), [setup.py](https://github.com/AllenInstitute/openscope_databook/blob/main/setup.py), and [postBuild](https://github.com/AllenInstitute/openscope_databook/blob/main/postBuild) from the root directory. In the case of Dandihub, once a user has made an account, the environment should be persistent between runtimes, but it must still be setup once. As for Google Colab, the environment must be setup every runtime. If a notebook is being run locally, the environment may or may not be installed depending on the user.
 
