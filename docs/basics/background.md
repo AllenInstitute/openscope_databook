@@ -1,4 +1,4 @@
-# BACKGROUND
+# Background
 
 ### DANDI
 At the Allen Institute, we frequently utilize a platform called [DANDI](https://dandiarchive.org/) (Data Archive and Neurophysiology Imaging). DANDI is a platform that allows open-source data sharing and archiving and acts as a centralized repository where researchers can deposit data. While some of these notebooks use pre-loaded data from DANDI, the ultimate purpose of this Databook is to teach users to take any dataset off DANDI and reproduce the analysis within these notebooks.
