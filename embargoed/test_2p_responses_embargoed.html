@@ -1,118 +1,160 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Statistically Testing 2P Responses to Stimulus &#8212; OpenScope Databook</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'embargoed/test_2p_responses_embargoed';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Cell Matching Across Days" href="cell_matching.html" />
     <link rel="prev" title="Visualizing Behavioral Data" href="visualize_behavior.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-TJPN1M4PDX');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">OpenScope Databook</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -121,642 +163,365 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Basics
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../basics/background.html">
-   Background
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../basics/download_nwb.html">
-   Downloading an NWB File
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../basics/read_nwb.html">
-   Reading an NWB File
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../basics/use_nwbwidgets.html">
-   Exploring an NWB File
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../basics/stream_nwb.html">
-   Streaming an NWB File with fsspec
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../basics/get_dandiset_metadata.html">
-   Getting Experimental Metadata from DANDI
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Visualizing NWB Files
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_2p_raw.html">
-   Visualizing Raw 2-Photon Images
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">
-   Visualizing Neuropixel Probe Locations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_unit_metrics.html">
-   Visualizing Unit Quality Metrics
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_lfp_responses.html">
-   Visualizing LFP Responses to Stimulus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_unit_responses.html">
-   Visualizing Neuronal Unit Spikes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_2p_responses.html">
-   Visualizing 2P Responses to Stimulus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../visualization/visualize_unit_spikes.html">
-   Visualizing Unit Spikes
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  First-Order Analysis
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/receptive_fields.html">
-   Showing Receptive Fields
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/optotagging.html">
-   Identifying Optotagged Units
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/current_source_density.html">
-   Current Source Density Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/test_2p_responses.html">
-   Statistically Testing 2P Responses to Stimulus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../first-order/test_spike_responses.html">
-   Statistically Testing Spike Responses to Stimulus
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Replicating Figures
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../replication/cred_assign_figures.html">
-   Replicating OpenScope Credit Assignment project figures
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../replication/cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Embargoed Datasets
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="modality_alignment.html">
-   Aligning Data across Modalities
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualize_behavior.html">
-   Visualizing Behavioral Data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Statistically Testing 2P Responses to Stimulus
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cell_matching.html">
-   Cell Matching Across Days
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="modality_alignment.html">Aligning Data across Modalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell_matching.html">Cell Matching Across Days</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Methods
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../methods/jupyter_book.html">
-   Jupyter/Jupyter Book
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../methods/github.html">
-   Git/Github
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../methods/environments.html">
-   Managing Environments on Multiple Platforms
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/jupyter_book.html">Jupyter/Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Bibliography and FAQ
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../bibliography.html">
-   Bibliography
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../FAQ.html">
-   FAQ
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/embargoed/test_2p_responses_embargoed.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/embargoed/test_2p_responses_embargoed.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/embargoed/test_2p_responses_embargoed.ipynb&branch=main"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on JupyterHub"
+      
+      
+      
+      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/embargoed/test_2p_responses_embargoed.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_jupyterhub.svg">
   </span>
-<span class="headerbtn__text-container">JupyterHub</span>
+<span class="btn__text-container">JupyterHub</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/embargoed/test_2p_responses_embargoed.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/embargoed/test_2p_responses_embargoed.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
 <button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Live Code</span>
+<span class="btn__text-container">Live Code</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fembargoed/test_2p_responses_embargoed.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/embargoed/test_2p_responses_embargoed.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/AllenInstitute/openscope_databook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fembargoed/test_2p_responses_embargoed.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/embargoed/test_2p_responses_embargoed.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environment-setup">
-   Environment Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloading-ophys-file">
-   Downloading Ophys File
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-2p-data-and-stimulus-data">
-   Getting 2P Data and Stimulus Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fluorescence-interpolation">
-   Fluorescence Interpolation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#selecting-stimulus-times">
-   Selecting Stimulus Times
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aligning-stimulus-response-time-windows">
-   Aligning Stimulus Response Time Windows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-plotting-methods">
-   Defining Plotting Methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#viewing-stimulus-response-windows">
-   Viewing Stimulus Response Windows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#showing-response-windows">
-   Showing Response Windows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inclusion-criteria">
-   Inclusion Criteria
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-1">
-     Inclusion Criterion 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-2">
-     Inclusion Criterion 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-3">
-     Inclusion Criterion 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-4">
-     Inclusion Criterion 4
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-5">
-     Inclusion Criterion 5
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Statistically Testing 2P Responses to Stimulus</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environment-setup">
-   Environment Setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloading-ophys-file">
-   Downloading Ophys File
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#getting-2p-data-and-stimulus-data">
-   Getting 2P Data and Stimulus Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fluorescence-interpolation">
-   Fluorescence Interpolation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#selecting-stimulus-times">
-   Selecting Stimulus Times
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aligning-stimulus-response-time-windows">
-   Aligning Stimulus Response Time Windows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-plotting-methods">
-   Defining Plotting Methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#viewing-stimulus-response-windows">
-   Viewing Stimulus Response Windows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#showing-response-windows">
-   Showing Response Windows
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inclusion-criteria">
-   Inclusion Criteria
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-1">
-     Inclusion Criterion 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-2">
-     Inclusion Criterion 2
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-3">
-     Inclusion Criterion 3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-4">
-     Inclusion Criterion 4
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inclusion-criterion-5">
-     Inclusion Criterion 5
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Statistically Testing 2P Responses to Stimulus</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-ophys-file">Downloading Ophys File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-2p-data-and-stimulus-data">Getting 2P Data and Stimulus Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fluorescence-interpolation">Fluorescence Interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-stimulus-times">Selecting Stimulus Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aligning-stimulus-response-time-windows">Aligning Stimulus Response Time Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-plotting-methods">Defining Plotting Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-stimulus-response-windows">Viewing Stimulus Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#showing-response-windows">Showing Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criteria">Inclusion Criteria</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-1">Inclusion Criterion 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-2">Inclusion Criterion 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-3">Inclusion Criterion 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-4">Inclusion Criterion 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-5">Inclusion Criterion 5</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="statistically-testing-2p-responses-to-stimulus">
-<h1>Statistically Testing 2P Responses to Stimulus<a class="headerlink" href="#statistically-testing-2p-responses-to-stimulus" title="Permalink to this headline">#</a></h1>
+<h1>Statistically Testing 2P Responses to Stimulus<a class="headerlink" href="#statistically-testing-2p-responses-to-stimulus" title="Permalink to this heading">#</a></h1>
 <p>In most analyses, some form of <em>inclusion criteria</em> is used to select neurons that are “responsive” to the stimulus conditions presented. There are no universally agreed upon inclusion criteria for this type of selection. In <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8114876/"><span id="id1">[<a class="reference internal" href="../bibliography.html#id6" title="Natalia Mesa, Jack Waters, and Saskia E. J. de Vries. The effect of inclusion criteria on the functional properties reported in mouse visual cortex. eNeuro, 2021. URL: https://www.eneuro.org/content/eneuro/8/1/ENEURO.0188-20.2021.full.pdf.">Mesa <em>et al.</em>, 2021</a>]</span></a>, it is demonstrated that the choice of inclusion criteria can dramatically affect what neurons are selected as responsive. This notebook does a similar demonstration, using the same five inclusion criteria on Ophys dF/F recordings to select responsive neurons from one experimental session. It can be seen that very different selections are made depending on the criteria used. This also underscores how different critera might be more or less appropriate for the type of stimulus and the type of measurements being used for analysis. We are sharing these so that this comparison can be reproduced on data and so results can more effectively use this choice to make their results more robust. For more information about dF/F data, see <a class="reference internal" href="../visualization/visualize_2p_responses.html"><span class="doc std std-doc">Visualizing 2P Responses to Stimulus</span></a>.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this headline">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -789,7 +554,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="downloading-ophys-file">
-<h2>Downloading Ophys File<a class="headerlink" href="#downloading-ophys-file" title="Permalink to this headline">#</a></h2>
+<h2>Downloading Ophys File<a class="headerlink" href="#downloading-ophys-file" title="Permalink to this heading">#</a></h2>
 <p>Change the values below to download the file you’re interested in. In this example, we use the dF/F trace from an Ophys NWB File, so you’ll have to choose one with the same kind of data. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to correspond to the dandiset id and filepath of the file you want. If you’re accessing an embargoed dataset, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -825,7 +590,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="getting-2p-data-and-stimulus-data">
-<h2>Getting 2P Data and Stimulus Data<a class="headerlink" href="#getting-2p-data-and-stimulus-data" title="Permalink to this headline">#</a></h2>
+<h2>Getting 2P Data and Stimulus Data<a class="headerlink" href="#getting-2p-data-and-stimulus-data" title="Permalink to this heading">#</a></h2>
 <p>Below, the fluorescence traces and timestamps are read from the file’s <code class="docutils literal notranslate"><span class="pre">Processing</span></code> section. In this notebook, we will be interested in the DFF trace specifically. Note that the exact format to access these traces can vary between newer and older NWB files, so some adjustments may be necessary. Additionally, the stimulus data is also read from the NWB file’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. Stimulus information is stored as a series of tables depending on the type of stimulus shown in the session. One such table is displayed below, as well as the names of all the tables. For more information on the dF/F data, see <a class="reference internal" href="../visualization/visualize_2p_responses.html"><span class="doc std std-doc">Visualizing 2P Responses to Stimulus</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -867,7 +632,7 @@ Fields:
 </div>
 </section>
 <section id="fluorescence-interpolation">
-<h2>Fluorescence Interpolation<a class="headerlink" href="#fluorescence-interpolation" title="Permalink to this headline">#</a></h2>
+<h2>Fluorescence Interpolation<a class="headerlink" href="#fluorescence-interpolation" title="Permalink to this heading">#</a></h2>
 <p>Because we cannot be certain that the dF/F trace is at a perfectly regular Hz, we will interpolate it to be able to compare stimulus timestamps to their approximate dF/F times. After you have a valid list of timestamps, you can generate a linearly-spaced timestamp array called <code class="docutils literal notranslate"><span class="pre">time_axis</span></code>, and interpolate the dF/F data along it, making interpolated DFF data called <code class="docutils literal notranslate"><span class="pre">interp_dff</span></code>. This should be a 2D array with dimensions <code class="docutils literal notranslate"><span class="pre">roi</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span></code>, where ROIs are the different cells whose fluorescence is measured. Here, the timestamps are interpolated to 10 Hertz, but you can change this by setting <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -915,7 +680,7 @@ Fields:
 </div>
 </section>
 <section id="selecting-stimulus-times">
-<h2>Selecting Stimulus Times<a class="headerlink" href="#selecting-stimulus-times" title="Permalink to this headline">#</a></h2>
+<h2>Selecting Stimulus Times<a class="headerlink" href="#selecting-stimulus-times" title="Permalink to this heading">#</a></h2>
 <p>Different types of stimulus require different kinds of inclusion criteria. Since the available stimulus tables vary significantly depending which NWB file and which experimental session you’re analyzing, you’ll have to adjust some values below. First, select which stimulus table you want by changing the key used below in <code class="docutils literal notranslate"><span class="pre">nwb.intervals</span></code>. The list of stimulus table names is printed below to inform this choice. Additionally, you’ll have to modify the function <code class="docutils literal notranslate"><span class="pre">stim_select</span></code> to select the stimulus times you want to use. In this example, a natural movie of worms is the selected stimulus because natural movies typically evoke strong responses. The repeated frame 40 is chosen here as our selected stimulus time, somewhat arbitrarily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1225,7 +990,7 @@ Fields:
 </div>
 </section>
 <section id="aligning-stimulus-response-time-windows">
-<h2>Aligning Stimulus Response Time Windows<a class="headerlink" href="#aligning-stimulus-response-time-windows" title="Permalink to this headline">#</a></h2>
+<h2>Aligning Stimulus Response Time Windows<a class="headerlink" href="#aligning-stimulus-response-time-windows" title="Permalink to this heading">#</a></h2>
 <p>Now that you have your interpolated dF/F data and the selected stimulus timestamps, you identify the windows of time in the dF/F data that exist around each stimulus event. Since the dF/F data have been interpolated, we can easily translate timestamps to indices within the LFP trace array. Set <code class="docutils literal notranslate"><span class="pre">window_start_time</span></code> to be a negative number, representing the seconds before the stimulus event and <code class="docutils literal notranslate"><span class="pre">window_end_time</span></code> to be number of seconds afterward. Then the <code class="docutils literal notranslate"><span class="pre">windows</span></code> array will be generated as a set of slices of the <code class="docutils literal notranslate"><span class="pre">interp_dff</span></code> trace by using <code class="docutils literal notranslate"><span class="pre">interp_hz</span></code> to convert seconds to array indices. The output of this, the <code class="docutils literal notranslate"><span class="pre">windows</span></code> array, should be a 3D array shape <code class="docutils literal notranslate"><span class="pre">trials</span></code> by <code class="docutils literal notranslate"><span class="pre">rois</span></code> by <code class="docutils literal notranslate"><span class="pre">time</span></code>. These windows can be used for our analysis, and can be used to apply and display the affects of our various inclusion criteria.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1274,7 +1039,7 @@ Fields:
 </div>
 </section>
 <section id="defining-plotting-methods">
-<h2>Defining Plotting Methods<a class="headerlink" href="#defining-plotting-methods" title="Permalink to this headline">#</a></h2>
+<h2>Defining Plotting Methods<a class="headerlink" href="#defining-plotting-methods" title="Permalink to this heading">#</a></h2>
 <p>Here are a few methods to display the stimulus response windows. These will be used to display the ROIs selected by each inclusion critera. <code class="docutils literal notranslate"><span class="pre">show_dff_response</span></code> can be used to show one stimulus response window (or an average window). <code class="docutils literal notranslate"><span class="pre">show_many_responses</span></code> will be used to show many windows alongside eachother. You can use the resulting plots to compare how different inclusion criteria can affect what rois are selected as <em>responsive</em> neurons.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1348,7 +1113,7 @@ Fields:
 </div>
 </section>
 <section id="viewing-stimulus-response-windows">
-<h2>Viewing Stimulus Response Windows<a class="headerlink" href="#viewing-stimulus-response-windows" title="Permalink to this headline">#</a></h2>
+<h2>Viewing Stimulus Response Windows<a class="headerlink" href="#viewing-stimulus-response-windows" title="Permalink to this heading">#</a></h2>
 <p>At last we are ready to play with the data. For starters, the stimulus windows can averaged across all stimulus trials to get an average view of how the ROIs respond.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1369,12 +1134,12 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ROI (neuron)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_embargoed_28_2.png" src="../_images/test_2p_responses_embargoed_28_2.png" />
+<img alt="../_images/4e909d1987997b69eb86429bd66340e7fc0ab5cead0419d374c901890ce2dbec.png" src="../_images/4e909d1987997b69eb86429bd66340e7fc0ab5cead0419d374c901890ce2dbec.png" />
 </div>
 </div>
 </section>
 <section id="showing-response-windows">
-<h2>Showing Response Windows<a class="headerlink" href="#showing-response-windows" title="Permalink to this headline">#</a></h2>
+<h2>Showing Response Windows<a class="headerlink" href="#showing-response-windows" title="Permalink to this heading">#</a></h2>
 <p>This is a view of many of the raw data response windows. Here, we show just the first 24 response windows. It can be seen that some neurons definitely show activity over time. However, it can be difficult to identify any patterns between trials with this view. Below, we also generate a <em>neuronwise</em> view of the first 24 neuron’s response windows. That is, a view of how each neuron responses across all trials. From this, we can see more clearly how neurons behave. Immediately, you can tell that some neurons have an evoked response at the onset of the stimulus, while others appear to be inhibited by the stimulus, and yet others show no strong responses.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1390,7 +1155,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_embargoed_30_0.png" src="../_images/test_2p_responses_embargoed_30_0.png" />
+<img alt="../_images/0686104a3a12a30c3299454bf308382fe7cafa78119845662258fed39dee355c.png" src="../_images/0686104a3a12a30c3299454bf308382fe7cafa78119845662258fed39dee355c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1408,12 +1173,12 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_embargoed_31_0.png" src="../_images/test_2p_responses_embargoed_31_0.png" />
+<img alt="../_images/d8f83df91d9f1b6e09bdfe792f4c9ed68df7c7d42c8eba56dd4438fc779f24a8.png" src="../_images/d8f83df91d9f1b6e09bdfe792f4c9ed68df7c7d42c8eba56dd4438fc779f24a8.png" />
 </div>
 </div>
 </section>
 <section id="inclusion-criteria">
-<h2>Inclusion Criteria<a class="headerlink" href="#inclusion-criteria" title="Permalink to this headline">#</a></h2>
+<h2>Inclusion Criteria<a class="headerlink" href="#inclusion-criteria" title="Permalink to this heading">#</a></h2>
 <p>Now we can apply various inclusion critera to see how they affect what neurons are selected. 5 inclusion criteria are demonstrated below, but it should be noted that there are many other ways to select neurons, or to adjust the ones shown here. Different inclusion criteria have different levels of permissiveness, and will result in different behaviors in the selected cells. To start, we split the windows, in time, at the onset of the stimulus to yield the <code class="docutils literal notranslate"><span class="pre">baseline</span></code> activity of each roi, and the <code class="docutils literal notranslate"><span class="pre">evoked_response</span></code> activity. These should have shape <code class="docutils literal notranslate"><span class="pre">trial</span></code> by <code class="docutils literal notranslate"><span class="pre">roi</span></code> by <code class="docutils literal notranslate"><span class="pre">time</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1437,7 +1202,7 @@ Fields:
 </div>
 </div>
 <section id="inclusion-criterion-1">
-<h3>Inclusion Criterion 1<a class="headerlink" href="#inclusion-criterion-1" title="Permalink to this headline">#</a></h3>
+<h3>Inclusion Criterion 1<a class="headerlink" href="#inclusion-criterion-1" title="Permalink to this heading">#</a></h3>
 <p>The first criterion is one of the simplest. This one is easy to alter and has a medium level of permissiveness. Below is shown a distribution of the ROI’s maximum mean evoked response. That is, the maximum dF/F value achieved during the evoked averaged response of an ROI to all stimulus trials. A line is drawn to show where the selection is made within the distribution. Also below are the neuronwise response windows of some of the selected neurons. It can be seen that these neurons appear more responsive than the (pseudo) random sample shown above.</p>
 <p><em>The maximum value of the mean evoked response is &gt;10%</em> <a class="reference external" href="https://rdcu.be/dbFb9"><span id="id2">[<a class="reference internal" href="../bibliography.html#id7" title="Wenzhi Sun, Zhongchao Tan, Brett D. Mensh, and Na Ji. Thalamus provides layer 4 of primary visual cortex with orientation- and direction-tuned inputs. Nature Neuroscience, 2016. URL: https://rdcu.be/dbFb9.">Sun <em>et al.</em>, 2016</a>]</span></a></p>
 <div class="cell docutils container">
@@ -1468,7 +1233,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_embargoed_36_0.png" src="../_images/test_2p_responses_embargoed_36_0.png" />
+<img alt="../_images/fa1033a30961bca080f5a8a83cc84820c43f40449e5978d10f69bb8aa7ec304f.png" src="../_images/fa1033a30961bca080f5a8a83cc84820c43f40449e5978d10f69bb8aa7ec304f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1490,12 +1255,12 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31 / 103 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_embargoed_37_1.png" src="../_images/test_2p_responses_embargoed_37_1.png" />
+<img alt="../_images/b09f09ba3f746d6ecbb71af5fc10d8cb567149e5e3574d8c50c17d3ea0e4edad.png" src="../_images/b09f09ba3f746d6ecbb71af5fc10d8cb567149e5e3574d8c50c17d3ea0e4edad.png" />
 </div>
 </div>
 </section>
 <section id="inclusion-criterion-2">
-<h3>Inclusion Criterion 2<a class="headerlink" href="#inclusion-criterion-2" title="Permalink to this headline">#</a></h3>
+<h3>Inclusion Criterion 2<a class="headerlink" href="#inclusion-criterion-2" title="Permalink to this heading">#</a></h3>
 <p>This criterion is slightly more complicated, and accounts for the fact that neurons might behave inconsistently. It uses the maximum values of the evoked response, and compares it to an absolue value (5%) as well as a value relative to its own baseline activity (3x the standard deviation). It is difficult to show the exact metric being used as a distribution, but to assist in interpretation, a distribution is shown below of the the mean ratio between the maximum evoked value and the standard distribution of the baseline behavior. Note that, this is not the exact metric used to select rois; as this criterion selects rois that exhibit significant activity in 50% or more trials. For our dataset, this criterion is rather stringent, only including 4 rois in the final selection.</p>
 <p><em>In 50% of trials, the evoked response is A) larger than 3x the SD of the baseline, and B) larger than 5% dF/F</em> <a class="reference external" href="https://www.jneurosci.org/content/jneuro/32/28/9716.full.pdf"><span id="id3">[<a class="reference internal" href="../bibliography.html#id8" title="Morgane M. Roth, Fritjof Helmchen, and Bjorn M. Kampa. Distinct functional properties of primary and posteromedial visual area of mouse neocortex. The Journal of Neuroscience, 2012. URL: https://www.jneurosci.org/content/jneuro/32/28/9716.full.pdf.">Roth <em>et al.</em>, 2012</a>]</span></a></p>
 <div class="cell docutils container">
@@ -1537,7 +1302,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_embargoed_40_0.png" src="../_images/test_2p_responses_embargoed_40_0.png" />
+<img alt="../_images/a02e52527b1625b85144f83d866deaf2084c07504096a44fad8a3d6dedc948e3.png" src="../_images/a02e52527b1625b85144f83d866deaf2084c07504096a44fad8a3d6dedc948e3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1559,12 +1324,12 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 / 103 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_embargoed_41_1.png" src="../_images/test_2p_responses_embargoed_41_1.png" />
+<img alt="../_images/78027a07760057981cc1ba0dcd49a1a15d2b662984e0e14c4b889f604e07bba6.png" src="../_images/78027a07760057981cc1ba0dcd49a1a15d2b662984e0e14c4b889f604e07bba6.png" />
 </div>
 </div>
 </section>
 <section id="inclusion-criterion-3">
-<h3>Inclusion Criterion 3<a class="headerlink" href="#inclusion-criterion-3" title="Permalink to this headline">#</a></h3>
+<h3>Inclusion Criterion 3<a class="headerlink" href="#inclusion-criterion-3" title="Permalink to this heading">#</a></h3>
 <p>This is perhaps the most sophisticated criterion in our list. For each ROI, It compares the distribution of responses between the baseline activity and the evoked activity to identify any statistically significant response. Below, an example is shown of these distributions for one ROI. Change <code class="docutils literal notranslate"><span class="pre">roi</span></code> below to view the comparison for other cells. Additionally, the distribution of p-values of all rois is shown.</p>
 <p><em>Paired T-test (p &lt; 0.05) with Bonferroni correction, comparing the mean baseline to the mean evoked response</em> <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/22196337/"><span id="id4">[<a class="reference internal" href="../bibliography.html#id9" title="Mark L. Andermann, Aaron M. Kerlin, Demetris K. Roumis, Lindsey L. Glickfield, and R. clay Reid. Functional specialization of mouse higher visual cortical areas. Neuron, 2011. URL: https://www.sciencedirect.com/science/article/pii/S0896627311010129.">Andermann <em>et al.</em>, 2011</a>]</span></a></p>
 <div class="cell docutils container">
@@ -1607,7 +1372,7 @@ Fields:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function matplotlib.pyplot.show(close=None, block=None)&gt;
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_embargoed_44_1.png" src="../_images/test_2p_responses_embargoed_44_1.png" />
+<img alt="../_images/f7c0cca833a5edc0e2a524ee1cf15b76b76faab503e4feee5c15ad886a6fe0a7.png" src="../_images/f7c0cca833a5edc0e2a524ee1cf15b76b76faab503e4feee5c15ad886a6fe0a7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1623,7 +1388,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_embargoed_45_0.png" src="../_images/test_2p_responses_embargoed_45_0.png" />
+<img alt="../_images/30274ddee4e10f58289a865f31a717edf2fdfd5795990460ae795cfb9e27702d.png" src="../_images/30274ddee4e10f58289a865f31a717edf2fdfd5795990460ae795cfb9e27702d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1645,12 +1410,12 @@ Fields:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15 / 103 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_embargoed_46_1.png" src="../_images/test_2p_responses_embargoed_46_1.png" />
+<img alt="../_images/377a871211a54ed81c2eeb27edb3851d02f90b0e84048159e98ee210505a2c61.png" src="../_images/377a871211a54ed81c2eeb27edb3851d02f90b0e84048159e98ee210505a2c61.png" />
 </div>
 </div>
 </section>
 <section id="inclusion-criterion-4">
-<h3>Inclusion Criterion 4<a class="headerlink" href="#inclusion-criterion-4" title="Permalink to this headline">#</a></h3>
+<h3>Inclusion Criterion 4<a class="headerlink" href="#inclusion-criterion-4" title="Permalink to this heading">#</a></h3>
 <p>This criterion is the most stringent for our dataset. It relies on calculating the measure of <code class="docutils literal notranslate"><span class="pre">reliability</span></code> of a cell’s activity. It can be seen that in this example, no ROIs are selected. This is probably due to no ROIs having reliable responses to the stimulus. Perhaps conducting more trials could improve the reliability.</p>
 <p><em>A) The mean response to any stimulus condition is is &gt; 6% dF/F and B) reliability &gt; 1</em> <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3248795/"><span id="id5">[<a class="reference internal" href="../bibliography.html#id10" title="James H. Marshel, Marina E. Garrett, Ian Nauhaus, and Edward M. Callaway. Functional specialization of seven mouse visual cortical areas. Neuron, 2012. URL: https://www.sciencedirect.com/science/article/pii/S0896627311010464.">Marshel <em>et al.</em>, 2012</a>]</span></a>.</p>
 <div class="cell docutils container">
@@ -1690,7 +1455,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_embargoed_49_0.png" src="../_images/test_2p_responses_embargoed_49_0.png" />
+<img alt="../_images/637823c3ade70e7369719e25152255cfd178041a35e5c674ac280ccc9199abba.png" src="../_images/637823c3ade70e7369719e25152255cfd178041a35e5c674ac280ccc9199abba.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1717,7 +1482,7 @@ Input data has length 0; Nothing to display
 </div>
 </section>
 <section id="inclusion-criterion-5">
-<h3>Inclusion Criterion 5<a class="headerlink" href="#inclusion-criterion-5" title="Permalink to this headline">#</a></h3>
+<h3>Inclusion Criterion 5<a class="headerlink" href="#inclusion-criterion-5" title="Permalink to this heading">#</a></h3>
 <p>Finally, the simplest criterion. This criterion is clearly the most permissive, as it includes all ROIs for this dataset.</p>
 <p><em>The maximum evoked response to any stimulus condition is &gt; 4% dF/F</em> <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/24583013/"><span id="id6">[<a class="reference internal" href="../bibliography.html#id11" title="Manavu Tohmi, Reiko Meguro, Hiroaki Tsukano, Ryuichi Hishida, and Katsuei Shibuki. The extrageniculate visual pathway generates distinct response properties in the higher visual areas of mice. Current Biology, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0960982214001262.">Tohmi <em>et al.</em>, 2014</a>]</span></a>.</p>
 <div class="cell docutils container">
@@ -1751,7 +1516,7 @@ Input data has length 0; Nothing to display
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/test_2p_responses_embargoed_53_0.png" src="../_images/test_2p_responses_embargoed_53_0.png" />
+<img alt="../_images/29f65e57897896440b3d1a58d606700c39ead191660fa2321aed566f69289654.png" src="../_images/29f65e57897896440b3d1a58d606700c39ead191660fa2321aed566f69289654.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1773,7 +1538,7 @@ Input data has length 0; Nothing to display
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103 / 103 ROIs selected
 </pre></div>
 </div>
-<img alt="../_images/test_2p_responses_embargoed_54_1.png" src="../_images/test_2p_responses_embargoed_54_1.png" />
+<img alt="../_images/1cc338249e96c7d9eb172c8fd02cf72316903b6124ce90c17dba51eb023607a6.png" src="../_images/1cc338249e96c7d9eb172c8fd02cf72316903b6124ce90c17dba51eb023607a6.png" />
 </div>
 </div>
 </section>
@@ -1800,50 +1565,121 @@ Input data has length 0; Nothing to display
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="visualize_behavior.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Visualizing Behavioral Data</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="visualize_behavior.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visualizing Behavioral Data</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="cell_matching.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="cell_matching.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Cell Matching Across Days</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Carter Peene<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-ophys-file">Downloading Ophys File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-2p-data-and-stimulus-data">Getting 2P Data and Stimulus Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fluorescence-interpolation">Fluorescence Interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-stimulus-times">Selecting Stimulus Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aligning-stimulus-response-time-windows">Aligning Stimulus Response Time Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-plotting-methods">Defining Plotting Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-stimulus-response-windows">Viewing Stimulus Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#showing-response-windows">Showing Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criteria">Inclusion Criteria</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-1">Inclusion Criterion 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-2">Inclusion Criterion 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-3">Inclusion Criterion 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-4">Inclusion Criterion 4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusion-criterion-5">Inclusion Criterion 5</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carter Peene
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
