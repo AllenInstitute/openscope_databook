@@ -33,7 +33,7 @@ The Databook can be used to reproduce analysis on files, as a starting point for
 Local Installation is described on the [front page](https://alleninstitute.github.io/openscope_databook/intro.html).
 
 **What do I do if packages are failing to install?**\
-If local installation is failing, it is recommended that you attempt to clone and install the Databook in a [Conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html. Here is a [Conda cheat-sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) if you only need a quick reference.
+If local installation is failing, it is recommended that you attempt to clone and install the Databook in a [Conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). Here is a [Conda cheat-sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) if you only need a quick reference.
 
 
 ### Contribution
