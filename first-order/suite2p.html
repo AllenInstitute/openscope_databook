@@ -1,0 +1,1367 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Identifying Regions of Interest with Segmentation &#8212; OpenScope Databook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'first-order/suite2p';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optotagging.html">Identifying Optotagged Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="current_source_density.html">Current Source Density Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../replication/cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/modality_alignment.html">Aligning Data across Modalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/cell_matching.html">Cell Matching Across Days</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../methods/jupyter_book.html">Jupyter/Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/first-order/suite2p.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/first-order/suite2p.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/first-order/suite2p.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Ffirst-order/suite2p.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/first-order/suite2p.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Identifying Regions of Interest with Segmentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-classifier">Getting The Classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-ophys-nwb-files">Downloading Ophys NWB Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-suite2p-input">Preparing Suite2P Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-suite2p">Running Suite2P</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suite2p-output">Suite2P Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traces">Traces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options-and-intermediate-outputs">Options and Intermediate Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-cell-array">Is-Cell Array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roi-statistics">ROI Statistics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-segmentation-output">Comparing Segmentation Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-suite2p">Segmentation from Suite2P</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-suite2p-filtered-to-cells">Segmentation from Suite2P Filtered to Cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-original-nwb">Segmentation From Original NWB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophys-nwb">Ophys NWB</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repair-nwb-filename">Repair NWB Filename</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="identifying-regions-of-interest-with-segmentation">
+<h1>Identifying Regions of Interest with Segmentation<a class="headerlink" href="#identifying-regions-of-interest-with-segmentation" title="Permalink to this heading">#</a></h1>
+<p>The Allen Institute uses <a class="reference external" href="http://www.suite2p.org/"><strong>Suite2P</strong></a> for processing 2-Photon Calcium Imaging Data. Specifically, <strong>Suite2P</strong> takes a 2P movie, and outputs information about the putative segmented <em>Regions of Interest</em> (ROIs). The most pertinent information outputted are the locations/shapes of the ROIs within the 2P Movie’s field-of-view, as well as the fluorescence of each ROI at every frame of the movie. This notebook serves as a simple demonstration of how to input a 2P Movie into Suite2P and produce cell segmentation and fluorescence output.</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">%</span><span class="k">cd</span> openscope_databook
+    <span class="o">%</span><span class="k">pip</span> install -e .
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">suite2p</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">download</span>
+<span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-the-classifier">
+<h2>Getting The Classifier<a class="headerlink" href="#getting-the-classifier" title="Permalink to this heading">#</a></h2>
+<p>Suite2p uses a linear regression classifier in order to identify ROIs. If a classifer is not provided, suite2p uses a default classifer. However, the segmentation output is much better if a classifier trained on manually annotated data is used. The databook includes a classifer file that was trained using the <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/gui.html">Suite2p GUI</a>. The Suite2p GUI is a very powerful platform that exceeds the limits of what can be shown in a Jupyter notebook. The cell below ensures that the classifer we need is present in the right location. In case this notebooks is being run outside the OpenScope Databook, it must be downloaded.</p>
+<p>To make your own classifier with the Suite2p GUI, you must first <code class="docutils literal notranslate"><span class="pre">load</span></code> an <code class="docutils literal notranslate"><span class="pre">iscell.npy</span></code> file. This is one of the output files of Suite2p shown toward the end of this notebook. Then you can view both cell and non-cell ROIs by pressing the <code class="docutils literal notranslate"><span class="pre">both</span></code> button in the top of the GUI. From there, right-clicking ROIs will move them from either the cell or non-cell classification. After the manual classification is done, the classified data can be saved by pressing <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">current</span> <span class="pre">data</span> <span class="pre">to</span> <span class="pre">classifier</span></code> in the bottom left.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/suite2p_classifier.npy&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">classifier_path</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenInstitute/openscope_databook/blob/e5292764ac3edb0e798196df60dd5bf24732ad78/data/suite2p_classifier.npy&quot;</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;./suite2p_classifier.npy&quot;</span><span class="p">)</span>
+    <span class="n">classifier_path</span> <span class="o">=</span> <span class="s2">&quot;./suite2p_classifier.npy&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="downloading-ophys-nwb-files">
+<h2>Downloading Ophys NWB Files<a class="headerlink" href="#downloading-ophys-nwb-files" title="Permalink to this heading">#</a></h2>
+<p>Here you can download several files for a subject that you can run nway matching on. The pipeline can take in any number of input <em>sessions</em>, however, the input ophys data should be from the same imaging plane of the same subject. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the dandiset id of the files you’re interested in. Also set <code class="docutils literal notranslate"><span class="pre">input_dandi_filepaths</span></code> to be a list of the filepaths on dandi of each file you’re interested in providing to <strong>Nway Matching</strong>. When accessing an embargoed dataset, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your DANDI API key.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000336&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-634402/sub-634402_ses-1209063020-acq-1209359211raw_ophys.nwb&quot;</span>
+<span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">dandiset</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+<span class="n">file_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">download_url</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="n">dandi_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">nwb_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">nwb_filepath</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File already exists&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">download</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">download_loc</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">nwb_filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preparing-suite2p-input">
+<h2>Preparing Suite2P Input<a class="headerlink" href="#preparing-suite2p-input" title="Permalink to this heading">#</a></h2>
+<p>Typically, the 2P movie would not come prepared within an NWB file, but would be in some other form. Suite2P is capable of taking input in many forms, enumerated <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/inputs.html">here</a>. Suite2P is capable of taking input in the form of h5py files. Since NWB files are a subset of h5py, we can convert it just by renaming the file and opening it with <code class="docutils literal notranslate"><span class="pre">h5py.file</span></code> This will have to be undone later in order to protect the validity of the file for PyNWB. The main setting to tweak the output of the segmentation is <code class="docutils literal notranslate"><span class="pre">threshold_scaling</span></code>. Lowering the threshold scaling makes the segmentation algorithm more sensitive, and will result in more segmented regions in the output. Since the classifier we provide is reasonably trained, it is sufficient to filter out a lot of the resultant messiness.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h5_filepath</span> <span class="o">=</span> <span class="n">nwb_filepath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;nwb&quot;</span><span class="p">,</span> <span class="s2">&quot;h5&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">nwb_filepath</span><span class="p">,</span> <span class="n">h5_filepath</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">h5_filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_folder</span> <span class="o">=</span> <span class="s2">&quot;./results/&quot;</span>
+<span class="n">scratch_folder</span> <span class="o">=</span> <span class="s2">&quot;./results/&quot;</span>
+<span class="n">input_movie_path</span> <span class="o">=</span> <span class="s2">&quot;./movie&quot;</span>
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">nwb</span><span class="p">[</span><span class="s2">&quot;acquisition/raw_suite2p_motion_corrected/imaging_plane/imaging_rate&quot;</span><span class="p">][()]</span>
+<span class="n">threshold_scaling</span> <span class="o">=</span> <span class="mf">0.75</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-suite2p">
+<h2>Running Suite2P<a class="headerlink" href="#running-suite2p" title="Permalink to this heading">#</a></h2>
+<p>From there, input settings can be specified for Suite2P via the <code class="docutils literal notranslate"><span class="pre">ops</span></code> object. The available settings and their meanings are described <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/settings.html">here</a> The most pertinent settings are <code class="docutils literal notranslate"><span class="pre">results_folder</span></code>, <code class="docutils literal notranslate"><span class="pre">input_movie_path</span></code>, <code class="docutils literal notranslate"><span class="pre">data_path</span></code>, and <code class="docutils literal notranslate"><span class="pre">sampling_rate</span></code>. Here, the sampling rate is also retrieved from the NWB file, but should probably be known information for your movies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ops</span> <span class="o">=</span> <span class="n">suite2p</span><span class="o">.</span><span class="n">default_ops</span><span class="p">()</span>
+<span class="n">ops</span><span class="p">[</span><span class="s1">&#39;threshold_scaling&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">threshold_scaling</span>
+<span class="n">ops</span><span class="p">[</span><span class="s1">&#39;fs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sampling_rate</span><span class="p">)</span> <span class="c1"># sampling rate of recording, determines binning for cell detection</span>
+<span class="n">ops</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.7</span> <span class="c1"># timescale of gcamp to use for deconvolution</span>
+<span class="n">ops</span><span class="p">[</span><span class="s1">&#39;do_registration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># data was already registered</span>
+<span class="n">ops</span><span class="p">[</span><span class="s1">&#39;save_folder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_folder</span>
+<span class="n">ops</span><span class="p">[</span><span class="s1">&#39;fast_disk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scratch_folder</span>
+<span class="n">ops</span><span class="p">[</span><span class="s2">&quot;save_nwb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ops</span><span class="p">[</span><span class="s2">&quot;h5py&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;./&quot;</span><span class="p">]</span>
+<span class="n">ops</span><span class="p">[</span><span class="s2">&quot;h5py_key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;acquisition/raw_suite2p_motion_corrected/data&quot;</span>
+<span class="n">ops</span><span class="p">[</span><span class="s2">&quot;classifier_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">classifier_path</span>
+
+<span class="n">output_ops</span> <span class="o">=</span> <span class="n">suite2p</span><span class="o">.</span><span class="n">run_s2p</span><span class="p">(</span><span class="n">ops</span><span class="o">=</span><span class="n">ops</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{}
+h5
+** Found 1 h5 files - converting to binary **
+NOTE: using a list of h5 files:
+[&#39;.\\sub-634402_ses-1209063020-acq-1209359211raw_ophys.h5&#39;]
+time 90.47 sec. Wrote 44201 frames per binary for 1 planes
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; PLANE 0 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+NOTE: not running registration, ops[&#39;do_registration&#39;]=0
+binary path: ./results/suite2p\plane0\data.bin
+NOTE: applying classifier ../../data/suite2p_classifier.npy
+----------- ROI DETECTION
+Binning movie in chunks of length 08
+Binned movie of size [5525,512,512] created in 60.99 sec.
+NOTE: estimated spatial scale ~6 pixels, time epochs 4.60, threshold 17.27 
+0 ROIs, score=252.63
+Detected 284 ROIs, 420.20 sec
+After removing overlaps, 273 ROIs remain
+----------- Total 482.40 sec.
+----------- EXTRACTION
+Masks created, 0.57 sec.
+Extracted fluorescence from 273 ROIs in 44201 frames, 64.43 sec.
+----------- Total 65.37 sec.
+----------- CLASSIFICATION
+[&#39;npix_norm&#39;, &#39;skew&#39;, &#39;compact&#39;]
+----------- SPIKE DECONVOLUTION
+----------- Total 0.65 sec.
+Plane 0 processed in 548.79 sec (can open in GUI).
+total = 639.33 sec.
+TOTAL RUNTIME 639.33 sec
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="suite2p-output">
+<h2>Suite2P Output<a class="headerlink" href="#suite2p-output" title="Permalink to this heading">#</a></h2>
+<p>Descriptions of the output of Suite2P can be found <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/outputs.html">here</a>. Below, it is shown how to access each output file. Three files, <code class="docutils literal notranslate"><span class="pre">F.npy</span></code>, <code class="docutils literal notranslate"><span class="pre">Fneu.npy</span></code>, and <code class="docutils literal notranslate"><span class="pre">spks.npy</span></code> are 2D arrays containing various forms of the trace data that have shape # ROIs * # Frames. The settings and intermediate values are stored as a dictionary in <code class="docutils literal notranslate"><span class="pre">ops.npy</span></code>. <code class="docutils literal notranslate"><span class="pre">iscell.py</span></code> stores a table which, for each ROI, contains 1/0 if an ROI is a cell, and the certainty value of the classifier.
+Most importantly, the main statistics of each ROI are included in <code class="docutils literal notranslate"><span class="pre">stat.npy</span></code>. This is processed and shown as a dataframe below. Because the ROI location is stored as <code class="docutils literal notranslate"><span class="pre">xpix</span></code>, and <code class="docutils literal notranslate"><span class="pre">ypix</span></code>, which are arrays of coordinates, the code below produces an <em>ROI submask</em> for each ROI. The ROI submasks are more convenient for some purposes.</p>
+<section id="traces">
+<h3>Traces<a class="headerlink" href="#traces" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fluorescence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/F.npy&quot;</span><span class="p">)</span>
+<span class="n">neuropil</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/Fneu.npy&quot;</span><span class="p">)</span>
+<span class="n">spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/spks.npy&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fluorescence</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">neuropil</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(273, 44201)
+(273, 44201)
+(273, 44201)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fluorescence</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2088acd92e0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/2f02839d5f769a5d4acb3f74224e0c0dae679b296eee62356cb6b7fd346fc178.png" src="../_images/2f02839d5f769a5d4acb3f74224e0c0dae679b296eee62356cb6b7fd346fc178.png" />
+</div>
+</div>
+</section>
+<section id="options-and-intermediate-outputs">
+<h3>Options and Intermediate Outputs<a class="headerlink" href="#options-and-intermediate-outputs" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ops</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/ops.npy&quot;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;suite2p_version&#39;, &#39;look_one_level_down&#39;, &#39;fast_disk&#39;, &#39;delete_bin&#39;, &#39;mesoscan&#39;, &#39;bruker&#39;, &#39;bruker_bidirectional&#39;, &#39;h5py&#39;, &#39;h5py_key&#39;, &#39;nwb_file&#39;, &#39;nwb_driver&#39;, &#39;nwb_series&#39;, &#39;save_path0&#39;, &#39;save_folder&#39;, &#39;subfolders&#39;, &#39;move_bin&#39;, &#39;nplanes&#39;, &#39;nchannels&#39;, &#39;functional_chan&#39;, &#39;tau&#39;, &#39;fs&#39;, &#39;force_sktiff&#39;, &#39;frames_include&#39;, &#39;multiplane_parallel&#39;, &#39;ignore_flyback&#39;, &#39;preclassify&#39;, &#39;save_mat&#39;, &#39;save_NWB&#39;, &#39;combined&#39;, &#39;aspect&#39;, &#39;do_bidiphase&#39;, &#39;bidiphase&#39;, &#39;bidi_corrected&#39;, &#39;do_registration&#39;, &#39;two_step_registration&#39;, &#39;keep_movie_raw&#39;, &#39;nimg_init&#39;, &#39;batch_size&#39;, &#39;maxregshift&#39;, &#39;align_by_chan&#39;, &#39;reg_tif&#39;, &#39;reg_tif_chan2&#39;, &#39;subpixel&#39;, &#39;smooth_sigma_time&#39;, &#39;smooth_sigma&#39;, &#39;th_badframes&#39;, &#39;norm_frames&#39;, &#39;force_refImg&#39;, &#39;pad_fft&#39;, &#39;nonrigid&#39;, &#39;block_size&#39;, &#39;snr_thresh&#39;, &#39;maxregshiftNR&#39;, &#39;1Preg&#39;, &#39;spatial_hp_reg&#39;, &#39;pre_smooth&#39;, &#39;spatial_taper&#39;, &#39;roidetect&#39;, &#39;spikedetect&#39;, &#39;sparse_mode&#39;, &#39;spatial_scale&#39;, &#39;connected&#39;, &#39;nbinned&#39;, &#39;max_iterations&#39;, &#39;threshold_scaling&#39;, &#39;max_overlap&#39;, &#39;high_pass&#39;, &#39;spatial_hp_detect&#39;, &#39;denoise&#39;, &#39;anatomical_only&#39;, &#39;diameter&#39;, &#39;cellprob_threshold&#39;, &#39;flow_threshold&#39;, &#39;spatial_hp_cp&#39;, &#39;pretrained_model&#39;, &#39;soma_crop&#39;, &#39;neuropil_extract&#39;, &#39;inner_neuropil_radius&#39;, &#39;min_neuropil_pixels&#39;, &#39;lam_percentile&#39;, &#39;allow_overlap&#39;, &#39;use_builtin_classifier&#39;, &#39;classifier_path&#39;, &#39;chan2_thres&#39;, &#39;baseline&#39;, &#39;win_baseline&#39;, &#39;sig_baseline&#39;, &#39;prctile_baseline&#39;, &#39;neucoeff&#39;, &#39;save_nwb&#39;, &#39;input_format&#39;, &#39;data_path&#39;, &#39;save_path&#39;, &#39;ops_path&#39;, &#39;reg_file&#39;, &#39;first_tiffs&#39;, &#39;filelist&#39;, &#39;h5list&#39;, &#39;nframes_per_folder&#39;, &#39;meanImg&#39;, &#39;nframes&#39;, &#39;Ly&#39;, &#39;Lx&#39;, &#39;yrange&#39;, &#39;xrange&#39;, &#39;date_proc&#39;, &#39;Lyc&#39;, &#39;Lxc&#39;, &#39;max_proj&#39;, &#39;Vmax&#39;, &#39;ihop&#39;, &#39;Vsplit&#39;, &#39;Vcorr&#39;, &#39;Vmap&#39;, &#39;spatscale_pix&#39;, &#39;timing&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="is-cell-array">
+<h3>Is-Cell Array<a class="headerlink" href="#is-cell-array" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/iscell.npy&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_cell</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.00000000e+00 9.98864964e-01]
+ [1.00000000e+00 9.97006177e-01]
+ [1.00000000e+00 9.88746332e-01]
+ [1.00000000e+00 9.99259526e-01]
+ [1.00000000e+00 9.96420219e-01]
+ [0.00000000e+00 3.87325083e-03]
+ [1.00000000e+00 9.99562312e-01]
+ [0.00000000e+00 2.22040511e-08]
+ [0.00000000e+00 7.49382210e-08]
+ [0.00000000e+00 3.45083030e-02]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="roi-statistics">
+<h3>ROI Statistics<a class="headerlink" href="#roi-statistics" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi_stats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/stat.npy&quot;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">stat</span> <span class="p">:</span> <span class="p">[</span><span class="n">roi</span><span class="p">[</span><span class="n">stat</span><span class="p">]</span> <span class="k">for</span> <span class="n">roi</span> <span class="ow">in</span> <span class="n">roi_stats</span><span class="p">]</span> <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">roi_stats</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert_pix_to_mask</span><span class="p">(</span><span class="n">xpix</span><span class="p">,</span> <span class="n">ypix</span><span class="p">):</span>
+    <span class="n">x_loc</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">xpix</span><span class="p">)</span>
+    <span class="n">y_loc</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ypix</span><span class="p">)</span>
+    <span class="n">rel_xpix</span> <span class="o">=</span> <span class="n">xpix</span> <span class="o">-</span> <span class="n">x_loc</span>
+    <span class="n">rel_ypix</span> <span class="o">=</span> <span class="n">ypix</span> <span class="o">-</span> <span class="n">y_loc</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xpix</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_loc</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ypix</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_loc</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">rel_ypix</span><span class="p">,</span> <span class="n">rel_xpix</span><span class="p">):</span>
+        <span class="n">mask</span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks_col</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">xpix</span><span class="p">,</span> <span class="n">ypix</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">stats_dict</span><span class="p">[</span><span class="s2">&quot;xpix&quot;</span><span class="p">],</span> <span class="n">stats_dict</span><span class="p">[</span><span class="s2">&quot;ypix&quot;</span><span class="p">]):</span>
+    <span class="n">roi_mask</span> <span class="o">=</span> <span class="n">convert_pix_to_mask</span><span class="p">(</span><span class="n">xpix</span><span class="p">,</span> <span class="n">ypix</span><span class="p">)</span>
+    <span class="n">masks_col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">roi_mask</span><span class="p">)</span>
+
+<span class="c1"># unionize dicts to ensure masks column goes first</span>
+<span class="n">stats_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mask&quot;</span><span class="p">:</span> <span class="n">masks_col</span><span class="p">}</span> <span class="o">|</span> <span class="n">stats_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">stats_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stats_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">stats_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;mask&#39;, &#39;ypix&#39;, &#39;xpix&#39;, &#39;lam&#39;, &#39;med&#39;, &#39;footprint&#39;, &#39;mrs&#39;, &#39;mrs0&#39;,
+       &#39;compact&#39;, &#39;solidity&#39;, &#39;npix&#39;, &#39;npix_soma&#39;, &#39;soma_crop&#39;, &#39;overlap&#39;,
+       &#39;radius&#39;, &#39;aspect_ratio&#39;, &#39;npix_norm_no_crop&#39;, &#39;npix_norm&#39;, &#39;skew&#39;,
+       &#39;std&#39;, &#39;neuropil_mask&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mask</th>
+      <th>ypix</th>
+      <th>xpix</th>
+      <th>lam</th>
+      <th>med</th>
+      <th>footprint</th>
+      <th>mrs</th>
+      <th>mrs0</th>
+      <th>compact</th>
+      <th>solidity</th>
+      <th>...</th>
+      <th>npix_soma</th>
+      <th>soma_crop</th>
+      <th>overlap</th>
+      <th>radius</th>
+      <th>aspect_ratio</th>
+      <th>npix_norm_no_crop</th>
+      <th>npix_norm</th>
+      <th>skew</th>
+      <th>std</th>
+      <th>neuropil_mask</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0,...</td>
+      <td>[428, 428, 429, 429, 429, 429, 429, 430, 430, ...</td>
+      <td>[486, 487, 484, 485, 486, 487, 488, 483, 484, ...</td>
+      <td>[11.651352, 13.176081, 15.989581, 22.941147, 2...</td>
+      <td>[433, 485]</td>
+      <td>2.0</td>
+      <td>1.828702</td>
+      <td>3.998962</td>
+      <td>1.012977</td>
+      <td>1.124378</td>
+      <td>...</td>
+      <td>113</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>5.276856</td>
+      <td>1.032278</td>
+      <td>2.685268</td>
+      <td>2.392040</td>
+      <td>7.412308</td>
+      <td>320.462250</td>
+      <td>[216024, 216025, 216026, 216027, 216028, 21602...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
+      <td>[27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 2...</td>
+      <td>[229, 232, 235, 226, 227, 228, 229, 230, 231, ...</td>
+      <td>[24.05342, 21.725483, 22.07972, 26.372776, 32....</td>
+      <td>[33, 229]</td>
+      <td>2.0</td>
+      <td>2.190842</td>
+      <td>4.761335</td>
+      <td>1.019263</td>
+      <td>1.073826</td>
+      <td>...</td>
+      <td>160</td>
+      <td>[True, True, False, True, True, True, True, Tr...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>6.992389</td>
+      <td>1.075117</td>
+      <td>2.685268</td>
+      <td>3.386960</td>
+      <td>7.305401</td>
+      <td>451.106903</td>
+      <td>[10453, 10454, 10455, 10456, 10457, 10458, 104...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
+      <td>[172, 173, 173, 174, 174, 174, 175, 175, 175, ...</td>
+      <td>[1, 1, 2, 1, 2, 3, 2, 3, 4, 2, 3, 4, 5, 3, 4, ...</td>
+      <td>[8.7256, 9.079002, 8.424271, 10.454597, 13.275...</td>
+      <td>[189, 9]</td>
+      <td>2.0</td>
+      <td>2.183545</td>
+      <td>4.655661</td>
+      <td>1.038926</td>
+      <td>1.044369</td>
+      <td>...</td>
+      <td>153</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>6.875572</td>
+      <td>1.012094</td>
+      <td>3.375337</td>
+      <td>3.238780</td>
+      <td>4.802567</td>
+      <td>156.942078</td>
+      <td>[84480, 84481, 84482, 84483, 84484, 84485, 844...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[[0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
+      <td>[11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 1...</td>
+      <td>[29, 28, 29, 38, 39, 40, 28, 29, 30, 36, 37, 3...</td>
+      <td>[16.068026, 17.825556, 19.261042, 18.631035, 2...</td>
+      <td>[17, 33]</td>
+      <td>2.0</td>
+      <td>1.927958</td>
+      <td>4.017241</td>
+      <td>1.063098</td>
+      <td>0.987013</td>
+      <td>...</td>
+      <td>114</td>
+      <td>[True, True, True, True, True, False, True, Tr...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>6.952876</td>
+      <td>1.157342</td>
+      <td>1.845184</td>
+      <td>2.413209</td>
+      <td>6.719306</td>
+      <td>198.852875</td>
+      <td>[2069, 2070, 2071, 2072, 2073, 2074, 2075, 207...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[[0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0,...</td>
+      <td>[301, 301, 301, 301, 301, 301, 301, 302, 302, ...</td>
+      <td>[80, 81, 82, 83, 84, 85, 86, 78, 79, 80, 81, 8...</td>
+      <td>[28.207954, 37.23545, 37.509827, 48.402664, 43...</td>
+      <td>[305, 81]</td>
+      <td>2.0</td>
+      <td>2.090482</td>
+      <td>4.541314</td>
+      <td>1.019691</td>
+      <td>1.110266</td>
+      <td>...</td>
+      <td>146</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>7.164109</td>
+      <td>1.001496</td>
+      <td>2.415241</td>
+      <td>3.090601</td>
+      <td>4.611879</td>
+      <td>153.295135</td>
+      <td>[150597, 150598, 150599, 150600, 150601, 15060...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>268</th>
+      <td>[[1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0,...</td>
+      <td>[289, 289, 289, 289, 289, 289, 289, 290, 290, ...</td>
+      <td>[28, 29, 30, 31, 32, 36, 37, 29, 31, 32, 33, 3...</td>
+      <td>[33.77539, 46.516613, 42.33151, 41.209297, 37....</td>
+      <td>[291, 34]</td>
+      <td>0.0</td>
+      <td>0.710081</td>
+      <td>1.420923</td>
+      <td>1.106983</td>
+      <td>1.333333</td>
+      <td>...</td>
+      <td>14</td>
+      <td>[False, False, False, False, True, True, False...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>2.720818</td>
+      <td>1.284331</td>
+      <td>0.345034</td>
+      <td>0.296359</td>
+      <td>0.787620</td>
+      <td>208.527649</td>
+      <td>[144405, 144406, 144407, 144408, 144409, 14441...</td>
+    </tr>
+    <tr>
+      <th>269</th>
+      <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
+      <td>[357, 358, 358, 358, 358, 358, 358, 358, 359, ...</td>
+      <td>[508, 503, 505, 506, 507, 508, 509, 510, 502, ...</td>
+      <td>[22.128893, 22.802996, 17.599468, 32.4844, 23....</td>
+      <td>[365, 505]</td>
+      <td>2.0</td>
+      <td>2.028474</td>
+      <td>3.871603</td>
+      <td>1.160600</td>
+      <td>0.868852</td>
+      <td>...</td>
+      <td>106</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>7.130968</td>
+      <td>1.052262</td>
+      <td>1.800180</td>
+      <td>2.243861</td>
+      <td>0.379048</td>
+      <td>98.740311</td>
+      <td>[177126, 177127, 177128, 177129, 177130, 17713...</td>
+    </tr>
+    <tr>
+      <th>270</th>
+      <td>[[0.0, 0.0, 0.0, 0.0, 1.0], [0.0, 0.0, 1.0, 0....</td>
+      <td>[187, 188, 188, 189, 189, 189, 189, 190, 190, ...</td>
+      <td>[125, 123, 125, 122, 123, 124, 125, 123, 124, ...</td>
+      <td>[93.206924, 136.14496, 71.33629, 171.96162, 18...</td>
+      <td>[190, 123]</td>
+      <td>0.0</td>
+      <td>0.753628</td>
+      <td>1.420923</td>
+      <td>1.174872</td>
+      <td>1.272727</td>
+      <td>...</td>
+      <td>14</td>
+      <td>[False, True, True, True, True, True, True, Tr...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>2.809890</td>
+      <td>1.233736</td>
+      <td>0.225022</td>
+      <td>0.296359</td>
+      <td>1.104229</td>
+      <td>418.385559</td>
+      <td>[89709, 89710, 89711, 89712, 89713, 89714, 897...</td>
+    </tr>
+    <tr>
+      <th>271</th>
+      <td>[[1.0, 1.0, 1.0, 1.0], [0.0, 0.0, 1.0, 1.0]]</td>
+      <td>[468, 468, 468, 468, 469, 469]</td>
+      <td>[353, 354, 355, 356, 355, 356]</td>
+      <td>[115.45925, 301.32797, 415.36664, 154.81465, 1...</td>
+      <td>[468, 355]</td>
+      <td>0.0</td>
+      <td>0.482601</td>
+      <td>0.902369</td>
+      <td>1.184699</td>
+      <td>0.600000</td>
+      <td>...</td>
+      <td>6</td>
+      <td>[True, True, True, True, True, True]</td>
+      <td>[False, True, True, False, True, True]</td>
+      <td>1.797855</td>
+      <td>1.357884</td>
+      <td>0.090009</td>
+      <td>0.127011</td>
+      <td>1.508273</td>
+      <td>704.798340</td>
+      <td>[233814, 233815, 233816, 233817, 233818, 23381...</td>
+    </tr>
+    <tr>
+      <th>272</th>
+      <td>[[1.0, 1.0, 0.0], [1.0, 1.0, 1.0]]</td>
+      <td>[95, 95, 96, 96, 96]</td>
+      <td>[312, 313, 312, 313, 314]</td>
+      <td>[115.85644, 102.80719, 425.6042, 415.69888, 15...</td>
+      <td>[96, 312]</td>
+      <td>0.0</td>
+      <td>0.398547</td>
+      <td>0.800000</td>
+      <td>1.103553</td>
+      <td>0.500000</td>
+      <td>...</td>
+      <td>5</td>
+      <td>[True, True, True, True, True]</td>
+      <td>[False, False, False, False, False]</td>
+      <td>1.379377</td>
+      <td>1.233591</td>
+      <td>0.075007</td>
+      <td>0.105843</td>
+      <td>1.292055</td>
+      <td>660.939880</td>
+      <td>[42796, 42797, 42798, 42799, 42800, 42801, 428...</td>
+    </tr>
+  </tbody>
+</table>
+<p>273 rows × 21 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="comparing-segmentation-output">
+<h2>Comparing Segmentation Output<a class="headerlink" href="#comparing-segmentation-output" title="Permalink to this heading">#</a></h2>
+<p>Below we can compare multiple views of the Segmentation Output. Firstly is the main output which contains cells and non-cells. Secondly is the filtered version which is filtered to only include the ROIs which are classified as cells. The fields <code class="docutils literal notranslate"><span class="pre">Lx</span></code> and <code class="docutils literal notranslate"><span class="pre">Ly</span></code> from <code class="docutils literal notranslate"><span class="pre">ops.npy</span></code> contain the shape of the movie, and <code class="docutils literal notranslate"><span class="pre">ypix</span></code> and <code class="docutils literal notranslate"><span class="pre">xpix</span></code> contain the pixel coordinates at which each ROI was identified. The code below iterates over each ROI and displays all <code class="docutils literal notranslate"><span class="pre">xpix</span></code> and <code class="docutils literal notranslate"><span class="pre">ypix</span></code> for that ROI into the image. These are used to generate the image of all ROI masks. The <code class="docutils literal notranslate"><span class="pre">iscell.npy</span></code> array is used to show only the ROIs that are cells for the filtered plot. The last plot is the segmentation from the original NWB file from the Allen Institute’s own proprietary segmentation algorithm for comparison.</p>
+<section id="segmentation-from-suite2p">
+<h3>Segmentation from Suite2P<a class="headerlink" href="#segmentation-from-suite2p" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Ly&#39;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Lx&#39;</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_stats</span><span class="p">)):</span>
+    <span class="n">ypix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;ypix&#39;</span><span class="p">]</span>
+    <span class="n">xpix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;xpix&#39;</span><span class="p">]</span>
+    <span class="n">im</span><span class="p">[</span><span class="n">ypix</span><span class="p">,</span><span class="n">xpix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2088aa84850&gt;
+</pre></div>
+</div>
+<img alt="../_images/652166ef4a627f343deaa2f40a90d87dbe6c9973c2c6c2a818174c58af317e33.png" src="../_images/652166ef4a627f343deaa2f40a90d87dbe6c9973c2c6c2a818174c58af317e33.png" />
+</div>
+</div>
+</section>
+<section id="segmentation-from-suite2p-filtered-to-cells">
+<h3>Segmentation from Suite2P Filtered to Cells<a class="headerlink" href="#segmentation-from-suite2p-filtered-to-cells" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Ly&#39;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Lx&#39;</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_stats</span><span class="p">)):</span>
+    <span class="c1"># only show if ROI is a cell according to classifier output</span>
+    <span class="k">if</span> <span class="n">is_cell</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">ypix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;ypix&#39;</span><span class="p">]</span>
+        <span class="n">xpix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;xpix&#39;</span><span class="p">]</span>
+        <span class="n">im</span><span class="p">[</span><span class="n">ypix</span><span class="p">,</span><span class="n">xpix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2088abc5fd0&gt;
+</pre></div>
+</div>
+<img alt="../_images/230f73d8d8bb51f2ceb87c38070716d3013c3219637c563058a43997394e0d69.png" src="../_images/230f73d8d8bb51f2ceb87c38070716d3013c3219637c563058a43997394e0d69.png" />
+</div>
+</div>
+</section>
+<section id="segmentation-from-original-nwb">
+<h3>Segmentation From Original NWB<a class="headerlink" href="#segmentation-from-original-nwb" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">nwb</span><span class="p">[</span><span class="s2">&quot;processing/ophys/images/segmentation_mask_image&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x20888217490&gt;
+</pre></div>
+</div>
+<img alt="../_images/d7bf801d9daab91c522f234e3ac84f0813c86803290f47ec1a7facc1d340b0a8.png" src="../_images/d7bf801d9daab91c522f234e3ac84f0813c86803290f47ec1a7facc1d340b0a8.png" />
+</div>
+</div>
+</section>
+<section id="ophys-nwb">
+<h3>Ophys NWB<a class="headerlink" href="#ophys-nwb" title="Permalink to this heading">#</a></h3>
+<p>Finally, since in the input settings, <code class="docutils literal notranslate"><span class="pre">save_nwb</span></code> was set to 1, an NWB file containing all of these was generated as output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="s2">&quot;./results/ophys.nwb&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">out_nwb</span> <span class="o">=</span> <span class="n">out_io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="repair-nwb-filename">
+<h2>Repair NWB Filename<a class="headerlink" href="#repair-nwb-filename" title="Permalink to this heading">#</a></h2>
+<p>Since we temporarily changed the NWB file to an H5PY file, we must change it back or the file won’t be usable by PyNWB in the future.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">nwb</span>
+<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">h5_filepath</span><span class="p">,</span> <span class="n">nwb_filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./first-order"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-classifier">Getting The Classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-ophys-nwb-files">Downloading Ophys NWB Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-suite2p-input">Preparing Suite2P Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-suite2p">Running Suite2P</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suite2p-output">Suite2P Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traces">Traces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options-and-intermediate-outputs">Options and Intermediate Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-cell-array">Is-Cell Array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roi-statistics">ROI Statistics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-segmentation-output">Comparing Segmentation Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-suite2p">Segmentation from Suite2P</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-suite2p-filtered-to-cells">Segmentation from Suite2P Filtered to Cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-original-nwb">Segmentation From Original NWB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ophys-nwb">Ophys NWB</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repair-nwb-filename">Repair NWB Filename</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carter Peene
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
