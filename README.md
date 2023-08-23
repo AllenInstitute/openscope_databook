@@ -32,11 +32,11 @@ We are releasing this code to the public as a tool we expect others to use and a
 - [Neuropixel: Stimuli averages with neuropixel data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_spike_responses.ipynb)
 - [2P: Stimuli averages with 2P data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_2p_responses.ipynb)
 - [2P: How to align timestamps across modalities](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/embargoed/modality_alignment.ipynb)
+- [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/suite2p.ipynb)
 
 ### Chapter 4: Higher-order analysis
-- Sending NWB raw data to a segmentation pipeline: example with Suite2p.
+- [Ruling out behavioral causes for neural responses](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/higher-order/cebra_time.ipynb)
 - Identifying mouse behavioral state based on eye tracking and behavioral data.
-- Ruling out behavioral causes for neural responses.
 - Classifying spike waveform between fast spiking and normal spiking cells.
 - Extracting clusters of correlated neurons.
 - Analysis of functional connectivity.
