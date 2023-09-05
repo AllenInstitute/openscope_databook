@@ -1,6 +1,7 @@
 
 import h5py
 import os
+from random import randint
 
 from dandi import download
 from dandi import dandiapi
@@ -18,10 +19,11 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
     file = dandiset.get_asset_by_path(dandi_filepath)
     file_url = file.download_url
 
-    filename = dandi_filepath.split("/")[-1]
+    # filename = dandi_filepath.split("/")[-1]
+    filename = str(randint(100000))
     filepath = f"{download_loc}/{filename}"
 
-    if os.path.exists(filepath) and not force_overwrite and os.environ.get("TESTING", False):
+    if os.path.exists(filepath) and not force_overwrite
         print("File already exists")
     else:
         download.download(file_url, output_dir=download_loc)
