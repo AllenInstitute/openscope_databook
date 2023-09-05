@@ -19,8 +19,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
     file = dandiset.get_asset_by_path(dandi_filepath)
     file_url = file.download_url
 
-    # filename = dandi_filepath.split("/")[-1]
-    filename = str(randint(0, 100000))
+    filename = dandi_filepath.split("/")[-1]
     filepath = f"{download_loc}/{filename}"
 
     if os.path.exists(filepath) and not force_overwrite:
@@ -29,8 +28,11 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
         download.download(file_url, output_dir=download_loc)
         print(f"Downloaded file to {filepath}")
 
+    new_filepath = f"{download_loc}/{str(randint(0, 100000))}"
+    os.rename(filepath, new_filepath)
+
     print("Opening file")
-    io = NWBHDF5IO(filepath, mode="r", load_namespaces=True)
+    io = NWBHDF5IO(new_filepath, mode="r", load_namespaces=True)
     return io
 
 
