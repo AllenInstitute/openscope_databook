@@ -28,11 +28,13 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
         download.download(file_url, output_dir=download_loc)
         print(f"Downloaded file to {filepath}")
 
-    new_filepath = f"{download_loc}/{str(randint(0, 100000))}"
-    os.rename(filepath, new_filepath)
+    if os.environ.get("TESTING", false):
+        old_filepath = filepath
+        filepath = f"{download_loc}/{str(randint(0, 100000))}"
+        os.rename(filepath, new_filepath)
 
     print("Opening file")
-    io = NWBHDF5IO(new_filepath, mode="r", load_namespaces=True)
+    io = NWBHDF5IO(filepath, mode="r", load_namespaces=True)
     return io
 
 
