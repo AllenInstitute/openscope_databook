@@ -15,6 +15,7 @@ jobs:
 
     env:
       DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
+      TESTING: True
 
     steps:
       - uses: actions/checkout@v3
@@ -41,29 +42,10 @@ jobs:
       - name: Printing environment
         run: pip freeze
 
-      # - name: Testing Basics Notebooks
-      #   run: |
-      #     pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
-      #     rm ./docs/basics/*.nwb
-        
-      - name: Testing Visualization Notebooks
+      - name: Testing All Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
-          rm ./docs/visualization/*.nwb
-
-      - name: Testing First-Order Notebooks
-        run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
-          rm ./docs/first-order/*.nwb
+          pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs"
         
-      - name: Testing Replication Notebooks
-        run: pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/replication"
-        
-      - name: Testing Embargoed Notebooks
-        run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
-          rm ./docs/embargoed/*.nwb
-
       - name: Build Jupyter book
         run: |
           jupyter-book clean ./docs
