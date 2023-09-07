@@ -57,12 +57,12 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
           rm ./docs/first-order/*.nwb
         
-        - name: Testing Higher-Order Notebooks
+      - name: Testing Higher-Order Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
           rm ./docs/higher-order/*.nwb
 
-            - name: Testing Replication Notebooks
+      - name: Testing Replication Notebooks
         run: pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/replication"
         
       - name: Testing Embargoed Notebooks
