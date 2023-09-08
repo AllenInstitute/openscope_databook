@@ -35,7 +35,7 @@ We are releasing this code to the public as a tool we expect others to use and a
 - [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/suite2p.ipynb)
 
 ### Chapter 4: Higher-order analysis
-- [Ruling out behavioral causes for neural responses](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/higher-order/cebra_time.ipynb)
+- [Neural dynamics using time-analysis with CEBRA](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
 - Identifying mouse behavioral state based on eye tracking and behavioral data.
 - Classifying spike waveform between fast spiking and normal spiking cells.
 - Extracting clusters of correlated neurons.
