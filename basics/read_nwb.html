@@ -178,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
 </ul>
@@ -193,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Analyze OpenScope Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
 <ul class="nav bd-sidenav">
@@ -527,6 +527,15 @@ document.write(`
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
+    <span class="o">%</span><span class="k">cd</span> ./docs/basics
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.EL2C6PLE4ZYW3ECEVIV3OXXGRN2NRFM2.gfortran-win_amd64.dll
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
 </pre></div>
 </div>
 </div>
@@ -548,7 +557,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-723627600/sub-723627600_ses-742951821.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 </pre></div>
 </div>
@@ -565,8 +574,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sub-699733573_ses-715093703.nwb
-./sub-699733573_ses-715093703.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sub-723627600_ses-742951821.nwb
+./sub-723627600_ses-742951821.nwb
 </pre></div>
 </div>
 </div>
@@ -584,7 +593,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-699733573_ses-715093703.nwb
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.0) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-723627600_ses-742951821.nwb
 </pre></div>
 </div>
 </div>
@@ -603,13 +615,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.8.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2616661374288
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2355023624560
 Fields:
   acquisition: {
     raw_running_wheel_rotation &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
@@ -633,8 +645,8 @@ Fields:
     probeF &lt;class &#39;abc.EcephysElectrodeGroup&#39;&gt;
   }
   electrodes: electrodes &lt;class &#39;hdmf.common.table.DynamicTable&#39;&gt;
-  file_create_date: [datetime.datetime(2020, 5, 26, 0, 53, 26, 986608, tzinfo=tzoffset(None, -25200))]
-  identifier: 715093703
+  file_create_date: [datetime.datetime(2020, 5, 26, 0, 53, 26, 959556, tzinfo=tzoffset(None, -25200))]
+  identifier: 742951821
   institution: Allen Institute for Brain Science
   intervals: {
     drifting_gratings_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
@@ -649,26 +661,29 @@ Fields:
   }
   invalid_times: invalid_times &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;
   processing: {
+    eye_tracking &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
     eye_tracking_rig_metadata &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    filtered_gaze_mapping &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
     optotagging &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    raw_gaze_mapping &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
     running &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
     stimulus &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;
   }
   session_description: Data and metadata for an Ecephys session
-  session_id: 715093703
-  session_start_time: 2019-01-19 00:54:18-08:00
+  session_id: 742951821
+  session_start_time: 2018-10-26 12:47:04-07:00
   stimulus_notes: brain_observatory_1.1
-  subject: subject abc.EcephysSpecimen at 0x2616662385568
+  subject: subject abc.EcephysSpecimen at 0x2355023624080
 Fields:
-  age: P118D
-  age_in_days: 118.0
-  genotype: Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt
+  age: P120D
+  age_in_days: 120.0
+  genotype: wt/wt
   sex: M
   species: Mus musculus
-  specimen_name: Sst-IRES-Cre;Ai32-386129
-  subject_id: 699733573
+  specimen_name: C57BL/6J-404571
+  subject_id: 723627600
 
-  timestamps_reference_time: 2019-01-19 00:54:18-08:00
+  timestamps_reference_time: 2018-10-26 12:47:04-07:00
   units: units &lt;class &#39;pynwb.misc.Units&#39;&gt;
 </pre></div>
 </div>
@@ -704,7 +719,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_8728\3249629881.py:4: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_24048\3249629881.py:4: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
   pd.set_option(&#39;display.max_colwidth&#39;, -1)
 </pre></div>
 </div>
@@ -712,6 +727,19 @@ Fields:
 </div>
 <section id="ecephys-file">
 <h3>Ecephys File<a class="headerlink" href="#ecephys-file" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;c:\\Users\\carter.peene\\Desktop\\Projects\\openscope_databook\\docs\\basics&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/ecephys_schema.csv&quot;</span><span class="p">)</span>

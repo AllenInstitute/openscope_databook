@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Using CEBRA-Time to Analyze OpenScope Data &#8212; OpenScope Databook</title>
+    <title>Using CEBRA-Time to Identify Latent Embeddings &#8212; OpenScope Databook</title>
   
   
   
@@ -178,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
 </ul>
@@ -193,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using CEBRA-Time to Analyze OpenScope Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
 <ul class="nav bd-sidenav">
@@ -484,7 +484,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Using CEBRA-Time to Analyze OpenScope Data</h1>
+    <h1>Using CEBRA-Time to Identify Latent Embeddings</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -515,8 +515,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="using-cebra-time-to-analyze-openscope-data">
-<h1>Using CEBRA-Time to Analyze OpenScope Data<a class="headerlink" href="#using-cebra-time-to-analyze-openscope-data" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-cebra-time-to-identify-latent-embeddings">
+<h1>Using <a class="reference external" href="https://cebra.ai/docs/index.html">CEBRA-Time</a> to Identify Latent Embeddings<a class="headerlink" href="#using-cebra-time-to-identify-latent-embeddings" title="Permalink to this heading">#</a></h1>
 <p>In this notebook, we will explore the applications of the advanced machine learning algorithm, <strong>CEBRA</strong> (created by the <a class="reference external" href="http://www.mackenziemathislab.org/">Mathis Laboratory</a>), to analyze OpenScope data from the Allen Institute. <strong>CEBRA</strong> is an algorithm that optimizes neural networks that map neural activity onto an embedding space. This algorithm leverages <strong><a class="reference external" href="http://proceedings.mlr.press/v119/chen20j/chen20j.pdf">contrastive learning</a></strong> and a generalized <strong><a class="reference external" href="https://www.nature.com/articles/s41586-023-06031-6#Sec11">InfoNCE loss function</a></strong> to learn representations where similar data points are pulled closer together while dissimilar data points are pushed apart within the embedding space. CEBRA has three different modes: <strong>CEBRA-Time</strong> (fully unsupervised/self supervised), <strong>CEBRA-Behavior</strong> (supervised), and <strong>CEBRA-Hybrid</strong>.</p>
 <p>In this notebook, we will be utilizing <strong>CEBRA-Time</strong>, so our input data will be unlabeled and there will be no behavioral assumptions that influence neuronal activity. We utilize <strong>CEBRA-Time</strong> to create a 3D latent embedding space of a mouse’s neural activity while passively viewing visual stimuli. This algorithm can help us identify patterns in neural activity and its relationship to the visual stimulus. We use the neural data to train the model, generate embeddings for each type of visual stimulus, and plot different subsections of the data separately onto the same embedding space.</p>
 <p>Below is a visualization of the pipeline that displays the steps from how the algorithm receives input data to how the final output of the embedding is produced. To briefly describe how it works, <strong>CEBRA</strong> takes input in the form of <em>positive and negative pairs</em> of data relative to a reference point. An example of a positive and negative pair for behavioral labels would be two positions on a track that are close together in space versus a position on a track that is far away. Likewise, for time labels, a positive pair would be data from two points that occur close together in time versus a data point that occurs farther away in time. Next, a nonlinear encoder receives the data in the form of a triplet that contains 3 vectors: neural data from the positive points, neural data from the negative points, and neural data from the reference points. The nonlinear encoder maps the raw neural data onto a lower dimensional feature space. Here, <strong>CEBRA</strong> leverages <em>contrastive learning</em> to learn representations where similar pairs are pulled closer together and dissimilar pairs are pushed apart in an embedding space. During training, similarity scores are computed for positive and negative pairs. A modified <em>InfoNCE loss function</em> is calculated and gradient descent is used to optimize the loss. Once the network is fully trained, the lower-dimensional embedding space is produced from the final output layer.</p>
@@ -552,17 +552,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install other dependencies</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
 <span class="kn">import</span> <span class="nn">cebra</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">cebra</span> <span class="kn">import</span> <span class="n">CEBRA</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -593,7 +590,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.0) of dandi/dandi-cli is available. You are using 0.46.6
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.0) of dandi/dandi-cli is available. You are using 0.55.1
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                                    SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
@@ -883,12 +880,6 @@ Opening file
     <span class="n">this_stimulus</span> <span class="o">=</span> <span class="n">stim_type_list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
     <span class="n">this_frame</span> <span class="o">=</span> <span class="n">frame_list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
 
-    <span class="c1">### uncomment these print statements to check if the loop is working with your data</span>
-    <span class="c1">#print(this_timestamp)</span>
-    <span class="c1">#print(this_interval)</span>
-    <span class="c1">#print(this_frame)</span>
-    <span class="c1">#print(this_stimulus)</span>
-
     <span class="k">if</span> <span class="n">this_timestamp</span> <span class="o">&gt;=</span> <span class="n">start_time</span> <span class="ow">and</span> <span class="n">this_timestamp</span> <span class="o">&lt;=</span> <span class="n">stop_time</span><span class="p">:</span>
         <span class="n">timestamp_frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_frame</span><span class="p">)</span>
         <span class="n">timestamp_stimulus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_stimulus</span><span class="p">)</span>
@@ -926,7 +917,7 @@ number of timestamps unaccounted for:  419
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of dff_timestamps that occur before the first frame is presented (while timestamp &lt; start_time)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of timestamps that occur before stimulus: &#39;</span><span class="p">,</span> <span class="n">count_times_before_stim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of timestamps that occur before stimulus:&#39;</span><span class="p">,</span> <span class="n">count_times_before_stim</span><span class="p">)</span>
 
 <span class="c1"># find how many dff_timestamps occur after the last visual stimulus is displayed</span>
 <span class="n">max_frame_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">frame_intervals</span><span class="p">)</span>
@@ -934,15 +925,15 @@ number of timestamps unaccounted for:  419
 
 <span class="c1"># find the last timestamp that occurs during stimulus presentation</span>
 <span class="n">timestamps_before_stim_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)</span><span class="o">-</span> <span class="n">max_timestamp_allowed</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;last timestamp that occurs during stimulus presentation: &#39;</span><span class="p">,</span> <span class="n">timestamps_before_stim_end</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last timestamp that occurs during stimulus presentation:&#39;</span><span class="p">,</span> <span class="n">timestamps_before_stim_end</span><span class="p">)</span>
 
 <span class="c1"># slice `dff_timestamps` to only include timestamps that correlate with frames</span>
 <span class="n">sliced_dff_timestamps</span> <span class="o">=</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="n">count_times_before_stim</span><span class="p">:</span><span class="n">timestamps_before_stim_end</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New length of dff_timestamps: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_timestamps</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New length of dff_timestamps:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_timestamps</span><span class="p">))</span>
 
 <span class="c1"># this aligns the dff_trace with sliced version of the dff_timestamps so that we can correctly index the neural data</span>
 <span class="n">sliced_dff_trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="p">[</span><span class="n">count_times_before_stim</span><span class="p">:</span><span class="n">timestamps_before_stim_end</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New length of dff_trace: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_trace</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New length of dff_trace:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_trace</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1017,87 +1008,87 @@ New length of dff_trace:  126758
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.10/site-packages/cebra/__init__.py:99: UserWarning: Your code triggered a lazy import of cebra.grid_search. While this will (likely) work, it is recommended to add an explicit import statement to you code instead. To disable this warning, you can run ``cebra.allow_lazy_imports()``.
   warnings.warn(
-pos:  0.2096 neg:  5.4074 total:  5.6170 temperature:  1.0000: 100%|██████████| 1000/1000 [00:11&lt;00:00, 87.85it/s]
-pos:  0.3530 neg:  5.3982 total:  5.7512 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 119.87it/s]
-pos:  0.2020 neg:  5.3956 total:  5.5977 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 120.33it/s]
-pos:  0.3317 neg:  5.4141 total:  5.7458 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 120.43it/s]
-pos:  0.2168 neg:  5.3996 total:  5.6164 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 119.98it/s]
-pos:  0.3089 neg:  5.4059 total:  5.7147 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 119.01it/s]
-pos:  0.2143 neg:  5.4022 total:  5.6165 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 119.69it/s]
-pos:  0.3315 neg:  5.4173 total:  5.7488 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 120.12it/s]
-pos:  0.2025 neg:  5.4080 total:  5.6106 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 113.19it/s]
-pos:  0.3281 neg:  5.4071 total:  5.7352 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 114.10it/s]
-pos:  0.2060 neg:  5.3940 total:  5.6001 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 110.54it/s]
-pos:  0.3051 neg:  5.4071 total:  5.7123 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 110.87it/s]
-pos:  0.1846 neg:  5.3992 total:  5.5839 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 115.32it/s]
-pos:  0.3081 neg:  5.4022 total:  5.7103 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 114.99it/s]
-pos:  0.2081 neg:  5.3941 total:  5.6022 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 116.43it/s]
-pos:  0.3163 neg:  5.4007 total:  5.7170 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 122.39it/s]
-pos:  0.1729 neg:  5.4045 total:  5.5773 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 66.35it/s]
-pos:  0.2781 neg:  5.4094 total:  5.6875 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 66.06it/s]
-pos:  0.1774 neg:  5.4016 total:  5.5790 temperature:  1.0000: 100%|██████████| 1000/1000 [00:14&lt;00:00, 69.42it/s]
-pos:  0.3179 neg:  5.3983 total:  5.7162 temperature:  1.0000: 100%|██████████| 1000/1000 [00:14&lt;00:00, 68.22it/s]
-pos:  0.2037 neg:  5.3952 total:  5.5990 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 66.06it/s]
-pos:  0.2972 neg:  5.4035 total:  5.7007 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.63it/s]
-pos:  0.1905 neg:  5.3967 total:  5.5873 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.76it/s]
-pos:  0.2860 neg:  5.4061 total:  5.6921 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.79it/s]
-pos:  0.1932 neg:  5.3913 total:  5.5845 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 123.14it/s]
-pos:  0.2717 neg:  5.4073 total:  5.6790 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 123.47it/s]
-pos:  0.2172 neg:  5.3846 total:  5.6019 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 122.67it/s]
-pos:  0.2809 neg:  5.3889 total:  5.6698 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 123.50it/s]
-pos:  0.1773 neg:  5.3917 total:  5.5690 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 123.97it/s]
-pos:  0.2885 neg:  5.3900 total:  5.6785 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 122.61it/s]
-pos:  0.1812 neg:  5.3930 total:  5.5742 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 123.87it/s]
-pos:  0.2764 neg:  5.4092 total:  5.6856 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 122.81it/s]
-pos:  0.1606 neg:  5.3815 total:  5.5421 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 114.73it/s]
-pos:  0.2228 neg:  5.3914 total:  5.6142 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 116.59it/s]
-pos:  0.1772 neg:  5.3823 total:  5.5595 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 112.31it/s]
-pos:  0.2119 neg:  5.3931 total:  5.6050 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 111.91it/s]
-pos:  0.1741 neg:  5.3779 total:  5.5519 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 112.40it/s]
-pos:  0.2282 neg:  5.3870 total:  5.6152 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 112.34it/s]
-pos:  0.1645 neg:  5.3795 total:  5.5440 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 114.19it/s]
-pos:  0.2307 neg:  5.3878 total:  5.6185 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 112.17it/s]
-pos:  0.1413 neg:  5.3692 total:  5.5105 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.24it/s]
-pos:  0.1927 neg:  5.3918 total:  5.5845 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.14it/s]
-pos:  0.1464 neg:  5.3807 total:  5.5270 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 66.17it/s]
-pos:  0.1827 neg:  5.3881 total:  5.5708 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.51it/s]
-pos:  0.1620 neg:  5.3732 total:  5.5352 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.42it/s]
-pos:  0.1918 neg:  5.3901 total:  5.5819 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.11it/s]
-pos:  0.1523 neg:  5.3666 total:  5.5189 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 62.66it/s]
-pos:  0.1902 neg:  5.3935 total:  5.5837 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.19it/s]
-pos:  0.2638 neg:  5.4163 total:  5.6801 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 121.06it/s]
-pos:  0.3582 neg:  5.4220 total:  5.7802 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 121.82it/s]
-pos:  0.2499 neg:  5.4142 total:  5.6641 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 120.99it/s]
-pos:  0.3514 neg:  5.4327 total:  5.7841 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 121.08it/s]
-pos:  0.2574 neg:  5.4168 total:  5.6742 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 120.71it/s]
-pos:  0.3523 neg:  5.4191 total:  5.7715 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 121.15it/s]
-pos:  0.2642 neg:  5.4138 total:  5.6780 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 122.57it/s]
-pos:  0.3444 neg:  5.4256 total:  5.7700 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 122.65it/s]
-pos:  0.2349 neg:  5.4128 total:  5.6476 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 116.41it/s]
-pos:  0.3199 neg:  5.4219 total:  5.7419 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 115.76it/s]
-pos:  0.2321 neg:  5.4131 total:  5.6452 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 113.90it/s]
-pos:  0.3110 neg:  5.4255 total:  5.7365 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 112.86it/s]
-pos:  0.2331 neg:  5.4081 total:  5.6412 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 112.18it/s]
-pos:  0.3464 neg:  5.4149 total:  5.7613 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 112.83it/s]
-pos:  0.2546 neg:  5.4107 total:  5.6652 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 114.77it/s]
-pos:  0.3659 neg:  5.4217 total:  5.7875 temperature:  1.0000: 100%|██████████| 1000/1000 [00:08&lt;00:00, 113.56it/s]
-pos:  0.1978 neg:  5.4063 total:  5.6041 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 62.90it/s]
-pos:  0.3299 neg:  5.4206 total:  5.7505 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 62.87it/s]
-pos:  0.2195 neg:  5.4106 total:  5.6301 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.68it/s]
-pos:  0.3215 neg:  5.4124 total:  5.7338 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.71it/s]
-pos:  0.2071 neg:  5.4088 total:  5.6159 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.03it/s]
-pos:  0.3081 neg:  5.4156 total:  5.7237 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.23it/s]
-pos:  0.2146 neg:  5.4115 total:  5.6261 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 62.67it/s]
-pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.28it/s]
+pos:  0.2128 neg:  5.4037 total:  5.6165 temperature:  1.0000: 100%|██████████| 1000/1000 [00:11&lt;00:00, 83.52it/s]
+pos:  0.3385 neg:  5.4062 total:  5.7447 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.92it/s]
+pos:  0.2425 neg:  5.4005 total:  5.6430 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.47it/s]
+pos:  0.3191 neg:  5.4096 total:  5.7287 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.36it/s]
+pos:  0.2160 neg:  5.4036 total:  5.6195 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.30it/s]
+pos:  0.3307 neg:  5.4117 total:  5.7424 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.72it/s]
+pos:  0.2012 neg:  5.3981 total:  5.5994 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 109.51it/s]
+pos:  0.3308 neg:  5.4113 total:  5.7422 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.92it/s]
+pos:  0.2043 neg:  5.4012 total:  5.6055 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.25it/s]
+pos:  0.3059 neg:  5.4046 total:  5.7105 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.77it/s]
+pos:  0.1926 neg:  5.3947 total:  5.5873 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.37it/s]
+pos:  0.3149 neg:  5.4062 total:  5.7211 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.06it/s]
+pos:  0.2166 neg:  5.3984 total:  5.6150 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 106.84it/s]
+pos:  0.3024 neg:  5.3997 total:  5.7021 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.36it/s]
+pos:  0.1836 neg:  5.3987 total:  5.5823 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.71it/s]
+pos:  0.2831 neg:  5.4052 total:  5.6883 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.66it/s]
+pos:  0.1860 neg:  5.4124 total:  5.5984 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.85it/s]
+pos:  0.2983 neg:  5.4019 total:  5.7002 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.03it/s]
+pos:  0.2153 neg:  5.4015 total:  5.6167 temperature:  1.0000: 100%|██████████| 1000/1000 [00:14&lt;00:00, 67.15it/s]
+pos:  0.2886 neg:  5.4095 total:  5.6980 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 66.59it/s]
+pos:  0.1885 neg:  5.4026 total:  5.5912 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.15it/s]
+pos:  0.3110 neg:  5.4009 total:  5.7119 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.88it/s]
+pos:  0.2092 neg:  5.3960 total:  5.6052 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.21it/s]
+pos:  0.2776 neg:  5.4002 total:  5.6778 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.29it/s]
+pos:  0.1867 neg:  5.3834 total:  5.5701 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.56it/s]
+pos:  0.2832 neg:  5.3920 total:  5.6752 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.63it/s]
+pos:  0.1909 neg:  5.3827 total:  5.5737 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.95it/s]
+pos:  0.2939 neg:  5.3917 total:  5.6856 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.14it/s]
+pos:  0.1795 neg:  5.3842 total:  5.5637 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.24it/s]
+pos:  0.2860 neg:  5.3977 total:  5.6837 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.00it/s]
+pos:  0.1930 neg:  5.3858 total:  5.5788 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.86it/s]
+pos:  0.2778 neg:  5.3941 total:  5.6719 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.80it/s]
+pos:  0.1666 neg:  5.3848 total:  5.5514 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 106.27it/s]
+pos:  0.2189 neg:  5.3916 total:  5.6105 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.82it/s]
+pos:  0.1588 neg:  5.3802 total:  5.5390 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.24it/s]
+pos:  0.2492 neg:  5.3879 total:  5.6371 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.99it/s]
+pos:  0.1654 neg:  5.3800 total:  5.5455 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 106.40it/s]
+pos:  0.2376 neg:  5.3803 total:  5.6179 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 105.95it/s]
+pos:  0.1878 neg:  5.3792 total:  5.5670 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 106.66it/s]
+pos:  0.2353 neg:  5.3976 total:  5.6328 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.11it/s]
+pos:  0.1470 neg:  5.3771 total:  5.5241 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.01it/s]
+pos:  0.1842 neg:  5.4035 total:  5.5877 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.01it/s]
+pos:  0.1554 neg:  5.3737 total:  5.5291 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.90it/s]
+pos:  0.1839 neg:  5.3861 total:  5.5700 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 66.19it/s]
+pos:  0.1431 neg:  5.3740 total:  5.5171 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.95it/s]
+pos:  0.2103 neg:  5.3857 total:  5.5960 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.84it/s]
+pos:  0.1621 neg:  5.3735 total:  5.5356 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 62.98it/s]
+pos:  0.1951 neg:  5.3898 total:  5.5849 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.65it/s]
+pos:  0.2670 neg:  5.4130 total:  5.6800 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.22it/s]
+pos:  0.3407 neg:  5.4200 total:  5.7607 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.89it/s]
+pos:  0.2394 neg:  5.4157 total:  5.6552 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.32it/s]
+pos:  0.3550 neg:  5.4234 total:  5.7783 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.25it/s]
+pos:  0.2555 neg:  5.4163 total:  5.6717 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.14it/s]
+pos:  0.3859 neg:  5.4221 total:  5.8081 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.44it/s]
+pos:  0.2767 neg:  5.4107 total:  5.6873 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 109.13it/s]
+pos:  0.3716 neg:  5.4258 total:  5.7973 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 109.20it/s]
+pos:  0.2339 neg:  5.4069 total:  5.6409 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.03it/s]
+pos:  0.3528 neg:  5.4137 total:  5.7665 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.76it/s]
+pos:  0.2585 neg:  5.4105 total:  5.6690 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.18it/s]
+pos:  0.3445 neg:  5.4227 total:  5.7672 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.02it/s]
+pos:  0.2216 neg:  5.4062 total:  5.6278 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 106.89it/s]
+pos:  0.3170 neg:  5.4177 total:  5.7347 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.27it/s]
+pos:  0.2312 neg:  5.4084 total:  5.6396 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 108.50it/s]
+pos:  0.3295 neg:  5.4277 total:  5.7572 temperature:  1.0000: 100%|██████████| 1000/1000 [00:09&lt;00:00, 107.68it/s]
+pos:  0.2102 neg:  5.4144 total:  5.6245 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.18it/s]
+pos:  0.3130 neg:  5.4104 total:  5.7234 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 64.07it/s]
+pos:  0.2092 neg:  5.4166 total:  5.6257 temperature:  1.0000: 100%|██████████| 1000/1000 [00:14&lt;00:00, 67.17it/s]
+pos:  0.3257 neg:  5.4114 total:  5.7371 temperature:  1.0000: 100%|██████████| 1000/1000 [00:14&lt;00:00, 66.87it/s]
+pos:  0.2140 neg:  5.4129 total:  5.6269 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.30it/s]
+pos:  0.3303 neg:  5.4112 total:  5.7415 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 65.39it/s]
+pos:  0.1918 neg:  5.4102 total:  5.6020 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.48it/s]
+pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|██████████| 1000/1000 [00:15&lt;00:00, 63.44it/s]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cebra.grid_search.GridSearch at 0x7fecf6776800&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cebra.grid_search.GridSearch at 0x7fc44f1b4250&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <p>You can access the underlying grid-search object to visualise the best set of parameters. The models are saved in a “saved_models” folder along with the notebook.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_results</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">get_df_results</span><span class="p">(</span><span class="n">models_dir</span><span class="o">=</span><span class="s2">&quot;saved_models&quot;</span><span class="p">)</span>
 <span class="n">best_model</span><span class="p">,</span> <span class="n">best_model_name</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">get_best_model</span><span class="p">(</span><span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;dataset1&quot;</span><span class="p">,</span> <span class="n">models_dir</span><span class="o">=</span><span class="s2">&quot;saved_models&quot;</span><span class="p">)</span>
@@ -1105,8 +1096,8 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 </div>
 </div>
 </div>
-<p>This is the distibution of loss values in the end</p>
-<div class="cell docutils container">
+<p>This is the distibution of loss values obtained at the end of training.</p>
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all the final losses</span>
 <span class="n">pd_loss</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">get_df_results</span><span class="p">()</span>
@@ -1115,8 +1106,8 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 <span class="c1"># The y-axis is the parameter combination and the x-axis is the loss</span>
 <span class="c1"># We combine the parameters into a single string for the x-axis</span>
 <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;num_hidden_units&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;output_dimension&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;time_offsets&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-
-<span class="n">pd_loss</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">pd_loss_sorted</span> <span class="o">=</span> <span class="n">pd_loss</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd_loss_sorted</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 
 <span class="c1"># We turn off the legend from the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
@@ -1124,10 +1115,10 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0dfb4a2740efa3be3c67f4c9b7608537b61738a8707399ed89c30fb14f70d894.png" src="../_images/0dfb4a2740efa3be3c67f4c9b7608537b61738a8707399ed89c30fb14f70d894.png" />
+<img alt="../_images/6bdfbe9cc052a6d70466aa6b11e1f026410486c074964cd9ce766ea6ce5961f5.png" src="../_images/6bdfbe9cc052a6d70466aa6b11e1f026410486c074964cd9ce766ea6ce5961f5.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span>
 </pre></div>
@@ -1136,20 +1127,20 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 <div class="cell_output docutils container">
 <div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>CEBRA(batch_size=512, conditional=&#x27;time&#x27;, learning_rate=0.01,
       max_iterations=1000, model_architecture=&#x27;offset10-model&#x27;,
-      num_hidden_units=128, output_dimension=16, temperature=1, time_offsets=10,
+      num_hidden_units=128, output_dimension=64, temperature=1, time_offsets=10,
       verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">CEBRA</label><div class="sk-toggleable__content"><pre>CEBRA(batch_size=512, conditional=&#x27;time&#x27;, learning_rate=0.01,
       max_iterations=1000, model_architecture=&#x27;offset10-model&#x27;,
-      num_hidden_units=128, output_dimension=16, temperature=1, time_offsets=10,
+      num_hidden_units=128, output_dimension=64, temperature=1, time_offsets=10,
       verbose=True)</pre></div></div></div></div></div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_model_name</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;learning_rate_0.01_num_hidden_units_128_output_dimension_16_time_offsets_10_dataset1&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;learning_rate_0.01_num_hidden_units_128_output_dimension_64_time_offsets_10_dataset1&#39;
 </pre></div>
 </div>
 </div>
@@ -1194,7 +1185,7 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pos:  0.0268 neg:  5.3184 total:  5.3453 temperature:  1.0000: 100%|██████████| 20000/20000 [04:50&lt;00:00, 68.89it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pos:  0.0271 neg:  5.3149 total:  5.3420 temperature:  1.0000: 100%|██████████| 20000/20000 [05:13&lt;00:00, 63.88it/s]
 </pre></div>
 </div>
 </div>
@@ -1214,7 +1205,7 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Steps&#39;, ylabel=&#39;InfoNCE Loss&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/11f6297ee65d78e04d67b244459d30151c5b4b9566a1ce5c1113469fa7fd215c.png" src="../_images/11f6297ee65d78e04d67b244459d30151c5b4b9566a1ce5c1113469fa7fd215c.png" />
+<img alt="../_images/8d66985c7be441e1fcb29329b9ad26409fa91f1072d1736e58a9c5ba67218b44.png" src="../_images/8d66985c7be441e1fcb29329b9ad26409fa91f1072d1736e58a9c5ba67218b44.png" />
 </div>
 </div>
 </section>
@@ -1257,17 +1248,20 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 <span class="k">def</span> <span class="nf">create_subplots</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">,</span> <span class="n">cebra_embedding_colors_list</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 
-    <span class="c1"># &#39;count_of_repeat&#39; allows us to title the plot based on the movie repeat</span>
-    <span class="n">count_of_repeat</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CEBRA-Time - </span><span class="si">{</span><span class="n">stim_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-
+    
+    <span class="c1"># We only plot a subset </span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">4</span><span class="p">:</span>
+        <span class="n">index_repeat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">index_repeat</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">))</span>
+    
     <span class="c1"># iterates through the list of cebra models and makes one plot for each model</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">)):</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">),</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-        <span class="n">count_of_repeat</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">index_repeat</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_repeat</span><span class="p">),</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">cebra</span><span class="o">.</span><span class="n">plot_embedding</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">embedding</span><span class="o">=</span><span class="n">cebra_time_models_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">embedding_labels</span><span class="o">=</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">count_of_repeat</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">cebra</span><span class="o">.</span><span class="n">plot_embedding</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">embedding</span><span class="o">=</span><span class="n">cebra_time_models_list</span><span class="p">[</span><span class="n">value_index</span><span class="p">],</span> <span class="n">embedding_labels</span><span class="o">=</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">value_index</span><span class="p">],</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;repeat </span><span class="si">{</span><span class="n">value_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1276,9 +1270,12 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># provides the names of each stimulus type from the stim table</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
+
+<span class="c1"># provides the names of each stimulus type from the stim table</span>
 <span class="n">stimulus_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;stimulus type&#39;</span><span class="p">])</span>
 
+<span class="n">store_scores</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="c1"># loops through each stimulus type and selects the indices for every occurance of that stimulus throughout the entire movie</span>
 <span class="k">for</span> <span class="n">stim_name</span> <span class="ow">in</span> <span class="n">stimulus_names</span><span class="p">:</span>
     <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">timestamp_stimulus</span> <span class="o">==</span> <span class="n">stim_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -1319,32 +1316,127 @@ pos:  0.3061 neg:  5.4142 total:  5.7204 temperature:  1.0000: 100%|████
 
         <span class="c1"># use the function from above to create a plot of each model from the list we just made and color them using the corresponding embedding color list</span>
         <span class="n">create_subplots</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">,</span> <span class="n">cebra_embedding_colors_list</span><span class="p">)</span>
+        
+        <span class="c1"># Parameter for KNN clustering</span>
+        <span class="n">nb_repeat</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">)</span>
+        <span class="n">test_percent</span> <span class="o">=</span> <span class="mf">20.0</span>
+        <span class="n">nb_training</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb_repeat</span><span class="o">*</span><span class="p">(</span><span class="mf">100.0</span><span class="o">-</span><span class="n">test_percent</span><span class="p">)</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span>
+        <span class="n">nb_test</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nb_repeat</span><span class="o">*</span><span class="n">test_percent</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span>
+        
+        <span class="c1"># We only train a decoder if there are enough repeats. </span>
+        <span class="k">if</span> <span class="n">nb_training</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">nb_test</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">nb_folds</span> <span class="o">=</span> <span class="mi">10</span> 
+            <span class="n">test_scores</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">index_fold</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_folds</span><span class="p">):</span>
+                <span class="c1"># Here we create the Decoder</span>
+                <span class="n">time_decoder</span> <span class="o">=</span> <span class="n">cebra</span><span class="o">.</span><span class="n">KNNDecoder</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">)</span>
+                
+                <span class="c1"># We pick the folds randomly across repeats</span>
+                <span class="n">list_integers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nb_repeat</span><span class="p">)</span>
+                <span class="n">list_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">list_integers</span><span class="p">,</span> <span class="n">nb_test</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="c1"># The following give the remaining integers</span>
+                <span class="n">list_training</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">list_integers</span><span class="p">,</span> <span class="n">list_test</span><span class="p">)</span>
+                
+                <span class="c1"># Extract training and testing data</span>
+                <span class="n">embedding_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">[</span><span class="n">list_training</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+                <span class="n">label_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">list_training</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+                
+                <span class="c1"># Fit the decoder</span>
+                <span class="n">time_decoder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">embedding_train</span><span class="p">,</span> <span class="n">label_train</span><span class="p">)</span>
+
+                <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">[</span><span class="n">list_test</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+                <span class="n">label_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">list_test</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+                <span class="c1"># Measure performance on held out data</span>
+                <span class="n">time_pred</span> <span class="o">=</span> <span class="n">time_decoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">embedding_test</span><span class="p">)</span>
+
+                <span class="n">local_test_score</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">label_test</span><span class="p">,</span> <span class="n">time_pred</span><span class="p">)</span>
+                <span class="n">test_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">local_test_score</span><span class="p">)</span>
+            
+            <span class="c1"># We average the folds</span>
+            <span class="n">average_test_score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span>
+            
+            <span class="c1"># We store the result into a dictionary for later plotting</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Averaged R2 test score </span><span class="si">{</span><span class="n">average_test_score</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="n">stim_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">store_scores</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">average_test_score</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fa6d03ddfd449ea7bdbafdd7d13ff8193d8b426cd067802c3f115c1950f76eeb.png" src="../_images/fa6d03ddfd449ea7bdbafdd7d13ff8193d8b426cd067802c3f115c1950f76eeb.png" />
-<img alt="../_images/dd37dfc55025a5423a81513962b1cd35e20cbb509c8c0aebeeb4b6a7a5ddf8a6.png" src="../_images/dd37dfc55025a5423a81513962b1cd35e20cbb509c8c0aebeeb4b6a7a5ddf8a6.png" />
-<img alt="../_images/2c0d9325dfc19e151d79598d84f4ec3e9040c02526b46bc5ca396ca413257fb2.png" src="../_images/2c0d9325dfc19e151d79598d84f4ec3e9040c02526b46bc5ca396ca413257fb2.png" />
-<img alt="../_images/179edd9aecc66a884876180ffc07e80a268d4f823b3ed2ee8d09ff931ecee009.png" src="../_images/179edd9aecc66a884876180ffc07e80a268d4f823b3ed2ee8d09ff931ecee009.png" />
-<img alt="../_images/90a900dd76a7a41aab52a796e5507e9b169e03beea54c3e1e156ad1a5da9bf53.png" src="../_images/90a900dd76a7a41aab52a796e5507e9b169e03beea54c3e1e156ad1a5da9bf53.png" />
-<img alt="../_images/8861e084abdb27d42ce343eb2fdb6ff73485ebe97662e8595783a68f5a8f9901.png" src="../_images/8861e084abdb27d42ce343eb2fdb6ff73485ebe97662e8595783a68f5a8f9901.png" />
-<img alt="../_images/11977f5443f105ef7abad26554d2a1b8bb797a4667f608d6a24be4154d193e62.png" src="../_images/11977f5443f105ef7abad26554d2a1b8bb797a4667f608d6a24be4154d193e62.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid stim
+<img alt="../_images/c2a0a3e92a250e1606e57f1a18ddece444d9cd9da3d9b24ffbd1270ef6898bbe.png" src="../_images/c2a0a3e92a250e1606e57f1a18ddece444d9cd9da3d9b24ffbd1270ef6898bbe.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.07301371915473734 for crickets
 </pre></div>
 </div>
-<img alt="../_images/efec9dbf0112052d435723383a41b3b154453da3dea4354f028d18a7fc60e83e.png" src="../_images/efec9dbf0112052d435723383a41b3b154453da3dea4354f028d18a7fc60e83e.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid stim
+<img alt="../_images/bfcc0db17c3d62a062febef2446a0387974fdcd32f11d26a2dddaf4a7f00d23a.png" src="../_images/bfcc0db17c3d62a062febef2446a0387974fdcd32f11d26a2dddaf4a7f00d23a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.05296581510445771 for mouse_montage_2
+Invalid stim
+Invalid stim
 </pre></div>
 </div>
-<img alt="../_images/d74cc5a926c5b2ef0cfbefb826aaa105d38e1e5a41df7c73ff1574b216012d6d.png" src="../_images/d74cc5a926c5b2ef0cfbefb826aaa105d38e1e5a41df7c73ff1574b216012d6d.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mouse_montage_1&#39;, &#39;crickets&#39;, &#39;mouse_montage_1_spatial_phase_scramble&#39;, &#39;man_writing&#39;, &#39;human_montage&#39;, &#39;mousecam_spatial_phase_scramble&#39;, &#39;dots&#39;, &#39;spontaneous&#39;, &#39;mousecam&#39;, &#39;snake&#39;, &#39;conspecifics&#39;, &#39;noise&#39;, &#39;mouse_montage_1_temporal_phase_scramble&#39;, &#39;mouse_montage_2&#39;} not found
+<img alt="../_images/9e72a675cba28d2f413aaaf19357914c9f7c162d0f58cafe4b31dd50c256f40c.png" src="../_images/9e72a675cba28d2f413aaaf19357914c9f7c162d0f58cafe4b31dd50c256f40c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.5483171284312768 for mousecam
 </pre></div>
 </div>
-<img alt="../_images/3b69df14a5894ca3cd3a4272a92f014a2b79a6dd1fbe4042ad44a95299c222c9.png" src="../_images/3b69df14a5894ca3cd3a4272a92f014a2b79a6dd1fbe4042ad44a95299c222c9.png" />
-<img alt="../_images/899a7a26b9008bd47850b78319d06468eaf8577c39c5cbc44515425833a13518.png" src="../_images/899a7a26b9008bd47850b78319d06468eaf8577c39c5cbc44515425833a13518.png" />
+<img alt="../_images/2a9083a40b50f546b23e850dcf664eb2bfed9659af7055c91bb3200c5ad99faf.png" src="../_images/2a9083a40b50f546b23e850dcf664eb2bfed9659af7055c91bb3200c5ad99faf.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.4807348093219213 for mousecam_spatial_phase_scramble
+{&#39;crickets&#39;, &#39;mouse_montage_2&#39;, &#39;spontaneous&#39;, &#39;snake&#39;, &#39;mousecam&#39;, &#39;mousecam_spatial_phase_scramble&#39;, &#39;noise&#39;, &#39;mouse_montage_1&#39;, &#39;mouse_montage_1_temporal_phase_scramble&#39;, &#39;man_writing&#39;, &#39;conspecifics&#39;, &#39;human_montage&#39;, &#39;dots&#39;, &#39;mouse_montage_1_spatial_phase_scramble&#39;} not found
+</pre></div>
+</div>
+<img alt="../_images/258389710021f49f2e0fd013394b1b30c2a10c4bad3f3b80016b2ff02a80ecd2.png" src="../_images/258389710021f49f2e0fd013394b1b30c2a10c4bad3f3b80016b2ff02a80ecd2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.4640980095924032 for mouse_montage_1
+</pre></div>
+</div>
+<img alt="../_images/5776a60a3168955d16fd4a0d1e42e97804c4803d26ca1aebecf152d2329f2724.png" src="../_images/5776a60a3168955d16fd4a0d1e42e97804c4803d26ca1aebecf152d2329f2724.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score -0.0878533539641897 for mouse_montage_1_temporal_phase_scramble
+</pre></div>
+</div>
+<img alt="../_images/ad6f9c3adbc57d23ee3776fa54002b82a9d506981f0e24712aba86dcc125f8e3.png" src="../_images/ad6f9c3adbc57d23ee3776fa54002b82a9d506981f0e24712aba86dcc125f8e3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.29171775563207586 for man_writing
+</pre></div>
+</div>
+<img alt="../_images/1fb2fbd9cbb1101ffd6902371cef72e4788a74b3b5db05b7c580fb96c4fa396a.png" src="../_images/1fb2fbd9cbb1101ffd6902371cef72e4788a74b3b5db05b7c580fb96c4fa396a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.0614520482011223 for conspecifics
+</pre></div>
+</div>
+<img alt="../_images/7cee66e5ba8efc0c6fd1029e5fff6006ab701050989ca13c258bd5a88a1ee80d.png" src="../_images/7cee66e5ba8efc0c6fd1029e5fff6006ab701050989ca13c258bd5a88a1ee80d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.645635394140981 for human_montage
+</pre></div>
+</div>
+<img alt="../_images/b5cc51494a464fed513ee3e2a5bf9ac90a66c082d0ca78c03829c74afa0aa236.png" src="../_images/b5cc51494a464fed513ee3e2a5bf9ac90a66c082d0ca78c03829c74afa0aa236.png" />
+<img alt="../_images/687538cfb630bea0b98ba1ed18db2a27e09c791927aa02a5837d3a944e6c4f7e.png" src="../_images/687538cfb630bea0b98ba1ed18db2a27e09c791927aa02a5837d3a944e6c4f7e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Averaged R2 test score 0.19524809568696277 for mouse_montage_1_spatial_phase_scramble
+</pre></div>
 </div>
 </div>
+</div>
+<p>In the code above we trained a KNN image decoder onto each movie. Our intent is to test which movie could better be encoded into the neuronal activity recorded during this session. Each movie contains stimuli that are more or less natural to a mouse. The hypothesis is that those more innate stimuli should yield higher decoding accuracy.
+The KNN decoder tries to predict which frame of the movie is displayed onto the screen solely from the neuronal activity. It does not tries to predict the movie name, just the frame number. For each movie, the performance of the decoder is measured using 10 folds. A fold is a single training/test split of the data. Here, we are splitting each dataset into training and test data 10 times and averaging the performance of all models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract keys and values from the dictionary</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">store_scores</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">store_scores</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1"># Create a bar plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># Adding labels and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Movie name&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;R^2 score from KNN cluster&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;R^2 score from KNN cluster&#39;)
+</pre></div>
+</div>
+<img alt="../_images/21472df9985a7f34083c739ce463c64a6ad27127d9023c7bb687c1529c57a948.png" src="../_images/21472df9985a7f34083c739ce463c64a6ad27127d9023c7bb687c1529c57a948.png" />
+</div>
+</div>
+<p>The above plot shows the ability of a clustering algorithm to predict the current frame solely from the embedding created by CEBRA. You can see that specific movie types are better predicted (r2_square value closer to 1). The original hypothesis of the study was to look into the meaningfulness of various movies. CEBRA can be used in this context to test how well each movie is represented by the neuronal activity.</p>
 </section>
 </section>
 

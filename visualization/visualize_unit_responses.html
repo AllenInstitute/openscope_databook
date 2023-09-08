@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Visualizing Neuronal Unit Spikes &#8212; OpenScope Databook</title>
+    <title>Visualizing Neuronal Unit Responses &#8212; OpenScope Databook</title>
   
   
   
@@ -178,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
 </ul>
@@ -193,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Analyze OpenScope Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
 <ul class="nav bd-sidenav">
@@ -484,7 +484,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Visualizing Neuronal Unit Spikes</h1>
+    <h1>Visualizing Neuronal Unit Responses</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -520,8 +520,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuronal-unit-spikes">
-<h1>Visualizing Neuronal Unit Spikes<a class="headerlink" href="#visualizing-neuronal-unit-spikes" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuronal-unit-responses">
+<h1>Visualizing Neuronal Unit Responses<a class="headerlink" href="#visualizing-neuronal-unit-responses" title="Permalink to this heading">#</a></h1>
 <p>Note: Some of this content is adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_session.html">Allen SDK Documentation</a>.</p>
 <p>After processing Neuropixel ecephys data with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort</a></strong>, individual neuronal units have been identified and are stored in the units table, in the <code class="docutils literal notranslate"><span class="pre">Units</span></code> section of the NWB file. The units table contains information about hypothetical neurons determined by Kilosort. With this information and the stimulus information found in the stimulus tables of the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, this notebook helps examine the spiking behavior of these units in response to stimulus and their associated waveforms</p>
 <section id="environment-setup">

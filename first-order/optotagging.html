@@ -178,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
 </ul>
@@ -193,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Analyze OpenScope Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
 <ul class="nav bd-sidenav">
@@ -537,6 +537,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.EL2C6PLE4ZYW3ECEVIV3OXXGRN2NRFM2.gfortran-win_amd64.dll
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,6 +587,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.0) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
@@ -1103,8 +1114,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <p>The same can be done for the units table by defining the function <code class="docutils literal notranslate"><span class="pre">unit_select</span></code>. For information on the properties of the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table, see <a class="reference internal" href="../visualization/visualize_unit_metrics.html"><span class="doc std std-doc">Visualizing Unit Quality Metrics</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># stim_select = lambda row: float(row.duration) &gt; 0.009 and float(row.duration) &lt; 0.012</span>
-<span class="n">stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.009</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.012</span>
+<span class="c1"># stim_select = lambda row: True</span>
 <span class="n">stim_times</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">stim_table</span> <span class="k">if</span> <span class="n">stim_select</span><span class="p">(</span><span class="n">row</span><span class="p">)]</span>
 
 <span class="c1"># unit_select = lambda row: float(row.firing_rate) &gt; 4</span>
@@ -1223,12 +1234,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Unit spike counts over time&quot;</span><span class="p">,</span>
             <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spikes (per </span><span class="si">{</span><span class="n">time_resolution</span><span class="si">}</span><span class="s2"> seconds)&quot;</span><span class="p">,</span>
             <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7e2a1e748fe483002ae7324121d630608b9313658a4eb5f4189d12a93217f5fb.png" src="../_images/7e2a1e748fe483002ae7324121d630608b9313658a4eb5f4189d12a93217f5fb.png" />
+<img alt="../_images/932ec2520a53496311c3dff1e2ccffadc020002bb8c59d387125318d235cb490.png" src="../_images/932ec2520a53496311c3dff1e2ccffadc020002bb8c59d387125318d235cb490.png" />
 </div>
 </div>
 </section>
@@ -1260,12 +1271,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Unit spike count Z-scores over time&quot;</span><span class="p">,</span>
             <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spike count Z-score&quot;</span><span class="p">,</span>
             <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/75a02cecde5ee533370eef53760b4b2356d508ae62514a99df1b77de2ea980b8.png" src="../_images/75a02cecde5ee533370eef53760b4b2356d508ae62514a99df1b77de2ea980b8.png" />
+<img alt="../_images/cd40216b4ce14f008c51864aac1a8baa46093faa4a5d668e8dfbdacdc9fc2739.png" src="../_images/cd40216b4ce14f008c51864aac1a8baa46093faa4a5d668e8dfbdacdc9fc2739.png" />
 </div>
 </div>
 </section>
@@ -1287,12 +1298,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sorted unit spike count Z-scores over time&quot;</span><span class="p">,</span>
             <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spike count Z-score&quot;</span><span class="p">,</span>
             <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/321af12c5ee061ccf04df44e15f6ecb7000c3f03e6018c046bfde99410f96d12.png" src="../_images/321af12c5ee061ccf04df44e15f6ecb7000c3f03e6018c046bfde99410f96d12.png" />
+<img alt="../_images/9a3c1e34c2066f7bf4b801a5f8bc741864deabb55ca8cfeda99e01263a9ab543.png" src="../_images/9a3c1e34c2066f7bf4b801a5f8bc741864deabb55ca8cfeda99e01263a9ab543.png" />
 </div>
 </div>
 </section>
@@ -1307,12 +1318,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Responsive unit spike counts over time&quot;</span><span class="p">,</span>
             <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spikes (per </span><span class="si">{</span><span class="n">time_resolution</span><span class="si">}</span><span class="s2"> seconds)&quot;</span><span class="p">,</span>
             <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1951b44a651c4edb73f8025dc1ca7e3af9e76a56ee35c32c0617d8adb7a4fa74.png" src="../_images/1951b44a651c4edb73f8025dc1ca7e3af9e76a56ee35c32c0617d8adb7a4fa74.png" />
+<img alt="../_images/774c54e1787e9b6cacc65f5e8f4ab13802cd70bcf170ef0bff02170375da67d2.png" src="../_images/774c54e1787e9b6cacc65f5e8f4ab13802cd70bcf170ef0bff02170375da67d2.png" />
 </div>
 </div>
 </section>
@@ -1425,9 +1436,9 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\_stats_py.py:8057: RuntimeWarning: ks_2samp: Exact calculation unsuccessful. Switching to method=asymp.
   return ks_2samp(xvals, yvals, alternative=alternative, method=method)
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\numpy\core\fromnumeric.py:3474: RuntimeWarning: Mean of empty slice.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\fromnumeric.py:3474: RuntimeWarning: Mean of empty slice.
   return _methods._mean(a, axis=axis, dtype=dtype,
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\numpy\core\_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
   ret = ret.dtype.type(ret / rcount)
 </pre></div>
 </div>
@@ -1476,48 +1487,48 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\numpy\core\_
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002632</td>
-      <td>0.130032</td>
-      <td>0.174268</td>
-      <td>0.210526</td>
-      <td>0.000000</td>
-      <td>8.200941e-01</td>
+      <td>0.002339</td>
+      <td>0.130425</td>
+      <td>0.189092</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.947879</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.000877</td>
-      <td>3.280596</td>
-      <td>3.736023</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.000000e+00</td>
+      <td>0.001170</td>
+      <td>3.172385</td>
+      <td>3.636217</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003801</td>
-      <td>0.023445</td>
-      <td>0.042282</td>
-      <td>0.210526</td>
-      <td>0.000000</td>
-      <td>8.200941e-01</td>
+      <td>0.003509</td>
+      <td>0.020110</td>
+      <td>0.040316</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.947879</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.000585</td>
-      <td>2.064227</td>
-      <td>2.729396</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.000000e+00</td>
+      <td>0.001170</td>
+      <td>1.410416</td>
+      <td>1.535328</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0.000000</td>
-      <td>25.485417</td>
-      <td>33.612240</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>1.000000e+00</td>
+      <td>21.937948</td>
+      <td>26.698553</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1530,48 +1541,48 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\numpy\core\_
     </tr>
     <tr>
       <th>1598</th>
-      <td>0.000292</td>
-      <td>4.553882</td>
-      <td>6.443752</td>
       <td>0.000000</td>
-      <td>0.005556</td>
-      <td>1.000000e+00</td>
+      <td>4.755991</td>
+      <td>7.256958</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>1599</th>
-      <td>0.006433</td>
-      <td>0.129676</td>
-      <td>0.166805</td>
-      <td>0.473684</td>
-      <td>0.000000</td>
-      <td>8.912025e-01</td>
+      <td>0.011696</td>
+      <td>0.164228</td>
+      <td>0.174146</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.947879</td>
     </tr>
     <tr>
       <th>1600</th>
-      <td>0.000877</td>
-      <td>0.677926</td>
-      <td>0.851419</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>9.449552e-01</td>
+      <td>0.001170</td>
+      <td>0.106204</td>
+      <td>0.205461</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.653387</td>
     </tr>
     <tr>
       <th>1601</th>
       <td>0.000000</td>
-      <td>1.105316</td>
-      <td>1.398318</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>9.999699e-01</td>
+      <td>1.026929</td>
+      <td>1.225496</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.999981</td>
     </tr>
     <tr>
       <th>1602</th>
       <td>0.000000</td>
-      <td>2.313009</td>
-      <td>3.932618</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>2.230212e-08</td>
+      <td>2.336644</td>
+      <td>4.200632</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000224</td>
     </tr>
   </tbody>
 </table>

@@ -178,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
 </ul>
@@ -193,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Analyze OpenScope Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
 <ul class="nav bd-sidenav">
@@ -531,6 +531,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.EL2C6PLE4ZYW3ECEVIV3OXXGRN2NRFM2.gfortran-win_amd64.dll
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -554,8 +562,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000336&quot;</span>
-<span class="c1"># dandi_filepath = &quot;sub-621603/sub-621603_ses-1194683535-acq-1194752582_ophys.nwb&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-621603/sub-621603_ses-1194683535-acq-1194752582_ophys.nwb&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-655042/sub-655042_ses-1241145430-acq-1241919401_ophys.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 <span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
 </pre></div>
@@ -571,7 +578,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.0) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dir before download
+c:\Users\carter.peene\Desktop\Projects\openscope_databook\docs\embargoed
+[&#39;cell_matching.ipynb&#39;, &#39;modality_alignment.ipynb&#39;, &#39;sub-655042_ses-1241145430-acq-1241919401_ophys.nwb&#39;, &#39;test_2p_responses_embargoed.ipynb&#39;, &#39;visualize_behavior.ipynb&#39;]
+File already exists
+dir after download
+c:\Users\carter.peene\Desktop\Projects\openscope_databook\docs\embargoed
+[&#39;cell_matching.ipynb&#39;, &#39;modality_alignment.ipynb&#39;, &#39;sub-655042_ses-1241145430-acq-1241919401_ophys.nwb&#39;, &#39;test_2p_responses_embargoed.ipynb&#39;, &#39;visualize_behavior.ipynb&#39;]
 Opening file
 </pre></div>
 </div>
@@ -593,16 +609,16 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;metadata&#39;: metadata abc.OphysMetadata at 0x2418780018000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;metadata&#39;: metadata abc.OphysMetadata at 0x2427754511952
  Fields:
    experiment_container_id: 0
    field_of_view_height: 512
    field_of_view_width: 512
-   imaging_depth: 350
-   imaging_plane_group: 2
+   imaging_depth: 32
+   imaging_plane_group: 0
    imaging_plane_group_count: 4
-   ophys_experiment_id: 1194752582
-   ophys_session_id: 1194683535}
+   ophys_experiment_id: 1241919401
+   ophys_session_id: 1241145430}
 </pre></div>
 </div>
 </div>
@@ -702,191 +718,191 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 0.0, 30.02491, 39.03236712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 1.0, 40.03322000000001, 49.04066712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 2.0, 50.041520000000006, 59.04897712068045)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 3.0, 60.04983, 69.05729712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 4.0, 70.05813, 79.06559712068045)
-(&#39;movie_worms_fwd_presentations&#39;, 5.0, 80.06644, 89.07389712068046)
-(&#39;movie_worms_fwd_presentations&#39;, 6.0, 90.07477, 99.08223712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 7.0, 100.08306, 109.09053712068044)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 8.0, 110.09139, 119.09884712068046)
-(&#39;movie_worms_fwd_presentations&#39;, 9.0, 120.0997, 129.10716712068046)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 10.0, 130.10802, 139.11548712068046)
-(&#39;movie_worms_fwd_presentations&#39;, 11.0, 140.11631, 149.12378712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 12.0, 150.12465, 159.13208712068044)
-(&#39;movie_worms_fwd_presentations&#39;, 13.0, 160.13294, 169.14042712068044)
-(&#39;movie_worms_fwd_presentations&#39;, 14.0, 170.14127, 179.14872712068046)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 15.0, 180.14956, 189.15702712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 16.0, 190.15788, 199.16532712068044)
-(&#39;movie_worms_fwd_presentations&#39;, 17.0, 200.16617, 209.1736271206805)
-(&#39;movie_flower_fwd_presentations&#39;, 18.0, 210.17446, 219.18189712068045)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 19.0, 220.18276, 229.19022712068045)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 20.0, 230.19107, 239.19848712068045)
-(&#39;movie_flower_fwd_presentations&#39;, 21.0, 240.19935, 249.2067771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 22.0, 250.20764, 259.2150771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 23.0, 260.21593, 269.2233771206804)
-(&#39;movie_flower_fwd_presentations&#39;, 24.0, 270.22421, 279.2316471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 25.0, 280.23247999999995, 289.2399371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 26.0, 290.24078999999995, 299.2482271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 27.0, 300.24907999999994, 309.2565171206804)
-(&#39;movie_worms_fwd_presentations&#39;, 28.0, 310.25738, 319.2648171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 29.0, 320.26564999999994, 329.2730971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 30.0, 330.27396, 339.2813771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 31.0, 340.28223, 349.2896671206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 32.0, 350.2905099999999, 359.2979671206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 33.0, 360.29881, 369.3062571206804)
-(&#39;movie_worms_fwd_presentations&#39;, 34.0, 370.30709999999993, 379.3145371206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 35.0, 380.31538, 389.3228271206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 36.0, 390.32367, 399.3311171206804)
-(&#39;movie_worms_fwd_presentations&#39;, 37.0, 400.3319599999999, 409.3394071206804)
-(&#39;movie_flower_fwd_presentations&#39;, 38.0, 410.34025, 419.3476671206804)
-(&#39;movie_worms_fwd_presentations&#39;, 39.0, 420.34854, 429.3560071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 40.0, 430.3568399999999, 439.3642371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 41.0, 440.36513, 449.3725371206804)
-(&#39;movie_worms_fwd_presentations&#39;, 42.0, 450.3734099999999, 459.3808471206804)
-(&#39;movie_flower_fwd_presentations&#39;, 43.0, 460.3817, 469.3891071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 44.0, 470.38999, 479.3974371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 45.0, 480.39829, 489.4056971206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 46.0, 490.40656, 499.4139971206804)
-(&#39;movie_worms_fwd_presentations&#39;, 47.0, 500.41485, 509.4222971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 48.0, 510.42314, 519.4305771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 49.0, 520.43143, 529.4388771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 50.0, 530.43973, 539.4471771206804)
-(&#39;movie_worms_fwd_presentations&#39;, 51.0, 540.44801, 549.4554571206804)
-(&#39;movie_flower_fwd_presentations&#39;, 52.0, 550.4563, 559.4637371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 53.0, 560.4646, 569.4720271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 54.0, 570.47289, 579.4803171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 55.0, 580.48118, 589.4885971206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 56.0, 590.48947, 599.4968871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 57.0, 600.4977700000001, 609.5051871206804)
-(&#39;movie_worms_fwd_presentations&#39;, 58.0, 610.50605, 619.5135071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 59.0, 620.51433, 629.5217671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 60.0, 630.52261, 639.5300471206804)
-(&#39;movie_flower_fwd_presentations&#39;, 61.0, 640.53093, 649.5383571206804)
-(&#39;movie_worms_fwd_presentations&#39;, 62.0, 650.5392, 659.5466571206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 63.0, 660.54749, 669.5549371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 64.0, 670.55576, 679.5632271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 65.0, 680.56408, 689.5715271206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 66.0, 690.57238, 699.5798271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 67.0, 700.58067, 709.5881171206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 68.0, 710.58895, 719.5963871206804)
-(&#39;movie_worms_fwd_presentations&#39;, 69.0, 720.59725, 729.6046971206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 70.0, 730.60552, 739.6129571206804)
-(&#39;movie_flower_fwd_presentations&#39;, 71.0, 740.6138100000001, 749.6212471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 72.0, 750.62211, 759.6295671206803)
-(&#39;movie_flower_fwd_presentations&#39;, 73.0, 760.6304, 769.6378371206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 74.0, 770.63868, 779.6461371206804)
-(&#39;movie_worms_fwd_presentations&#39;, 75.0, 780.64696, 789.6544371206804)
-(&#39;movie_worms_fwd_presentations&#39;, 76.0, 790.65526, 799.6627271206804)
-(&#39;movie_flower_fwd_presentations&#39;, 77.0, 800.66357, 809.6709871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 78.0, 810.67185, 819.6793071206804)
-(&#39;movie_worms_fwd_presentations&#39;, 79.0, 820.68013, 829.6876071206804)
-(&#39;movie_flower_fwd_presentations&#39;, 80.0, 830.68844, 839.6958671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 81.0, 840.69673, 849.7041571206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 82.0, 850.70502, 859.7124671206803)
-(&#39;movie_worms_fwd_presentations&#39;, 83.0, 860.71331, 869.7207571206804)
-(&#39;movie_worms_fwd_presentations&#39;, 84.0, 870.7216, 879.7290471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 85.0, 880.72988, 889.7373271206804)
-(&#39;movie_flower_fwd_presentations&#39;, 86.0, 890.73816, 899.7456271206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 87.0, 900.74646, 909.7539271206804)
-(&#39;movie_worms_fwd_presentations&#39;, 88.0, 910.75475, 919.7622071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 89.0, 920.76304, 929.7705171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 90.0, 930.77134, 939.7787871206804)
-(&#39;movie_worms_fwd_presentations&#39;, 91.0, 940.77963, 949.7870871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 92.0, 950.78792, 959.7953671206805)
-(&#39;movie_flower_fwd_presentations&#39;, 93.0, 960.79624, 969.8036671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 94.0, 970.8045, 979.8119371206805)
-(&#39;movie_worms_fwd_presentations&#39;, 95.0, 980.81278, 989.8202471206804)
-(&#39;movie_worms_fwd_presentations&#39;, 96.0, 990.82106, 999.8285471206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 97.0, 1000.82935, 1009.8368171206804)
-(&#39;movie_flower_fwd_presentations&#39;, 98.0, 1010.83766, 1019.8450971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 99.0, 1020.84594, 1029.8533671206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 100.0, 1030.85422, 1039.8616971206802)
-(&#39;movie_flower_fwd_presentations&#39;, 101.0, 1040.86252, 1049.8699771206802)
-(&#39;movie_flower_fwd_presentations&#39;, 102.0, 1050.87082, 1059.8782671206802)
-(&#39;movie_worms_fwd_presentations&#39;, 103.0, 1060.8791199999998, 1069.8865671206802)
-(&#39;movie_worms_fwd_presentations&#39;, 104.0, 1070.8874099999998, 1079.8948671206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 105.0, 1080.8956999999998, 1089.9031371206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 106.0, 1090.9039899999998, 1099.9114271206802)
-(&#39;movie_worms_fwd_presentations&#39;, 107.0, 1100.9122599999998, 1109.9197171206804)
-(&#39;movie_worms_fwd_presentations&#39;, 108.0, 1110.92057, 1119.9280171206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 109.0, 1120.9288499999998, 1129.9363171206803)
-(&#39;movie_worms_fwd_presentations&#39;, 110.0, 1130.9371299999998, 1139.9446171206805)
-(&#39;movie_flower_fwd_presentations&#39;, 111.0, 1140.94543, 1149.9528871206803)
-(&#39;movie_flower_fwd_presentations&#39;, 112.0, 1150.9536999999998, 1159.9611871206805)
-(&#39;movie_flower_fwd_presentations&#39;, 113.0, 1160.96202, 1169.9694571206803)
-(&#39;movie_flower_fwd_presentations&#39;, 114.0, 1170.9703, 1179.9777571206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 115.0, 1180.97859, 1189.9860571206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 116.0, 1190.98688, 1199.9943271206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 117.0, 1200.99518, 1210.0026271206802)
-(&#39;movie_worms_fwd_presentations&#39;, 118.0, 1211.00346, 1220.0109071206805)
-(&#39;movie_worms_fwd_presentations&#39;, 119.0, 1221.01175, 1230.0192071206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 120.0, 1231.02005, 1240.0274771206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 121.0, 1241.0283499999998, 1250.0358071206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 122.0, 1251.0366299999998, 1260.0440771206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 123.0, 1261.0449199999998, 1270.0523571206802)
-(&#39;movie_worms_fwd_presentations&#39;, 124.0, 1271.05323, 1280.0606571206804)
-(&#39;movie_flower_fwd_presentations&#39;, 125.0, 1281.0614899999998, 1290.0689271206802)
-(&#39;movie_flower_fwd_presentations&#39;, 126.0, 1291.0697899999998, 1300.0772371206804)
-(&#39;movie_flower_fwd_presentations&#39;, 127.0, 1301.07809, 1310.0855071206802)
-(&#39;movie_flower_fwd_presentations&#39;, 128.0, 1311.08637, 1320.0938171206803)
-(&#39;movie_worms_fwd_presentations&#39;, 129.0, 1321.09465, 1330.1021071206803)
-(&#39;movie_worms_fwd_presentations&#39;, 130.0, 1331.10294, 1340.1104171206805)
-(&#39;movie_worms_fwd_presentations&#39;, 131.0, 1341.11124, 1350.1186971206805)
-(&#39;movie_worms_fwd_presentations&#39;, 132.0, 1351.11954, 1360.1269871206805)
-(&#39;movie_worms_fwd_presentations&#39;, 133.0, 1361.12782, 1370.1352771206805)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 134.0, 1371.13612, 1380.1435571206805)
-(&#39;movie_flower_fwd_presentations&#39;, 135.0, 1381.1444299999998, 1390.1518571206802)
-(&#39;movie_flower_fwd_presentations&#39;, 136.0, 1391.15268, 1400.1601371206802)
-(&#39;movie_worms_fwd_presentations&#39;, 137.0, 1401.1609999999998, 1410.1684471206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 138.0, 1411.16926, 1420.1767071206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 139.0, 1421.17754, 1430.1849871206805)
-(&#39;movie_flower_fwd_presentations&#39;, 140.0, 1431.18583, 1440.1932871206802)
-(&#39;movie_flower_fwd_presentations&#39;, 141.0, 1441.19413, 1450.2015671206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 142.0, 1451.2024299999998, 1460.2098671206802)
-(&#39;movie_worms_fwd_presentations&#39;, 143.0, 1461.2107099999998, 1470.2181771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 144.0, 1471.21903, 1480.2264671206804)
-(&#39;movie_flower_fwd_presentations&#39;, 145.0, 1481.2272999999998, 1490.2347371206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 146.0, 1491.2355799999998, 1500.2430471206803)
-(&#39;movie_flower_fwd_presentations&#39;, 147.0, 1501.24389, 1510.2513171206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 148.0, 1511.25217, 1520.2596071206804)
-(&#39;movie_flower_fwd_presentations&#39;, 149.0, 1521.2604399999998, 1530.2679071206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 150.0, 1531.26875, 1540.2762071206805)
-(&#39;movie_flower_fwd_presentations&#39;, 151.0, 1541.27703, 1550.2844971206805)
-(&#39;movie_worms_fwd_presentations&#39;, 152.0, 1551.28533, 1560.2928071206802)
-(&#39;movie_worms_fwd_presentations&#39;, 153.0, 1561.29363, 1570.3010971206802)
-(&#39;movie_worms_fwd_presentations&#39;, 154.0, 1571.30192, 1580.3093771206802)
-(&#39;movie_worms_fwd_presentations&#39;, 155.0, 1581.3102, 1590.3176571206802)
-(&#39;movie_flower_fwd_presentations&#39;, 156.0, 1591.31848, 1600.3259371206802)
-(&#39;movie_worms_fwd_presentations&#39;, 157.0, 1601.3267899999998, 1610.3342271206802)
-(&#39;movie_worms_fwd_presentations&#39;, 158.0, 1611.33505, 1620.3425171206802)
-(&#39;movie_worms_fwd_presentations&#39;, 159.0, 1621.3433599999998, 1630.3508471206803)
-(&#39;movie_flower_fwd_presentations&#39;, 160.0, 1631.35164, 1640.3590871206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 161.0, 1641.3599299999998, 1650.3673971206804)
-(&#39;movie_flower_fwd_presentations&#39;, 162.0, 1651.3682299999998, 1660.3756871206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 163.0, 1661.37654, 1670.3839771206804)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 164.0, 1671.3847999999998, 1680.3922771206803)
-(&#39;movie_worms_fwd_presentations&#39;, 165.0, 1681.39311, 1690.4005571206803)
-(&#39;movie_flower_fwd_presentations&#39;, 166.0, 1691.4014, 1700.4088471206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 167.0, 1701.40968, 1710.4171471206805)
-(&#39;movie_worms_fwd_presentations&#39;, 168.0, 1711.41797, 1720.4254271206803)
-(&#39;movie_flower_fwd_presentations&#39;, 169.0, 1721.4262399999998, 1730.4336971206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 170.0, 1731.43455, 1740.4420371206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 171.0, 1741.44283, 1750.4502771206803)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 172.0, 1751.45114, 1760.4585871206802)
-(&#39;movie_worms_fwd_presentations&#39;, 173.0, 1761.45942, 1770.4668771206802)
-(&#39;movie_worms_fwd_presentations&#39;, 174.0, 1771.46771, 1780.4751671206802)
-(&#39;movie_flower_fwd_presentations&#39;, 175.0, 1781.47601, 1790.4834471206802)
-(&#39;movie_touch_of_evil_fwd_presentations&#39;, 176.0, 1791.4842999999998, 1800.4917371206802)
-(&#39;movie_worms_fwd_presentations&#39;, 177.0, 1801.49257, 1810.50002712068)
-(&#39;movie_flower_fwd_presentations&#39;, 178.0, 1811.50087, 1820.50830712068)
-(&#39;movie_flower_fwd_presentations&#39;, 179.0, 1821.50917, 1830.51660712068)
-(&#39;rotate_gabors_presentations&#39;, 180.0, 1861.54234, 2311.9154499999995)
-(&#39;rotate_gabors_presentations&#39;, 181.0, 2311.9154499999995, 2762.28866)
-(&#39;fixed_gabors_presentations&#39;, 182.0, 2792.31355, 3242.6867299999994)
-(&#39;fixed_gabors_presentations&#39;, 183.0, 3242.6867299999994, 3693.05993)
-(&#39;gratings_presentations&#39;, 184.0, 3723.08478, 3910.489990933901)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 0.0, 30.024899999999995, 39.03239859745236)
+(&#39;movie_flower_fwd_presentations&#39;, 1.0, 40.03321, 49.04067859745236)
+(&#39;movie_flower_fwd_presentations&#39;, 2.0, 50.04149000000001, 59.04900859745236)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 3.0, 60.049800000000005, 69.05729859745236)
+(&#39;movie_worms_fwd_presentations&#39;, 4.0, 70.05809, 79.06561859745236)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 5.0, 80.06641, 89.07392859745237)
+(&#39;movie_flower_fwd_presentations&#39;, 6.0, 90.0747, 99.08226859745236)
+(&#39;movie_worms_fwd_presentations&#39;, 7.0, 100.08303, 109.09053859745237)
+(&#39;movie_flower_fwd_presentations&#39;, 8.0, 110.09136, 119.09887859745236)
+(&#39;movie_worms_fwd_presentations&#39;, 9.0, 120.09967000000002, 129.10717859745236)
+(&#39;movie_worms_fwd_presentations&#39;, 10.0, 130.10798000000003, 139.11550859745236)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 11.0, 140.11628000000002, 149.12377859745237)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 12.0, 150.12462000000002, 159.13211859745238)
+(&#39;movie_flower_fwd_presentations&#39;, 13.0, 160.13288000000003, 169.14041859745237)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 14.0, 170.14120000000003, 179.14870859745238)
+(&#39;movie_flower_fwd_presentations&#39;, 15.0, 180.14951, 189.1570285974524)
+(&#39;movie_worms_fwd_presentations&#39;, 16.0, 190.15781, 199.1653085974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 17.0, 200.16611000000003, 209.1735785974524)
+(&#39;movie_flower_fwd_presentations&#39;, 18.0, 210.17439, 219.1818985974524)
+(&#39;movie_flower_fwd_presentations&#39;, 19.0, 220.1827, 229.1901985974524)
+(&#39;movie_worms_fwd_presentations&#39;, 20.0, 230.19098, 239.1984585974524)
+(&#39;movie_worms_fwd_presentations&#39;, 21.0, 240.19927, 249.2067685974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 22.0, 250.20754, 259.2150385974524)
+(&#39;movie_worms_fwd_presentations&#39;, 23.0, 260.21586, 269.2233285974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 24.0, 270.22414000000003, 279.2316085974524)
+(&#39;movie_flower_fwd_presentations&#39;, 25.0, 280.23242, 289.2398985974524)
+(&#39;movie_flower_fwd_presentations&#39;, 26.0, 290.24071000000004, 299.2481685974524)
+(&#39;movie_flower_fwd_presentations&#39;, 27.0, 300.249, 309.2564785974524)
+(&#39;movie_worms_fwd_presentations&#39;, 28.0, 310.25728000000004, 319.2647585974524)
+(&#39;movie_worms_fwd_presentations&#39;, 29.0, 320.26557, 329.2730285974524)
+(&#39;movie_flower_fwd_presentations&#39;, 30.0, 330.27385000000004, 339.2813285974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 31.0, 340.28213, 349.2896085974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 32.0, 350.29044, 359.2978885974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 33.0, 360.29871, 369.3061785974524)
+(&#39;movie_worms_fwd_presentations&#39;, 34.0, 370.30701, 379.3144685974524)
+(&#39;movie_worms_fwd_presentations&#39;, 35.0, 380.31528, 389.3227685974524)
+(&#39;movie_worms_fwd_presentations&#39;, 36.0, 390.32357, 399.3310485974524)
+(&#39;movie_worms_fwd_presentations&#39;, 37.0, 400.33186, 409.3393485974524)
+(&#39;movie_flower_fwd_presentations&#39;, 38.0, 410.34016, 419.3476185974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 39.0, 420.34844, 429.3559185974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 40.0, 430.35673, 439.3642085974524)
+(&#39;movie_flower_fwd_presentations&#39;, 41.0, 440.365, 449.3724785974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 42.0, 450.37332, 459.3807785974524)
+(&#39;movie_worms_fwd_presentations&#39;, 43.0, 460.38158, 469.3890585974524)
+(&#39;movie_flower_fwd_presentations&#39;, 44.0, 470.38988, 479.3973385974524)
+(&#39;movie_worms_fwd_presentations&#39;, 45.0, 480.39815, 489.4056185974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 46.0, 490.4064800000001, 499.4139185974524)
+(&#39;movie_flower_fwd_presentations&#39;, 47.0, 500.41474000000005, 509.4221885974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 48.0, 510.4230400000001, 519.4305285974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 49.0, 520.43131, 529.4387885974525)
+(&#39;movie_flower_fwd_presentations&#39;, 50.0, 530.4395800000001, 539.4470485974524)
+(&#39;movie_worms_fwd_presentations&#39;, 51.0, 540.4479100000001, 549.4553785974524)
+(&#39;movie_flower_fwd_presentations&#39;, 52.0, 550.45617, 559.4636385974524)
+(&#39;movie_flower_fwd_presentations&#39;, 53.0, 560.4644700000001, 569.4719185974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 54.0, 570.4727800000001, 579.4802385974524)
+(&#39;movie_worms_fwd_presentations&#39;, 55.0, 580.4810500000001, 589.4885085974524)
+(&#39;movie_worms_fwd_presentations&#39;, 56.0, 590.4893300000001, 599.4967985974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 57.0, 600.4976100000001, 609.5050685974524)
+(&#39;movie_worms_fwd_presentations&#39;, 58.0, 610.5059100000001, 619.5133685974524)
+(&#39;movie_flower_fwd_presentations&#39;, 59.0, 620.5142000000001, 629.5216585974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 60.0, 630.5225, 639.5299485974524)
+(&#39;movie_worms_fwd_presentations&#39;, 61.0, 640.5307700000001, 649.5382385974524)
+(&#39;movie_flower_fwd_presentations&#39;, 62.0, 650.5390600000001, 659.5465285974524)
+(&#39;movie_worms_fwd_presentations&#39;, 63.0, 660.54735, 669.5548085974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 64.0, 670.55564, 679.5630985974524)
+(&#39;movie_flower_fwd_presentations&#39;, 65.0, 680.5639400000001, 689.5714085974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 66.0, 690.5722300000001, 699.5796685974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 67.0, 700.58049, 709.5879685974523)
+(&#39;movie_flower_fwd_presentations&#39;, 68.0, 710.58878, 719.5962385974524)
+(&#39;movie_worms_fwd_presentations&#39;, 69.0, 720.5970800000001, 729.6045285974524)
+(&#39;movie_flower_fwd_presentations&#39;, 70.0, 730.60535, 739.6128485974524)
+(&#39;movie_worms_fwd_presentations&#39;, 71.0, 740.6136600000001, 749.6211285974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 72.0, 750.62193, 759.6293985974525)
+(&#39;movie_worms_fwd_presentations&#39;, 73.0, 760.63021, 769.6376885974524)
+(&#39;movie_flower_fwd_presentations&#39;, 74.0, 770.6385, 779.6459885974524)
+(&#39;movie_worms_fwd_presentations&#39;, 75.0, 780.6468100000001, 789.6542585974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 76.0, 790.6550900000001, 799.6625685974524)
+(&#39;movie_flower_fwd_presentations&#39;, 77.0, 800.6633700000001, 809.6708285974524)
+(&#39;movie_flower_fwd_presentations&#39;, 78.0, 810.6716900000001, 819.6791485974524)
+(&#39;movie_worms_fwd_presentations&#39;, 79.0, 820.67996, 829.6874085974524)
+(&#39;movie_flower_fwd_presentations&#39;, 80.0, 830.6882600000001, 839.6956985974524)
+(&#39;movie_worms_fwd_presentations&#39;, 81.0, 840.69653, 849.7039985974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 82.0, 850.7048100000001, 859.7122885974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 83.0, 860.7130900000001, 869.7205785974523)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 84.0, 870.7214000000001, 879.7288585974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 85.0, 880.72968, 889.7371285974524)
+(&#39;movie_flower_fwd_presentations&#39;, 86.0, 890.73797, 899.7454385974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 87.0, 900.74627, 909.7537385974524)
+(&#39;movie_flower_fwd_presentations&#39;, 88.0, 910.75455, 919.7620285974524)
+(&#39;movie_flower_fwd_presentations&#39;, 89.0, 920.76283, 929.7702885974523)
+(&#39;movie_worms_fwd_presentations&#39;, 90.0, 930.77114, 939.7786085974524)
+(&#39;movie_worms_fwd_presentations&#39;, 91.0, 940.7794, 949.7868785974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 92.0, 950.78771, 959.7951785974524)
+(&#39;movie_flower_fwd_presentations&#39;, 93.0, 960.79601, 969.8034485974524)
+(&#39;movie_worms_fwd_presentations&#39;, 94.0, 970.80431, 979.8117485974524)
+(&#39;movie_worms_fwd_presentations&#39;, 95.0, 980.81257, 989.8200385974524)
+(&#39;movie_flower_fwd_presentations&#39;, 96.0, 990.82085, 999.8282985974524)
+(&#39;movie_flower_fwd_presentations&#39;, 97.0, 1000.82916, 1009.8366085974524)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 98.0, 1010.83744, 1019.8448985974524)
+(&#39;movie_worms_fwd_presentations&#39;, 99.0, 1020.84571, 1029.8531785974526)
+(&#39;movie_worms_fwd_presentations&#39;, 100.0, 1030.85403, 1039.8614785974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 101.0, 1040.8623, 1049.8697585974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 102.0, 1050.87059, 1059.8780485974526)
+(&#39;movie_worms_fwd_presentations&#39;, 103.0, 1060.87888, 1069.8863585974527)
+(&#39;movie_flower_fwd_presentations&#39;, 104.0, 1070.88716, 1079.8946285974523)
+(&#39;movie_worms_fwd_presentations&#39;, 105.0, 1080.89544, 1089.9029085974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 106.0, 1090.90374, 1099.9111985974523)
+(&#39;movie_flower_fwd_presentations&#39;, 107.0, 1100.9120400000002, 1109.9194985974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 108.0, 1110.9203200000002, 1119.927808597453)
+(&#39;movie_flower_fwd_presentations&#39;, 109.0, 1120.9286100000002, 1129.9360785974527)
+(&#39;movie_worms_fwd_presentations&#39;, 110.0, 1130.9369000000002, 1139.9443585974527)
+(&#39;movie_flower_fwd_presentations&#39;, 111.0, 1140.94519, 1149.952658597453)
+(&#39;movie_flower_fwd_presentations&#39;, 112.0, 1150.9534700000002, 1159.9609285974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 113.0, 1160.96179, 1169.9692385974529)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 114.0, 1170.97006, 1179.9774885974523)
+(&#39;movie_worms_fwd_presentations&#39;, 115.0, 1180.97836, 1189.9858185974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 116.0, 1190.98666, 1199.9940985974526)
+(&#39;movie_worms_fwd_presentations&#39;, 117.0, 1200.99491, 1210.0024085974526)
+(&#39;movie_worms_fwd_presentations&#39;, 118.0, 1211.00321, 1220.0106985974526)
+(&#39;movie_flower_fwd_presentations&#39;, 119.0, 1221.01148, 1230.018948597453)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 120.0, 1231.0198, 1240.0272485974526)
+(&#39;movie_worms_fwd_presentations&#39;, 121.0, 1241.02809, 1250.0355285974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 122.0, 1251.03637, 1260.0438385974526)
+(&#39;movie_flower_fwd_presentations&#39;, 123.0, 1261.04465, 1270.0520985974526)
+(&#39;movie_flower_fwd_presentations&#39;, 124.0, 1271.0529700000002, 1280.0604085974526)
+(&#39;movie_flower_fwd_presentations&#39;, 125.0, 1281.06123, 1290.0686785974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 126.0, 1291.06952, 1300.0769785974526)
+(&#39;movie_worms_fwd_presentations&#39;, 127.0, 1301.07782, 1310.0852785974523)
+(&#39;movie_worms_fwd_presentations&#39;, 128.0, 1311.0861, 1320.0935385974526)
+(&#39;movie_worms_fwd_presentations&#39;, 129.0, 1321.0944000000002, 1330.1018285974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 130.0, 1331.10265, 1340.1101185974526)
+(&#39;movie_flower_fwd_presentations&#39;, 131.0, 1341.11099, 1350.1184085974526)
+(&#39;movie_worms_fwd_presentations&#39;, 132.0, 1351.11927, 1360.1266985974526)
+(&#39;movie_worms_fwd_presentations&#39;, 133.0, 1361.1275500000002, 1370.1349985974523)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 134.0, 1371.1358300000002, 1380.1432885974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 135.0, 1381.14413, 1390.1515685974523)
+(&#39;movie_flower_fwd_presentations&#39;, 136.0, 1391.15243, 1400.1598785974527)
+(&#39;movie_flower_fwd_presentations&#39;, 137.0, 1401.1606900000002, 1410.1681585974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 138.0, 1411.16899, 1420.1764385974527)
+(&#39;movie_flower_fwd_presentations&#39;, 139.0, 1421.17729, 1430.1847185974527)
+(&#39;movie_worms_fwd_presentations&#39;, 140.0, 1431.18558, 1440.193028597453)
+(&#39;movie_flower_fwd_presentations&#39;, 141.0, 1441.19386, 1450.2013185974529)
+(&#39;movie_worms_fwd_presentations&#39;, 142.0, 1451.20214, 1460.2095785974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 143.0, 1461.21045, 1470.2178985974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 144.0, 1471.21871, 1480.226168597453)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 145.0, 1481.22702, 1490.2344785974526)
+(&#39;movie_flower_fwd_presentations&#39;, 146.0, 1491.23528, 1500.2427685974526)
+(&#39;movie_worms_fwd_presentations&#39;, 147.0, 1501.24359, 1510.2510485974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 148.0, 1511.25187, 1520.2593285974526)
+(&#39;movie_flower_fwd_presentations&#39;, 149.0, 1521.26016, 1530.2676185974526)
+(&#39;movie_worms_fwd_presentations&#39;, 150.0, 1531.26847, 1540.2759085974526)
+(&#39;movie_flower_fwd_presentations&#39;, 151.0, 1541.27675, 1550.2842185974523)
+(&#39;movie_worms_fwd_presentations&#39;, 152.0, 1551.28502, 1560.2924885974526)
+(&#39;movie_flower_fwd_presentations&#39;, 153.0, 1561.29332, 1570.3007685974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 154.0, 1571.3016300000002, 1580.3090485974526)
+(&#39;movie_worms_fwd_presentations&#39;, 155.0, 1581.3099, 1590.3173385974526)
+(&#39;movie_worms_fwd_presentations&#39;, 156.0, 1591.31821, 1600.3256285974526)
+(&#39;movie_flower_fwd_presentations&#39;, 157.0, 1601.32649, 1610.3339285974523)
+(&#39;movie_flower_fwd_presentations&#39;, 158.0, 1611.3347700000002, 1620.3422185974523)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 159.0, 1621.3430500000002, 1630.3505085974523)
+(&#39;movie_worms_fwd_presentations&#39;, 160.0, 1631.35133, 1640.3587785974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 161.0, 1641.35964, 1650.3670585974526)
+(&#39;movie_flower_fwd_presentations&#39;, 162.0, 1651.36792, 1660.375388597453)
+(&#39;movie_flower_fwd_presentations&#39;, 163.0, 1661.37623, 1670.3836685974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 164.0, 1671.38451, 1680.391958597453)
+(&#39;movie_worms_fwd_presentations&#39;, 165.0, 1681.3928, 1690.4002385974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 166.0, 1691.40108, 1700.4085285974527)
+(&#39;movie_worms_fwd_presentations&#39;, 167.0, 1701.40939, 1710.4168085974527)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 168.0, 1711.41765, 1720.425108597453)
+(&#39;movie_worms_fwd_presentations&#39;, 169.0, 1721.42593, 1730.4333685974527)
+(&#39;movie_worms_fwd_presentations&#39;, 170.0, 1731.43424, 1740.4416985974526)
+(&#39;movie_flower_fwd_presentations&#39;, 171.0, 1741.44254, 1750.4499785974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 172.0, 1751.4508, 1760.4582685974526)
+(&#39;movie_worms_fwd_presentations&#39;, 173.0, 1761.45908, 1770.466528597453)
+(&#39;movie_flower_fwd_presentations&#39;, 174.0, 1771.46739, 1780.4748685974523)
+(&#39;movie_flower_fwd_presentations&#39;, 175.0, 1781.47568, 1790.4831285974526)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 176.0, 1791.48397, 1800.4914085974526)
+(&#39;movie_worms_fwd_presentations&#39;, 177.0, 1801.49224, 1810.4996985974528)
+(&#39;movie_flower_fwd_presentations&#39;, 178.0, 1811.50056, 1820.5079985974528)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 179.0, 1821.50882, 1830.5162785974528)
+(&#39;rotate_gabors_presentations&#39;, 180.0, 1861.54199, 2311.9150700000005)
+(&#39;rotate_gabors_presentations&#39;, 181.0, 2311.9150700000005, 2762.2882200000004)
+(&#39;fixed_gabors_presentations&#39;, 182.0, 2792.31309, 3242.68618)
+(&#39;fixed_gabors_presentations&#39;, 183.0, 3242.68618, 3693.0593)
+(&#39;gratings_presentations&#39;, 184.0, 3723.08417, 3910.439360497877)
 </pre></div>
 </div>
 </div>
@@ -1001,7 +1017,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eye Area&quot;</span><span class="p">)</span>
 
 <span class="c1"># fluorescence modality</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">interp_dff_slice</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp_dff</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">interp_dff_slice</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interp_dff</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># change vmin and vmax to suit your plot</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ROI #&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Fluorescence&quot;</span><span class="p">)</span>
@@ -1014,7 +1030,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8c52c17b8984a6b441cfc730cc66d1ba965aac15299de7bdd49b31af1fa1ae8a.png" src="../_images/8c52c17b8984a6b441cfc730cc66d1ba965aac15299de7bdd49b31af1fa1ae8a.png" />
+<img alt="../_images/5203ed98fea4b9856aa7dfbf457a27fa0f2b72efc7f5f2e966fc74c89edcb89b.png" src="../_images/5203ed98fea4b9856aa7dfbf457a27fa0f2b72efc7f5f2e966fc74c89edcb89b.png" />
 </div>
 </div>
 </section>
@@ -1099,10 +1115,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <tbody>
     <tr>
       <th>0</th>
-      <td>80.066440</td>
-      <td>80.099801</td>
+      <td>70.058090</td>
+      <td>70.091453</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>0.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1112,14 +1128,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3859, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2606, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>80.099801</td>
-      <td>80.133162</td>
+      <td>70.091453</td>
+      <td>70.124816</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>1.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1129,14 +1145,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3861, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2608, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>80.133162</td>
-      <td>80.166523</td>
+      <td>70.124816</td>
+      <td>70.158179</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>2.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1146,14 +1162,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3863, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2610, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>80.166523</td>
-      <td>80.199884</td>
+      <td>70.158179</td>
+      <td>70.191542</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>3.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1163,14 +1179,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3865, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2612, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>80.199884</td>
-      <td>80.233245</td>
+      <td>70.191542</td>
+      <td>70.224905</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>4.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1180,14 +1196,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3867, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2614, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>80.233245</td>
-      <td>80.266605</td>
+      <td>70.224905</td>
+      <td>70.258268</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>5.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1197,14 +1213,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3869, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2616, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>80.266605</td>
-      <td>80.299966</td>
+      <td>70.258268</td>
+      <td>70.291631</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>6.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1214,14 +1230,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3871, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2618, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>80.299966</td>
-      <td>80.333327</td>
+      <td>70.291631</td>
+      <td>70.324994</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>7.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1231,14 +1247,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3873, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2620, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>80.333327</td>
-      <td>80.366688</td>
+      <td>70.324994</td>
+      <td>70.358357</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>8.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1248,14 +1264,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3875, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2622, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>80.366688</td>
-      <td>80.400049</td>
+      <td>70.358357</td>
+      <td>70.391720</td>
       <td>movie_worms_fwd</td>
-      <td>5.0</td>
+      <td>4.0</td>
       <td>9.0</td>
       <td>[1.0, 1.0, 1.0]</td>
       <td>1.0</td>
@@ -1265,7 +1281,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>pix</td>
       <td>2.0</td>
       <td>[stimulus_time_interval]</td>
-      <td>[(3877, 2, timestamps pynwb.base.TimeSeries at...</td>
+      <td>[(2624, 2, timestamps pynwb.base.TimeSeries at...</td>
     </tr>
   </tbody>
 </table>
@@ -1273,7 +1289,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">180</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">40</span>
 <span class="n">selected_stim_times</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">))</span> <span class="k">if</span> <span class="n">stim_select</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">selected_stim_times</span><span class="p">)</span>
 </pre></div>
@@ -1353,7 +1369,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60, 500)
 (60, 500)
-(60, 103, 500)
+(60, 14, 500)
 </pre></div>
 </div>
 </div>
@@ -1382,7 +1398,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(500,)
 (500,)
-(103, 500)
+(14, 500)
 </pre></div>
 </div>
 </div>
@@ -1403,7 +1419,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eye Area&quot;</span><span class="p">)</span>
 
 <span class="c1"># fluorescence modality</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">avg_dff_response</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">avg_dff_response</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">avg_dff_response</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">avg_dff_response</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># change vmin and vmax to suit your plot</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ROI #&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Fluorescence&quot;</span><span class="p">)</span>
@@ -1416,7 +1432,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a07f0182ea76e19474d313c13b72bb4fff4f4440d100ea30273a2c6bb0c42c7.png" src="../_images/2a07f0182ea76e19474d313c13b72bb4fff4f4440d100ea30273a2c6bb0c42c7.png" />
+<img alt="../_images/98fcf4094821ae518eeb222820d7a01044870ffa993c636e9b3639c43a2aedfa.png" src="../_images/98fcf4094821ae518eeb222820d7a01044870ffa993c636e9b3639c43a2aedfa.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1464,7 +1480,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f5e446b7484b75393f83fbd5186c5dfd789488fcc90f40fa2b12f740701eb1ed.png" src="../_images/f5e446b7484b75393f83fbd5186c5dfd789488fcc90f40fa2b12f740701eb1ed.png" />
+<img alt="../_images/116eef7b9079847a3a15a1e737f6f1c51d839da5d2b45f38283de1987435f404.png" src="../_images/116eef7b9079847a3a15a1e737f6f1c51d839da5d2b45f38283de1987435f404.png" />
 </div>
 </div>
 </section>
