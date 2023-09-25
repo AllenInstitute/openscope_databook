@@ -10,10 +10,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04-16core
+    runs-on:
+      group: LargerInstance
 
     env:
       DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
+      TESTING: True
 
     steps:
       - uses: actions/checkout@v3
@@ -55,6 +57,11 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
           rm ./docs/first-order/*.nwb
         
+      - name: Testing Higher-Order Notebooks
+        run: |
+          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
+          rm ./docs/higher-order/*.nwb
+
       - name: Testing Replication Notebooks
         run: pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/replication"
         
@@ -62,7 +69,7 @@ jobs:
         run: |
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
           rm ./docs/embargoed/*.nwb
-
+        
       - name: Build Jupyter book
         run: |
           jupyter-book clean ./docs

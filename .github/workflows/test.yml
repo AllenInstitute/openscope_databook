@@ -9,10 +9,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: 
+      group: LargerInstance
 
     env:
       DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
+      TESTING: True
 
     steps:
       - uses: actions/checkout@v3
