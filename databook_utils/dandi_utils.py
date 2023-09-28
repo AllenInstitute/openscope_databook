@@ -12,7 +12,7 @@ from pynwb import NWBHDF5IO
 
 # downloads an NWB file from DANDI to download_loc, opens it, and returns the IO object for the NWB
 # dandi_api_key is required to access files from embargoed dandisets
-def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key=None, force_overwrite=False):
+def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_api_key=None, force_overwrite=False):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
     dandiset = client.get_dandiset(dandiset_id)
 
