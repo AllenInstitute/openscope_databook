@@ -20,7 +20,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_ap
     file_url = file.download_url
 
     if download_loc == None:
-        if "codeocean" in os.env.get("GIT_ASKPASS", ""):
+        if "codeocean" in os.environ.get("GIT_ASKPASS", ""):
             download_loc = "../../scratch"
         else:
             download_loc = "."
