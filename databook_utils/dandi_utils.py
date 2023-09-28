@@ -19,6 +19,12 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc, dandi_api_key
     file = dandiset.get_asset_by_path(dandi_filepath)
     file_url = file.download_url
 
+    if download_loc == None:
+        if "codeocean" in os.env.get("GIT_ASKPASS", ""):
+            download_loc = "../../scratch"
+        else:
+            download_loc = "."
+
     filename = dandi_filepath.split("/")[-1]
     filepath = f"{download_loc}/{filename}"
 
