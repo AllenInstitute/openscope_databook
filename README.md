@@ -9,39 +9,41 @@ We are releasing this code to the public as a tool we expect others to use and a
 ## Content Goals
 
 ### Chapter 1: Using DANDI/getting data
-- [Downloading NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/download_nwb.ipynb)
-- [Reading NWB files](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/read_nwb.ipynb)
-- [Exploring NWB files with NWBWidgets](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/use_nwbwidgets.ipynb)
-- [Streaming NWB files from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/stream_nwb.ipynb)
-- [Querying metadata across sessions from DANDI](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/get_dandiset_metadata.ipynb)
+- [Downloading NWB files from DANDI](https://alleninstitute.github.io/openscope_databook/basics/download_nwb.html)
+- [Reading NWB files](https://alleninstitute.github.io/openscope_databook/basics/read_nwb.html)
+- [Exploring NWB files with NWBWidgets](https://alleninstitute.github.io/openscope_databook/basics/use_nwbwidgets.html)
+- [Streaming NWB files from DANDI](https://alleninstitute.github.io/openscope_databook/basics/stream_nwb.html)
+- [Querying metadata across sessions from DANDI](https://alleninstitute.github.io/openscope_databook/basics/get_dandiset_metadata.html)
 
 ### Chapter 2: Data visualization
-- [Visualizing eye-tracking gaze locations, eye area, and running speed](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_eye_tracking.ipynb)
-- [Visualizing 2P raw movie](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_raw.ipynb)
-- [Visualizing Neuropixel probe locations](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_neuropixel_probes.ipynb)
-- [Visualizing Neuropixel recorded unit quality metrics](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_metrics.ipynb)
-- [Visualizing LFP responses to stimulus events](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_lfp_responses.ipynb)
-- [Visualizing neuronal unit responses to stimulus events in different epochs and spike waveforms](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_responses.ipynb)
-- [Visualizing 2P responses to stimulus events in different epochs](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_2p_responses.ipynb)
+- [Visualizing eye-tracking gaze locations, eye area, and running speed](https://alleninstitute.github.io/openscope_databook/embargoed/visualize_behavior.html)
+- [Visualizing 2P raw movie](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_raw.html)
+- [Visualizing Neuropixel probe locations](https://alleninstitute.github.io/openscope_databook/visualization/visualize_neuropixel_probes.html)
+- [Visualizing Neuropixel recorded unit quality metrics](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_metrics.html)
+- [Visualizing LFP responses to stimulus events](https://alleninstitute.github.io/openscope_databook/visualization/visualize_lfp_responses.html)
+- [Visualizing neuronal spike matrices](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_spikes.html)
+- [Visualizing neuronal unit responses to stimulus events in different epochs and spike waveforms](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_responses.html)
+- [Visualizing 2P responses to stimulus events in different epochs](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_responses.html)
 
 ### Chapter 3: First-order analysis
-- [Neuropixel: Plotting receptive fields](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/receptive_fields.ipynb)
-- [Neuropixel: Identifying opto-tagged cells](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/optotagging.ipynb)
-- [Neuropixel: Extracting Current Source Density plots](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/current_source_density.ipynb)
-- [2P: Cell matching across days](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/cell_matching.ipynb)
-- [Neuropixel: Stimuli averages with neuropixel data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_spike_responses.ipynb)
-- [2P: Stimuli averages with 2P data](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/test_2p_responses.ipynb)
-- [2P: How to align timestamps across modalities](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/embargoed/modality_alignment.ipynb)
-- [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/suite2p.ipynb)
+- [Neuropixel: Plotting receptive fields](https://alleninstitute.github.io/openscope_databook/first-order/receptive_fields.html)
+- [Neuropixel: Identifying opto-tagged cells](https://alleninstitute.github.io/openscope_databook/first-order/optotagging.html)
+- [Neuropixel: Extracting Current Source Density plots](https://alleninstitute.github.io/openscope_databook/first-order/current_source_density.html)
+- [2P: Cell matching across days](https://alleninstitute.github.io/openscope_databook/embargoed/cell_matching.html)
+- [2P: Stimuli averages with 2P data](https://alleninstitute.github.io/openscope_databook/first-order/test_2p_responses.html)
+- [Neuropixel: Stimuli averages with neuropixel data](https://alleninstitute.github.io/openscope_databook/first-order/test_spike_responses.html)
+- [2P: How to align timestamps across modalities](https://alleninstitute.github.io/openscope_databook/embargoed/modality_alignment.html)
+- [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://alleninstitute.github.io/openscope_databook/first-order/suite2p.html)
 
 ### Chapter 4: Higher-order analysis
-- [Neural dynamics using time-analysis with CEBRA](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
+- [Neural dynamics using time-analysis with CEBRA](https://alleninstitute.github.io/openscope_databook/higher-order/cebra_time.html)  
+  [CEBRA Demo on the CEBRA Repository](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
 - Identifying mouse behavioral state based on eye tracking and behavioral data.
 - Classifying spike waveform between fast spiking and normal spiking cells.
 - Extracting clusters of correlated neurons.
 - Analysis of functional connectivity.
 
 ### Chapter 5: Replicating figures
-- [Openscope Credit Assignment](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/replication/cred_assign_figures.ipynb)
+- [Openscope Credit Assignment](https://alleninstitute.github.io/openscope_databook/replication/cred_assign_figures.html)
 - Example notebooks from past projects
 - Guidelines for reproducible figures from NWB files
