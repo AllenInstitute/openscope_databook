@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -83,6 +84,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -456,10 +466,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -467,7 +477,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -512,7 +522,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-original-nwb">Segmentation From Original NWB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repair-nwb-filename">Repair NWB Filename</a></li>
 </ul>
             </nav>
         </div>
@@ -526,7 +535,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="identifying-regions-of-interest-with-segmentation">
 <h1>Identifying Regions of Interest with Segmentation<a class="headerlink" href="#identifying-regions-of-interest-with-segmentation" title="Permalink to this heading">#</a></h1>
-<p>The Allen Institute uses <a class="reference external" href="http://www.suite2p.org/"><strong>Suite2P</strong></a> for processing 2-Photon Calcium Imaging Data. Specifically, <strong>Suite2P</strong> takes a 2P movie, and outputs information about the putative segmented <em>Regions of Interest</em> (ROIs). The most pertinent information outputted are the locations/shapes of the ROIs within the 2P Movie’s field-of-view, as well as the fluorescence of each ROI at every frame of the movie. This notebook serves as a simple demonstration of how to input a 2P Movie into Suite2P and produce cell segmentation and fluorescence output.</p>
+<p>The Allen Institute uses <a class="reference external" href="http://www.suite2p.org/"><strong>Suite2P</strong></a> for processing 2-Photon Calcium Imaging Data. Specifically, <strong>Suite2P</strong> takes a 2P movie, and outputs information about the putative segmented <em>Regions of Interest</em> (ROIs) <span id="id1">[<a class="reference internal" href="../bibliography.html#id9" title="Marius Pachitariu, Carsen Stringer, Mario Dipoppa, Sylvia Schröder, L. Federico Rossi, Henry Dalgleish, Matteo Carandini, and Kenneth D. Harris. Suite2p: beyond 10,000 neurons with standard two-photon microscopy. bioRxiv, 2017. URL: https://www.biorxiv.org/content/early/2017/07/20/061507, arXiv:https://www.biorxiv.org/content/early/2017/07/20/061507.full.pdf, doi:10.1101/061507.">Pachitariu <em>et al.</em>, 2017</a>]</span>. The most pertinent information outputted are the locations/shapes of the ROIs within the 2P Movie’s field-of-view, as well as the fluorescence of each ROI at every frame of the movie. This notebook serves as a simple demonstration of how to input a 2P Movie into Suite2P and produce cell segmentation and fluorescence output.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
@@ -538,6 +547,14 @@ document.write(`
     <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas64__v0.3.21-gcc_10_3_0.dll
+  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
 </pre></div>
 </div>
 </div>
@@ -553,10 +570,8 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-
 <span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">download</span>
 <span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
-<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -585,10 +600,10 @@ document.write(`
 <p>Here you can download several files for a subject that you can run nway matching on. The pipeline can take in any number of input <em>sessions</em>, however, the input ophys data should be from the same imaging plane of the same subject. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the dandiset id of the files you’re interested in. Also set <code class="docutils literal notranslate"><span class="pre">input_dandi_filepaths</span></code> to be a list of the filepaths on dandi of each file you’re interested in providing to <strong>Nway Matching</strong>. When accessing an embargoed dataset, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000336&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-634402/sub-634402_ses-1209063020-acq-1209359211raw_ophys.nwb&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000037&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-408021/sub-408021_ses-758519303_obj-raw_behavior+image+ophys.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -604,15 +619,20 @@ document.write(`
 <span class="n">filename</span> <span class="o">=</span> <span class="n">dandi_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">nwb_filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
 
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">nwb_filepath</span><span class="p">):</span>
+<span class="n">h5_filepath</span> <span class="o">=</span> <span class="n">nwb_filepath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;nwb&quot;</span><span class="p">,</span><span class="s2">&quot;h5&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">nwb_filepath</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">h5_filepath</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File already exists&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">download</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="n">download_loc</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">nwb_filepath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">nwb_filepath</span><span class="p">,</span> <span class="n">h5_filepath</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.1) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 </pre></div>
 </div>
@@ -624,9 +644,7 @@ document.write(`
 <p>Typically, the 2P movie would not come prepared within an NWB file, but would be in some other form. Suite2P is capable of taking input in many forms, enumerated <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/inputs.html">here</a>. Suite2P is capable of taking input in the form of h5py files. Since NWB files are a subset of h5py, we can convert it just by renaming the file and opening it with <code class="docutils literal notranslate"><span class="pre">h5py.file</span></code> This will have to be undone later in order to protect the validity of the file for PyNWB. The main setting to tweak the output of the segmentation is <code class="docutils literal notranslate"><span class="pre">threshold_scaling</span></code>. Lowering the threshold scaling makes the segmentation algorithm more sensitive, and will result in more segmented regions in the output. Since the classifier we provide is reasonably trained, it is sufficient to filter out a lot of the resultant messiness.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h5_filepath</span> <span class="o">=</span> <span class="n">nwb_filepath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;nwb&quot;</span><span class="p">,</span> <span class="s2">&quot;h5&quot;</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">nwb_filepath</span><span class="p">,</span> <span class="n">h5_filepath</span><span class="p">)</span>
-<span class="n">nwb</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">h5_filepath</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">h5_filepath</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -636,8 +654,15 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_folder</span> <span class="o">=</span> <span class="s2">&quot;./results/&quot;</span>
 <span class="n">scratch_folder</span> <span class="o">=</span> <span class="s2">&quot;./results/&quot;</span>
 <span class="n">input_movie_path</span> <span class="o">=</span> <span class="s2">&quot;./movie&quot;</span>
-<span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">nwb</span><span class="p">[</span><span class="s2">&quot;acquisition/raw_suite2p_motion_corrected/imaging_plane/imaging_rate&quot;</span><span class="p">][()]</span>
 <span class="n">threshold_scaling</span> <span class="o">=</span> <span class="mf">0.75</span>
+<span class="c1"># sampling_rate = nwb[&quot;acquisition/raw_suite2p_motion_corrected/imaging_plane/imaging_rate&quot;][()]</span>
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="n">nwb</span><span class="p">[</span><span class="s2">&quot;processing&quot;</span><span class="p">][</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;ImageSegmentation&quot;</span><span class="p">][</span><span class="s2">&quot;PlaneSegmentation&quot;</span><span class="p">][</span><span class="s2">&quot;imaging_plane&quot;</span><span class="p">][</span><span class="s2">&quot;imaging_rate&quot;</span><span class="p">][()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sampling Rate:&quot;</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling Rate: 30.0
 </pre></div>
 </div>
 </div>
@@ -656,7 +681,7 @@ document.write(`
 <span class="n">ops</span><span class="p">[</span><span class="s1">&#39;save_folder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_folder</span>
 <span class="n">ops</span><span class="p">[</span><span class="s1">&#39;fast_disk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scratch_folder</span>
 <span class="n">ops</span><span class="p">[</span><span class="s2">&quot;h5py&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;./&quot;</span><span class="p">]</span>
-<span class="n">ops</span><span class="p">[</span><span class="s2">&quot;h5py_key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;acquisition/raw_suite2p_motion_corrected/data&quot;</span>
+<span class="n">ops</span><span class="p">[</span><span class="s2">&quot;h5py_key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;acquisition/motion_corrected_stack/data&quot;</span>
 <span class="n">ops</span><span class="p">[</span><span class="s2">&quot;classifier_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">classifier_path</span>
 
 <span class="n">output_ops</span> <span class="o">=</span> <span class="n">suite2p</span><span class="o">.</span><span class="n">run_s2p</span><span class="p">(</span><span class="n">ops</span><span class="o">=</span><span class="n">ops</span><span class="p">)</span>
@@ -668,31 +693,32 @@ document.write(`
 h5
 ** Found 1 h5 files - converting to binary **
 NOTE: using a list of h5 files:
-[&#39;.\\sub-634402_ses-1209063020-acq-1209359211raw_ophys.h5&#39;]
-time 90.47 sec. Wrote 44201 frames per binary for 1 planes
+[&#39;.\\sub-408021_ses-758519303_obj-raw_behavior+image+ophys.h5&#39;]
+time 1220.51 sec. Wrote 126741 frames per binary for 1 planes
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; PLANE 0 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 NOTE: not running registration, ops[&#39;do_registration&#39;]=0
 binary path: ./results/suite2p\plane0\data.bin
 NOTE: applying classifier ../../data/suite2p_classifier.npy
 ----------- ROI DETECTION
-Binning movie in chunks of length 08
-Binned movie of size [5525,512,512] created in 60.99 sec.
-NOTE: estimated spatial scale ~6 pixels, time epochs 4.60, threshold 17.27 
-0 ROIs, score=252.63
-Detected 284 ROIs, 420.20 sec
-After removing overlaps, 273 ROIs remain
------------ Total 482.40 sec.
+Binning movie in chunks of length 25
+Binned movie of size [5069,512,512] created in 301.75 sec.
+NOTE: estimated spatial scale ~12 pixels, time epochs 4.22, threshold 31.68 
+0 ROIs, score=639.61
+1000 ROIs, score=36.82
+Detected 1203 ROIs, 2775.93 sec
+After removing overlaps, 1094 ROIs remain
+----------- Total 3083.84 sec.
 ----------- EXTRACTION
-Masks created, 0.57 sec.
-Extracted fluorescence from 273 ROIs in 44201 frames, 64.43 sec.
------------ Total 65.37 sec.
+Masks created, 3.81 sec.
+Extracted fluorescence from 1094 ROIs in 126741 frames, 4542.42 sec.
+----------- Total 4556.33 sec.
 ----------- CLASSIFICATION
-[&#39;npix_norm&#39;, &#39;skew&#39;, &#39;compact&#39;]
+[&#39;npix_norm&#39;, &#39;compact&#39;, &#39;skew&#39;]
 ----------- SPIKE DECONVOLUTION
------------ Total 0.65 sec.
-Plane 0 processed in 548.79 sec (can open in GUI).
-total = 639.33 sec.
-TOTAL RUNTIME 639.33 sec
+----------- Total 12.52 sec.
+Plane 0 processed in 7655.53 sec (can open in GUI).
+total = 8878.48 sec.
+TOTAL RUNTIME 8878.48 sec
 </pre></div>
 </div>
 </div>
@@ -717,9 +743,9 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(273, 44201)
-(273, 44201)
-(273, 44201)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1094, 126741)
+(1094, 126741)
+(1094, 126741)
 </pre></div>
 </div>
 </div>
@@ -731,10 +757,10 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2088acd92e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19322779310&gt;]
 </pre></div>
 </div>
-<img alt="../_images/2f02839d5f769a5d4acb3f74224e0c0dae679b296eee62356cb6b7fd346fc178.png" src="../_images/2f02839d5f769a5d4acb3f74224e0c0dae679b296eee62356cb6b7fd346fc178.png" />
+<img alt="../_images/1e4288d511b837a5035c97c8564c7c4da3733c588dcfcb7af8cc637e8ed0ca43.png" src="../_images/1e4288d511b837a5035c97c8564c7c4da3733c588dcfcb7af8cc637e8ed0ca43.png" />
 </div>
 </div>
 </section>
@@ -748,7 +774,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;suite2p_version&#39;, &#39;look_one_level_down&#39;, &#39;fast_disk&#39;, &#39;delete_bin&#39;, &#39;mesoscan&#39;, &#39;bruker&#39;, &#39;bruker_bidirectional&#39;, &#39;h5py&#39;, &#39;h5py_key&#39;, &#39;nwb_file&#39;, &#39;nwb_driver&#39;, &#39;nwb_series&#39;, &#39;save_path0&#39;, &#39;save_folder&#39;, &#39;subfolders&#39;, &#39;move_bin&#39;, &#39;nplanes&#39;, &#39;nchannels&#39;, &#39;functional_chan&#39;, &#39;tau&#39;, &#39;fs&#39;, &#39;force_sktiff&#39;, &#39;frames_include&#39;, &#39;multiplane_parallel&#39;, &#39;ignore_flyback&#39;, &#39;preclassify&#39;, &#39;save_mat&#39;, &#39;save_NWB&#39;, &#39;combined&#39;, &#39;aspect&#39;, &#39;do_bidiphase&#39;, &#39;bidiphase&#39;, &#39;bidi_corrected&#39;, &#39;do_registration&#39;, &#39;two_step_registration&#39;, &#39;keep_movie_raw&#39;, &#39;nimg_init&#39;, &#39;batch_size&#39;, &#39;maxregshift&#39;, &#39;align_by_chan&#39;, &#39;reg_tif&#39;, &#39;reg_tif_chan2&#39;, &#39;subpixel&#39;, &#39;smooth_sigma_time&#39;, &#39;smooth_sigma&#39;, &#39;th_badframes&#39;, &#39;norm_frames&#39;, &#39;force_refImg&#39;, &#39;pad_fft&#39;, &#39;nonrigid&#39;, &#39;block_size&#39;, &#39;snr_thresh&#39;, &#39;maxregshiftNR&#39;, &#39;1Preg&#39;, &#39;spatial_hp_reg&#39;, &#39;pre_smooth&#39;, &#39;spatial_taper&#39;, &#39;roidetect&#39;, &#39;spikedetect&#39;, &#39;sparse_mode&#39;, &#39;spatial_scale&#39;, &#39;connected&#39;, &#39;nbinned&#39;, &#39;max_iterations&#39;, &#39;threshold_scaling&#39;, &#39;max_overlap&#39;, &#39;high_pass&#39;, &#39;spatial_hp_detect&#39;, &#39;denoise&#39;, &#39;anatomical_only&#39;, &#39;diameter&#39;, &#39;cellprob_threshold&#39;, &#39;flow_threshold&#39;, &#39;spatial_hp_cp&#39;, &#39;pretrained_model&#39;, &#39;soma_crop&#39;, &#39;neuropil_extract&#39;, &#39;inner_neuropil_radius&#39;, &#39;min_neuropil_pixels&#39;, &#39;lam_percentile&#39;, &#39;allow_overlap&#39;, &#39;use_builtin_classifier&#39;, &#39;classifier_path&#39;, &#39;chan2_thres&#39;, &#39;baseline&#39;, &#39;win_baseline&#39;, &#39;sig_baseline&#39;, &#39;prctile_baseline&#39;, &#39;neucoeff&#39;, &#39;save_nwb&#39;, &#39;input_format&#39;, &#39;data_path&#39;, &#39;save_path&#39;, &#39;ops_path&#39;, &#39;reg_file&#39;, &#39;first_tiffs&#39;, &#39;filelist&#39;, &#39;h5list&#39;, &#39;nframes_per_folder&#39;, &#39;meanImg&#39;, &#39;nframes&#39;, &#39;Ly&#39;, &#39;Lx&#39;, &#39;yrange&#39;, &#39;xrange&#39;, &#39;date_proc&#39;, &#39;Lyc&#39;, &#39;Lxc&#39;, &#39;max_proj&#39;, &#39;Vmax&#39;, &#39;ihop&#39;, &#39;Vsplit&#39;, &#39;Vcorr&#39;, &#39;Vmap&#39;, &#39;spatscale_pix&#39;, &#39;timing&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;suite2p_version&#39;, &#39;look_one_level_down&#39;, &#39;fast_disk&#39;, &#39;delete_bin&#39;, &#39;mesoscan&#39;, &#39;bruker&#39;, &#39;bruker_bidirectional&#39;, &#39;h5py&#39;, &#39;h5py_key&#39;, &#39;nwb_file&#39;, &#39;nwb_driver&#39;, &#39;nwb_series&#39;, &#39;save_path0&#39;, &#39;save_folder&#39;, &#39;subfolders&#39;, &#39;move_bin&#39;, &#39;nplanes&#39;, &#39;nchannels&#39;, &#39;functional_chan&#39;, &#39;tau&#39;, &#39;fs&#39;, &#39;force_sktiff&#39;, &#39;frames_include&#39;, &#39;multiplane_parallel&#39;, &#39;ignore_flyback&#39;, &#39;preclassify&#39;, &#39;save_mat&#39;, &#39;save_NWB&#39;, &#39;combined&#39;, &#39;aspect&#39;, &#39;do_bidiphase&#39;, &#39;bidiphase&#39;, &#39;bidi_corrected&#39;, &#39;do_registration&#39;, &#39;two_step_registration&#39;, &#39;keep_movie_raw&#39;, &#39;nimg_init&#39;, &#39;batch_size&#39;, &#39;maxregshift&#39;, &#39;align_by_chan&#39;, &#39;reg_tif&#39;, &#39;reg_tif_chan2&#39;, &#39;subpixel&#39;, &#39;smooth_sigma_time&#39;, &#39;smooth_sigma&#39;, &#39;th_badframes&#39;, &#39;norm_frames&#39;, &#39;force_refImg&#39;, &#39;pad_fft&#39;, &#39;nonrigid&#39;, &#39;block_size&#39;, &#39;snr_thresh&#39;, &#39;maxregshiftNR&#39;, &#39;1Preg&#39;, &#39;spatial_hp_reg&#39;, &#39;pre_smooth&#39;, &#39;spatial_taper&#39;, &#39;roidetect&#39;, &#39;spikedetect&#39;, &#39;sparse_mode&#39;, &#39;spatial_scale&#39;, &#39;connected&#39;, &#39;nbinned&#39;, &#39;max_iterations&#39;, &#39;threshold_scaling&#39;, &#39;max_overlap&#39;, &#39;high_pass&#39;, &#39;spatial_hp_detect&#39;, &#39;denoise&#39;, &#39;anatomical_only&#39;, &#39;diameter&#39;, &#39;cellprob_threshold&#39;, &#39;flow_threshold&#39;, &#39;spatial_hp_cp&#39;, &#39;pretrained_model&#39;, &#39;soma_crop&#39;, &#39;neuropil_extract&#39;, &#39;inner_neuropil_radius&#39;, &#39;min_neuropil_pixels&#39;, &#39;lam_percentile&#39;, &#39;allow_overlap&#39;, &#39;use_builtin_classifier&#39;, &#39;classifier_path&#39;, &#39;chan2_thres&#39;, &#39;baseline&#39;, &#39;win_baseline&#39;, &#39;sig_baseline&#39;, &#39;prctile_baseline&#39;, &#39;neucoeff&#39;, &#39;input_format&#39;, &#39;data_path&#39;, &#39;save_path&#39;, &#39;ops_path&#39;, &#39;reg_file&#39;, &#39;first_tiffs&#39;, &#39;filelist&#39;, &#39;h5list&#39;, &#39;nframes_per_folder&#39;, &#39;meanImg&#39;, &#39;nframes&#39;, &#39;Ly&#39;, &#39;Lx&#39;, &#39;yrange&#39;, &#39;xrange&#39;, &#39;date_proc&#39;, &#39;Lyc&#39;, &#39;Lxc&#39;, &#39;max_proj&#39;, &#39;Vmax&#39;, &#39;ihop&#39;, &#39;Vsplit&#39;, &#39;Vcorr&#39;, &#39;Vmap&#39;, &#39;spatscale_pix&#39;, &#39;timing&#39;])
 </pre></div>
 </div>
 </div>
@@ -764,16 +790,16 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.00000000e+00 9.98864964e-01]
- [1.00000000e+00 9.97006177e-01]
- [1.00000000e+00 9.88746332e-01]
- [1.00000000e+00 9.99259526e-01]
- [1.00000000e+00 9.96420219e-01]
- [0.00000000e+00 3.87325083e-03]
- [1.00000000e+00 9.99562312e-01]
- [0.00000000e+00 2.22040511e-08]
- [0.00000000e+00 7.49382210e-08]
- [0.00000000e+00 3.45083030e-02]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.         0.98007788]
+ [1.         0.96206773]
+ [1.         0.96443683]
+ [1.         0.95716509]
+ [1.         0.91303547]
+ [1.         0.93703132]
+ [1.         0.65620406]
+ [1.         0.95688926]
+ [1.         0.84348859]
+ [1.         0.97860518]]
 </pre></div>
 </div>
 </div>
@@ -886,123 +912,123 @@ Most importantly, the main statistics of each ROI are included in <code class="d
   <tbody>
     <tr>
       <th>0</th>
-      <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0,...</td>
-      <td>[428, 428, 429, 429, 429, 429, 429, 430, 430, ...</td>
-      <td>[486, 487, 484, 485, 486, 487, 488, 483, 484, ...</td>
-      <td>[11.651352, 13.176081, 15.989581, 22.941147, 2...</td>
-      <td>[433, 485]</td>
+      <td>[[0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,...</td>
+      <td>[459, 459, 459, 459, 459, 459, 459, 459, 459, ...</td>
+      <td>[482, 483, 484, 485, 486, 487, 488, 489, 490, ...</td>
+      <td>[3.3838997, 4.679903, 5.770184, 6.5203757, 6.8...</td>
+      <td>[465, 485]</td>
       <td>2.0</td>
-      <td>1.828702</td>
-      <td>3.998962</td>
-      <td>1.012977</td>
-      <td>1.124378</td>
+      <td>1.060907</td>
+      <td>4.985990</td>
+      <td>1.005771</td>
+      <td>1.113924</td>
       <td>...</td>
-      <td>113</td>
+      <td>176</td>
       <td>[True, True, True, True, True, True, True, Tru...</td>
-      <td>[False, False, False, False, False, False, Fal...</td>
-      <td>5.276856</td>
-      <td>1.032278</td>
-      <td>2.685268</td>
-      <td>2.392040</td>
-      <td>7.412308</td>
-      <td>320.462250</td>
-      <td>[216024, 216025, 216026, 216027, 216028, 21602...</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>7.582405</td>
+      <td>1.066600</td>
+      <td>0.859586</td>
+      <td>1.185265</td>
+      <td>1.952527</td>
+      <td>293.534790</td>
+      <td>[231897, 231901, 231902, 231903, 231904, 23190...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
-      <td>[27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 28, 2...</td>
-      <td>[229, 232, 235, 226, 227, 228, 229, 230, 231, ...</td>
-      <td>[24.05342, 21.725483, 22.07972, 26.372776, 32....</td>
-      <td>[33, 229]</td>
+      <td>[202, 203, 203, 203, 204, 204, 204, 204, 204, ...</td>
+      <td>[503, 502, 503, 504, 496, 497, 500, 501, 502, ...</td>
+      <td>[0.38524994, 0.56503004, 0.6567471, 0.36544192...</td>
+      <td>[221, 485]</td>
       <td>2.0</td>
-      <td>2.190842</td>
-      <td>4.761335</td>
-      <td>1.019263</td>
-      <td>1.073826</td>
+      <td>1.229164</td>
+      <td>5.788569</td>
+      <td>1.003717</td>
+      <td>1.104895</td>
       <td>...</td>
-      <td>160</td>
-      <td>[True, True, False, True, True, True, True, Tr...</td>
+      <td>237</td>
       <td>[False, False, False, False, False, False, Fal...</td>
-      <td>6.992389</td>
-      <td>1.075117</td>
-      <td>2.685268</td>
-      <td>3.386960</td>
-      <td>7.305401</td>
-      <td>451.106903</td>
-      <td>[10453, 10454, 10455, 10456, 10457, 10458, 104...</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>8.045478</td>
+      <td>1.006510</td>
+      <td>1.355842</td>
+      <td>1.596067</td>
+      <td>2.071119</td>
+      <td>278.690002</td>
+      <td>[100310, 100311, 100317, 100321, 100326, 10032...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>[[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
-      <td>[172, 173, 173, 174, 174, 174, 175, 175, 175, ...</td>
-      <td>[1, 1, 2, 1, 2, 3, 2, 3, 4, 2, 3, 4, 5, 3, 4, ...</td>
-      <td>[8.7256, 9.079002, 8.424271, 10.454597, 13.275...</td>
-      <td>[189, 9]</td>
+      <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
+      <td>[132, 133, 133, 133, 133, 133, 133, 134, 134, ...</td>
+      <td>[471, 468, 469, 470, 471, 472, 474, 466, 467, ...</td>
+      <td>[0.3694129, 0.4881493, 0.67727923, 0.8148415, ...</td>
+      <td>[141, 473]</td>
       <td>2.0</td>
-      <td>2.183545</td>
-      <td>4.655661</td>
-      <td>1.038926</td>
-      <td>1.044369</td>
+      <td>1.311045</td>
+      <td>6.148370</td>
+      <td>1.007930</td>
+      <td>1.059524</td>
       <td>...</td>
-      <td>153</td>
-      <td>[False, False, False, False, False, False, Fal...</td>
-      <td>[False, False, False, False, False, False, Fal...</td>
-      <td>6.875572</td>
-      <td>1.012094</td>
-      <td>3.375337</td>
-      <td>3.238780</td>
-      <td>4.802567</td>
-      <td>156.942078</td>
-      <td>[84480, 84481, 84482, 84483, 84484, 84485, 844...</td>
+      <td>267</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>8.580817</td>
+      <td>1.081453</td>
+      <td>1.462183</td>
+      <td>1.798101</td>
+      <td>2.730736</td>
+      <td>167.619888</td>
+      <td>[61889, 61890, 61891, 61892, 61893, 61894, 618...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>[[0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
-      <td>[11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 1...</td>
-      <td>[29, 28, 29, 38, 39, 40, 28, 29, 30, 36, 37, 3...</td>
-      <td>[16.068026, 17.825556, 19.261042, 18.631035, 2...</td>
-      <td>[17, 33]</td>
+      <td>[[0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0,...</td>
+      <td>[231, 231, 231, 231, 231, 231, 231, 231, 232, ...</td>
+      <td>[48, 49, 50, 51, 52, 53, 54, 55, 48, 49, 50, 5...</td>
+      <td>[0.48071843, 0.48384356, 0.4858273, 0.58512807...</td>
+      <td>[241, 53]</td>
       <td>2.0</td>
-      <td>1.927958</td>
-      <td>4.017241</td>
-      <td>1.063098</td>
-      <td>0.987013</td>
+      <td>1.237616</td>
+      <td>5.835270</td>
+      <td>1.002531</td>
+      <td>1.105505</td>
       <td>...</td>
-      <td>114</td>
-      <td>[True, True, True, True, True, False, True, Tr...</td>
+      <td>241</td>
       <td>[False, False, False, False, False, False, Fal...</td>
-      <td>6.952876</td>
-      <td>1.157342</td>
-      <td>1.845184</td>
-      <td>2.413209</td>
-      <td>6.719306</td>
-      <td>198.852875</td>
-      <td>[2069, 2070, 2071, 2072, 2073, 2074, 2075, 207...</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>8.013458</td>
+      <td>1.065926</td>
+      <td>1.307103</td>
+      <td>1.623005</td>
+      <td>1.192739</td>
+      <td>378.526947</td>
+      <td>[114725, 114726, 114727, 114728, 114729, 11473...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>[[0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0,...</td>
-      <td>[301, 301, 301, 301, 301, 301, 301, 302, 302, ...</td>
-      <td>[80, 81, 82, 83, 84, 85, 86, 78, 79, 80, 81, 8...</td>
-      <td>[28.207954, 37.23545, 37.509827, 48.402664, 43...</td>
-      <td>[305, 81]</td>
+      <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
+      <td>[292, 293, 293, 294, 294, 294, 294, 295, 295, ...</td>
+      <td>[467, 467, 468, 467, 468, 469, 470, 467, 468, ...</td>
+      <td>[0.21621269, 0.39429575, 0.35337162, 0.4146063...</td>
+      <td>[349, 489]</td>
       <td>2.0</td>
-      <td>2.090482</td>
-      <td>4.541314</td>
-      <td>1.019691</td>
-      <td>1.110266</td>
+      <td>1.214663</td>
+      <td>5.728179</td>
+      <td>1.002333</td>
+      <td>1.102138</td>
       <td>...</td>
-      <td>146</td>
-      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>232</td>
       <td>[False, False, False, False, False, False, Fal...</td>
-      <td>7.164109</td>
-      <td>1.001496</td>
-      <td>2.415241</td>
-      <td>3.090601</td>
-      <td>4.611879</td>
-      <td>153.295135</td>
-      <td>[150597, 150598, 150599, 150600, 150601, 15060...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>7.476986</td>
+      <td>1.026523</td>
+      <td>3.345297</td>
+      <td>1.562395</td>
+      <td>6.114490</td>
+      <td>35.728321</td>
+      <td>[146359, 146362, 146363, 146364, 146365, 14637...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1029,128 +1055,128 @@ Most importantly, the main statistics of each ROI are included in <code class="d
       <td>...</td>
     </tr>
     <tr>
-      <th>268</th>
-      <td>[[1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0,...</td>
-      <td>[289, 289, 289, 289, 289, 289, 289, 290, 290, ...</td>
-      <td>[28, 29, 30, 31, 32, 36, 37, 29, 31, 32, 33, 3...</td>
-      <td>[33.77539, 46.516613, 42.33151, 41.209297, 37....</td>
-      <td>[291, 34]</td>
+      <th>1089</th>
+      <td>[[1.0, 1.0, 1.0, 0.0], [1.0, 1.0, 1.0, 0.0], [...</td>
+      <td>[191, 191, 191, 192, 192, 192, 193, 193, 193, ...</td>
+      <td>[334, 335, 336, 334, 335, 336, 334, 335, 336, ...</td>
+      <td>[1.9549661, 3.2637227, 2.3990753, 2.2308042, 3...</td>
+      <td>[196, 335]</td>
       <td>0.0</td>
-      <td>0.710081</td>
-      <td>1.420923</td>
-      <td>1.106983</td>
-      <td>1.333333</td>
+      <td>0.226997</td>
+      <td>1.072984</td>
+      <td>1.000000</td>
+      <td>0.900000</td>
       <td>...</td>
-      <td>14</td>
-      <td>[False, False, False, False, True, True, False...</td>
+      <td>9</td>
       <td>[False, False, False, False, False, False, Fal...</td>
-      <td>2.720818</td>
-      <td>1.284331</td>
-      <td>0.345034</td>
-      <td>0.296359</td>
-      <td>0.787620</td>
-      <td>208.527649</td>
-      <td>[144405, 144406, 144407, 144408, 144409, 14441...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>1.525651</td>
+      <td>1.005614</td>
+      <td>0.115202</td>
+      <td>0.060610</td>
+      <td>1.046496</td>
+      <td>16.213764</td>
+      <td>[91970, 91978, 91979, 91980, 91981, 91982, 919...</td>
     </tr>
     <tr>
-      <th>269</th>
-      <td>[[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,...</td>
-      <td>[357, 358, 358, 358, 358, 358, 358, 358, 359, ...</td>
-      <td>[508, 503, 505, 506, 507, 508, 509, 510, 502, ...</td>
-      <td>[22.128893, 22.802996, 17.599468, 32.4844, 23....</td>
-      <td>[365, 505]</td>
-      <td>2.0</td>
-      <td>2.028474</td>
-      <td>3.871603</td>
-      <td>1.160600</td>
-      <td>0.868852</td>
+      <th>1090</th>
+      <td>[[0.0, 1.0, 1.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0....</td>
+      <td>[54, 54, 56, 56, 56, 57, 57, 57, 57, 57, 58, 5...</td>
+      <td>[138, 139, 138, 139, 140, 137, 138, 139, 140, ...</td>
+      <td>[0.874972, 1.0615048, 1.0846298, 1.3195342, 0....</td>
+      <td>[58, 139]</td>
+      <td>0.0</td>
+      <td>0.369011</td>
+      <td>1.744265</td>
+      <td>1.000000</td>
+      <td>1.517241</td>
       <td>...</td>
-      <td>106</td>
+      <td>22</td>
+      <td>[False, False, True, True, True, True, True, T...</td>
       <td>[False, False, False, False, False, False, Fal...</td>
-      <td>[False, False, False, False, False, False, Fal...</td>
-      <td>7.130968</td>
-      <td>1.052262</td>
-      <td>1.800180</td>
-      <td>2.243861</td>
-      <td>0.379048</td>
-      <td>98.740311</td>
-      <td>[177126, 177127, 177128, 177129, 177130, 17713...</td>
+      <td>2.323702</td>
+      <td>1.026454</td>
+      <td>0.119633</td>
+      <td>0.148158</td>
+      <td>0.830760</td>
+      <td>14.024975</td>
+      <td>[24194, 24195, 24196, 24197, 24198, 24199, 242...</td>
     </tr>
     <tr>
-      <th>270</th>
-      <td>[[0.0, 0.0, 0.0, 0.0, 1.0], [0.0, 0.0, 1.0, 0....</td>
-      <td>[187, 188, 188, 189, 189, 189, 189, 190, 190, ...</td>
-      <td>[125, 123, 125, 122, 123, 124, 125, 123, 124, ...</td>
-      <td>[93.206924, 136.14496, 71.33629, 171.96162, 18...</td>
-      <td>[190, 123]</td>
-      <td>0.0</td>
-      <td>0.753628</td>
-      <td>1.420923</td>
-      <td>1.174872</td>
-      <td>1.272727</td>
+      <th>1091</th>
+      <td>[[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1....</td>
+      <td>[295, 296, 297, 298, 299, 300, 301, 302, 303, ...</td>
+      <td>[506, 506, 506, 506, 506, 506, 506, 506, 506, ...</td>
+      <td>[7.954534, 7.7243533, 7.4907737, 7.45378, 6.71...</td>
+      <td>[300, 506]</td>
+      <td>1.0</td>
+      <td>0.470126</td>
+      <td>1.072984</td>
+      <td>2.071068</td>
+      <td>0.900000</td>
       <td>...</td>
-      <td>14</td>
+      <td>9</td>
       <td>[False, True, True, True, True, True, True, Tr...</td>
       <td>[False, False, False, False, False, False, Fal...</td>
-      <td>2.809890</td>
-      <td>1.233736</td>
-      <td>0.225022</td>
-      <td>0.296359</td>
-      <td>1.104229</td>
-      <td>418.385559</td>
-      <td>[89709, 89710, 89711, 89712, 89713, 89714, 897...</td>
+      <td>5.122584</td>
+      <td>1.961696</td>
+      <td>0.053170</td>
+      <td>0.060610</td>
+      <td>-0.937340</td>
+      <td>52.295525</td>
+      <td>[145390, 145391, 145392, 145393, 145394, 14540...</td>
     </tr>
     <tr>
-      <th>271</th>
-      <td>[[1.0, 1.0, 1.0, 1.0], [0.0, 0.0, 1.0, 1.0]]</td>
-      <td>[468, 468, 468, 468, 469, 469]</td>
-      <td>[353, 354, 355, 356, 355, 356]</td>
-      <td>[115.45925, 301.32797, 415.36664, 154.81465, 1...</td>
-      <td>[468, 355]</td>
+      <th>1092</th>
+      <td>[[0.0, 0.0, 0.0, 1.0, 1.0, 1.0], [0.0, 1.0, 1....</td>
+      <td>[505, 505, 505, 506, 506, 506, 506, 506, 507, ...</td>
+      <td>[157, 158, 159, 155, 156, 157, 158, 159, 155, ...</td>
+      <td>[1.2606442, 1.4762594, 0.95777225, 1.4454814, ...</td>
+      <td>[507, 157]</td>
       <td>0.0</td>
-      <td>0.482601</td>
-      <td>0.902369</td>
-      <td>1.184699</td>
-      <td>0.600000</td>
+      <td>0.341348</td>
+      <td>1.564772</td>
+      <td>1.031143</td>
+      <td>1.619048</td>
       <td>...</td>
-      <td>6</td>
-      <td>[True, True, True, True, True, True]</td>
-      <td>[False, True, True, False, True, True]</td>
-      <td>1.797855</td>
-      <td>1.357884</td>
-      <td>0.090009</td>
-      <td>0.127011</td>
-      <td>1.508273</td>
-      <td>704.798340</td>
-      <td>[233814, 233815, 233816, 233817, 233818, 23381...</td>
+      <td>17</td>
+      <td>[True, True, True, True, True, True, True, Tru...</td>
+      <td>[False, False, False, False, False, False, Fal...</td>
+      <td>2.511441</td>
+      <td>1.199700</td>
+      <td>0.079755</td>
+      <td>0.114486</td>
+      <td>0.800400</td>
+      <td>13.659178</td>
+      <td>[252558, 252559, 252560, 252561, 252562, 25256...</td>
     </tr>
     <tr>
-      <th>272</th>
-      <td>[[1.0, 1.0, 0.0], [1.0, 1.0, 1.0]]</td>
-      <td>[95, 95, 96, 96, 96]</td>
-      <td>[312, 313, 312, 313, 314]</td>
-      <td>[115.85644, 102.80719, 425.6042, 415.69888, 15...</td>
-      <td>[96, 312]</td>
+      <th>1093</th>
+      <td>[[0.0, 1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 1....</td>
+      <td>[237, 237, 237, 237, 238, 238, 238, 238, 238, ...</td>
+      <td>[437, 438, 439, 440, 436, 437, 438, 439, 440, ...</td>
+      <td>[3.2285767, 5.5172906, 5.0371156, 1.839692, 1....</td>
+      <td>[238, 438]</td>
       <td>0.0</td>
-      <td>0.398547</td>
-      <td>0.800000</td>
-      <td>1.103553</td>
-      <td>0.500000</td>
+      <td>0.226997</td>
+      <td>1.072984</td>
+      <td>1.000000</td>
+      <td>0.900000</td>
       <td>...</td>
-      <td>5</td>
-      <td>[True, True, True, True, True]</td>
-      <td>[False, False, False, False, False]</td>
-      <td>1.379377</td>
-      <td>1.233591</td>
-      <td>0.075007</td>
-      <td>0.105843</td>
-      <td>1.292055</td>
-      <td>660.939880</td>
-      <td>[42796, 42797, 42798, 42799, 42800, 42801, 428...</td>
+      <td>9</td>
+      <td>[True, True, True, False, False, True, True, T...</td>
+      <td>[True, True, True, True, False, False, False, ...</td>
+      <td>1.517157</td>
+      <td>1.019923</td>
+      <td>0.053170</td>
+      <td>0.060610</td>
+      <td>1.045642</td>
+      <td>28.025082</td>
+      <td>[115626, 115627, 115628, 115629, 115630, 11563...</td>
     </tr>
   </tbody>
 </table>
-<p>273 rows × 21 columns</p>
+<p>1094 rows × 21 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1162,10 +1188,10 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 <h3>Segmentation from Suite2P<a class="headerlink" href="#segmentation-from-suite2p" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Ly&#39;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Lx&#39;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Ly&quot;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Lx&quot;</span><span class="p">]))</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_stats</span><span class="p">)):</span>
-    <span class="n">ypix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;ypix&#39;</span><span class="p">]</span>
-    <span class="n">xpix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;xpix&#39;</span><span class="p">]</span>
+    <span class="n">ypix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;ypix&quot;</span><span class="p">]</span>
+    <span class="n">xpix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;xpix&quot;</span><span class="p">]</span>
     <span class="n">im</span><span class="p">[</span><span class="n">ypix</span><span class="p">,</span><span class="n">xpix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
@@ -1173,10 +1199,10 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2088aa84850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x193242b88b0&gt;
 </pre></div>
 </div>
-<img alt="../_images/652166ef4a627f343deaa2f40a90d87dbe6c9973c2c6c2a818174c58af317e33.png" src="../_images/652166ef4a627f343deaa2f40a90d87dbe6c9973c2c6c2a818174c58af317e33.png" />
+<img alt="../_images/37745feea591b42adb4d471afb5136f62baf58ac403a0088b388d8befe007262.png" src="../_images/37745feea591b42adb4d471afb5136f62baf58ac403a0088b388d8befe007262.png" />
 </div>
 </div>
 </section>
@@ -1184,12 +1210,12 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 <h3>Segmentation from Suite2P Filtered to Cells<a class="headerlink" href="#segmentation-from-suite2p-filtered-to-cells" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Ly&#39;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s1">&#39;Lx&#39;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Ly&quot;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Lx&quot;</span><span class="p">]))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_stats</span><span class="p">)):</span>
     <span class="c1"># only show if ROI is a cell according to classifier output</span>
     <span class="k">if</span> <span class="n">is_cell</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
-        <span class="n">ypix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;ypix&#39;</span><span class="p">]</span>
-        <span class="n">xpix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;xpix&#39;</span><span class="p">]</span>
+        <span class="n">ypix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;ypix&quot;</span><span class="p">]</span>
+        <span class="n">xpix</span> <span class="o">=</span> <span class="n">roi_stats</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;xpix&quot;</span><span class="p">]</span>
         <span class="n">im</span><span class="p">[</span><span class="n">ypix</span><span class="p">,</span><span class="n">xpix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
@@ -1197,10 +1223,10 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x2088abc5fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x193252bb1f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/230f73d8d8bb51f2ceb87c38070716d3013c3219637c563058a43997394e0d69.png" src="../_images/230f73d8d8bb51f2ceb87c38070716d3013c3219637c563058a43997394e0d69.png" />
+<img alt="../_images/018089e5284c4ff691d9acd612d795f58cdb04043f7bd119fe468933499dece3.png" src="../_images/018089e5284c4ff691d9acd612d795f58cdb04043f7bd119fe468933499dece3.png" />
 </div>
 </div>
 </section>
@@ -1208,30 +1234,19 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 <h3>Segmentation From Original NWB<a class="headerlink" href="#segmentation-from-original-nwb" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">nwb</span><span class="p">[</span><span class="s2">&quot;processing/ophys/images/segmentation_mask_image&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span> <span class="o">=</span> <span class="n">nwb</span><span class="p">[</span><span class="s2">&quot;processing/ophys/ImageSegmentation/PlaneSegmentation/image_mask&quot;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">masks</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x20888217490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x193227e39a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/d7bf801d9daab91c522f234e3ac84f0813c86803290f47ec1a7facc1d340b0a8.png" src="../_images/d7bf801d9daab91c522f234e3ac84f0813c86803290f47ec1a7facc1d340b0a8.png" />
+<img alt="../_images/7fd437696be1845e00dd052607fdc4c967d14832a614ad58fbf43731cebeb093.png" src="../_images/7fd437696be1845e00dd052607fdc4c967d14832a614ad58fbf43731cebeb093.png" />
 </div>
 </div>
 </section>
-</section>
-<section id="repair-nwb-filename">
-<h2>Repair NWB Filename<a class="headerlink" href="#repair-nwb-filename" title="Permalink to this heading">#</a></h2>
-<p>Since we temporarily changed the NWB file to an H5PY file, we must change it back or the file won’t be usable by PyNWB in the future.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">nwb</span>
-<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">h5_filepath</span><span class="p">,</span> <span class="n">nwb_filepath</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 
@@ -1260,11 +1275,10 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="test_spike_responses.html"
@@ -1284,10 +1298,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1320,7 +1331,6 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-from-original-nwb">Segmentation From Original NWB</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repair-nwb-filename">Repair NWB Filename</a></li>
 </ul>
   </nav></div>
 
@@ -1368,8 +1378,8 @@ By Carter Peene
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

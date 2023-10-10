@@ -4,7 +4,7 @@
 
 <!-- authors start -->
 
- *R. Carter Peene (1031), Katrina Ager (76), Jerome Lecoq (12), Colleen J. Gillon (5), Mackenzie Mathis (2), Josh Siegle, Ahad Bawany*
+ *R. Carter Peene (1034), Katrina Ager (76), Jerome Lecoq (12), Colleen J. Gillon (5), Mackenzie Mathis (2), Josh Siegle, Ahad Bawany*
 
 <!-- authors end -->
 <!-- version start -->
@@ -58,7 +58,9 @@ The great part about this Databook is that the usage of the code is explained wi
 
 (Usage)=
 ## How Can I Use It?
-There are four ways to run this code. With **Binder**, with **Thebe**, **Dandihub**, or **Locally**.
+There are four ways to run this code. With **Binder**, with **Thebe**, **Dandihub**, or **Locally**. All external platforms are launchable from the top-right of any notebook with the `Launch` rocket button in the top-right of the Databook.
+![buttons](../data/images/buttons.png)
+
 
 ### Binder
 Binder will automatically setup the environment with [repo2docker](https://github.com/jupyterhub/repo2docker) and then execute the code in an instance of [JupyterHub](https://jupyter.org/hub) where the kernel is run. JupyterHub offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the `Launch` button in the top-right and selecting `Binder`. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes. 

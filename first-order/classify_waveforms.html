@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -81,6 +82,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -454,10 +464,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -465,7 +475,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -498,10 +508,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-and-aligning-particular-data-from-the-tables">Extracting and Aligning Particular Data From the Tables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-distribution-of-waveform-durations">Plot the Distribution of Waveform Durations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-waveform-profile-of-rs-vs-fs-neurons">Plot The Waveform Profile of RS vs FS Neurons</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optotagging-selected-fs-and-rs-neurons">Optotagging Selected FS and RS Neurons</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-unit-responses">Plotting Unit Responses</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -1365,814 +1371,6 @@ number of FS waveforms to be plotted:  27
 </div>
 </div>
 </section>
-<section id="optotagging-selected-fs-and-rs-neurons">
-<h2>Optotagging Selected FS and RS Neurons<a class="headerlink" href="#optotagging-selected-fs-and-rs-neurons" title="Permalink to this heading">#</a></h2>
-<p>In some transgenic mice, particular types of neurons express a trait whereby they will fire in response to direct laser stimulation. For this dataset in particular, we want to identify if there are any optotagged neurons from the group of FS neurons that we plotted above. Typically, all optotagged neurons are inhibitory, and in the context of this experiment, FS neurons are more likely to be inhibitory than RS neurons and thus are more likely to be optotagged. Using the same filtering criteria as above, we will select FS neurons to be optotagged. For more information about optotagging, please reference our <a class="reference internal" href="optotagging.html"><span class="doc std std-doc">Identifying Optotagged Units Notebook</span></a>. A majority of the code from this section was copied straight from the optotagging notebook. The <code class="docutils literal notranslate"><span class="pre">stim_table</span></code> below is an <code class="docutils literal notranslate"><span class="pre">optogenetic_stimulation</span></code> table that contains the intervals of time when the lasers are fired at the mouse brain. The primary data we use from this table is the <code class="docutils literal notranslate"><span class="pre">start_time</span></code> because this contains information about what times the stimuli are presented.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;optotagging&quot;</span><span class="p">][</span><span class="s2">&quot;optogenetic_stimulation&quot;</span><span class="p">]</span>
-<span class="n">timestamps</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;optotagging&quot;</span><span class="p">][</span><span class="s2">&quot;optotagging&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;optotagging&quot;</span><span class="p">][</span><span class="s2">&quot;optotagging&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-
-<span class="nb">set</span><span class="p">(</span><span class="n">stim_table</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
-<span class="n">stim_table</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>start_time</th>
-      <th>condition</th>
-      <th>level</th>
-      <th>stop_time</th>
-      <th>stimulus_name</th>
-      <th>duration</th>
-      <th>tags</th>
-      <th>timeseries</th>
-    </tr>
-    <tr>
-      <th>id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>9220.52165</td>
-      <td>2.5 ms pulses at 10 Hz</td>
-      <td>4.0</td>
-      <td>9221.52165</td>
-      <td>fast_pulses</td>
-      <td>1.00</td>
-      <td>[optical_stimulation]</td>
-      <td>[(0, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9222.33204</td>
-      <td>a single square pulse</td>
-      <td>4.0</td>
-      <td>9222.34204</td>
-      <td>pulse</td>
-      <td>0.01</td>
-      <td>[optical_stimulation]</td>
-      <td>[(1, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>9224.46178</td>
-      <td>half-period of a cosine wave</td>
-      <td>4.0</td>
-      <td>9225.46178</td>
-      <td>raised_cosine</td>
-      <td>1.00</td>
-      <td>[optical_stimulation]</td>
-      <td>[(2, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>9226.57153</td>
-      <td>half-period of a cosine wave</td>
-      <td>1.0</td>
-      <td>9227.57153</td>
-      <td>raised_cosine</td>
-      <td>1.00</td>
-      <td>[optical_stimulation]</td>
-      <td>[(3, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>9228.36932</td>
-      <td>2.5 ms pulses at 10 Hz</td>
-      <td>2.5</td>
-      <td>9229.36932</td>
-      <td>fast_pulses</td>
-      <td>1.00</td>
-      <td>[optical_stimulation]</td>
-      <td>[(4, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>9230.26472</td>
-      <td>half-period of a cosine wave</td>
-      <td>4.0</td>
-      <td>9231.26472</td>
-      <td>raised_cosine</td>
-      <td>1.00</td>
-      <td>[optical_stimulation]</td>
-      <td>[(5, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>9232.08225</td>
-      <td>a single square pulse</td>
-      <td>4.0</td>
-      <td>9232.09225</td>
-      <td>pulse</td>
-      <td>0.01</td>
-      <td>[optical_stimulation]</td>
-      <td>[(6, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>9233.81129</td>
-      <td>half-period of a cosine wave</td>
-      <td>4.0</td>
-      <td>9234.81129</td>
-      <td>raised_cosine</td>
-      <td>1.00</td>
-      <td>[optical_stimulation]</td>
-      <td>[(7, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>9235.64145</td>
-      <td>2.5 ms pulses at 10 Hz</td>
-      <td>2.5</td>
-      <td>9236.64145</td>
-      <td>fast_pulses</td>
-      <td>1.00</td>
-      <td>[optical_stimulation]</td>
-      <td>[(8, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>9237.69369</td>
-      <td>a single square pulse</td>
-      <td>2.5</td>
-      <td>9237.70369</td>
-      <td>pulse</td>
-      <td>0.01</td>
-      <td>[optical_stimulation]</td>
-      <td>[(9, 1, optotagging pynwb.base.TimeSeries at 0...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select unit spike times using similar for loop as above</span>
-<span class="n">unit_spike_times_rs</span> <span class="o">=</span> <span class="p">[]</span> 
-<span class="n">unit_spike_times_fs</span> <span class="o">=</span> <span class="p">[]</span> 
-   
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">selected_unit_indices</span><span class="p">:</span>
-    <span class="n">waveform_duration</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s1">&#39;waveform_duration&#39;</span><span class="p">][</span><span class="n">index</span><span class="p">]</span>
-    <span class="n">unit_spike_times</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s1">&#39;spike_times&#39;</span><span class="p">][</span><span class="n">index</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">waveform_duration</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
-        <span class="n">unit_spike_times_rs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unit_spike_times</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="n">unit_spike_times_fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unit_spike_times</span><span class="p">)</span>
-        
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unit_spike_times_fs</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unit_spike_times_rs</span><span class="p">))</span>   
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27
-134
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># stim_select = lambda row: float(row.duration) &gt; 0.009 and float(row.duration) &lt; 0.012</span>
-<span class="n">stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="kc">True</span>
-<span class="n">stim_times</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">stim_table</span> <span class="k">if</span> <span class="n">stim_select</span><span class="p">(</span><span class="n">row</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-  stim_times = [float(row.start_time) for row in stim_table if stim_select(row)]
-</pre></div>
-</div>
-</div>
-</div>
-<section id="plotting-unit-responses">
-<h3>Plotting Unit Responses<a class="headerlink" href="#plotting-unit-responses" title="Permalink to this heading">#</a></h3>
-<p>In the cell below, you can change <code class="docutils literal notranslate"><span class="pre">censor_period</span></code>, <code class="docutils literal notranslate"><span class="pre">stim_duration</span></code>, <code class="docutils literal notranslate"><span class="pre">time_resolution</span></code>, and the <code class="docutils literal notranslate"><span class="pre">window_time_start</span></code> and <code class="docutils literal notranslate"><span class="pre">window_time_end</span></code> to adjust the plot shown by the <code class="docutils literal notranslate"><span class="pre">show_counts</span></code> function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># period to exclude from analysis before and after the stimulus event </span>
-<span class="n">censor_period</span> <span class="o">=</span> <span class="mf">0.001</span>
-
-<span class="c1"># ending time of stimulus period</span>
-<span class="n">stim_duration</span> <span class="o">=</span> <span class="mf">0.01</span>
-
-<span class="c1"># bin size for counting spikes</span>
-<span class="n">time_resolution</span> <span class="o">=</span> <span class="mf">0.0005</span>
-
-<span class="c1"># start and end times (relative to the stimulus at 0 seconds) that we want to examine and align spikes to</span>
-<span class="c1"># the baseline interval will be window_time_start to 0-censor_period</span>
-<span class="n">window_time_start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.01</span>
-<span class="n">window_time_end</span> <span class="o">=</span> <span class="mf">0.025</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time bins used</span>
-<span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">window_time_start</span><span class="p">,</span> <span class="n">window_time_end</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">)</span>
-
-<span class="c1"># useful throughout analysis</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">)</span>
-
-<span class="n">bl_start_idx</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">bl_end_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="mi">0</span><span class="o">-</span><span class="n">censor_period</span><span class="o">-</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### returns the 2D spike count array for a set of units with shape (# units, # bins)</span>
-<span class="k">def</span> <span class="nf">get_counts</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">):</span>
-    <span class="c1"># 3D spike matrix to be populated with spike counts</span>
-    <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">)</span>
-    <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_units</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">),</span> <span class="n">n_trials</span><span class="p">))</span>
-
-    <span class="c1"># populate 3D spike matrix for each unit for each stimulus trial by counting spikes into bins</span>
-    <span class="k">for</span> <span class="n">unit_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_units</span><span class="p">):</span>
-        <span class="n">spike_times</span> <span class="o">=</span> <span class="n">units_spike_times</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">]</span>
-
-        <span class="k">for</span> <span class="n">stim_idx</span><span class="p">,</span> <span class="n">stim_time</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stim_times</span><span class="p">):</span>
-            <span class="c1"># get spike times that fall within the bin&#39;s time range relative to the stim time        </span>
-            <span class="n">first_bin_time</span> <span class="o">=</span> <span class="n">stim_time</span> <span class="o">+</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">last_bin_time</span> <span class="o">=</span> <span class="n">stim_time</span> <span class="o">+</span> <span class="n">bin_edges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">first_spike_in_range</span><span class="p">,</span> <span class="n">last_spike_in_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="p">[</span><span class="n">first_bin_time</span><span class="p">,</span> <span class="n">last_bin_time</span><span class="p">])</span>
-            <span class="n">spike_times_in_range</span> <span class="o">=</span> <span class="n">spike_times</span><span class="p">[</span><span class="n">first_spike_in_range</span><span class="p">:</span><span class="n">last_spike_in_range</span><span class="p">]</span>
-
-            <span class="c1"># convert spike times into relative time bin indices</span>
-            <span class="n">bin_indices</span> <span class="o">=</span> <span class="p">((</span><span class="n">spike_times_in_range</span> <span class="o">-</span> <span class="p">(</span><span class="n">first_bin_time</span><span class="p">))</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-            
-            <span class="c1"># mark that there is a spike at these bin times for this unit on this stim trial</span>
-            <span class="k">for</span> <span class="n">bin_idx</span> <span class="ow">in</span> <span class="n">bin_indices</span><span class="p">:</span>
-                <span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">bin_idx</span><span class="p">,</span> <span class="n">stim_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="c1"># aggregate all stim trials to get total spikes by unit over time</span>
-    <span class="n">spike_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">spike_counts</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">spike_counts</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spike_counts_fs</span> <span class="o">=</span> <span class="n">get_counts</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">unit_spike_times_fs</span><span class="p">)</span>
-<span class="n">spike_counts_rs</span> <span class="o">=</span> <span class="n">get_counts</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">unit_spike_times_rs</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(27, 70)
-(134, 70)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### method to show plot of spike counts of units over time</span>
-<span class="k">def</span> <span class="nf">show_counts</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">counts_array</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">c_label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">counts_array</span><span class="p">,</span> 
-                    <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts_array</span><span class="p">)],</span> 
-                    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-                    <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
-                    <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span> <span class="c1"># change vmax to get a better depiction of your data</span>
-
-    <span class="k">for</span> <span class="n">bound</span> <span class="ow">in</span> <span class="n">stim_bounds</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">bound</span><span class="p">,</span> <span class="n">bound</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts_array</span><span class="p">)],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time relative to stimulus onset (s)&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Unit #&quot;</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-
-    <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">c_label</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">show_counts</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="n">spike_counts_fs</span><span class="p">,</span>
-            <span class="n">bin_edges</span><span class="p">,</span>
-            <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[</span><span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Unit spike counts over time FS Neurons&quot;</span><span class="p">,</span>
-            <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spikes (per </span><span class="si">{</span><span class="n">time_resolution</span><span class="si">}</span><span class="s2"> seconds)&quot;</span><span class="p">,</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="n">show_counts</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-            <span class="n">spike_counts_rs</span><span class="p">,</span>
-            <span class="n">bin_edges</span><span class="p">,</span>
-            <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[</span><span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Unit spike counts over time RS Neurons&quot;</span><span class="p">,</span>
-            <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spikes (per </span><span class="si">{</span><span class="n">time_resolution</span><span class="si">}</span><span class="s2"> seconds)&quot;</span><span class="p">,</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/8bc7e96526508dd52a92d4c303d9e8ea2c55386316574f2fec53f1ee869291b7.png" src="../_images/8bc7e96526508dd52a92d4c303d9e8ea2c55386316574f2fec53f1ee869291b7.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### converts 2D spike counts array to z-scores array with shape ( # units, # bins)</span>
-<span class="k">def</span> <span class="nf">get_normalized_counts</span><span class="p">(</span><span class="n">spike_counts</span><span class="p">,</span> <span class="n">bl_start_idx</span><span class="p">,</span> <span class="n">bl_end_idx</span><span class="p">):</span>
-    <span class="n">bl_mean_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spike_counts</span><span class="p">[:,</span><span class="n">bl_start_idx</span><span class="p">:</span><span class="n">bl_end_idx</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">bl_mean_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">bl_mean_counts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">bl_std_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">spike_counts</span><span class="p">[:,</span><span class="n">bl_start_idx</span><span class="p">:</span><span class="n">bl_end_idx</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">bl_std_counts</span><span class="p">[</span><span class="n">bl_std_counts</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">bl_std_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">bl_std_counts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">normalized_spike_counts</span> <span class="o">=</span> <span class="p">(</span><span class="n">spike_counts</span> <span class="o">-</span> <span class="n">bl_mean_counts</span><span class="p">)</span> <span class="o">/</span> <span class="n">bl_std_counts</span>
-    <span class="k">return</span> <span class="n">normalized_spike_counts</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normalized_spike_counts_fs</span> <span class="o">=</span> <span class="n">get_normalized_counts</span><span class="p">(</span><span class="n">spike_counts_fs</span><span class="p">,</span> <span class="n">bl_start_idx</span><span class="p">,</span> <span class="n">bl_end_idx</span><span class="p">)</span>
-<span class="n">normalized_spike_counts_rs</span> <span class="o">=</span> <span class="n">get_normalized_counts</span><span class="p">(</span><span class="n">spike_counts_rs</span><span class="p">,</span> <span class="n">bl_start_idx</span><span class="p">,</span> <span class="n">bl_end_idx</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">show_counts</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="n">normalized_spike_counts_fs</span><span class="p">,</span>
-            <span class="n">bin_edges</span><span class="p">,</span>
-            <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[</span><span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Unit spike count Z-scores over time FS Neurons&quot;</span><span class="p">,</span>
-            <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spike count Z-score&quot;</span><span class="p">,</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="n">show_counts</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-            <span class="n">normalized_spike_counts_rs</span><span class="p">,</span>
-            <span class="n">bin_edges</span><span class="p">,</span>
-            <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[</span><span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Unit spike count Z-scores over time RS Neurons&quot;</span><span class="p">,</span>
-            <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spike count Z-score&quot;</span><span class="p">,</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6cb09868d8962ab07e5612fa03e4461271b4e6e0b4dc9653be27a9323cbec9b5.png" src="../_images/6cb09868d8962ab07e5612fa03e4461271b4e6e0b4dc9653be27a9323cbec9b5.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### returns 2D z-score array with shape (# units, # bins) sorted by max z-score</span>
-<span class="k">def</span> <span class="nf">get_sorted_normalized_counts</span><span class="p">(</span><span class="n">normalized_spike_counts</span><span class="p">):</span>
-    <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">normalized_spike_counts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">sorted_indices</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">sorted_normalized_spike_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">normalized_spike_counts</span><span class="p">,</span> <span class="n">sorted_indices</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sorted_normalized_spike_counts</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_normalized_spike_counts_fs</span> <span class="o">=</span> <span class="n">get_sorted_normalized_counts</span><span class="p">(</span><span class="n">normalized_spike_counts_fs</span><span class="p">)</span>
-<span class="n">sorted_normalized_spike_counts_rs</span> <span class="o">=</span> <span class="n">get_sorted_normalized_counts</span><span class="p">(</span><span class="n">normalized_spike_counts_rs</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">show_counts</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-            <span class="n">sorted_normalized_spike_counts_fs</span><span class="p">,</span>
-            <span class="n">bin_edges</span><span class="p">,</span>
-            <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[</span><span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sorted unit spike count Z-scores over time FS Neurons&quot;</span><span class="p">,</span>
-            <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spike count Z-score&quot;</span><span class="p">,</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="n">show_counts</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-            <span class="n">sorted_normalized_spike_counts_rs</span><span class="p">,</span>
-            <span class="n">bin_edges</span><span class="p">,</span>
-            <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[</span><span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sorted unit spike count Z-scores over time RS Neurons&quot;</span><span class="p">,</span>
-            <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spike count Z-score&quot;</span><span class="p">,</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>        
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/18bca37e808a5b3eba5d5fa9392f6ae1631dbbc5045aa68e1e5bb6e72a4935b0.png" src="../_images/18bca37e808a5b3eba5d5fa9392f6ae1631dbbc5045aa68e1e5bb6e72a4935b0.png" />
-</div>
-</div>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2200,16 +1398,12 @@ C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWar
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2230,10 +1424,6 @@ C:\Users\katrina.ager\AppData\Local\Temp\ipykernel_3268\44585236.py:3: FutureWar
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-and-aligning-particular-data-from-the-tables">Extracting and Aligning Particular Data From the Tables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-distribution-of-waveform-durations">Plot the Distribution of Waveform Durations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-waveform-profile-of-rs-vs-fs-neurons">Plot The Waveform Profile of RS vs FS Neurons</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optotagging-selected-fs-and-rs-neurons">Optotagging Selected FS and RS Neurons</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-unit-responses">Plotting Unit Responses</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 
@@ -2281,8 +1471,8 @@ By Carter Peene
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

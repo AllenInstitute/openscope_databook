@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -83,6 +84,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -456,10 +466,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -467,7 +477,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -515,7 +525,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="statistically-testing-spike-responses-to-stimulus">
 <h1>Statistically Testing Spike Responses to Stimulus<a class="headerlink" href="#statistically-testing-spike-responses-to-stimulus" title="Permalink to this heading">#</a></h1>
-<p>There are many ways to identify and select “responsive” cells for inclusion in analysis. In this notebook, we demonstrate one inclusion criterion from <a class="reference external" href="https://www.nature.com/articles/s41586-020-03171-x"><span id="id1">[<a class="reference internal" href="../bibliography.html#id5" title="Joshua H. Siegle, Xiaoxuan Jia, Severine Durand, Sam Gale, and Corbett Benett. Survey of spiking in the mouse visual system reveals functional hierarchy. nature, 2021. URL: https://www.nature.com/articles/s41586-020-03171-x.">Siegle <em>et al.</em>, 2021</a>]</span></a> which performs convolution.</p>
+<p>There are many ways to identify and select “responsive” cells for inclusion in analysis. In this notebook, we demonstrate one inclusion criterion from <span id="id1">[<a class="reference internal" href="../bibliography.html#id7" title="Joshua H. Siegle, Xiaoxuan Jia, Severine Durand, Sam Gale, and Corbett Benett. Survey of spiking in the mouse visual system reveals functional hierarchy. nature, 2021. URL: https://www.nature.com/articles/s41586-020-03171-x.">Siegle <em>et al.</em>, 2021</a>]</span> which performs convolution.</p>
 <p>Given the high-resolution capabilities of Neuropixel probes, they can record from hundreds to thousands of neurons simultaneously, resulting in a large and complex dataset. The spikes are recorded at precise time points, but for many types of analysis, it is helpful to convert these discrete spike events into a continuous measure of spiking activity. The convolution operation in this notebook does this, creating a “smoothed” version of the original spiking activity to improve the selection of responsive cells.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
@@ -1403,7 +1413,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </section>
 <section id="computing-sdfs">
 <h2>Computing SDFs<a class="headerlink" href="#computing-sdfs" title="Permalink to this heading">#</a></h2>
-<p>The inclusion criteria discussed in <a class="reference external" href="https://www.nature.com/articles/s41586-020-03171-x"><span id="id2">[<a class="reference internal" href="../bibliography.html#id5" title="Joshua H. Siegle, Xiaoxuan Jia, Severine Durand, Sam Gale, and Corbett Benett. Survey of spiking in the mouse visual system reveals functional hierarchy. nature, 2021. URL: https://www.nature.com/articles/s41586-020-03171-x.">Siegle <em>et al.</em>, 2021</a>]</span></a> consists of a few steps. They convolve the spike counts for each trial with a causal exponential filter, convert from spike counts to firing rate, subtract the mean firing rate of the baseline window, and then average across trials.</p>
+<p>The inclusion criteria discussed in <span id="id2">[<a class="reference internal" href="../bibliography.html#id7" title="Joshua H. Siegle, Xiaoxuan Jia, Severine Durand, Sam Gale, and Corbett Benett. Survey of spiking in the mouse visual system reveals functional hierarchy. nature, 2021. URL: https://www.nature.com/articles/s41586-020-03171-x.">Siegle <em>et al.</em>, 2021</a>]</span> consists of a few steps. They convolve the spike counts for each trial with a causal exponential filter, convert from spike counts to firing rate, subtract the mean firing rate of the baseline window, and then average across trials.</p>
 <p>Then the mean firing rate across different trials is calculated. The end result is a matrix that provides a smoothed, continuous, and normalized representation of neuronal firing activity, which is often easier to work with and interpret than raw spike times, particularly when dealing with large populations of neurons. As can be seen below, the normalized firing rate plot identifies a small set of responsive neurons.</p>
 <p>Below, the exponential filter used for the convolution is shown shown as well as the convolved SDFs for each unit with the baseline firing rates subtracted. To get a precise description of this calculation, see page 15 of Siegle et al. The code for the SDF calculation can be found <a class="reference external" href="https://github.com/corbennett/ephys_behavior/blob/master/analysis_utils.py">here</a></p>
 <div class="cell docutils container">
@@ -1536,11 +1546,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="test_2p_responses.html"
@@ -1560,10 +1569,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1633,8 +1639,8 @@ By Carter Peene
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
