@@ -4,12 +4,12 @@
 
 <!-- authors start -->
 
- *R. Carter Peene (1034), Katrina Ager (76), Jerome Lecoq (12), Colleen J. Gillon (5), Mackenzie Mathis (2), Josh Siegle, Ahad Bawany*
+ *R. Carter Peene (1073), Katrina Ager (76), Jerome Lecoq (12), Colleen J. Gillon (5), Mackenzie Mathis (2), Josh Siegle, Ahad Bawany*
 
 <!-- authors end -->
 <!-- version start -->
 
- [v0.7.0](https://github.com/AllenInstitute/openscope_databook/releases)
+ [v0.8.0](https://github.com/AllenInstitute/openscope_databook/releases)
 
 <!-- version end -->
 
