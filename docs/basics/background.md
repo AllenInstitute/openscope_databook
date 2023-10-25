@@ -1,5 +1,11 @@
 # Background
 
+### OpenScope
+
+[OpenScope](https://openscope.ai) freely opens the Allen Brain Observatory pipeline to the neuroscience community, enabling theoretical, computational, and experimental scientists to test sophisticated hypotheses on brain function in a process analogous to astronomical observatories that survey the night sky. Once a year, OpenScope will accept experimental proposals from external scientists, which will be reviewed by a panel of leading experts from the international community for their feasibility and scientific merit. The Allen Institute will carry out the selected in vivo experiments in mice brains following verified, reproducible, and open protocols for in vivo single- and multi-area two photon calcium imaging and Neuropixels electrophysiology, making the data openly available to these scientists and to the community. This will lower barriers to testing new hypotheses about brain function, bring new computational and theoretical talents into the field, and enhance the reproducibility of results in brain research, thereby accelerating progress toward an integrated understanding of neural activity in health and disease.
+
+[Apply Here!](https://alleninstitute.org/division/neural-dynamics/openscope/)
+
 ### DANDI
 At the Allen Institute, we frequently utilize a platform called [DANDI](https://dandiarchive.org/) (Data Archive and Neurophysiology Imaging). DANDI is a platform that allows open-source data sharing and archiving and acts as a centralized repository where researchers can deposit data. While some of these notebooks use pre-loaded data from DANDI, the ultimate purpose of this Databook is to teach users to take any dataset off DANDI and reproduce the analysis within these notebooks.
 
