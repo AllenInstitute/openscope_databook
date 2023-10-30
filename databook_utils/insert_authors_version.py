@@ -1,6 +1,9 @@
 import os
 import subprocess
 
+from docutils import nodes
+from docutils.parsers.rst import Directive
+
 blacklist = {"Publishing Bot", "github-actions[bot]", "GitHub Authors Action", "Ross Carter Peene", "rcpeene"}
 additional_authors = ["Josh Siegle", "Ahad Bawany"]
 aliases = {"colleenjg": "Colleen J. Gillon", "Carter Peene": "R. Carter Peene"}
@@ -40,21 +43,47 @@ def getLatestRelease():
 	return os.environ["LATEST_VERSION"]
 
 
-def main():
-	# getting processed authors list
-	contributors = getContributors()
-	aliased_contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
-	authors = [contributor + " (" + str(n) + ")" for contributor, n in aliased_contributors.items() if contributor not in blacklist]
-	authors += additional_authors
-	print("Authors:", authors)
+class AuthorsList(Directive):
 
-	# insert authors into intro file
-	authors_text = "*" + ", ".join(authors) + "*"
-	insertIntoMarkdown("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors_text)
+	def run(self):
+		contributors = getContributors()
+		aliased_contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
+		authors = [contributor + " (" + str(n) + ")" for contributor, n in aliased_contributors.items() if contributor not in blacklist]
+		authors += additional_authors
+		print("Authors:", authors)
 
-	# insert version number with link into intro file
-	version_text = f"[{getLatestRelease()}](https://github.com/AllenInstitute/openscope_databook/releases)"
-	insertIntoMarkdown("./docs/intro.md", "<!-- version start -->", "<!-- version end -->", version_text)
+		# insert authors into intro file
+		authors_text = "*" + ", ".join(authors) + "*"
+
+		paragraph_node = nodes.paragraph(text=authors_text)
+		return [paragraph_node]
 
 
-main()
+def setup(app):
+	app.add_directive("authors", AuthorsList)
+
+	return {
+		'version': '0.1',
+		'parallel_read_safe': True,
+		'parallel_write_safe': True,
+	}
+
+
+# def main():
+# 	getting processed authors list
+# 	contributors = getContributors()
+# 	aliased_contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
+# 	authors = [contributor + " (" + str(n) + ")" for contributor, n in aliased_contributors.items() if contributor not in blacklist]
+# 	authors += additional_authors
+# 	print("Authors:", authors)
+
+# 	# insert authors into intro file
+# 	authors_text = "*" + ", ".join(authors) + "*"
+# 	insertIntoMarkdown("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors_text)
+
+# 	insert version number with link into intro file
+# 	version_text = f"[{getLatestRelease()}](https://github.com/AllenInstitute/openscope_databook/releases)"
+# 	insertIntoMarkdown("./docs/intro.md", "<!-- version start -->", "<!-- version end -->", version_text)
+
+
+# main()
