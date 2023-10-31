@@ -4,11 +4,6 @@ import subprocess
 from docutils import nodes
 from docutils.parsers.rst import Directive
 
-# blacklist = {"Publishing Bot", "github-actions[bot]", "GitHub Authors Action", "Ross Carter Peene", "rcpeene"}
-# additional_authors = ["Josh Siegle", "Ahad Bawany"]
-# aliases = {"colleenjg": "Colleen J. Gillon", "Carter Peene": "R. Carter Peene"}
-
-
 def getContributors():
 	log = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE, text=True)
 	shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
