@@ -2,14 +2,13 @@
 
 ### Addressing the Reproducibility Challenge in Neuroscience through the Integration of Text, Data, and Code into a Comprehensive, Collaborative, and Version-Controlled Publication
 
-<!-- version start -->
-
- [v0.8.0](https://github.com/AllenInstitute/openscope_databook/releases)
-
-<!-- version end -->
-
 ```{eval-rst}
 .. authors::
+    :blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
+    :additional_authors: Josh Siegle, Ahad Bawany
+    :aliases: colleenjg: Colleen J. Gillon, Carter Peene: R. Carter Peene
+
+.. version:: https://github.com/AllenInstitute/openscope_databook/releases
 ```
 
 ## Abstract
