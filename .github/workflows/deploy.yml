@@ -21,6 +21,22 @@ jobs:
 
       - name: Installing Jupyter book
         run: pip install -U jupyter-book
+      
+      - name: Getting Version
+        id: get_version
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: AllenInstitute
+          repo: openscope_databook
+
+      - name: Printing Latest Version
+        run: echo ${{ steps.get_version.outputs.release }}
+
+      - name: Printing log
+        run: git status
+      
+      - name: Printing shortlog
+        run: git log | git shortlog -sn  
 
       - name: Build Jupyter book
         run: |
