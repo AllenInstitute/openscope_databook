@@ -70,7 +70,7 @@ class VersionNumber(Directive):
 		if self.arguments:
 			paragraph_node = nodes.paragraph()
 			uri = self.arguments[0]
-			reference_node = nodes.reference("version", f"v{latest_release}", internal=False, refuri=uri)
+			reference_node = nodes.reference("version", f"{latest_release}", internal=False, refuri=uri)
 			paragraph_node += reference_node
 		else:
 			paragraph_node = nodes.paragraph(text=f"v{latest_release}")
