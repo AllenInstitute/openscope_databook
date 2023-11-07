@@ -24,16 +24,6 @@ jobs:
 
       - name: Installing Jupyter book
         run: pip install -U jupyter-book
-      
-      - name: Getting Version
-        id: get_version
-        uses: pozetroninc/github-action-get-latest-release@master
-        with:
-          owner: AllenInstitute
-          repo: openscope_databook
-
-      - name: Printing Latest Version
-        run: echo ${{ steps.get_version.outputs.release }}
 
       - name: Printing log
         run: git status
@@ -45,8 +35,6 @@ jobs:
         run: |
           jupyter-book clean ./docs
           jupyter-book build ./docs
-        env:
-          LATEST_VERSION: ${{ steps.get_version.outputs.release }}
             
       - name: Deploy book to Github pages
         uses: peaceiris/actions-gh-pages@v3.6.1

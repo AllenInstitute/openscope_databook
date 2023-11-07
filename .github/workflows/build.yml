@@ -73,16 +73,6 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
           rm ./docs/embargoed/*.nwb        
 
-      - name: Getting Version
-        id: get_version
-        uses: pozetroninc/github-action-get-latest-release@master
-        with:
-          owner: AllenInstitute
-          repo: openscope_databook
-
-      - name: Printing Latest Version
-        run: echo ${{ steps.get_version.outputs.release }}
-
       - name: Printing log
         run: git status
       
@@ -93,5 +83,3 @@ jobs:
         run: |
           jupyter-book clean ./docs
           jupyter-book build ./docs
-        env:
-          LATEST_VERSION: ${{ steps.get_version.outputs.release }}
