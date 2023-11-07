@@ -4,9 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  list_authors:
-    uses: ./.github/workflows/insert_authors_version.yml
-
   deploy:
     runs-on: ubuntu-latest
 
@@ -16,11 +13,30 @@ jobs:
       - name: Upgrading pip
         run: pip install --upgrade pip
 
+      - name: Installing package
+        run: pip install -e .
+
       - name: Installing dependencies
         run: pip install markupsafe==2.0.1
 
       - name: Installing Jupyter book
         run: pip install -U jupyter-book
+      
+      - name: Getting Version
+        id: get_version
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          owner: AllenInstitute
+          repo: openscope_databook
+
+      - name: Printing Latest Version
+        run: echo ${{ steps.get_version.outputs.release }}
+
+      - name: Printing log
+        run: git status
+      
+      - name: Printing shortlog
+        run: git log | git shortlog -sn  
 
       - name: Build Jupyter book
         run: |
