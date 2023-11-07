@@ -42,7 +42,9 @@ jobs:
         run: |
           jupyter-book clean ./docs
           jupyter-book build ./docs
-          
+        env:
+          LATEST_VERSION: ${{ steps.get_version.outputs.release }}
+            
       - name: Deploy book to Github pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
