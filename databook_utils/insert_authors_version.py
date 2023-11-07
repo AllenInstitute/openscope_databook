@@ -62,18 +62,15 @@ class VersionNumber(Directive):
 	optional_arguments = 1
 
 	def run(self):
-		try:
-			latest_release = os.environ["LATEST_VERSION"]
-		except:
-			raise EnvironmentError("This Sphinx directive requires 'LATEST_VERSION' to exist as an environment variable")
+		latest_version = subprocess.check_output(["git", "describe", "--tags", "--abbrev=0"], encoding="utf8")
 
 		if self.arguments:
 			paragraph_node = nodes.paragraph()
 			uri = self.arguments[0]
-			reference_node = nodes.reference("version", f"{latest_release}", internal=False, refuri=uri)
+			reference_node = nodes.reference("version", f"{latest_version}", internal=False, refuri=uri)
 			paragraph_node += reference_node
 		else:
-			paragraph_node = nodes.paragraph(text=f"v{latest_release}")
+			paragraph_node = nodes.paragraph(text=f"v{latest_version}")
 		return [paragraph_node]
 
 
