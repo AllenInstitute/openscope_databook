@@ -4,15 +4,6 @@ import subprocess
 from docutils import nodes
 from docutils.parsers.rst import Directive
 
-def getContributors():
-	log = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE, text=True)
-	shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
-	print(shortlog)
-	contributions = shortlog.split("\n")[:-1]
-	contributors = {contribution.split("\t")[1] : contribution.split("\t")[0].strip() for contribution in contributions}
-	return contributors
-
-
 # possible todo: replace this with ast.eval_literal
 def setstring_to_set(setstring):
 	setstring = setstring.replace(", ", ",")
@@ -42,11 +33,21 @@ class AuthorsList(Directive):
 	optional_arguments = 3
 	option_spec = {"blacklist": setstring_to_set, "additional_authors": setstring_to_set, "aliases": dictstring_to_dict}
 
+
+	def getContributors():
+		log = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE, text=True)
+		shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
+		print(shortlog)
+		contributions = shortlog.split("\n")[:-1]
+		contributors = {contribution.split("\t")[1] : contribution.split("\t")[0].strip() for contribution in contributions}
+		return contributors
+
+
 	def run(self):
 		
 		blacklist, additional_authors, aliases = self.options["blacklist"], self.options["additional_authors"], self.options["aliases"]
 
-		contributors = getContributors()
+		contributors = self.getContributors()
 		aliased_contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
 		authors = [contributor + " (" + str(n) + ")" for contributor, n in aliased_contributors.items() if contributor not in blacklist]
 		authors += additional_authors
