@@ -38,9 +38,9 @@ We are releasing this code to the public as a tool we expect others to use and a
 ### Chapter 4: Higher-order analysis
 - [Neural dynamics using time-analysis with CEBRA](https://alleninstitute.github.io/openscope_databook/higher-order/cebra_time.html)  
   [CEBRA Demo on the CEBRA Repository](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
+- [Extracting clusters of correlated neurons](https://alleninstitute.github.io/openscope_databook/higher-order/tca.html)
 - Identifying mouse behavioral state based on eye tracking and behavioral data.
 - Classifying spike waveform between fast spiking and normal spiking cells.
-- Extracting clusters of correlated neurons.
 - Analysis of functional connectivity.
 
 ### Chapter 5: Replicating figures
