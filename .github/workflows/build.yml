@@ -19,6 +19,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -68,8 +71,14 @@ jobs:
       - name: Testing Embargoed Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
-          rm ./docs/embargoed/*.nwb
-        
+          rm ./docs/embargoed/*.nwb        
+
+      - name: Printing log
+        run: git status
+      
+      - name: Printing shortlog
+        run: git log | git shortlog -sn  
+
       - name: Build Jupyter book
         run: |
           jupyter-book clean ./docs
