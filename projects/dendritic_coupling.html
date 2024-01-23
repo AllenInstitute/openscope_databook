@@ -541,6 +541,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="openscope-s-dendritic-coupling-dataset">
 <h1>OpenScope’s Dendritic Coupling Dataset<a class="headerlink" href="#openscope-s-dendritic-coupling-dataset" title="Permalink to this heading">#</a></h1>
+<p>Predictive coding hypotheses posit that perception is an active process whereby brain regions predict incoming sensory inputs, against which they are compared by other neural populations.  Mismatches between predictions and inputs result in error signals that can then be used to update the predictive model encoded in synaptic weights, thereby driving plasticity. Although increasing amounts of evidence are consistent with the general framework, many different algorithmic implementations have been proposed, requiring further experiments to test specific corollaries of these varied approaches.  One important, testable implication distinguishing some current theories involves the coupling strength in L2/3 and L5 pyramidal neurons between distal apical dendrites, which tend to receive top-down inputs that may include sensory prediction data, and their conjoined somata, which are often driven by bottom-up inputs. In particular, error signals are computed or else collocated in apical dendrites in some implementations, resulting in a quiescent subunit when the prediction matches inputs—zero error—and, thus, reduced dendro-somatic coupling during such times. In contrast, a separate proposal implies the opposite: Since many apical dendritic voltage signals can only reach their electrotonically segregated soma when facilitated by bursting induced by concurrent somatic sensory inputs, dendro-somatic coupling would instead be strongest when top-down predictions match bottom-up signals.</p>
+<p>Our experiment seeks to test these hypotheses by near-simultaneously imaging L2/3 and L5 somata and distal apical dendrites in mouse V1, LM, PM, and AM in transgenic lines that express GCaMP6f.  Imaging four distinct areas allows us to also examine the consistency of the coupling rules, further putting the notion of a cortical canonical microcircuit to the test.  By habituating animals to sets of visual stimuli with spatiotemporal patterns that are subsequently violated, we can evaluate the neural responses across the visual cortical hierarchy to help in adjudicating these important neuroscientific questions.</p>
+<p><img alt="dendritic_coupling_fig3" src="../_images/dendritic_coupling_fig3.png" /></p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
@@ -922,7 +925,6 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000871&quot;</span>
 <span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-656228/sub-656228_ses-1245548523-acq-1245937736_image+ophys.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -930,7 +932,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
-<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">)</span>
 <span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
