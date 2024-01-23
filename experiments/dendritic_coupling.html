@@ -1,0 +1,2189 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>OpenScope’s Dendritic Coupling Dataset &#8212; OpenScope Databook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'experiments/dendritic_coupling';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Aligning Data across Modalities" href="../embargoed/modality_alignment.html" />
+    <link rel="prev" title="OpenScope’s Illusion Dataset" href="illusion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="OpenScope Databook - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="OpenScope Databook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Replicating Figures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../replication/cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope's Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="glo.html">OpenScope’s Global/Local Oddball Dataset 1A.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="illusion.html">OpenScope’s Illusion Dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">OpenScope’s Dendritic Coupling Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/modality_alignment.html">Aligning Data across Modalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/cell_matching.html">Cell Matching Across Days</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../methods/jupyter_book.html">Jupyter/Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/experiments/dendritic_coupling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/experiments/dendritic_coupling.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/experiments/dendritic_coupling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fexperiments/dendritic_coupling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/experiments/dendritic_coupling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>OpenScope’s Dendritic Coupling Dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-experiment">The Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-ophys-file">Downloading Ophys File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imaging-data">Imaging Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulus-templates">Stimulus Templates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-stimulus-times">Selecting Stimulus Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-roi-fluorescence">Extracting ROI Fluorescence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-timeline">Session Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-behavioral-data">Viewing Behavioral Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-response-windows">Generating Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#showing-response-windows">Showing Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-cells">Selecting Cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-raw-movie">Viewing Raw Movie</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="openscope-s-dendritic-coupling-dataset">
+<h1>OpenScope’s Dendritic Coupling Dataset<a class="headerlink" href="#openscope-s-dendritic-coupling-dataset" title="Permalink to this heading">#</a></h1>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">%</span><span class="k">cd</span> openscope_databook
+    <span class="o">%</span><span class="k">pip</span> install -e .
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.FB5AE2TYXYH2IJRDKGDGQ3XBKLKTF43H.gfortran-win_amd64.dll
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">mpl_interactions</span> <span class="kn">import</span> <span class="n">hyperslicer</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-experiment">
+<h2>The Experiment<a class="headerlink" href="#the-experiment" title="Permalink to this heading">#</a></h2>
+<p>For this release of Dendritic Coupling, Openscope has pre-released just 2 mice on the <a class="reference external" href="http://dandiarchive.org">DANDI Archive</a>. The following table gives a summary of all the files from those two mice in this dataset. Eight files are produced from each experimental session, one for each imaging plane, and six sessions are conducted with each mouse, totalling 96 files for this dandiset. This table was generated from <a class="reference internal" href="../basics/get_dandiset_metadata.html"><span class="doc std std-doc">Getting Experimental Metadata from DANDI</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_files</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/dc_sessions.csv&quot;</span><span class="p">)</span>
+<span class="n">session_files</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>size</th>
+      <th>path</th>
+      <th>session_time</th>
+      <th>session_id</th>
+      <th>experiment_id</th>
+      <th>container_id</th>
+      <th>group</th>
+      <th>group_count</th>
+      <th>imaging_depth</th>
+      <th>location</th>
+      <th>fov_height</th>
+      <th>fov_width</th>
+      <th>specimen_name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>genotype</th>
+      <th>stim_types</th>
+      <th>n_rois</th>
+      <th>session_end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2b16c329-a2f2-44c0-917f-d2485eca5fb7</td>
+      <td>4008765509</td>
+      <td>sub-644972/sub-644972_ses-1238929581-acq-12391...</td>
+      <td>2023-01-11 16:33:05.503000+00:00</td>
+      <td>1238929581</td>
+      <td>1239101628</td>
+      <td>0</td>
+      <td>3</td>
+      <td>4</td>
+      <td>288</td>
+      <td>VISpm</td>
+      <td>512</td>
+      <td>512</td>
+      <td>644972</td>
+      <td>M</td>
+      <td>P162.0D</td>
+      <td>Rbp4-Cre_KL100/wt;Camk2a-tTA/wt;Ai93(TITL-GCaM...</td>
+      <td>{'movie_flower_rev_fwd_presentations', 'movie_...</td>
+      <td>None</td>
+      <td>3937.19637</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>c1a7d88e-2a7d-463e-a73d-b46eaea61593</td>
+      <td>1079474009</td>
+      <td>sub-644972/sub-644972_ses-1237338784-acq-12378...</td>
+      <td>2023-01-04 16:58:58.862000+00:00</td>
+      <td>1237338784</td>
+      <td>1237809217</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>20</td>
+      <td>VISp</td>
+      <td>512</td>
+      <td>512</td>
+      <td>644972</td>
+      <td>M</td>
+      <td>P155.0D</td>
+      <td>Rbp4-Cre_KL100/wt;Camk2a-tTA/wt;Ai93(TITL-GCaM...</td>
+      <td>{'spontaneous_presentations', 'rotate_gabors_p...</td>
+      <td>6</td>
+      <td>3941.94600</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>dff85610-18b0-4d72-8ebd-5639516fe0b7</td>
+      <td>1073642857</td>
+      <td>sub-644972/sub-644972_ses-1237338784-acq-12378...</td>
+      <td>2023-01-04 16:58:58.862000+00:00</td>
+      <td>1237338784</td>
+      <td>1237809220</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>25</td>
+      <td>VISam</td>
+      <td>512</td>
+      <td>512</td>
+      <td>644972</td>
+      <td>M</td>
+      <td>P155.0D</td>
+      <td>Rbp4-Cre_KL100/wt;Camk2a-tTA/wt;Ai93(TITL-GCaM...</td>
+      <td>{'spontaneous_presentations', 'rotate_gabors_p...</td>
+      <td>1</td>
+      <td>3941.94600</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ee3b7520-6ac7-49ea-88b3-022d5be7816b</td>
+      <td>1069138065</td>
+      <td>sub-644972/sub-644972_ses-1237338784-acq-12378...</td>
+      <td>2023-01-04 16:58:58.862000+00:00</td>
+      <td>1237338784</td>
+      <td>1237809223</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>30</td>
+      <td>VISl</td>
+      <td>512</td>
+      <td>512</td>
+      <td>644972</td>
+      <td>M</td>
+      <td>P155.0D</td>
+      <td>Rbp4-Cre_KL100/wt;Camk2a-tTA/wt;Ai93(TITL-GCaM...</td>
+      <td>{'spontaneous_presentations', 'rotate_gabors_p...</td>
+      <td>None</td>
+      <td>3941.94600</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>a81fd01e-36be-4eff-a3f1-379201a95bf4</td>
+      <td>1144934234</td>
+      <td>sub-644972/sub-644972_ses-1237338784-acq-12378...</td>
+      <td>2023-01-04 16:58:58.862000+00:00</td>
+      <td>1237338784</td>
+      <td>1237809219</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>295</td>
+      <td>VISp</td>
+      <td>512</td>
+      <td>512</td>
+      <td>644972</td>
+      <td>M</td>
+      <td>P155.0D</td>
+      <td>Rbp4-Cre_KL100/wt;Camk2a-tTA/wt;Ai93(TITL-GCaM...</td>
+      <td>{'spontaneous_presentations', 'rotate_gabors_p...</td>
+      <td>62</td>
+      <td>3941.94600</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>42b35234-d4dd-49cb-85c2-08a201ce826e</td>
+      <td>4041517083</td>
+      <td>sub-656228/sub-656228_ses-1247233186-acq-12473...</td>
+      <td>2023-02-14 21:44:00.768000+00:00</td>
+      <td>1247233186</td>
+      <td>1247385130</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>152</td>
+      <td>VISp</td>
+      <td>512</td>
+      <td>512</td>
+      <td>656228</td>
+      <td>M</td>
+      <td>P109.0D</td>
+      <td>Cux2-CreERT2/wt;Camk2a-tTA/wt;Ai93(TITL-GCaMP6...</td>
+      <td>{'movie_flower_rev_fwd_presentations', 'movie_...</td>
+      <td>25</td>
+      <td>3943.08654</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>9661ce3c-372a-4f00-8db8-a68184fbc607</td>
+      <td>4014625264</td>
+      <td>sub-656228/sub-656228_ses-1247233186-acq-12473...</td>
+      <td>2023-02-14 21:44:00.768000+00:00</td>
+      <td>1247233186</td>
+      <td>1247385137</td>
+      <td>0</td>
+      <td>3</td>
+      <td>4</td>
+      <td>46</td>
+      <td>VISpm</td>
+      <td>512</td>
+      <td>512</td>
+      <td>656228</td>
+      <td>M</td>
+      <td>P109.0D</td>
+      <td>Cux2-CreERT2/wt;Camk2a-tTA/wt;Ai93(TITL-GCaMP6...</td>
+      <td>{'movie_flower_rev_fwd_presentations', 'movie_...</td>
+      <td>2</td>
+      <td>3943.08654</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>aace7ef8-742f-4382-b53d-938e30c25fc9</td>
+      <td>4014619723</td>
+      <td>sub-656228/sub-656228_ses-1247233186-acq-12473...</td>
+      <td>2023-02-14 21:44:00.768000+00:00</td>
+      <td>1247233186</td>
+      <td>1247385131</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>50</td>
+      <td>VISam</td>
+      <td>512</td>
+      <td>512</td>
+      <td>656228</td>
+      <td>M</td>
+      <td>P109.0D</td>
+      <td>Cux2-CreERT2/wt;Camk2a-tTA/wt;Ai93(TITL-GCaMP6...</td>
+      <td>{'movie_flower_rev_fwd_presentations', 'movie_...</td>
+      <td>2</td>
+      <td>3943.08654</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>667eb4f7-88ab-4d19-bfc1-3f9e789f5c20</td>
+      <td>4043804172</td>
+      <td>sub-656228/sub-656228_ses-1247233186-acq-12473...</td>
+      <td>2023-02-14 21:44:00.768000+00:00</td>
+      <td>1247233186</td>
+      <td>1247385136</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>144</td>
+      <td>VISl</td>
+      <td>512</td>
+      <td>512</td>
+      <td>656228</td>
+      <td>M</td>
+      <td>P109.0D</td>
+      <td>Cux2-CreERT2/wt;Camk2a-tTA/wt;Ai93(TITL-GCaMP6...</td>
+      <td>{'gratings_presentations', 'movie_touch_of_evi...</td>
+      <td>27</td>
+      <td>3943.08654</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>8f9bd3ef-120d-4f5c-9498-ec79d477d447</td>
+      <td>4016954448</td>
+      <td>sub-656228/sub-656228_ses-1247233186-acq-12473...</td>
+      <td>2023-02-14 21:44:00.768000+00:00</td>
+      <td>1247233186</td>
+      <td>1247385128</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>42</td>
+      <td>VISp</td>
+      <td>512</td>
+      <td>512</td>
+      <td>656228</td>
+      <td>M</td>
+      <td>P109.0D</td>
+      <td>Cux2-CreERT2/wt;Camk2a-tTA/wt;Ai93(TITL-GCaMP6...</td>
+      <td>{'gratings_presentations', 'movie_touch_of_evi...</td>
+      <td>4</td>
+      <td>3943.08654</td>
+    </tr>
+  </tbody>
+</table>
+<p>96 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_sessions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">session_files</span><span class="p">[</span><span class="s2">&quot;session_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="n">subjects_info</span> <span class="o">=</span> <span class="n">session_files</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;specimen_name&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="n">m_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">sex</span> <span class="k">for</span> <span class="n">sex</span> <span class="ow">in</span> <span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">sex</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
+<span class="n">f_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">sex</span> <span class="k">for</span> <span class="n">sex</span> <span class="ow">in</span> <span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">sex</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dandiset Overview:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">session_files</span><span class="p">),</span> <span class="s2">&quot;files&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;specimen_name&quot;</span><span class="p">]),</span> <span class="s2">&quot;subjects&quot;</span><span class="p">,</span> <span class="n">m_count</span><span class="p">,</span> <span class="s2">&quot;males&quot;</span><span class="p">,</span> <span class="n">f_count</span><span class="p">,</span><span class="s2">&quot;females&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dandiset Overview:
+96 files
+2 subjects 2 males 0 females
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="downloading-ophys-file">
+<h2>Downloading Ophys File<a class="headerlink" href="#downloading-ophys-file" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000871&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-656228/sub-656228_ses-1245548523-acq-1245937736_image+ophys.nwb&quot;</span>
+<span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.59.0) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+Opening file
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.8.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="imaging-data">
+<h2>Imaging Data<a class="headerlink" href="#imaging-data" title="Permalink to this heading">#</a></h2>
+<p>Our Ophys files include lab metadata and imaging_planes objects which ential the information about the location being imaged, shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span><span class="o">.</span><span class="n">lab_meta_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;metadata&#39;: metadata abc.OphysMetadata at 0x1955487402592
+ Fields:
+   experiment_container_id: 0
+   field_of_view_height: 512
+   field_of_view_width: 512
+   imaging_depth: 144
+   imaging_plane_group: 3
+   imaging_plane_group_count: 4
+   ophys_experiment_id: 1245937736
+   ophys_session_id: 1245548523}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span><span class="o">.</span><span class="n">imaging_planes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;imaging_plane_1&#39;: imaging_plane_1 pynwb.ophys.ImagingPlane at 0x1955480659760
+ Fields:
+   conversion: 1.0
+   description: (512, 512) field of view in VISpm at depth 144 um
+   device: MESO.2 pynwb.device.Device at 0x1955480747312
+ Fields:
+   description: Allen Brain Observatory - Mesoscope 2P Rig
+ 
+   excitation_lambda: 910.0
+   imaging_rate: 10.0
+   indicator: GCaMP6f
+   location: VISpm
+   optical_channel: (
+     channel_1 &lt;class &#39;pynwb.ophys.OpticalChannel&#39;&gt;
+   )
+   unit: meters}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stimulus-templates">
+<h2>Stimulus Templates<a class="headerlink" href="#stimulus-templates" title="Permalink to this heading">#</a></h2>
+<p>The files for the Dendritic Coupling project contain the movies used as visual stimulus, referred to as stim templates. The project contain three main stimulus movies with regular forward playback. Some files in the project, such as this one, have reverse, forward-reverse, and reverse-forward versions as well. Below, screenshots from each of the movies are displayed, and one of the movies can be played embedded within this notebook. The key used can be changed to view different stim templates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span><span class="o">.</span><span class="n">stimulus_template</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;flower_fwd&#39;, &#39;flower_fwd_rev&#39;, &#39;flower_rev&#39;, &#39;flower_rev_fwd&#39;, &#39;touch_of_evil_fwd&#39;, &#39;touch_of_evil_fwd_rev&#39;, &#39;touch_of_evil_rev&#39;, &#39;touch_of_evil_rev_fwd&#39;, &#39;worms_fwd&#39;, &#39;worms_fwd_rev&#39;, &#39;worms_rev&#39;, &#39;worms_rev_fwd&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_cols</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_rows</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">n_cols</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_rows</span><span class="o">*</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">template_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">stimulus_template</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">template_img</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">stimulus_template</span><span class="p">[</span><span class="n">template_name</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">template_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rot90</span><span class="p">(</span><span class="n">template_img</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">ax_row</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">n_cols</span><span class="p">)</span>
+    <span class="n">ax_col</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="n">n_cols</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">ax_row</span><span class="p">][</span><span class="n">ax_col</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">template_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">ax_row</span><span class="p">][</span><span class="n">ax_col</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">template_name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d620ce0da42fb3aa070841f7c6b58839bf2a61b63f6d19b402160612139d2963.png" src="../_images/d620ce0da42fb3aa070841f7c6b58839bf2a61b63f6d19b402160612139d2963.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> ipympl
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># change this key to view other stim template movies</span>
+<span class="n">template_key</span> <span class="o">=</span> <span class="s2">&quot;flower_fwd_rev&quot;</span>
+<span class="n">template</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">stimulus_template</span><span class="p">[</span><span class="n">template_key</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">template</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">hyperslicer</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">play_buttons</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "82f0083479ba434280fae1eb2c1e0db7", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "92192000a41b424b822d7cca5a4e0899", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="selecting-stimulus-times">
+<h2>Selecting Stimulus Times<a class="headerlink" href="#selecting-stimulus-times" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;fixed_gabors_presentations&#39;, &#39;gratings_presentations&#39;, &#39;movie_flower_fwd_presentations&#39;, &#39;movie_flower_fwd_rev_presentations&#39;, &#39;movie_flower_rev_fwd_presentations&#39;, &#39;movie_flower_rev_presentations&#39;, &#39;movie_touch_of_evil_fwd_presentations&#39;, &#39;movie_touch_of_evil_fwd_rev_presentations&#39;, &#39;movie_touch_of_evil_rev_fwd_presentations&#39;, &#39;movie_touch_of_evil_rev_presentations&#39;, &#39;movie_worms_fwd_presentations&#39;, &#39;movie_worms_fwd_rev_presentations&#39;, &#39;movie_worms_rev_fwd_presentations&#39;, &#39;movie_worms_rev_presentations&#39;, &#39;rotate_gabors_presentations&#39;, &#39;spontaneous_presentations&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="s2">&quot;movie_worms_fwd_rev_presentations&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stim_table</span><span class="o">.</span><span class="n">colnames</span><span class="p">)</span>
+<span class="n">stim_table</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;start_time&#39;, &#39;stop_time&#39;, &#39;stimulus_name&#39;, &#39;stimulus_block&#39;, &#39;frame&#39;, &#39;color&#39;, &#39;contrast&#39;, &#39;opacity&#39;, &#39;orientation&#39;, &#39;size&#39;, &#39;units&#39;, &#39;stimulus_index&#39;, &#39;tags&#39;, &#39;timeseries&#39;)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_time</th>
+      <th>stop_time</th>
+      <th>stimulus_name</th>
+      <th>stimulus_block</th>
+      <th>frame</th>
+      <th>color</th>
+      <th>contrast</th>
+      <th>opacity</th>
+      <th>orientation</th>
+      <th>size</th>
+      <th>units</th>
+      <th>stimulus_index</th>
+      <th>tags</th>
+      <th>timeseries</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>133.87838</td>
+      <td>133.91170</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6000, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>133.91170</td>
+      <td>133.94513</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>1.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6002, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>133.94513</td>
+      <td>133.97842</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>2.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6004, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>133.97842</td>
+      <td>134.01179</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>3.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6006, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>134.01179</td>
+      <td>134.04522</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>4.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6008, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>134.04522</td>
+      <td>134.07857</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6010, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>134.07857</td>
+      <td>134.11187</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6012, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>134.11187</td>
+      <td>134.14529</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>7.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6014, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>134.14529</td>
+      <td>134.17865</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6016, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>134.17865</td>
+      <td>134.21195</td>
+      <td>movie_worms_fwd_rev</td>
+      <td>7.0</td>
+      <td>9.0</td>
+      <td>[1.0, 1.0, 1.0]</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>[1920.0, 1080.0]</td>
+      <td>pix</td>
+      <td>10.0</td>
+      <td>[stimulus_time_interval]</td>
+      <td>[(6018, 2, timestamps pynwb.base.TimeSeries at...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">stim_table</span><span class="o">.</span><span class="n">frame</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4026468757717955
+{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0, 35.0, 36.0, 37.0, 38.0, 39.0, 40.0, 41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 47.0, 48.0, 49.0, 50.0, 51.0, 52.0, 53.0, 54.0, 55.0, 56.0, 57.0, 58.0, 59.0, 60.0, 61.0, 62.0, 63.0, 64.0, 65.0, 66.0, 67.0, 68.0, 69.0, 70.0, 71.0, 72.0, 73.0, 74.0, 75.0, 76.0, 77.0, 78.0, 79.0, 80.0, 81.0, 82.0, 83.0, 84.0, 85.0, 86.0, 87.0, 88.0, 89.0, 90.0, 91.0, 92.0, 93.0, 94.0, 95.0, 96.0, 97.0, 98.0, 99.0, 100.0, 101.0, 102.0, 103.0, 104.0, 105.0, 106.0, 107.0, 108.0, 109.0, 110.0, 111.0, 112.0, 113.0, 114.0, 115.0, 116.0, 117.0, 118.0, 119.0, 120.0, 121.0, 122.0, 123.0, 124.0, 125.0, 126.0, 127.0, 128.0, 129.0, 130.0, 131.0, 132.0, 133.0, 134.0, 135.0, 136.0, 137.0, 138.0, 139.0, 140.0, 141.0, 142.0, 143.0, 144.0, 145.0, 146.0, 147.0, 148.0, 149.0, 150.0, 151.0, 152.0, 153.0, 154.0, 155.0, 156.0, 157.0, 158.0, 159.0, 160.0, 161.0, 162.0, 163.0, 164.0, 165.0, 166.0, 167.0, 168.0, 169.0, 170.0, 171.0, 172.0, 173.0, 174.0, 175.0, 176.0, 177.0, 178.0, 179.0, 180.0, 181.0, 182.0, 183.0, 184.0, 185.0, 186.0, 187.0, 188.0, 189.0, 190.0, 191.0, 192.0, 193.0, 194.0, 195.0, 196.0, 197.0, 198.0, 199.0, 200.0, 201.0, 202.0, 203.0, 204.0, 205.0, 206.0, 207.0, 208.0, 209.0, 210.0, 211.0, 212.0, 213.0, 214.0, 215.0, 216.0, 217.0, 218.0, 219.0, 220.0, 221.0, 222.0, 223.0, 224.0, 225.0, 226.0, 227.0, 228.0, 229.0, 230.0, 231.0, 232.0, 233.0, 234.0, 235.0, 236.0, 237.0, 238.0, 239.0, 240.0, 241.0, 242.0, 243.0, 244.0, 245.0, 246.0, 247.0, 248.0, 249.0, 250.0, 251.0, 252.0, 253.0, 254.0, 255.0, 256.0, 257.0, 258.0, 259.0, 260.0, 261.0, 262.0, 263.0, 264.0, 265.0, 266.0, 267.0, 268.0, 269.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># flower video reverses around frame 190</span>
+<span class="n">rev_stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">==</span> <span class="mi">190</span>
+<span class="n">rev_stim_times</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">))</span> <span class="k">if</span> <span class="n">rev_stim_select</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rev_stim_times</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extracting-roi-fluorescence">
+<h2>Extracting ROI Fluorescence<a class="headerlink" href="#extracting-roi-fluorescence" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dff</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;dff&quot;</span><span class="p">]</span>
+<span class="n">dff_trace</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">dff_timestamps</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dff_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">avg_dff_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">dff_trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(37515, 27)
+(37515,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="session-timeline">
+<h2>Session Timeline<a class="headerlink" href="#session-timeline" title="Permalink to this heading">#</a></h2>
+<p>To get a good idea of the order and the way stimulus is shown throughout the session, the code below generates a timeline of the various ‘epochs’ of stimulus. It can be seen that there are many small epochs showing the various stimulus movies in the first half of the session, followed by a long epoch of rotating gabors and then a long epoch of fixed gabors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
+<span class="c1"># returns list of epochs, where an epoch is of the form (stimulus name, stimulus block, start time, stop time)</span>
+<span class="k">def</span> <span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    
+    <span class="c1"># specify a current epoch stop and start time</span>
+    <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># for each row, try to extend current epoch stop_time</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">)):</span>
+        <span class="n">this_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stimulus_block</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># if end of table, end the current epoch</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">):</span>
+            <span class="n">epochs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">this_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_stop</span><span class="p">))</span>
+            <span class="k">break</span>
+            
+        <span class="n">next_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stimulus_block</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># if next row is the same stim block, push back epoch_stop time</span>
+        <span class="k">if</span> <span class="n">next_block</span> <span class="o">==</span> <span class="n">this_block</span><span class="p">:</span>
+            <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># otherwise, end the current epoch, start new epoch</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">epochs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">this_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_stop</span><span class="p">))</span>
+            <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">epochs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epochs from all valid stimulus tables</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">stim_name</span> <span class="ow">in</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">epochs</span> <span class="o">=</span> <span class="n">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+<span class="c1"># epochs take the form (stimulus name, stimulus block, start time, stop time)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">))</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185
+(&#39;movie_worms_fwd_presentations&#39;, 0.0, 63.82019, 72.82766)
+(&#39;movie_flower_fwd_presentations&#39;, 1.0, 73.82849, 82.83596)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 2.0, 83.83679, 92.84427)
+(&#39;movie_worms_rev_presentations&#39;, 3.0, 93.84511, 102.8526)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 4.0, 103.85349, 112.8609)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 5.0, 113.86172, 122.8692)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 6.0, 123.8701, 132.87751)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 7.0, 133.87838, 142.88589)
+(&#39;movie_flower_rev_presentations&#39;, 8.0, 143.8867, 152.89421)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 9.0, 153.89504, 162.90245)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 10.0, 163.90335, 172.91077)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 11.0, 173.91166, 182.91914)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 12.0, 183.91991, 192.92746)
+(&#39;movie_flower_fwd_presentations&#39;, 13.0, 193.92822, 202.93571)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 14.0, 203.93658, 212.94401)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 15.0, 213.94489, 222.95238)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 16.0, 223.95321, 232.96067)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 17.0, 233.96147, 242.96905)
+(&#39;movie_worms_rev_presentations&#39;, 18.0, 243.96973, 252.97727)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 19.0, 253.97802, 262.98549)
+(&#39;movie_worms_fwd_presentations&#39;, 20.0, 263.98637, 272.99384)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 21.0, 273.99461, 283.00207)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 22.0, 284.00291, 293.01036)
+(&#39;movie_flower_rev_presentations&#39;, 23.0, 294.01118, 303.01871)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 24.0, 304.01951, 313.02696)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 25.0, 314.02777, 323.03522)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 26.0, 324.03606, 333.04357)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 27.0, 334.04441, 343.05179)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 28.0, 344.05262, 353.06008)
+(&#39;movie_worms_rev_presentations&#39;, 29.0, 354.06099, 363.06836)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 30.0, 364.06927, 373.07673)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 31.0, 374.07749, 383.08503)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 32.0, 384.08584, 393.09323)
+(&#39;movie_flower_rev_presentations&#39;, 33.0, 394.09411, 403.10155)
+(&#39;movie_worms_fwd_presentations&#39;, 34.0, 404.10234, 413.10986)
+(&#39;movie_flower_fwd_presentations&#39;, 35.0, 414.11063, 423.11815)
+(&#39;movie_flower_rev_presentations&#39;, 36.0, 424.11892, 433.12645)
+(&#39;movie_flower_fwd_presentations&#39;, 37.0, 434.12729, 443.1347)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 38.0, 444.13552, 453.14303)
+(&#39;movie_worms_rev_presentations&#39;, 39.0, 454.14386, 463.15132)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 40.0, 464.15207, 473.15954)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 41.0, 474.16038, 483.16782)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 42.0, 484.16866, 493.17616)
+(&#39;movie_worms_fwd_presentations&#39;, 43.0, 494.17697, 503.18447)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 44.0, 504.18523, 513.19278)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 45.0, 514.19359, 523.20098)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 46.0, 524.20188, 533.20935)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 47.0, 534.21017, 543.21763)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 48.0, 544.21846, 553.22592)
+(&#39;movie_flower_fwd_presentations&#39;, 49.0, 554.22667, 563.23422)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 50.0, 564.23505, 573.24243)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 51.0, 574.24333, 583.25071)
+(&#39;movie_worms_fwd_presentations&#39;, 52.0, 584.25162, 593.259)
+(&#39;movie_flower_rev_presentations&#39;, 53.0, 594.25991, 603.2673)
+(&#39;movie_worms_rev_presentations&#39;, 54.0, 604.26813, 613.2756)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 55.0, 614.27641, 623.28387)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 56.0, 624.28478, 633.29224)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 57.0, 634.29302, 643.30053)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 58.0, 644.30136, 653.30874)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 59.0, 654.30959, 663.31713)
+(&#39;movie_flower_fwd_presentations&#39;, 60.0, 664.31794, 673.3254)
+(&#39;movie_worms_fwd_presentations&#39;, 61.0, 674.3262, 683.33361)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 62.0, 684.33444, 693.34198)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 63.0, 694.34284, 703.35019)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 64.0, 704.35102, 713.35855)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 65.0, 714.35934, 723.36684)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 66.0, 724.36768, 733.37515)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 67.0, 734.37589, 743.38341)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 68.0, 744.38424, 753.39164)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 69.0, 754.39254, 763.39993)
+(&#39;movie_worms_rev_presentations&#39;, 70.0, 764.40076, 773.40829)
+(&#39;movie_flower_rev_presentations&#39;, 71.0, 774.40912, 783.41651)
+(&#39;movie_flower_fwd_presentations&#39;, 72.0, 784.41734, 793.42487)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 73.0, 794.42562, 803.43311)
+(&#39;movie_flower_rev_presentations&#39;, 74.0, 804.43393, 813.44144)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 75.0, 814.4423, 823.44974)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 76.0, 824.45057, 833.45798)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 77.0, 834.45886, 843.46628)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 78.0, 844.46715, 853.47461)
+(&#39;movie_worms_rev_presentations&#39;, 79.0, 854.47544, 863.4829)
+(&#39;movie_worms_fwd_presentations&#39;, 80.0, 864.48366, 873.49119)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 81.0, 874.49202, 883.49943)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 82.0, 884.50026, 893.5077)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 83.0, 894.5086, 903.51606)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 84.0, 904.51688, 913.52428)
+(&#39;movie_flower_fwd_presentations&#39;, 85.0, 914.52511, 923.53263)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 86.0, 924.53346, 933.54088)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 87.0, 934.54171, 943.54921)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 88.0, 944.55006, 953.55751)
+(&#39;movie_worms_fwd_presentations&#39;, 89.0, 954.55827, 963.56573)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 90.0, 964.56656, 973.57403)
+(&#39;movie_worms_rev_presentations&#39;, 91.0, 974.57493, 983.58232)
+(&#39;movie_flower_rev_presentations&#39;, 92.0, 984.58321, 993.59067)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 93.0, 994.59142, 1003.59895)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 94.0, 1004.59978, 1013.60718)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 95.0, 1014.608, 1023.61551)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 96.0, 1024.6163, 1033.62383)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 97.0, 1034.62465, 1043.63211)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 98.0, 1044.63288, 1053.64041)
+(&#39;movie_worms_fwd_presentations&#39;, 99.0, 1054.64124, 1063.64863)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 100.0, 1064.64954, 1073.65698)
+(&#39;movie_flower_rev_presentations&#39;, 101.0, 1074.65783, 1083.66528)
+(&#39;movie_worms_rev_presentations&#39;, 102.0, 1084.6661, 1093.67357)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 103.0, 1094.67433, 1103.6819)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 104.0, 1104.68268, 1113.69008)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 105.0, 1114.69097, 1123.69841)
+(&#39;movie_flower_fwd_presentations&#39;, 106.0, 1124.69933, 1133.70673)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 107.0, 1134.70755, 1143.71494)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 108.0, 1144.71577, 1153.72324)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 109.0, 1154.72406, 1163.73158)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 110.0, 1164.73242, 1173.73986)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 111.0, 1174.74064, 1183.74818)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 112.0, 1184.749, 1193.75639)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 113.0, 1194.75726, 1203.76475)
+(&#39;movie_worms_rev_presentations&#39;, 114.0, 1204.76557, 1213.77304)
+(&#39;movie_flower_rev_presentations&#39;, 115.0, 1214.77387, 1223.78133)
+(&#39;movie_worms_fwd_presentations&#39;, 116.0, 1224.78209, 1233.78963)
+(&#39;movie_flower_fwd_presentations&#39;, 117.0, 1234.79044, 1243.79785)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 118.0, 1244.79867, 1253.8062)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 119.0, 1254.80704, 1263.81449)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 120.0, 1264.81532, 1273.82281)
+(&#39;movie_worms_rev_presentations&#39;, 121.0, 1274.82354, 1283.83107)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 122.0, 1284.8319, 1293.83931)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 123.0, 1294.8402, 1303.84758)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 124.0, 1304.84847, 1313.85594)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 125.0, 1314.85679, 1323.8642)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 126.0, 1324.865, 1333.87249)
+(&#39;movie_flower_rev_presentations&#39;, 127.0, 1334.87332, 1343.88074)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 128.0, 1344.88161, 1353.8891)
+(&#39;movie_worms_fwd_presentations&#39;, 129.0, 1354.88986, 1363.89732)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 130.0, 1364.89822, 1373.90561)
+(&#39;movie_flower_fwd_presentations&#39;, 131.0, 1374.90651, 1383.9139)
+(&#39;movie_flower_fwd_presentations&#39;, 132.0, 1384.9148, 1393.92226)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 133.0, 1394.9231, 1403.93054)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 134.0, 1404.93133, 1413.93885)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 135.0, 1414.9396, 1423.94711)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 136.0, 1424.94796, 1433.95542)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 137.0, 1434.95626, 1443.96367)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 138.0, 1444.96448, 1453.972)
+(&#39;movie_worms_rev_presentations&#39;, 139.0, 1454.97276, 1463.9803)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 140.0, 1464.98112, 1473.98856)
+(&#39;movie_worms_fwd_presentations&#39;, 141.0, 1474.98941, 1483.99687)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 142.0, 1484.99779, 1494.00509)
+(&#39;movie_flower_rev_presentations&#39;, 143.0, 1495.00599, 1504.01338)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 144.0, 1505.01425, 1514.02174)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 145.0, 1515.0225, 1524.03)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 146.0, 1525.03086, 1534.03832)
+(&#39;movie_flower_rev_presentations&#39;, 147.0, 1535.03908, 1544.04654)
+(&#39;movie_worms_fwd_presentations&#39;, 148.0, 1545.04744, 1554.05483)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 149.0, 1555.05573, 1564.06316)
+(&#39;movie_worms_rev_presentations&#39;, 150.0, 1565.06403, 1574.07149)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 151.0, 1575.07232, 1584.07971)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 152.0, 1585.08053, 1594.08806)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 153.0, 1595.08889, 1604.09628)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 154.0, 1605.09711, 1614.10464)
+(&#39;movie_flower_fwd_presentations&#39;, 155.0, 1615.10547, 1624.11293)
+(&#39;movie_worms_rev_presentations&#39;, 156.0, 1625.11374, 1634.12124)
+(&#39;movie_flower_fwd_presentations&#39;, 157.0, 1635.12198, 1644.12951)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 158.0, 1645.13034, 1654.13773)
+(&#39;movie_worms_fwd_presentations&#39;, 159.0, 1655.13863, 1664.14609)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 160.0, 1665.14693, 1674.15433)
+(&#39;movie_flower_rev_presentations&#39;, 161.0, 1675.1552, 1684.16259)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 162.0, 1685.16342, 1694.17095)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 163.0, 1695.17171, 1704.17924)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 164.0, 1705.18009, 1714.18754)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 165.0, 1715.1883, 1724.19577)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 166.0, 1725.1966, 1734.20404)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 167.0, 1735.20494, 1744.2124)
+(&#39;movie_worms_fwd_presentations&#39;, 168.0, 1745.21317, 1754.22062)
+(&#39;movie_worms_fwd_rev_presentations&#39;, 169.0, 1755.22145, 1764.22891)
+(&#39;movie_touch_of_evil_fwd_rev_presentations&#39;, 170.0, 1765.22976, 1774.2372)
+(&#39;movie_flower_rev_fwd_presentations&#39;, 171.0, 1775.2381, 1784.24549)
+(&#39;movie_worms_rev_presentations&#39;, 172.0, 1785.24639, 1794.25385)
+(&#39;movie_worms_rev_fwd_presentations&#39;, 173.0, 1795.25461, 1804.26214)
+(&#39;movie_touch_of_evil_rev_fwd_presentations&#39;, 174.0, 1805.2629, 1814.27036)
+(&#39;movie_flower_fwd_presentations&#39;, 175.0, 1815.27119, 1824.27866)
+(&#39;movie_flower_fwd_rev_presentations&#39;, 176.0, 1825.27948, 1834.28702)
+(&#39;movie_touch_of_evil_rev_presentations&#39;, 177.0, 1835.28777, 1844.29531)
+(&#39;movie_touch_of_evil_fwd_presentations&#39;, 178.0, 1845.29606, 1854.30359)
+(&#39;movie_flower_rev_presentations&#39;, 179.0, 1855.30436, 1864.31181)
+(&#39;rotate_gabors_presentations&#39;, 180.0, 1895.33751, 2345.71065)
+(&#39;rotate_gabors_presentations&#39;, 181.0, 2345.71065, 2796.08381)
+(&#39;fixed_gabors_presentations&#39;, 182.0, 2826.1088, 3276.48193)
+(&#39;fixed_gabors_presentations&#39;, 183.0, 3276.48193, 3726.85508)
+(&#39;gratings_presentations&#39;, 184.0, 3756.87998, 3944.23512)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># can set these manually to get a closer look at the timeline</span>
+<span class="n">time_start</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">:</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">time_end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">:</span><span class="n">epoch</span><span class="p">[</span><span class="mi">2</span><span class="p">])[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># time_start = 3000</span>
+<span class="c1"># time_end = 3100</span>
+
+<span class="c1"># can set this to change what trace is displayed alongside epochs</span>
+<span class="n">display_trace</span> <span class="o">=</span> <span class="n">avg_dff_trace</span> <span class="o">*</span> <span class="mi">100</span> <span class="c1"># to yield percentage</span>
+<span class="c1"># unit_idx = 30</span>
+<span class="c1"># display_trace = dff_trace[:,unit_idx] * 100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1">### make plot of chosen fluorescence trace over time with colored epoch sections</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># filter epochs which aren&#39;t at least partially in the time window</span>
+<span class="n">bounded_epochs</span> <span class="o">=</span> <span class="p">{</span><span class="n">epoch</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span> <span class="k">if</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">time_end</span> <span class="ow">and</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">time_start</span><span class="p">}</span>
+
+<span class="c1"># assign unique color to each stimulus name</span>
+<span class="n">stim_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">epoch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">bounded_epochs</span><span class="p">})</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">)))</span>
+<span class="n">stim_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">stim_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">))}</span>
+
+<span class="n">epoch_key</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">y_hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">display_trace</span><span class="p">)</span> <span class="c1"># change these to manually set height of the plot</span>
+<span class="n">y_lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">display_trace</span><span class="p">)</span>
+<span class="c1"># draw colored rectangles for each epoch</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">bounded_epochs</span><span class="p">:</span>
+    <span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_end</span> <span class="o">=</span> <span class="n">epoch</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">y_lo</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">y_hi</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
+    <span class="n">epoch_key</span><span class="p">[(</span><span class="n">stim_name</span><span class="p">)]</span> <span class="o">=</span> <span class="n">rec</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_lo</span><span class="p">,</span> <span class="n">y_hi</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Average DF/F (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Average DFF throughout session&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">[:],</span> <span class="n">display_trace</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">avg_dff_trace</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8759732163094385
+</pre></div>
+</div>
+<img alt="../_images/23b9c38f9b53008a5369ce2219fc565130fa3380a6fa9c84ab28c7067298f456.png" src="../_images/23b9c38f9b53008a5369ce2219fc565130fa3380a6fa9c84ab28c7067298f456.png" />
+</div>
+</div>
+</section>
+<section id="viewing-behavioral-data">
+<h2>Viewing Behavioral Data<a class="headerlink" href="#viewing-behavioral-data" title="Permalink to this heading">#</a></h2>
+<p>Our NWB files also come with several metrics of animal behavior during the session, including running speed and eye tracking. Below is plotted the angle of the eye of the subject over time. The plot can be tailored to create the best view, as there are frequently large outliers in the eye tracking.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eye_tracking</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;EyeTracking&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract coords from eye tracking array</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">eye_tracking</span><span class="o">.</span><span class="n">data</span><span class="p">])</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">eye_tracking</span><span class="o">.</span><span class="n">eye_tracking</span><span class="o">.</span><span class="n">data</span><span class="p">])</span>
+
+<span class="n">et_start_idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">et_end_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">eye_tracking</span><span class="o">.</span><span class="n">eye_tracking</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min X:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="s2">&quot;Max X:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min Y:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="s2">&quot;Max Y:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min X: -2133.6747116929796 Max X: 380.65425645594405
+Min Y: -5975.965894691784 Max Y: 460.3917121054316
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">et_end_idx</span><span class="o">-</span><span class="n">et_start_idx</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">et_start_idx</span><span class="p">:</span><span class="n">et_end_idx</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="n">et_start_idx</span><span class="p">:</span><span class="n">et_end_idx</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">et_start_idx</span><span class="p">:</span><span class="n">et_end_idx</span><span class="p">],</span> <span class="n">ys</span><span class="p">[</span><span class="n">et_start_idx</span><span class="p">:</span><span class="n">et_end_idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># change these to set the plot limits (there are sometimes unusual outliers)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x pixel&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y pixel&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eye Trace Through Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/45ff0fb94df95353b8a4b24a24ccaa7328c5bc96a142bd99c82a04cca1bbb97f.png" src="../_images/45ff0fb94df95353b8a4b24a24ccaa7328c5bc96a142bd99c82a04cca1bbb97f.png" />
+</div>
+</div>
+</section>
+<section id="generating-response-windows">
+<h2>Generating Response Windows<a class="headerlink" href="#generating-response-windows" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_start_time</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">window_end_time</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">interp_hz</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate regularly-space x values and interpolate along it</span>
+<span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">step</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">interp_hz</span><span class="p">))</span>
+<span class="n">interp_dff</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># interpolate channel by channel to save RAM</span>
+<span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dff_trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">,</span> <span class="n">dff_trace</span><span class="p">[:,</span><span class="n">channel</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;extrapolate&quot;</span><span class="p">)</span>
+    <span class="n">interp_dff</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">time_axis</span><span class="p">))</span>
+
+<span class="n">interp_dff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">interp_dff</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">interp_dff</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(27, 39414)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># validate window bounds</span>
+<span class="k">if</span> <span class="n">window_start_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;start time must be non-positive number&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">window_end_time</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;end time must be positive number&quot;</span><span class="p">)</span>
+    
+<span class="c1"># get event windows</span>
+<span class="n">windows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">window_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">window_end_time</span><span class="o">-</span><span class="n">window_start_time</span><span class="p">)</span> <span class="o">*</span> <span class="n">interp_hz</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">stim_ts</span> <span class="ow">in</span> <span class="n">rev_stim_times</span><span class="p">:</span>
+    <span class="c1"># convert time to index</span>
+    <span class="n">start_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="p">(</span><span class="n">stim_ts</span> <span class="o">+</span> <span class="n">window_start_time</span> <span class="o">-</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">interp_hz</span> <span class="p">)</span>
+    <span class="n">end_idx</span> <span class="o">=</span> <span class="n">start_idx</span> <span class="o">+</span> <span class="n">window_length</span>
+ 
+    <span class="c1"># bounds checking</span>
+    <span class="k">if</span> <span class="n">start_idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">end_idx</span> <span class="o">&gt;</span> <span class="n">interp_dff</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">continue</span>
+        
+    <span class="n">windows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interp_dff</span><span class="p">[:,</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">])</span>
+    
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There are no windows for these timestamps&quot;</span><span class="p">)</span>
+
+<span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="c1"># x100 to convert values to dF/F percentage</span>
+<span class="n">neuronwise_windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">neuronwise_windows</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(27, 15, 50)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="showing-response-windows">
+<h2>Showing Response Windows<a class="headerlink" href="#showing-response-windows" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="k">def</span> <span class="nf">show_dff_response</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dff</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[],</span> <span class="n">skipticks</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dff</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input data has length 0; Nothing to display&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dff</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="n">aspect</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dff</span><span class="p">)],</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cbar</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">cbar_label</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dff</span><span class="p">)],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yticklabels</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yticklabels</span><span class="p">)))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">yticklabels</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+        <span class="n">n_ticks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">yticklabels</span><span class="p">[::</span><span class="n">skipticks</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="n">n_ticks</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_many_responses</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">window_idxs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subplot_title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">window_idxs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">window_idxs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">))</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">window_idxs</span><span class="p">]</span>
+    
+    <span class="c1"># handle case with no input data</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input data has length 0; Nothing to display&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="c1"># handle cases when there aren&#39;t enough windows for number of rows</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">rows</span><span class="o">*</span><span class="n">cols</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span> <span class="o">//</span> <span class="n">cols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">cols</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">rows</span><span class="o">+</span><span class="mi">2</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;constrained&quot;</span><span class="p">)</span>
+    <span class="c1"># handle case when there&#39;s only one row</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">axes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="o">*</span><span class="n">cols</span><span class="p">):</span>
+        <span class="n">ax_row</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="n">cols</span><span class="p">)</span>
+        <span class="n">ax_col</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="n">cols</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">ax_row</span><span class="p">][</span><span class="n">ax_col</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">window</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">show_dff_response</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">subplot_title</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">window_idxs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ax_row</span> <span class="o">!=</span> <span class="n">rows</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ax_col</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="n">colorbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">1.5</span><span class="o">/</span><span class="n">rows</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">cbar_label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_many_responses</span><span class="p">(</span><span class="n">neuronwise_windows</span><span class="p">,</span>
+                    <span class="mi">6</span><span class="p">,</span>
+                    <span class="mi">15</span><span class="p">,</span>
+                    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Response of Some ROIs across trials&quot;</span><span class="p">,</span>
+                    <span class="n">subplot_title</span><span class="o">=</span><span class="s2">&quot;ROI&quot;</span><span class="p">,</span>
+                    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;time (s)&quot;</span><span class="p">,</span>
+                    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;trial&quot;</span><span class="p">,</span>
+                    <span class="n">cbar_label</span><span class="o">=</span><span class="s2">&quot;$\Delta$F/F (%)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a3a3f89aa2da86f374461002b19901a1fac435253a588d9cc08463b44fc8ce27.png" src="../_images/a3a3f89aa2da86f374461002b19901a1fac435253a588d9cc08463b44fc8ce27.png" />
+</div>
+</div>
+</section>
+<section id="selecting-cells">
+<h2>Selecting Cells<a class="headerlink" href="#selecting-cells" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the index within the window that stimulus occurs (time 0)</span>
+<span class="n">stimulus_onset_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="n">window_start_time</span> <span class="o">*</span> <span class="n">interp_hz</span><span class="p">)</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">:</span><span class="n">stimulus_onset_idx</span><span class="p">]</span>
+<span class="n">evoked_responses</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[:,:,</span><span class="n">stimulus_onset_idx</span><span class="p">:]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">stimulus_onset_idx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">baseline</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evoked_responses</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+(15, 27, 20)
+(15, 27, 30)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_trial_responses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">evoked_responses</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">mean_trial_baselines</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">mean_trial_responses</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">mean_trial_responses</span><span class="p">,</span> <span class="n">mean_trial_baselines</span><span class="p">)</span>
+<span class="n">IC3_selected_rois</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p</span> <span class="o">&lt;</span> <span class="mf">0.05</span> <span class="o">/</span> <span class="n">n</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected ROIs </span><span class="si">{</span><span class="n">IC3_selected_rois</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected ROIs [ 8 17]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_many_responses</span><span class="p">(</span><span class="n">neuronwise_windows</span><span class="p">[</span><span class="n">IC3_selected_rois</span><span class="p">],</span>
+                    <span class="mi">6</span><span class="p">,</span>
+                    <span class="mi">15</span><span class="p">,</span>
+                    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Response of Some ROIs across trials&quot;</span><span class="p">,</span>
+                    <span class="n">subplot_title</span><span class="o">=</span><span class="s2">&quot;ROI&quot;</span><span class="p">,</span>
+                    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;time (s)&quot;</span><span class="p">,</span>
+                    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;trial&quot;</span><span class="p">,</span>
+                    <span class="n">cbar_label</span><span class="o">=</span><span class="s2">&quot;$\Delta$F/F (%)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/20380ff019b5be90911219fb1f4641273959ab4d2cc6567bd320ffa4769e5533.png" src="../_images/20380ff019b5be90911219fb1f4641273959ab4d2cc6567bd320ffa4769e5533.png" />
+</div>
+</div>
+</section>
+<section id="viewing-raw-movie">
+<h2>Viewing Raw Movie<a class="headerlink" href="#viewing-raw-movie" title="Permalink to this heading">#</a></h2>
+<p>Although not shown in the metadata table shown above, each one of our session files comes with a copy on DANDI that also includes the actual movies from the brain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># raw</span>
+<span class="n">dandi_movie_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-656228/sub-656228_ses-1245548523-acq-1245937736-raw-movies_image+ophys.nwb&quot;</span>
+<span class="c1"># denoised</span>
+<span class="c1"># dandi_movie_filepath = &quot;sub-656228/sub-656228_ses-1245548523-acq-1245937736-denoised-movies_ophys.nwb&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_movie_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+Opening file
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.0 because version 1.8.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.3.0 because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.1.0 because version 0.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start_time = flr_timestamps[0]</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="mi">540</span>
+<span class="c1"># end_time = flr_timestamps[-1]</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="mi">600</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">,</span> <span class="p">[</span><span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">start_idx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">end_idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4823
+5394
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_movie</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="p">[</span><span class="s2">&quot;raw_suite2p_motion_corrected&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">flr_timestamps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dff</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">timestamps</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_movie</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flr_timestamps</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(37515, 512, 512)
+(37515,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> ipympl
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">hyperslicer</span><span class="p">(</span><span class="n">raw_movie</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span><span class="p">],</span> <span class="n">play_buttons</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2958873ea8874e2289f9b332112290e5", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "cc424d014c8645b3b3b99aa1e09484ec", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./experiments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="illusion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OpenScope’s Illusion Dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../embargoed/modality_alignment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aligning Data across Modalities</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-experiment">The Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-ophys-file">Downloading Ophys File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imaging-data">Imaging Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulus-templates">Stimulus Templates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-stimulus-times">Selecting Stimulus Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-roi-fluorescence">Extracting ROI Fluorescence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-timeline">Session Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-behavioral-data">Viewing Behavioral Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-response-windows">Generating Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#showing-response-windows">Showing Response Windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-cells">Selecting Cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-raw-movie">Viewing Raw Movie</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carter Peene
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
