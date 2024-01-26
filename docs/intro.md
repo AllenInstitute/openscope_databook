@@ -1,6 +1,6 @@
 # OpenScope Databook
 
-### Addressing the Reproducibility Challenge in Neuroscience through the Integration of Text, Data, and Code into a Comprehensive, Collaborative, and Version-Controlled Publication
+### The OpenScope Databook: Reproducible System Neuroscience Notebooks to Facilitate Data Sharing and Collaborative Reuse with Open Science Datasets
 
 ```{eval-rst}
 .. authors::
@@ -19,7 +19,7 @@ Four key components are essential for reproducible analysis: accessible data, ac
 
 We cover several broadly used analyses across the community, providing a missing component for system neuroscience. Our key analyses are organized into chapters, including NWB basics such as downloading, streaming, and visualizing NWB files from data archives. We document essential analyses typically performed in all neuroscience laboratories, such as temporal alignment, alignment to sensory stimuli, and association with experimental metadata. We cover the two leading neuronal recording techniques: two-photon calcium imaging and electrophysiological recordings, and share example analyses of stimulus-averaged responses. Advanced first-order analyses include showing receptive fields, identifying optotagged units, current source density analysis, and cell matching across days.
 
-This resource is actively maintained and can be updated by the community, providing a living document that will grow over time. We anticipate this open publication model, where the code absorbs the text, will present an alternative publication route for the entire community, addressing the reproducibility challenge, promoting collaborative research, and facilitating transparent knowledge sharing through Git.
+This resource is actively maintained and can be updated by the community, providing a living document that will grow over time.
 
 
 ## Statement of Support
