@@ -1,12 +1,12 @@
 
 import h5py
 import os
+import remfile
+
 from random import randint
 
 from dandi import download
 from dandi import dandiapi
-from fsspec.implementations.cached import CachingFileSystem
-from fsspec import filesystem
 from pynwb import NWBHDF5IO
 
 
@@ -49,11 +49,7 @@ def dandi_stream_open(dandiset_id, dandi_filepath, dandi_api_key=None):
     base_url = file.client.session.head(file.base_download_url)
     file_url = base_url.headers["Location"]
 
-    fs = CachingFileSystem(
-        fs=filesystem("http")
-    )
-
-    f = fs.open(file_url, "rb")
-    file = h5py.File(f)
-    io = NWBHDF5IO(file=file, mode='r', load_namespaces=True)
+    rem_file = remfile.File(file_url)
+    h5py_file = h5py.File(rem_file, "r")
+    io = NWBHDF5IO(file=h5py_file, mode="r", load_namespaces=True)
     return io
