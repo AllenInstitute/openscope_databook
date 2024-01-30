@@ -2,7 +2,7 @@
 
 ### **The Deployed Databook can be found here: https://alleninstitute.github.io/openscope_databook**
 
-The OpenScope Databook is meant to store code and documentation used for reproducible brain data analysis and visualization, primarily working with [NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). It is provided by the Allen Institute's **[OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/)** Project, a component of The Allen Institute [Mindscope Program](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through [Jupyter Book](https://jupyterbook.org/), this code is structured as a series of documented Jupyter notebooks intended to explain and educate users on how to work with brain data.
+The OpenScope Databook is meant to store code and documentation used for reproducible brain data analysis and visualization, primarily working with [NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). It is provided by the Allen Institute's **[OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/)** Project, a component of The [Allen Institute for Neuraldynamics](https://alleninstitute.org/division/neural-dynamics/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through [Jupyter Book](https://jupyterbook.org/), this code is structured as a series of documented Jupyter notebooks intended to explain and educate users on how to work with brain data.
 
 We are releasing this code to the public as a tool we expect others to use and are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). Below, you can see a working list of the content goals for this databook. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* file standard.
 
@@ -34,13 +34,13 @@ We are releasing this code to the public as a tool we expect others to use and a
 - [Neuropixel: Stimuli averages with neuropixel data](https://alleninstitute.github.io/openscope_databook/first-order/test_spike_responses.html)
 - [2P: How to align timestamps across modalities](https://alleninstitute.github.io/openscope_databook/embargoed/modality_alignment.html)
 - [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://alleninstitute.github.io/openscope_databook/first-order/suite2p.html)
+- [Classifying spike waveform between fast spiking and normal spiking cells](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/classify_waveforms.ipynb)
 
 ### Chapter 4: Higher-order analysis
 - [Neural dynamics using time-analysis with CEBRA](https://alleninstitute.github.io/openscope_databook/higher-order/cebra_time.html)  
   [CEBRA Demo on the CEBRA Repository](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
+- [Extracting clusters of correlated neurons with TCA](https://alleninstitute.github.io/openscope_databook/higher-order/tca.html)
 - Identifying mouse behavioral state based on eye tracking and behavioral data.
-- Classifying spike waveform between fast spiking and normal spiking cells.
-- Extracting clusters of correlated neurons.
 - Analysis of functional connectivity.
 
 ### Chapter 5: Replicating figures

@@ -15,7 +15,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=readme,
     author="Carter Peene",
-    version="0.8.0",
+    version="1.0.0",
     author_email="carter.peene@alleninstitute.org",
     url="https://github.com/AllenInstitute/openscope_databook",
     license=license,

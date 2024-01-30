@@ -1,60 +1,85 @@
 import os
 import subprocess
 
-blacklist = {"Publishing Bot", "github-actions[bot]", "GitHub Authors Action", "Ross Carter Peene", "rcpeene"}
-additional_authors = ["Josh Siegle", "Ahad Bawany"]
-aliases = {"colleenjg": "Colleen J. Gillon", "Carter Peene": "R. Carter Peene"}
+from docutils import nodes
+from docutils.parsers.rst import Directive
 
-# inserts a line of text into a markdown file between two placeholder lines
-def insertIntoMarkdown(filename, placeholder_start, placeholder_end, text):
-	with open(filename, "r") as md:
-		lines = md.read().splitlines()
-	
-	# find placeholder line indices to insert between
-	insert_start, insert_end = None, None
-	for i in range(len(lines)):
-		if placeholder_start in lines[i] and insert_start == None:
-			insert_start = i
-		if placeholder_end in lines[i] and insert_start != None:
-			insert_end = i
-			break
-
-	# if placeholders were found, insert text
-	if insert_start != None and insert_end != None:
-		lines[insert_start+1:insert_end] = ["\n " + text + "\n"]
-
-	with open(filename, "w") as md:
-		md.write("\n".join(lines))
+# possible todo: replace this with ast.eval_literal
+def setstring_to_set(setstring):
+	setstring = setstring.replace(", ", ",")
+	setlist = setstring.split(",")
+	return set(setlist)
 
 
-def getContributors():
-	log = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE, text=True)
-	shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
-	print(shortlog)
-	contributions = shortlog.split("\n")[:-1]
-	contributors = {contribution.split("\t")[1] : contribution.split("\t")[0].strip() for contribution in contributions}
-	return contributors
+# possible todo: replace this with ast.eval_literal
+def dictstring_to_dict(dictstring):
+	dictstring = dictstring.replace(", ", ",")
+	dictstring = dictstring.replace(": ", ":")
+	dictlist = dictstring.split(",")
+
+	this_dict = {}
+	for elem in dictlist:
+		try:
+			key, val = elem.split(":")
+		except:
+			raise ValueError("Aliases should be formatted in key value pairs, delimited by a colon")
+		if key not in this_dict:
+			this_dict[key] = val
+	return this_dict
 
 
-def getLatestRelease():
-	return os.environ["LATEST_VERSION"]
+class AuthorsList(Directive):
+
+	optional_arguments = 3
+	option_spec = {"blacklist": setstring_to_set, "additional_authors": setstring_to_set, "aliases": dictstring_to_dict}
+
+	def run(self):
+		blacklist= self.options.get("blacklist", set())
+		additional_authors = self.options.get("additional_authors", set()) 
+		aliases = self.options.get("aliases", {})
+
+		log = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE, text=True)
+		shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
+		print(shortlog)
+		contributions = shortlog.split("\n")[:-1]
+		contributors = {contribution.split("\t")[1] : contribution.split("\t")[0].strip() for contribution in contributions}
+
+		aliased_contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
+		authors = [contributor + " (" + str(n) + ")" for contributor, n in aliased_contributors.items() if contributor not in blacklist]
+		authors += additional_authors
+		print("Authors:", authors)
+
+		authors_text = ", ".join(authors)
+		emphasis_node = nodes.emphasis(text=authors_text)
+		return [emphasis_node]
 
 
-def main():
-	# getting processed authors list
-	contributors = getContributors()
-	aliased_contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
-	authors = [contributor + " (" + str(n) + ")" for contributor, n in aliased_contributors.items() if contributor not in blacklist]
-	authors += additional_authors
-	print("Authors:", authors)
+class VersionNumber(Directive):
 
-	# insert authors into intro file
-	authors_text = "*" + ", ".join(authors) + "*"
-	insertIntoMarkdown("./docs/intro.md", "<!-- authors start -->", "<!-- authors end -->", authors_text)
+	optional_arguments = 1
 
-	# insert version number with link into intro file
-	version_text = f"[{getLatestRelease()}](https://github.com/AllenInstitute/openscope_databook/releases)"
-	insertIntoMarkdown("./docs/intro.md", "<!-- version start -->", "<!-- version end -->", version_text)
+	def run(self):
+		try:
+			latest_version = subprocess.check_output(["git", "describe", "--tags", "--abbrev=0"], encoding="utf8")
+		except:
+			raise EnvironmentError("There are no git tags from which to get the version number")
+
+		if self.arguments:
+			paragraph_node = nodes.paragraph()
+			uri = self.arguments[0]
+			reference_node = nodes.reference("version", f"{latest_version}", internal=False, refuri=uri)
+			paragraph_node += reference_node
+		else:
+			paragraph_node = nodes.paragraph(text=f"v{latest_version}")
+		return [paragraph_node]
 
 
-main()
+def setup(app):
+	app.add_directive("authors", AuthorsList)
+	app.add_directive("version", VersionNumber)
+
+	return {
+		'version': '0.1',
+		'parallel_read_safe': True,
+		'parallel_write_safe': True,
+	}
