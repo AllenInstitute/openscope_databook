@@ -19,7 +19,6 @@ setup(
     author_email="carter.peene@alleninstitute.org",
     url="https://github.com/AllenInstitute/openscope_databook",
     license=license,
-    packages=find_packages(where="docs"),
     package_dir={"databook_utils": "databook_utils"},
     install_requires=required
 )
