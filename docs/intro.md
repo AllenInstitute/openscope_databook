@@ -2,14 +2,47 @@
 
 ### The OpenScope Databook: Reproducible System Neuroscience Notebooks to Facilitate Data Sharing and Collaborative Reuse with Open Science Datasets
 
+**Authors**
+
+`````{tab-set}
+````{tab-item} All Contributors
+*Katrina Ager, Ahad Bawany, Corbett Bennett, Ben Dicter, Satrajit Ghosh, Colleen J. Gillon, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, NIH, R. Carter Peene, Jay Pina, Hyeyoung Shin, Josh Siegle, Jacob Westerberg*
+````
+
+````{tab-item} Management
+*Jerome Lecoq, Carly Kiselycznyk*
+````
+
+````{tab-item} Conceptualization
+*Jerome Lecoq, Satrajit Ghosh, Carter Peene, Ben Dicter, Hyeyoung Shin, Jacob Westerberg, Jay Pina*
+````
+
+````{tab-item} Processing
+*Ahad Bawany, Carter Peene, Katrina Ager, Jerome Lecoq*
+````
+
+````{tab-item} Commits
 ```{eval-rst}
 .. authors::
     :blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-    :additional_authors: Josh Siegle, Ahad Bawany
     :aliases: colleenjg: Colleen J. Gillon, Carter Peene: R. Carter Peene
-
-.. version:: https://github.com/AllenInstitute/openscope_databook/releases
 ```
+````
+
+````{tab-item} Reviewers
+*Mackenzie Mattis, Alex Williams*
+````
+
+````{tab-item} Additional
+*Josh Siegle, Corbett Bennett*
+````
+
+````{tab-item} Funding
+*NIH*
+````
+
+`````
+
 
 ## Abstract
 
