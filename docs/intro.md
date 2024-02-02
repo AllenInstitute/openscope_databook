@@ -6,22 +6,27 @@
 
 `````{tab-set}
 ````{tab-item} All Contributors
+###### Supplied any substantial contribution to the project
 *Katrina Ager, Ahad Bawany, Corbett Bennett, Ben Dicter, Satrajit Ghosh, Colleen J. Gillon, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, NIH, R. Carter Peene, Jay Pina, Hyeyoung Shin, Josh Siegle, Jacob Westerberg*
 ````
 
 ````{tab-item} Management
+###### Performed administrative and supervisory duties
 *Jerome Lecoq, Carly Kiselycznyk*
 ````
 
 ````{tab-item} Conceptualization
+###### Contributed ideas signifcant to the development of the project and its content
 *Jerome Lecoq, Satrajit Ghosh, Carter Peene, Ben Dicter, Hyeyoung Shin, Jacob Westerberg, Jay Pina*
 ````
 
 ````{tab-item} Processing
-*Ahad Bawany, Carter Peene, Katrina Ager, Jerome Lecoq*
+###### Processed data used in the project or wrote substantial code to do so
+*Ahad Bawany, Carter Peene, Katrina Ager, Jerome Lecoq, Josh Siegle, Corbett Bennett*
 ````
 
 ````{tab-item} Commits
+###### Committed code to the primary Github repository
 ```{eval-rst}
 .. authors::
     :blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
@@ -30,14 +35,12 @@
 ````
 
 ````{tab-item} Reviewers
+###### Reviewed code or content components the project or the project as a whole 
 *Mackenzie Mattis, Alex Williams*
 ````
 
-````{tab-item} Additional
-*Josh Siegle, Corbett Bennett*
-````
-
 ````{tab-item} Funding
+###### Provided funds key to supporting the development of the project
 *NIH*
 ````
 
