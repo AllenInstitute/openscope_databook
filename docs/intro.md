@@ -7,7 +7,7 @@
 `````{tab-set}
 ````{tab-item} All Contributors
 ###### Supplied any substantial contribution to the project
-*Katrina Ager, Ahad Bawany, Corbett Bennett, Ben Dicter, Satrajit Ghosh, Colleen J. Gillon, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, NIH, R. Carter Peene, Jay Pina, Hyeyoung Shin, Josh Siegle, Jacob Westerberg*
+*Katrina Ager, Ahad Bawany, Corbett Bennett, Ben Dichter, Satrajit Ghosh, Colleen J. Gillon, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, NIH, R. Carter Peene, Jay Pina, Hyeyoung Shin, Josh Siegle, Jacob Westerberg*
 ````
 
 ````{tab-item} Management
@@ -17,7 +17,7 @@
 
 ````{tab-item} Conceptualization
 ###### Contributed ideas signifcant to the development of the project and its content
-*Jerome Lecoq, Satrajit Ghosh, Carter Peene, Ben Dicter, Hyeyoung Shin, Jacob Westerberg, Jay Pina*
+*Jerome Lecoq, Satrajit Ghosh, Carter Peene, Ben Dichter, Hyeyoung Shin, Jacob Westerberg, Jay Pina*
 ````
 
 ````{tab-item} Processing
