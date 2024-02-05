@@ -36,7 +36,7 @@
 
 ````{tab-item} Reviewers
 ###### Reviewed code or content components the project or the project as a whole 
-*Mackenzie Mattis, Alex Williams*
+*Mackenzie Mathis, Alex Williams*
 ````
 
 ````{tab-item} Funding
