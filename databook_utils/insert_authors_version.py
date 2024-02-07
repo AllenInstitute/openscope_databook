@@ -1,5 +1,6 @@
-import os
+import csv
 import subprocess
+
 
 from docutils import nodes
 from docutils.parsers.rst import Directive
@@ -74,9 +75,37 @@ class VersionNumber(Directive):
 		return [paragraph_node]
 
 
+class AuthorsIndex(Directive):
+
+	def run(self):
+		table = list(csv.reader(open("./data/contributors.csv")))
+
+		section = nodes.section(ids=["contributorsblock"])
+		section += nodes.title("","Contributors")
+		for idx, properties in enumerate(table):
+			if idx == 0:
+				continue
+			entry = nodes.section(ids=["contributorentry"])
+
+			name = properties[0]
+			entry.append(nodes.strong(text=name))
+
+			line_block = nodes.line_block()				
+			for property in properties[1:]:
+				if property != "":
+					line_block.append(nodes.line(text=property))
+			line_block.append(nodes.line(text=""))
+
+			entry.append(line_block)
+			section.append(entry)
+
+		return [section]
+
+
 def setup(app):
 	app.add_directive("authors", AuthorsList)
 	app.add_directive("version", VersionNumber)
+	app.add_directive("authors_index", AuthorsIndex)
 
 	return {
 		'version': '0.1',
