@@ -3,45 +3,61 @@
 ### The OpenScope Databook: Reproducible System Neuroscience Notebooks to Facilitate Data Sharing and Collaborative Reuse with Open Science Datasets
 
 **Authors**
+```{authors_tabs}
+:role:
+```
+
 
 `````{tab-set}
 ````{tab-item} All Contributors
 ###### Supplied any substantial contribution to the project
-*Katrina Ager, Ahad Bawany, Corbett Bennett, Benjamin Dichter, Satrajit Ghosh, Colleen J. Gillon, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, NIH, R. Carter Peene, Jay Pina, Hyeyoung Shin, Josh Siegle, Jacob Westerberg*
+```{authors}
+```
 ````
 
 ````{tab-item} Management
 ###### Performed administrative and supervisory duties
-*Jerome Lecoq, Carly Kiselycznyk*
+```{authors}
+:role: Management
+```
 ````
 
 ````{tab-item} Conceptualization
 ###### Contributed ideas signifcant to the development of the project and its content
-*Jerome Lecoq, Satrajit Ghosh, R. Carter Peene, Benjamin Dichter, Hyeyoung Shin, Jacob Westerberg, Jay Pina*
+```{authors}
+:role: Conceptualization
+```
 ````
 
 ````{tab-item} Processing
 ###### Processed data used in the project or wrote substantial code to do so
-*Ahad Bawany, R. Carter Peene, Katrina Ager, Jerome Lecoq, Josh Siegle, Corbett Bennett*
+```{authors}
+:role: Processing
+```
 ````
 
 ````{tab-item} Commits
 ###### Committed code to the primary Github repository
-```{eval-rst}
-.. authors::
-    :blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-    :aliases: colleenjg: Colleen J. Gillon, Carter Peene: R. Carter Peene
+```{committers}
+---
+blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon
+---
 ```
 ````
 
-````{tab-item} Reviewers
+````{tab-item} Review
 ###### Reviewed code or content components the project or the project as a whole 
-*Mackenzie Mathis, Alex Williams*
+```{authors}
+:role: Review
+```
 ````
 
 ````{tab-item} Funding
 ###### Provided funds key to supporting the development of the project
-*NIH*
+```{authors}
+:role: Funding
+```
 ````
 
 `````
