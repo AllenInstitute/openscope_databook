@@ -23,7 +23,7 @@
 ````
 
 ````{tab-item} Conceptualization
-###### Contributed ideas signifcant to the development of the project and its content
+###### Contributed ideas significant to the development of the project and its content
 ```{authors}
 :role: Conceptualization
 ```
