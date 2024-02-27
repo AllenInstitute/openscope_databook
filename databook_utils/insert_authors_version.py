@@ -1,5 +1,6 @@
-import os
+import csv
 import subprocess
+
 
 from docutils import nodes
 from docutils.parsers.rst import Directive
@@ -14,13 +15,13 @@ def setstring_to_set(setstring):
 # possible todo: replace this with ast.eval_literal
 def dictstring_to_dict(dictstring):
 	dictstring = dictstring.replace(", ", ",")
-	dictstring = dictstring.replace(": ", ":")
+	dictstring = dictstring.replace("-- ", "--")
 	dictlist = dictstring.split(",")
 
 	this_dict = {}
 	for elem in dictlist:
 		try:
-			key, val = elem.split(":")
+			key, val = elem.split("--")
 		except:
 			raise ValueError("Aliases should be formatted in key value pairs, delimited by a colon")
 		if key not in this_dict:
@@ -28,16 +29,16 @@ def dictstring_to_dict(dictstring):
 	return this_dict
 
 
-class AuthorsList(Directive):
+class Committers(Directive):
 
 	optional_arguments = 3
 	option_spec = {"blacklist": setstring_to_set, "additional_authors": setstring_to_set, "aliases": dictstring_to_dict}
 
 	def run(self):
-		blacklist= self.options.get("blacklist", set())
+		blacklist= self.options.get("blacklist", "blah")
 		additional_authors = self.options.get("additional_authors", set()) 
 		aliases = self.options.get("aliases", {})
-
+		
 		log = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE, text=True)
 		shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
 		print(shortlog)
@@ -51,6 +52,28 @@ class AuthorsList(Directive):
 
 		authors_text = ", ".join(authors)
 		emphasis_node = nodes.emphasis(text=authors_text)
+		return [emphasis_node]
+
+
+class Authors(Directive):
+
+	optional_arguments = 1
+	option_spec = {"role": str}
+
+	def run(self):
+		authors = []
+
+		selected_role = self.options.get("role", "")
+
+		table = list(csv.reader(open("./data/contributors.csv")))
+		role_idx = table[0].index("Role")
+		name_idx = table[0].index("Name")
+		for contributor in table[1:]:
+			contributor_roles = contributor[role_idx].split(", ")
+			if selected_role == "" or selected_role in contributor_roles:
+				authors.append(contributor[name_idx])
+		
+		emphasis_node = nodes.emphasis(text=", ".join(authors))
 		return [emphasis_node]
 
 
@@ -74,9 +97,38 @@ class VersionNumber(Directive):
 		return [paragraph_node]
 
 
+class AuthorsIndex(Directive):
+
+	def run(self):
+		table = list(csv.reader(open("./data/contributors.csv")))
+
+		section = nodes.section(ids=["contributorsblock"])
+		section += nodes.title("","Contributors")
+		for idx, properties in enumerate(table):
+			if idx == 0:
+				continue
+			entry = nodes.section(ids=["contributorentry"])
+
+			name = properties[0]
+			entry.append(nodes.strong(text=name))
+
+			line_block = nodes.line_block()				
+			for property in properties[1:]:
+				if property != "":
+					line_block.append(nodes.line(text=property))
+			line_block.append(nodes.line(text=""))
+
+			entry.append(line_block)
+			section.append(entry)
+
+		return [section]
+
+
 def setup(app):
-	app.add_directive("authors", AuthorsList)
+	app.add_directive("committers", Committers)
 	app.add_directive("version", VersionNumber)
+	app.add_directive("authors", Authors)
+	app.add_directive("authors_index", AuthorsIndex)
 
 	return {
 		'version': '0.1',
