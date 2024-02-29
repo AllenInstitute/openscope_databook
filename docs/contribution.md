@@ -8,7 +8,7 @@ The Databook can be forked via the Github Web UI from the Databook's [Github rep
 ## Initialize Locally
 A local repo can be made by pressing the `code` button on the front page of the forked repo, and copying the HTTPS url. Then locally, run the command `git clone <copied_url_here>`. For more information on cloning Github repos, check out Github's [Cloning a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) Page.
 
-Then the environment must be set up. You may set up a conda environment if you don't want to intefere with your local environment. After installing conda, this can be done with the commands `conda create --name databook python=3.9` followed by `activate databook` (Windows) or `source activate databook` (Mac/Linux). Within or without the conda environment, the dependencies for the databook can be installed by navigating to the openscope_databook directory and running `pip install -e . --user`.
+Then the environment must be set up. You may set up a conda environment if you don't want to interfere with your local environment. After installing conda, this can be done with the commands `conda create --name databook python=3.9` followed by `activate databook` (Windows) or `source activate databook` (Mac/Linux). Within or without the conda environment, the dependencies for the databook can be installed by navigating to the openscope_databook directory and running `pip install -e . --user`.
 
 Finally, notebooks can be run with Jupyter notebook by running `jupyter notebook ./docs`
 
