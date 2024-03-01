@@ -1,6 +1,8 @@
 # OpenScope Databook
 
 ### The OpenScope Databook: Reproducible System Neuroscience Notebooks to Facilitate Data Sharing and Collaborative Reuse with Open Science Datasets
+```{version}
+```
 
 **Authors**
 ```{authors_tabs}
