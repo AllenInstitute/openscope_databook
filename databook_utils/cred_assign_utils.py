@@ -142,7 +142,7 @@ def create_roi_mask_contours(df_row, sess_idx=0, cw=1):
 
     Returns:
         - roi_masks (2D array):
-            ROI mask contour image (hei x wid), overlayed for all ROIs, 
+            ROI mask contour image (hei x wid), overlaid for all ROIs, 
             with 1s where mask contours are present, and 0s elsewhere.
     """
 
