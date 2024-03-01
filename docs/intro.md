@@ -1,14 +1,8 @@
 # OpenScope Databook
 
 ### The OpenScope Databook: Reproducible System Neuroscience Notebooks to Facilitate Data Sharing and Collaborative Reuse with Open Science Datasets
-```{version}
+```{version} https://github.com/AllenInstitute/openscope_databook/releases
 ```
-
-**Authors**
-```{authors_tabs}
-:role:
-```
-
 
 `````{tab-set}
 ````{tab-item} All Contributors
