@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tensor Decomposition of Spiking Activity Through Trials &#8212; OpenScope Databook</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'G-TJPN1M4PDX');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'higher-order/tca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -167,7 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -231,9 +243,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
 </ul>
 
@@ -537,17 +551,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tensor-decomposition-of-spiking-activity-through-trials">
-<h1>Tensor Decomposition of Spiking Activity Through Trials<a class="headerlink" href="#tensor-decomposition-of-spiking-activity-through-trials" title="Permalink to this heading">#</a></h1>
-<p>In several previous notebooks, we’ve utilized the <strong>Spike Matrix</strong> for analysis. As mentioned in <a class="reference internal" href="../visualization/visualize_unit_spikes.html"><span class="doc std std-doc">Visualizing Unit Spikes</span></a>, the Spike Matrix is a 3D matrix (or more precisely, a tensor) with dimensions <code class="docutils literal notranslate"><span class="pre">neurons</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, and <code class="docutils literal notranslate"><span class="pre">trials</span></code>. Using the neuron spike trains and stimulus table from an NWB file, we can produce a spike matrix for a particular selection of neurons and stimulus trials. The paper <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf"><span id="id1">[<a class="reference internal" href="../bibliography.html#id17" title="Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. Neuron, 2018. URL: https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf.">Williams <em>et al.</em>, 2018</a>]</span></a> discusses <strong>TCA</strong>, a method for decomposing such a 3D spike matrix to yield <em>components</em> which isolate a set of features from the data. Each component consists of the three vectors called <em>neuronal factors</em>, <em>temporal factors</em>, and <em>trial factors</em>. In concert, these factors show a relationship between weighted populations of cells, their activity during the trials, and activity between trials. In contrast to PCA, TCA can be used to identify trends in neuron activity within trials as well as <em>across</em> trials. We do not aim to cover all uses of TCA, but rather help build a concrete intuition on how TCA can be used and pro and cons of this approach. The repo used for this is <strong><a class="reference external" href="https://github.com/neurostatslab/tensortools/tree/9d1edd8267e404850b5a1472b8fff4eabb9f3a8e/tensortools">TensorTools</a></strong></p>
+<h1>Tensor Decomposition of Spiking Activity Through Trials<a class="headerlink" href="#tensor-decomposition-of-spiking-activity-through-trials" title="Link to this heading">#</a></h1>
+<p>In several previous notebooks, we’ve utilized the <strong>Spike Matrix</strong> for analysis. As mentioned in <a class="reference internal" href="../visualization/visualize_unit_spikes.html"><span class="std std-doc">Visualizing Unit Spikes</span></a>, the Spike Matrix is a 3D matrix (or more precisely, a tensor) with dimensions <code class="docutils literal notranslate"><span class="pre">neurons</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, and <code class="docutils literal notranslate"><span class="pre">trials</span></code>. Using the neuron spike trains and stimulus table from an NWB file, we can produce a spike matrix for a particular selection of neurons and stimulus trials. The paper <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf"><span id="id1">[<a class="reference internal" href="../bibliography.html#id17" title="Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. Neuron, 2018. URL: https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf.">Williams <em>et al.</em>, 2018</a>]</span></a> discusses <strong>TCA</strong>, a method for decomposing such a 3D spike matrix to yield <em>components</em> which isolate a set of features from the data. Each component consists of the three vectors called <em>neuronal factors</em>, <em>temporal factors</em>, and <em>trial factors</em>. In concert, these factors show a relationship between weighted populations of cells, their activity during the trials, and activity between trials. In contrast to PCA, TCA can be used to identify trends in neuron activity within trials as well as <em>across</em> trials. We do not aim to cover all uses of TCA, but rather help build a concrete intuition on how TCA can be used and pro and cons of this approach. The repo used for this is <strong><a class="reference external" href="https://github.com/neurostatslab/tensortools/tree/9d1edd8267e404850b5a1472b8fff4eabb9f3a8e/tensortools">TensorTools</a></strong></p>
 <p>In this notebook, we demonstrate the simple usage of TCA and how it can be applied to our NWB files. First, cells are selected based on brain region and other criteria, then trials are selected based on repeats of specific trial movies. After this, the spike matrix is produced, and finally TCA produces decomposed factors and plots are generated to interpret them.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
 </pre></div>
@@ -577,7 +591,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </section>
 <section id="download-file">
-<h2>Download File<a class="headerlink" href="#download-file" title="Permalink to this heading">#</a></h2>
+<h2>Download File<a class="headerlink" href="#download-file" title="Link to this heading">#</a></h2>
 <p>For this notebook, the example file we use is from the Allen Institute’s <strong>Visual Coding - Neuropixels</strong> dataset. As long as the NWB file you choose has a properly formatted stimulus table and units table, this code should work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,7 +628,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="selecting-units">
-<h2>Selecting Units<a class="headerlink" href="#selecting-units" title="Permalink to this heading">#</a></h2>
+<h2>Selecting Units<a class="headerlink" href="#selecting-units" title="Link to this heading">#</a></h2>
 <p>To get more interesting factors, it may be of interest to just analyze a subset of Neurons of the NWB’s <code class="docutils literal notranslate"><span class="pre">Units</span></code> table. The helper function <code class="docutils literal notranslate"><span class="pre">get_unit_locations</span></code> is made from the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table to select units based on their brain region, and the possible brain regions to select from are printed. Here, units are selected from the regions <code class="docutils literal notranslate"><span class="pre">VISp</span></code>. <code class="docutils literal notranslate"><span class="pre">VISl</span></code>, and <code class="docutils literal notranslate"><span class="pre">VISpm</span></code>, and (for later purposes) the <em>number</em> of neurons in each region is recorded to <code class="docutils literal notranslate"><span class="pre">n_neurons_in_region</span></code>. To select units based on other criteria, you can write your own code in the cell below that begins with “selecting units spike times”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1219,7 +1233,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="selecting-stimulus-trials">
-<h2>Selecting Stimulus Trials<a class="headerlink" href="#selecting-stimulus-trials" title="Permalink to this heading">#</a></h2>
+<h2>Selecting Stimulus Trials<a class="headerlink" href="#selecting-stimulus-trials" title="Link to this heading">#</a></h2>
 <p>Here the stimulus times of the trials of interest are selected from one of the NWB’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> tables. Below are printed the keys for each Intervals table. In this example <code class="docutils literal notranslate"><span class="pre">natural_movie_one_presentations</span></code> is selected for its high repetition and the fact that natural stimuli often evoke very reliable responses. You can modify the <code class="docutils literal notranslate"><span class="pre">stim_select</span></code> cell below to change the criteria for select stimulus times. The output should be a <code class="docutils literal notranslate"><span class="pre">stim_times</span></code> list of timestamps that the stimulus was presented. In this example it can be seen that there is a large gap between the 9th and 10th stim times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1499,7 +1513,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="spike-matrix">
-<h2>Spike Matrix<a class="headerlink" href="#spike-matrix" title="Permalink to this heading">#</a></h2>
+<h2>Spike Matrix<a class="headerlink" href="#spike-matrix" title="Link to this heading">#</a></h2>
 <p>Here the Spike Matrix is produced using the selected neuron spike trains and stimulus times. Some important parameters must be set to devise this matrix. Set <code class="docutils literal notranslate"><span class="pre">time_resolution</span></code> to be the bin size (in seconds) that’s used to count the spikes. Set <code class="docutils literal notranslate"><span class="pre">window_start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">window_end_time</span></code> to be the bounds (in seconds, relative to the stimulus event) of the stimulus period to analyze. This outputs the three dimensional spike matrix ready for analyze.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1565,8 +1579,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="running-tca">
-<h2>Running TCA<a class="headerlink" href="#running-tca" title="Permalink to this heading">#</a></h2>
-<p>After the spike matrix is produced, it is a simple matter to run the decomposition step. The model is instantiated with the <code class="docutils literal notranslate"><span class="pre">tt.Ensemble</span></code> method. Since the <em>number</em> of components can have a signifcant output on the quality of your decomposition, a range of <code class="docutils literal notranslate"><span class="pre">ranks</span></code> can be specified in order to produce many decompositions, and <code class="docutils literal notranslate"><span class="pre">replicates</span></code> can be set to run multiple replicates of each rank. <strong>TensorTools</strong> can produce objective and similarity plots which after fitting which display the relationship between the number of ranks, performance, and number of replicates to better tune these parameters for your analysis. Below, the model is fit with 5 to 15 ranks and their objective and similarity plots are shown.</p>
+<h2>Running TCA<a class="headerlink" href="#running-tca" title="Link to this heading">#</a></h2>
+<p>After the spike matrix is produced, it is a simple matter to run the decomposition step. The model is instantiated with the <code class="docutils literal notranslate"><span class="pre">tt.Ensemble</span></code> method. Since the <em>number</em> of components can have a significant output on the quality of your decomposition, a range of <code class="docutils literal notranslate"><span class="pre">ranks</span></code> can be specified in order to produce many decompositions, and <code class="docutils literal notranslate"><span class="pre">replicates</span></code> can be set to run multiple replicates of each rank. <strong>TensorTools</strong> can produce objective and similarity plots which after fitting which display the relationship between the number of ranks, performance, and number of replicates to better tune these parameters for your analysis. Below, the model is fit with 5 to 15 ranks and their objective and similarity plots are shown.</p>
 <p>TCA will identify correlations across neurons trials and time to build a number of components that maximize the ability to reconstruct the original data matrix.
 It is therefore essential to use scientific judgement when using this tool. There are two main decisions to make: The final rank to use and making sure that the extracted model is faithfully representing the neuronal activity.</p>
 <p>Choosing a final rank is a complex question with no “one-size fits all” answer. Generally, as the rank increases, the objective will decrease as more degrees of freedom allows for better reconstructions. Higher rank models also are more computational expensive to compute.</p>
@@ -1686,8 +1700,8 @@ It is therefore essential to use scientific judgement when using this tool. Ther
 </div>
 </section>
 <section id="showing-the-components">
-<h2>Showing the Components<a class="headerlink" href="#showing-the-components" title="Permalink to this heading">#</a></h2>
-<p>The factors for a given rank and replicate are retrived from the ensemble’s <code class="docutils literal notranslate"><span class="pre">factors</span></code> method. Set <code class="docutils literal notranslate"><span class="pre">num_components</span></code> and <code class="docutils literal notranslate"><span class="pre">replicate</span></code> to be the indices you’re interested from the model’s various fits. <strong>TensorTools</strong> also has a native function for plotting the selected model called <code class="docutils literal notranslate"><span class="pre">plot_factors</span></code>. However, this is not as decorated as we would prefer for our purposes, so here is defined <code class="docutils literal notranslate"><span class="pre">plot_factors_fancy</span></code> which takes the figure and subplots from <strong>TensorTools</strong> and adds some extra labeling. Specifically, it display the partitioning of the neuronal factors based on their brain region, and partitioning the two main stimulus epochs from this particular experiment. It can be seen in the components plot below that, for some factors, there is differential activity of the neurons between each brain region. The same can be said for the trial factors between the first block of stimulus trials and the second block.</p>
+<h2>Showing the Components<a class="headerlink" href="#showing-the-components" title="Link to this heading">#</a></h2>
+<p>The factors for a given rank and replicate are retrieved from the ensemble’s <code class="docutils literal notranslate"><span class="pre">factors</span></code> method. Set <code class="docutils literal notranslate"><span class="pre">num_components</span></code> and <code class="docutils literal notranslate"><span class="pre">replicate</span></code> to be the indices you’re interested from the model’s various fits. <strong>TensorTools</strong> also has a native function for plotting the selected model called <code class="docutils literal notranslate"><span class="pre">plot_factors</span></code>. However, this is not as decorated as we would prefer for our purposes, so here is defined <code class="docutils literal notranslate"><span class="pre">plot_factors_fancy</span></code> which takes the figure and subplots from <strong>TensorTools</strong> and adds some extra labeling. Specifically, it display the partitioning of the neuronal factors based on their brain region, and partitioning the two main stimulus epochs from this particular experiment. It can be seen in the components plot below that, for some factors, there is differential activity of the neurons between each brain region. The same can be said for the trial factors between the first block of stimulus trials and the second block.</p>
 <p>This given run already provide interesting insights with regards to the neuronal activity during repeats of the natural movies.
 Our movie was shown in 2 blocks : Block 0 and 1, each made of successive repeats of the movie. These blocks are identified on the previous plot with a yellow dashed line. TCA identifies several components that are block specific and sometime transiently activated at the onset of the first or second block.
 Certain components are evenly distributed across all trials, are non-homogenously distributed across cells (in VISp, VISl, VISpm) and show very strong transient patterns of activity. Those components could be related to specific aspects of the movie.</p>
@@ -1765,8 +1779,8 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 </section>
 <section id="extracting-activity">
-<h2>Extracting Activity<a class="headerlink" href="#extracting-activity" title="Permalink to this heading">#</a></h2>
-<p>Next, we try to verify if the component representations are really reflected in the data. You can select specific components by setting <code class="docutils literal notranslate"><span class="pre">selected_components</span></code> to a list of componenent indices from the plot above. Below the real spiking activity over for all cells is shown from the spike matrix that was inputted to TCA. Below that, the selected temporal components are plotted in 2D with their respective neuronal weights to resemble the real spike counts plot. Visually, we can disentangle the various components’ effect on the overall spike counts. Because different components also vary in their impact throughout trials, we also show each of the components weighted by their overall contribution to the spike counts.</p>
+<h2>Extracting Activity<a class="headerlink" href="#extracting-activity" title="Link to this heading">#</a></h2>
+<p>Next, we try to verify if the component representations are really reflected in the data. You can select specific components by setting <code class="docutils literal notranslate"><span class="pre">selected_components</span></code> to a list of component indices from the plot above. Below the real spiking activity over for all cells is shown from the spike matrix that was inputted to TCA. Below that, the selected temporal components are plotted in 2D with their respective neuronal weights to resemble the real spike counts plot. Visually, we can disentangle the various components’ effect on the overall spike counts. Because different components also vary in their impact throughout trials, we also show each of the components weighted by their overall contribution to the spike counts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># components of interest from the plot above</span>
@@ -1873,7 +1887,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 </section>
 <section id="comparing-different-stimuli">
-<h2>Comparing Different Stimuli<a class="headerlink" href="#comparing-different-stimuli" title="Permalink to this heading">#</a></h2>
+<h2>Comparing Different Stimuli<a class="headerlink" href="#comparing-different-stimuli" title="Link to this heading">#</a></h2>
 <p>TCA’s performance varies. Here, we produce a spike matrix and run TCA on four different stimulus types included in this file. For comparison’s sake, they all use a 0.25 second period following the selected stimulus times with a bin size of 10 ms. The stimuli used are natural movies 1, natural movies 3, gratings, and full field flashes. In the loss plot following the training, we can compare TCA’s relative performance between all these stim types. This example would seem to suggest that flashes is inherently processed in a ‘lower dimensional’ space than the rest, followed by movie 3, movie 1 and finally gratings, which is thus the most complex. It could also be the case that different bin sizes and stim window length would be better at capturing the responses to a particular stimulus. This will depend on the speed and number of trials of the stimulus regimen used, which can be gleaned from each stimulus’ respective stim table.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1979,7 +1993,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 </section>
 <section id="comparing-with-other-sessions">
-<h2>Comparing With Other Sessions<a class="headerlink" href="#comparing-with-other-sessions" title="Permalink to this heading">#</a></h2>
+<h2>Comparing With Other Sessions<a class="headerlink" href="#comparing-with-other-sessions" title="Link to this heading">#</a></h2>
 <p>We can run this analysis on other files and view how the dimensionality of the different stimuli compares for other mice in other sessions. For this data, it can be seen that there is not a strongly consistent order between sessions of the different stimuli. Playing around with a few parameters can change this pattern; lengthening the the window and bin size with <code class="docutils literal notranslate"><span class="pre">window_start_time</span></code>, <code class="docutils literal notranslate"><span class="pre">window_end_time</span></code>, and <code class="docutils literal notranslate"><span class="pre">time_resolution</span></code> will affect how well TCA fits different stims. This is expected because different time window lengths will capture different response dynamics. For instance, a time window that is 2 seconds won’t do a very good job at capturing responses to flashes or gratings, which occur on the ms timescale. Typically, having more time bins will make the model fit <em>worse</em>, but may improve the quality of the insights yielded. This is because fewer time bins will be simpler and easier to reduce dimensionality.</p>
 <p>Additionally, it can be seen below that the number of components can have a big impact on the resulting representations. While all stimuli are fit better with more components, some have a stronger fit than others with the same number of components.</p>
 <div class="cell tag_skip-execution docutils container">
@@ -2109,7 +2123,7 @@ By Carter Peene
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

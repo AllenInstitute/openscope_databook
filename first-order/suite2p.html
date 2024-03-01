@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Identifying Regions of Interest with Segmentation &#8212; OpenScope Databook</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'G-TJPN1M4PDX');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'first-order/suite2p';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -167,7 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -231,9 +243,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
 </ul>
 
@@ -545,17 +559,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="identifying-regions-of-interest-with-segmentation">
-<h1>Identifying Regions of Interest with Segmentation<a class="headerlink" href="#identifying-regions-of-interest-with-segmentation" title="Permalink to this heading">#</a></h1>
+<h1>Identifying Regions of Interest with Segmentation<a class="headerlink" href="#identifying-regions-of-interest-with-segmentation" title="Link to this heading">#</a></h1>
 <p>The Allen Institute uses <a class="reference external" href="http://www.suite2p.org/"><strong>Suite2P</strong></a> for processing 2-Photon Calcium Imaging Data. Specifically, <strong>Suite2P</strong> takes a 2P movie, and outputs information about the putative segmented <em>Regions of Interest</em> (ROIs) <span id="id1">[<a class="reference internal" href="../bibliography.html#id9" title="Marius Pachitariu, Carsen Stringer, Mario Dipoppa, Sylvia Schröder, L. Federico Rossi, Henry Dalgleish, Matteo Carandini, and Kenneth D. Harris. Suite2p: beyond 10,000 neurons with standard two-photon microscopy. bioRxiv, 2017. URL: https://www.biorxiv.org/content/early/2017/07/20/061507, arXiv:https://www.biorxiv.org/content/early/2017/07/20/061507.full.pdf, doi:10.1101/061507.">Pachitariu <em>et al.</em>, 2017</a>]</span>. The most pertinent information outputted are the locations/shapes of the ROIs within the 2P Movie’s field-of-view, as well as the fluorescence of each ROI at every frame of the movie. This notebook serves as a simple demonstration of how to input a 2P Movie into Suite2P and produce cell segmentation and fluorescence output.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
 </pre></div>
@@ -591,8 +605,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </section>
 <section id="getting-the-classifier">
-<h2>Getting The Classifier<a class="headerlink" href="#getting-the-classifier" title="Permalink to this heading">#</a></h2>
-<p>Suite2p uses a linear regression classifier in order to identify ROIs. If a classifer is not provided, suite2p uses a default classifer. However, the segmentation output is much better if a classifier trained on manually annotated data is used. The databook includes a classifer file that was trained using the <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/gui.html">Suite2p GUI</a>. The Suite2p GUI is a very powerful platform that exceeds the limits of what can be shown in a Jupyter notebook. The cell below ensures that the classifer we need is present in the right location. In case this notebooks is being run outside the OpenScope Databook, it must be downloaded.</p>
+<h2>Getting The Classifier<a class="headerlink" href="#getting-the-classifier" title="Link to this heading">#</a></h2>
+<p>Suite2p uses a linear regression classifier in order to identify ROIs. If a classifier is not provided, suite2p uses a default classifier. However, the segmentation output is much better if a classifier trained on manually annotated data is used. The databook includes a classifier file that was trained using the <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/gui.html">Suite2p GUI</a>. The Suite2p GUI is a very powerful platform that exceeds the limits of what can be shown in a Jupyter notebook. The cell below ensures that the classifier we need is present in the right location. In case this notebooks is being run outside the OpenScope Databook, it must be downloaded.</p>
 <p>To make your own classifier with the Suite2p GUI, you must first <code class="docutils literal notranslate"><span class="pre">load</span></code> an <code class="docutils literal notranslate"><span class="pre">iscell.npy</span></code> file. This is one of the output files of Suite2p shown toward the end of this notebook. Then you can view both cell and non-cell ROIs by pressing the <code class="docutils literal notranslate"><span class="pre">both</span></code> button in the top of the GUI. From there, right-clicking ROIs will move them from either the cell or non-cell classification. After the manual classification is done, the classified data can be saved by pressing <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">current</span> <span class="pre">data</span> <span class="pre">to</span> <span class="pre">classifier</span></code> in the bottom left.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,7 +621,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </section>
 <section id="downloading-ophys-nwb-files">
-<h2>Downloading Ophys NWB Files<a class="headerlink" href="#downloading-ophys-nwb-files" title="Permalink to this heading">#</a></h2>
+<h2>Downloading Ophys NWB Files<a class="headerlink" href="#downloading-ophys-nwb-files" title="Link to this heading">#</a></h2>
 <p>Here you can download several files for a subject that you can run nway matching on. The pipeline can take in any number of input <em>sessions</em>, however, the input ophys data should be from the same imaging plane of the same subject. To specify your own file to use, set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the dandiset id of the files you’re interested in. Also set <code class="docutils literal notranslate"><span class="pre">input_dandi_filepaths</span></code> to be a list of the filepaths on dandi of each file you’re interested in providing to <strong>Nway Matching</strong>. When accessing an embargoed dataset, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to be your DANDI API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -651,7 +665,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </section>
 <section id="preparing-suite2p-input">
-<h2>Preparing Suite2P Input<a class="headerlink" href="#preparing-suite2p-input" title="Permalink to this heading">#</a></h2>
+<h2>Preparing Suite2P Input<a class="headerlink" href="#preparing-suite2p-input" title="Link to this heading">#</a></h2>
 <p>Typically, the 2P movie would not come prepared within an NWB file, but would be in some other form. Suite2P is capable of taking input in many forms, enumerated <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/inputs.html">here</a>. Suite2P is capable of taking input in the form of h5py files. Since NWB files are a subset of h5py, we can convert it just by renaming the file and opening it with <code class="docutils literal notranslate"><span class="pre">h5py.file</span></code> This will have to be undone later in order to protect the validity of the file for PyNWB. The main setting to tweak the output of the segmentation is <code class="docutils literal notranslate"><span class="pre">threshold_scaling</span></code>. Lowering the threshold scaling makes the segmentation algorithm more sensitive, and will result in more segmented regions in the output. Since the classifier we provide is reasonably trained, it is sufficient to filter out a lot of the resultant messiness.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,7 +694,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </section>
 <section id="running-suite2p">
-<h2>Running Suite2P<a class="headerlink" href="#running-suite2p" title="Permalink to this heading">#</a></h2>
+<h2>Running Suite2P<a class="headerlink" href="#running-suite2p" title="Link to this heading">#</a></h2>
 <p>From there, input settings can be specified for Suite2P via the <code class="docutils literal notranslate"><span class="pre">ops</span></code> object. The available settings and their meanings are described <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/settings.html">here</a> The most pertinent settings are <code class="docutils literal notranslate"><span class="pre">results_folder</span></code>, <code class="docutils literal notranslate"><span class="pre">input_movie_path</span></code>, <code class="docutils literal notranslate"><span class="pre">data_path</span></code>, and <code class="docutils literal notranslate"><span class="pre">sampling_rate</span></code>. Here, the sampling rate is also retrieved from the NWB file, but should probably be known information for your movies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -736,11 +750,11 @@ TOTAL RUNTIME 8878.48 sec
 </div>
 </section>
 <section id="suite2p-output">
-<h2>Suite2P Output<a class="headerlink" href="#suite2p-output" title="Permalink to this heading">#</a></h2>
+<h2>Suite2P Output<a class="headerlink" href="#suite2p-output" title="Link to this heading">#</a></h2>
 <p>Descriptions of the output of Suite2P can be found <a class="reference external" href="https://suite2p.readthedocs.io/en/latest/outputs.html">here</a>. Below, it is shown how to access each output file. Three files, <code class="docutils literal notranslate"><span class="pre">F.npy</span></code>, <code class="docutils literal notranslate"><span class="pre">Fneu.npy</span></code>, and <code class="docutils literal notranslate"><span class="pre">spks.npy</span></code> are 2D arrays containing various forms of the trace data that have shape # ROIs * # Frames. The settings and intermediate values are stored as a dictionary in <code class="docutils literal notranslate"><span class="pre">ops.npy</span></code>. <code class="docutils literal notranslate"><span class="pre">iscell.py</span></code> stores a table which, for each ROI, contains 1/0 if an ROI is a cell, and the certainty value of the classifier.
 Most importantly, the main statistics of each ROI are included in <code class="docutils literal notranslate"><span class="pre">stat.npy</span></code>. This is processed and shown as a dataframe below. Because the ROI location is stored as <code class="docutils literal notranslate"><span class="pre">xpix</span></code>, and <code class="docutils literal notranslate"><span class="pre">ypix</span></code>, which are arrays of coordinates, the code below produces an <em>ROI submask</em> for each ROI. The ROI submasks are more convenient for some purposes.</p>
 <section id="traces">
-<h3>Traces<a class="headerlink" href="#traces" title="Permalink to this heading">#</a></h3>
+<h3>Traces<a class="headerlink" href="#traces" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fluorescence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/F.npy&quot;</span><span class="p">)</span>
@@ -776,7 +790,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </section>
 <section id="options-and-intermediate-outputs">
-<h3>Options and Intermediate Outputs<a class="headerlink" href="#options-and-intermediate-outputs" title="Permalink to this heading">#</a></h3>
+<h3>Options and Intermediate Outputs<a class="headerlink" href="#options-and-intermediate-outputs" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ops</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/ops.npy&quot;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
@@ -792,7 +806,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </section>
 <section id="is-cell-array">
-<h3>Is-Cell Array<a class="headerlink" href="#is-cell-array" title="Permalink to this heading">#</a></h3>
+<h3>Is-Cell Array<a class="headerlink" href="#is-cell-array" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/iscell.npy&quot;</span><span class="p">)</span>
@@ -817,7 +831,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </section>
 <section id="roi-statistics">
-<h3>ROI Statistics<a class="headerlink" href="#roi-statistics" title="Permalink to this heading">#</a></h3>
+<h3>ROI Statistics<a class="headerlink" href="#roi-statistics" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi_stats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./results/plane0/stat.npy&quot;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1193,10 +1207,10 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </section>
 </section>
 <section id="comparing-segmentation-output">
-<h2>Comparing Segmentation Output<a class="headerlink" href="#comparing-segmentation-output" title="Permalink to this heading">#</a></h2>
+<h2>Comparing Segmentation Output<a class="headerlink" href="#comparing-segmentation-output" title="Link to this heading">#</a></h2>
 <p>Below we can compare multiple views of the Segmentation Output. Firstly is the main output which contains cells and non-cells. Secondly is the filtered version which is filtered to only include the ROIs which are classified as cells. The fields <code class="docutils literal notranslate"><span class="pre">Lx</span></code> and <code class="docutils literal notranslate"><span class="pre">Ly</span></code> from <code class="docutils literal notranslate"><span class="pre">ops.npy</span></code> contain the shape of the movie, and <code class="docutils literal notranslate"><span class="pre">ypix</span></code> and <code class="docutils literal notranslate"><span class="pre">xpix</span></code> contain the pixel coordinates at which each ROI was identified. The code below iterates over each ROI and displays all <code class="docutils literal notranslate"><span class="pre">xpix</span></code> and <code class="docutils literal notranslate"><span class="pre">ypix</span></code> for that ROI into the image. These are used to generate the image of all ROI masks. The <code class="docutils literal notranslate"><span class="pre">iscell.npy</span></code> array is used to show only the ROIs that are cells for the filtered plot. The last plot is the segmentation from the original NWB file from the Allen Institute’s own proprietary segmentation algorithm for comparison.</p>
 <section id="segmentation-from-suite2p">
-<h3>Segmentation from Suite2P<a class="headerlink" href="#segmentation-from-suite2p" title="Permalink to this heading">#</a></h3>
+<h3>Segmentation from Suite2P<a class="headerlink" href="#segmentation-from-suite2p" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Ly&quot;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Lx&quot;</span><span class="p">]))</span>
@@ -1218,7 +1232,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </section>
 <section id="segmentation-from-suite2p-filtered-to-cells">
-<h3>Segmentation from Suite2P Filtered to Cells<a class="headerlink" href="#segmentation-from-suite2p-filtered-to-cells" title="Permalink to this heading">#</a></h3>
+<h3>Segmentation from Suite2P Filtered to Cells<a class="headerlink" href="#segmentation-from-suite2p-filtered-to-cells" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Ly&quot;</span><span class="p">],</span> <span class="n">ops</span><span class="p">[</span><span class="s2">&quot;Lx&quot;</span><span class="p">]))</span>
@@ -1242,7 +1256,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </section>
 <section id="segmentation-from-original-nwb">
-<h3>Segmentation From Original NWB<a class="headerlink" href="#segmentation-from-original-nwb" title="Permalink to this heading">#</a></h3>
+<h3>Segmentation From Original NWB<a class="headerlink" href="#segmentation-from-original-nwb" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span> <span class="o">=</span> <span class="n">nwb</span><span class="p">[</span><span class="s2">&quot;processing/ophys/ImageSegmentation/PlaneSegmentation/image_mask&quot;</span><span class="p">]</span>
@@ -1367,7 +1381,7 @@ By Carter Peene
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

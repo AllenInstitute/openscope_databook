@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Using CEBRA-Time to Identify Latent Embeddings &#8212; OpenScope Databook</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'G-TJPN1M4PDX');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'higher-order/cebra_time';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -167,7 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -231,9 +243,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
 </ul>
 
@@ -537,7 +551,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="using-cebra-time-to-identify-latent-embeddings">
-<h1>Using <a class="reference external" href="https://cebra.ai/docs/index.html">CEBRA-Time</a> to Identify Latent Embeddings<a class="headerlink" href="#using-cebra-time-to-identify-latent-embeddings" title="Permalink to this heading">#</a></h1>
+<h1>Using <a class="reference external" href="https://cebra.ai/docs/index.html">CEBRA-Time</a> to Identify Latent Embeddings<a class="headerlink" href="#using-cebra-time-to-identify-latent-embeddings" title="Link to this heading">#</a></h1>
 <p>In this notebook, we will explore the applications of the advanced machine learning algorithm, <strong>CEBRA</strong> (created by the <a class="reference external" href="http://www.mackenziemathislab.org/">Mathis Laboratory</a>), to analyze OpenScope data from the Allen Institute. <strong>CEBRA</strong> is an algorithm that optimizes neural networks that map neural activity onto an embedding space <span id="id1">[<a class="reference internal" href="../bibliography.html#id16" title="Steffen Schneider, Jin Hwa Lee, and Mackenzie Weygandt Mathis. Learnable latent embeddings for joint behavioural and neural analysis. Nature, 2023. URL: https://www.nature.com/articles/s41586-023-06031-6.">Schneider <em>et al.</em>, 2023</a>]</span>. This algorithm leverages <strong><a class="reference external" href="http://proceedings.mlr.press/v119/chen20j/chen20j.pdf">contrastive learning</a></strong> and a generalized <strong><a class="reference external" href="https://www.nature.com/articles/s41586-023-06031-6#Sec11">InfoNCE loss function</a></strong> to learn representations where similar data points are pulled closer together while dissimilar data points are pushed apart within the embedding space. CEBRA has three different modes: <strong>CEBRA-Time</strong> (fully unsupervised/self supervised), <strong>CEBRA-Behavior</strong> (supervised), and <strong>CEBRA-Hybrid</strong>.</p>
 <p>In this notebook, we will be utilizing <strong>CEBRA-Time</strong>, so our input data will be unlabeled and there will be no behavioral assumptions that influence neuronal activity. We utilize <strong>CEBRA-Time</strong> to create a 3D latent embedding space of a mouse’s neural activity while passively viewing visual stimuli. This algorithm can help us identify patterns in neural activity and its relationship to the visual stimulus. We use the neural data to train the model, generate embeddings for each type of visual stimulus, and plot different subsections of the data separately onto the same embedding space.</p>
 <p>Below is a visualization of the pipeline that displays the steps from how the algorithm receives input data to how the final output of the embedding is produced. To briefly describe how it works, <strong>CEBRA</strong> takes input in the form of <em>positive and negative pairs</em> of data relative to a reference point. An example of a positive and negative pair for behavioral labels would be two positions on a track that are close together in space versus a position on a track that is far away. Likewise, for time labels, a positive pair would be data from two points that occur close together in time versus a data point that occurs farther away in time. Next, a nonlinear encoder receives the data in the form of a triplet that contains 3 vectors: neural data from the positive points, neural data from the negative points, and neural data from the reference points. The nonlinear encoder maps the raw neural data onto a lower dimensional feature space. Here, <strong>CEBRA</strong> leverages <em>contrastive learning</em> to learn representations where similar pairs are pulled closer together and dissimilar pairs are pushed apart in an embedding space. During training, similarity scores are computed for positive and negative pairs. A modified <em>InfoNCE loss function</em> is calculated and gradient descent is used to optimize the loss. Once the network is fully trained, the lower-dimensional embedding space is produced from the final output layer.</p>
@@ -546,7 +560,7 @@ document.write(`
 <p><img alt="cebra_pipeline.png" src="../_images/cebra_pipeline.png" /></p>
 <p>Figure 1a, <em><a class="reference external" href="https://www.nature.com/articles/s41586-023-06031-6">Learnable latent embeddings for joint behavioural and neural analysis</a></em></p>
 <section id="notebook-settings-for-google-colab">
-<h2>Notebook Settings for Google Colab<a class="headerlink" href="#notebook-settings-for-google-colab" title="Permalink to this heading">#</a></h2>
+<h2>Notebook Settings for Google Colab<a class="headerlink" href="#notebook-settings-for-google-colab" title="Link to this heading">#</a></h2>
 <p>To ensure the fastest and runtime, check to make sure your hardware accelerator is using GPU. This should be pre-set for the notebook, but here are the steps to double-check it is set correctly:</p>
 <ol class="arabic simple">
 <li><p>click “Edit” below the notebook title</p></li>
@@ -557,14 +571,14 @@ document.write(`
 </ol>
 </section>
 <section id="create-cebra-environment-and-download-dependencies">
-<h2>Create CEBRA Environment and Download Dependencies<a class="headerlink" href="#create-cebra-environment-and-download-dependencies" title="Permalink to this heading">#</a></h2>
+<h2>Create CEBRA Environment and Download Dependencies<a class="headerlink" href="#create-cebra-environment-and-download-dependencies" title="Link to this heading">#</a></h2>
 <p><strong>⚠️Note: If running on a new environment, run this cell once and then restart the kernel⚠️</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
 </pre></div>
@@ -589,7 +603,7 @@ document.write(`
 </div>
 </section>
 <section id="download-data">
-<h2>Download Data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h2>
+<h2>Download Data<a class="headerlink" href="#download-data" title="Link to this heading">#</a></h2>
 <p>We download the data using the same process as in previous notebooks. If you need help downloading OpenScope data, see the <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/docs/basics/download_nwb.ipynb">Downloading an NWB File</a> notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -666,7 +680,7 @@ Opening file
 </div>
 </section>
 <section id="setting-up-the-stimulus-table">
-<h2>Setting Up The Stimulus Table<a class="headerlink" href="#setting-up-the-stimulus-table" title="Permalink to this heading">#</a></h2>
+<h2>Setting Up The Stimulus Table<a class="headerlink" href="#setting-up-the-stimulus-table" title="Link to this heading">#</a></h2>
 <p>The stimulus table below includes information about the type of visual stimulus that was presented to the mice during the passive viewing experiment. It contains the start and stop time for each presentation of a frame, the frame number, and the stimulus type. The frame number helps us to identify the exact part of the movie the mouse is viewing. Before proceeding with the rest of the code, it’s advisable to become familiar with the stimulus table and the data it contains. Understanding the structure and content of the stimulus table will help with comprehending the subsequent code.</p>
 <p>The function <code class="docutils literal notranslate"><span class="pre">stim_obj_to_table</span></code> retrieves <code class="docutils literal notranslate"><span class="pre">start_times</span></code>, <code class="docutils literal notranslate"><span class="pre">stop_times</span></code>, <code class="docutils literal notranslate"><span class="pre">frames</span></code>, and <code class="docutils literal notranslate"><span class="pre">stim-type</span></code> from an NWB file and then organizes that data into a pandas dataframe. Pandas dataframes are a very useful way to organize, manipulate, and explore data.</p>
 <div class="cell docutils container">
@@ -810,7 +824,7 @@ Opening file
 </div>
 </section>
 <section id="extracting-dff-data">
-<h2>Extracting DFF Data<a class="headerlink" href="#extracting-dff-data" title="Permalink to this heading">#</a></h2>
+<h2>Extracting DFF Data<a class="headerlink" href="#extracting-dff-data" title="Link to this heading">#</a></h2>
 <p>The neural data we are trying to analyze is contained in a 2D array called <code class="docutils literal notranslate"><span class="pre">dff_trace</span></code> and has a shape of (127117, 41) – this will vary for different datasets. From the shape, we can tell that there are 41 regions of interest (or neurons) and 127177 measurements of fluorescence for each neuron. This will produce a matrix with 127177 rows and 41 columns. Each of the 127177 measurements are taken at the same time for each neuron. For example, [5][0] (first ROI 6th measurement) will have a different fluorescence value than [5][33] (34th ROI, 6th measurement) but these measurements will have been taken at the same time during the trial. The timestamps for each fluorescence value are contained in the <code class="docutils literal notranslate"><span class="pre">dff_timestamps</span></code> array that should have the same length as <code class="docutils literal notranslate"><span class="pre">dff_trace</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -838,7 +852,7 @@ Opening file
 </div>
 </section>
 <section id="aligning-different-types-of-data">
-<h2>Aligning Different Types of Data<a class="headerlink" href="#aligning-different-types-of-data" title="Permalink to this heading">#</a></h2>
+<h2>Aligning Different Types of Data<a class="headerlink" href="#aligning-different-types-of-data" title="Link to this heading">#</a></h2>
 <p>Currently, we have data from the stimulus table and neural data collected during the 2P imaging. Since the data is from two different places, it is essential to make sure they are aligned by time. The data from the stimulus table includes the start and stop time of each frame of the visual stimulus, the frame number, and the type of visual stimulus that is presented. The purpose of the code below is to identify a frame number and stimulus type for each value in <code class="docutils literal notranslate"><span class="pre">dff_timestamps</span></code>. Once we have the timestamps aligned with the data in the stimulus table, we can properly index and label the fluorescence traces from <code class="docutils literal notranslate"><span class="pre">dff_traces</span></code> that will be inputted into <strong>CEBRA-Time</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -847,18 +861,18 @@ Opening file
 <span class="n">frame_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">stim_type_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">frame_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;start time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">frame_end</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;stop time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">frame_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;start time&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">frame_end</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;stop time&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">):</span>
         <span class="k">continue</span>
-    <span class="n">current_frame</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">next_frame</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">next_start_time</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;start time&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">next_stop_time</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;stop time&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">current_stim</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;stimulus type&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">next_stim</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;stimulus type&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">current_frame</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;frame&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">next_frame</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;frame&quot;</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">next_start_time</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;start time&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">next_stop_time</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;stop time&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">current_stim</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;stimulus type&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">next_stim</span> <span class="o">=</span> <span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;stimulus type&quot;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c1"># appends the start and stop time for each individual frame to get a list of frame intervals</span>
     <span class="k">if</span> <span class="n">current_frame</span> <span class="o">!=</span> <span class="n">next_frame</span> <span class="ow">or</span> <span class="n">current_stim</span> <span class="o">!=</span> <span class="n">next_stim</span><span class="p">:</span>
@@ -922,7 +936,7 @@ Opening file
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp_stimulus</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of timestamps unaccounted for: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp_frames</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of timestamps unaccounted for: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp_frames</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -938,7 +952,7 @@ number of timestamps unaccounted for:  419
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of dff_timestamps that occur before the first frame is presented (while timestamp &lt; start_time)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of timestamps that occur before stimulus:&#39;</span><span class="p">,</span> <span class="n">count_times_before_stim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of timestamps that occur before stimulus:&quot;</span><span class="p">,</span> <span class="n">count_times_before_stim</span><span class="p">)</span>
 
 <span class="c1"># find how many dff_timestamps occur after the last visual stimulus is displayed</span>
 <span class="n">max_frame_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">frame_intervals</span><span class="p">)</span>
@@ -946,15 +960,15 @@ number of timestamps unaccounted for:  419
 
 <span class="c1"># find the last timestamp that occurs during stimulus presentation</span>
 <span class="n">timestamps_before_stim_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dff_timestamps</span><span class="p">)</span><span class="o">-</span> <span class="n">max_timestamp_allowed</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last timestamp that occurs during stimulus presentation:&#39;</span><span class="p">,</span> <span class="n">timestamps_before_stim_end</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last timestamp that occurs during stimulus presentation:&quot;</span><span class="p">,</span> <span class="n">timestamps_before_stim_end</span><span class="p">)</span>
 
 <span class="c1"># slice `dff_timestamps` to only include timestamps that correlate with frames</span>
 <span class="n">sliced_dff_timestamps</span> <span class="o">=</span> <span class="n">dff_timestamps</span><span class="p">[</span><span class="n">count_times_before_stim</span><span class="p">:</span><span class="n">timestamps_before_stim_end</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New length of dff_timestamps:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_timestamps</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New length of dff_timestamps:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_timestamps</span><span class="p">))</span>
 
 <span class="c1"># this aligns the dff_trace with sliced version of the dff_timestamps so that we can correctly index the neural data</span>
 <span class="n">sliced_dff_trace</span> <span class="o">=</span> <span class="n">dff_trace</span><span class="p">[</span><span class="n">count_times_before_stim</span><span class="p">:</span><span class="n">timestamps_before_stim_end</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New length of dff_trace:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_trace</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New length of dff_trace:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sliced_dff_trace</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -996,7 +1010,7 @@ New length of dff_trace:  126758
 </div>
 </section>
 <section id="perform-a-grid-search-for-training-hyper-parameters">
-<h2>Perform a GRID-search for training hyper parameters<a class="headerlink" href="#perform-a-grid-search-for-training-hyper-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Perform a GRID-search for training hyper parameters<a class="headerlink" href="#perform-a-grid-search-for-training-hyper-parameters" title="Link to this heading">#</a></h2>
 <p>This algorithm training code was borrowed from the <a class="reference external" href="https://cebra.ai/docs/demo_notebooks/Demo_hypothesis_testing.html">Demo Hypothesis Testing Notebook</a> provided by the Mathis Lab, the creators of <strong>CEBRA</strong>. If you are interested in the specifics of how the network is trained in the code below, you can view the documentation on the <a class="reference external" href="https://cebra.ai/docs/api/sklearn/cebra.html">CEBRA website</a>.</p>
 <p><strong>CEBRA</strong> provides a number of degrees of freedom to optimize the final embedding. It is important that you use a set of parameters that produce consistent embeddings with low reconstruction losses. To fine-tune these parameters, <strong>CEBRA</strong> provides functionalities to perform a grid-search. Below, we provide example code to look for an optimal set of parameters for a dataset. Keep in mind that making sure this selection generalizes well to new datasets is important to avoid over-fitting. This search is rather intensive, so it is recommended to run this on a good machine. We found that the T4 units on DandiArchive were fairly goods at the moment and would run this search in less than an hour.</p>
 <div class="cell tag_skip-execution docutils container">
@@ -1006,13 +1020,13 @@ New length of dff_trace:  126758
     <span class="n">output_dimension</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span>
     <span class="n">learning_rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.0003</span><span class="p">],</span>
     <span class="n">time_offsets</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
-    <span class="n">model_architecture</span><span class="o">=</span><span class="s1">&#39;offset10-model&#39;</span><span class="p">,</span>
+    <span class="n">model_architecture</span><span class="o">=</span><span class="s2">&quot;offset10-model&quot;</span><span class="p">,</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
-    <span class="n">temperature_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span>
+    <span class="n">temperature_mode</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span>
     <span class="n">max_iterations</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">],</span> <span class="c1"># we initially set this low to limit computation and will increase it later to fully train the best model</span>
-    <span class="n">distance</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span>
-    <span class="n">conditional</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span>
-    <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda_if_available&#39;</span><span class="p">,</span>
+    <span class="n">distance</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
+    <span class="n">conditional</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda_if_available&quot;</span><span class="p">,</span>
     <span class="n">num_hidden_units</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">],</span>
     <span class="n">temperature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -1117,7 +1131,7 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 </div>
 </div>
 </div>
-<p>This is the distibution of loss values obtained at the end of training.</p>
+<p>This is the distribution of loss values obtained at the end of training.</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all the final losses</span>
@@ -1126,9 +1140,9 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 <span class="c1"># Plot the losses for each parameter combination in a bar plot</span>
 <span class="c1"># The y-axis is the parameter combination and the x-axis is the loss</span>
 <span class="c1"># We combine the parameters into a single string for the x-axis</span>
-<span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;num_hidden_units&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;output_dimension&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s1">&#39;time_offsets&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<span class="n">pd_loss_sorted</span> <span class="o">=</span> <span class="n">pd_loss</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">pd_loss_sorted</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;params&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">pd_loss</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s2">&quot;num_hidden_units&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s2">&quot;output_dimension&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">pd_loss</span><span class="p">[</span><span class="s2">&quot;time_offsets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">pd_loss_sorted</span> <span class="o">=</span> <span class="n">pd_loss</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd_loss_sorted</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;params&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 
 <span class="c1"># We turn off the legend from the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
@@ -1168,7 +1182,7 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 </div>
 </section>
 <section id="train-cebra-time-model">
-<h2>Train CEBRA-Time Model<a class="headerlink" href="#train-cebra-time-model" title="Permalink to this heading">#</a></h2>
+<h2>Train CEBRA-Time Model<a class="headerlink" href="#train-cebra-time-model" title="Link to this heading">#</a></h2>
 <p>Here, we use our insight from the grid-search to fully train the <strong>CEBRA</strong> model using the neural data (<code class="docutils literal notranslate"><span class="pre">sliced_dff_trace</span></code>). Training the model can take anywhere from a few minutes to a few hours depending on the size of the dataset you are inputting. If you want to lower CPU usage, or if you want to experiment quickly with the model, it’s best to either use a smaller slice of the data you input, or lower the number of max iterations. Keep in mind, this will lower the quality of the embedding space.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1181,16 +1195,16 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set conditional to &#39;time&#39;</span>
-<span class="n">cebra_time_model</span> <span class="o">=</span> <span class="n">CEBRA</span><span class="p">(</span><span class="n">model_architecture</span><span class="o">=</span><span class="s1">&#39;offset10-model&#39;</span><span class="p">,</span>
+<span class="n">cebra_time_model</span> <span class="o">=</span> <span class="n">CEBRA</span><span class="p">(</span><span class="n">model_architecture</span><span class="o">=</span><span class="s2">&quot;offset10-model&quot;</span><span class="p">,</span>
                         <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
                         <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span>
                         <span class="n">temperature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                         <span class="n">output_dimension</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
                         <span class="n">num_hidden_units</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
                         <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">,</span>
-                        <span class="n">distance</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span>
-                        <span class="n">conditional</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span>
-                        <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda_if_available&#39;</span><span class="p">,</span>
+                        <span class="n">distance</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
+                        <span class="n">conditional</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
+                        <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda_if_available&quot;</span><span class="p">,</span>
                         <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">time_offsets</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -1213,12 +1227,12 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 </div>
 </section>
 <section id="evaluate-the-loss">
-<h2>Evaluate The Loss<a class="headerlink" href="#evaluate-the-loss" title="Permalink to this heading">#</a></h2>
+<h2>Evaluate The Loss<a class="headerlink" href="#evaluate-the-loss" title="Link to this heading">#</a></h2>
 <p>Here, we plot the loss function of the algorithm. <strong>CEBRA</strong> uses the <em>InfoNCE loss function</em> to serve as a <em>goodness-of-fit metric to the data</em>, and helps determine which variables have the largest influence on the data. The goal is to minimize loss, so if your network is well trained, you should see a low loss value. Typically, a loss value less than 7 indicates the model is well train on the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this plots the loss from the model we saved in the previous cell</span>
-<span class="n">cebra</span><span class="o">.</span><span class="n">plot_loss</span><span class="p">(</span><span class="n">cebra_time_model</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">cebra</span><span class="o">.</span><span class="n">plot_loss</span><span class="p">(</span><span class="n">cebra_time_model</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1231,7 +1245,7 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 </div>
 </section>
 <section id="produce-embedding-spaces-for-cebra-time">
-<h2>Produce Embedding Spaces for CEBRA-Time<a class="headerlink" href="#produce-embedding-spaces-for-cebra-time" title="Permalink to this heading">#</a></h2>
+<h2>Produce Embedding Spaces for CEBRA-Time<a class="headerlink" href="#produce-embedding-spaces-for-cebra-time" title="Link to this heading">#</a></h2>
 <p>Now, we want to determine if <strong>CEBRA-Time</strong> can produce a clear embedding space for our data. For this dataset, when we plotted all the points of neural data onto one embedding space, it was difficult to visually detect patterns in the data. A solution to this problem is to create many different plots of the same embedding space that contain different sections of the data. Below, we separate our neural data by stimulus type and then for each stimulus type, we plot each repeat of the movie separately onto the embedding space. We also color the points on the embedding space based on the movie frame. This means that frames that are shown close together in time will have similar colors. For reference, there are 10 repeats of each stimulus type (except for dots), and each repeat contains 899 frames. We have also excluded three stimulus types (‘snake’, ‘noise’, and ‘spontaneous’) from the plots because they did not repeat, or contained issues within the repeats. The hope is that each repeat of each movie will be plotted similarly onto the embedding space, and ultimately, each stimulus type will be differentiable when plotted onto one large embedding space.</p>
 <p>First, we create a function that selects neural data based on one repeat of the movie. We index the neural data with the indices of a particular movie repeat, and then load that indexed neural data into the trained <strong>CEBRA</strong> model which will be used to produce one plot of the embedding space. We also index the frames associated with each point of neural data based on the same indices, and use the value of each frame to create color labels for the embedding space. Next, we create a function that plots each model separately. In the following cell, we use a for-loop to loop through each stimulus, and within that stimulus, we loop through each repeat. For each repeat, we call the two functions and are able to produce a plot of the embedding space for that specific slice of data.</p>
 <div class="cell docutils container">
@@ -1269,8 +1283,8 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 <span class="k">def</span> <span class="nf">create_subplots</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">,</span> <span class="n">cebra_embedding_colors_list</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CEBRA-Time - </span><span class="si">{</span><span class="n">stim_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CEBRA-Time - </span><span class="si">{</span><span class="n">stim_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
     
     <span class="c1"># We only plot a subset </span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">4</span><span class="p">:</span>
@@ -1280,9 +1294,9 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
     
     <span class="c1"># iterates through the list of cebra models and makes one plot for each model</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">value_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">index_repeat</span><span class="p">):</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_repeat</span><span class="p">),</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">index_repeat</span><span class="p">),</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
 
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">cebra</span><span class="o">.</span><span class="n">plot_embedding</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">embedding</span><span class="o">=</span><span class="n">cebra_time_models_list</span><span class="p">[</span><span class="n">value_index</span><span class="p">],</span> <span class="n">embedding_labels</span><span class="o">=</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">value_index</span><span class="p">],</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;repeat </span><span class="si">{</span><span class="n">value_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">cebra</span><span class="o">.</span><span class="n">plot_embedding</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">embedding</span><span class="o">=</span><span class="n">cebra_time_models_list</span><span class="p">[</span><span class="n">value_index</span><span class="p">],</span> <span class="n">embedding_labels</span><span class="o">=</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">value_index</span><span class="p">],</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;repeat </span><span class="si">{</span><span class="n">value_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1294,10 +1308,10 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
 
 <span class="c1"># provides the names of each stimulus type from the stim table</span>
-<span class="n">stimulus_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="s1">&#39;stimulus type&#39;</span><span class="p">])</span>
+<span class="n">stimulus_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;stimulus type&quot;</span><span class="p">])</span>
 
 <span class="n">store_scores</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="c1"># loops through each stimulus type and selects the indices for every occurance of that stimulus throughout the entire movie</span>
+<span class="c1"># loops through each stimulus type and selects the indices for every occurrence of that stimulus throughout the entire movie</span>
 <span class="k">for</span> <span class="n">stim_name</span> <span class="ow">in</span> <span class="n">stimulus_names</span><span class="p">:</span>
     <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">timestamp_stimulus</span> <span class="o">==</span> <span class="n">stim_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -1360,14 +1374,14 @@ pos:  0.3057 neg:  5.4161 total:  5.7218 temperature:  1.0000: 100%|████
                 <span class="n">list_training</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">list_integers</span><span class="p">,</span> <span class="n">list_test</span><span class="p">)</span>
                 
                 <span class="c1"># Extract training and testing data</span>
-                <span class="n">embedding_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">[</span><span class="n">list_training</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-                <span class="n">label_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">list_training</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+                <span class="n">embedding_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">[</span><span class="n">list_training</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+                <span class="n">label_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">list_training</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
                 
                 <span class="c1"># Fit the decoder</span>
                 <span class="n">time_decoder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">embedding_train</span><span class="p">,</span> <span class="n">label_train</span><span class="p">)</span>
 
-                <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">[</span><span class="n">list_test</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-                <span class="n">label_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">list_test</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+                <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_time_model_list</span><span class="p">[</span><span class="n">list_test</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+                <span class="n">label_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">cebra_embedding_colors_list</span><span class="p">[</span><span class="n">list_test</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
 
                 <span class="c1"># Measure performance on held out data</span>
                 <span class="n">time_pred</span> <span class="o">=</span> <span class="n">time_decoder</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">embedding_test</span><span class="p">)</span>
@@ -1443,10 +1457,10 @@ The KNN decoder tries to predict which frame of the movie is displayed onto the 
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 
 <span class="c1"># Adding labels and title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Movie name&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Movie name&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;R^2 score from KNN cluster&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;R^2 score from KNN cluster&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1559,7 +1573,7 @@ By Carter Peene
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

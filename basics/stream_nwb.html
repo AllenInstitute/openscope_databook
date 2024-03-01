@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Streaming an NWB File with fsspec &#8212; OpenScope Databook</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'G-TJPN1M4PDX');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'basics/stream_nwb';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -167,7 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -231,9 +243,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
 </ul>
 
@@ -519,6 +533,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-configuration">Streaming Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-a-file">Streaming a File</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interacting-with-a-remote-file">Interacting with a Remote File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-databook-utils-function">Using Databook Utils Function</a></li>
 </ul>
             </nav>
         </div>
@@ -531,31 +546,37 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="streaming-an-nwb-file-with-fsspec">
-<h1>Streaming an NWB File with fsspec<a class="headerlink" href="#streaming-an-nwb-file-with-fsspec" title="Permalink to this heading">#</a></h1>
+<h1>Streaming an NWB File with fsspec<a class="headerlink" href="#streaming-an-nwb-file-with-fsspec" title="Link to this heading">#</a></h1>
 <p>As you might have realized, NWB files are large. They take a lot of time to download and a lot of space on your drive. A convenient tool to mitigate this is <strong>fsspec</strong>. Fsspec allows you to <em>stream</em> the information from a file remotely without having to download it. This can be more efficient if you are only wanting to quickly examine a file or just need access to a portion of the file’s contents. For more exensive analysis, it is still recommended that you download the file.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
+    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.FB5AE2TYXYH2IJRDKGDGQ3XBKLKTF43H.gfortran-win_amd64.dll
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dandi</span>
-<span class="kn">import</span> <span class="nn">fsspec</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">remfile</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 
 <span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
-<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
 <span class="kn">from</span> <span class="nn">nwbwidgets</span> <span class="kn">import</span> <span class="n">nwb2widget</span>
 <span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 </pre></div>
@@ -564,13 +585,13 @@ document.write(`
 </div>
 </section>
 <section id="streaming-configuration">
-<h2>Streaming Configuration<a class="headerlink" href="#streaming-configuration" title="Permalink to this heading">#</a></h2>
+<h2>Streaming Configuration<a class="headerlink" href="#streaming-configuration" title="Link to this heading">#</a></h2>
 <p>Here you can configure the stream. Browse the DANDI Archive for a dandiset you’re interested in and use its ID in <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code>. Set <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to the path of the file you want to download within the dandiset. You can get this by navigating to the file you want to download on the DANDI Archive website and pressing on the <code class="docutils literal notranslate"><span class="pre">i</span></code> icon. There, you can copy the filepath from the field labeled <code class="docutils literal notranslate"><span class="pre">path</span></code>. Don’t include a leading <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
 <p>If you’re accessing an embargoed dandiset, you should set <code class="docutils literal notranslate"><span class="pre">authenticate</span></code> to True, and set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key, which can be found if you click on your profile icon in the top-right corner on the DANDI Archive website.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-699733573/sub-699733573_ses-715093703.nwb&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000871&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-644972/sub-644972_ses-1237081845-acq-1237345890-denoised-movies_image+ophys.nwb&quot;</span>
 <span class="n">authenticate</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">dandi_api_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </pre></div>
@@ -590,7 +611,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000021/draft
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.59.0) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000871/draft
 </pre></div>
 </div>
 </div>
@@ -606,32 +630,30 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/f5f/175/f5f1752f-5227-47d5-8f75-cd71937878aa?response-content-disposition=attachment%3B%20filename%3D%22sub-699733573_ses-715093703.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20230725%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20230725T220254Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=71ad13080ab1145de449d88fc865cc77c30707997047d724f9981c65706e8b90
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Retrieved file url https://dandiarchive.s3.amazonaws.com/blobs/fe1/358/fe135898-cfa7-4243-b927-e6964c31afee?response-content-disposition=attachment%3B%20filename%3D%22sub-644972_ses-1237081845-acq-1237345890-denoised-movies_image%2Bophys.nwb%22&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAUBRWC5GAEKH3223E%2F20240129%2Fus-east-2%2Fs3%2Faws4_request&amp;X-Amz-Date=20240129T214448Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=be815ce352064b62b62804204941b21ecfc96133ea8dc74a8cb4ea86354a98ad
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="streaming-a-file">
-<h2>Streaming a File<a class="headerlink" href="#streaming-a-file" title="Permalink to this heading">#</a></h2>
-<p>First, this creates a virtual filesystem based on the http protocol and specifies using caching to save accessed data to RAM. Then it opens the file remotely through the virtual filesystem.</p>
+<h2>Streaming a File<a class="headerlink" href="#streaming-a-file" title="Link to this heading">#</a></h2>
+<p>Streaming with remfile is as easy as creating a remote file object from the url, and then opening it through the h5py and pywnb libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">CachingFileSystem</span><span class="p">(</span>
-    <span class="n">fs</span><span class="o">=</span><span class="n">fsspec</span><span class="o">.</span><span class="n">filesystem</span><span class="p">(</span><span class="s2">&quot;http&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
-<span class="n">file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_file</span> <span class="o">=</span> <span class="n">remfile</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
+<span class="n">h5py_file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">rem_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">h5py_file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.8.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
+  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.5.0 is already loaded.
   warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
@@ -639,8 +661,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="interacting-with-a-remote-file">
-<h2>Interacting with a Remote File<a class="headerlink" href="#interacting-with-a-remote-file" title="Permalink to this heading">#</a></h2>
-<p>Once the file has been opened remotely, you can explore the file as you wish via <code class="docutils literal notranslate"><span class="pre">print</span></code> statements, or you can view the whole thing with <code class="docutils literal notranslate"><span class="pre">NWBWidgets</span></code> like we showed in <a class="reference internal" href="read_nwb.html"><span class="doc std std-doc">Exploring an NWB File</span></a>.</p>
+<h2>Interacting with a Remote File<a class="headerlink" href="#interacting-with-a-remote-file" title="Link to this heading">#</a></h2>
+<p>Once the file has been opened remotely, you can explore the file as you wish via <code class="docutils literal notranslate"><span class="pre">print</span></code> statements, or you can view the whole thing with <code class="docutils literal notranslate"><span class="pre">NWBWidgets</span></code> like we showed in <a class="reference internal" href="read_nwb.html"><span class="std std-doc">Exploring an NWB File</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### uncomment these to view aspects of the file</span>
@@ -663,7 +685,80 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e33c2e473d0546e5bfbee0aaf4a0d6de", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b7a7542004f740c2a7416a14519d3cbd", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="using-databook-utils-function">
+<h2>Using Databook Utils Function<a class="headerlink" href="#using-databook-utils-function" title="Link to this heading">#</a></h2>
+<p>Throughout the remainder of the OpenScope Databook, whenever a file is streamed we reuse this code in the form of a local package, <code class="docutils literal notranslate"><span class="pre">databook_utils</span></code>. To retrieve an NWB file you can use the method <code class="docutils literal notranslate"><span class="pre">dandi_stream_open</span></code> after importing it like shown at the top of this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">io</span> <span class="o">=</span> <span class="n">dandi_stream_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root pynwb.file.NWBFile at 0x2035051275888
+Fields:
+  acquisition: {
+    EyeTracking &lt;class &#39;abc.EllipseEyeTracking&#39;&gt;,
+    denoised_suite2p_motion_corrected &lt;class &#39;pynwb.ophys.TwoPhotonSeries&#39;&gt;,
+    raw_suite2p_motion_corrected &lt;class &#39;pynwb.ophys.TwoPhotonSeries&#39;&gt;,
+    v_in &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;,
+    v_sig &lt;class &#39;pynwb.base.TimeSeries&#39;&gt;
+  }
+  devices: {
+    MESO.2 &lt;class &#39;pynwb.device.Device&#39;&gt;
+  }
+  experiment_description: ophys session
+  file_create_date: [datetime.datetime(2024, 1, 21, 18, 31, 22, 932627, tzinfo=tzutc())]
+  identifier: 1237345890
+  imaging_planes: {
+    imaging_plane_1 &lt;class &#39;pynwb.ophys.ImagingPlane&#39;&gt;
+  }
+  institution: Allen Institute for Brain Science
+  intervals: {
+    fixed_gabors_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    gratings_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    movie_flower_fwd_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    movie_touch_of_evil_fwd_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    movie_worms_fwd_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    rotate_gabors_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;,
+    spontaneous_presentations &lt;class &#39;pynwb.epoch.TimeIntervals&#39;&gt;
+  }
+  keywords: &lt;StrDataset for HDF5 dataset &quot;keywords&quot;: shape (5,), type &quot;|O&quot;&gt;
+  lab_meta_data: {
+    metadata &lt;class &#39;abc.OphysMetadata&#39;&gt;
+  }
+  processing: {
+    ophys &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    running &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    stimulus &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;,
+    stimulus_ophys &lt;class &#39;pynwb.base.ProcessingModule&#39;&gt;
+  }
+  session_description: Ophys Session
+  session_start_time: 2023-01-03 17:03:30.439000+00:00
+  stimulus_template: {
+    flower_fwd &lt;class &#39;pynwb.image.ImageSeries&#39;&gt;,
+    touch_of_evil_fwd &lt;class &#39;pynwb.image.ImageSeries&#39;&gt;,
+    worms_fwd &lt;class &#39;pynwb.image.ImageSeries&#39;&gt;
+  }
+  subject: subject pynwb.file.Subject at 0x2035082136544
+Fields:
+  age: P154.0D
+  description: external: 644972 donor_id: (1214404967,) specimen_id: [&#39;644972&#39;]
+  genotype: Rbp4-Cre_KL100/wt;Camk2a-tTA/wt;Ai93(TITL-GCaMP6f)/wt
+  sex: M
+  species: Mus musculus
+  subject_id: 644972
+
+  surgery:  Structure: VISp
+  timestamps_reference_time: 2023-01-03 17:03:30.439000+00:00
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -736,6 +831,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-configuration">Streaming Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-a-file">Streaming a File</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interacting-with-a-remote-file">Interacting with a Remote File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-databook-utils-function">Using Databook Utils Function</a></li>
 </ul>
   </nav></div>
 
@@ -760,7 +856,7 @@ By Carter Peene
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

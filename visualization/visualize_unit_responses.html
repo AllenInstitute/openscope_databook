@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Visualizing Neuronal Unit Responses &#8212; OpenScope Databook</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'G-TJPN1M4PDX');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization/visualize_unit_responses';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -167,7 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -231,9 +243,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
 </ul>
 
@@ -542,18 +556,18 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuronal-unit-responses">
-<h1>Visualizing Neuronal Unit Responses<a class="headerlink" href="#visualizing-neuronal-unit-responses" title="Permalink to this heading">#</a></h1>
+<h1>Visualizing Neuronal Unit Responses<a class="headerlink" href="#visualizing-neuronal-unit-responses" title="Link to this heading">#</a></h1>
 <p>Note: Some of this content is adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_session.html">Allen SDK Documentation</a>.</p>
 <p>After processing Neuropixel ecephys data with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort</a></strong>, individual neuronal units have been identified and are stored in the units table, in the <code class="docutils literal notranslate"><span class="pre">Units</span></code> section of the NWB file. The units table contains information about hypothetical neurons determined by Kilosort. With this information and the stimulus information found in the stimulus tables of the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, this notebook helps examine the spiking behavior of these units in response to stimulus and their associated waveforms</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
 </pre></div>
@@ -573,8 +587,8 @@ document.write(`
 </div>
 </section>
 <section id="downloading-ecephys-file">
-<h2>Downloading Ecephys File<a class="headerlink" href="#downloading-ecephys-file" title="Permalink to this heading">#</a></h2>
-<p>Change the values below to download the file you’re interested in. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to correspond to the dandiset id and filepath of the file you want. If you’re accessing an embargoed dataset, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key. If you want to stream a file instead of downloading it, use <code class="docutils literal notranslate"><span class="pre">dandi_stream_open</span></code> intead. Checkout <a class="reference internal" href="../basics/stream_nwb.html"><span class="doc std std-doc">Streaming an NWB File with fsspec</span></a> for more details on this.</p>
+<h2>Downloading Ecephys File<a class="headerlink" href="#downloading-ecephys-file" title="Link to this heading">#</a></h2>
+<p>Change the values below to download the file you’re interested in. Set <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> and <code class="docutils literal notranslate"><span class="pre">dandi_filepath</span></code> to correspond to the dandiset id and filepath of the file you want. If you’re accessing an embargoed dataset, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key. If you want to stream a file instead of downloading it, use <code class="docutils literal notranslate"><span class="pre">dandi_stream_open</span></code> instead. Checkout <a class="reference internal" href="../basics/stream_nwb.html"><span class="std std-doc">Streaming an NWB File with fsspec</span></a> for more details on this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
@@ -608,8 +622,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="extracting-unit-data-and-stimulus-data">
-<h2>Extracting Unit Data and Stimulus Data<a class="headerlink" href="#extracting-unit-data-and-stimulus-data" title="Permalink to this heading">#</a></h2>
-<p>Below, the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table is read from the file. Individual units (putative neurons) are identified with the <code class="docutils literal notranslate"><span class="pre">id</span></code> column. Note that, while each id is unique, they are not perfectly ordinal; some ids are missing. In the cells below, the unit properties are listed and a slice of the units table is shown. More thorough descriptions of units and their properties can be found in <a class="reference internal" href="visualize_unit_metrics.html"><span class="doc std std-doc">Visualizing Unit Quality Metrics</span></a></p>
+<h2>Extracting Unit Data and Stimulus Data<a class="headerlink" href="#extracting-unit-data-and-stimulus-data" title="Link to this heading">#</a></h2>
+<p>Below, the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table is read from the file. Individual units (putative neurons) are identified with the <code class="docutils literal notranslate"><span class="pre">id</span></code> column. Note that, while each id is unique, they are not perfectly ordinal; some ids are missing. In the cells below, the unit properties are listed and a slice of the units table is shown. More thorough descriptions of units and their properties can be found in <a class="reference internal" href="visualize_unit_metrics.html"><span class="std std-doc">Visualizing Unit Quality Metrics</span></a></p>
 <p>Additionally, the stimulus data is also read from the NWB file’s <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section. Stimulus information is stored as a series of tables depending on the type of stimulus shown in the session. One such table is displayed below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1263,8 +1277,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="getting-stimulus-epochs">
-<h2>Getting Stimulus Epochs<a class="headerlink" href="#getting-stimulus-epochs" title="Permalink to this heading">#</a></h2>
-<p>Here, <em>epochs</em> are extracted from the stimulus tables. In this case, an epoch is a continuous period of time during a session where a particular type of stimulus is shown. The output here is a list of epochs, where an epoch is a tuple of four values; the stimulus name, the stimulus block, the starting time and the ending time. Since stimulus information can vary signifcantly between experiments and NWB files, you may need to tailor the code below to extract epochs for the file you’re interested in.</p>
+<h2>Getting Stimulus Epochs<a class="headerlink" href="#getting-stimulus-epochs" title="Link to this heading">#</a></h2>
+<p>Here, <em>epochs</em> are extracted from the stimulus tables. In this case, an epoch is a continuous period of time during a session where a particular type of stimulus is shown. The output here is a list of epochs, where an epoch is a tuple of four values; the stimulus name, the stimulus block, the starting time and the ending time. Since stimulus information can vary significantly between experiments and NWB files, you may need to tailor the code below to extract epochs for the file you’re interested in.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
@@ -1340,8 +1354,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="visualizing-unit-activity-throughout-epochs">
-<h2>Visualizing Unit Activity Throughout Epochs<a class="headerlink" href="#visualizing-unit-activity-throughout-epochs" title="Permalink to this heading">#</a></h2>
-<p>Below is a view of the spiking activity of a unit throughout a session, where epochs are shown as colored sections. Set <code class="docutils literal notranslate"><span class="pre">unit_num</span></code> to be the id of the unit to view. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> to the starting bound in seconds of the session, you’d like to see, and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the ending bound. You may want to use the output above to inform your choice. As mentioned above, if your file’s stimulus information differs signifcantly, this code may need to be modified to appropriately display the epochs.</p>
+<h2>Visualizing Unit Activity Throughout Epochs<a class="headerlink" href="#visualizing-unit-activity-throughout-epochs" title="Link to this heading">#</a></h2>
+<p>Below is a view of the spiking activity of a unit throughout a session, where epochs are shown as colored sections. Set <code class="docutils literal notranslate"><span class="pre">unit_num</span></code> to be the id of the unit to view. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> to the starting bound in seconds of the session, you’d like to see, and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the ending bound. You may want to use the output above to inform your choice. As mentioned above, if your file’s stimulus information differs significantly, this code may need to be modified to appropriately display the epochs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_num</span> <span class="o">=</span> <span class="mi">950930672</span> <span class="c1"># chosen from units table</span>
@@ -1418,7 +1432,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="probewise-activity-throughout-epochs">
-<h2>Probewise Activity Throughout Epochs<a class="headerlink" href="#probewise-activity-throughout-epochs" title="Permalink to this heading">#</a></h2>
+<h2>Probewise Activity Throughout Epochs<a class="headerlink" href="#probewise-activity-throughout-epochs" title="Link to this heading">#</a></h2>
 <p>It can also be useful to view the activity of an entire probe throughout epochs. The code below allows users to select a probe and a histogram is produced for the total of all unit spiking counts over time for one probe. To do this, the file’s <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table is used. To understand this, you need not know anything about the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table, except that it can be used to map channel IDs to probe IDs. Below is printed a list of the probe names to choose from. Set <code class="docutils literal notranslate"><span class="pre">probe_name</span></code> to one of these. Set <code class="docutils literal notranslate"><span class="pre">time_start</span></code> and <code class="docutils literal notranslate"><span class="pre">time_end</span></code> to the start and ending times, in seconds, to view in the session.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1511,7 +1525,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="regionwise-activity-throughout-epochs">
-<h2>Regionwise Activity Throughout Epochs<a class="headerlink" href="#regionwise-activity-throughout-epochs" title="Permalink to this heading">#</a></h2>
+<h2>Regionwise Activity Throughout Epochs<a class="headerlink" href="#regionwise-activity-throughout-epochs" title="Link to this heading">#</a></h2>
 <p>We can also break down our activity based on brain regions (with a bit of work). To do this, we must first be able to retrieve the brain region of each unit. The trick to do this lay in the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table, shown below. The <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table contains the brain region for each electrode id, while the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table (shown above) contains the <code class="docutils literal notranslate"><span class="pre">Peak</span> <span class="pre">Channel</span> <span class="pre">ID</span></code> for each Unit. These can be used together to get the brain region of each unit’s peak channel. Once this is done, this information can be used just like the Probe selection above to get to get spike counts over time of each Unit in a selected region. Below, set <code class="docutils literal notranslate"><span class="pre">brain_region</span></code>, <code class="docutils literal notranslate"><span class="pre">start_time</span></code>, and <code class="docutils literal notranslate"><span class="pre">end_time</span></code> to view such a plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1825,7 +1839,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="showing-spike-times">
-<h2>Showing Spike Times<a class="headerlink" href="#showing-spike-times" title="Permalink to this heading">#</a></h2>
+<h2>Showing Spike Times<a class="headerlink" href="#showing-spike-times" title="Link to this heading">#</a></h2>
 <p>Here, a histogram plot of unit spikes over time is created. In the second cell below, set <code class="docutils literal notranslate"><span class="pre">stim_time</span></code> to be the time of the stimulus you’re interested in viewing. To get an idea of the stimulus times you might be interested in, access one of the tables in the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, discussed above in <strong>Extracting Unit Data and Stimulus Data</strong>.  The first cell below shows how to access these. Set <code class="docutils literal notranslate"><span class="pre">interval_start</span></code> and <code class="docutils literal notranslate"><span class="pre">interval_end</span></code> to the relative time bounds, in seconds, of the histogram around <code class="docutils literal notranslate"><span class="pre">stim_time</span></code>. Finally, <code class="docutils literal notranslate"><span class="pre">start_unit</span></code> and <code class="docutils literal notranslate"><span class="pre">end_unit</span></code> can be used to choose the slice indices of <code class="docutils literal notranslate"><span class="pre">selected_units</span></code> to display.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1904,7 +1918,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="visualizing-waveforms">
-<h2>Visualizing Waveforms<a class="headerlink" href="#visualizing-waveforms" title="Permalink to this heading">#</a></h2>
+<h2>Visualizing Waveforms<a class="headerlink" href="#visualizing-waveforms" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Units</span></code> table can also be used to view the waveforms of a units with the <code class="docutils literal notranslate"><span class="pre">waveform_mean</span></code> property, which consists of the mean waveform of that unit as measured by each channel along the probe. One channel will contain the peak waveform. With a bit of legwork, the <code class="docutils literal notranslate"><span class="pre">peak_channel_id</span></code> of the unit and the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table can be used to get the single peak waveform as shown below. Just as in the sections above, you don’t need to fully understand the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table except that it can be used to map channel IDs to probe IDs. There is also a timewise and channelwise view of all the mean waveforms and an average of the waveforms across all channels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1950,7 +1964,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <section id="peak-waveform">
-<h3>Peak waveform<a class="headerlink" href="#peak-waveform" title="Permalink to this heading">#</a></h3>
+<h3>Peak waveform<a class="headerlink" href="#peak-waveform" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use peak_channel_id of unit to fetch the peak waveform index from electrodes table</span>
@@ -1987,7 +2001,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="waveforms">
-<h3>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this heading">#</a></h3>
+<h3>Waveforms<a class="headerlink" href="#waveforms" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_waveforms</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;waveform_mean&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
@@ -2029,8 +2043,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="waveform-image">
-<h3>Waveform Image<a class="headerlink" href="#waveform-image" title="Permalink to this heading">#</a></h3>
-<p>Below is an image of the waveform means for each channel of a unit. The further in space from the real neuron, the weaker the measurment of the response waveform, so it is usualyl only useful to view a subsection of the channels at once. Set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to be the bounds of the channels you want displayed. Because the channels are arranged into two rows along the length of a probe, typically a unit is only strongly detected by every other channel. The data shown below displays every other channel to avoid the resultant striping effect. If the waveform looks too dim, try incrementing <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> by 1.</p>
+<h3>Waveform Image<a class="headerlink" href="#waveform-image" title="Link to this heading">#</a></h3>
+<p>Below is an image of the waveform means for each channel of a unit. The further in space from the real neuron, the weaker the measurement of the response waveform, so it is usually only useful to view a subsection of the channels at once. Set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to be the bounds of the channels you want displayed. Because the channels are arranged into two rows along the length of a probe, typically a unit is only strongly detected by every other channel. The data shown below displays every other channel to avoid the resultant striping effect. If the waveform looks too dim, try incrementing <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> by 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_channel</span> <span class="o">=</span> <span class="mi">230</span>
@@ -2069,7 +2083,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="average-waveform-across-channels">
-<h3>Average waveform across channels<a class="headerlink" href="#average-waveform-across-channels" title="Permalink to this heading">#</a></h3>
+<h3>Average waveform across channels<a class="headerlink" href="#average-waveform-across-channels" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_waveform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="s2">&quot;waveform_mean&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -2211,7 +2225,7 @@ By Carter Peene
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

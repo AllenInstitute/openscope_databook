@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contributing to the Databook &#8212; OpenScope Databook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contribution';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bibliography" href="bibliography.html" />
+    <link rel="prev" title="Managing Environments on Multiple Platforms" href="methods/environments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="OpenScope Databook - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="OpenScope Databook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics/read_nwb.html">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="first-order/receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-order/optotagging.html">Identifying Optotagged Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-order/current_source_density.html">Current Source Density Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="projects/cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="embargoed/modality_alignment.html">Aligning Data across Modalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embargoed/visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embargoed/test_2p_responses_embargoed.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embargoed/cell_matching.html">Cell Matching Across Days</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="methods/jupyter_book.html">Jupyter/Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/github.html">Git/Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/environments.html">Managing Environments on Multiple Platforms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Contributing to the Databook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors_index.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fcontribution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/contribution.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Contributing to the Databook</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-the-openscope-databook">Fork the OpenScope Databook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-locally">Initialize Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-contributions">Make Contributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-and-test-locally">Run and Test Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-push-and-make-a-pull-request">Commit, Push and Make a Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interact-on-reviewnb">Interact on ReviewNB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-the-databook">Reviewing the Databook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authorship">Authorship</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styleguide">Styleguide</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="contributing-to-the-databook">
+<h1>Contributing to the Databook<a class="headerlink" href="#contributing-to-the-databook" title="Link to this heading">#</a></h1>
+<p>The OpenScope Databook is a community project. It aims to serve as a collection of contributed analyses from many different experts and to include a comprehensive set of useful and reproducible analyses. Contributors are added to the authors list and have an opportunity to share their figures, results, and datasets through their notebooks in the Databook. Together the project can grow and continue to shape the growing reproducible neuroscience ecosystem.</p>
+<section id="fork-the-openscope-databook">
+<h2>Fork the OpenScope Databook<a class="headerlink" href="#fork-the-openscope-databook" title="Link to this heading">#</a></h2>
+<p>The Databook can be forked via the Github Web UI from the Databook’s <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook">Github repo</a>. Press the <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/fork">fork button</a> or click this link.</p>
+</section>
+<section id="initialize-locally">
+<h2>Initialize Locally<a class="headerlink" href="#initialize-locally" title="Link to this heading">#</a></h2>
+<p>A local repo can be made by pressing the <code class="docutils literal notranslate"><span class="pre">code</span></code> button on the front page of the forked repo, and copying the HTTPS url. Then locally, run the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;copied_url_here&gt;</span></code>. For more information on cloning Github repos, check out Github’s <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">Cloning a Repository</a> Page.</p>
+<p>Then the environment must be set up. You may set up a conda environment if you don’t want to interfere with your local environment. After installing conda, this can be done with the commands <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">databook</span> <span class="pre">python=3.9</span></code> followed by <code class="docutils literal notranslate"><span class="pre">activate</span> <span class="pre">databook</span></code> (Windows) or <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">activate</span> <span class="pre">databook</span></code> (Mac/Linux). Within or without the conda environment, the dependencies for the databook can be installed by navigating to the openscope_databook directory and running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span> <span class="pre">--user</span></code>.</p>
+<p>Finally, notebooks can be run with Jupyter notebook by running <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">./docs</span></code></p>
+</section>
+<section id="make-contributions">
+<h2>Make Contributions<a class="headerlink" href="#make-contributions" title="Link to this heading">#</a></h2>
+<p>A contribution can take the form of changes to an existing notebook. More likely, it will be in adding a new analysis notebook to the databook. First, determine which <em>chapter</em> it will go into within the <code class="docutils literal notranslate"><span class="pre">./docs</span></code> directory, and create a new <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file there. Then the notebook can be produced with the analysis and reproducible figures. For a contribution to be accepted it must adhere to the contribution <strong>Styleguide</strong> below. In addition to having clean code and clear figures, it is important that the notebook has thorough markdown explaining the figures and the analysis performed.</p>
+<p><strong>Important Note:</strong>
+For a notebook to be compliant with the Databook, it must have an environment setup cell at the top. This is described in the <strong>Styleguide</strong> below.</p>
+<p>Any additional packages required for the notebook to run should be added to <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. When the notebook is complete it must be added to <code class="docutils literal notranslate"><span class="pre">docs/_toc.yml</span></code> to the appropriate chapter</p>
+</section>
+<section id="run-and-test-locally">
+<h2>Run and Test Locally<a class="headerlink" href="#run-and-test-locally" title="Link to this heading">#</a></h2>
+<p>Prior to pushing, the notebook should be tested locally. It should be ensured that it runs from beginning to end without interruption and produces clean-looking figures. To confirm everything is configured properly, the Jupyter book should be built and examined with the command <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">./docs</span></code>.</p>
+</section>
+<section id="commit-push-and-make-a-pull-request">
+<h2>Commit, Push and Make a Pull Request<a class="headerlink" href="#commit-push-and-make-a-pull-request" title="Link to this heading">#</a></h2>
+<p>Local progress can be saved with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> and then pushed to the remote fork with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>. See this <a class="reference external" href="https://www.atlassian.com/git/tutorials/saving-changes/git-commit">Git tutorial</a> for more information on how to do this.</p>
+<p>A PR can then be made to the original OpenScope Databook repo. On the forked repo front page, first make sure to press the <code class="docutils literal notranslate"><span class="pre">sync</span> <span class="pre">fork</span></code> button, and then <code class="docutils literal notranslate"><span class="pre">contribute</span></code> can be pressed to make a PR. It is advised to make the PR into the Databook’s dev branch rather than the main branch.</p>
+</section>
+<section id="interact-on-reviewnb">
+<h2>Interact on ReviewNB<a class="headerlink" href="#interact-on-reviewnb" title="Link to this heading">#</a></h2>
+<p>Once the pull request is made, it will be reviewed for merging into the Databook. This process can be monitored on the PR page, where there will be a purple button linking to <a class="reference external" href="https://www.reviewnb.com/">ReviewNB</a>. ReviewNB allows for the additions and changes made to notebooks to be easily viewed and commented on. Please check this for any feedback provided by the Databook team and make revisions accordingly. Once the PR is merged, you will be added to the authors list of the Databook.</p>
+</section>
+<section id="reviewing-the-databook">
+<h2>Reviewing the Databook<a class="headerlink" href="#reviewing-the-databook" title="Link to this heading">#</a></h2>
+<p>Reviews of the Databook are also made on Github via Git commits. We recommend you make a local fork of this repository and create a PR with your edits that either correct or extend a given notebook as discussed in the various sections above. If you feel like a notebook should be discussed, please first make a PR request and enter your reviewing comment on the PR form on Github with ReviewNB. You are free to choose any page of the databook for reviews, depending on your expertise and time. According to the authorship section below, reviewers gain authorship if they propose modifications that are eventually merged into the main branch.</p>
+</section>
+<section id="authorship">
+<h2>Authorship<a class="headerlink" href="#authorship" title="Link to this heading">#</a></h2>
+<p>Authorship will be given upon merging of any PR to the main branch. A sphinx extension running on the repository extracts the list of git contributors and automatically adds a git contributor name. The authors list on the <a class="reference internal" href="intro.html"><span class="std std-doc">intro page</span></a> has a <code class="docutils literal notranslate"><span class="pre">Commits</span></code> section which allows to modify your git username to reflect your real name. Please feel free to make a commit to correct your name in this file if you desire to be listed differently than your git username. To do this, add an entry to the <code class="docutils literal notranslate"><span class="pre">aliases</span></code> parameter which shows your github username and your preferred display name delimited by a comma and separate by a <code class="docutils literal notranslate"><span class="pre">--</span></code>.</p>
+</section>
+<section id="styleguide">
+<h2>Styleguide<a class="headerlink" href="#styleguide" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Each notebook should begin with a markdown cell containing one pound sign <code class="docutils literal notranslate"><span class="pre">#</span></code> and a title. Provide an brief description of the dataset and an overview of the notebook and purpose of the analysis. Relevant background information on the tools used or the analysis conducted should be mentioned.</p></li>
+<li><p>The first section should be <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Environment</span> <span class="pre">Setup</span></code>. The first code cell here should include all the import statements within the notebook. With rare exceptions, in order for the notebook to be compliant with the databook’s usage on all platforms, the cell containing the requirements installation must be included. The cell should resemble the following:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>try:
+    from databook_utils.dandi_utils import dandi_download_open
+except:
+    !git clone https://github.com/AllenInstitute/openscope_databook.git
+    %cd openscope_databook
+    %pip install -e .
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Supplemental information, cited works, and other notebooks should be linked and cited where possible. Links to other notebooks in the databook with related information are strongly advised. For citations, the reference should be added to <code class="docutils literal notranslate"><span class="pre">references.bib</span></code> and in text citations should use Jupyter Book syntax like the following:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{cite}`Lecoq2024`
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The heading of sections should begin with three pound signs <code class="docutils literal notranslate"><span class="pre">##</span></code> and to the extent that is necessary, describe the purpose of the following section and an overview of what the following code does.</p></li>
+<li><p>The purpose of functions that are defined should be briefly described in the section heading markdown cells.</p></li>
+<li><p>In markdown, conceptual keywords should be <em>italicized</em>, packages and tool names should be <strong>bolded</strong>, and variables, methods and filenames should be <code class="docutils literal notranslate"><span class="pre">ticked</span></code>.</p></li>
+<li><p>The major parameters of the notebook that are intended to be easily modified by users should exist in their own code cell at the top of their relevant section with appropriate description, i.e. something like</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bin_size</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># bin size in seconds</span>
+<span class="n">window_start_time</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># time relative to the stimulus to start the histogram</span>
+<span class="n">window_end_time</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># time relative to the stimulus to end the histogram</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Comments should be supplied to specific lines or snippets to describe <em>how</em> they work, or for what <em>specific purpose</em> they serve. General purposes and descriptions of cells or groups of cells are better described in markdown of the relevant section.</p></li>
+<li><p>Variables and Functions should be given descriptive names</p></li>
+<li><p>Cells shouldn’t be too long and should serve one purpose. Large blocks of code should be split into functions and into self-contained cells.</p></li>
+<li><p>Intermediate processing steps should be displayed or plotted to the extent that they are helpful. In general, it is a good idea to show what the data look like during these critical transformations.</p></li>
+<li><p>Code to plot data should be in their own code cells, separate from the code to manipulate data</p></li>
+<li><p>Figures should contain labeled axes and titles.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="methods/environments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Managing Environments on Multiple Platforms</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="bibliography.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-the-openscope-databook">Fork the OpenScope Databook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-locally">Initialize Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-contributions">Make Contributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-and-test-locally">Run and Test Locally</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-push-and-make-a-pull-request">Commit, Push and Make a Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interact-on-reviewnb">Interact on ReviewNB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-the-databook">Reviewing the Databook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authorship">Authorship</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styleguide">Styleguide</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carter Peene
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

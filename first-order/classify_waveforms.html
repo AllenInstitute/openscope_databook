@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Classifying Fast-Spiking and Regular-Spiking Neurons &#8212; OpenScope Databook</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'G-TJPN1M4PDX');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'first-order/classify_waveforms';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -167,7 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -231,9 +243,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Bibliography and FAQ</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
 </ul>
 
@@ -533,17 +547,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="classifying-fast-spiking-and-regular-spiking-neurons">
-<h1>Classifying Fast-Spiking and Regular-Spiking Neurons<a class="headerlink" href="#classifying-fast-spiking-and-regular-spiking-neurons" title="Permalink to this heading">#</a></h1>
+<h1>Classifying Fast-Spiking and Regular-Spiking Neurons<a class="headerlink" href="#classifying-fast-spiking-and-regular-spiking-neurons" title="Link to this heading">#</a></h1>
 <p>In this notebook, we will classify <strong>fast-spiking (FS)</strong> neurons from <strong>regular-spiking (RS)</strong> neurons in visual cortical areas of the mouse brian. We will also visualize the differences between these two types of cells by comparing their peak waveforms and optotagged unit responses. This notebook utilizes open source data from the Allen Institute, but is designed to be customizable with alternative datasets.</p>
 <section id="environment-setup">
-<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p><strong>⚠️Note: If running on a new environment, run this cell once and then restart the kernel⚠️</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
-    <span class="o">!</span>git clone https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
 </pre></div>
@@ -557,7 +571,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
+<span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
 <span class="kn">from</span> <span class="nn">hdmf.common</span> <span class="kn">import</span> <span class="n">DynamicTable</span>
 <span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 <span class="kn">from</span> <span class="nn">pynwb.misc</span> <span class="kn">import</span> <span class="n">Units</span>
@@ -569,7 +583,7 @@ document.write(`
 </div>
 </section>
 <section id="streaming-ecephys-files">
-<h2>Streaming Ecephys Files<a class="headerlink" href="#streaming-ecephys-files" title="Permalink to this heading">#</a></h2>
+<h2>Streaming Ecephys Files<a class="headerlink" href="#streaming-ecephys-files" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000021&quot;</span>
@@ -598,7 +612,7 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="accessing-data-tables">
-<h2>Accessing Data Tables<a class="headerlink" href="#accessing-data-tables" title="Permalink to this heading">#</a></h2>
+<h2>Accessing Data Tables<a class="headerlink" href="#accessing-data-tables" title="Link to this heading">#</a></h2>
 <p>Here, we want to access data from the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table of the NWB file. This table contains information about each unit from a given experiment. A unit typically refers to an individual neuron that is recorded during an extracellular electrophysiology experiment. We will also be accessing data from the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table of the NWB file. This table contains information about each electrode (neuropixel probe) that was used during this experiment. This is a useful place to get information about specific channels, or recording sites, that are positioned along the probe. While we will not use every column of data from both of these tables, the relevant data we extract will be explained below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1144,7 +1158,7 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="extracting-and-aligning-particular-data-from-the-tables">
-<h2>Extracting and Aligning Particular Data From the Tables<a class="headerlink" href="#extracting-and-aligning-particular-data-from-the-tables" title="Permalink to this heading">#</a></h2>
+<h2>Extracting and Aligning Particular Data From the Tables<a class="headerlink" href="#extracting-and-aligning-particular-data-from-the-tables" title="Link to this heading">#</a></h2>
 <p>Now we want to extract and align particular data from the <code class="docutils literal notranslate"><span class="pre">Units</span></code> and <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> tables from above. There are several criteria that need to be met in order for us to select only select neurons that will be valuable to our analysis:</p>
 <ol class="arabic simple">
 <li><p><strong>Location</strong>: The tables above contain information from every area of the brain that the probes were inserted into. However, we only want to analyze data that was collected from areas on the probe that were inserted into the visual cortical areas of the mouse brain. For this reason, we create a dictionary called <code class="docutils literal notranslate"><span class="pre">channel_to_probes_dict</span></code> to map each channel of each probe to its position within the brain so we can exclude units that are not from these desired areas. Since the channel location information is stored in the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table, we wrote a function called <code class="docutils literal notranslate"><span class="pre">get_unit_location</span></code> where we can input a <code class="docutils literal notranslate"><span class="pre">peak_channel_id</span></code> from the stimulus table and receive the location of the channel. This function allows us to align data from the <code class="docutils literal notranslate"><span class="pre">Electrodes</span></code> table with data from the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table. We use the <code class="docutils literal notranslate"><span class="pre">cortex</span></code> list to identify which units we want to select for particular coritcal locations in the example below, and exclude any units that are not from these particular locations in the list.</p></li>
@@ -1201,7 +1215,7 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="plot-the-distribution-of-waveform-durations">
-<h2>Plot the Distribution of Waveform Durations<a class="headerlink" href="#plot-the-distribution-of-waveform-durations" title="Permalink to this heading">#</a></h2>
+<h2>Plot the Distribution of Waveform Durations<a class="headerlink" href="#plot-the-distribution-of-waveform-durations" title="Link to this heading">#</a></h2>
 <p>Now that we have all of our unit selection criteria defined and in one function, we need to generate a list of properties from the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table to plot. For this first plot, we want to plot a distribution of <code class="docutils literal notranslate"><span class="pre">waveform_duration</span></code>s for our selected units. Ideally, this will form a bimodal distribution with one peak containing the waveform durations of fast-spiking (FS) neurons and the other containing the durations of regular-spiking (RS) neurons. Characteristically, FS neurons will have shorter spike durations than RS neurons, so they will be represented by the first peak in the distribution. In order to select the <code class="docutils literal notranslate"><span class="pre">waveform_duration</span></code>s for the desired units, we first created a for-loop that loops through the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table and appends the index of a unit when that unit meets the criteria. This list, <code class="docutils literal notranslate"><span class="pre">selected_unit_indices</span></code>, can be used to index specific data from the units table that meets the criteria for all the superseding plots. Next, we create a for-loop that appends a specific unit’s <code class="docutils literal notranslate"><span class="pre">waveform_duration</span></code> using the <code class="docutils literal notranslate"><span class="pre">selected_unit_indices</span></code> list. This list of durations called <code class="docutils literal notranslate"><span class="pre">selected_waveform_durations</span></code> is then plotted below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1278,8 +1292,8 @@ c:\Users\katrina.ager\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </section>
 <section id="plot-the-waveform-profile-of-rs-vs-fs-neurons">
-<h2>Plot The Waveform Profile of RS vs FS Neurons<a class="headerlink" href="#plot-the-waveform-profile-of-rs-vs-fs-neurons" title="Permalink to this heading">#</a></h2>
-<p>Now that we have defined a threshold point that can classify FS neurons from RS neurons, we can plot the unit peak waveforms for each of these two categories and compare them. There are several steps that must be taken in order to do so. The waveform information in the units table is a 2D array that contains many waveforms for an individual unit. In order to select the peak waveform we want to plot from this 2D array, we need to index the array using the <code class="docutils literal notranslate"><span class="pre">local_index</span></code>. However, the local idex data is stored in the electrodes table and not the units table. First, we need to create a dictionary that maps the <code class="docutils literal notranslate"><span class="pre">id</span></code> of each channel in the <code class="docutils literal notranslate"><span class="pre">electrodes</span></code> table to its associated <code class="docutils literal notranslate"><span class="pre">local_index</span></code>. This dictionary is necessary because by mapping the index to the channel ID, we can cross reference the data between the units table and the electodes table based on a specific idenitfier. Next, we use a for-loop to append the <code class="docutils literal notranslate"><span class="pre">selected_peak_waveform</span></code> to <code class="docutils literal notranslate"><span class="pre">selected_peak_waveform_rs</span></code> if the unit’s duration is above the threshold value or <code class="docutils literal notranslate"><span class="pre">selected_peak_waveform_fs</span></code> if the unit’s duration is less than the threshold value. We then plot the peak waveforms on top of each other for each type of neuron independently.</p>
+<h2>Plot The Waveform Profile of RS vs FS Neurons<a class="headerlink" href="#plot-the-waveform-profile-of-rs-vs-fs-neurons" title="Link to this heading">#</a></h2>
+<p>Now that we have defined a threshold point that can classify FS neurons from RS neurons, we can plot the unit peak waveforms for each of these two categories and compare them. There are several steps that must be taken in order to do so. The waveform information in the units table is a 2D array that contains many waveforms for an individual unit. In order to select the peak waveform we want to plot from this 2D array, we need to index the array using the <code class="docutils literal notranslate"><span class="pre">local_index</span></code>. However, the local idex data is stored in the electrodes table and not the units table. First, we need to create a dictionary that maps the <code class="docutils literal notranslate"><span class="pre">id</span></code> of each channel in the <code class="docutils literal notranslate"><span class="pre">electrodes</span></code> table to its associated <code class="docutils literal notranslate"><span class="pre">local_index</span></code>. This dictionary is necessary because by mapping the index to the channel ID, we can cross reference the data between the units table and the electodes table based on a specific identifier. Next, we use a for-loop to append the <code class="docutils literal notranslate"><span class="pre">selected_peak_waveform</span></code> to <code class="docutils literal notranslate"><span class="pre">selected_peak_waveform_rs</span></code> if the unit’s duration is above the threshold value or <code class="docutils literal notranslate"><span class="pre">selected_peak_waveform_fs</span></code> if the unit’s duration is less than the threshold value. We then plot the peak waveforms on top of each other for each type of neuron independently.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dictionary that maps the channel id to the local index</span>
@@ -1480,7 +1494,7 @@ By Carter Peene
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
