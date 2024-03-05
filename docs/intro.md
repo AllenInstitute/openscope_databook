@@ -1,15 +1,63 @@
 # OpenScope Databook
 
 ### The OpenScope Databook: Reproducible System Neuroscience Notebooks to Facilitate Data Sharing and Collaborative Reuse with Open Science Datasets
-
-```{eval-rst}
-.. authors::
-    :blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-    :additional_authors: Josh Siegle, Ahad Bawany
-    :aliases: colleenjg: Colleen J. Gillon, Carter Peene: R. Carter Peene
-
-.. version:: https://github.com/AllenInstitute/openscope_databook/releases
+```{version} https://github.com/AllenInstitute/openscope_databook/releases
 ```
+
+`````{tab-set}
+````{tab-item} All Contributors
+###### Supplied any substantial contribution to the project
+```{authors}
+```
+````
+
+````{tab-item} Management
+###### Performed administrative and supervisory duties
+```{authors}
+:role: Management
+```
+````
+
+````{tab-item} Conceptualization
+###### Contributed ideas significant to the development of the project and its content
+```{authors}
+:role: Conceptualization
+```
+````
+
+````{tab-item} Processing
+###### Processed data used in the project or wrote substantial code to do so
+```{authors}
+:role: Processing
+```
+````
+
+````{tab-item} Commits
+###### Committed code to the primary Github repository
+```{committers}
+---
+blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon
+---
+```
+````
+
+````{tab-item} Review
+###### Reviewed code or content components the project or the project as a whole 
+```{authors}
+:role: Review
+```
+````
+
+````{tab-item} Funding
+###### Provided funds key to supporting the development of the project
+```{authors}
+:role: Funding
+```
+````
+
+`````
+
 
 ## Abstract
 
@@ -41,7 +89,7 @@ Reproducible Analysis requires four components;
 The Databook leverages a number of technologies to combine those components into a web-application. 
 
 ### Data
-Data is accessed from The [DANDI archive](https://dandiarchive.org/) and downloaded via the [DANDI Python API](https://dandi.readthedocs.io/en/latest/modref/index.html) within notebooks. Most notebooks make use of publically available datasets on DANDI, but for some notebooks, there is not yet sufficient publically-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.
+Data is accessed from The [DANDI archive](https://dandiarchive.org/) and downloaded via the [DANDI Python API](https://dandi.readthedocs.io/en/latest/modref/index.html) within notebooks. Most notebooks make use of publicly available datasets on DANDI, but for some notebooks, there is not yet sufficient publicly-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.
 
 ### Computation
 This project utilizes [Binder](https://mybinder.org/), as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don't have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally or on other hosts. Details about the different ways to run this code can be found in the section [How Can I Use It?](Usage) below.
