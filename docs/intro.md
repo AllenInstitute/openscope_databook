@@ -61,6 +61,7 @@ aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAk
 ````
 
 `````
+*More author information can be found on the [Contributors Page](https://alleninstitute.github.io/openscope_databook/authors_index.html)*
 
 
 ## Abstract
