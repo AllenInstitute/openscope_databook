@@ -42,7 +42,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization/visualize_2p_responses';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Visualizing Unit Spikes" href="visualize_unit_spikes.html" />
+    <link rel="next" title="Visualizing Neuronal Unit Spikes" href="visualize_unit_spikes.html" />
     <link rel="prev" title="Visualizing Neuronal Unit Responses" href="visualize_unit_responses.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -206,7 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -215,7 +215,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
@@ -229,6 +229,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -564,14 +565,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.FB5AE2TYXYH2IJRDKGDGQ3XBKLKTF43H.gfortran-win_amd64.dll
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
-  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -593,7 +586,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000488&quot;</span>
-<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-416366/sub-416366_ses-768476976_behavior+image+ophys.nwb&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-416366/sub-416366_ses-774663713_behavior+image+ophys.nwb&quot;</span>
 <span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
 <span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
@@ -609,19 +602,23 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.59.0) of dandi/dandi-cli is available. You are using 0.55.1
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.62.0) of dandi/dandi-cli is available. You are using 0.61.2
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                              SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
+sub-416366_ses-774663713_behavior+image+ophys.nwb 1.3 GB 1.3 GB           100%    ok    done                   
+Summary:                                          1.3 GB 1.3 GB                         1 done                 
+                                                         100.00%                                               
+Downloaded file to ./sub-416366_ses-774663713_behavior+image+ophys.nwb
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.1 because version 1.8.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.2.0 because version 0.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.5.1 because version 1.8.0 is already loaded.
+  return func(args[0], **pargs)
+c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
+  return func(args[0], **pargs)
+c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.2.0 because version 0.5.0 is already loaded.
+  return func(args[0], **pargs)
 </pre></div>
 </div>
 </div>
@@ -646,8 +643,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(115870, 178)
-(115870,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(115602, 60)
+(115602,)
 </pre></div>
 </div>
 </div>
@@ -721,8 +718,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
   <tbody>
     <tr>
       <th>0</th>
-      <td>102.580917</td>
-      <td>102.814461</td>
+      <td>96.859227</td>
+      <td>97.092785</td>
       <td>randomized_control_pre</td>
       <td>103.0</td>
       <td>NaN</td>
@@ -733,8 +730,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>1</th>
-      <td>102.831096</td>
-      <td>103.064622</td>
+      <td>97.109467</td>
+      <td>97.342922</td>
       <td>randomized_control_pre</td>
       <td>68.0</td>
       <td>NaN</td>
@@ -745,8 +742,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>2</th>
-      <td>103.081333</td>
-      <td>103.314856</td>
+      <td>97.359673</td>
+      <td>97.593186</td>
       <td>randomized_control_pre</td>
       <td>26.0</td>
       <td>NaN</td>
@@ -757,8 +754,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>3</th>
-      <td>103.331516</td>
-      <td>103.565072</td>
+      <td>97.609842</td>
+      <td>97.843379</td>
       <td>randomized_control_pre</td>
       <td>71.0</td>
       <td>NaN</td>
@@ -769,8 +766,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>4</th>
-      <td>103.581687</td>
-      <td>103.815235</td>
+      <td>97.860016</td>
+      <td>98.093599</td>
       <td>randomized_control_pre</td>
       <td>110.0</td>
       <td>NaN</td>
@@ -781,8 +778,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>5</th>
-      <td>103.831911</td>
-      <td>104.065457</td>
+      <td>98.110304</td>
+      <td>98.343795</td>
       <td>randomized_control_pre</td>
       <td>6.0</td>
       <td>NaN</td>
@@ -793,8 +790,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>6</th>
-      <td>104.082153</td>
-      <td>104.315617</td>
+      <td>98.360481</td>
+      <td>98.593965</td>
       <td>randomized_control_pre</td>
       <td>112.0</td>
       <td>NaN</td>
@@ -805,8 +802,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>7</th>
-      <td>104.332359</td>
-      <td>104.565821</td>
+      <td>98.610681</td>
+      <td>98.844193</td>
       <td>randomized_control_pre</td>
       <td>17.0</td>
       <td>NaN</td>
@@ -817,8 +814,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>8</th>
-      <td>104.582515</td>
-      <td>104.816081</td>
+      <td>98.860935</td>
+      <td>99.094417</td>
       <td>randomized_control_pre</td>
       <td>13.0</td>
       <td>NaN</td>
@@ -829,8 +826,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
     </tr>
     <tr>
       <th>9</th>
-      <td>104.832731</td>
-      <td>105.066273</td>
+      <td>99.111076</td>
+      <td>99.344660</td>
       <td>randomized_control_pre</td>
       <td>111.0</td>
       <td>NaN</td>
@@ -909,12 +906,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
-(&#39;trials&#39;, &#39;randomized_control_pre&#39;, 102.58091661959725, 207.73271267031623)
-(&#39;trials&#39;, &#39;oddball&#39;, 267.7980219847227, 2269.8206912029705)
-(&#39;trials&#39;, &#39;transition_control&#39;, 2329.885995836317, 2690.2113244542556)
-(&#39;trials&#39;, &#39;occlusion&#39;, 2750.777092659118, 3350.829824249638)
-(&#39;trials&#39;, &#39;natural_movie_one&#39;, 3410.895166331465, 3711.1216876550166)
-(&#39;trials&#39;, &#39;randomized_control_post&#39;, 3771.2371179895413, 3876.3055732709176)
+(&#39;trials&#39;, &#39;randomized_control_pre&#39;, 96.85922653001849, 201.92996560008845)
+(&#39;trials&#39;, &#39;oddball&#39;, 261.9966622453148, 2263.643705924108)
+(&#39;trials&#39;, &#39;transition_control&#39;, 2323.7101729026263, 2683.9929431090795)
+(&#39;trials&#39;, &#39;occlusion&#39;, 2744.5599530956906, 3344.541968006125)
+(&#39;trials&#39;, &#39;natural_movie_one&#39;, 3404.608484428908, 3704.841401183113)
+(&#39;trials&#39;, &#39;randomized_control_post&#39;, 3764.907918483551, 3869.978599917559)
 </pre></div>
 </div>
 </div>
@@ -995,10 +992,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174.87656701939662
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>121.6392025533595
 </pre></div>
 </div>
-<img alt="../_images/4625efc2a8197487edd4f6116f45d4f90c89fb4e6f26141392dd74d5baf184ab.png" src="../_images/4625efc2a8197487edd4f6116f45d4f90c89fb4e6f26141392dd74d5baf184ab.png" />
+<img alt="../_images/85678aa6e9b9adafb6572f98d078093baf94b5a92d836ee5342cbf4e7844e476.png" src="../_images/85678aa6e9b9adafb6572f98d078093baf94b5a92d836ee5342cbf4e7844e476.png" />
 </div>
 </div>
 </section>
@@ -1028,7 +1025,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13924 22968
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14075 23099
 </pre></div>
 </div>
 </div>
@@ -1054,7 +1051,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;ROIs DF/F Over Time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/89d52dcf68c1e89c7a9537a7f5f865acd61434c1ed4f0d7f597eb12b9978e432.png" src="../_images/89d52dcf68c1e89c7a9537a7f5f865acd61434c1ed4f0d7f597eb12b9978e432.png" />
+<img alt="../_images/bf26486494af4687fb13fcf0389b2b7f5e3049a23fb32b4ceffd069ca2d83f98.png" src="../_images/bf26486494af4687fb13fcf0389b2b7f5e3049a23fb32b4ceffd069ca2d83f98.png" />
 </div>
 </div>
 </section>
@@ -1104,7 +1101,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Visualizing Unit Spikes</p>
+        <p class="prev-next-title">Visualizing Neuronal Unit Spikes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

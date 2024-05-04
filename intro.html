@@ -42,7 +42,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -70,6 +70,8 @@
                 gtag('config', 'G-TJPN1M4PDX');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -207,7 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -216,7 +218,7 @@
 <li class="toctree-l1"><a class="reference internal" href="first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
@@ -230,6 +232,7 @@
 <li class="toctree-l1"><a class="reference internal" href="projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -484,7 +487,7 @@ document.write(`
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 All Contributors</label><div class="sd-tab-content docutils">
 <h6 class="rubric" id="supplied-any-substantial-contribution-to-the-project">Supplied any substantial contribution to the project</h6>
-<em>Katrina Ager, Ahad Bawany, Corbett Bennett, Benjamin Dichter, Satrajit Ghosh, Colleen J. Gillon, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, NIH, R. Carter Peene, Jason Pina, Hyeyoung Shin, Josh Siegle, Jacob Westerberg, Alex Williams</em></div>
+<em>Ahad Bawany, Alex Williams, Benjamin Dichter, Carly Kiselycznyk, Colleen J. Gillon, Corbett Bennett, Hyeyoung Shin, Jacob Westerberg, Jason Pina, Jerome Lecoq, Josh Siegle, Katrina Ager, KimYeerim, Mackenzie Mathis, R. Carter Peene, Satrajit Ghosh, Shailaja Akella, Yaroslav Halchenko</em></div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Management</label><div class="sd-tab-content docutils">
@@ -494,28 +497,29 @@ Management</label><div class="sd-tab-content docutils">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 Conceptualization</label><div class="sd-tab-content docutils">
 <h6 class="rubric" id="contributed-ideas-significant-to-the-development-of-the-project-and-its-content">Contributed ideas significant to the development of the project and its content</h6>
-<em>Benjamin Dichter, Satrajit Ghosh, Jerome Lecoq, R. Carter Peene, Jason Pina, Hyeyoung Shin, Jacob Westerberg</em></div>
+<em>Benjamin Dichter, Hyeyoung Shin, Jacob Westerberg, Jason Pina, Jerome Lecoq, R. Carter Peene, Satrajit Ghosh</em></div>
 <input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
 Processing</label><div class="sd-tab-content docutils">
 <h6 class="rubric" id="processed-data-used-in-the-project-or-wrote-substantial-code-to-do-so">Processed data used in the project or wrote substantial code to do so</h6>
-<em>Katrina Ager, Ahad Bawany, Corbett Bennett, Colleen J. Gillon, R. Carter Peene, Josh Siegle</em></div>
+<em>Ahad Bawany, Colleen J. Gillon, Corbett Bennett, Josh Siegle, Katrina Ager, R. Carter Peene</em></div>
 <input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
 Commits</label><div class="sd-tab-content docutils">
 <h6 class="rubric" id="committed-code-to-the-primary-github-repository">Committed code to the primary Github repository</h6>
-<em>R. Carter Peene (1253), Katrina Ager (76), Jerome Lecoq (14), Yaroslav Halchenko (5), Colleen J. Gillon (1), Mackenzie Mathis (2)</em></div>
+<em>R. Carter Peene (1324), Katrina Ager (76), Jerome Lecoq (15), Yaroslav Halchenko (5), Colleen J. Gillon (4), KimYeerim (2), Mackenzie Mathis (2), Shailaja Akella (1)</em></div>
 <input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-5">
 Review</label><div class="sd-tab-content docutils">
 <h6 class="rubric" id="reviewed-code-or-content-components-the-project-or-the-project-as-a-whole">Reviewed code or content components the project or the project as a whole</h6>
-<em>Mackenzie Mathis, Alex Williams</em></div>
+<em>Alex Williams, Mackenzie Mathis</em></div>
 <input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-6">
 Funding</label><div class="sd-tab-content docutils">
 <h6 class="rubric" id="provided-funds-key-to-supporting-the-development-of-the-project">Provided funds key to supporting the development of the project</h6>
 <em>NIH</em></div>
 </div>
+<p><em>More author information can be found on the <a class="reference external" href="https://alleninstitute.github.io/openscope_databook/authors_index.html">Contributors Page</a></em></p>
 </section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>

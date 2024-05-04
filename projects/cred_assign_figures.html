@@ -42,7 +42,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -206,7 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -215,7 +215,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
@@ -229,6 +229,7 @@
 <li class="toctree-l1"><a class="reference internal" href="glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -537,7 +538,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replications">Replications</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-1-tracked-roi-examples-dataset-descriptor-paper-fig-2b">Replication 1. Tracked ROI examples (Dataset descriptor paper, Fig. 2B)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-2-example-roi-responses-to-inconsistent-gabor-sequences-dataset-descriptor-paper-fig-5b">Replication 2. Example ROI responses to inconsistent Gabor sequences (Dataset descriptor paper, Fig. 5B)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-3-example-roi-responses-to-inconsistent-gabor-sequences-dataset-descriptor-paper-fig-6a">Replication 3. Example ROI responses to inconsistent Gabor sequences (Dataset descriptor paper, Fig. 6A)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-3-running-velocity-and-pupil-diameter-traces-across-a-full-session-dataset-descriptor-paper-fig-6a">Replication 3. Running velocity and pupil diameter traces across a full session (Dataset descriptor paper, Fig. 6A)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-4-mean-gabor-sequence-responses-for-example-rois-analysis-paper-fig-4a">Replication 4. Mean Gabor sequence responses for example ROIs (Analysis paper, Fig. 4A)</a></li>
 </ul>
 </li>
@@ -555,24 +556,24 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="replicating-openscope-credit-assignment-project-figures">
 <h1>Replicating OpenScope Credit Assignment project figures<a class="headerlink" href="#replicating-openscope-credit-assignment-project-figures" title="Link to this heading">#</a></h1>
-<p>In this notebook, we will replicate figures from the OpenScope Credit Assignment project. All of these figures were published in the dataset description paper <span id="id1">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, except for the final figure which is from the analysis paper <span id="id2">[<a class="reference internal" href="../bibliography.html#id19" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. Journal of Neuroscience, 2024. URL: https://www.jneurosci.org/content/44/5/e1009232023.">Gillon <em>et al.</em>, 2024</a>]</span>. See these papers for full details on the project and dataset.</p>
+<p>In this notebook, we will replicate figures from the OpenScope Credit Assignment project. All of these figures were published in the dataset description paper <span id="id1">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, except for the final figure which is from the analysis paper <span id="id2">[<a class="reference internal" href="../bibliography.html#id19" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. The Journal of Neuroscience, 44(5):e1009232023, 2024. URL: https://www.jneurosci.org/content/44/5/e1009232023.">Gillon <em>et al.</em>, 2024</a>]</span>. See these papers for full details on the project and dataset.</p>
 <p>The objective of collecting and sharing this dataset was to enable users to study how different compartments of visual cortex pyramidal neurons respond when inconsistent (i.e., unexpected or pattern-violating) features are introduced into the stimuli that mice are viewing. To achieve this, we first habituated mice to stimuli with consistent features, before introducing inconsistent features while recording neuronal activity in the somata (i.e., cell bodies) or distal apical dendrites of layer 2/3 or layer 5 pyramidal neurons in primary visual cortex.</p>
 <p>Since the full analyses performed on this dataset require a larger codebase (and in some cases, longer compute time) than is convenient for a notebook, this notebook focuses on replicating a few figures from data dictionaries. These data dictionaries were generated using the full analysis pipeline, and contain all the information needed to plot the associated figures.</p>
 <p>To work with the full analysis pipeline, from NWB data files to final plots, see the <a class="reference external" href="https://github.com/colleenjg/OpenScope_CA_Analysis">OpenScope_CA_Analysis</a> GitHub repository.</p>
 <section id="summary-of-experiments">
 <h2>Summary of experiments<a class="headerlink" href="#summary-of-experiments" title="Link to this heading">#</a></h2>
-<p>In brief, for this project, mice were head-fixed on a running disc and underwent 3 two-photon calcium imaging sessions in primary visual cortex (VisP) while passively viewing a visual stimulus (described below). In each mouse, imaging was performed in one of four cortical planes: layer 2/3 distal apical dendrites (<strong>L2/3-D</strong>), layer 2/3 somata (<strong>L2/3-S</strong>), layer 5 distal apical dendrites (<strong>L5-D</strong>) or layer 5 somata (<strong>L5-S</strong>).</p>
-<p>Figure 1 from <span id="id3">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
+<p>In brief, for this project, mice were head-fixed on a running disc and underwent <strong>three</strong> two-photon calcium imaging sessions in primary visual cortex (VisP) while passively viewing a visual stimulus (described below). In each mouse, imaging was performed in one of four cortical planes: layer 2/3 distal apical dendrites (<strong>L2/3-D</strong>), layer 2/3 somata (<strong>L2/3-S</strong>), layer 5 distal apical dendrites (<strong>L5-D</strong>) or layer 5 somata (<strong>L5-S</strong>).</p>
+<p><strong>Figure 1</strong> from <span id="id3">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
 <p><img alt="title" src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41597-023-02214-y/MediaObjects/41597_2023_2214_Fig1_HTML.png?as=webp" /></p>
-<p>Previous to the imaging sessions, mice had been habituated over 6 days to stimuli with consistent features: (1) a Gabor sequence stimulus, and (2) a visual flow stimulus.</p>
-<p>The Gabor sequence stimulus was presented for 34 minutes. Each sequence lasted 1.5 seconds and consisted of 5 consecutive images (A-B-C-D-G) presented for 300 ms each. Images A, B, C and D comprised 30 Gabor patches each with positions and sizes fixed within a single session, while image G was simply a grayscreen image. For each sequence, a mean orientation was randomly sampled from {0, 45, 90, 135}°. This mean orientation was used to sample the orientation of each Gabor patch for all images in the sequence.</p>
-<p>The visual flow stimulus consisted of white squares moving together at a consistent speed in one direction (17 min) and then the other (17 min) (directions: nasal-to-temporal and temporal-to-nasal).</p>
-<p>Figure 3 from <span id="id4">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
+<p>Previous to the imaging sessions, mice had been habituated over six days to stimuli with consistent features: (1) a Gabor sequence stimulus, and (2) a visual flow stimulus.</p>
+<p>The Gabor sequence stimulus was presented for 34 minutes. Each sequence lasted 1.5 seconds and consisted of five consecutive images (A-B-C-D-G) presented for 300 ms each. Images A, B, C and D comprised 30 Gabor patches each with positions and sizes fixed within a single session, while image G was simply a grayscreen image. For each sequence, a mean orientation was randomly sampled from {0, 45, 90, 135}°. This mean orientation was used to sample the orientation of each Gabor patch for all images in the sequence.</p>
+<p>The visual flow stimulus consisted of white squares moving together at a consistent speed in one direction (17 min), and then the other (17 min) (directions: nasal-to-temporal and temporal-to-nasal).</p>
+<p><strong>Figure 3</strong> from <span id="id4">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
 <p><img alt="title" src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41597-023-02214-y/MediaObjects/41597_2023_2214_Fig3_HTML.png?as=webp" /></p>
-<p>As mentioned above, once the mice had been habituated to these stimuli, inconsistent stimulus features were introduced into the Gabor sequence stimulus and the visual flow stimulus during the 3 two-photon calcium imaging sessions which were performed on different days.</p>
+<p>As mentioned above, once the mice had been habituated to these stimuli, inconsistent stimulus features were introduced into the Gabor sequence stimulus and the visual flow stimulus during the three two-photon calcium imaging sessions which were performed on different days.</p>
 <p>For the Gabor sequence stimulus, inconsistent sequences were randomly introduced, accounting for about 7% of all sequences. In these inconsistent sequences, D images were replaced with U images. The Gabor patches in U images had their own positions and sizes, and in addition, their orientations were rotated by 90° with respect to the rest of the sequence they were in.</p>
 <p>For the visual flow stimulus, inconsistent flow was introduced randomly, accounting for around 5% of the total duration of the stimulus. During inconsistent flow, 25% of the squares randomly flipped their direction of flow for 2-4 seconds, before resuming consistent flow.</p>
-<p>Full series of 3 sessions were obtained for 11 mice, in total.</p>
+<p>Full series of three imaging sessions were obtained for 11 mice, in total.</p>
 </section>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
@@ -581,19 +582,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">cred_assign_utils</span>
+    <span class="kn">from</span> <span class="nn">databook_utils</span> <span class="kn">import</span> <span class="n">cred_assign_utils</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.FB5AE2TYXYH2IJRDKGDGQ3XBKLKTF43H.gfortran-win_amd64.dll
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
-  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
 </pre></div>
 </div>
 </div>
@@ -717,7 +710,26 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_data_dict</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">paper</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">direc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     
     <span class="k">if</span> <span class="n">direc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">direc</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;cred_assign_data&quot;</span><span class="p">)</span>
+        <span class="n">possible_parent_direcs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;openscope_databook&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">),</span> 
+            <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">),</span> 
+            <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">),</span> 
+            <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="n">direc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">parent_direc</span> <span class="ow">in</span> <span class="n">possible_parent_direcs</span><span class="p">:</span>
+            <span class="n">possible_direc</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">parent_direc</span><span class="p">,</span> <span class="s2">&quot;cred_assign_data&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">possible_direc</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="n">direc</span> <span class="o">=</span> <span class="n">possible_direc</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">direc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">possible_parent_direc_names</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">direc</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">direc</span> <span class="ow">in</span> <span class="n">possible_parent_direcs</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span>
+                <span class="s2">&quot;&#39;cred_assign_direc&#39; not found in any of the following &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; locations: </span><span class="si">{</span><span class="n">possible_parent_direc_names</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         
     <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">paper</span><span class="si">}</span><span class="s2">_fig</span><span class="si">{</span><span class="n">fig</span><span class="si">}{</span><span class="n">panel</span><span class="si">}</span><span class="s2">.json&quot;</span>
     <span class="n">filepath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">direc</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
@@ -726,7 +738,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">data_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading data for </span><span class="si">{</span><span class="n">paper</span><span class="si">}</span><span class="s2"> paper Fig. </span><span class="si">{</span><span class="n">fig</span><span class="si">}{</span><span class="n">panel</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading data for </span><span class="si">{</span><span class="n">paper</span><span class="si">}</span><span class="s2"> paper Fig. </span><span class="si">{</span><span class="n">fig</span><span class="si">}{</span><span class="n">panel</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_df&quot;</span><span class="p">):</span>
             <span class="n">data_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
@@ -748,21 +760,22 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">    `</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">` dictionary:&quot;</span><span class="p">)</span>
             <span class="n">pprint</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">    `</span><span class="si">{</span><span class="n">df_key</span><span class="si">}</span><span class="s2">` dictionary (first few lines):&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">    `</span><span class="si">{</span><span class="n">df_key</span><span class="si">}</span><span class="s2">` dictionary (first few lines only):&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data_dict</span><span class="p">[</span><span class="n">df_key</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The data dictionary for each figure panel contain records of a variety of parameters used during the analysis, each stored as their own dictionary. These include:</p>
+<p>The data dictionary for each figure panel contains records of a variety of parameters used during the analysis, each stored as their own sub-dictionary. These include:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sesspar</span></code>: parameters used to select the sections to be analyzed,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sesspar</span></code>: parameters used to select the sessions to be analyzed,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stimpar</span></code>: parameters used to select the specific stimulus sequences to be analyzed, within a session,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">analyspar</span></code>: parameters used to select the type of data to be analyzed, within each session, and the statistics to use,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">analyspar</span></code>: parameters used to select the type of data to be analyzed, within each session, as well as the statistics to use,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">basepar</span></code>: parameters used to baseline the data, if applicable,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">extrapar</span></code>: any additional parameters used, specific to this analysis,</p></li>
 </ul>
 <p>In addition, each data dictionary contains a dataframe-structured dictionary, e.g., <code class="docutils literal notranslate"><span class="pre">ex_traces_df</span></code>, in which the analysis results are stored, typically with one line per session analyzed.</p>
+<p>Here is an example data dictionary:</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dict</span> <span class="o">=</span> <span class="n">load_data_dict</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">paper</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
@@ -771,7 +784,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 5B
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 5B.
 
     `analyspar` dictionary:
 {&#39;dend&#39;: &#39;extr&#39;,
@@ -809,7 +822,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
  &#39;visflow_dir&#39;: &#39;none&#39;,
  &#39;visflow_size&#39;: &#39;none&#39;}
 
-    `ex_traces_df` dictionary (first few lines):
+    `ex_traces_df` dictionary (first few lines only):
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -927,12 +940,12 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </section>
 <section id="replications">
 <h2>Replications<a class="headerlink" href="#replications" title="Link to this heading">#</a></h2>
-<p>The functions used to replicate the figures below have been specifically written to work with the data dictionaries generated for these paper analyses. As a result, they are not directly applicable to other datasets or analyses. Instead, these functions can be seen as helpful examples for how to store the parameters and results of an analysis in minimal, portal files, and directly plot informative figures in <code class="docutils literal notranslate"><span class="pre">Python</span></code> from the stored data.</p>
+<p>The functions used to replicate the figures below have been specifically written to work with the data dictionaries generated for these paper analyses. As a result, they are not directly applicable to other datasets or analyses. Instead, these functions can be seen as helpful examples of how to store the parameters and results of an analysis in minimal, portable files, and directly plot informative figures in <code class="docutils literal notranslate"><span class="pre">Python</span></code> from the stored data.</p>
 <p>Note that the functions may call some additional functions from the <code class="docutils literal notranslate"><span class="pre">cred_assign_utils</span></code> module. The functions in this extra module mostly handle aesthetic details in the plots, and were left out of the notebook for brevity.</p>
 <section id="replication-1-tracked-roi-examples-dataset-descriptor-paper-fig-2b">
 <h3>Replication 1. Tracked ROI examples (Dataset descriptor paper, Fig. 2B)<a class="headerlink" href="#replication-1-tracked-roi-examples-dataset-descriptor-paper-fig-2b" title="Link to this heading">#</a></h3>
-<p>As described above, for this dataset, two-photon calcium imaging was performed in each mouse across three sessions, in the same imaging plane. Since the imaging planes were carefully aligned between sessions, it was possible to track the individual somata or distal apical dendrite segments across sessions for each mouse. First, individual somata or distal apical dendrite segments were identified in each session as <strong>R</strong>egions <strong>O</strong>f <strong>I</strong>nterest (ROIs). Then, the ROIs that could be reliably identified in all three sessions were included in the subset of “tracked” ROIs.</p>
-<p>The following function, <code class="docutils literal notranslate"><span class="pre">plot_roi_masks_overlayed_with_proj(roi_mask_df)</span></code>, plots tracked ROI contours for all three imaging sessions, as well as their overlays, for two example mice.</p>
+<p>As described above, for this dataset, two-photon calcium imaging was performed in each mouse across three sessions, in the same imaging plane. Since the imaging planes were carefully aligned between sessions, it was possible to track individual somata or distal apical dendrite segments across sessions for each mouse. First, individual somata or distal apical dendrite segments were identified in each session as <strong>R</strong>egions <strong>O</strong>f <strong>I</strong>nterest (ROIs). Then, the ROIs that could be reliably identified across all three sessions were included in the subset of “tracked” ROIs.</p>
+<p>The following function, <code class="docutils literal notranslate"><span class="pre">plot_roi_masks_overlayed_with_proj(roi_mask_df)</span></code>, plots the contours of tracked ROIs for all three imaging sessions, as well as an overlay of their masks, for two example mice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_roi_masks_overlayed_with_proj</span><span class="p">(</span><span class="n">roi_mask_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rasterize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -946,9 +959,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">        - roi_mask_df (pd.DataFrame in dict format):</span>
 <span class="sd">            dataframe with a row for each mouse, and the following </span>
 <span class="sd">            columns, in addition to the basic sess_df columns: </span>
-
-<span class="sd">            - &quot;max_projections&quot; (list): pixel intensities of maximum projection </span>
-<span class="sd">                for the plane (hei x wid)</span>
+<span class="sd">            - &quot;max_projections&quot; (list): pixel intensities of the maximum </span>
+<span class="sd">                projection for the plane (hei x wid)</span>
 <span class="sd">            - &quot;registered_roi_mask_idxs&quot; (list): list of mask indices, </span>
 <span class="sd">                registered across sessions, for each session </span>
 <span class="sd">                (flattened across ROIs) ((sess, hei, wid) x val)</span>
@@ -958,7 +970,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">                (sess x hei x wid)</span>
 <span class="sd">            - &quot;crop_fact&quot; (num): factor by which to crop masks (&gt; 1) </span>
 <span class="sd">            - &quot;shift_prop_hei&quot; (float): proportion by which to shift cropped </span>
-<span class="sd">                mask center vertically from left edge [0, 1]</span>
+<span class="sd">                mask center vertically from top edge [0, 1]</span>
 <span class="sd">            - &quot;shift_prop_wid&quot; (float): proportion by which to shift cropped </span>
 <span class="sd">                mask center horizontally from left edge [0, 1]</span>
 
@@ -967,7 +979,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">            plot title</span>
 <span class="sd">            default: None</span>
 <span class="sd">        - rasterize (bool):</span>
-<span class="sd">            if True, individual grey lines are rasterized (reduces save time)</span>
+<span class="sd">            if True, imaging planes are rasterized </span>
+<span class="sd">            (if saving figure, reduces save time and file size)</span>
 <span class="sd">            default: False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1002,7 +1015,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Tracked ROI examples&quot;</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.93</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
     
-    <span class="c1"># plot each set of ROI traces</span>
+    <span class="c1"># plot each set of ROI masks</span>
     <span class="n">alpha</span><span class="p">,</span> <span class="n">raster_zorder</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">plane</span><span class="p">),</span> <span class="n">lp_mask_df</span> <span class="ow">in</span> <span class="n">roi_mask_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="s2">&quot;planes&quot;</span><span class="p">]):</span>
         <span class="n">li</span><span class="p">,</span> <span class="n">pl</span> <span class="o">=</span> <span class="n">LINPLA_INFO</span><span class="p">[</span><span class="n">line</span><span class="p">][</span><span class="n">plane</span><span class="p">][</span><span class="s2">&quot;idx&quot;</span><span class="p">]</span>
@@ -1081,8 +1094,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 </div>
-<p>Specifically, examples are shown for one L5-D mouse and one L5-S mouse. In each case, at the top, the two-photon calcium imaging projections are shown for each recording session (1-3, left to right). Dendritic segments (top) and somata (bottom) can be seen as white blobs over a black background. Over the projections, the contours of tracked ROIs have been drawn in different colors for each section. Below these images, the ROI masks for all three imaging sessions are shown realigned and overlaid.</p>
-<p>Note that in each case, the images do not reflect the full field of view. Instead, a cropped-in section is shown, for better visibility. Scale bars show actual size of each image.</p>
+<p>Specifically, examples are shown for one L5-D mouse and one L5-S mouse. In each case, at the top, the two-photon calcium imaging projections are shown for each recording session (1-3, left to right). Dendritic segments (top) and somata (bottom) can be seen as white blobs over a black background. Over the projections, the contours of tracked ROIs have been drawn in different colors for each session. Below these images, the ROI masks for all three imaging sessions are shown realigned and overlaid.</p>
+<p>Note that in each case, the images do not reflect the full field of view. Instead, a cropped-in section is shown, for better visibility. Scale bars convey the actual size of each image.</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dict</span> <span class="o">=</span> <span class="n">load_data_dict</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">paper</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
@@ -1092,10 +1105,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 2B
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 2B.
 </pre></div>
 </div>
-<img alt="../_images/c75e36f97aa556d82c981bfe36bd3db6f426845a190d6a569ac0cb958495be57.png" src="../_images/c75e36f97aa556d82c981bfe36bd3db6f426845a190d6a569ac0cb958495be57.png" />
+<img alt="../_images/db15643788760293b940c41fcb43056e67fb8c4e102730aa7da48eafc1a23c44.png" src="../_images/db15643788760293b940c41fcb43056e67fb8c4e102730aa7da48eafc1a23c44.png" />
 </div>
 </div>
 </section>
@@ -1112,9 +1125,9 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 
 <span class="sd">    Required args:</span>
 <span class="sd">        - ex_traces_df (pd.DataFrame):</span>
-<span class="sd">            dataframe with a row for each ROI, and the following columns, </span>
+<span class="sd">            dataframe with a row for each selected ROI, and the following columns, </span>
 <span class="sd">            in addition to the basic sess_df columns: </span>
-<span class="sd">            - time_values (list): values for each frame, in seconds</span>
+<span class="sd">            - time_values (list): time values for each frame, in seconds</span>
 <span class="sd">            - roi_ns (list): selected ROI number</span>
 <span class="sd">             - traces_sm (list): selected ROI sequence traces, smoothed, with </span>
 <span class="sd">                dims: seq x frames</span>
@@ -1125,7 +1138,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">            plot title</span>
 <span class="sd">            default: None</span>
 <span class="sd">        - rasterize (bool):</span>
-<span class="sd">            if True, individual grey lines are rasterized (if saving figure, reduces save time and file size)</span>
+<span class="sd">            if True, individual gray lines are rasterized </span>
+<span class="sd">            (if saving figure, reduces save time and file size)</span>
 <span class="sd">            default: False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1217,7 +1231,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">            default: None</span>
 <span class="sd">        - zorder (int):</span>
 <span class="sd">            zorder for the individual traces </span>
-<span class="sd">            (zorder + 1 used for vertical dash line at 0)</span>
+<span class="sd">            (zorder + 1 used for vertical dashed line at 0)</span>
 <span class="sd">            default: -13</span>
 
 <span class="sd">    Returns:</span>
@@ -1256,15 +1270,15 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 </div>
-<p>Specifically, for each of the four imaging planes, 6 example ROIs were selected for each imaging plane, from all the session 1 recordings (aggregated across mice). These ROIs were selected if they showed consistent responses to the Gabor sequences across sequence presentations. The fluorescence responses (ΔF/F) of the ROIs to each inconsistent sequence presentation are plotted in light gray. The mean response across inconsistent sequences is plotted in color.</p>
-<p>The ROI responses for each imaging plane are arranged in a 2 column x 3 row quadrant (top left: L2/3-D, bottom left: L2/3-S, top right: L5-D, bottom right: L5-S). The vertical gray dashed lines at 0 seconds mark the onset of U images in the A-B-C-U-G sequences (-0.9 to 0.3 seconds). Additional gray dashed lines were plotted horizontal at 0, but are largely hidden by the gray traces.</p>
+<p>Specifically, for each of the four imaging planes, <strong>six</strong> example ROIs were selected for each imaging plane, from all the session 1 recordings (aggregated across mice). These ROIs were selected if they showed consistent responses to the Gabor sequences across sequence presentations. The fluorescence responses (ΔF/F) of the ROIs to each inconsistent sequence presentation are plotted in light gray. The mean response across inconsistent sequences is plotted in color.</p>
+<p>The example ROI responses for each imaging plane are arranged in a 2 column x 3 row quadrant (top left: L2/3-D, bottom left: L2/3-S, top right: L5-D, bottom right: L5-S). The vertical gray dashed lines at 0 seconds mark the onset of U images in the A-B-C-D/U-G sequences (running from -0.9 to 0.3 seconds). Additional gray dashed lines are plotted horizontally at 0, but are largely hidden by the gray traces.</p>
 <p>Time, as a function of Gabor sequence image:</p>
 <ul class="simple">
 <li><p>A: -0.9 to -0.6 seconds</p></li>
 <li><p>B: -0.6 to -0.3 seconds</p></li>
 <li><p>C: -0.3 to  0.0 seconds</p></li>
 <li><p>U:  0.0 to  0.3 seconds</p></li>
-<li><p>G:  0.0 to  0.6 seconds</p></li>
+<li><p>G:  0.3 to  0.6 seconds</p></li>
 </ul>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
@@ -1275,25 +1289,25 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 5B
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 5B.
     Plotting individual traces...
 </pre></div>
 </div>
-<img alt="../_images/f5e3b28ff05ce9219e278e9a1940e922c1ea4795cf25db92e19f2fa74d3c394b.png" src="../_images/f5e3b28ff05ce9219e278e9a1940e922c1ea4795cf25db92e19f2fa74d3c394b.png" />
+<img alt="../_images/3a5bf1abb9591a498b2003bdbc1f2c41e2959311f34131f0bccbcff1689e0222.png" src="../_images/3a5bf1abb9591a498b2003bdbc1f2c41e2959311f34131f0bccbcff1689e0222.png" />
 </div>
 </div>
 </section>
-<section id="replication-3-example-roi-responses-to-inconsistent-gabor-sequences-dataset-descriptor-paper-fig-6a">
-<h3>Replication 3. Example ROI responses to inconsistent Gabor sequences (Dataset descriptor paper, Fig. 6A)<a class="headerlink" href="#replication-3-example-roi-responses-to-inconsistent-gabor-sequences-dataset-descriptor-paper-fig-6a" title="Link to this heading">#</a></h3>
-<p>For each session, in addition to neuronal activity, pupil diameter and running velocity were recorded for each mouse.</p>
-<p>The following function, <code class="docutils literal notranslate"><span class="pre">plot_pupil_run_full(sess_df)</span></code>, plots the pupil diameter and running traces for an example session.</p>
+<section id="replication-3-running-velocity-and-pupil-diameter-traces-across-a-full-session-dataset-descriptor-paper-fig-6a">
+<h3>Replication 3. Running velocity and pupil diameter traces across a full session (Dataset descriptor paper, Fig. 6A)<a class="headerlink" href="#replication-3-running-velocity-and-pupil-diameter-traces-across-a-full-session-dataset-descriptor-paper-fig-6a" title="Link to this heading">#</a></h3>
+<p>For each session, in addition to neuronal activity, running velocity and pupil diameter were recorded for each mouse.</p>
+<p>The following function, <code class="docutils literal notranslate"><span class="pre">plot_run_pupil_full(sess_df)</span></code>, plots the running velocity and pupil diameter traces for an example session.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_pupil_run_full</span><span class="p">(</span><span class="n">sess_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_run_pupil_full</span><span class="p">(</span><span class="n">sess_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    plot_pupil_run_full(sess_df)</span>
+<span class="sd">    plot_run_pupil_full(sess_df)</span>
 
-<span class="sd">    Plots pupil and running data for a full session.</span>
+<span class="sd">    Plots running and pupil data for a full session.</span>
 
 <span class="sd">    Required args:</span>
 <span class="sd">        - sess_df (pd.DataFrame):</span>
@@ -1302,7 +1316,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">            - duration_sec (float):</span>
 <span class="sd">                duration of the session in seconds</span>
 <span class="sd">            - pup_data (list):</span>
-<span class="sd">                pupil data</span>
+<span class="sd">                pupil diameter data</span>
 <span class="sd">            - pup_frames (list):</span>
 <span class="sd">                start and stop pupil frame numbers for each stimulus type</span>
 <span class="sd">            - run_data (list):</span>
@@ -1391,26 +1405,26 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 </div>
-<p>Specifically, running velocity is plotted in the top row in cm/s, and pupil diameter is plotted in the bottom row, in mm. Sessions lasted 70 min in total, and the scale bar here represents 5 min. Above the plotted traces, the lines show the period during which each stimulus was presented. Left to right, these are the Gabor sequence stimulus, the nasal-to-temporal visual flow stimulus, and the temporal-to-nasal visual flow stimulus. The small gaps between the stimulus presentation lines represent the fact that each stimulus was preceded and followed by 30 seconds of grayscreen.</p>
+<p>Specifically, running velocity is plotted in the top row in cm/s, and pupil diameter is plotted in the bottom row, in mm. Sessions lasted 70 min in total, and the scale bar here represents 5 min. Above the plotted traces, the lines show the period during which each stimulus was presented. In this session, the stimuli were presented in the following order (left to right): Gabor sequence stimulus, nasal-to-temporal visual flow stimulus, and temporal-to-nasal visual flow stimulus. There are small gaps between the stimulus presentation lines as each stimulus was preceded and followed by at least 30 seconds of grayscreen.</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dict</span> <span class="o">=</span> <span class="n">load_data_dict</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">paper</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
 
-<span class="n">plot_pupil_run_full</span><span class="p">(</span><span class="n">sess_df</span><span class="o">=</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;sess_df&quot;</span><span class="p">])</span>
+<span class="n">plot_run_pupil_full</span><span class="p">(</span><span class="n">sess_df</span><span class="o">=</span><span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;sess_df&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 6A
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for dataset paper Fig. 6A.
 </pre></div>
 </div>
-<img alt="../_images/8972dc7156699e41402f14882a8039e6b9c4bb9a57dec6880efff3ca02942241.png" src="../_images/8972dc7156699e41402f14882a8039e6b9c4bb9a57dec6880efff3ca02942241.png" />
+<img alt="../_images/15ee37823167b321c96272fc8779bd1e507b668dd0b9de9b9e4186160b03cf87.png" src="../_images/15ee37823167b321c96272fc8779bd1e507b668dd0b9de9b9e4186160b03cf87.png" />
 </div>
 </div>
 </section>
 <section id="replication-4-mean-gabor-sequence-responses-for-example-rois-analysis-paper-fig-4a">
 <h3>Replication 4. Mean Gabor sequence responses for example ROIs (Analysis paper, Fig. 4A)<a class="headerlink" href="#replication-4-mean-gabor-sequence-responses-for-example-rois-analysis-paper-fig-4a" title="Link to this heading">#</a></h3>
-<p>Unlike the previous figures, this figure is drawn from the analysis paper. In this paper, one of the metrics used to study the responses in the different imaging planes to consistent vs inconsistent stimuli was a selectivity index (USI), explained below. This plot shows responses of example ROIs from different imaging planes, with differing USIs.</p>
+<p>Unlike the previous figures, this figure is drawn from the analysis paper. In this paper, one of the metrics used to study patterns in ROI responses to consistent vs inconsistent stimuli was a selectivity index (USI), explained below. This plot shows responses of example ROIs from different imaging planes, with differing USIs.</p>
 <p>The following general function, <code class="docutils literal notranslate"><span class="pre">plot_chosen_roi_traces(chosen_rois_df)</span></code>, plots mean fluorescence responses (ΔF/F) to consistent and inconsistent Gabor sequences for example ROIs. It calls the function defined right below, <code class="docutils literal notranslate"><span class="pre">add_USI_boxes(ax,</span> <span class="pre">chosen_rois_df,</span> <span class="pre">sorted_target_idxs)</span></code>, to label each plot with its ROI’s USI value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1423,8 +1437,16 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">    Required args:</span>
 <span class="sd">        - chosen_rois_df (pd.DataFrame):</span>
 <span class="sd">            traces data frame with, in addition to the basic sess_df columns, </span>
-<span class="sd">            columns &quot;trace_stats&quot;, &quot;target_idxs&quot;, and a &quot;time_values&quot; column</span>
-
+<span class="sd">            with columns:</span>
+<span class="sd">            - &quot;target_idxs&quot; (str): index values and significance aimed for</span>
+<span class="sd">            - &quot;roi_idxs&quot; (float): index of the chosen ROI</span>
+<span class="sd">            - &quot;roi_idx_percs&quot; (float): index percentile for the chosen ROI </span>
+<span class="sd">            - &quot;roi_ns&quot; (int): chosen ROI&#39;s number within its session</span>
+<span class="sd">            - &quot;roi_trace_stats&quot; (list): </span>
+<span class="sd">                ROI trace statistics (split x frames x stat (me, err))</span>
+<span class="sd">            - time_values (list):</span>
+<span class="sd">                time values for each frame, in seconds</span>
+<span class="sd">        </span>
 <span class="sd">    Optional args:</span>
 <span class="sd">        - title (str):</span>
 <span class="sd">            plot title</span>
@@ -1536,7 +1558,9 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="sd">            pyplot axis array</span>
 <span class="sd">        - chosen_rois_df (pd.DataFrame):</span>
 <span class="sd">            chosen ROIs dataframe with, in addition to the basic sess_df </span>
-<span class="sd">            columns, &quot;target_idxs&quot;.</span>
+<span class="sd">            columns:</span>
+<span class="sd">            - &quot;target_idxs&quot; (str): index values and significance aimed for</span>
+<span class="sd">            - &quot;roi_idxs&quot; (float): index of the chosen ROI</span>
 <span class="sd">        - sorted_target_idxs (list): </span>
 <span class="sd">            order in which different target_idxs should be added to subplots</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1567,17 +1591,17 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 </div>
-<p>Specifically, for each ROI in each recording session a Gabor sequence selectivity index (USI) was calculated. This selectivity index reflects the degree to which an ROI selectively responds to inconsistent (positive USI) or consistent (negative USI) sequences. Null USIs (i.e., USIs around 0) reflect no selectivity to either consistent or inconsistent sequences.</p>
-<p>To provide examples of the fluorescence responses of ROIs with differing USIs, three example ROIs were selected for each imaging plane: one with a USI significantly above 0 (top), one with a USI significantly below 0 (bottom) and one with a USI close to 0 (middle). For each ROI, the mean fluorescence response (°) is plotted in gray for consistent sequences and in color for inconsistent sequences.</p>
-<p>The same quadrant and color scheme is used for the imaging planes as in Replication 2. In addition, vertical gray dashed lines mark the onset of D/U images at 0 seconds in the A-B-C-U-G sequences (-0.9 to 0.3 seconds), while horizontal gray dashed lines mark 0. Each plot is labeled with its ROI’s USI value.</p>
-<p>Since USIs were computed on the D-G / U-G part of the sequences, where the stimulus patterns diverge, the differences between the mean traces plotted largely occur after the gray line at 0 seconds.</p>
+<p>Specifically, for each ROI in each recording session, a Gabor sequence selectivity index (USI) was calculated. This selectivity index reflects the degree to which an ROI selectively responds to inconsistent (=&gt; positive USI) or consistent (=&gt; negative USI) sequences. Null USIs (i.e., USIs close to 0) reflect no selectivity to either consistent or inconsistent sequences.</p>
+<p>To provide examples of the fluorescence responses of ROIs with differing USIs, <strong>three</strong> example ROIs were selected for each imaging plane: one with a USI significantly above 0 (top), one with a USI significantly below 0 (bottom) and one with a USI close to 0 (middle). For each ROI, the mean fluorescence response (ΔF/F) is plotted in gray for consistent sequences and in color for inconsistent sequences.</p>
+<p>The same quadrant and color scheme is used for the imaging planes as in Replication 2. In addition, vertical gray dashed lines mark the onset of D/U images at 0 seconds in the A-B-C-D/U-G sequences (running from -0.9 to 0.3 seconds), while horizontal gray dashed lines mark 0. Each plot is labeled with its ROI’s USI value.</p>
+<p>Since USIs were computed on the D-G vs U-G parts of the sequences, where the stimulus patterns diverge, the differences between the mean traces relevant to the USI values occur <em>after</em> the gray line, from 0 seconds onwards.</p>
 <p>Time, as a function of Gabor sequence image:</p>
 <ul class="simple">
 <li><p>A  : -0.9 to -0.6 seconds</p></li>
 <li><p>B  : -0.6 to -0.3 seconds</p></li>
 <li><p>C  : -0.3 to  0.0 seconds</p></li>
 <li><p>D/U:  0.0 to  0.3 seconds</p></li>
-<li><p>G  :  0.0 to  0.6 seconds</p></li>
+<li><p>G  :  0.3 to  0.6 seconds</p></li>
 </ul>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
@@ -1588,17 +1612,17 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for analysis paper Fig. 4A
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading data for analysis paper Fig. 4A.
 </pre></div>
 </div>
-<img alt="../_images/618dea4ce553fd5d931052d50415ce0b16950c50ba7dd5ab766c59a4b7229318.png" src="../_images/618dea4ce553fd5d931052d50415ce0b16950c50ba7dd5ab766c59a4b7229318.png" />
+<img alt="../_images/3962706f7346f36be8a5419c7d2dee2d152585da145d2d81dcbf8b4e6aa5d1a5.png" src="../_images/3962706f7346f36be8a5419c7d2dee2d152585da145d2d81dcbf8b4e6aa5d1a5.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="going-further">
 <h2>Going further<a class="headerlink" href="#going-further" title="Link to this heading">#</a></h2>
-<p>As mentioned above, these examples show how to plot a few sample figures from the dataset description paper <span id="id5">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, and one figure from the analysis paper <span id="id6">[<a class="reference internal" href="../bibliography.html#id19" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. Journal of Neuroscience, 2024. URL: https://www.jneurosci.org/content/44/5/e1009232023.">Gillon <em>et al.</em>, 2024</a>]</span> using presaved data dictionaries.</p>
+<p>As mentioned above, these examples show how to plot a few sample figures from the dataset description paper <span id="id5">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://www.nature.com/articles/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, and one figure from the analysis paper <span id="id6">[<a class="reference internal" href="../bibliography.html#id19" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. The Journal of Neuroscience, 44(5):e1009232023, 2024. URL: https://www.jneurosci.org/content/44/5/e1009232023.">Gillon <em>et al.</em>, 2024</a>]</span> using presaved data dictionaries.</p>
 <p>To understand the full scope of the dataset and analyses, please consult these papers. To work with the full analysis pipeline for this dataset, from NWB data files to final plots, see the <a class="reference external" href="https://github.com/colleenjg/OpenScope_CA_Analysis">OpenScope_CA_Analysis</a> GitHub repository.</p>
 </section>
 </section>
@@ -1675,7 +1699,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replications">Replications</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-1-tracked-roi-examples-dataset-descriptor-paper-fig-2b">Replication 1. Tracked ROI examples (Dataset descriptor paper, Fig. 2B)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-2-example-roi-responses-to-inconsistent-gabor-sequences-dataset-descriptor-paper-fig-5b">Replication 2. Example ROI responses to inconsistent Gabor sequences (Dataset descriptor paper, Fig. 5B)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-3-example-roi-responses-to-inconsistent-gabor-sequences-dataset-descriptor-paper-fig-6a">Replication 3. Example ROI responses to inconsistent Gabor sequences (Dataset descriptor paper, Fig. 6A)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-3-running-velocity-and-pupil-diameter-traces-across-a-full-session-dataset-descriptor-paper-fig-6a">Replication 3. Running velocity and pupil diameter traces across a full session (Dataset descriptor paper, Fig. 6A)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replication-4-mean-gabor-sequence-responses-for-example-rois-analysis-paper-fig-4a">Replication 4. Mean Gabor sequence responses for example ROIs (Analysis paper, Fig. 4A)</a></li>
 </ul>
 </li>

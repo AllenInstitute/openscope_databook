@@ -42,7 +42,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -206,7 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -215,7 +215,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
@@ -229,6 +229,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -608,14 +609,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.60.0) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                            SIZE   DONE         DONE% CHECKSUM STATUS          MESSAGE
+sub-703279277_ses-719161530.nwb 3.1 GB 3.1 GB        100%    ok    done                   
+Summary:                        3.1 GB 3.1 GB                      1 done                 
+                                       100.00%                                            
+Downloaded file to ./sub-703279277_ses-719161530.nwb
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.8.0 is already loaded.
+  return func(args[0], **pargs)
+C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+  return func(args[0], **pargs)
 </pre></div>
 </div>
 </div>
@@ -1424,10 +1432,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21ca7568760&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x14690d83640&gt;]
 </pre></div>
 </div>
-<img alt="../_images/35f78f074d15afb5444f6708f7d3fe099a6a32e98aaf01ef42a5fec12a34108d.png" src="../_images/35f78f074d15afb5444f6708f7d3fe099a6a32e98aaf01ef42a5fec12a34108d.png" />
+<img alt="../_images/61501cc36c2f3331a2b7aad026ca6b26f734753dda8eaf50de66419f66eba127.png" src="../_images/61501cc36c2f3331a2b7aad026ca6b26f734753dda8eaf50de66419f66eba127.png" />
 </div>
 </div>
 </section>
@@ -1517,10 +1525,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21d04bdc610&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x147225a9460&gt;]
 </pre></div>
 </div>
-<img alt="../_images/dd189bbae4789fb02a58095c23cac0526c457dd3496e4b970c2102d31791e60a.png" src="../_images/dd189bbae4789fb02a58095c23cac0526c457dd3496e4b970c2102d31791e60a.png" />
+<img alt="../_images/01147f92c1a0a93ecc9ee1f2629f73ba54fa0acb282441f6a4f80893cac8a684.png" src="../_images/01147f92c1a0a93ecc9ee1f2629f73ba54fa0acb282441f6a4f80893cac8a684.png" />
 </div>
 </div>
 </section>
@@ -1592,7 +1600,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>Eth</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>20</td>
       <td>43</td>
@@ -1608,7 +1616,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>TH</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>20</td>
       <td>11</td>
@@ -1624,7 +1632,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>TH</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>60</td>
       <td>43</td>
@@ -1640,7 +1648,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>80</td>
       <td>59</td>
@@ -1656,7 +1664,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>100</td>
       <td>11</td>
@@ -1672,7 +1680,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>140</td>
       <td>43</td>
@@ -1688,7 +1696,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>160</td>
       <td>27</td>
@@ -1704,7 +1712,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>180</td>
       <td>11</td>
@@ -1720,7 +1728,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>220</td>
       <td>43</td>
@@ -1736,7 +1744,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x23221155...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x14026141...</td>
       <td>probeB</td>
       <td>240</td>
       <td>27</td>
@@ -1757,7 +1765,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISpm&#39;, &#39;CA2&#39;, &#39;NOT&#39;, &#39;VISp&#39;, &#39;Eth&#39;, &#39;VISal&#39;, &#39;VISrl&#39;, &#39;MB&#39;, &#39;DG&#39;, &#39;VPM&#39;, &#39;CA3&#39;, &#39;PO&#39;, &#39;APN&#39;, &#39;LP&#39;, &#39;VISl&#39;, &#39;grey&#39;, &#39;TH&#39;, &#39;SUB&#39;, &#39;LGd&#39;, &#39;VISam&#39;, &#39;POL&#39;, &#39;CA1&#39;, &#39;VL&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;CA3&#39;, &#39;LGd&#39;, &#39;VL&#39;, &#39;CA2&#39;, &#39;VISam&#39;, &#39;grey&#39;, &#39;VISp&#39;, &#39;SUB&#39;, &#39;LP&#39;, &#39;VISl&#39;, &#39;VISpm&#39;, &#39;CA1&#39;, &#39;VPM&#39;, &#39;MB&#39;, &#39;POL&#39;, &#39;NOT&#39;, &#39;VISrl&#39;, &#39;VISal&#39;, &#39;Eth&#39;, &#39;APN&#39;, &#39;DG&#39;, &#39;TH&#39;, &#39;PO&#39;}
 </pre></div>
 </div>
 </div>
@@ -1831,10 +1839,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21d0c9b2760&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1472a2fd910&gt;]
 </pre></div>
 </div>
-<img alt="../_images/0b5a5467eacde32603f757efde4bd87325905f2e3a0b2c07d8c70b6f2b98f503.png" src="../_images/0b5a5467eacde32603f757efde4bd87325905f2e3a0b2c07d8c70b6f2b98f503.png" />
+<img alt="../_images/9d7d3703dc5085aa42e2ee6c7dd84b576efa3bcdd10f3a6e4907be8729c56a93.png" src="../_images/9d7d3703dc5085aa42e2ee6c7dd84b576efa3bcdd10f3a6e4907be8729c56a93.png" />
 </div>
 </div>
 </section>
@@ -2075,7 +2083,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21d0d3b57c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1473352c070&gt;
 </pre></div>
 </div>
 <img alt="../_images/af55e8a5d5ba0e58b161cee4a06ba73ed599a7dc2ba294c96bb7620bfbe5f5b9.png" src="../_images/af55e8a5d5ba0e58b161cee4a06ba73ed599a7dc2ba294c96bb7620bfbe5f5b9.png" />

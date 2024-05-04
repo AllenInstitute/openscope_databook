@@ -42,7 +42,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -206,7 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -215,7 +215,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
@@ -229,6 +229,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -572,14 +573,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.FB5AE2TYXYH2IJRDKGDGQ3XBKLKTF43H.gfortran-win_amd64.dll
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
-  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -901,19 +894,16 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.59.0) of dandi/dandi-cli is available. You are using 0.55.1
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.8.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.8.0 is already loaded.
+  return func(args[0], **pargs)
+C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
+  return func(args[0], **pargs)
+C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.5.0 is already loaded.
+  return func(args[0], **pargs)
 </pre></div>
 </div>
 </div>
@@ -1284,7 +1274,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;VISpm2/3&#39;, &#39;ProS&#39;, &#39;VISl2/3&#39;, &#39;TH&#39;, &#39;VISam5&#39;, &#39;VISp6a&#39;, &#39;VISpm5&#39;, &#39;VISam1&#39;, &#39;VISp1&#39;, &#39;VISrl5&#39;, &#39;DG-mo&#39;, &#39;VISam2/3&#39;, &#39;VISl1&#39;, &#39;root&#39;, &#39;VISp2/3&#39;, &#39;LGd-sh&#39;, &#39;DG-sg&#39;, &#39;VISrl6a&#39;, &#39;VISp4&#39;, &#39;SUB&#39;, &#39;PoT&#39;, &#39;VISpm6b&#39;, &#39;VISl6a&#39;, &#39;MGd&#39;, &#39;VISpm4&#39;, &#39;VISp6b&#39;, &#39;VISrl1&#39;, &#39;CA1&#39;, &#39;VISrl2/3&#39;, &#39;SCig&#39;, &#39;SGN&#39;, &#39;CA3&#39;, &#39;VISam6a&#39;, &#39;MB&#39;, &#39;VISam4&#39;, &#39;NB&#39;, &#39;VISl4&#39;, &#39;POL&#39;, &#39;HPF&#39;, &#39;LP&#39;, &#39;POST&#39;, &#39;MRN&#39;, &#39;VISl6b&#39;, &#39;VISrl4&#39;, &#39;MGm&#39;, &#39;DG-po&#39;, &#39;VISp5&#39;, &#39;VISrl6b&#39;, &#39;VISpm6a&#39;, &#39;VISl5&#39;, &#39;APN&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;VISrl6b&#39;, &#39;CA1&#39;, &#39;VISrl6a&#39;, &#39;SCig&#39;, &#39;VISrl1&#39;, &#39;HPF&#39;, &#39;SGN&#39;, &#39;VISpm4&#39;, &#39;VISrl5&#39;, &#39;VISl6b&#39;, &#39;VISp6a&#39;, &#39;MGm&#39;, &#39;LGd-sh&#39;, &#39;VISpm5&#39;, &#39;PoT&#39;, &#39;ProS&#39;, &#39;TH&#39;, &#39;VISl1&#39;, &#39;NB&#39;, &#39;VISp5&#39;, &#39;VISl2/3&#39;, &#39;SUB&#39;, &#39;VISam5&#39;, &#39;VISpm6a&#39;, &#39;VISl4&#39;, &#39;DG-po&#39;, &#39;DG-mo&#39;, &#39;VISam4&#39;, &#39;VISam2/3&#39;, &#39;VISp6b&#39;, &#39;VISp4&#39;, &#39;VISp1&#39;, &#39;DG-sg&#39;, &#39;VISpm2/3&#39;, &#39;VISam6a&#39;, &#39;MRN&#39;, &#39;VISp2/3&#39;, &#39;POL&#39;, &#39;LP&#39;, &#39;APN&#39;, &#39;VISpm6b&#39;, &#39;MB&#39;, &#39;POST&#39;, &#39;VISam1&#39;, &#39;VISrl2/3&#39;, &#39;VISl6a&#39;, &#39;root&#39;, &#39;CA3&#39;, &#39;VISl5&#39;, &#39;VISrl4&#39;, &#39;MGd&#39;}
 </pre></div>
 </div>
 </div>
@@ -1539,10 +1529,10 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x28e048b0fa0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1b64fa29f40&gt;]
 </pre></div>
 </div>
-<img alt="../_images/3ee09e0a4614d02ed1126b8088b3e77ea93cbb9250c05e91f3a631016b5b34d3.png" src="../_images/3ee09e0a4614d02ed1126b8088b3e77ea93cbb9250c05e91f3a631016b5b34d3.png" />
+<img alt="../_images/6e5f7fb5d4c16ac202999e2587a5b6a3a93e57883dd2cbddc29bdf2e91a0b93a.png" src="../_images/6e5f7fb5d4c16ac202999e2587a5b6a3a93e57883dd2cbddc29bdf2e91a0b93a.png" />
 </div>
 </div>
 </section>
@@ -1882,15 +1872,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">,</span> <span class="n">stim_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">):</span>
-    <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">)</span>
-    <span class="n">n_trials</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">)</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
+    <span class="n">time_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
     <span class="c1"># 3D spike matrix to be populated with spike counts</span>
-    <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_units</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)))</span>
+    <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="c1"># populate 3D spike matrix for each unit for each stimulus trial by counting spikes into bins</span>
-    <span class="k">for</span> <span class="n">unit_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_units</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">unit_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">)):</span>
         <span class="n">spike_times</span> <span class="o">=</span> <span class="n">units_spike_times</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">stim_idx</span><span class="p">,</span> <span class="n">stim_time</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stim_times</span><span class="p">):</span>
@@ -1921,8 +1909,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 <span class="c1"># calculate baseline and stimulus interval indices for use later</span>
 <span class="n">stimulus_onset_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)</span>
 
-<span class="n">lo_spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">,</span> <span class="n">lo_stim_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">)</span>
-<span class="n">go_spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">,</span> <span class="n">go_stim_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">)</span>
+<span class="n">lo_spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">lo_stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span>
+<span class="n">go_spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">go_stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">lo_spike_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">go_spike_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1930,8 +1918,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(175, 675, 150)
-(175, 322, 150)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(175, 675, 149)
+(175, 322, 149)
 </pre></div>
 </div>
 </div>
@@ -2017,7 +2005,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1ca2a69d41f66bdb76ac5c12ff344305973a6711fb2173aaa50e6fd99032b8a3.png" src="../_images/1ca2a69d41f66bdb76ac5c12ff344305973a6711fb2173aaa50e6fd99032b8a3.png" />
+<img alt="../_images/8a090893ad4fb14baf52ff26ccd191df29b99d38f1cb012a10ddbdd0157fc78f.png" src="../_images/8a090893ad4fb14baf52ff26ccd191df29b99d38f1cb012a10ddbdd0157fc78f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2027,7 +2015,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e21542f54a3c4bdbbc99547b6ae68dd9a61db3190e1e0fda05837a2007d25531.png" src="../_images/e21542f54a3c4bdbbc99547b6ae68dd9a61db3190e1e0fda05837a2007d25531.png" />
+<img alt="../_images/7b31f2f767504b59c06dba89feaf1127b37059978027480a0761dc03f895edbf.png" src="../_images/7b31f2f767504b59c06dba89feaf1127b37059978027480a0761dc03f895edbf.png" />
 </div>
 </div>
 </section>
@@ -2058,11 +2046,11 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_21340\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
   unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
 </pre></div>
 </div>
-<img alt="../_images/c39c57a44bd4448874247ec24ad9059000881025f05aec56e53c557f6939caec.png" src="../_images/c39c57a44bd4448874247ec24ad9059000881025f05aec56e53c557f6939caec.png" />
+<img alt="../_images/121cf1e476c8f1dcfcab75ca7c6dd8f179a5f7abc78eca1b58b40ca1dd97bd6b.png" src="../_images/121cf1e476c8f1dcfcab75ca7c6dd8f179a5f7abc78eca1b58b40ca1dd97bd6b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2073,13 +2061,13 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\h
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_21340\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
   unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
-C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: RuntimeWarning: invalid value encountered in divide
+C:\Users\carter.peene\AppData\Local\Temp\ipykernel_21340\1852969462.py:9: RuntimeWarning: invalid value encountered in divide
   unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
 </pre></div>
 </div>
-<img alt="../_images/ee2e8b8f91b6df674657a56ecdf8c0a11366eb3ed05b6d7db1d2c45a2d020e91.png" src="../_images/ee2e8b8f91b6df674657a56ecdf8c0a11366eb3ed05b6d7db1d2c45a2d020e91.png" />
+<img alt="../_images/af72df6f846ddb4db68ca1a307805bbeeeb16ea447ca2b1530c1e40a4bb8ba2c.png" src="../_images/af72df6f846ddb4db68ca1a307805bbeeeb16ea447ca2b1530c1e40a4bb8ba2c.png" />
 </div>
 </div>
 </section>
@@ -2393,14 +2381,14 @@ C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: Runtime
 <span class="c1"># calculate baseline and stimulus interval indices for use later</span>
 <span class="n">stimulus_onset_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)</span>
 
-<span class="n">opto_spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">,</span> <span class="n">opto_stim_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">)</span>
+<span class="n">opto_spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">opto_stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">opto_spike_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(175, 450, 150)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(175, 450, 149)
 </pre></div>
 </div>
 </div>
@@ -2412,7 +2400,7 @@ C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: Runtime
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/49c668f44e4635035b2919ede18d6010a406c45f18826dea0a9df2f951759781.png" src="../_images/49c668f44e4635035b2919ede18d6010a406c45f18826dea0a9df2f951759781.png" />
+<img alt="../_images/7c4e3fbe752fd2d67a3ebf5d119b91f968781a8dbe679a759a50353f90c6bfaa.png" src="../_images/7c4e3fbe752fd2d67a3ebf5d119b91f968781a8dbe679a759a50353f90c6bfaa.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2423,13 +2411,13 @@ C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: Runtime
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_21340\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
   unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
-C:\Users\carter.peene\AppData\Local\Temp\ipykernel_9268\1852969462.py:9: RuntimeWarning: invalid value encountered in divide
+C:\Users\carter.peene\AppData\Local\Temp\ipykernel_21340\1852969462.py:9: RuntimeWarning: invalid value encountered in divide
   unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
 </pre></div>
 </div>
-<img alt="../_images/cf6e83db42f8dc7c8cc3e4d731dc03dee4c173ef1dfc5f3aefe59d4a473a7385.png" src="../_images/cf6e83db42f8dc7c8cc3e4d731dc03dee4c173ef1dfc5f3aefe59d4a473a7385.png" />
+<img alt="../_images/212ae5c272739618acdbc0c03e33347748f9dc0bedd6362f22f8d1c982828a6a.png" src="../_images/212ae5c272739618acdbc0c03e33347748f9dc0bedd6362f22f8d1c982828a6a.png" />
 </div>
 </div>
 </section>

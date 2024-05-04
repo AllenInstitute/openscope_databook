@@ -42,7 +42,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -206,7 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
 <ul class="current nav bd-sidenav">
@@ -215,7 +215,7 @@
 <li class="toctree-l1"><a class="reference internal" href="current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test_spike_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
@@ -229,6 +229,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -568,14 +569,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.EL2C6PLE4ZYW3ECEVIV3OXXGRN2NRFM2.gfortran-win_amd64.dll
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
-  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -623,17 +616,14 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.2) of dandi/dandi-cli is available. You are using 0.55.1
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.8.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.8.0 is already loaded.
+  return func(args[0], **pargs)
+C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+  return func(args[0], **pargs)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
@@ -1235,7 +1225,7 @@ Selected stim times from SST file: 75
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
     <span class="n">time_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
     <span class="c1"># 3D spike matrix to be populated with spike counts</span>
-    <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">)))</span>
+    <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="c1"># populate 3D spike matrix for each unit for each stimulus trial by counting spikes into bins</span>
     <span class="k">for</span> <span class="n">unit_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">)):</span>
@@ -1253,7 +1243,7 @@ Selected stim times from SST file: 75
             
             <span class="c1"># mark that there is a spike at these bin times for this unit on this stim trial</span>
             <span class="k">for</span> <span class="n">bin_idx</span> <span class="ow">in</span> <span class="n">bin_indices</span><span class="p">:</span>
-                <span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">bin_idx</span><span class="p">,</span> <span class="n">stim_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">stim_idx</span><span class="p">,</span> <span class="n">bin_idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">spike_matrix</span>
 </pre></div>
@@ -1278,7 +1268,7 @@ Selected stim times from SST file: 75
     <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span>
 
     <span class="c1"># aggregate all stim trials to get total spikes by unit over time</span>
-    <span class="n">spike_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">spike_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">spike_counts</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">bl_start_idx</span><span class="p">,</span> <span class="n">bl_end_idx</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span>
 </pre></div>
@@ -1297,8 +1287,8 @@ Selected stim times from SST file: 75
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2688, 35)
-(2685, 35)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2688, 34)
+(2685, 34)
 </pre></div>
 </div>
 </div>
@@ -1360,7 +1350,7 @@ Selected stim times from SST file: 75
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c1bd84dd09190ff7113bcaff7f642d7c324c0fadd8070b741449c503ecd58fcf.png" src="../_images/c1bd84dd09190ff7113bcaff7f642d7c324c0fadd8070b741449c503ecd58fcf.png" />
+<img alt="../_images/738beeb935a21570019401b78dc137789069711af87930711d1c94a69934af3c.png" src="../_images/738beeb935a21570019401b78dc137789069711af87930711d1c94a69934af3c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1380,7 +1370,7 @@ Selected stim times from SST file: 75
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2e16bb53f2e3a7ed2246d0e8b774e14fa3509ddf78e71500a83efbefedb4a311.png" src="../_images/2e16bb53f2e3a7ed2246d0e8b774e14fa3509ddf78e71500a83efbefedb4a311.png" />
+<img alt="../_images/7486a9ce90c53a21f77720b0a2863f463241053f200e49923a7407ca1c09cd36.png" src="../_images/7486a9ce90c53a21f77720b0a2863f463241053f200e49923a7407ca1c09cd36.png" />
 </div>
 </div>
 </section>
@@ -1404,7 +1394,7 @@ Selected stim times from SST file: 75
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/779558eb93aa2a03c3e22558dab09b2b7e5763b9638f0733614da6c0b435332a.png" src="../_images/779558eb93aa2a03c3e22558dab09b2b7e5763b9638f0733614da6c0b435332a.png" />
+<img alt="../_images/ab79b3bb96e729ce07b3000fb64d15340f03f89c50c56306b14c657acd64e900.png" src="../_images/ab79b3bb96e729ce07b3000fb64d15340f03f89c50c56306b14c657acd64e900.png" />
 </div>
 </div>
 </section>
@@ -1459,7 +1449,7 @@ Selected stim times from SST file: 75
     <span class="n">bins_above_baseline</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="k">for</span> <span class="n">bin_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">):</span>
-        <span class="n">time_bin</span> <span class="o">=</span> <span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">bin_idx</span><span class="p">]</span>
+        <span class="n">time_bin</span> <span class="o">=</span> <span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="p">:,</span> <span class="n">bin_idx</span><span class="p">]</span>
         <span class="n">bins_pvals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">time_bin</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">bins_above_baseline</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">time_bin</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">bl_mean_count</span><span class="p">)</span>
 
@@ -1475,7 +1465,7 @@ Selected stim times from SST file: 75
     <span class="n">trials_above_baseline</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="k">for</span> <span class="n">trial_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
-        <span class="n">trial</span> <span class="o">=</span> <span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">:</span><span class="n">stim_end_idx</span><span class="p">,</span> <span class="n">trial_idx</span><span class="p">]</span>
+        <span class="n">trial</span> <span class="o">=</span> <span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">trial_idx</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">:</span><span class="n">stim_end_idx</span><span class="p">]</span>
         <span class="n">trials_pvals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">trial</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">trials_above_baseline</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">bl_mean_count</span><span class="p">)</span>
 
@@ -1515,7 +1505,7 @@ Selected stim times from SST file: 75
         <span class="n">salts</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ks_salt</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">)</span>
 
         <span class="c1"># use the mean baseline spike counts for each trial to determine when the unit is &#39;responsive&#39;</span>
-        <span class="n">bl_trial_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span><span class="n">bl_start_idx</span><span class="p">:</span><span class="n">bl_end_idx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">bl_trial_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">,</span> <span class="p">:,</span> <span class="n">bl_start_idx</span><span class="p">:</span><span class="n">bl_end_idx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">fracs_time_responsive</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">fraction_time_responsive</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">)</span>
         <span class="n">fracs_trials_responsive</span><span class="p">[</span><span class="n">unit_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">fraction_trials_responsive</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">)</span>
 
@@ -1541,11 +1531,11 @@ Selected stim times from SST file: 75
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\fromnumeric.py:3474: RuntimeWarning: Mean of empty slice.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\fromnumeric.py:3432: RuntimeWarning: Mean of empty slice.
   return _methods._mean(a, axis=axis, dtype=dtype,
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py:190: RuntimeWarning: invalid value encountered in double_scalars
   ret = ret.dtype.type(ret / rcount)
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\_stats_py.py:8057: RuntimeWarning: ks_2samp: Exact calculation unsuccessful. Switching to method=asymp.
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\scipy\stats\_stats_py.py:8057: RuntimeWarning: ks_2samp: Exact calculation unsuccessful. Switching to method=asymp.
   return ks_2samp(xvals, yvals, alternative=alternative, method=method)
 </pre></div>
 </div>
@@ -1581,8 +1571,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.002222</td>
       <td>0.096366</td>
       <td>0.127574</td>
+      <td>0.166667</td>
       <td>0.0</td>
-      <td>0.000000</td>
       <td>9.966899e-01</td>
     </tr>
     <tr>
@@ -1590,8 +1580,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.002222</td>
       <td>1.669213</td>
       <td>1.985956</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>0.013333</td>
       <td>1.000000e+00</td>
     </tr>
     <tr>
@@ -1599,8 +1589,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.004444</td>
       <td>0.145623</td>
       <td>0.181877</td>
+      <td>0.333333</td>
       <td>0.0</td>
-      <td>0.000000</td>
       <td>9.717333e-01</td>
     </tr>
     <tr>
@@ -1608,8 +1598,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.000000</td>
       <td>0.108815</td>
       <td>0.168240</td>
-      <td>0.0</td>
       <td>0.000000</td>
+      <td>0.0</td>
       <td>9.999465e-01</td>
     </tr>
     <tr>
@@ -1617,8 +1607,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.000000</td>
       <td>1.579199</td>
       <td>1.937359</td>
-      <td>0.0</td>
       <td>0.000000</td>
+      <td>0.0</td>
       <td>1.000000e+00</td>
     </tr>
     <tr>
@@ -1635,8 +1625,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.095556</td>
       <td>0.006178</td>
       <td>0.009724</td>
+      <td>0.333333</td>
       <td>0.0</td>
-      <td>0.120000</td>
       <td>4.072687e-10</td>
     </tr>
     <tr>
@@ -1644,8 +1634,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.022222</td>
       <td>1.551573</td>
       <td>1.562273</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>0.120000</td>
       <td>8.503638e-04</td>
     </tr>
     <tr>
@@ -1653,8 +1643,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.002222</td>
       <td>3.681344</td>
       <td>4.311915</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>0.013333</td>
       <td>2.937247e-01</td>
     </tr>
     <tr>
@@ -1662,8 +1652,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.011111</td>
       <td>1.958318</td>
       <td>2.226296</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>0.053333</td>
       <td>9.999465e-01</td>
     </tr>
     <tr>
@@ -1671,8 +1661,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\scipy\stats\
       <td>0.000000</td>
       <td>0.910202</td>
       <td>0.919393</td>
-      <td>0.0</td>
       <td>0.000000</td>
+      <td>0.0</td>
       <td>9.385843e-03</td>
     </tr>
   </tbody>

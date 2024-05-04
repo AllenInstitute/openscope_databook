@@ -8,6 +8,10 @@
 ````{tab-item} All Contributors
 ###### Supplied any substantial contribution to the project
 ```{authors}
+---
+blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella
+---
 ```
 ````
 
@@ -37,7 +41,7 @@
 ```{committers}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella
 ---
 ```
 ````
@@ -57,6 +61,7 @@ aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon
 ````
 
 `````
+*More author information can be found on the [Contributors Page](https://alleninstitute.github.io/openscope_databook/authors_index.html)*
 
 
 ## Abstract
