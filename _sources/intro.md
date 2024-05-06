@@ -10,7 +10,7 @@
 ```{authors}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim
 ---
 ```
 ````
@@ -41,7 +41,7 @@ aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAk
 ```{committers}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim
 ---
 ```
 ````
