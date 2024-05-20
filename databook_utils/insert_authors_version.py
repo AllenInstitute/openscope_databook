@@ -88,8 +88,8 @@ class Authors(Directive):
 			for committer_name, n_commits in committers:
 				authors.add(committer_name)
 
-		# sort alphabetically
-		authors = sorted(list(authors))
+		# sort based on last name alphabetically
+		authors = sorted(list(authors), key=lambda name: name.title().split()[-1])
 		emphasis_node = nodes.emphasis(text=", ".join(authors))
 		return [emphasis_node]
 
