@@ -40,7 +40,7 @@ We are releasing this code to the public as a tool we expect others to use and a
 - [Neural dynamics using time-analysis with CEBRA](https://alleninstitute.github.io/openscope_databook/higher-order/cebra_time.html)  
   [CEBRA Demo on the CEBRA Repository](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
 - [Extracting clusters of correlated neurons with TCA](https://alleninstitute.github.io/openscope_databook/higher-order/tca.html)
-- Identifying mouse behavioral state based on eye tracking and behavioral data.
+- [Estimating behavioral state given trial choices and relating states to pupil size](https://github.com/sjara/openscope_databook/blob/main/docs/higher-order/behavioral_state.ipynb)
 - Analysis of functional connectivity.
 
 ### Chapter 5: Replicating figures
