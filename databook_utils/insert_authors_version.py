@@ -73,7 +73,8 @@ class Authors(Directive):
 
 		# get authors with matching role from csv
 		authors = set()
-		table = list(csv.reader(open("./data/contributors.csv")))
+		with open("./data/contributors.csv") as f:
+			table = list(csv.reader(f))
 		role_idx = table[0].index("Role")
 		name_idx = table[0].index("Name")
 		for contributor in table[1:]:
@@ -117,7 +118,8 @@ class VersionNumber(Directive):
 class AuthorsIndex(Directive):
 
 	def run(self):
-		table = list(csv.reader(open("./data/contributors.csv")))
+		with open("./data/contributors.csv") as f:
+			table = list(csv.reader(f))
 
 		section = nodes.section(ids=["contributorsblock"])
 		section += nodes.title("","Contributors")
