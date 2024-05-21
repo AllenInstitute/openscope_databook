@@ -57,7 +57,7 @@ class Committers(Directive):
 		print("Authors:", authors)
 
 		authors_text = ", ".join(authors)
-		emphasis_node = nodes.emphasis(text=authors_text)
+		emphasis_node = nodes.Text(authors_text)
 		return [emphasis_node]
 
 
@@ -90,7 +90,7 @@ class Authors(Directive):
 
 		# sort based on last name alphabetically
 		authors = sorted(list(authors), key=lambda name: name.title().split()[-1])
-		emphasis_node = nodes.emphasis(text=", ".join(authors))
+		emphasis_node = nodes.Text(", ".join(authors))
 		return [emphasis_node]
 
 
