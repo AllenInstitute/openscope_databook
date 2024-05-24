@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -193,9 +193,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -549,7 +548,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuropixel-probe-locations">
 <h1>Visualizing Neuropixel Probe Locations<a class="headerlink" href="#visualizing-neuropixel-probe-locations" title="Link to this heading">#</a></h1>
 <p><strong>Note: This notebook currently does not work on Google Colab, considering running it on <a class="reference internal" href="#hub.dandiarchive.org/"><span class="xref myst">Dandihub</span></a></strong></p>
-<p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which store these locations. To be more precise, they contain arrays of <em>CCF</em> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which represents locations in the brain with coordinates that are relative to brain structure. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
+<p>It can be handy to know the location and trajectory of the probes that obtain the data. Some NWB files have an <strong>electrodes</strong> field which stores these locations. To be more precise, they contain arrays of <em>CCF</em> coordinates. <a class="reference external" href="https://community.brain-map.org/t/allen-mouse-ccf-accessing-and-using-related-data-and-tools/359">CCF</a> is a framework which represents locations in the brain with coordinates that are relative to predefined brain structures in a model brain. This notebook uses CCF coordinate data in an extracellular electrophysiology NWB file to render the locations of the <a class="reference external" href="https://www.neuropixels.org/probe">Neuropixel</a> probes that were used.</p>
 <p>To be able to render locations in a brain, you don’t need to know how CCF works except that it is a system of coordinates. We use the <strong><a class="reference external" href="https://github.com/NeurodataWithoutBorders/ccf-widget">ccf-widget</a></strong> library to 3D render the brain and the probe coordinates.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>

@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -193,9 +193,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -470,7 +469,7 @@ document.write(`
 </section>
 <section id="dandi">
 <h2>DANDI<a class="headerlink" href="#dandi" title="Link to this heading">#</a></h2>
-<p>At the Allen Institute, we frequently utilize a platform called <a class="reference external" href="https://dandiarchive.org/">DANDI</a> (Data Archive and Neurophysiology Imaging). DANDI is a platform that allows open-source data sharing and archiving and acts as a centralized repository where researchers can deposit data. While some of these notebooks use pre-loaded data from DANDI, the ultimate purpose of this Databook is to teach users to take any dataset off DANDI and reproduce the analysis within these notebooks.</p>
+<p>At the Allen Institute, we frequently utilize a platform called <a class="reference external" href="https://dandiarchive.org/">DANDI</a> (Distributed Archives for Neurophysiology Data Integration). DANDI is a platform that allows open-source data sharing and archiving and acts as a centralized repository where researchers can deposit data. While some of these notebooks use pre-loaded data from DANDI, the ultimate purpose of this Databook is to teach users to take any dataset off DANDI and reproduce the analysis within these notebooks.</p>
 <p>At the beginning of each notebook, we need to download the data that we will be analyzing. Our data is stored in NWB files (explained below), and the NWB files for a given experiment are contained in datasets called dandisets which are available for download from the <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a>. First, we identify what dandiset we want to access, and from there we identify the filepath for the specific NWB file we want to download. While these notebooks provide most of the steps to download and access an NWB file, here are instruction for accessing a particular filepath for any file stored on DANDI:</p>
 <ol class="arabic simple">
 <li><p>Click <a class="reference external" href="https://dandiarchive.org/dandiset/000535?search=allen%20institute%202%20photon&amp;amp;pos=2">here</a> to access a Dandiset uploaded by researchers at the Allen Institute.</p></li>
@@ -482,15 +481,15 @@ document.write(`
 </section>
 <section id="nwb-files">
 <h2>NWB FILES<a class="headerlink" href="#nwb-files" title="Link to this heading">#</a></h2>
-<p>Throughout these notebooks, we analyze data that is stored in NWB (Neurodata Without Borders) files. NWB files utilize a standardized format for storing and sharing optical data, behavioral data, and neurophysiology data. Their purpose is to address the need for a universal data format that makes analysis accessible across different experimental techniques. NWB files contain raw data, processed data, analysis results, and metadata all organized in a uniform manner across different research projects. During analysis within these notebooks, we often need to access data within different parts of an NWB file. To explore the specifications of NWB format or to clarify the documentation used within NWB files, you can explore the <a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/">NWB Format Specification</a> website. This is a helpful resource to understand how to access different parts of an NWB file that may not be provided in examples within our notebooks.</p>
-<p>In order to do basic reading of NWB files we utilize <a class="reference external" href="https://github.com/NeurodataWithoutBorders/pynwb">PyNWB</a>, which is a Python package that allows users to read, write, and manipulate NWB files. We explain how to utilize PyNWB and how to explore NWB files in our <a class="reference internal" href="read_nwb.html"><span class="std std-doc">Reading an NWB file</span></a> notebook. In addition to viewing raw data, it is also useful to graphically visualize data that is stored in NWB files. In our notebooks, we do so by utilizing <a class="reference external" href="https://github.com/NeurodataWithoutBorders/nwbwidgets">NWBWidgets</a>, which is an interactive package that can be used in Jupyter notebooks to easily visualize data. Some examples of what this package can do is display time series data, spatial data, and spike trains. To visualize data from NWB files using methods that don’t require Jupyter, you can utilize <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDFView</a>, a graphical user interface tool. To explore how to use these methods to visualize data from NWB files, please reference our <a class="reference internal" href="#./use_newwidgets.ipynb"><span class="xref myst">Explore an NWB file</span></a> notebook.</p>
+<p>Throughout these notebooks, we analyze data that is stored in NWB (Neurodata Without Borders) files. NWB files utilize a standardized format for storing and sharing optical data, behavioral data, and neurophysiology data. Their purpose is to address the need for a universal data format that makes analysis accessible across different experimental techniques. NWB files contain raw data, processed data, analysis results, and metadata all organized in a uniform manner across different research projects. During analysis within these notebooks, we often need to access data within different parts of an NWB file. To explore the specifications of the NWB format or to clarify the documentation used within NWB files, you can explore the <a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/">NWB Format Specification</a> website. This is a helpful resource to understand how to access different parts of an NWB file that may not be provided in examples within our notebooks.</p>
+<p>In order to do basic reading of NWB files we utilize <a class="reference external" href="https://github.com/NeurodataWithoutBorders/pynwb">PyNWB</a>, which is a Python package that allows users to read, write, and manipulate NWB files. We explain how to utilize PyNWB and how to explore NWB files in our <a class="reference internal" href="read_nwb.html"><span class="std std-doc">Reading an NWB file</span></a> notebook. In addition to viewing raw data, it is also useful to graphically visualize data that is stored in NWB files. In our notebooks, we do so by utilizing <a class="reference external" href="https://github.com/NeurodataWithoutBorders/nwbwidgets">NWBWidgets</a>, which is an interactive package that can be used in Jupyter notebooks to easily visualize data. Some examples of what this package can do is display time series data, spatial data, and spike trains. To visualize data from NWB files using methods that don’t require Jupyter, you can utilize <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDFView</a>, a graphical user interface tool. To explore how to use these methods to visualize data from NWB files, please reference our <a class="reference internal" href="use_nwbwidgets.html"><span class="std std-doc">Explore an NWB file</span></a> notebook.</p>
 </section>
 <section id="understanding-data-collection-techniques">
 <h2>Understanding Data Collection Techniques<a class="headerlink" href="#understanding-data-collection-techniques" title="Link to this heading">#</a></h2>
 <p>In this Databook, we will be analyzing data from two different types of experimental techniques: two-photon calcium imaging (ophys) and extracellular electrophysiology (ecephys).</p>
 <p>Two-photon calcium imaging utilizes a fluorescence indicator that emits fluorescence when bound to calcium ions. The intensity of fluorescence is proportional to the concentration of calcium, and this allows us to measure and visualize neural activity at the cellular level. A specialized microscope detects the fluorescence and the data is converted to a visual image. The Allen Institute uses the <a class="reference external" href="https://github.com/MouseLand/suite2p">Suite2P</a> algorithm to identify regions of interest, ROIs, from the images that are putative neurons, and each neuron’s activity can be studied over the duration of an experiment.</p>
-<p>Extracellular electrophysiology is a technique that analyzes the electrical activity of neurons in the brain. At the Allen Institute, we use Neuropixel probes which are inserted into the brain and record the local electrical activity of neurons in a specific location. The probe is only 10mm long and 70 microns wide, but has hundreds of channels that run along its length. Each channel can record electrical activity from a singular neuron or a group of neurons in the form of action potential (spikes) or local field potentials (LFPs).</p>
-<p>Ultimately, both experimental techniques are used to collect information about neuronal activity in the brain, but the way the data is analyzed for each technique is different. We provide notebooks that explain the analysis for both ophys and ecephys. The first notebook that discusses ophys analysis is <a class="reference internal" href="#./visualize_2p_raw.ipynb"><span class="xref myst">Visualizing Raw 2-Photon Images</span></a> and the first notebook that discusses ecephys analysis is <a class="reference internal" href="#visualize_lfp_responses.ipynb"><span class="xref myst">Visualizing LFP responses to Stimulus</span></a>.</p>
+<p>Extracellular electrophysiology is a technique that analyzes the electrical activity of neurons in the brain. At the Allen Institute, we use Neuropixel probes which are inserted into the brain and record the local electrical activity of neurons in a specific location. The probe is only 10mm long and 70 microns wide, but has hundreds of channels that run along its length. Each channel can record electrical activity from a singular neuron or a group of neurons in the form of action potentials (spikes) or local field potentials (LFPs).</p>
+<p>Ultimately, both experimental techniques are used to collect information about neuronal activity in the brain, but the way the data is analyzed for each technique is different. We provide notebooks that explain the analysis for both ophys and ecephys. The first notebook that discusses ophys analysis is <a class="reference internal" href="../visualization/visualize_2p_raw.html"><span class="std std-doc">Visualizing Raw 2-Photon Images</span></a> and the first notebook that discusses ecephys analysis is <a class="reference internal" href="../visualization/visualize_lfp_responses.html"><span class="std std-doc">Visualizing LFP responses to Stimuli</span></a>.</p>
 <p><strong>Resources for Ophys:</strong></p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.pnas.org/doi/epdf/10.1073/pnas.1232232100">In vivo two photon calcium imaging of neuronal networks</a>  is a paper that can provide an introduction to two-photon calcium imaging techniques</p></li>

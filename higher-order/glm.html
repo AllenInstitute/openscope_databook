@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -75,8 +75,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'higher-order/glm';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tensor Decomposition of Spiking Activity Through Trials" href="tca.html" />
-    <link rel="prev" title="Identifying Regions of Interest with Segmentation" href="../first-order/suite2p.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -138,6 +136,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -195,9 +195,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -205,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -217,14 +217,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -232,7 +232,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -584,6 +583,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\scipy\__init__.py:169: UserWarning: A NumPy version &gt;=1.18.5 and &lt;1.26.0 is required for this version of SciPy (detected version 1.26.4
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -758,7 +763,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;# Spikes&#39;)
 </pre></div>
 </div>
-<img alt="../_images/93feee7b20582e49a05d46cdc3234797c02e3e3e712d640bd5872e15e58c76c1.png" src="../_images/93feee7b20582e49a05d46cdc3234797c02e3e3e712d640bd5872e15e58c76c1.png" />
+<img alt="../_images/f04e3067b68123fb8675420afedf54a444b1ce372d3c5e3a4851faf8f11069e7.png" src="../_images/f04e3067b68123fb8675420afedf54a444b1ce372d3c5e3a4851faf8f11069e7.png" />
 </div>
 </div>
 </section>
@@ -831,13 +836,13 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y: (30000,) X: (30000, 26) x0: (26,)
--2.441053290077551
+-2.4528658961595062
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Unitless&#39;)
 </pre></div>
 </div>
-<img alt="../_images/a85237f218d8c7f1534230130ef118e51bfd9e8b0c0827754c276d4ecef31def.png" src="../_images/a85237f218d8c7f1534230130ef118e51bfd9e8b0c0827754c276d4ecef31def.png" />
+<img alt="../_images/cfeea1b088db91c05b39e2350196aa90a570a86786315d156ad9eb3a3b1a4bb7.png" src="../_images/cfeea1b088db91c05b39e2350196aa90a570a86786315d156ad9eb3a3b1a4bb7.png" />
 </div>
 </div>
 </section>
@@ -1337,7 +1342,7 @@ y: (25600,) X: (25600, 2) x0: (2,)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$R^2$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/864fb7687c12f916f9f09c68fc28cf1e65a5afe460f2ff8157a9d804d8d93126.png" src="../_images/864fb7687c12f916f9f09c68fc28cf1e65a5afe460f2ff8157a9d804d8d93126.png" />
+<img alt="../_images/171ab4e7ac832124019c35d8f4dde2ec956f0dd899e831f467a474bac900a6f4.png" src="../_images/171ab4e7ac832124019c35d8f4dde2ec956f0dd899e831f467a474bac900a6f4.png" />
 </div>
 </div>
 </section>
@@ -1376,7 +1381,7 @@ y: (25600,) X: (25600, 2) x0: (2,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISpm&#39;, &#39;CA1&#39;, &#39;LGd&#39;, &#39;LP&#39;, &#39;PO&#39;, &#39;DG&#39;, &#39;VISam&#39;, &#39;TH&#39;, &#39;CA2&#39;, &#39;PoT&#39;, &#39;POL&#39;, &#39;CA3&#39;, &#39;APN&#39;, &#39;VISp&#39;, &#39;Eth&#39;, &#39;VISrl&#39;, &#39;VPM&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VPM&#39;, &#39;DG&#39;, &#39;POL&#39;, &#39;LP&#39;, &#39;PO&#39;, &#39;Eth&#39;, &#39;CA3&#39;, &#39;TH&#39;, &#39;VISp&#39;, &#39;VISam&#39;, &#39;CA1&#39;, &#39;CA2&#39;, &#39;VISrl&#39;, &#39;APN&#39;, &#39;VISpm&#39;, &#39;LGd&#39;, &#39;PoT&#39;}
 </pre></div>
 </div>
 </div>
@@ -1793,7 +1798,9 @@ range(0, 11)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y: (5969,) X: (5969, 11) x0: (11,)
-y: (5969,) X: (5969, 11) x0: (11,)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y: (5969,) X: (5969, 11) x0: (11,)
 y: (5969,) X: (5969, 11) x0: (11,)
 y: (5969,) X: (5969, 11) x0: (11,)
 y: (5969,) X: (5969, 11) x0: (11,)
@@ -1946,7 +1953,7 @@ y: (5969,) X: (5969, 11) x0: (11,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3df535393b38614870f65b8fe030866a58c600adf657004ce4ef6355c4f0e489.png" src="../_images/3df535393b38614870f65b8fe030866a58c600adf657004ce4ef6355c4f0e489.png" />
+<img alt="../_images/bb497afad7ceeee2a12fa862a89a39d1ce48535740a0012da1dbabf79411dea1.png" src="../_images/bb497afad7ceeee2a12fa862a89a39d1ce48535740a0012da1dbabf79411dea1.png" />
 </div>
 </div>
 </section>
@@ -1988,51 +1995,51 @@ y: (5969,) X: (5969, 11) x0: (11,)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5,)
 ===
 white observed mean rate: 0.1216284134695929
-white predicted mean rate: 0.12397386496900653
-white loss: 0.0003848557943929576
+white predicted mean rate: 0.12414139721896465
+white loss: 0.0003848557605634628
 black observed mean rate: 0.1216284134695929
-black predicted mean rate: 0.12045568771988607
-black loss: 0.0011426316431981665
+black predicted mean rate: 0.12615178421846204
+black loss: 0.001142631271695116
 (5,)
 ===
 white observed mean rate: 0.10571284972357178
-white predicted mean rate: 0.10135701122466075
-white loss: 0.0009655135543146232
+white predicted mean rate: 0.09917909197520523
+white loss: 0.0009655134117605435
 black observed mean rate: 0.10571284972357178
-black predicted mean rate: 0.09984922097503769
-black loss: 0.0017283560443482893
+black predicted mean rate: 0.10990115597252471
+black loss: 0.001728356291834654
 (5,)
 ===
 white observed mean rate: 1.139051767465237
-white predicted mean rate: 1.1373764449656558
-white loss: 0.00037332640465692624
+white predicted mean rate: 1.1150946557212262
+white loss: 0.0003733266620327136
 black observed mean rate: 1.139051767465237
-black predicted mean rate: 1.139219299715195
-black loss: 0.00032823751221899844
+black predicted mean rate: 1.1305076227173732
+black loss: 0.0003282388963443683
 (5,)
 ===
 white observed mean rate: 0.2186295861953426
-white predicted mean rate: 0.17356341095660915
-white loss: 0.01791479230344506
+white predicted mean rate: 0.17473613670631596
+white loss: 0.017914794758393082
 black observed mean rate: 0.2186295861953426
-black predicted mean rate: 0.184788071703803
-black loss: 0.07174471374097768
+black predicted mean rate: 0.19735299045066176
+black loss: 0.07174471261041437
 (5,)
 ===
 white observed mean rate: 0.1256491874685877
-white predicted mean rate: 0.11509465572122633
-white loss: 0.001441383489555581
+white predicted mean rate: 0.1306751549673312
+white loss: 0.001441383684271269
 black observed mean rate: 0.1256491874685877
-black predicted mean rate: 0.12380633271904842
-black loss: 0.0002884977867113614
+black predicted mean rate: 0.12698944546825264
+black loss: 0.0002884977893453655
 (5,)
 ===
 white observed mean rate: 0.14977383146255654
-white predicted mean rate: 0.15077902496230525
-white loss: 0.00022546582457549924
+white predicted mean rate: 0.15580499246104876
+white loss: 0.00022546549757263001
 black observed mean rate: 0.14977383146255654
-black predicted mean rate: 0.15647512146088122
-black loss: 0.0018114593930085299
+black predicted mean rate: 0.14809850896297538
+black loss: 0.0018114580027280835
 (5,)
 ===
 white observed mean rate: 0.0
@@ -2044,315 +2051,315 @@ black loss: 0.0
 (5,)
 ===
 white observed mean rate: 0.007538951248115262
-white predicted mean rate: 0.00820908024794773
-white loss: 1.9006107534247363e-05
+white predicted mean rate: 0.006533757748366561
+white loss: 1.9006142389366154e-05
 black observed mean rate: 0.007538951248115262
-black predicted mean rate: 0.00938180599765455
-black loss: 3.559774785999448e-05
+black predicted mean rate: 0.007036354498240911
+black loss: 3.559772418804119e-05
 (5,)
 ===
 white observed mean rate: 0.09951415647512146
-white predicted mean rate: 0.10805830122298543
-white loss: 0.00012236388006481302
+white predicted mean rate: 0.09783883397554029
+white loss: 0.00012236385223118873
 black observed mean rate: 0.09951415647512146
-black predicted mean rate: 0.09968168872507958
-black loss: 0.0012923085776176402
+black predicted mean rate: 0.09264533422683867
+black loss: 0.0012923087073902773
 (5,)
 ===
 white observed mean rate: 1.5391187803652202
-white predicted mean rate: 1.5319148936170213
-white loss: 0.019236521787092564
+white predicted mean rate: 1.5091305076227173
+white loss: 0.019236522381798293
 black observed mean rate: 1.5391187803652202
-black predicted mean rate: 1.5203551683699112
-black loss: 0.028437037431522705
+black predicted mean rate: 1.5299045066175239
+black loss: 0.028437044982103088
 (5,)
 ===
 white observed mean rate: 0.005696096498575976
-white predicted mean rate: 0.0033506449991623386
-white loss: 4.3188418932360584e-05
+white predicted mean rate: 0.006198693248450327
+white loss: 4.3188469366461923e-05
 black observed mean rate: 0.005696096498575976
-black predicted mean rate: 0.0077064834980733795
-black loss: 5.69033083538395e-05
+black predicted mean rate: 0.006533757748366561
+black loss: 5.690322467244435e-05
 (5,)
 ===
 white observed mean rate: 0.19852571620036857
-white predicted mean rate: 0.17574133020606467
-white loss: 0.008166713867045483
+white predicted mean rate: 0.17691405595577148
+white loss: 0.008166713996407338
 black observed mean rate: 0.19852571620036857
-black predicted mean rate: 0.17959457195510137
-black loss: 0.03470263291827602
+black predicted mean rate: 0.18730105545317474
+black loss: 0.03470263174848298
 (5,)
 ===
 white observed mean rate: 0.4265371083933657
-white predicted mean rate: 0.46037862288490533
-white loss: 0.00422782286666723
+white predicted mean rate: 0.4357513821410621
+white loss: 0.004227823638478845
 black observed mean rate: 0.4265371083933657
-black predicted mean rate: 0.43692410789076896
-black loss: 0.01875042704365215
+black predicted mean rate: 0.4354163176411459
+black loss: 0.018750425963966144
 (5,)
 ===
 white observed mean rate: 0.508460378622885
-white predicted mean rate: 0.4628916066342771
-white loss: 0.004596788159929477
+white predicted mean rate: 0.4587033003853242
+white loss: 0.004596792160910912
 black observed mean rate: 0.508460378622885
-black predicted mean rate: 0.5010889596247278
-black loss: 0.05130710324359189
+black predicted mean rate: 0.48701625062824594
+black loss: 0.05130710365270208
 (5,)
 ===
 white observed mean rate: 0.446976042888256
-white predicted mean rate: 0.3998994806500251
-white loss: -0.004926348103714284
+white predicted mean rate: 0.39939688390015077
+white loss: -0.004926341979468951
 black observed mean rate: 0.446976042888256
-black predicted mean rate: 0.43675657564081083
-black loss: 0.10049794076255858
+black predicted mean rate: 0.4404422851398894
+black loss: 0.10049793883163627
 (5,)
 ===
 white observed mean rate: 0.37510470765622383
-white predicted mean rate: 0.3484670799128832
-white loss: 0.00759547720800291
+white predicted mean rate: 0.3479644831630089
+white loss: 0.0075954763862977615
 black observed mean rate: 0.37510470765622383
-black predicted mean rate: 0.3513151281621712
-black loss: 0.01720069530022228
+black predicted mean rate: 0.35081253141229685
+black loss: 0.01720069024621662
 (5,)
 ===
 white observed mean rate: 0.40593064164851733
-white predicted mean rate: 0.37543977215614005
-white loss: -5.138569759588485e-05
+white predicted mean rate: 0.3858267716535433
+white loss: -5.138561004525144e-05
 black observed mean rate: 0.40593064164851733
-black predicted mean rate: 0.4022449321494388
-black loss: 0.006120707113941415
+black predicted mean rate: 0.41095660914726084
+black loss: 0.006120706836012402
 (5,)
 ===
 white observed mean rate: 0.09951415647512146
-white predicted mean rate: 0.09733623722566594
-white loss: 0.0003909195040355806
+white predicted mean rate: 0.10504272072373932
+white loss: 0.0003909195494242734
 black observed mean rate: 0.09951415647512146
-black predicted mean rate: 0.10018428547495394
-black loss: 0.0008338041314364109
+black predicted mean rate: 0.09984922097503769
+black loss: 0.000833804307644348
 (5,)
 ===
 white observed mean rate: 0.2888255989277936
-white predicted mean rate: 0.28547495392863126
-white loss: 0.0008306782275996349
+white predicted mean rate: 0.3079242754230189
+white loss: 0.0008306779386890728
 black observed mean rate: 0.2888255989277936
-black predicted mean rate: 0.282291841179427
-black loss: 0.0026919795755160347
+black predicted mean rate: 0.2975372759256157
+black loss: 0.0026919788712840287
 (5,)
 ===
 white observed mean rate: 0.11341933322164517
-white predicted mean rate: 0.11140894622214777
-white loss: 0.0007623265432760151
+white predicted mean rate: 0.10772323672306919
+white loss: 0.0007623257915119197
 black observed mean rate: 0.11341933322164517
-black predicted mean rate: 0.11107388172223152
-black loss: 5.151262562230752e-05
+black predicted mean rate: 0.1147595912213101
+black loss: 5.151284351812002e-05
 (5,)
 ===
 white observed mean rate: 1.2373931981906516
-white predicted mean rate: 1.1794270397051432
-white loss: 0.008035543575289017
+white predicted mean rate: 1.1986932484503268
+white loss: 0.008035540097528271
 black observed mean rate: 1.2373931981906516
-black predicted mean rate: 1.2404087786898979
-black loss: 0.05996413745807483
+black predicted mean rate: 1.2214776344446305
+black loss: 0.059964131876868554
 (5,)
 ===
 white observed mean rate: 0.026972692243256827
-white predicted mean rate: 0.023119450494220137
-white loss: 8.655353381636921e-05
+white predicted mean rate: 0.02412464399396884
+white loss: 8.655357006126518e-05
 black observed mean rate: 0.026972692243256827
-black predicted mean rate: 0.027642821243089293
-black loss: 2.1777152062529836e-05
+black predicted mean rate: 0.02948567599262858
+black loss: 2.1777120000732175e-05
 (5,)
 ===
 white observed mean rate: 1.187636119953091
-white predicted mean rate: 1.232032166191992
-white loss: 0.00645421291063597
+white predicted mean rate: 1.2209750376947563
+white loss: 0.006454212935497861
 black observed mean rate: 1.187636119953091
-black predicted mean rate: 1.1578153794605461
-black loss: 0.019201845209397383
+black predicted mean rate: 1.1553023957111743
+black loss: 0.019201848680654443
 (5,)
 ===
 white observed mean rate: 0.0063662254984084435
-white predicted mean rate: 0.006701289998324677
-white loss: 2.168091194199029e-05
+white predicted mean rate: 0.00603116099849221
+white loss: 2.168096114030238e-05
 black observed mean rate: 0.0063662254984084435
-black predicted mean rate: 0.006701289998324677
-black loss: 0.00032145090249247055
+black predicted mean rate: 0.005528564248617859
+black loss: 0.00032145114995019153
 (5,)
 ===
 white observed mean rate: 0.3387502094153124
-white predicted mean rate: 0.33808008041548
-white loss: 0.0023202244628256485
+white predicted mean rate: 0.3377450159155638
+white loss: 0.0023202241412338953
 black observed mean rate: 0.3387502094153124
-black predicted mean rate: 0.3303735969174066
-black loss: 0.000562895835864885
+black predicted mean rate: 0.32601775841849556
+black loss: 0.000562892165414608
 (5,)
 ===
 white observed mean rate: 0.0036857094990785724
-white predicted mean rate: 0.002680515999329871
-white loss: 8.38747969844622e-06
+white predicted mean rate: 0.0041883062489529235
+white loss: 8.387515631924636e-06
 black observed mean rate: 0.0036857094990785724
-black predicted mean rate: 0.002848048249287988
-black loss: 3.3284124181243158e-06
+black predicted mean rate: 0.0038532417490366897
+black loss: 3.328414390102452e-06
 (5,)
 ===
 white observed mean rate: 0.06868822248282794
-white predicted mean rate: 0.061484335734628914
-white loss: 0.016620135048145634
+white predicted mean rate: 0.05846875523538281
+white loss: 0.01662013454803346
 black observed mean rate: 0.06868822248282794
-black predicted mean rate: 0.056123303735969174
-black loss: 0.03614938794230205
+black predicted mean rate: 0.059306416485173395
+black loss: 0.03614939033174913
 (5,)
 ===
 white observed mean rate: 0.7626068018093483
-white predicted mean rate: 0.6766627575808343
-white loss: 0.007194641792837908
+white predicted mean rate: 0.7111744010722064
+white loss: 0.007194642823553643
 black observed mean rate: 0.7626068018093483
-black predicted mean rate: 0.7394873513151282
-black loss: 0.04656632965295926
+black predicted mean rate: 0.7237393198190651
+black loss: 0.04656633287491907
 (5,)
 ===
 white observed mean rate: 0.005528564248617859
-white predicted mean rate: 0.005696096498575976
-white loss: 7.900911083968953e-05
+white predicted mean rate: 0.0041883062489529235
+white loss: 7.900899934554229e-05
 black observed mean rate: 0.005528564248617859
-black predicted mean rate: 0.0077064834980733795
-black loss: 0.0002542170066772709
+black predicted mean rate: 0.0041883062489529235
+black loss: 0.00025421705187356203
 (5,)
 ===
 white observed mean rate: 0.2275087954431228
-white predicted mean rate: 0.23102697269224326
-white loss: 0.00011571598343096401
+white predicted mean rate: 0.24677500418830625
+white loss: 0.0001157159956435283
 black observed mean rate: 0.2275087954431228
-black predicted mean rate: 0.23471268219132183
-black loss: 0.004185548494235691
+black predicted mean rate: 0.2214776344446306
+black loss: 0.004185549491988683
 (5,)
 ===
 white observed mean rate: 0.4357513821410621
-white predicted mean rate: 0.42569944714357516
-white loss: 0.005071778954796824
+white predicted mean rate: 0.4372591723906852
+white loss: 0.005071778977732699
 black observed mean rate: 0.4357513821410621
-black predicted mean rate: 0.46322667113419336
-black loss: 0.00393750056326847
+black predicted mean rate: 0.4483163008879209
+black loss: 0.003937503125251651
 (5,)
 ===
 white observed mean rate: 0.029653208242586698
-white predicted mean rate: 0.029150611492712347
-white loss: -6.458468549785934e-05
+white predicted mean rate: 0.025297369743675656
+white loss: -6.458470263126515e-05
 black observed mean rate: 0.029653208242586698
-black predicted mean rate: 0.0306584017423354
-black loss: 0.003687996490187584
+black predicted mean rate: 0.03015580499246105
+black loss: 0.0036879963085866274
 (5,)
 ===
 white observed mean rate: 0.009716870497570782
-white predicted mean rate: 0.009884402747528899
-white loss: 2.7724515702765018e-05
+white predicted mean rate: 0.010219467247445133
+white loss: 2.7724443172782998e-05
 black observed mean rate: 0.009716870497570782
-black predicted mean rate: 0.011224660747193835
-black loss: 3.949288549898178e-05
+black predicted mean rate: 0.009046741497738315
+black loss: 3.949292965332862e-05
 (5,)
 ===
 white observed mean rate: 0.6974367565756409
-white predicted mean rate: 0.6813536605796616
-white loss: 0.008859154092933141
+white predicted mean rate: 0.6867146925783213
+white loss: 0.008859155899334503
 black observed mean rate: 0.6974367565756409
-black predicted mean rate: 0.6976042888255989
-black loss: 0.015635372136020842
+black predicted mean rate: 0.6971016920757246
+black loss: 0.01563537314727448
 (5,)
 ===
 white observed mean rate: 0.7331211258167197
-white predicted mean rate: 0.7280951583179762
-white loss: 0.0005195529675834365
+white predicted mean rate: 0.7314458033171386
+white loss: 0.0005195555527230944
 black observed mean rate: 0.7331211258167197
-black predicted mean rate: 0.7386496900653375
-black loss: 0.006908390156559752
+black predicted mean rate: 0.746356173563411
+black loss: 0.006908391096022037
 (5,)
 ===
 white observed mean rate: 0.8116937510470765
-white predicted mean rate: 0.7448483833137879
-white loss: 0.03600260388337906
+white predicted mean rate: 0.756408108560898
+white loss: 0.03600260945017297
 black observed mean rate: 0.8116937510470765
-black predicted mean rate: 0.767967833808008
-black loss: 0.03560092692756345
+black predicted mean rate: 0.7853911878036522
+black loss: 0.035600930577426415
 (5,)
 ===
 white observed mean rate: 0.37577483665605627
-white predicted mean rate: 0.3906852069023287
-white loss: 0.0001326900330835823
+white predicted mean rate: 0.3955436421511141
+white loss: 0.00013268940494637338
 black observed mean rate: 0.37577483665605627
-black predicted mean rate: 0.3866644329033339
-black loss: 0.0074715384668383455
+black predicted mean rate: 0.3776176914055956
+black loss: 0.0074715387812656076
 (5,)
 ===
 white observed mean rate: 0.2663762774334059
-white predicted mean rate: 0.2529736974367566
-white loss: 0.003935181288690082
+white predicted mean rate: 0.2491204556877199
+white loss: 0.003935181970439738
 black observed mean rate: 0.2663762774334059
-black predicted mean rate: 0.2663762774334059
-black loss: 0.001082963140035309
+black predicted mean rate: 0.2698944546825264
+black loss: 0.0010829632372421072
 (5,)
 ===
 white observed mean rate: 0.09314793097671302
-white predicted mean rate: 0.09113754397721562
-white loss: 0.0007904308183738218
+white predicted mean rate: 0.08728430222817893
+white loss: 0.0007904307898995988
 black observed mean rate: 0.09314793097671302
-black predicted mean rate: 0.09247780197688055
-black loss: 0.004349018911565583
+black predicted mean rate: 0.08996481822750879
+black loss: 0.004349018958373252
 (5,)
 ===
 white observed mean rate: 0.31864633942033843
-white predicted mean rate: 0.30172558217456863
-white loss: 0.007530998793248589
+white predicted mean rate: 0.2985424694253644
+white loss: 0.0075309937623114775
 black observed mean rate: 0.31864633942033843
-black predicted mean rate: 0.3285307421678673
-black loss: 0.014221172180998165
+black predicted mean rate: 0.30608142067347965
+black loss: 0.014221172133073723
 (5,)
 ===
 white observed mean rate: 0.2667113419333222
-white predicted mean rate: 0.26084771318478805
-white loss: 0.0009270828022264199
+white predicted mean rate: 0.2687217289328196
+white loss: 0.0009270825366081148
 black observed mean rate: 0.2667113419333222
-black predicted mean rate: 0.26084771318478805
-black loss: 0.00018614007860240367
+black predicted mean rate: 0.26453342268386665
+black loss: 0.00018613984000925843
 (5,)
 ===
 white observed mean rate: 0.21326855419668286
-white predicted mean rate: 0.2097503769475624
-white loss: 0.0016485907836683023
+white predicted mean rate: 0.21209582844697605
+white loss: 0.001648589341138762
 black observed mean rate: 0.21326855419668286
-black predicted mean rate: 0.22482827944379294
-black loss: 0.007243757463369249
+black predicted mean rate: 0.2117607639470598
+black loss: 0.007243758167569503
 (5,)
 ===
 white observed mean rate: 0.032501256491874686
-white predicted mean rate: 0.03015580499246105
-white loss: 0.002561330457861666
+white predicted mean rate: 0.02462724074384319
+white loss: 0.002561330534807227
 black observed mean rate: 0.032501256491874686
-black predicted mean rate: 0.034679175741330205
-black loss: 0.020399736093013376
+black predicted mean rate: 0.033338917741665273
+black loss: 0.020399740112882148
 (5,)
 ===
 white observed mean rate: 0.005025967498743508
-white predicted mean rate: 0.005025967498743508
-white loss: 2.2711009034837026e-05
+white predicted mean rate: 0.0036857094990785724
+white loss: 2.2711056526625306e-05
 black observed mean rate: 0.005025967498743508
-black predicted mean rate: 0.004523370748869157
-black loss: 0.0007943844423015101
+black predicted mean rate: 0.005025967498743508
+black loss: 0.0007943837544813759
 (5,)
 ===
 white observed mean rate: 0.00217791924945552
-white predicted mean rate: 0.002010386999497403
-white loss: 1.3409422863097653e-05
+white predicted mean rate: 0.0023454514994136373
+white loss: 1.3409419443832782e-05
 black observed mean rate: 0.00217791924945552
-black predicted mean rate: 0.00217791924945552
-black loss: 1.6160836458611882e-05
+black predicted mean rate: 0.002512983749371754
+black loss: 1.6160878051341143e-05
 (5,)
 ===
 white observed mean rate: 0.27910872843022283
-white predicted mean rate: 0.26654380968336405
-white loss: -0.000529915229138922
+white predicted mean rate: 0.25950745518512314
+white loss: -0.000529914615373217
 black observed mean rate: 0.27910872843022283
-black predicted mean rate: 0.27575808343106045
-black loss: 0.038992584877898695
+black predicted mean rate: 0.2759256156810186
+black loss: 0.038992587559676606
 (5,)
 ===
 white observed mean rate: 0.0
@@ -2364,622 +2371,622 @@ black loss: 0.0
 (5,)
 ===
 white observed mean rate: 0.33757748366560564
-white predicted mean rate: 0.2551516166862121
-white loss: -0.0132248837234068
+white predicted mean rate: 0.2581671971854582
+white loss: -0.01322488577399783
 black observed mean rate: 0.33757748366560564
-black predicted mean rate: 0.3402579996649355
-black loss: 0.2648720836641342
+black predicted mean rate: 0.33188138716702964
+black loss: 0.2648720876232027
 (5,)
 ===
 white observed mean rate: 1.2727425029318145
-white predicted mean rate: 1.2848048249287989
-white loss: 0.009631568946979252
+white predicted mean rate: 1.3106047914223489
+white loss: 0.009631569345007418
 black observed mean rate: 1.2727425029318145
-black predicted mean rate: 1.3059138884235215
-black loss: 0.019169690721766885
+black predicted mean rate: 1.2970346791757412
+black loss: 0.01916968966943733
 (5,)
 ===
 white observed mean rate: 0.111744010722064
-white predicted mean rate: 0.10353493047411627
-white loss: 0.002918175801438272
+white predicted mean rate: 0.11057128497235717
+white loss: 0.002918175215361085
 black observed mean rate: 0.111744010722064
-black predicted mean rate: 0.10973362372256659
-black loss: 0.006983093470439572
+black predicted mean rate: 0.11124141397218965
+black loss: 0.006983093900948201
 (5,)
 ===
 white observed mean rate: 0.712012062321997
-white predicted mean rate: 0.7205562070698609
-white loss: 0.0017700887626451722
+white predicted mean rate: 0.7259172390685207
+white loss: 0.0017700841449860283
 black observed mean rate: 0.712012062321997
-black predicted mean rate: 0.7116769978220807
-black loss: 0.010483056690309911
+black predicted mean rate: 0.710671804322332
+black loss: 0.010483057265191276
 (5,)
 ===
 white observed mean rate: 0.4292176243926956
-white predicted mean rate: 0.34980733791254814
-white loss: -0.008391731406671488
+white predicted mean rate: 0.36555536940861116
+white loss: -0.008391725020940655
 black observed mean rate: 0.4292176243926956
-black predicted mean rate: 0.44060981738984756
-black loss: 0.18986787658263138
+black predicted mean rate: 0.4317306081420674
+black loss: 0.1898678818697822
 (5,)
 ===
 white observed mean rate: 1.1960127324509968
-white predicted mean rate: 1.1206232199698443
-white loss: 0.003139719752262904
+white predicted mean rate: 1.1358686547160328
+white loss: 0.0031397198474462096
 black observed mean rate: 1.1960127324509968
-black predicted mean rate: 1.1928296197017927
-black loss: 0.05224583916124825
+black predicted mean rate: 1.1573127827106717
+black loss: 0.05224583959961426
 (5,)
 ===
 white observed mean rate: 0.0909700117272575
-white predicted mean rate: 0.07404925448148769
-white loss: -0.002808738443941472
+white predicted mean rate: 0.07756743173060814
+white loss: -0.0028087383514361353
 black observed mean rate: 0.0909700117272575
-black predicted mean rate: 0.0861115764784721
-black loss: 0.0734001389885709
+black predicted mean rate: 0.08292846372926789
+black loss: 0.07340013807624113
 (5,)
 ===
 white observed mean rate: 0.10537778522365555
-white predicted mean rate: 0.09984922097503769
-white loss: 0.0008422771136170626
+white predicted mean rate: 0.10504272072373932
+white loss: 0.0008422772015576063
 black observed mean rate: 0.10537778522365555
-black predicted mean rate: 0.1018596079745351
-black loss: 0.001532251136922791
+black predicted mean rate: 0.11744010722063997
+black loss: 0.0015322513703003304
 (5,)
 ===
 white observed mean rate: 0.38968001340258
-white predicted mean rate: 0.3536605796615849
-white loss: 0.011151253184732313
+white predicted mean rate: 0.35248785391187804
+white loss: 0.01115125027323205
 black observed mean rate: 0.38968001340258
-black predicted mean rate: 0.3689060144077735
-black loss: 0.05119054111198407
+black predicted mean rate: 0.36639303065840173
+black loss: 0.051190539477422914
 (5,)
 ===
 white observed mean rate: 0.2412464399396884
-white predicted mean rate: 0.2283464566929134
-white loss: 0.011764365490139927
+white predicted mean rate: 0.22817892444295526
+white loss: 0.011764364362394475
 black observed mean rate: 0.2412464399396884
-black predicted mean rate: 0.2273412631931647
-black loss: 0.004697188395194396
+black predicted mean rate: 0.2333724241916569
+black loss: 0.004697188537540864
 (5,)
 ===
 white observed mean rate: 0.022784385994303904
-white predicted mean rate: 0.02345451499413637
-white loss: 0.0024842779947215066
+white predicted mean rate: 0.024292176243926957
+white loss: 0.0024842780542223553
 black observed mean rate: 0.022784385994303904
-black predicted mean rate: 0.022616853744345786
-black loss: 0.0003148532632395451
+black predicted mean rate: 0.024459708493885072
+black loss: 0.0003148531804609833
 (5,)
 ===
 white observed mean rate: 0.12280113921929972
-white predicted mean rate: 0.1058803819735299
-white loss: 0.001471985782680152
+white predicted mean rate: 0.1137543977215614
+white loss: 0.0014719845870951875
 black observed mean rate: 0.12280113921929972
-black predicted mean rate: 0.12514659071871334
-black loss: 0.058630591198280624
+black predicted mean rate: 0.127492042218127
+black loss: 0.05863059864827347
 (5,)
 ===
 white observed mean rate: 0.11124141397218965
-white predicted mean rate: 0.10403752722399062
-white loss: -0.00042953986466343075
+white predicted mean rate: 0.1048751884737812
+white loss: -0.00042954036526343664
 black observed mean rate: 0.11124141397218965
-black predicted mean rate: 0.11392192997151952
-black loss: 0.010373524343556872
+black predicted mean rate: 0.10236220472440945
+black loss: 0.010373525742778278
 (5,)
 ===
 white observed mean rate: 0.22482827944379294
-white predicted mean rate: 0.10688557547327861
-white loss: -0.020726938595993616
+white predicted mean rate: 0.10856089797285978
+white loss: -0.020726938901823866
 black observed mean rate: 0.22482827944379294
-black predicted mean rate: 0.22516334394370915
-black loss: 0.5274035015548636
+black predicted mean rate: 0.22315295694421175
+black loss: 0.5274035060351742
 (5,)
 ===
 white observed mean rate: 0.6138381638465404
-white predicted mean rate: 0.6004355838498912
-white loss: 0.0038072571001370736
+white predicted mean rate: 0.5806667783548333
+white loss: 0.0038072580684369584
 black observed mean rate: 0.6138381638465404
-black predicted mean rate: 0.616016083095996
-black loss: 0.017373713356781173
+black predicted mean rate: 0.6071368738482158
+black loss: 0.017373713881999486
 (5,)
 ===
 white observed mean rate: 0.15479979896130006
-white predicted mean rate: 0.14072708996481822
-white loss: 0.028725003034456353
+white predicted mean rate: 0.1333556709666611
+white loss: 0.028725004268209564
 black observed mean rate: 0.15479979896130006
-black predicted mean rate: 0.16166862120958284
-black loss: 0.10951728773544267
+black predicted mean rate: 0.15479979896130006
+black loss: 0.10951728595372234
 (5,)
 ===
 white observed mean rate: 0.13318813871670296
-white predicted mean rate: 0.1296699614675825
-white loss: 0.0032526693026079245
+white predicted mean rate: 0.14290500921427374
+white loss: 0.0032526682072163693
 black observed mean rate: 0.13318813871670296
-black predicted mean rate: 0.14039202546490198
-black loss: 0.0014937889450129527
+black predicted mean rate: 0.13486346121628415
+black loss: 0.0014937886175524495
 (5,)
 ===
 white observed mean rate: 0.2038867481990283
-white predicted mean rate: 0.19132182945216955
-white loss: -6.204072305493469e-05
+white predicted mean rate: 0.19165689395208577
+white loss: -6.204187620229007e-05
 black observed mean rate: 0.2038867481990283
-black predicted mean rate: 0.20137376444965657
-black loss: 0.023569761777471276
+black predicted mean rate: 0.19567766795108057
+black loss: 0.023569762790081272
 (5,)
 ===
 white observed mean rate: 0.3628748534092813
-white predicted mean rate: 0.348132015412967
-white loss: 0.008453909566077056
+white predicted mean rate: 0.34762941866309266
+white loss: 0.008453907890353274
 black observed mean rate: 0.3628748534092813
-black predicted mean rate: 0.3576813536605797
-black loss: 0.015485286202315818
+black predicted mean rate: 0.3759423689060144
+black loss: 0.015485288646573059
 (5,)
 ===
 white observed mean rate: 0.30139051767465236
-white predicted mean rate: 0.290835985927291
-white loss: 0.0020440004262766154
+white predicted mean rate: 0.29720221142569947
+white loss: 0.0020440004481147023
 black observed mean rate: 0.30139051767465236
-black predicted mean rate: 0.28949572792762607
-black loss: 0.007643611076899148
+black predicted mean rate: 0.2945216954263696
+black loss: 0.007643609791582295
 (5,)
 ===
 white observed mean rate: 0.07388172223152957
-white predicted mean rate: 0.06315965823421009
-white loss: 0.0020788152518756986
+white predicted mean rate: 0.05947394873513151
+white loss: 0.002078816399431749
 black observed mean rate: 0.07388172223152957
-black predicted mean rate: 0.06885575473278606
-black loss: 0.020099391321993787
+black predicted mean rate: 0.07270899648182275
+black loss: 0.020099392536329197
 (5,)
 ===
 white observed mean rate: 0.042720723739319816
-white predicted mean rate: 0.04087786898978053
-white loss: 0.0012476085502989287
+white predicted mean rate: 0.04221812698944547
+white loss: 0.001247608731450689
 black observed mean rate: 0.042720723739319816
-black predicted mean rate: 0.04540123973864969
-black loss: 0.00016570885693878434
+black predicted mean rate: 0.03937007874015748
+black loss: 0.00016570930324910638
 (5,)
 ===
 white observed mean rate: 0.3613670631596582
-white predicted mean rate: 0.31965153292008713
-white loss: -0.0004811575234744403
+white predicted mean rate: 0.3171385491707154
+white loss: -0.00048115506395451924
 black observed mean rate: 0.3613670631596582
-black predicted mean rate: 0.34863461216284136
-black loss: 0.06249341908041406
+black predicted mean rate: 0.36253978890936506
+black loss: 0.0624934172360434
 (5,)
 ===
 white observed mean rate: 0.26252303568436924
-white predicted mean rate: 0.2283464566929134
-white loss: -0.0028752358540571343
+white predicted mean rate: 0.226336069693416
+white loss: -0.0028752354273569036
 black observed mean rate: 0.26252303568436924
-black predicted mean rate: 0.2647009549338248
-black loss: 0.06313366261288111
+black predicted mean rate: 0.25766460043558387
+black loss: 0.06313366149045463
 (5,)
 ===
 white observed mean rate: 0.28916066342770985
-white predicted mean rate: 0.25582174568604454
-white loss: -0.0013935122120452004
+white predicted mean rate: 0.25649187468587703
+white loss: -0.0013935129953890346
 black observed mean rate: 0.28916066342770985
-black predicted mean rate: 0.3062489529234378
-black loss: 0.046019911819076165
+black predicted mean rate: 0.30206064667448485
+black loss: 0.04601990884290774
 (5,)
 ===
 white observed mean rate: 0.021109063494722736
-white predicted mean rate: 0.019768805495057797
-white loss: 0.00022443206093869517
+white predicted mean rate: 0.021611660244597083
+white loss: 0.00022443193826104935
 black observed mean rate: 0.021109063494722736
-black predicted mean rate: 0.019768805495057797
-black loss: 0.00295812778340232
+black predicted mean rate: 0.0217791924945552
+black loss: 0.0029581262714136747
 (5,)
 ===
 white observed mean rate: 0.005696096498575976
 white predicted mean rate: 0.00435583849891104
-white loss: -1.7132862173419028e-06
+white loss: -1.7132577809775285e-06
 black observed mean rate: 0.005696096498575976
 black predicted mean rate: 0.00435583849891104
-black loss: 0.006002599973661815
+black loss: 0.006002599274603004
 (5,)
 ===
 white observed mean rate: 0.35583849891104036
-white predicted mean rate: 0.37711509465572124
-white loss: 0.00030375938376225875
+white predicted mean rate: 0.3699112079075222
+white loss: 0.00030376115753361077
 black observed mean rate: 0.35583849891104036
-black predicted mean rate: 0.34980733791254814
-black loss: 0.01802099400106305
+black predicted mean rate: 0.3719215949070196
+black loss: 0.018020994140999225
 (5,)
 ===
 white observed mean rate: 0.10772323672306919
-white predicted mean rate: 0.10470765622382308
-white loss: -7.948734660478962e-06
+white predicted mean rate: 0.11107388172223152
+white loss: -7.948528990775472e-06
 black observed mean rate: 0.10772323672306919
-black predicted mean rate: 0.09616351147595913
-black loss: 0.005971260850307636
+black predicted mean rate: 0.1058803819735299
+black loss: 0.005971262662884946
 (5,)
 ===
 white observed mean rate: 0.009549338247612666
-white predicted mean rate: 0.007874015748031496
-white loss: 9.968592094011797e-07
+white predicted mean rate: 0.0063662254984084435
+white loss: 9.969454815017542e-07
 black observed mean rate: 0.009549338247612666
-black predicted mean rate: 0.009046741497738315
-black loss: 0.01141134335761651
+black predicted mean rate: 0.011057128497235717
+black loss: 0.011411343499275972
 (5,)
 ===
 white observed mean rate: 0.10738817222315296
-white predicted mean rate: 0.07807002848048249
-white loss: -0.008424919099787154
+white predicted mean rate: 0.07069860948232534
+white loss: -0.008424918375303347
 black observed mean rate: 0.10738817222315296
-black predicted mean rate: 0.10554531747361368
-black loss: 0.17831098814466884
+black predicted mean rate: 0.09850896297537276
+black loss: 0.1783109881183832
 (5,)
 ===
 white observed mean rate: 0.0681856257329536
-white predicted mean rate: 0.06835315798291171
-white loss: 0.00039056720420738156
+white predicted mean rate: 0.06667783548333055
+white loss: 0.0003905672265301918
 black observed mean rate: 0.0681856257329536
-black predicted mean rate: 0.06299212598425197
-black loss: 0.011466961614908344
+black predicted mean rate: 0.06651030323337243
+black loss: 0.011466960374183044
 (5,)
 ===
 white observed mean rate: 1.946724744513319
-white predicted mean rate: 1.8240911375439772
-white loss: -0.004332975769288261
+white predicted mean rate: 1.8234210085441447
+white loss: -0.004332975022432128
 black observed mean rate: 1.946724744513319
-black predicted mean rate: 1.891104037527224
-black loss: 0.11411576504003318
+black predicted mean rate: 1.9286312615178423
+black loss: 0.1141157678572412
 (5,)
 ===
 white observed mean rate: 0.020941531244764618
-white predicted mean rate: 0.017088289495727927
-white loss: -0.00035844727300693435
+white predicted mean rate: 0.01424024124643994
+white loss: -0.00035844712815125135
 black observed mean rate: 0.020941531244764618
-black predicted mean rate: 0.02462724074384319
-black loss: 0.034547253107936826
+black predicted mean rate: 0.02194672474451332
+black loss: 0.03454725078538956
 (5,)
 ===
 white observed mean rate: 0.5979226001005193
-white predicted mean rate: 0.6359524208410119
-white loss: 0.02265484324876843
+white predicted mean rate: 0.6481822750879545
+white loss: 0.022654841568600093
 black observed mean rate: 0.5979226001005193
-black predicted mean rate: 0.6398056625900486
-black loss: 0.03615238748271543
+black predicted mean rate: 0.6305913888423521
+black loss: 0.036152381635957354
 (5,)
 ===
 white observed mean rate: 0.25079577818730103
-white predicted mean rate: 0.2373931981906517
-white loss: 0.007698332785715523
+white predicted mean rate: 0.24174903668956274
+white loss: 0.007698330119106478
 black observed mean rate: 0.25079577818730103
-black predicted mean rate: 0.25682693918579325
-black loss: 0.029647002384594057
+black predicted mean rate: 0.2539788909365053
+black loss: 0.02964700135342968
 (5,)
 ===
 white observed mean rate: 0.08761936672809516
-white predicted mean rate: 0.04757915898810521
-white loss: 0.039126380403022964
+white predicted mean rate: 0.051767465237058136
+white loss: 0.03912637837769406
 black observed mean rate: 0.08761936672809516
-black predicted mean rate: 0.07488691573127827
-black loss: 0.416610239010341
+black predicted mean rate: 0.0851063829787234
+black loss: 0.4166102472540216
 (5,)
 ===
 white observed mean rate: 0.15546992796113251
-white predicted mean rate: 0.16049589545987603
-white loss: 0.24071111565729275
+white predicted mean rate: 0.15865304071033673
+white loss: 0.2407111155609396
 black observed mean rate: 0.15546992796113251
-black predicted mean rate: 0.10454012397386497
-black loss: -0.003544072544210186
+black predicted mean rate: 0.10671804322332049
+black loss: -0.0035440669805675284
 (5,)
 ===
 white observed mean rate: 0.13938683196515328
-white predicted mean rate: 0.11593231697101693
-white loss: 0.0013094457743267895
+white predicted mean rate: 0.11643491372089128
+white loss: 0.0013094431591035294
 black observed mean rate: 0.13938683196515328
-black predicted mean rate: 0.13318813871670296
-black loss: 0.052503158353992
+black predicted mean rate: 0.14189981571452503
+black loss: 0.05250315602158773
 (5,)
 ===
 white observed mean rate: 0.08577651197855587
-white predicted mean rate: 0.053945384486513655
-white loss: -0.0029877525409389705
+white predicted mean rate: 0.05595577148601106
+white loss: -0.0029877548417240885
 black observed mean rate: 0.08577651197855587
-black predicted mean rate: 0.09247780197688055
-black loss: 0.29527689554714354
+black predicted mean rate: 0.09314793097671302
+black loss: 0.29527689384739564
 (5,)
 ===
 white observed mean rate: 0.38934494890266375
-white predicted mean rate: 0.3846540459038365
-white loss: 0.002426690040199242
+white predicted mean rate: 0.38448651365387837
+white loss: 0.0024266874513669823
 black observed mean rate: 0.38934494890266375
-black predicted mean rate: 0.3700787401574803
-black loss: 0.013013357557886351
+black predicted mean rate: 0.3972189646506953
+black loss: 0.013013347947212872
 (5,)
 ===
 white observed mean rate: 0.9991623387502094
-white predicted mean rate: 1.0152454347461886
-white loss: 0.0374112738740594
+white predicted mean rate: 1.0053610319986597
+white loss: 0.03741127378492459
 black observed mean rate: 0.9991623387502094
-black predicted mean rate: 0.9948065002512984
-black loss: 0.18023503513024652
+black predicted mean rate: 0.9874350812531413
+black loss: 0.18023503135804586
 (5,)
 ===
 white observed mean rate: 0.016753224995811694
-white predicted mean rate: 0.013067515496733122
-white loss: 0.000983684652041017
+white predicted mean rate: 0.01742335399564416
+white loss: 0.0009836850948579112
 black observed mean rate: 0.016753224995811694
-black predicted mean rate: 0.01859607974535098
-black loss: 0.0004074757254416417
+black predicted mean rate: 0.013905176746523706
+black loss: 0.00040747587957423725
 (5,)
 ===
 white observed mean rate: 1.5660914726084771
-white predicted mean rate: 1.6436589043390852
-white loss: 0.005582468580079936
+white predicted mean rate: 1.6158485508460378
+white loss: 0.005582465910124235
 black observed mean rate: 1.5660914726084771
-black predicted mean rate: 1.5920589713519853
-black loss: 0.03995618436241699
+black predicted mean rate: 1.5835148266041212
+black loss: 0.03995618104727383
 (5,)
 ===
 white observed mean rate: 0.5719551013570112
-white predicted mean rate: 0.6042888255989278
-white loss: 0.004594059533364003
+white predicted mean rate: 0.6016083095995979
+white loss: 0.004594057846040278
 black observed mean rate: 0.5719551013570112
-black predicted mean rate: 0.5830122298542469
-black loss: 0.03570782252410487
+black predicted mean rate: 0.5870330038532418
+black loss: 0.035707825352807476
 (5,)
 ===
 white observed mean rate: 0.4566929133858268
-white predicted mean rate: 0.472776009381806
-white loss: 0.005091806402835575
+white predicted mean rate: 0.4779695091305076
+white loss: 0.0050918069180552195
 black observed mean rate: 0.4566929133858268
-black predicted mean rate: 0.4439604623890099
-black loss: 0.0032646716713692348
+black predicted mean rate: 0.4476461718880885
+black loss: 0.0032646702636662805
 (5,)
 ===
 white observed mean rate: 0.017088289495727927
-white predicted mean rate: 0.017255821745686045
-white loss: 0.0001248293301638892
+white predicted mean rate: 0.015580499246104875
+white loss: 0.0001248296272641225
 black observed mean rate: 0.017088289495727927
-black predicted mean rate: 0.017758418495560396
-black loss: 0.0010144683067583316
+black predicted mean rate: 0.01792595074551851
+black loss: 0.0010144682472817967
 (5,)
 ===
 white observed mean rate: 0.5575473278606131
-white predicted mean rate: 0.5292343776176914
-white loss: -0.0002526157023192699
+white predicted mean rate: 0.5134863461216285
+white loss: -0.00025262305836726284
 black observed mean rate: 0.5575473278606131
-black predicted mean rate: 0.5595577148601105
-black loss: 0.03682371004618423
+black predicted mean rate: 0.5565421343608644
+black loss: 0.036823711360209344
 (5,)
 ===
 white observed mean rate: 0.5454850058636288
-white predicted mean rate: 0.5041045401239739
-white loss: 0.004374113459840734
+white predicted mean rate: 0.5181772491204557
+white loss: 0.004374106465522387
 black observed mean rate: 0.5454850058636288
-black predicted mean rate: 0.5402915061149272
-black loss: 0.058566018477949844
+black predicted mean rate: 0.5196850393700787
+black loss: 0.05856601701113129
 (5,)
 ===
 white observed mean rate: 0.25950745518512314
-white predicted mean rate: 0.2243256826939186
-white loss: -0.0033081419220986064
+white predicted mean rate: 0.2315295694421176
+white loss: -0.003308145237094884
 black observed mean rate: 0.25950745518512314
-black predicted mean rate: 0.26151784218462054
-black loss: 0.0712028085710592
+black predicted mean rate: 0.26051264868487184
+black loss: 0.07120280809889579
 (5,)
 ===
 white observed mean rate: 0.651867984587033
-white predicted mean rate: 0.6326017758418495
-white loss: 0.005406317986513143
+white predicted mean rate: 0.6185290668453677
+white loss: 0.005406319027088213
 black observed mean rate: 0.651867984587033
-black predicted mean rate: 0.6465069525883732
-black loss: 0.017538021892136935
+black predicted mean rate: 0.6394705980901324
+black loss: 0.01753802415413286
 (5,)
 ===
 white observed mean rate: 0.36455017590886246
-white predicted mean rate: 0.37543977215614005
-white loss: 0.002842192878247607
+white predicted mean rate: 0.3620371921594907
+white loss: 0.0028421996609050426
 black observed mean rate: 0.36455017590886246
-black predicted mean rate: 0.369576143407606
-black loss: 0.008543524513935585
+black predicted mean rate: 0.36388004690903
+black loss: 0.008543524468448194
 (5,)
 ===
 white observed mean rate: 0.2636957614340761
-white predicted mean rate: 0.26821913218294524
-white loss: 0.005098601447766304
+white predicted mean rate: 0.2719048416820238
+white loss: 0.0050985995277705864
 black observed mean rate: 0.2636957614340761
-black predicted mean rate: 0.25649187468587703
-black loss: 0.017924505467570073
+black predicted mean rate: 0.27676327693080915
+black loss: 0.017924502694637634
 (5,)
 ===
 white observed mean rate: 0.07639470598090133
-white predicted mean rate: 0.0752219802311945
-white loss: -0.0002973245122515067
+white predicted mean rate: 0.06466744848383314
+white loss: -0.00029732480229527347
 black observed mean rate: 0.07639470598090133
-black predicted mean rate: 0.07840509298039873
-black loss: 0.010869538068537854
+black predicted mean rate: 0.07572457698106885
+black loss: 0.01086953925657641
 (5,)
 ===
 white observed mean rate: 0.01641816049589546
-white predicted mean rate: 0.015580499246104875
-white loss: 0.00027707171612600945
+white predicted mean rate: 0.016083095995979225
+white loss: 0.00027707166216528467
 black observed mean rate: 0.01641816049589546
-black predicted mean rate: 0.016585692745853576
-black loss: 0.002454002314539294
+black predicted mean rate: 0.018261015245434747
+black loss: 0.0024540023460853932
 (5,)
 ===
 white observed mean rate: 0.3407605964148098
-white predicted mean rate: 0.21192829619701792
-white loss: -0.010041783660507786
+white predicted mean rate: 0.20924778019768805
+white loss: -0.010041781896944046
 black observed mean rate: 0.3407605964148098
-black predicted mean rate: 0.3079242754230189
-black loss: 0.32678769777453387
+black predicted mean rate: 0.30708661417322836
+black loss: 0.32678770933560564
 (5,)
 ===
 white observed mean rate: 0.7043055788239236
-white predicted mean rate: 0.6940861115764785
-white loss: 0.011774853941907582
+white predicted mean rate: 0.7212263360696934
+white loss: 0.011774854611177554
 black observed mean rate: 0.7043055788239236
-black predicted mean rate: 0.6902328698274418
-black loss: 0.006270164017535218
+black predicted mean rate: 0.7051432400737142
+black loss: 0.0062701600268856295
 (5,)
 ===
 white observed mean rate: 0.04104540123973865
-white predicted mean rate: 0.04707656223823086
-white loss: 3.36879143461033e-05
+white predicted mean rate: 0.0435583849891104
+white loss: 3.368800550318518e-05
 black observed mean rate: 0.04104540123973865
-black predicted mean rate: 0.04322332048919417
-black loss: 0.00023014703794999036
+black predicted mean rate: 0.0435583849891104
+black loss: 0.0002301470963828045
 (5,)
 ===
 white observed mean rate: 0.06265706148433574
-white predicted mean rate: 0.05913888423521528
-white loss: 0.00015402836581979162
+white predicted mean rate: 0.05511811023622047
+white loss: 0.0001540281955217937
 black observed mean rate: 0.06265706148433574
-black predicted mean rate: 0.05746356173563411
-black loss: 0.011985769375218003
+black predicted mean rate: 0.0623219969844195
+black loss: 0.011985767458289831
 (5,)
 ===
 white observed mean rate: 0.049422013737644495
-white predicted mean rate: 0.051264868487183785
-white loss: 0.0004179849376018119
+white predicted mean rate: 0.04506617523873346
+white loss: 0.0004179847314443874
 black observed mean rate: 0.049422013737644495
-black predicted mean rate: 0.04774669123806333
-black loss: 0.00019081476942883757
+black predicted mean rate: 0.047244094488188976
+black loss: 0.00019081457590730544
 (5,)
 ===
 white observed mean rate: 0.6736471770815882
-white predicted mean rate: 0.6766627575808343
-white loss: 0.006114067934304135
+white predicted mean rate: 0.6669458870832635
+white loss: 0.006114066596882295
 black observed mean rate: 0.6736471770815882
-black predicted mean rate: 0.6815211928296196
-black loss: 0.011359334150236378
+black predicted mean rate: 0.6788406768302898
+black loss: 0.0113593327663698
 (5,)
 ===
 white observed mean rate: 0.1521192829619702
-white predicted mean rate: 0.11727257497068186
-white loss: -0.00831343524984507
+white predicted mean rate: 0.10638297872340426
+white loss: -0.008313439159564062
 black observed mean rate: 0.1521192829619702
-black predicted mean rate: 0.1482660412129335
-black loss: 0.1722271659877307
+black predicted mean rate: 0.13670631596582342
+black loss: 0.17222716804663696
 (5,)
 ===
 white observed mean rate: 0.18210755570447312
-white predicted mean rate: 0.15764784721058803
-white loss: 0.0009569069456023538
+white predicted mean rate: 0.15614005696096497
+white loss: 0.0009569075296578244
 black observed mean rate: 0.18210755570447312
-black predicted mean rate: 0.17440107220639972
-black loss: 0.1098897136624628
+black predicted mean rate: 0.18545820070363545
+black loss: 0.10988972055739454
 (5,)
 ===
 white observed mean rate: 0.06785056123303736
-white predicted mean rate: 0.0750544479812364
-white loss: 0.000148718421013605
+white predicted mean rate: 0.06751549673312113
+white loss: 0.00014871851645426037
 black observed mean rate: 0.06785056123303736
-black predicted mean rate: 0.06684536773328865
-black loss: 9.119493944875767e-05
+black predicted mean rate: 0.06852069023286983
+black loss: 9.119477722607794e-05
 (5,)
 ===
 white observed mean rate: 0.18931144245267215
-white predicted mean rate: 0.18830624895292344
-white loss: 0.0023364398583356483
+white predicted mean rate: 0.19031663595242085
+white loss: 0.002336439015458436
 black observed mean rate: 0.18931144245267215
-black predicted mean rate: 0.1878036522030491
-black loss: 0.0060564269091017975
+black predicted mean rate: 0.1888088457027978
+black loss: 0.006056429744169534
 (5,)
 ===
 white observed mean rate: 0.04791422348802144
-white predicted mean rate: 0.04573630423856592
-white loss: 0.010643072881786897
+white predicted mean rate: 0.04389344948902664
+white loss: 0.01064307284312449
 black observed mean rate: 0.04791422348802144
-black predicted mean rate: 0.047244094488188976
-black loss: 0.006224697828350889
+black predicted mean rate: 0.04322332048919417
+black loss: 0.006224700604129385
 (5,)
 ===
 white observed mean rate: 0.18261015245434747
-white predicted mean rate: 0.16401407270899648
-white loss: 0.006019448642684
+white predicted mean rate: 0.16250628245937343
+white loss: 0.006019448070720412
 black observed mean rate: 0.18261015245434747
-black predicted mean rate: 0.17724912045568772
-black loss: 0.01581480116305578
+black predicted mean rate: 0.17741665270564583
+black loss: 0.015814800843882648
 (5,)
 ===
 white observed mean rate: 0.061986932484503265
-white predicted mean rate: 0.061651867984587036
-white loss: 0.0023208340781898373
+white predicted mean rate: 0.05696096498575976
+white loss: 0.0023208331726883857
 black observed mean rate: 0.061986932484503265
-black predicted mean rate: 0.06835315798291171
-black loss: 0.0011243554915580933
+black predicted mean rate: 0.061651867984587036
+black loss: 0.0011243557315055996
 (5,)
 ===
 white observed mean rate: 0.04573630423856592
-white predicted mean rate: 0.04205059473948735
-white loss: 0.00021551644709549844
+white predicted mean rate: 0.04171553023957112
+white loss: 0.00021551722693269326
 black observed mean rate: 0.04573630423856592
 black predicted mean rate: 0.04523370748869157
-black loss: 0.045774950882493615
+black loss: 0.04577494648963243
 (5,)
 ===
 white observed mean rate: 0.06935835148266041
-white predicted mean rate: 0.061484335734628914
-white loss: -0.0006439340547270689
+white predicted mean rate: 0.0603116099849221
+white loss: -0.0006439334823262755
 black observed mean rate: 0.06935835148266041
-black predicted mean rate: 0.07237393198190652
-black loss: 0.024787389946394622
+black predicted mean rate: 0.07756743173060814
+black loss: 0.024787389341617172
 (5,)
 ===
 white observed mean rate: 0.5577148601105713
-white predicted mean rate: 0.5441447478639638
-white loss: 0.0042630719858651744
+white predicted mean rate: 0.5639135533590216
+white loss: 0.0042630712051363595
 black observed mean rate: 0.5577148601105713
-black predicted mean rate: 0.5495057798626235
-black loss: 0.015539429580145092
+black predicted mean rate: 0.564583682358854
+black loss: 0.015539429240326474
 (5,)
 ===
 white observed mean rate: 0.02412464399396884
-white predicted mean rate: 0.021109063494722736
-white loss: 0.00023852460924578267
+white predicted mean rate: 0.020941531244764618
+white loss: 0.0002385248843870258
 black observed mean rate: 0.02412464399396884
-black predicted mean rate: 0.02395711174401072
-black loss: 0.009701050173169468
+black predicted mean rate: 0.023622047244094488
+black loss: 0.009701051002685923
 (5,)
 ===
 white observed mean rate: 0.083095995979226
-white predicted mean rate: 0.0613168034846708
-white loss: -0.004079966058035289
+white predicted mean rate: 0.05327525548668119
+white loss: -0.004079966126888879
 black observed mean rate: 0.083095995979226
-black predicted mean rate: 0.08644664097838833
-black loss: 0.13927174584040358
+black predicted mean rate: 0.08326352822918412
+black loss: 0.13927173873291787
 (5,)
 ===
 white observed mean rate: 0.15798291171050427
-white predicted mean rate: 0.14324007371418998
-white loss: 0.004468796404529463
+white predicted mean rate: 0.13285307421678674
+white loss: 0.004468800195351563
 black observed mean rate: 0.15798291171050427
-black predicted mean rate: 0.1542972022114257
-black loss: 0.055561698388412184
+black predicted mean rate: 0.15848550846037862
+black loss: 0.055561699234867534
 (5,)
 ===
 white observed mean rate: 0.21226336069693416
-white predicted mean rate: 0.17674652370581337
-white loss: -0.004248194814803874
+white predicted mean rate: 0.17272574970681856
+white loss: -0.004248192668618644
 black observed mean rate: 0.21226336069693416
-black predicted mean rate: 0.2136036186965991
-black loss: 0.10387382034766335
+black predicted mean rate: 0.2216451666945887
+black loss: 0.1038738183661444
 (5,)
 ===
 white observed mean rate: 0.01474283799631429
-white predicted mean rate: 0.013067515496733122
-white loss: -0.0001084986380841535
+white predicted mean rate: 0.013235047746691238
+white loss: -0.00010849906870213921
 black observed mean rate: 0.01474283799631429
-black predicted mean rate: 0.013570112246607473
-black loss: 0.015097438261803209
+black predicted mean rate: 0.014072708996481822
+black loss: 0.015097436991760915
 (5,)
 ===
 white observed mean rate: 0.03216619199195845
-white predicted mean rate: 0.023622047244094488
-white loss: 0.002434229708433544
+white predicted mean rate: 0.026302563243424358
+white loss: 0.0024342311904900216
 black observed mean rate: 0.03216619199195845
-black predicted mean rate: 0.028648014742837995
-black loss: 0.020266322503115997
+black predicted mean rate: 0.034679175741330205
+black loss: 0.020266324351596254
 ==================
-average white loss: 0.00489402393234185
-average black loss: 0.04121031089075962
+average white loss: 0.0048940238188285535
+average black loss: 0.04121031107719196
 </pre></div>
 </div>
 </div>
@@ -3062,7 +3069,7 @@ average black loss: 0.04121031089075962
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/433dfe55515ca97fe1e9f052dea47a44be1bb8cf09f65fd0ec4b67a54289d6c1.png" src="../_images/433dfe55515ca97fe1e9f052dea47a44be1bb8cf09f65fd0ec4b67a54289d6c1.png" />
+<img alt="../_images/1dc65358de0d5fa4cf4d2dbd8bec23a0750ee80ca531fd334178550cd3729645.png" src="../_images/1dc65358de0d5fa4cf4d2dbd8bec23a0750ee80ca531fd334178550cd3729645.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3102,7 +3109,7 @@ average black loss: 0.04121031089075962
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e0e995f0d9e367171b9df0060237f72adc28f1ba83fada459acc9e8c9f51b7b8.png" src="../_images/e0e995f0d9e367171b9df0060237f72adc28f1ba83fada459acc9e8c9f51b7b8.png" />
+<img alt="../_images/19ab490609bc7470a75d4dd3e19726e8b9e2b38d1f78a0d819bcdcba56747168.png" src="../_images/19ab490609bc7470a75d4dd3e19726e8b9e2b38d1f78a0d819bcdcba56747168.png" />
 </div>
 </div>
 </section>
@@ -3372,7 +3379,7 @@ Units that produced best fitting GLMs for black flashes: [  3  13  14  20  47  5
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/01496f944c05c7815a2d76cfc56420918891787187ecff55a3f6ad84f2d2262c.png" src="../_images/01496f944c05c7815a2d76cfc56420918891787187ecff55a3f6ad84f2d2262c.png" />
+<img alt="../_images/bf314a481da319f13f7d6cfdfdc72ec8f709e504fff45d5b6c08c03dfe6023b3.png" src="../_images/bf314a481da319f13f7d6cfdfdc72ec8f709e504fff45d5b6c08c03dfe6023b3.png" />
 </div>
 </div>
 </section>
@@ -3409,24 +3416,6 @@ Units that produced best fitting GLMs for black flashes: [  3  13  14  20  47  5
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../first-order/suite2p.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Identifying Regions of Interest with Segmentation</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="tca.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tensor Decomposition of Spiking Activity Through Trials</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

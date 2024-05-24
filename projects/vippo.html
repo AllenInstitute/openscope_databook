@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -73,8 +73,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'projects/vippo';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Aligning Data across Modalities" href="../embargoed/modality_alignment.html" />
-    <link rel="prev" title="OpenScope’s Dendritic Coupling Dataset" href="dendritic_coupling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -136,6 +134,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -193,9 +193,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,22 +215,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -560,7 +559,10 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
@@ -1085,14 +1087,6 @@ document.write(`
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.8.0 is already loaded.
-  return func(args[0], **pargs)
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
-  return func(args[0], **pargs)
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.5.0 is already loaded.
-  return func(args[0], **pargs)
-</pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -1501,7 +1495,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>0</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>20</td>
       <td>43</td>
@@ -1517,7 +1511,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>1</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>20</td>
       <td>11</td>
@@ -1533,7 +1527,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>2</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>40</td>
       <td>59</td>
@@ -1549,7 +1543,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>3</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>40</td>
       <td>27</td>
@@ -1565,7 +1559,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>4</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>60</td>
       <td>43</td>
@@ -1581,7 +1575,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>5</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>60</td>
       <td>11</td>
@@ -1597,7 +1591,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>6</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>80</td>
       <td>59</td>
@@ -1613,7 +1607,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>7</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>80</td>
       <td>27</td>
@@ -1629,7 +1623,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>8</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>100</td>
       <td>43</td>
@@ -1645,7 +1639,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <tr>
       <th>9</th>
       <td>MB</td>
-      <td>probeA abc.EcephysElectrodeGroup at 0x20285644...</td>
+      <td>probeA abc.EcephysElectrodeGroup at 0x18345953...</td>
       <td>probeA</td>
       <td>100</td>
       <td>11</td>
@@ -1692,8 +1686,8 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CA3&#39;, &#39;SSp-bfd6a&#39;, &#39;LP&#39;, &#39;SCig&#39;, &#39;CA1&#39;, &#39;SUB&#39;, &#39;CA2&#39;, &#39;VISl4&#39;, &#39;SSp-bfd2/3&#39;, &#39;SEZ&#39;, &#39;MOs5&#39;, &#39;PL6a&#39;, &#39;SCop&#39;, &#39;VISl6a&#39;, &#39;APN&#39;, &#39;STR&#39;, &#39;RSPv5&#39;, &#39;PO&#39;, &#39;RSPv1&#39;, &#39;VISl6b&#39;, &#39;VISp6a&#39;, &#39;VPL&#39;, &#39;SCzo&#39;, &#39;VISl5&#39;, &#39;ACAv6b&#39;, &#39;RSPv2/3&#39;, &#39;MRN&#39;, &#39;SSp-bfd6b&#39;, &#39;VISp6b&#39;, &#39;VISl2/3&#39;, &#39;TH&#39;, &#39;LSr&#39;, &#39;VISp2/3&#39;, &#39;RSPd5&#39;, &#39;LGd-sh&#39;, &#39;MB&#39;, &#39;DG-mo&#39;, &#39;SCsg&#39;, &#39;VISp5&#39;, &#39;SSp-bfd4&#39;, &#39;ACAd6a&#39;, &#39;PRE&#39;, &#39;RSPd6b&#39;, &#39;SCiw&#39;, &#39;MOs6a&#39;, &#39;VL&#39;, &#39;ACAv6a&#39;, &#39;VISp4&#39;, &#39;LGd-co&#39;, &#39;RSPd2/3&#39;, &#39;RSPd6a&#39;, &#39;SSp-bfd5&#39;, &#39;MOs2/3&#39;, &#39;SCdg&#39;}
-{&#39;probeA&#39;, &#39;probeC&#39;, &#39;probeD&#39;, &#39;probeB&#39;, &#39;probeE&#39;, &#39;probeF&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;LGd-sh&#39;, &#39;RSPv2/3&#39;, &#39;VISl6a&#39;, &#39;RSPd5&#39;, &#39;RSPv1&#39;, &#39;DG-mo&#39;, &#39;ACAd6a&#39;, &#39;CA3&#39;, &#39;RSPv5&#39;, &#39;RSPd2/3&#39;, &#39;VISp6a&#39;, &#39;TH&#39;, &#39;MOs5&#39;, &#39;VISp6b&#39;, &#39;SCig&#39;, &#39;CA2&#39;, &#39;RSPd6b&#39;, &#39;MRN&#39;, &#39;LP&#39;, &#39;RSPd6a&#39;, &#39;SCop&#39;, &#39;SCzo&#39;, &#39;SUB&#39;, &#39;APN&#39;, &#39;SCiw&#39;, &#39;PRE&#39;, &#39;MB&#39;, &#39;VISp5&#39;, &#39;STR&#39;, &#39;VPL&#39;, &#39;CA1&#39;, &#39;VISl6b&#39;, &#39;ACAv6b&#39;, &#39;SSp-bfd2/3&#39;, &#39;MOs2/3&#39;, &#39;MOs6a&#39;, &#39;VL&#39;, &#39;VISl4&#39;, &#39;PO&#39;, &#39;SSp-bfd4&#39;, &#39;ACAv6a&#39;, &#39;SCdg&#39;, &#39;SEZ&#39;, &#39;SSp-bfd5&#39;, &#39;VISl2/3&#39;, &#39;LSr&#39;, &#39;VISp4&#39;, &#39;VISl5&#39;, &#39;SSp-bfd6b&#39;, &#39;PL6a&#39;, &#39;LGd-co&#39;, &#39;SSp-bfd6a&#39;, &#39;SCsg&#39;, &#39;VISp2/3&#39;}
+{&#39;probeE&#39;, &#39;probeB&#39;, &#39;probeD&#39;, &#39;probeA&#39;, &#39;probeF&#39;, &#39;probeC&#39;}
 </pre></div>
 </div>
 </div>
@@ -1711,17 +1705,12 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
     <span class="k">if</span> <span class="n">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="n">brain_regions</span> <span class="ow">and</span> <span class="n">row</span><span class="o">.</span><span class="n">quality</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span><span class="p">:</span>
         <span class="n">units_spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">spike_times</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 
-<span class="n">units_spike_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>227
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_27548\1753309062.py:12: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  units_spike_times = np.array(units_spike_times)
 </pre></div>
 </div>
 </div>
@@ -1878,10 +1867,10 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d850515c70&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ab2b826200&gt;]
 </pre></div>
 </div>
-<img alt="../_images/a9834129c66d3f17f6bd5017268e1811bcc46acd91eacca7231d0c792080411a.png" src="../_images/a9834129c66d3f17f6bd5017268e1811bcc46acd91eacca7231d0c792080411a.png" />
+<img alt="../_images/aa9200609ddb666aaf3f66852dfbc1822549b1c1091cd4bed18a5f030053c6ce.png" src="../_images/aa9200609ddb666aaf3f66852dfbc1822549b1c1091cd4bed18a5f030053c6ce.png" />
 </div>
 </div>
 </section>
@@ -2343,12 +2332,6 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_27548\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
-  unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
-C:\Users\carter.peene\AppData\Local\Temp\ipykernel_27548\1852969462.py:9: RuntimeWarning: invalid value encountered in divide
-  unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
-</pre></div>
-</div>
 <img alt="../_images/856d8dd810816e145d91cc2a428771536c7ad5ea0c344d50e841966343f80199.png" src="../_images/856d8dd810816e145d91cc2a428771536c7ad5ea0c344d50e841966343f80199.png" />
 </div>
 </div>
@@ -2789,24 +2772,6 @@ deg
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="dendritic_coupling.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">OpenScope’s Dendritic Coupling Dataset</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../embargoed/modality_alignment.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Aligning Data across Modalities</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

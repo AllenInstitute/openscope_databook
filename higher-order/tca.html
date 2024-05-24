@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -73,8 +73,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'higher-order/tca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using CEBRA-Time to Identify Latent Embeddings" href="cebra_time.html" />
-    <link rel="prev" title="Generalized Linear Models" href="glm.html" />
+    <link rel="next" title="Behavioral state from trial outcomes" href="behavioral_state.html" />
+    <link rel="prev" title="Using CEBRA-Time to Identify Latent Embeddings" href="cebra_time.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,9 +193,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -554,7 +553,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tensor-decomposition-of-spiking-activity-through-trials">
 <h1>Tensor Decomposition of Spiking Activity Through Trials<a class="headerlink" href="#tensor-decomposition-of-spiking-activity-through-trials" title="Link to this heading">#</a></h1>
-<p>In several previous notebooks, we’ve utilized the <strong>Spike Matrix</strong> for analysis. As mentioned in <a class="reference internal" href="../visualization/visualize_unit_spikes.html"><span class="std std-doc">Visualizing Unit Spikes</span></a>, the Spike Matrix is a 3D matrix (or more precisely, a tensor) with dimensions <code class="docutils literal notranslate"><span class="pre">neurons</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, and <code class="docutils literal notranslate"><span class="pre">trials</span></code>. Using the neuron spike trains and stimulus table from an NWB file, we can produce a spike matrix for a particular selection of neurons and stimulus trials. The paper <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf"><span id="id1">[<a class="reference internal" href="../bibliography.html#id17" title="Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. Neuron, 2018. URL: https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf.">Williams <em>et al.</em>, 2018</a>]</span></a> discusses <strong>TCA</strong>, a method for decomposing such a 3D spike matrix to yield <em>components</em> which isolate a set of features from the data. Each component consists of the three vectors called <em>neuronal factors</em>, <em>temporal factors</em>, and <em>trial factors</em>. In concert, these factors show a relationship between weighted populations of cells, their activity during the trials, and activity between trials. In contrast to PCA, TCA can be used to identify trends in neuron activity within trials as well as <em>across</em> trials. We do not aim to cover all uses of TCA, but rather help build a concrete intuition on how TCA can be used and pro and cons of this approach. The repo used for this is <strong><a class="reference external" href="https://github.com/neurostatslab/tensortools/tree/9d1edd8267e404850b5a1472b8fff4eabb9f3a8e/tensortools">TensorTools</a></strong></p>
+<p>In several previous notebooks, we’ve utilized the <strong>Spike Matrix</strong> for analysis. As mentioned in <a class="reference internal" href="../visualization/visualize_unit_spikes.html"><span class="std std-doc">Visualizing Unit Spikes</span></a>, the Spike Matrix is a 3D matrix (or more precisely, a tensor) with dimensions <code class="docutils literal notranslate"><span class="pre">neurons</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, and <code class="docutils literal notranslate"><span class="pre">trials</span></code>. Using the neuron spike trains and stimulus table from an NWB file, we can produce a spike matrix for a particular selection of neurons and stimulus trials. The paper <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf"><span id="id1">[<a class="reference internal" href="../bibliography.html#id17" title="Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. Neuron, 2018. URL: https://doi.org/10.1016/j.neuron.2018.05.015.">Williams <em>et al.</em>, 2018</a>]</span></a> discusses <strong>TCA</strong>, a method for decomposing such a 3D spike matrix to yield <em>components</em> which isolate a set of features from the data. Each component consists of the three vectors called <em>neuronal factors</em>, <em>temporal factors</em>, and <em>trial factors</em>. In concert, these factors show a relationship between weighted populations of cells, their activity during the trials, and activity between trials. In contrast to PCA, TCA can be used to identify trends in neuron activity within trials as well as <em>across</em> trials. We do not aim to cover all uses of TCA, but rather help build a concrete intuition on how TCA can be used and pro and cons of this approach. The repo used for this is <strong><a class="reference external" href="https://github.com/neurostatslab/tensortools/tree/9d1edd8267e404850b5a1472b8fff4eabb9f3a8e/tensortools">TensorTools</a></strong></p>
 <p>In this notebook, we demonstrate the simple usage of TCA and how it can be applied to our NWB files. First, cells are selected based on brain region and other criteria, then trials are selected based on repeats of specific trial movies. After this, the spike matrix is produced, and finally TCA produces decomposed factors and plots are generated to interpret them.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
@@ -566,6 +565,12 @@ document.write(`
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\scipy\__init__.py:169: UserWarning: A NumPy version &gt;=1.18.5 and &lt;1.26.0 is required for this version of SciPy (detected version 1.26.4
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
 </pre></div>
 </div>
 </div>
@@ -609,9 +614,9 @@ document.write(`
 Opening file
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.8.0 is already loaded.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.8.0 is already loaded.
   return func(args[0], **pargs)
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
+c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.2 because version 2.5.0 is already loaded.
   return func(args[0], **pargs)
 </pre></div>
 </div>
@@ -1005,7 +1010,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>VISpm</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>2380</td>
       <td>43</td>
@@ -1021,7 +1026,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>grey</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>2080</td>
       <td>27</td>
@@ -1037,7 +1042,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td></td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>3700</td>
       <td>11</td>
@@ -1053,7 +1058,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>grey</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>140</td>
       <td>11</td>
@@ -1069,7 +1074,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>grey</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>860</td>
       <td>43</td>
@@ -1085,7 +1090,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>grey</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>2240</td>
       <td>27</td>
@@ -1101,7 +1106,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>grey</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>240</td>
       <td>59</td>
@@ -1117,7 +1122,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>grey</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>2020</td>
       <td>11</td>
@@ -1133,7 +1138,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td></td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>3660</td>
       <td>11</td>
@@ -1149,7 +1154,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
       <td>NaN</td>
       <td>grey</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x15737540...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x19028105...</td>
       <td>probeB</td>
       <td>360</td>
       <td>27</td>
@@ -1181,7 +1186,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\hdmf\utils.p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISl&#39;, &#39;VISrl&#39;, &#39;VISp&#39;, &#39;grey&#39;, &#39;VISpm&#39;, &#39;VISal&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISrl&#39;, &#39;VISpm&#39;, &#39;VISp&#39;, &#39;VISal&#39;, &#39;VISl&#39;, &#39;grey&#39;}
 </pre></div>
 </div>
 </div>
@@ -1589,100 +1594,102 @@ It is therefore essential to use scientific judgement when using this tool. Ther
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                    
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting rank-5 models:   0%|          | 0/3 [00:00&lt;?, ?it/s]c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\tensortools\optimize\ncp_hals.py:185: NumbaPerformanceWarning: <span class=" -Color -Color-Bold">&#39;@&#39; is faster on contiguous arrays, called on (Array(float64, 2, &#39;C&#39;, False, aligned=True), Array(float64, 1, &#39;A&#39;, False, aligned=True))</span>
+  Cp = factors[:, idx] @ grams[idx][:, p]
+                                                                    
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-5 models:  min obj, 0.59;  max obj, 0.59;  time to fit, 0.6s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                    
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-6 models:  min obj, 0.57;  max obj, 0.57;  time to fit, 0.5s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-5 models:  min obj, 0.58;  max obj, 0.59;  time to fit, 4.7s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                    
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-7 models:  min obj, 0.56;  max obj, 0.57;  time to fit, 0.5s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-6 models:  min obj, 0.57;  max obj, 0.58;  time to fit, 0.5s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                    
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-8 models:  min obj, 0.55;  max obj, 0.56;  time to fit, 0.6s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-7 models:  min obj, 0.56;  max obj, 0.56;  time to fit, 0.4s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                    
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-9 models:  min obj, 0.55;  max obj, 0.55;  time to fit, 0.8s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-8 models:  min obj, 0.55;  max obj, 0.56;  time to fit, 0.4s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                    
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-9 models:  min obj, 0.55;  max obj, 0.55;  time to fit, 0.5s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-10 models:  min obj, 0.54;  max obj, 0.55;  time to fit, 1.1s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-10 models:  min obj, 0.54;  max obj, 0.54;  time to fit, 0.5s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-11 models:  min obj, 0.54;  max obj, 0.54;  time to fit, 1.6s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-11 models:  min obj, 0.54;  max obj, 0.54;  time to fit, 0.7s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-12 models:  min obj, 0.53;  max obj, 0.54;  time to fit, 1.0s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-12 models:  min obj, 0.53;  max obj, 0.53;  time to fit, 1.1s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-13 models:  min obj, 0.53;  max obj, 0.53;  time to fit, 1.4s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-13 models:  min obj, 0.53;  max obj, 0.53;  time to fit, 0.5s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-14 models:  min obj, 0.52;  max obj, 0.52;  time to fit, 1.3s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-14 models:  min obj, 0.52;  max obj, 0.52;  time to fit, 0.8s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-15 models:  min obj, 0.52;  max obj, 0.52;  time to fit, 1.5s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-15 models:  min obj, 0.52;  max obj, 0.52;  time to fit, 1.1s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-16 models:  min obj, 0.51;  max obj, 0.52;  time to fit, 2.6s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-16 models:  min obj, 0.51;  max obj, 0.52;  time to fit, 0.7s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-17 models:  min obj, 0.51;  max obj, 0.51;  time to fit, 4.1s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-17 models:  min obj, 0.51;  max obj, 0.51;  time to fit, 2.2s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-18 models:  min obj, 0.51;  max obj, 0.51;  time to fit, 3.5s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-18 models:  min obj, 0.50;  max obj, 0.51;  time to fit, 2.5s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                     
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-19 models:  min obj, 0.50;  max obj, 0.50;  time to fit, 4.3s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rank-19 models:  min obj, 0.50;  max obj, 0.50;  time to fit, 2.6s
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="../_images/49d2244f25995404f65fe234d93d097c6c58116e2d8bfbb25440b32e30df2dc2.png" src="../_images/49d2244f25995404f65fe234d93d097c6c58116e2d8bfbb25440b32e30df2dc2.png" />
+<img alt="../_images/1b7d51e25a0aaa660a917b0e0531e4782321922c8a28e5b812dcb179080e9857.png" src="../_images/1b7d51e25a0aaa660a917b0e0531e4782321922c8a28e5b812dcb179080e9857.png" />
 </div>
 </div>
 </section>
@@ -1761,7 +1768,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1085fbf264b296f6d54f17e6cff7790cabd0d57dc72e9bc16f894a01c74fbec0.png" src="../_images/1085fbf264b296f6d54f17e6cff7790cabd0d57dc72e9bc16f894a01c74fbec0.png" />
+<img alt="../_images/d33cca6c352ac24f67f2c3884af7cb502f876ec7bf183003550313c24d66738e.png" src="../_images/d33cca6c352ac24f67f2c3884af7cb502f876ec7bf183003550313c24d66738e.png" />
 </div>
 </div>
 </section>
@@ -1840,7 +1847,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Activity of 8 components&#39;)
 </pre></div>
 </div>
-<img alt="../_images/184f33d3fc72aef66abd90b03953eb6bd6e2264d05ab260c422deb4428d93b91.png" src="../_images/184f33d3fc72aef66abd90b03953eb6bd6e2264d05ab260c422deb4428d93b91.png" />
+<img alt="../_images/8ca6fc0ab5cbe77bb400035857e1ce848dfb0e2bdc630625693ce643953b9287.png" src="../_images/8ca6fc0ab5cbe77bb400035857e1ce848dfb0e2bdc630625693ce643953b9287.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1869,7 +1876,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Weighted Relative Activity of 8 components&#39;)
 </pre></div>
 </div>
-<img alt="../_images/c4fae4b6296277b5ffe9ae01e2b559209bb3506a62e13fc92657a3e59bbed02e.png" src="../_images/c4fae4b6296277b5ffe9ae01e2b559209bb3506a62e13fc92657a3e59bbed02e.png" />
+<img alt="../_images/854d6b3c3d46d869929d48c0a6d048d601a04c420d1e42be37382aea13ffffc4.png" src="../_images/854d6b3c3d46d869929d48c0a6d048d601a04c420d1e42be37382aea13ffffc4.png" />
 </div>
 </div>
 </section>
@@ -1975,7 +1982,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1c0b62db55a3e532689824decee27272ae31c8c5e2ba64a038f47fa81202d785.png" src="../_images/1c0b62db55a3e532689824decee27272ae31c8c5e2ba64a038f47fa81202d785.png" />
+<img alt="../_images/68c17c5e219fe263fbe518f452ffbd5434526b3a3ed36d38fa7b65b40fba113d.png" src="../_images/68c17c5e219fe263fbe518f452ffbd5434526b3a3ed36d38fa7b65b40fba113d.png" />
 </div>
 </div>
 </section>
@@ -2006,7 +2013,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4a7fcbdb3392497956debea0c19ae48fd8b1236c97eb43bf629a70cb59a8ff3e.png" src="../_images/4a7fcbdb3392497956debea0c19ae48fd8b1236c97eb43bf629a70cb59a8ff3e.png" />
+<img alt="../_images/e265468dee4ef35394f1a0eb545e27124a941c995a048d1b2b86d7b57462d0b1.png" src="../_images/e265468dee4ef35394f1a0eb545e27124a941c995a048d1b2b86d7b57462d0b1.png" />
 </div>
 </div>
 </section>
@@ -2043,20 +2050,20 @@ Certain components are evenly distributed across all trials, are non-homogenousl
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="glm.html"
+       href="cebra_time.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Generalized Linear Models</p>
+        <p class="prev-next-title">Using CEBRA-Time to Identify Latent Embeddings</p>
       </div>
     </a>
     <a class="right-next"
-       href="cebra_time.html"
+       href="behavioral_state.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using CEBRA-Time to Identify Latent Embeddings</p>
+        <p class="prev-next-title">Behavioral state from trial outcomes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

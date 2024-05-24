@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -193,9 +193,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -454,82 +453,86 @@ document.write(`
 <div role="list" class="citation-list">
 <div class="citation" id="id13" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p>Mark L. Andermann, Aaron M. Kerlin, Demetris K. Roumis, Lindsey L. Glickfield, and R. clay Reid. Functional specialization of mouse higher visual cortical areas. <em>Neuron</em>, 2011. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627311010129">https://www.sciencedirect.com/science/article/pii/S0896627311010129</a>.</p>
+<p>Mark L. Andermann, Aaron M. Kerlin, Demetris K. Roumis, Lindsey L. Glickfield, and R. clay Reid. Functional specialization of mouse higher visual cortical areas. <em>Neuron</em>, 2011. URL: <a class="reference external" href="https://doi.org/10.1016/j.neuron.2011.11.013">https://doi.org/10.1016/j.neuron.2011.11.013</a>.</p>
 </div>
 <div class="citation" id="id5" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<p>Jason E Chung, Jeremy F Magland, Alex H Barnett, Vanessa M Tolosa, Angela C Tooker, Kye Y Lee, Kedar G Shah, Sarah H Felix, Loren M Frank, and Leslie F Greengard. A fully automated approach to spike sorting. <em>Neuron</em>, 95(6):1381–1394, 2017. URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5743236/pdf/nihms904739.pdf">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5743236/pdf/nihms904739.pdf</a>.</p>
+<p>Jason E Chung, Jeremy F Magland, Alex H Barnett, Vanessa M Tolosa, Angela C Tooker, Kye Y Lee, Kedar G Shah, Sarah H Felix, Loren M Frank, and Leslie F Greengard. A fully automated approach to spike sorting. <em>Neuron</em>, 95(6):1381–1394, 2017. URL: <a class="reference external" href="https://doi.org/10.1016/j.neuron.2017.08.030">https://doi.org/10.1016/j.neuron.2017.08.030</a>.</p>
 </div>
 <div class="citation" id="id6" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
-<p>Marina Garrett, Peter Groblewski, Alex Piet, Doug Ollerenshaw, Farzaneh Najafi, and Iryna Yavorska. Stimulus novelty uncovers coding diversity in visual cortical circuits. <em>bioRxiv</em>, 2023. URL: <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2.full.pdf">https://www.biorxiv.org/content/10.1101/2023.02.14.528085v2.full.pdf</a>.</p>
+<p>Marina Garrett, Peter Groblewski, Alex Piet, Doug Ollerenshaw, Farzaneh Najafi, and Iryna Yavorska. Stimulus novelty uncovers coding diversity in visual cortical circuits. <em>BioRxiv</em>, 2023. URL: <a class="reference external" href="https://doi.org/10.1101/2023.02.14.528085">https://doi.org/10.1101/2023.02.14.528085</a>.</p>
 </div>
 <div class="citation" id="id18" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
-<p>Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. <em>Scientific Data</em>, 2023. URL: <a class="reference external" href="https://www.nature.com/articles/s41597-023-02214-y">https://www.nature.com/articles/s41597-023-02214-y</a>.</p>
+<p>Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. <em>Scientific Data</em>, 2023. URL: <a class="reference external" href="https://doi.org/10.1038/s41597-023-02214-y">https://doi.org/10.1038/s41597-023-02214-y</a>.</p>
 </div>
 <div class="citation" id="id19" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
-<p>Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. <em>The Journal of Neuroscience</em>, 44(5):e1009232023, 2024. URL: <a class="reference external" href="https://www.jneurosci.org/content/44/5/e1009232023">https://www.jneurosci.org/content/44/5/e1009232023</a>.</p>
+<p>Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. <em>Journal of Neuroscience</em>, 44(5):e1009232023, 2024. URL: <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.1009-23.2023">https://doi.org/10.1523/JNEUROSCI.1009-23.2023</a>.</p>
 </div>
 <div class="citation" id="id4" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
-<p>Daniel N. Hill, Samar B. Mehta, and David Kleinfeld. Quality metrics to accompany spike sorting of extracellular signals. <em>The Journal of Neuroscience</em>, 31(24):8699–8705, 2011. URL: <a class="reference external" href="https://www.jneurosci.org/content/jneuro/31/24/8699.full.pdf">https://www.jneurosci.org/content/jneuro/31/24/8699.full.pdf</a>.</p>
+<p>Daniel N. Hill, Samar B. Mehta, and David Kleinfeld. Quality metrics to accompany spike sorting of extracellular signals. <em>The Journal of Neuroscience</em>, 31(24):8699–8705, 2011. URL: <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.0971-11.2011">https://doi.org/10.1523/JNEUROSCI.0971-11.2011</a>.</p>
+</div>
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<p>Daniel Hulsey, Kevin Zumwalt, Luca Mazzucato, David A. McCormick, and Santiago Jaramillo. Decision-making dynamics are predicted by arousal and uninstructed movements. <em>Cell Reports</em>, 43(2):113709, 2024. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2211124724000378">https://www.sciencedirect.com/science/article/pii/S2211124724000378</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.celrep.2024.113709">doi:https://doi.org/10.1016/j.celrep.2024.113709</a>.</p>
 </div>
 <div class="citation" id="id14" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
-<p>James H. Marshel, Marina E. Garrett, Ian Nauhaus, and Edward M. Callaway. Functional specialization of seven mouse visual cortical areas. <em>Neuron</em>, 2012. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0896627311010464">https://www.sciencedirect.com/science/article/pii/S0896627311010464</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<p>James H. Marshel, Marina E. Garrett, Ian Nauhaus, and Edward M. Callaway. Functional specialization of seven mouse visual cortical areas. <em>Neuron</em>, 2012. URL: <a class="reference external" href="https://doi.org/10.1016/j.neuron.2011.12.004">https://doi.org/10.1016/j.neuron.2011.12.004</a>.</p>
 </div>
 <div class="citation" id="id10" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
-<p>Natalia Mesa, Jack Waters, and Saskia E. J. de Vries. The effect of inclusion criteria on the functional properties reported in mouse visual cortex. <em>eNeuro</em>, 2021. URL: <a class="reference external" href="https://www.eneuro.org/content/eneuro/8/1/ENEURO.0188-20.2021.full.pdf">https://www.eneuro.org/content/eneuro/8/1/ENEURO.0188-20.2021.full.pdf</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
+<p>Natalia Mesa, Jack Waters, and Saskia E. J. de Vries. The effect of inclusion criteria on the functional properties reported in mouse visual cortex. <em>eNeuro</em>, 2021. URL: <a class="reference external" href="https://doi.org/10.1523/ENEURO.0188-20.2021">https://doi.org/10.1523/ENEURO.0188-20.2021</a>.</p>
 </div>
 <div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
-<p>Marius Pachitariu, Nicholas Steinmetz, Shabnam Kadir, Matteo Carandini, and Harris Kenneth D. Kilosort: realtime spike-sorting for extracellular electrophysiology with hundreds of channels. <em>bioRxiv</em>, ():, 2016. URL: <a class="reference external" href="https://www.biorxiv.org/content/early/2016/06/30/061481">https://www.biorxiv.org/content/early/2016/06/30/061481</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></span>
+<p>Marius Pachitariu, Nicholas Steinmetz, Shabnam Kadir, Matteo Carandini, and Harris Kenneth D. Kilosort: realtime spike-sorting for extracellular electrophysiology with hundreds of channels. <em>bioRxiv</em>, ():, 2016. URL: <a class="reference external" href="https://doi.org/10.1101/061481">https://doi.org/10.1101/061481</a>.</p>
 </div>
 <div class="citation" id="id9" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></span>
-<p>Marius Pachitariu, Carsen Stringer, Mario Dipoppa, Sylvia Schröder, L. Federico Rossi, Henry Dalgleish, Matteo Carandini, and Kenneth D. Harris. Suite2p: beyond 10,000 neurons with standard two-photon microscopy. <em>bioRxiv</em>, 2017. URL: <a class="reference external" href="https://www.biorxiv.org/content/early/2017/07/20/061507">https://www.biorxiv.org/content/early/2017/07/20/061507</a>, <a class="reference external" href="https://arxiv.org/abs/https://www.biorxiv.org/content/early/2017/07/20/061507.full.pdf">arXiv:https://www.biorxiv.org/content/early/2017/07/20/061507.full.pdf</a>, <a class="reference external" href="https://doi.org/10.1101/061507">doi:10.1101/061507</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
+<p>Marius Pachitariu, Carsen Stringer, Mario Dipoppa, Sylvia Schröder, L. Federico Rossi, Henry Dalgleish, Matteo Carandini, and Kenneth D. Harris. Suite2p: beyond 10,000 neurons with standard two-photon microscopy. <em>bioRxiv</em>, 2017. URL: <a class="reference external" href="https://doi.org/10.1101/061507">https://doi.org/10.1101/061507</a>, <a class="reference external" href="https://doi.org/10.1101/061507">doi:10.1101/061507</a>.</p>
 </div>
 <div class="citation" id="id12" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
-<p>Morgane M. Roth, Fritjof Helmchen, and Bjorn M. Kampa. Distinct functional properties of primary and posteromedial visual area of mouse neocortex. <em>The Journal of Neuroscience</em>, 2012. URL: <a class="reference external" href="https://www.jneurosci.org/content/jneuro/32/28/9716.full.pdf">https://www.jneurosci.org/content/jneuro/32/28/9716.full.pdf</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></span>
+<p>Morgane M. Roth, Fritjof Helmchen, and Bjorn M. Kampa. Distinct functional properties of primary and posteromedial visual area of mouse neocortex. <em>The Journal of Neuroscience</em>, 2012. URL: <a class="reference external" href="https://doi.org/10.1523/JNEUROSCI.0110-12.2012">https://doi.org/10.1523/JNEUROSCI.0110-12.2012</a>.</p>
 </div>
 <div class="citation" id="id2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></span>
 <p>Oliver Rübel, Andrew Tritt, Ryan Ly, Benjamin K Dichter, Satrajit Ghosh, Lawrence Niu, Pamela Baker, Ivan Soltesz, Lydia Ng, Karel Svoboda, Loren Frank, and Kristofer E Bouchard. The neurodata without borders ecosystem for neurophysiological data science. <em>eLife</em>, 11():e78362, 2022. URL: <a class="reference external" href="https://doi.org/10.7554/eLife.78362">https://doi.org/10.7554/eLife.78362</a>.</p>
 </div>
 <div class="citation" id="id16" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></span>
-<p>Steffen Schneider, Jin Hwa Lee, and Mackenzie Weygandt Mathis. Learnable latent embeddings for joint behavioural and neural analysis. <em>Nature</em>, 2023. URL: <a class="reference external" href="https://www.nature.com/articles/s41586-023-06031-6">https://www.nature.com/articles/s41586-023-06031-6</a>.</p>
-</div>
-<div class="citation" id="id20" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></span>
+<p>Steffen Schneider, Jin Hwa Lee, and Mackenzie Weygandt Mathis. Learnable latent embeddings for joint behavioural and neural analysis. <em>Nature</em>, 2023. URL: <a class="reference external" href="https://doi.org/10.1038/s41586-023-06031-6">https://doi.org/10.1038/s41586-023-06031-6</a>.</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></span>
 <p>Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. <em>bioRxiv</em>, ():, 2023. URL: <a class="reference external" href="https://doi.org/10.1101/2023.06.05.543698">https://doi.org/10.1101/2023.06.05.543698</a>.</p>
 </div>
 <div class="citation" id="id7" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></span>
-<p>Joshua H. Siegle, Xiaoxuan Jia, Severine Durand, Sam Gale, and Corbett Benett. Survey of spiking in the mouse visual system reveals functional hierarchy. <em>Nature</em>, 2021. URL: <a class="reference external" href="https://www.nature.com/articles/s41586-020-03171-x">https://www.nature.com/articles/s41586-020-03171-x</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></span>
+<p>Joshua H. Siegle, Xiaoxuan Jia, Severine Durand, Sam Gale, and Corbett Benett. Survey of spiking in the mouse visual system reveals functional hierarchy. <em>nature</em>, 2021. URL: <a class="reference external" href="https://doi.org/10.1038/s41586-020-03171-x">https://doi.org/10.1038/s41586-020-03171-x</a>.</p>
 </div>
 <div class="citation" id="id11" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></span>
-<p>Wenzhi Sun, Zhongchao Tan, Brett D. Mensh, and Na Ji. Thalamus provides layer 4 of primary visual cortex with orientation- and direction-tuned inputs. <em>Nature Neuroscience</em>, 2016. URL: <a class="reference external" href="https://rdcu.be/dbFb9">https://rdcu.be/dbFb9</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>17<span class="fn-bracket">]</span></span>
+<p>Wenzhi Sun, Zhongchao Tan, Brett D. Mensh, and Na Ji. Thalamus provides layer 4 of primary visual cortex with orientation- and direction-tuned inputs. <em>Nature Neuroscience</em>, 2016. URL: <a class="reference external" href="https://doi.org/10.1038/nn.4196">https://doi.org/10.1038/nn.4196</a>.</p>
 </div>
 <div class="citation" id="id15" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>17<span class="fn-bracket">]</span></span>
-<p>Manavu Tohmi, Reiko Meguro, Hiroaki Tsukano, Ryuichi Hishida, and Katsuei Shibuki. The extrageniculate visual pathway generates distinct response properties in the higher visual areas of mice. <em>Current Biology</em>, 2014. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0960982214001262">https://www.sciencedirect.com/science/article/pii/S0960982214001262</a>.</p>
-</div>
-<div class="citation" id="id21" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>18<span class="fn-bracket">]</span></span>
-<p>Rudiger von der Heydt, E. Peterhans, and Gunter Baumgartner. Illusory contours and cortical neuron responses. <em>Science</em>, ():, 1984. URL: <a class="reference external" href="https://www.science.org/doi/10.1126/science.6539501">https://www.science.org/doi/10.1126/science.6539501</a>.</p>
+<p>Manavu Tohmi, Reiko Meguro, Hiroaki Tsukano, Ryuichi Hishida, and Katsuei Shibuki. The extrageniculate visual pathway generates distinct response properties in the higher visual areas of mice. <em>Current Biology</em>, 2014. URL: <a class="reference external" href="https://doi.org/10.1016/j.cub.2014.01.061">https://doi.org/10.1016/j.cub.2014.01.061</a>.</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>19<span class="fn-bracket">]</span></span>
+<p>Rudiger von der Heydt, E. Peterhans, and Gunter Baumgartner. Illusory contours and cortical neuron responses. <em>Science</em>, ():, 1984. URL: <a class="reference external" href="https://doi.org/10.1126/science.6539501">https://doi.org/10.1126/science.6539501</a>.</p>
 </div>
 <div class="citation" id="id17" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>19<span class="fn-bracket">]</span></span>
-<p>Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. <em>Neuron</em>, 2018. URL: <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf">https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf</a>.</p>
+<span class="label"><span class="fn-bracket">[</span>20<span class="fn-bracket">]</span></span>
+<p>Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. <em>Neuron</em>, 2018. URL: <a class="reference external" href="https://doi.org/10.1016/j.neuron.2018.05.015">https://doi.org/10.1016/j.neuron.2018.05.015</a>.</p>
 </div>
 <div class="citation" id="id8" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>20<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>21<span class="fn-bracket">]</span></span>
 <p>Alper Yegenoglu, Detlef Holstein, Long Duc Phan, Michael Denker, Andrew Davison, and Sonja Grün. Elephant–open-source tool for the analysis of electrophysiological data sets. Technical Report, Computational and Systems Neuroscience, 2015.</p>
 </div>
 </div>

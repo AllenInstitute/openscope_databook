@@ -1,0 +1,1574 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Behavioral state from trial outcomes &#8212; OpenScope Databook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'higher-order/behavioral_state';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Replicating OpenScope Credit Assignment project figures" href="../projects/cred_assign_figures.html" />
+    <link rel="prev" title="Tensor Decomposition of Spiking Activity Through Trials" href="tca.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="OpenScope Databook - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="OpenScope Databook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Behavioral state from trial outcomes</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projects/cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/modality_alignment.html">Aligning Data across Modalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/cell_matching.html">Cell Matching Across Days</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../methods/jupyter_book.html">Jupyter/Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/higher-order/behavioral_state.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/higher-order/behavioral_state.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/higher-order/behavioral_state.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fhigher-order/behavioral_state.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/higher-order/behavioral_state.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Behavioral state from trial outcomes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Behavioral state from trial outcomes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-nwb-file-with-behavior-data">Load NWB file with behavior data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-the-trial-data">Preprocess the trial data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-psychometric-performance-across-all-trials">Estimate psychometric performance across all trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-behavioral-states-from-choices-and-trial-outcomes">Estimate behavioral states from choices and trial outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-dynamics-of-arousal-and-uninstructed-movements">Evaluate the dynamics of arousal and uninstructed movements</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-relation-between-arousal-and-performance">Evaluate the relation between arousal and performance</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="behavioral-state-from-trial-outcomes">
+<h1>Behavioral state from trial outcomes<a class="headerlink" href="#behavioral-state-from-trial-outcomes" title="Link to this heading">#</a></h1>
+<p>This notebook describes how to load and process data from <span id="id1">[<a class="reference internal" href="../bibliography.html#id20" title="Daniel Hulsey, Kevin Zumwalt, Luca Mazzucato, David A. McCormick, and Santiago Jaramillo. Decision-making dynamics are predicted by arousal and uninstructed movements. Cell Reports, 43(2):113709, 2024. URL: https://www.sciencedirect.com/science/article/pii/S2211124724000378, doi:https://doi.org/10.1016/j.celrep.2024.113709.">Hulsey <em>et al.</em>, 2024</a>]</span> to evaluate the behavioral state of mice performing perceptual decision tasks, given trial outcomes. Behavioral state estimation is performed using a Hidden Markov Model with Generalized Linear Model emisions (GLM-HMM), as described in the paper cited above. The notebook also shows how to evaluate the relation between these behavioral states and arousal (as indexed by pupil size) and uninstructed movements (such as locomotion).</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">%</span><span class="k">cd</span> openscope_databook
+    <span class="o">%</span><span class="k">pip</span> install -e .
+</pre></div>
+</div>
+</div>
+</div>
+<p>This notebook requires the package <strong>ssm</strong> (<em>SSM: Bayesian learning and inference for state space models</em>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">ssm</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-nwb-file-with-behavior-data">
+<h2>Load NWB file with behavior data<a class="headerlink" href="#load-nwb-file-with-behavior-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;000678&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-BW058/sub-BW058_ses-20220302T092729.nwb&quot;</span>
+<span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ignore &quot;UserWarning: Ignoring cached namespace...&quot; warning from pynwb </span>
+<span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Ignoring cached namespace&quot;</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+Opening file
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">session_description</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Behavior data. Two-alternative choice visual/auditory discrimination.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preprocess-the-trial-data">
+<h2>Preprocess the trial data<a class="headerlink" href="#preprocess-the-trial-data" title="Link to this heading">#</a></h2>
+<p>Some of the variables in our table of trials contain enumerated values. For example, <code class="docutils literal notranslate"><span class="pre">choice</span></code> can be either <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code> representing <em>left</em>, <em>right</em>, or <em>no_lick</em>, respectively. This mapping is stored in the description field of each variable in the NWB file. The following function loads the data and these mappings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_trial_data</span><span class="p">(</span><span class="n">nwbFileObj</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return trial information and dictionary mapping labels to integer values from open nwb file.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        nwbFileObj (object): an open nwbfile object.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        trial_data (pd.DataFrame): each rows is one trial, columns are variables recorded on each trial.</span>
+<span class="sd">        trial_labels (dict): dictionary of dictionaries containing mapping of values to labels.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">trial_data</span> <span class="o">=</span> <span class="n">nwbFileObj</span><span class="o">.</span><span class="n">trials</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+    <span class="n">stage</span> <span class="o">=</span> <span class="n">nwbFileObj</span><span class="o">.</span><span class="n">lab_meta_data</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">training_stage</span>
+    <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;stage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stage</span>  <span class="c1"># Add the training stage to the dataframe</span>
+      
+    <span class="c1"># Create dict of trial_labels stored in the description of each trial variable</span>
+    <span class="n">trial_labels</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;MAP:(\{.*\})&quot;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">nwbFileObj</span><span class="o">.</span><span class="n">trials</span><span class="o">.</span><span class="n">colnames</span><span class="p">:</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">nwbFileObj</span><span class="o">.</span><span class="n">trials</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="n">dict_string</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">trial_labels</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">dict_string</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To read the trial data we can simply run:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span> <span class="o">=</span> <span class="n">read_trial_data</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We end up with a pandas dataframe with the trial data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trial_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_time</th>
+      <th>stop_time</th>
+      <th>target_modality</th>
+      <th>cue_time</th>
+      <th>cue_ID</th>
+      <th>cue_duration</th>
+      <th>stimulus_type</th>
+      <th>stimulus_time</th>
+      <th>stimulus_duration</th>
+      <th>target_port</th>
+      <th>auditory_stim_id</th>
+      <th>auditory_stim_band</th>
+      <th>auditory_stim_difficulty</th>
+      <th>visual_stim_id</th>
+      <th>visual_stim_oreintation</th>
+      <th>visual_stim_difficulty</th>
+      <th>visual_gabor_angle</th>
+      <th>outcome</th>
+      <th>choice</th>
+      <th>stage</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>94.522700</td>
+      <td>96.847282</td>
+      <td>1.0</td>
+      <td>94.522700</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>94.522700</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>72.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>105.455613</td>
+      <td>106.769102</td>
+      <td>1.0</td>
+      <td>105.455613</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>105.455613</td>
+      <td>1200.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>18.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>117.941465</td>
+      <td>119.180153</td>
+      <td>1.0</td>
+      <td>117.941465</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>117.941465</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>72.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>125.832542</td>
+      <td>128.092601</td>
+      <td>1.0</td>
+      <td>125.832542</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>125.832542</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>90.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>135.777700</td>
+      <td>137.091280</td>
+      <td>1.0</td>
+      <td>135.777700</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>135.777700</td>
+      <td>1200.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>18.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>622</th>
+      <td>5303.089595</td>
+      <td>5305.333957</td>
+      <td>1.0</td>
+      <td>5303.089595</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5303.090593</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>72.0</td>
+      <td>16.0</td>
+      <td>2.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>623</th>
+      <td>5311.121157</td>
+      <td>5313.362926</td>
+      <td>1.0</td>
+      <td>5311.121157</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5311.122102</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>54.0</td>
+      <td>16.0</td>
+      <td>2.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>624</th>
+      <td>5319.577562</td>
+      <td>5321.812414</td>
+      <td>1.0</td>
+      <td>5319.577562</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5319.578559</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>72.0</td>
+      <td>16.0</td>
+      <td>2.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>625</th>
+      <td>5327.820399</td>
+      <td>5330.022618</td>
+      <td>1.0</td>
+      <td>5327.820399</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5327.821403</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>54.0</td>
+      <td>16.0</td>
+      <td>2.0</td>
+      <td>S5</td>
+    </tr>
+    <tr>
+      <th>626</th>
+      <td>5335.842638</td>
+      <td>5338.063993</td>
+      <td>1.0</td>
+      <td>5335.842638</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5335.843636</td>
+      <td>1200.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>54.0</td>
+      <td>16.0</td>
+      <td>2.0</td>
+      <td>S5</td>
+    </tr>
+  </tbody>
+</table>
+<p>627 rows × 20 columns</p>
+</div></div></div>
+</div>
+<p>And a dictionary of labels for categorical (enumerated) variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trial_labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;target_modality&#39;: {&#39;auditory&#39;: 0, &#39;visual&#39;: 1},
+ &#39;cue_ID&#39;: {&#39;A&#39;: 0, &#39;B&#39;: 1},
+ &#39;stimulus_type&#39;: {&#39;target&#39;: 0, &#39;distractor&#39;: 1, &#39;both&#39;: 2},
+ &#39;target_port&#39;: {&#39;left&#39;: 0, &#39;right&#39;: 1},
+ &#39;auditory_stim_id&#39;: {&#39;left&#39;: 0, &#39;right&#39;: 1, &#39;no stim&#39;: 2},
+ &#39;auditory_stim_band&#39;: {&#39;low_band&#39;: 0, &#39;high_band&#39;: 1},
+ &#39;visual_stim_id&#39;: {&#39;left&#39;: 0, &#39;right&#39;: 1, &#39;no stim&#39;: 2},
+ &#39;visual_stim_oreintation&#39;: {&#39;horizontal&#39;: 0, &#39;vertical&#39;: 1},
+ &#39;visual_stim_difficulty&#39;: {&#39;45&#39;: 0, &#39;36&#39;: 1, &#39;27&#39;: 2, &#39;18&#39;: 3, &#39;9&#39;: 4},
+ &#39;outcome&#39;: {&#39;timeout&#39;: 0,
+  &#39;hit&#39;: 1,
+  &#39;miss&#39;: 2,
+  &#39;false_alarm&#39;: 4,
+  &#39;correct_reject&#39;: 8,
+  &#39;incorrect_reject&#39;: 16},
+ &#39;choice&#39;: {&#39;left&#39;: 0, &#39;right&#39;: 1, &#39;no_lick&#39;: 2}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because of the way stimulus values are stored, we also need to perform some preprocessing and convert stimulus values to a normalized scale in the range (-1, 1) for the target stimulus (either visual or auditory) of a given session. We achieve this normalization with the following function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize_stim_values</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalize stimulus values to range (-1, 1).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        trial_data (pd.DataFrame): each rows is one trial, columns are variables recorded on each trial.</span>
+<span class="sd">        trial_labels (dict): dictionary of dictionaries containing mapping of values to labels.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        vis_stim (np.array):</span>
+<span class="sd">        aud_stim (np.array):</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aud_stim_direction</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;auditory_stim_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">aud_stim_direction</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aud_stim_direction</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;auditory_stim_id&#39;</span><span class="p">][</span><span class="s1">&#39;left&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=-</span><span class="mi">1</span>
+    <span class="n">aud_stim_direction</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aud_stim_direction</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;auditory_stim_id&#39;</span><span class="p">][</span><span class="s1">&#39;right&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">aud_stim_direction</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aud_stim_direction</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;auditory_stim_id&#39;</span><span class="p">][</span><span class="s1">&#39;no stim&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">aud_stim_value</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;auditory_stim_difficulty&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">aud_stim_value</span> <span class="o">=</span> <span class="n">aud_stim_value</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">aud_stim_value</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">aud_stim</span> <span class="o">=</span> <span class="n">aud_stim_direction</span><span class="o">*</span><span class="n">aud_stim_value</span>
+
+    <span class="n">vis_stim_direction</span> <span class="o">=</span>  <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;visual_stim_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">vis_stim_direction</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vis_stim_direction</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;visual_stim_id&#39;</span><span class="p">][</span><span class="s1">&#39;left&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=-</span><span class="mi">1</span>
+    <span class="n">vis_stim_direction</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vis_stim_direction</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;visual_stim_id&#39;</span><span class="p">][</span><span class="s1">&#39;right&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">vis_stim_direction</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vis_stim_direction</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;visual_stim_id&#39;</span><span class="p">][</span><span class="s1">&#39;no stim&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">trial_data</span><span class="o">.</span><span class="n">columns</span> <span class="o">==</span> <span class="s1">&#39;visual_stim_difficulty&#39;</span><span class="p">):</span>
+        <span class="n">vis_val</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;visual_stim_difficulty&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vis_val</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;visual_stim_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">vis_stim_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trial_data</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">trial_data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">==</span><span class="p">[</span><span class="s1">&#39;visual_gabor_angle&#39;</span><span class="p">]):</span>
+        <span class="n">stim_val</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;visual_gabor_angle&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">stim_val</span> <span class="o">=</span> <span class="n">stim_val</span><span class="p">[</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">stim_val</span><span class="p">)]</span>
+        <span class="n">stim_val</span> <span class="o">=</span> <span class="p">((</span><span class="n">stim_val</span> <span class="o">-</span> <span class="mi">45</span><span class="p">)</span><span class="o">/</span><span class="mi">45</span><span class="p">)</span>
+        <span class="n">stim_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">stim_val</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_val</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">this_diff</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vis_val</span><span class="p">)):</span>
+                <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vis_val</span><span class="o">==</span><span class="n">this_diff</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">vis_stim_id</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">=</span><span class="n">stim_val</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">this_diff</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vis_stim_id</span><span class="p">[</span><span class="n">vis_val</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mf">.8</span>
+        <span class="n">vis_stim_id</span><span class="p">[</span><span class="n">vis_val</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mf">.6</span>
+        <span class="n">vis_stim_id</span><span class="p">[</span><span class="n">vis_val</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">vis_stim</span> <span class="o">=</span> <span class="n">vis_stim_direction</span><span class="o">*</span><span class="n">vis_stim_id</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">vis_stim</span><span class="p">,</span> <span class="n">aud_stim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this notebook, we will focus only on the target modality for a given session (either visual or auditory), so we will add one column to our dataframe with the normalized stimulus values for just that modality:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vis_stim</span><span class="p">,</span> <span class="n">aud_stim</span> <span class="o">=</span> <span class="n">normalize_stim_values</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;target_modality&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;target_modality&#39;</span><span class="p">][</span><span class="s1">&#39;auditory&#39;</span><span class="p">]:</span>
+    <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;normalized_stim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">aud_stim</span>
+<span class="k">elif</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;target_modality&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;target_modality&#39;</span><span class="p">][</span><span class="s1">&#39;visual&#39;</span><span class="p">]:</span>
+    <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;normalized_stim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vis_stim</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can test that our normalized stimulus values are now between -1 and 1 (with np.nan when stimuli from a different modality are presented).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;normalized_stim&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1. , -0.6, -0.2,  0.2,  0.6,  1. ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimate-psychometric-performance-across-all-trials">
+<h2>Estimate psychometric performance across all trials<a class="headerlink" href="#estimate-psychometric-performance-across-all-trials" title="Link to this heading">#</a></h2>
+<p>We first create a function to estimate the performance for each stimulus value (given the dataframe with trial data):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_psychometric</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Quantify the fraction of trials each choice was made for each stimulus value.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        trial_data (pd.DataFrame): each rows is one trial, columns are variables recorded on each trial.</span>
+<span class="sd">        trial_labels (dict): dictionary of dictionaries containing mapping of values to labels.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        stim_values (np.array): possible stimulus values.</span>
+<span class="sd">        psychometric (np.array): [nChoices, nStim] Fraction of trials with a specific choice.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">stim_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;normalized_stim&#39;</span><span class="p">])</span>
+    <span class="n">psychometric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_values</span><span class="p">)],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ind_stim</span><span class="p">,</span> <span class="n">stim_val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stim_values</span><span class="p">):</span>
+        <span class="n">trials_this_stim</span> <span class="o">=</span> <span class="n">trial_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;normalized_stim==@stim_val&#39;</span><span class="p">)</span>
+        <span class="n">n_trials_this_stim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">trials_this_stim</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_trials_this_stim</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">choice_label</span><span class="p">,</span> <span class="n">ind_choice</span> <span class="ow">in</span> <span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">psychometric</span><span class="p">[</span><span class="n">ind_choice</span><span class="p">,</span> <span class="n">ind_stim</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">trials_this_stim</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;choice==@ind_choice&#39;</span><span class="p">))</span><span class="o">/</span><span class="n">n_trials_this_stim</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">psychometric</span><span class="p">[:,</span> <span class="n">ind_stim</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">return</span> <span class="n">stim_values</span><span class="p">,</span> <span class="n">psychometric</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now estimate and plot the psychometric performance across all trials in a session.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_values</span><span class="p">,</span> <span class="n">psychometric</span>  <span class="o">=</span> <span class="n">estimate_psychometric</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">psychometric</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># 3 choices (left, right, no_lick) x N stim values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the psychometric curves</span>
+<span class="n">psy_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#0097A7&#39;</span><span class="p">,</span> <span class="s1">&#39;#7A68A2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.7&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">choice_label</span><span class="p">,</span> <span class="n">ind_choice</span> <span class="ow">in</span> <span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stim_values</span><span class="p">,</span> <span class="n">psychometric</span><span class="p">[</span><span class="n">ind_choice</span><span class="p">,:],</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">psy_colors</span><span class="p">[</span><span class="n">ind_choice</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;p(choice)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Stimulus value (normalized)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Performance (one session, all trials)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dbb78b6557da400001d23e722dc5f7a29bc1b032be45501ee7589f9475529735.png" src="../_images/dbb78b6557da400001d23e722dc5f7a29bc1b032be45501ee7589f9475529735.png" />
+</div>
+</div>
+<p>We see that performance, when averaging across all trials in a session, does not seem to be very good. Below we explore whether these averages are the result of the animal switching between behavioral states with different levels of engagement in the task.</p>
+</section>
+<section id="estimate-behavioral-states-from-choices-and-trial-outcomes">
+<h2>Estimate behavioral states from choices and trial outcomes<a class="headerlink" href="#estimate-behavioral-states-from-choices-and-trial-outcomes" title="Link to this heading">#</a></h2>
+<p>Here, we use a Hidden Markov Model with Generalized Linear Model emissions (GLM-HMM) to automatically characterize the dynamics in performance across trials in a session. This model estimates different performance states according to the choices the animal makes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Format the inputs for model fitting</span>
+<span class="n">choice</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># A 1-D array of ints indicating the choice on each trial</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;normalized_stim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>       <span class="c1"># A 1-D array with the stim value on each trial</span>
+<span class="n">constant</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trial_data</span><span class="p">))</span>                   <span class="c1"># A constant to fit a bias term in our GLM</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">stim</span><span class="p">,</span> <span class="n">constant</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we will set the number of states of the model to 3. In general, one would instead use a model-selection process (as described in the associated paper <span id="id2">[<a class="reference internal" href="../bibliography.html#id20" title="Daniel Hulsey, Kevin Zumwalt, Luca Mazzucato, David A. McCormick, and Santiago Jaramillo. Decision-making dynamics are predicted by arousal and uninstructed movements. Cell Reports, 43(2):113709, 2024. URL: https://www.sciencedirect.com/science/article/pii/S2211124724000378, doi:https://doi.org/10.1016/j.celrep.2024.113709.">Hulsey <em>et al.</em>, 2024</a>]</span>) to estimate the appropriate number of states.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model parameters</span>
+<span class="n">num_states</span> <span class="o">=</span> <span class="mi">3</span>                             <span class="c1"># Number of states of the HMM</span>
+<span class="n">obs_dim</span> <span class="o">=</span> <span class="mi">1</span>                                <span class="c1"># One observed dimension: the animal&#39;s choice.</span>
+<span class="n">num_categories</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">choice</span><span class="p">))</span>    <span class="c1"># Number of possible choices</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>                <span class="c1"># Two dimensions: stim value and bias coefficient</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the model</span>
+<span class="n">hmm</span> <span class="o">=</span> <span class="n">ssm</span><span class="o">.</span><span class="n">HMM</span><span class="p">(</span><span class="n">num_states</span><span class="p">,</span> <span class="n">obs_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">observations</span><span class="o">=</span><span class="s2">&quot;input_driven_obs&quot;</span><span class="p">,</span> 
+              <span class="n">observation_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">num_categories</span><span class="p">),</span> <span class="n">transitions</span><span class="o">=</span><span class="s2">&quot;standard&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now fit the model to our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s fix the random seeds, so everyone gets the same results on this example notebook</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Fit an HMM to our data</span>
+<span class="n">TOL</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="mi">4</span>
+<span class="n">N_iters</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">train_ll</span> <span class="o">=</span> <span class="n">hmm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">choice</span><span class="p">[:,</span><span class="kc">None</span><span class="p">],</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;em&quot;</span><span class="p">,</span> <span class="n">num_iters</span><span class="o">=</span><span class="n">N_iters</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="n">TOL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "55a22a68a06e4cd289a248a3e02af3e0", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Note that we fixed the random seeds above, so this notebook always gives the same results. In general, you may want to instead run multiple instances of the fitting procedure and take the best fit.</p>
+<p>After fitting the model, we can get the probability of being in each state for each trial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the array of posterior prob for each state on each trial (nTrials, nStates)</span>
+<span class="n">posterior_probs</span> <span class="o">=</span> <span class="n">hmm</span><span class="o">.</span><span class="n">expected_states</span><span class="p">(</span><span class="n">choice</span><span class="p">[:,</span><span class="kc">None</span><span class="p">],</span> <span class="nb">input</span><span class="o">=</span><span class="n">inputs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this example, we will simply pick the state with maximum probability on each trial (and add it to our dataframe of trials), but you could also decide to include only states with probability above some threshold (<em>i.e.</em>, 80%) and set instances below this threshold to “undetermined”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate the state with maximum probability for each trial and add it to our dataframe</span>
+<span class="n">hmm_state</span> <span class="o">=</span> <span class="n">posterior_probs</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;hmm_state&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hmm_state</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot these probabilities together with the choice on each trial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot choices (colored by outcome) and probability of each state for each trial</span>
+<span class="n">outcomes_to_plot</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hit&#39;</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;miss&#39;</span><span class="p">:</span><span class="s1">&#39;r&#39;</span><span class="p">}</span>
+<span class="n">ms</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">state_colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;tab10&quot;</span><span class="p">)(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_states</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]},</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">this_outcome</span><span class="p">,</span> <span class="n">this_color</span> <span class="ow">in</span> <span class="n">outcomes_to_plot</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">outcome_ind</span> <span class="o">=</span> <span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">][</span><span class="n">this_outcome</span><span class="p">]</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">outcome_ind</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">choice</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">this_color</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="n">ms</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">this_outcome</span><span class="p">)</span>
+<span class="n">no_lick_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">choice</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">][</span><span class="s1">&#39;no_lick&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no_lick_idx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">no_lick_idx</span><span class="p">)),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="n">ms</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;no lick&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;no lick&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">handletextpad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Choices (colored by outcome) and state probabilities&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">inds</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_states</span><span class="p">):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">posterior_probs</span><span class="p">[:,</span><span class="n">inds</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">state_colors</span><span class="p">[</span><span class="n">inds</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;State probability&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Trial&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;State </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_states</span><span class="p">)],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ed7558b87a70d6c6bbfd0fca676fc9f4f35e336a1fb571370f37347b224cdb5c.png" src="../_images/ed7558b87a70d6c6bbfd0fca676fc9f4f35e336a1fb571370f37347b224cdb5c.png" />
+</div>
+</div>
+<p>Note that <strong>State 0</strong> has a high probability when the animal makes mostly correct choices during the first half of the session (<em>optimal performance</em>). <strong>State 1</strong> has a high probability when the animal licks mostly to the left (<em>biased performance</em>). And <strong>State 2</strong> has a high probability when the animal is not licking much (<em>disengaged state</em>).</p>
+<p><em>Note:</em> the order of the states may be different when you run this notebook, but you should see 3 states with the characteristics described above.</p>
+<p>Since we have an estimate of the performance state for each trial, we can calculate the psychometric performance for each state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot psychometric performance for each state</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_states</span><span class="p">):</span>
+    <span class="n">trial_data_this_state</span> <span class="o">=</span> <span class="n">trial_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;hmm_state==@state&#39;</span><span class="p">)</span>
+    <span class="n">stim_vals</span><span class="p">,</span> <span class="n">psychometric</span> <span class="o">=</span> <span class="n">estimate_psychometric</span><span class="p">(</span><span class="n">trial_data_this_state</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ind_choice</span><span class="p">,</span> <span class="n">choice_probs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">psychometric</span><span class="p">):</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stim_vals</span><span class="p">,</span> <span class="n">choice_probs</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">psy_colors</span><span class="p">[</span><span class="n">ind_choice</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Stim value&#39;</span><span class="p">)</span>
+    <span class="n">scolor</span> <span class="o">=</span> <span class="n">state_colors</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> 
+    <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;State </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fc&#39;</span><span class="p">:</span><span class="n">scolor</span><span class="p">,</span> <span class="s1">&#39;ec&#39;</span><span class="p">:</span><span class="n">scolor</span><span class="p">,</span> <span class="s1">&#39;pad&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">state</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;p(choice)&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">state</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bc485c6fa7b0829ea4ae6f18ea44f34121b251a7101e0504c29f1201cfd9524a.png" src="../_images/bc485c6fa7b0829ea4ae6f18ea44f34121b251a7101e0504c29f1201cfd9524a.png" />
+</div>
+</div>
+<p>Consistent with the observations above, <strong>State 0</strong> shows sharp psychometric curves that clearly depend on the stimulus value (<em>optimal</em>), <strong>State 1</strong> shows a low probability of licking right (<em>biased</em>), and <strong>State 2</strong> shows a high probability of no licking for most stimulus values (<em>disengaged</em>).</p>
+</section>
+<section id="evaluate-the-dynamics-of-arousal-and-uninstructed-movements">
+<h2>Evaluate the dynamics of arousal and uninstructed movements<a class="headerlink" href="#evaluate-the-dynamics-of-arousal-and-uninstructed-movements" title="Link to this heading">#</a></h2>
+<p>We now evaluate how arousal (estimated from pupil diameter) and uninstructed movements (such as running), relate to the behavioral states estimated from the animal’s choices.</p>
+<p>We start by loading the traces of these additional behavioral measures from our NWB file. Note that here, we focus on the value of each behavioral measure right before the stimulus presentation on each trial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">behav_measures_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pupil_diameter&#39;</span><span class="p">,</span> <span class="s1">&#39;running_speed&#39;</span><span class="p">]</span>
+<span class="n">behav_measures</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">indb</span><span class="p">,</span> <span class="n">measure</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">behav_measures_labels</span><span class="p">):</span>
+    <span class="n">bmeasure_ts</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">get_acquisition</span><span class="p">(</span><span class="n">measure</span><span class="p">)</span><span class="o">.</span><span class="n">timestamps</span><span class="p">[:]</span>
+    <span class="n">bmeasure_vals</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">get_acquisition</span><span class="p">(</span><span class="n">measure</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span>
+    
+    <span class="c1"># Find index of timestamp right before the trial start</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">bmeasure_ts</span><span class="p">,</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">],</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">last_ts_before_trial_start</span> <span class="o">=</span> <span class="n">bmeasure_ts</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">bmeasure_at_trial_start</span> <span class="o">=</span> <span class="n">bmeasure_vals</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    
+    <span class="n">behav_measures</span><span class="p">[</span><span class="n">measure</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ts&#39;</span><span class="p">:</span><span class="n">last_ts_before_trial_start</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="n">bmeasure_at_trial_start</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once loaded, we can plot the value of each behavioral measure next to the probability of being in each state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]},</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">behav_measures</span><span class="p">[</span><span class="s1">&#39;running_speed&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">],</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Running</span><span class="se">\n</span><span class="s1">(cm/s)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">behav_measures</span><span class="p">[</span><span class="s1">&#39;pupil_diameter&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">],</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.3&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pupil</span><span class="se">\n</span><span class="s1">(pixels)&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">inds</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_states</span><span class="p">):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">posterior_probs</span><span class="p">[:,</span><span class="n">inds</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">state_colors</span><span class="p">[</span><span class="n">inds</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;State probability&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Trial&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;State </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_states</span><span class="p">)],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/304f242e5b0079b92fa88ead72c82b7566f8e5e6d6a51a6f85a9d81eab807752.png" src="../_images/304f242e5b0079b92fa88ead72c82b7566f8e5e6d6a51a6f85a9d81eab807752.png" />
+</div>
+</div>
+<p>From these plots (from one example session) we can see a few things:</p>
+<ol class="arabic simple">
+<li><p>The biased and disengaged states (State 2 and 3) seem to correlate with little running.</p></li>
+<li><p>The optimal state (State 0) correlates with intermediate levels (and low variability) of pupil size.</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluate-the-relation-between-arousal-and-performance">
+<h1>Evaluate the relation between arousal and performance<a class="headerlink" href="#evaluate-the-relation-between-arousal-and-performance" title="Link to this heading">#</a></h1>
+<p>From these data, we can also evaluate the relation between arousal (as indexed by pupil size) and performance.</p>
+<p>First, let’s find the index of the “optimal” state (the one with best performance).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hits</span> <span class="o">=</span> <span class="n">trial_data</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">trial_labels</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">][</span><span class="s1">&#39;hit&#39;</span><span class="p">]</span>
+<span class="n">mean_prob_on_hits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">posterior_probs</span><span class="p">[</span><span class="n">hits</span><span class="p">,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">optimal_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">mean_prob_on_hits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">optimal_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then normalize the pupil size and estimate the probability of being in the optimal state for each pupil size range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pupil</span> <span class="o">=</span> <span class="n">behav_measures</span><span class="p">[</span><span class="s1">&#39;pupil_diameter&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+<span class="n">normalized_pupil</span> <span class="o">=</span> <span class="p">(</span><span class="n">pupil</span><span class="o">-</span><span class="n">pupil</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">pupil</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">pupil</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+<span class="n">state_to_plot</span> <span class="o">=</span> <span class="n">optimal_state</span>
+
+<span class="n">bin_width</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bin_width</span><span class="p">)</span>
+<span class="n">prob_state_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
+<span class="n">prob_state_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
+<span class="n">n_trials_each_bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">inde</span><span class="p">,</span> <span class="n">low_edge</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">):</span>
+    <span class="n">high_edge</span> <span class="o">=</span> <span class="n">low_edge</span> <span class="o">+</span> <span class="n">bin_width</span>
+    <span class="n">trials_this_bin</span> <span class="o">=</span> <span class="p">(</span><span class="n">normalized_pupil</span><span class="o">&gt;</span><span class="n">low_edge</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">normalized_pupil</span><span class="o">&lt;=</span><span class="n">high_edge</span><span class="p">)</span>
+    <span class="n">prob_state_mean</span><span class="p">[</span><span class="n">inde</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">posterior_probs</span><span class="p">[</span><span class="n">trials_this_bin</span><span class="p">,</span> <span class="n">state_to_plot</span><span class="p">])</span>
+    <span class="n">prob_state_std</span><span class="p">[</span><span class="n">inde</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">posterior_probs</span><span class="p">[</span><span class="n">trials_this_bin</span><span class="p">,</span> <span class="n">state_to_plot</span><span class="p">])</span>
+    <span class="n">n_trials_each_bin</span><span class="p">[</span><span class="n">inde</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">trials_this_bin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note: In the manuscript, a different normalization (between 0 and max) is used because the analysis encompasses multiple sessions from each animal. Here we normalize from min to max, such that each bin contain at least 1 trial.</p>
+<p>Below is how many trials had a particular pupil size range:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_trials_each_bin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  6,  26,  43,  96, 179, 146,  79,  27,  18,   6])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the probability of being in the optimal state (State 0) for each pupil size range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">color_this_state</span> <span class="o">=</span> <span class="n">state_colors</span><span class="p">[</span><span class="n">state_to_plot</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_edges</span><span class="o">+</span><span class="n">bin_width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">prob_state_mean</span><span class="p">,</span><span class="s1">&#39;.-&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_this_state</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;p(state)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pupil diameter (normalized)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of being in State </span><span class="si">{</span><span class="n">state_to_plot</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/495706f07b8c3eef84d47486b450fadce2f53408abba20a26c3baaa23e652921.png" src="../_images/495706f07b8c3eef84d47486b450fadce2f53408abba20a26c3baaa23e652921.png" />
+</div>
+</div>
+<p>We see that the probability of being in the optimal state is highest when the pupil is at an intermediate size, resulting in an inverted-U relationship between arousal and performance.</p>
+<hr class="docutils" />
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./higher-order"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tca.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tensor Decomposition of Spiking Activity Through Trials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../projects/cred_assign_figures.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Replicating OpenScope Credit Assignment project figures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Behavioral state from trial outcomes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-nwb-file-with-behavior-data">Load NWB file with behavior data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-the-trial-data">Preprocess the trial data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-psychometric-performance-across-all-trials">Estimate psychometric performance across all trials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-behavioral-states-from-choices-and-trial-outcomes">Estimate behavioral states from choices and trial outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-dynamics-of-arousal-and-uninstructed-movements">Evaluate the dynamics of arousal and uninstructed movements</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-the-relation-between-arousal-and-performance">Evaluate the relation between arousal and performance</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carter Peene
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

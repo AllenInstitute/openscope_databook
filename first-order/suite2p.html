@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -73,8 +73,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'first-order/suite2p';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Generalized Linear Models" href="../higher-order/glm.html" />
-    <link rel="prev" title="Statistically Testing Spike Responses to Stimulus" href="test_unit_spikes.html" />
+    <link rel="next" title="Using CEBRA-Time to Identify Latent Embeddings" href="../higher-order/cebra_time.html" />
+    <link rel="prev" title="Statistically Testing 2P Responses to Stimulus" href="test_2p_responses.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,9 +193,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -562,26 +561,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="identifying-regions-of-interest-with-segmentation">
 <h1>Identifying Regions of Interest with Segmentation<a class="headerlink" href="#identifying-regions-of-interest-with-segmentation" title="Link to this heading">#</a></h1>
-<p>The Allen Institute uses <a class="reference external" href="http://www.suite2p.org/"><strong>Suite2P</strong></a> for processing 2-Photon Calcium Imaging Data. Specifically, <strong>Suite2P</strong> takes a 2P movie, and outputs information about the putative segmented <em>Regions of Interest</em> (ROIs) <span id="id1">[<a class="reference internal" href="../bibliography.html#id9" title="Marius Pachitariu, Carsen Stringer, Mario Dipoppa, Sylvia Schröder, L. Federico Rossi, Henry Dalgleish, Matteo Carandini, and Kenneth D. Harris. Suite2p: beyond 10,000 neurons with standard two-photon microscopy. bioRxiv, 2017. URL: https://www.biorxiv.org/content/early/2017/07/20/061507, arXiv:https://www.biorxiv.org/content/early/2017/07/20/061507.full.pdf, doi:10.1101/061507.">Pachitariu <em>et al.</em>, 2017</a>]</span>. The most pertinent information outputted are the locations/shapes of the ROIs within the 2P Movie’s field-of-view, as well as the fluorescence of each ROI at every frame of the movie. This notebook serves as a simple demonstration of how to input a 2P Movie into Suite2P and produce cell segmentation and fluorescence output.</p>
+<p>The Allen Institute uses <a class="reference external" href="http://www.suite2p.org/"><strong>Suite2P</strong></a> for processing 2-Photon Calcium Imaging Data. Specifically, <strong>Suite2P</strong> takes a 2P movie, and outputs information about the putative segmented <em>Regions of Interest</em> (ROIs) <span id="id1">[<a class="reference internal" href="../bibliography.html#id9" title="Marius Pachitariu, Carsen Stringer, Mario Dipoppa, Sylvia Schröder, L. Federico Rossi, Henry Dalgleish, Matteo Carandini, and Kenneth D. Harris. Suite2p: beyond 10,000 neurons with standard two-photon microscopy. bioRxiv, 2017. URL: https://doi.org/10.1101/061507, doi:10.1101/061507.">Pachitariu <em>et al.</em>, 2017</a>]</span>. The most pertinent information outputted are the locations/shapes of the ROIs within the 2P Movie’s field-of-view, as well as the fluorescence of each ROI at every frame of the movie. This notebook serves as a simple demonstration of how to input a 2P Movie into Suite2P and produce cell segmentation and fluorescence output.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas64__v0.3.21-gcc_10_3_0.dll
-  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
 </pre></div>
 </div>
 </div>
@@ -657,10 +651,11 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.56.1) of dandi/dandi-cli is available. You are using 0.55.1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                                      SIZE    DONE            DONE% CHECKSUM STATUS          MESSAGE
+sub-408021_ses-758519303_obj-raw_behavior+image+ophys.nwb 46.1 GB 46.1 GB          100%    -     done                   
+Summary:                                                  46.1 GB 46.1 GB                        1 done                 
+                                                                  100.00%                                               
+Downloaded file to ./sub-408021_ses-758519303_obj-raw_behavior+image+ophys.nwb
 </pre></div>
 </div>
 </div>
@@ -721,31 +716,31 @@ h5
 ** Found 1 h5 files - converting to binary **
 NOTE: using a list of h5 files:
 [&#39;.\\sub-408021_ses-758519303_obj-raw_behavior+image+ophys.h5&#39;]
-time 1220.51 sec. Wrote 126741 frames per binary for 1 planes
+time 846.75 sec. Wrote 126741 frames per binary for 1 planes
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; PLANE 0 &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
 NOTE: not running registration, ops[&#39;do_registration&#39;]=0
 binary path: ./results/suite2p\plane0\data.bin
 NOTE: applying classifier ../../data/suite2p_classifier.npy
 ----------- ROI DETECTION
 Binning movie in chunks of length 25
-Binned movie of size [5069,512,512] created in 301.75 sec.
+Binned movie of size [5069,512,512] created in 182.66 sec.
 NOTE: estimated spatial scale ~12 pixels, time epochs 4.22, threshold 31.68 
 0 ROIs, score=639.61
 1000 ROIs, score=36.82
-Detected 1203 ROIs, 2775.93 sec
+Detected 1203 ROIs, 6122.50 sec
 After removing overlaps, 1094 ROIs remain
------------ Total 3083.84 sec.
+----------- Total 6313.39 sec.
 ----------- EXTRACTION
-Masks created, 3.81 sec.
-Extracted fluorescence from 1094 ROIs in 126741 frames, 4542.42 sec.
------------ Total 4556.33 sec.
+Masks created, 5.00 sec.
+Extracted fluorescence from 1094 ROIs in 126741 frames, 564.10 sec.
+----------- Total 574.48 sec.
 ----------- CLASSIFICATION
-[&#39;npix_norm&#39;, &#39;compact&#39;, &#39;skew&#39;]
+[&#39;compact&#39;, &#39;npix_norm&#39;, &#39;skew&#39;]
 ----------- SPIKE DECONVOLUTION
------------ Total 12.52 sec.
-Plane 0 processed in 7655.53 sec (can open in GUI).
-total = 8878.48 sec.
-TOTAL RUNTIME 8878.48 sec
+----------- Total 13.16 sec.
+Plane 0 processed in 6905.92 sec (can open in GUI).
+total = 7752.79 sec.
+TOTAL RUNTIME 7752.79 sec
 </pre></div>
 </div>
 </div>
@@ -784,7 +779,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19322779310&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1524a5ef670&gt;]
 </pre></div>
 </div>
 <img alt="../_images/1e4288d511b837a5035c97c8564c7c4da3733c588dcfcb7af8cc637e8ed0ca43.png" src="../_images/1e4288d511b837a5035c97c8564c7c4da3733c588dcfcb7af8cc637e8ed0ca43.png" />
@@ -1226,7 +1221,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x193242b88b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1524eb67520&gt;
 </pre></div>
 </div>
 <img alt="../_images/37745feea591b42adb4d471afb5136f62baf58ac403a0088b388d8befe007262.png" src="../_images/37745feea591b42adb4d471afb5136f62baf58ac403a0088b388d8befe007262.png" />
@@ -1250,7 +1245,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x193252bb1f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1524e3b3100&gt;
 </pre></div>
 </div>
 <img alt="../_images/018089e5284c4ff691d9acd612d795f58cdb04043f7bd119fe468933499dece3.png" src="../_images/018089e5284c4ff691d9acd612d795f58cdb04043f7bd119fe468933499dece3.png" />
@@ -1267,7 +1262,7 @@ Most importantly, the main statistics of each ROI are included in <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x193227e39a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1524e35a320&gt;
 </pre></div>
 </div>
 <img alt="../_images/7fd437696be1845e00dd052607fdc4c967d14832a614ad58fbf43731cebeb093.png" src="../_images/7fd437696be1845e00dd052607fdc4c967d14832a614ad58fbf43731cebeb093.png" />
@@ -1308,20 +1303,20 @@ Most importantly, the main statistics of each ROI are included in <code class="d
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="test_unit_spikes.html"
+       href="test_2p_responses.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Statistically Testing Spike Responses to Stimulus</p>
+        <p class="prev-next-title">Statistically Testing 2P Responses to Stimulus</p>
       </div>
     </a>
     <a class="right-next"
-       href="../higher-order/glm.html"
+       href="../higher-order/cebra_time.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Generalized Linear Models</p>
+        <p class="prev-next-title">Using CEBRA-Time to Identify Latent Embeddings</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

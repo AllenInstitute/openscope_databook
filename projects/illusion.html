@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -195,9 +195,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -205,7 +205,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -217,14 +217,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="current nav bd-sidenav">
@@ -232,7 +232,6 @@
 <li class="toctree-l1"><a class="reference internal" href="glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -567,7 +566,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="openscope-s-illusion-dataset">
 <h1>OpenScope’s Illusion Dataset<a class="headerlink" href="#openscope-s-illusion-dataset" title="Link to this heading">#</a></h1>
-<p>Imagine being out in the open sea on a boat. Suddenly, you notice a dark shape passing by underwater. Even though the shape is distorted by the wave and the color is a mere shade different from the water, you mind automatically infers the outline of a shark. As illustrated, perception is inference rather than faithful reconstruction. However sensory neuroscience has traditionally focused on the question of how faithfully/accurately the brain can represent sensory information. Moreover, sensory stimuli typically used in neurophysiology experiments make it difficult to dissociate between a neural representation that is faithful vs inferred. Illusions arise due to rational mistakes in perceptual inference, exemplifying the dichotomy between faithful representation and inferred representation. Openscope’s Illusion Experiment described by <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id1">[<a class="reference internal" href="../bibliography.html#id20" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, utilizes illusory contours (ICs) to study the neural mechanisms of perceptual inference.</p>
+<p>Imagine being out in the open sea on a boat. Suddenly, you notice a dark shape passing by underwater. Even though the shape is distorted by the wave and the color is a mere shade different from the water, you mind automatically infers the outline of a shark. As illustrated, perception is inference rather than faithful reconstruction. However sensory neuroscience has traditionally focused on the question of how faithfully/accurately the brain can represent sensory information. Moreover, sensory stimuli typically used in neurophysiology experiments make it difficult to dissociate between a neural representation that is faithful vs inferred. Illusions arise due to rational mistakes in perceptual inference, exemplifying the dichotomy between faithful representation and inferred representation. Openscope’s Illusion Experiment described by <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id1">[<a class="reference internal" href="../bibliography.html#id21" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, utilizes illusory contours (ICs) to study the neural mechanisms of perceptual inference.</p>
 <p>ICs have direct neural substrates in the brain – there are neurons in the visual cortex that respond to ICs with the same specificity as to real edges (IC-encoders). Prior literature has shown IC-encoding in primary visual cortex (V1) arises through top-down feedback from higher visual areas (Figure 1). IC perception requires precise alignment of inducers (e.g., black circular shapes on either side of the illusory contour): Rotating one of the inducers no longer evokes an illusory percept (rotated control images, RCs). It follows that inducer-encoders, i.e., neurons that receive feedforward sensory information from inducers on either side of the IC, need to coordinate their sensory driven activity to drive IC-encoders in higher visual areas, and in turn, V1. In other words, IC-encoders need to bind with inducer-encoders on both sides of the IC. On the contrary, the binding of faithful neurons, i.e., neurons that respond to real edges but not to illusory contours, is inconsequential for IC perception. Therefore, ICs necessitate a much more selective group of neurons to bind compared to real edges, narrowing down the spatial component of the binding problem. Thus, ICs are ideally suited for addressing the temporal component of the binding problem.</p>
 <p><img alt="illusion_fig1.png" src="../_images/illusion_fig1.png" /></p>
 <section id="environment-setup">
@@ -575,7 +574,10 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
@@ -883,14 +885,6 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.8.0 is already loaded.
-  return func(args[0], **pargs)
-c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
-  return func(args[0], **pargs)
-c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\hdmf\utils.py:668: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.5.0 is already loaded.
-  return func(args[0], **pargs)
 </pre></div>
 </div>
 </div>
@@ -1332,7 +1326,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;APN&#39;, &#39;VISpm2/3&#39;, &#39;SGN&#39;, &#39;LP&#39;, &#39;VISp6b&#39;, &#39;MGd&#39;, &#39;VISrl4&#39;, &#39;VISl5&#39;, &#39;VISpm6b&#39;, &#39;DG-sg&#39;, &#39;VISam2/3&#39;, &#39;VISal6b&#39;, &#39;VISl2/3&#39;, &#39;VISrl6a&#39;, &#39;VISp6a&#39;, &#39;CA1&#39;, &#39;POL&#39;, &#39;VISal5&#39;, &#39;VISrl5&#39;, &#39;VISal6a&#39;, &#39;VISam4&#39;, &#39;VISpm5&#39;, &#39;MGm&#39;, &#39;VISpm1&#39;, &#39;VISal2/3&#39;, &#39;VISpm4&#39;, &#39;VISp2/3&#39;, &#39;SUB&#39;, &#39;MB&#39;, &#39;DG-mo&#39;, &#39;VISam5&#39;, &#39;VISp5&#39;, &#39;DG-po&#39;, &#39;CA3&#39;, &#39;VISl6a&#39;, &#39;VISpm6a&#39;, &#39;MGv&#39;, &#39;VISp4&#39;, &#39;root&#39;, &#39;PoT&#39;, &#39;ProS&#39;, &#39;VISl4&#39;, &#39;VISal4&#39;, &#39;VISam6a&#39;, &#39;VISrl2/3&#39;, &#39;VISam1&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;VISrl5&#39;, &#39;VISal5&#39;, &#39;DG-sg&#39;, &#39;SGN&#39;, &#39;VISp6a&#39;, &#39;LP&#39;, &#39;VISp4&#39;, &#39;VISal6a&#39;, &#39;ProS&#39;, &#39;VISp2/3&#39;, &#39;CA3&#39;, &#39;VISrl4&#39;, &#39;VISp6b&#39;, &#39;VISpm2/3&#39;, &#39;VISpm4&#39;, &#39;VISam4&#39;, &#39;VISl2/3&#39;, &#39;APN&#39;, &#39;VISl6a&#39;, &#39;VISpm6b&#39;, &#39;VISal6b&#39;, &#39;DG-po&#39;, &#39;MGm&#39;, &#39;root&#39;, &#39;MGd&#39;, &#39;VISam1&#39;, &#39;VISpm5&#39;, &#39;VISal2/3&#39;, &#39;POL&#39;, &#39;VISpm1&#39;, &#39;PoT&#39;, &#39;VISam6a&#39;, &#39;SUB&#39;, &#39;VISrl2/3&#39;, &#39;VISp5&#39;, &#39;MGv&#39;, &#39;VISrl6a&#39;, &#39;VISal4&#39;, &#39;CA1&#39;, &#39;VISam5&#39;, &#39;VISpm6a&#39;, &#39;VISl5&#39;, &#39;VISam2/3&#39;, &#39;DG-mo&#39;, &#39;MB&#39;, &#39;VISl4&#39;}
 </pre></div>
 </div>
 </div>
@@ -1486,10 +1480,10 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2511c134670&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x18a373d24a0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/def0323441d979ee7cc12984ef149aaa2db101b3b4ec7b7052b9a50fa2a8745b.png" src="../_images/def0323441d979ee7cc12984ef149aaa2db101b3b4ec7b7052b9a50fa2a8745b.png" />
+<img alt="../_images/0e8abb1c2064ac18e82c9b15c8ec070fc2765603fc2f7b04abf78f522f916fbe.png" src="../_images/0e8abb1c2064ac18e82c9b15c8ec070fc2765603fc2f7b04abf78f522f916fbe.png" />
 </div>
 </div>
 </section>
@@ -1897,12 +1891,6 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_24608\1852969462.py:9: RuntimeWarning: divide by zero encountered in divide
-  unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
-C:\Users\carter.peene\AppData\Local\Temp\ipykernel_24608\1852969462.py:9: RuntimeWarning: invalid value encountered in divide
-  unit_z_scores = (mean_response_means - mean_baseline_means) / std_baseline_means
-</pre></div>
-</div>
 <img alt="../_images/85d9cf06d2f008b6eec22022dd4825f82a462fdf81c4733c495ae7b0dc647dc4.png" src="../_images/85d9cf06d2f008b6eec22022dd4825f82a462fdf81c4733c495ae7b0dc647dc4.png" />
 </div>
 </div>
@@ -2726,8 +2714,8 @@ Number of units: 114
 </section>
 <section id="openscope-illusion-publication-example-analysis-code">
 <h2>OpenScope Illusion publication: Example Analysis Code<a class="headerlink" href="#openscope-illusion-publication-example-analysis-code" title="Link to this heading">#</a></h2>
-<p>The following code replicates some of the analysis created for the publication that accompanies OpenScope’s Illusion project, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id2">[<a class="reference internal" href="../bibliography.html#id20" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, this includes a more robust calculation of the receptive fields for units along with several other metrics.</p>
-<p>Here, we are reproducing Fig 1d-g, where we show that mouse primary visual cortex (V1) neurons respond to illusory contours despite the lack of visual information within their receptive fields. Von der Heydt and colleagues had showed the existence of illusory contours in primate visual cortex <span id="id3">[<a class="reference internal" href="../bibliography.html#id21" title="Rudiger von der Heydt, E. Peterhans, and Gunter Baumgartner. Illusory contours and cortical neuron responses. Science, ():, 1984. URL: https://www.science.org/doi/10.1126/science.6539501.">von der Heydt <em>et al.</em>, 1984</a>]</span>, <span id="id4">[]</span>. We are replicating their result in mouse V1.</p>
+<p>The following code replicates some of the analysis created for the publication that accompanies OpenScope’s Illusion project, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id2">[<a class="reference internal" href="../bibliography.html#id21" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, this includes a more robust calculation of the receptive fields for units along with several other metrics.</p>
+<p>Here, we are reproducing Fig 1d-g, where we show that mouse primary visual cortex (V1) neurons respond to illusory contours despite the lack of visual information within their receptive fields. Von der Heydt and colleagues had showed the existence of illusory contours in primate visual cortex <span id="id3">[<a class="reference internal" href="../bibliography.html#id22" title="Rudiger von der Heydt, E. Peterhans, and Gunter Baumgartner. Illusory contours and cortical neuron responses. Science, ():, 1984. URL: https://doi.org/10.1126/science.6539501.">von der Heydt <em>et al.</em>, 1984</a>]</span>, <span id="id4">[]</span>. We are replicating their result in mouse V1.</p>
 <p>It is important to note that originally we imposed a fixed-gaze restriction; i.e., we only analyzed the trials where the pupil position was within 8 visual degrees of the resting pupil position throughout the duration of the trial. For simplicity, we did not include this condition in this example code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3194,16 +3182,6 @@ Opening file
 
     <span class="c1"># Assuming the function analyzeRFCI is already defined as per the previous translation</span>
     <span class="n">RFCI</span><span class="p">[</span><span class="n">nwb_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">analyzeRFCI</span><span class="p">(</span><span class="n">tempR</span><span class="p">[</span><span class="n">nwb_idx</span><span class="p">],</span> <span class="n">temptrialorder</span><span class="p">,</span> <span class="n">sponFRall</span><span class="p">[</span><span class="n">nwb_idx</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_24608\3004073138.py:42: UserWarning: last trial was blank
-  warnings.warn(&#39;last trial was blank&#39;)
-C:\Users\carter.peene\AppData\Local\Temp\ipykernel_24608\3004073138.py:73: UserWarning: check numtrials
-  warnings.warn(&#39;check numtrials&#39;)
-C:\Users\carter.peene\AppData\Local\Temp\ipykernel_24608\3004073138.py:35: UserWarning: first trial was blank
-  warnings.warn(&#39;first trial was blank&#39;)
 </pre></div>
 </div>
 </div>

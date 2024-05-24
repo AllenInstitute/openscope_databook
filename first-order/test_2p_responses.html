@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'first-order/test_2p_responses';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Statistically Testing Spike Responses to Stimulus" href="test_unit_spikes.html" />
+    <link rel="next" title="Identifying Regions of Interest with Segmentation" href="suite2p.html" />
     <link rel="prev" title="Classifying Fast-Spiking and Regular-Spiking Neurons" href="classify_waveforms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,9 +193,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -562,26 +561,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="statistically-testing-2p-responses-to-stimulus">
 <h1>Statistically Testing 2P Responses to Stimulus<a class="headerlink" href="#statistically-testing-2p-responses-to-stimulus" title="Link to this heading">#</a></h1>
-<p>In most analyses, some form of <em>inclusion criteria</em> is used to select neurons that are “responsive” to the stimulus conditions presented. There are no universally agreed upon inclusion criteria for this type of selection. In <span id="id1">[<a class="reference internal" href="../bibliography.html#id10" title="Natalia Mesa, Jack Waters, and Saskia E. J. de Vries. The effect of inclusion criteria on the functional properties reported in mouse visual cortex. eNeuro, 2021. URL: https://www.eneuro.org/content/eneuro/8/1/ENEURO.0188-20.2021.full.pdf.">Mesa <em>et al.</em>, 2021</a>]</span>, it is demonstrated that the choice of inclusion criteria can dramatically affect what neurons are selected as responsive. This notebook does a similar demonstration, using the same five inclusion criteria on Ophys dF/F recordings to select responsive neurons from one experimental session. It can be seen that very different selections are made depending on the criteria used. This also underscores how different criteria might be more or less appropriate for the type of stimulus and the type of measurements being used for analysis. We are sharing these so that this comparison can be reproduced on data and so results can more effectively use this choice to make their results more robust. For more information about dF/F data, see <a class="reference internal" href="../visualization/visualize_2p_responses.html"><span class="std std-doc">Visualizing 2P Responses to Stimulus</span></a>.</p>
+<p>In most analyses, some form of <em>inclusion criteria</em> is used to select neurons that are “responsive” to the stimulus conditions presented. There are no universally agreed upon inclusion criteria for this type of selection. In <span id="id1">[<a class="reference internal" href="../bibliography.html#id10" title="Natalia Mesa, Jack Waters, and Saskia E. J. de Vries. The effect of inclusion criteria on the functional properties reported in mouse visual cortex. eNeuro, 2021. URL: https://doi.org/10.1523/ENEURO.0188-20.2021.">Mesa <em>et al.</em>, 2021</a>]</span>, it is demonstrated that the choice of inclusion criteria can dramatically affect what neurons are selected as responsive. This notebook does a similar demonstration, using the same five inclusion criteria on Ophys dF/F recordings to select responsive neurons from one experimental session. It can be seen that very different selections are made depending on the criteria used. This also underscores how different criteria might be more or less appropriate for the type of stimulus and the type of measurements being used for analysis. We are sharing these so that this comparison can be reproduced on data and so results can more effectively use this choice to make their results more robust. For more information about dF/F data, see <a class="reference internal" href="../visualization/visualize_2p_responses.html"><span class="std std-doc">Visualizing 2P Responses to Stimulus</span></a>.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.FB5AE2TYXYH2IJRDKGDGQ3XBKLKTF43H.gfortran-win_amd64.dll
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
-  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
 </pre></div>
 </div>
 </div>
@@ -624,55 +618,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.59.0) of dandi/dandi-cli is available. You are using 0.55.1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                                    SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
-sub-389014_ses-20180705T152908_behavior+image+ophys.nwb 1.3 GB 1.3 GB           100%    ok    done                   
-Summary:                                                1.3 GB 1.3 GB                         1 done                 
-                                                               100.00%                                               
-Downloaded file to ./sub-389014_ses-20180705T152908_behavior+image+ophys.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.8.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.5 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\base.py:193: UserWarning: TimeSeries &#39;running_velocity&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warn(&quot;%s &#39;%s&#39;: Length of data does not match length of timestamps. Your data may be transposed. &quot;
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\ophys.py:360: UserWarning: RoiResponseSeries &#39;imaging_plane_1&#39;: The second dimension of data does not match the length of rois, but instead the first does. Data is oriented incorrectly and should be transposed.
-  warnings.warn(&quot;%s &#39;%s&#39;: The second dimension of data does not match the length of rois, &quot;
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\base.py:193: UserWarning: RoiResponseSeries &#39;imaging_plane_1&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warn(&quot;%s &#39;%s&#39;: Length of data does not match length of timestamps. Your data may be transposed. &quot;
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;conspecifics&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;crickets&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;dots&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;human_montage&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;man_writing&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_1&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_1_spatial_phase_scramble&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_1_temporal_phase_scramble&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_2&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mousecam&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mousecam_spatial_phase_scramble&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;noise&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;snake&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;spontaneous&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -1179,7 +1126,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.
 <section id="inclusion-criterion-1">
 <h3>Inclusion Criterion 1<a class="headerlink" href="#inclusion-criterion-1" title="Link to this heading">#</a></h3>
 <p>The first criterion is one of the simplest. This one is easy to alter and has a medium level of permissiveness. Below is shown a distribution of the ROI’s maximum mean evoked response. That is, the maximum dF/F value achieved during the evoked averaged response of an ROI to all stimulus trials. A line is drawn to show where the selection is made within the distribution. Also below are the neuronwise response windows of some of the selected neurons. It can be seen that these neurons appear more responsive than the (pseudo) random sample shown above.</p>
-<p><em>The maximum value of the mean evoked response is &gt;10%</em> <span id="id2">[<a class="reference internal" href="../bibliography.html#id11" title="Wenzhi Sun, Zhongchao Tan, Brett D. Mensh, and Na Ji. Thalamus provides layer 4 of primary visual cortex with orientation- and direction-tuned inputs. Nature Neuroscience, 2016. URL: https://rdcu.be/dbFb9.">Sun <em>et al.</em>, 2016</a>]</span></p>
+<p><em>The maximum value of the mean evoked response is &gt;10%</em> <span id="id2">[<a class="reference internal" href="../bibliography.html#id11" title="Wenzhi Sun, Zhongchao Tan, Brett D. Mensh, and Na Ji. Thalamus provides layer 4 of primary visual cortex with orientation- and direction-tuned inputs. Nature Neuroscience, 2016. URL: https://doi.org/10.1038/nn.4196.">Sun <em>et al.</em>, 2016</a>]</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_evoked_responses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">evoked_responses</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1236,7 +1183,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.
 <section id="inclusion-criterion-2">
 <h3>Inclusion Criterion 2<a class="headerlink" href="#inclusion-criterion-2" title="Link to this heading">#</a></h3>
 <p>This criterion is slightly more complicated, and accounts for the fact that neurons might behave inconsistently. It uses the maximum values of the evoked response, and compares it to an absolute value (5%) as well as a value relative to its own baseline activity (3x the standard deviation). It is difficult to show the exact metric being used as a distribution, but to assist in interpretation, a distribution is shown below of the the mean ratio between the maximum evoked value and the standard distribution of the baseline behavior. Note that, this is not the exact metric used to select rois; as this criterion selects rois that exhibit significant activity in 50% or more trials. For our dataset, this criterion is rather stringent, only including 4 rois in the final selection.</p>
-<p><em>In 50% of trials, the evoked response is A) larger than 3x the SD of the baseline, and B) larger than 5% dF/F</em> <span id="id3">[<a class="reference internal" href="../bibliography.html#id12" title="Morgane M. Roth, Fritjof Helmchen, and Bjorn M. Kampa. Distinct functional properties of primary and posteromedial visual area of mouse neocortex. The Journal of Neuroscience, 2012. URL: https://www.jneurosci.org/content/jneuro/32/28/9716.full.pdf.">Roth <em>et al.</em>, 2012</a>]</span></p>
+<p><em>In 50% of trials, the evoked response is A) larger than 3x the SD of the baseline, and B) larger than 5% dF/F</em> <span id="id3">[<a class="reference internal" href="../bibliography.html#id12" title="Morgane M. Roth, Fritjof Helmchen, and Bjorn M. Kampa. Distinct functional properties of primary and posteromedial visual area of mouse neocortex. The Journal of Neuroscience, 2012. URL: https://doi.org/10.1523/JNEUROSCI.0110-12.2012.">Roth <em>et al.</em>, 2012</a>]</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_baseline_sds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1276,7 +1223,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7fcad2a7ee5b70e965577e70a950315595e787baaa3bfdecf5fd5d7a04f22f35.png" src="../_images/7fcad2a7ee5b70e965577e70a950315595e787baaa3bfdecf5fd5d7a04f22f35.png" />
+<img alt="../_images/a8c589cab471e45b20b16b457ed6d25ea77b5b2de57945b5d3cbe113b0a0c4a2.png" src="../_images/a8c589cab471e45b20b16b457ed6d25ea77b5b2de57945b5d3cbe113b0a0c4a2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1305,7 +1252,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.
 <section id="inclusion-criterion-3">
 <h3>Inclusion Criterion 3<a class="headerlink" href="#inclusion-criterion-3" title="Link to this heading">#</a></h3>
 <p>This is perhaps the most sophisticated criterion in our list. For each ROI, It compares the distribution of responses between the baseline activity and the evoked activity to identify any statistically significant response. Below, an example is shown of these distributions for one ROI. Change <code class="docutils literal notranslate"><span class="pre">roi</span></code> below to view the comparison for other cells. Additionally, the distribution of p-values of all rois is shown.</p>
-<p><em>Paired T-test (p &lt; 0.05) with Bonferroni correction, comparing the mean baseline to the mean evoked response</em> <span id="id4">[<a class="reference internal" href="../bibliography.html#id13" title="Mark L. Andermann, Aaron M. Kerlin, Demetris K. Roumis, Lindsey L. Glickfield, and R. clay Reid. Functional specialization of mouse higher visual cortical areas. Neuron, 2011. URL: https://www.sciencedirect.com/science/article/pii/S0896627311010129.">Andermann <em>et al.</em>, 2011</a>]</span></p>
+<p><em>Paired T-test (p &lt; 0.05) with Bonferroni correction, comparing the mean baseline to the mean evoked response</em> <span id="id4">[<a class="reference internal" href="../bibliography.html#id13" title="Mark L. Andermann, Aaron M. Kerlin, Demetris K. Roumis, Lindsey L. Glickfield, and R. clay Reid. Functional specialization of mouse higher visual cortical areas. Neuron, 2011. URL: https://doi.org/10.1016/j.neuron.2011.11.013.">Andermann <em>et al.</em>, 2011</a>]</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_trial_responses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">evoked_responses</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1391,7 +1338,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.
 <section id="inclusion-criterion-4">
 <h3>Inclusion Criterion 4<a class="headerlink" href="#inclusion-criterion-4" title="Link to this heading">#</a></h3>
 <p>This criterion is the most stringent for our dataset. It relies on calculating the measure of <code class="docutils literal notranslate"><span class="pre">reliability</span></code> of a cell’s activity. It can be seen that in this example, no ROIs are selected. This is probably due to no ROIs having reliable responses to the stimulus. Perhaps conducting more trials could improve the reliability.</p>
-<p><em>A) The mean response to any stimulus condition is is &gt; 6% dF/F and B) reliability &gt; 1</em> <span id="id5">[<a class="reference internal" href="../bibliography.html#id14" title="James H. Marshel, Marina E. Garrett, Ian Nauhaus, and Edward M. Callaway. Functional specialization of seven mouse visual cortical areas. Neuron, 2012. URL: https://www.sciencedirect.com/science/article/pii/S0896627311010464.">Marshel <em>et al.</em>, 2012</a>]</span>.</p>
+<p><em>A) The mean response to any stimulus condition is is &gt; 6% dF/F and B) reliability &gt; 1</em> <span id="id5">[<a class="reference internal" href="../bibliography.html#id14" title="James H. Marshel, Marina E. Garrett, Ian Nauhaus, and Edward M. Callaway. Functional specialization of seven mouse visual cortical areas. Neuron, 2012. URL: https://doi.org/10.1016/j.neuron.2011.12.004.">Marshel <em>et al.</em>, 2012</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_trial_responses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">evoked_responses</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -1458,7 +1405,7 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.
 <section id="inclusion-criterion-5">
 <h3>Inclusion Criterion 5<a class="headerlink" href="#inclusion-criterion-5" title="Link to this heading">#</a></h3>
 <p>Finally, the simplest criterion. This criterion is clearly the most permissive, as it includes all ROIs for this dataset.</p>
-<p><em>The maximum evoked response to any stimulus condition is &gt; 4% dF/F</em> <span id="id6">[<a class="reference internal" href="../bibliography.html#id15" title="Manavu Tohmi, Reiko Meguro, Hiroaki Tsukano, Ryuichi Hishida, and Katsuei Shibuki. The extrageniculate visual pathway generates distinct response properties in the higher visual areas of mice. Current Biology, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0960982214001262.">Tohmi <em>et al.</em>, 2014</a>]</span>.</p>
+<p><em>The maximum evoked response to any stimulus condition is &gt; 4% dF/F</em> <span id="id6">[<a class="reference internal" href="../bibliography.html#id15" title="Manavu Tohmi, Reiko Meguro, Hiroaki Tsukano, Ryuichi Hishida, and Katsuei Shibuki. The extrageniculate visual pathway generates distinct response properties in the higher visual areas of mice. Current Biology, 2014. URL: https://doi.org/10.1016/j.cub.2014.01.061.">Tohmi <em>et al.</em>, 2014</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_responses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">evoked_responses</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
@@ -1573,11 +1520,11 @@ C:\Users\carter.peene\AppData\Roaming\Python\Python39\site-packages\pynwb\image.
       </div>
     </a>
     <a class="right-next"
-       href="test_unit_spikes.html"
+       href="suite2p.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Statistically Testing Spike Responses to Stimulus</p>
+        <p class="prev-next-title">Identifying Regions of Interest with Segmentation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

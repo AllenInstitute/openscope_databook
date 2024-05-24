@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -74,7 +74,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualizing Raw 2-Photon Images" href="../visualization/visualize_2p_raw.html" />
-    <link rel="prev" title="Streaming an NWB File with fsspec" href="stream_nwb.html" />
+    <link rel="prev" title="Exploring an NWB File" href="use_nwbwidgets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,9 +193,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -556,20 +555,15 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\_distributor_init.py:30: UserWarning: loaded more than 1 DLL from .libs:
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.FB5AE2TYXYH2IJRDKGDGQ3XBKLKTF43H.gfortran-win_amd64.dll
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
-  warnings.warn(&quot;loaded more than 1 DLL from .libs:&quot;
 </pre></div>
 </div>
 </div>
@@ -583,7 +577,6 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="kn">import</span> <span class="nn">remfile</span>
 
 <span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
-<span class="kn">from</span> <span class="nn">fsspec.implementations.cached</span> <span class="kn">import</span> <span class="n">CachingFileSystem</span>
 <span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -611,10 +604,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.59.0) of dandi/dandi-cli is available. You are using 0.55.1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000248/draft
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:000248/0.240502.2344
 </pre></div>
 </div>
 </div>
@@ -622,44 +612,51 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 </section>
 <section id="get-nwb-info">
 <h2>Get NWB Info<a class="headerlink" href="#get-nwb-info" title="Link to this heading">#</a></h2>
-<p>Below are two definitions of thefunction <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>. These function are tailored to our NWB Files; Our <em>Ophys</em> and our <em>Ecephys</em> datasets respectively. It retrieves a series of important metadata values from the NWB file object. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily altered to extract any other information from an NWB file you want as long as you’re familiar with the internal layout of your files. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect any changes to the function.</p>
+<p>Below are two definitions of thefunction <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>. These function are tailored to our NWB Files; Our <em>Ophys</em> and our <em>Ecephys</em> datasets respectively. It retrieves a series of important metadata values from the NWB file object. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily be altered to extract any other information from an NWB file you want as long as you’re familiar with the internal layout of your files. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect any changes to the function. <code class="docutils literal notranslate"><span class="pre">nwb_type</span></code> can be set below to ‘ephys’ or ‘ophys’ depending on the type of the NWBs of interest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb_type</span> <span class="o">=</span> <span class="s2">&quot;ephys&quot;</span> <span class="c1"># or, &quot;ophys&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within ophys file</span>
 <span class="c1"># getattr is used because not all nwb files have all properties. If not handled like this, errors will arise</span>
-<span class="c1"># def get_nwb_info(nwb):</span>
-<span class="c1">#         session_time = getattr(nwb, &quot;session_start_time&quot;, None)</span>
+<span class="k">def</span> <span class="nf">get_ophys_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+        <span class="n">session_time</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;session_start_time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-<span class="c1">#         metadata_obj = getattr(nwb, &quot;lab_meta_data&quot;, {})</span>
-<span class="c1">#         metadata = metadata_obj.get(&quot;metadata&quot;, None)</span>
-<span class="c1">#         session_id = getattr(metadata, &quot;ophys_session_id&quot;, None)</span>
-<span class="c1">#         experiment_id = getattr(metadata, &quot;ophys_experiment_id&quot;, None)</span>
+        <span class="n">metadata_obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;lab_meta_data&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata_obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">session_id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;ophys_session_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">experiment_id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;ophys_experiment_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-<span class="c1">#         fov_height = getattr(metadata, &quot;field_of_view_height&quot;, None)</span>
-<span class="c1">#         fov_width = getattr(metadata, &quot;field_of_view_width&quot;, None)</span>
-<span class="c1">#         imaging_depth = getattr(metadata, &quot;imaging_depth&quot;, None)</span>
-<span class="c1">#         group = getattr(metadata, &quot;imaging_plane_group&quot;, None)</span>
-<span class="c1">#         group_count = getattr(metadata, &quot;imaging_plane_group_count&quot;, None)</span>
-<span class="c1">#         container_id = getattr(metadata, &quot;experiment_container_id&quot;, None)</span>
+        <span class="n">fov_height</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;field_of_view_height&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">fov_width</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;field_of_view_width&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">imaging_depth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;imaging_depth&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;imaging_plane_group&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">group_count</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;imaging_plane_group_count&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">container_id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;experiment_container_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         
-<span class="c1">#         subject = getattr(nwb, &quot;subject&quot;, None)</span>
-<span class="c1">#         specimen_name = getattr(subject, &quot;subject_id&quot;, None)</span>
-<span class="c1">#         age = getattr(subject, &quot;age&quot;, None)</span>
-<span class="c1">#         sex = getattr(subject, &quot;sex&quot;, None)</span>
-<span class="c1">#         genotype = getattr(subject, &quot;genotype&quot;, None)</span>
+        <span class="n">subject</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">specimen_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;subject_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">genotype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;genotype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         
-<span class="c1">#         try: n_rois = nwb.processing[&quot;ophys&quot;][&quot;dff&quot;].roi_response_series[&quot;traces&quot;].data.shape[1]</span>
-<span class="c1">#         except: n_rois = None</span>
-<span class="c1">#         try: location = list(nwb.imaging_planes.values())[0].location</span>
-<span class="c1">#         except: location = None</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">n_rois</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;dff&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span> <span class="n">n_rois</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">location</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">imaging_planes</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">location</span>
+        <span class="k">except</span><span class="p">:</span> <span class="n">location</span> <span class="o">=</span> <span class="kc">None</span>
         
-<span class="c1">#         intervals = getattr(nwb, &quot;intervals&quot;, {})</span>
-<span class="c1">#         stim_types = set(intervals.keys())</span>
-<span class="c1">#         stim_tables = [intervals[table_name] for table_name in intervals]</span>
-<span class="c1">#         # gets highest value among final &quot;stop times&quot; of all stim tables in intervals</span>
-<span class="c1">#         session_end = max([table.stop_time[-1] for table in stim_tables if len(table) &gt; 1])</span>
+        <span class="n">intervals</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;intervals&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">stim_types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">stim_tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">intervals</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">]</span>
+        <span class="c1"># gets highest value among final &quot;stop times&quot; of all stim tables in intervals</span>
+        <span class="n">session_end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">stim_tables</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">])</span>
 
-<span class="c1">#         return [session_time, session_id, experiment_id, container_id, group, group_count, imaging_depth, location, fov_height, fov_width, specimen_name, sex, age, genotype, stim_types, n_rois, session_end]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">session_time</span><span class="p">,</span> <span class="n">specimen_name</span><span class="p">,</span> <span class="n">session_id</span><span class="p">,</span> <span class="n">experiment_id</span><span class="p">,</span> <span class="n">container_id</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">group_count</span><span class="p">,</span> <span class="n">imaging_depth</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">fov_height</span><span class="p">,</span> <span class="n">fov_width</span><span class="p">,</span> <span class="n">specimen_name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">genotype</span><span class="p">,</span> <span class="n">stim_types</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">,</span> <span class="n">session_end</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -668,7 +665,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within ecephys file</span>
 <span class="c1"># getattr is used because not all nwb files have all properties. If not handled like this, errors will arise</span>
-<span class="k">def</span> <span class="nf">get_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_ephys_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
         <span class="n">session_time</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;session_start_time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
         <span class="n">subject</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -706,6 +703,8 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2"> files retrieved&quot;</span><span class="p">)</span>
 
+<span class="n">extract_nwb_info</span> <span class="o">=</span> <span class="n">get_ephys_nwb_info</span> <span class="k">if</span> <span class="n">nwb_type</span> <span class="o">==</span> <span class="s2">&quot;ephys&quot;</span> <span class="k">else</span> <span class="n">get_ophys_nwb_info</span>
+
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examining file </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
     <span class="c1"># get basic file metadata</span>
@@ -721,7 +720,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
     <span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="c1"># extract experimental info from within file</span>
-    <span class="n">row</span> <span class="o">+=</span> <span class="n">get_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+    <span class="n">row</span> <span class="o">+=</span> <span class="n">extract_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
     <span class="n">nwb_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
     <span class="k">del</span> <span class="n">nwb</span>
 
@@ -734,17 +733,7 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\n
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12 files retrieved
 Examining file 1/12: 9ab6bfff-70ed-44dc-b384-96b4cef2b566
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.6.0 because version 1.8.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-experimental&#39; version 0.3.0 because version 0.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examining file 2/12: 15bbb781-f912-4630-b9fe-f3df864290ad
+Examining file 2/12: 15bbb781-f912-4630-b9fe-f3df864290ad
 Examining file 3/12: f7b65765-41b5-4605-9585-95338c3a9e5a
 Examining file 4/12: 6b321a1c-55c4-4de5-8a25-373f2c5a4bc8
 Examining file 5/12: 0073a783-5b41-42a8-882a-2960554d4e43
@@ -762,9 +751,10 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert table to pandas dataframe</span>
-<span class="n">dandiset_files</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nwb_table</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;session_time&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_sex&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_age&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_genotype&quot;</span><span class="p">,</span> <span class="s2">&quot;probes&quot;</span><span class="p">,</span> <span class="s2">&quot;stim types&quot;</span><span class="p">,</span> <span class="s2">&quot;#_units&quot;</span><span class="p">,</span> <span class="s2">&quot;session_length&quot;</span><span class="p">))</span>
-<span class="c1"># swap this with line above for one of our ophys dandisets</span>
-<span class="c1"># dandiset_files = pd.DataFrame(nwb_table, columns=(&quot;identifier&quot;, &quot;size&quot;, &quot;path&quot;, &quot;session_time&quot;, &quot;session_id&quot;, &quot;experiment_id&quot;, &quot;container_id&quot;, &quot;group&quot;, &quot;group_count&quot;, &quot;imaging_depth&quot;, &quot;location&quot;, &quot;fov_height&quot;, &quot;fov_width&quot;, &quot;specimen_name&quot;, &quot;sub_sex&quot;, &quot;sub_age&quot;, &quot;sub_genotype&quot;, &quot;stim_types&quot;, &quot;#_rois&quot;, &quot;session_end&quot;))</span>
+<span class="k">if</span> <span class="n">nwb_type</span> <span class="o">==</span> <span class="s2">&quot;ephys&quot;</span><span class="p">:</span>
+    <span class="n">dandiset_files</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nwb_table</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;session_time&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_sex&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_age&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_genotype&quot;</span><span class="p">,</span> <span class="s2">&quot;probes&quot;</span><span class="p">,</span> <span class="s2">&quot;stim types&quot;</span><span class="p">,</span> <span class="s2">&quot;#_units&quot;</span><span class="p">,</span> <span class="s2">&quot;session_length&quot;</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">dandiset_files</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nwb_table</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;session_time&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_name&quot;</span><span class="p">,</span> <span class="s2">&quot;session_id&quot;</span><span class="p">,</span> <span class="s2">&quot;experiment_id&quot;</span><span class="p">,</span> <span class="s2">&quot;container_id&quot;</span><span class="p">,</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;group_count&quot;</span><span class="p">,</span> <span class="s2">&quot;imaging_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="s2">&quot;fov_height&quot;</span><span class="p">,</span> <span class="s2">&quot;fov_width&quot;</span><span class="p">,</span> <span class="s2">&quot;specimen_name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_sex&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_age&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_genotype&quot;</span><span class="p">,</span> <span class="s2">&quot;stim_types&quot;</span><span class="p">,</span> <span class="s2">&quot;#_rois&quot;</span><span class="p">,</span> <span class="s2">&quot;session_end&quot;</span><span class="p">))</span>
 <span class="n">dandiset_files</span>
 </pre></div>
 </div>
@@ -813,8 +803,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>F</td>
       <td>101.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>3026</td>
       <td>7279.58784</td>
     </tr>
@@ -828,8 +818,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>F</td>
       <td>99.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2386</td>
       <td>7339.21131</td>
     </tr>
@@ -843,8 +833,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>154.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2092</td>
       <td>7279.89479</td>
     </tr>
@@ -858,8 +848,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>148.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2593</td>
       <td>7283.08716</td>
     </tr>
@@ -873,8 +863,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>F</td>
       <td>92.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>1789</td>
       <td>7278.92195</td>
     </tr>
@@ -888,8 +878,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>F</td>
       <td>90.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2621</td>
       <td>7278.57204</td>
     </tr>
@@ -903,8 +893,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>82.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2930</td>
       <td>7315.43515</td>
     </tr>
@@ -918,8 +908,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>154.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>1918</td>
       <td>7278.13709</td>
     </tr>
@@ -933,8 +923,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>F</td>
       <td>92.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2517</td>
       <td>7279.14674</td>
     </tr>
@@ -948,8 +938,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>89.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2793</td>
       <td>7279.21336</td>
     </tr>
@@ -963,8 +953,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>141.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2136</td>
       <td>7454.53444</td>
     </tr>
@@ -978,8 +968,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>92.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2373</td>
       <td>7349.25154</td>
     </tr>
@@ -989,25 +979,24 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summary for ophys files</span>
-<span class="c1"># n_sessions = len(dandiset_files[&quot;session_id&quot;].value_counts())</span>
-<span class="c1"># subjects_info = dandiset_files.groupby([&quot;sub_name&quot;, &quot;sub_sex&quot;]).size().reset_index().to_dict()</span>
-<span class="c1"># m_count = len([sex for sex in subjects_info[&quot;sub_sex&quot;].values() if sex == &quot;M&quot;])</span>
-<span class="c1"># f_count = len([sex for sex in subjects_info[&quot;sub_sex&quot;].values() if sex == &quot;F&quot;])</span>
-<span class="c1"># print(&quot;Dandiset Overview:&quot;)</span>
-<span class="c1"># print(len(dandiset_files), &quot;dandiset_files&quot;)</span>
-<span class="c1"># print(len(subjects_info[&quot;sub_name&quot;]), &quot;subjects&quot;, m_count, &quot;males&quot;, f_count,&quot;females&quot;)</span>
-
-<span class="c1"># summary for ecephys files</span>
-<span class="n">m_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
-<span class="n">f_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">])</span>
-<span class="n">sst_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Sst&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">pval_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Pval&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">wt_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;wt/wt&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dandiset Overview:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">),</span> <span class="s2">&quot;dandiset_files&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_name&quot;</span><span class="p">])),</span> <span class="s2">&quot;subjects&quot;</span><span class="p">,</span> <span class="n">m_count</span><span class="p">,</span> <span class="s2">&quot;males,&quot;</span><span class="p">,</span> <span class="n">f_count</span><span class="p">,</span> <span class="s2">&quot;females&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sst_count</span><span class="p">,</span> <span class="s2">&quot;sst,&quot;</span><span class="p">,</span> <span class="n">pval_count</span><span class="p">,</span> <span class="s2">&quot;pval,&quot;</span><span class="p">,</span> <span class="n">wt_count</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">nwb_type</span> <span class="o">==</span> <span class="s2">&quot;ephys&quot;</span><span class="p">:</span>
+    <span class="n">m_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
+    <span class="n">f_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">])</span>
+    <span class="n">sst_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Sst&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">pval_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Pval&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">wt_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;wt/wt&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dandiset Overview:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">),</span> <span class="s2">&quot;dandiset_files&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_name&quot;</span><span class="p">])),</span> <span class="s2">&quot;subjects&quot;</span><span class="p">,</span> <span class="n">m_count</span><span class="p">,</span> <span class="s2">&quot;males,&quot;</span><span class="p">,</span> <span class="n">f_count</span><span class="p">,</span> <span class="s2">&quot;females&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sst_count</span><span class="p">,</span> <span class="s2">&quot;sst,&quot;</span><span class="p">,</span> <span class="n">pval_count</span><span class="p">,</span> <span class="s2">&quot;pval,&quot;</span><span class="p">,</span> <span class="n">wt_count</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">n_sessions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;session_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+    <span class="n">subjects_info</span> <span class="o">=</span> <span class="n">dandiset_files</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;sub_name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_sex&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+    <span class="n">m_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">sex</span> <span class="k">for</span> <span class="n">sex</span> <span class="ow">in</span> <span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">sex</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
+    <span class="n">f_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">sex</span> <span class="k">for</span> <span class="n">sex</span> <span class="ow">in</span> <span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">sex</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dandiset Overview:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">),</span> <span class="s2">&quot;dandiset_files&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sub_name&quot;</span><span class="p">]),</span> <span class="s2">&quot;subjects&quot;</span><span class="p">,</span> <span class="n">m_count</span><span class="p">,</span> <span class="s2">&quot;males&quot;</span><span class="p">,</span> <span class="n">f_count</span><span class="p">,</span><span class="s2">&quot;females&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1035,8 +1024,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_files</span> <span class="o">=</span> <span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2_500_000_000</span><span class="p">]</span>
-<span class="c1"># selected_files = dandiset_files[dandiset_files[&quot;sub sex&quot;] == &quot;F&quot;]</span>
-<span class="c1"># selected_files = dandiset_files[dandiset_files[&quot;# units&quot;] &gt; 2900]</span>
+<span class="c1"># selected_files = dandiset_files[dandiset_files[&quot;sub_sex&quot;] == &quot;F&quot;]</span>
+<span class="c1"># selected_files = dandiset_files[dandiset_files[&quot;#_units&quot;] &gt; 2900]</span>
 <span class="n">selected_files</span>
 </pre></div>
 </div>
@@ -1085,8 +1074,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>F</td>
       <td>92.0</td>
       <td>Pvalb-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>1789</td>
       <td>7278.92195</td>
     </tr>
@@ -1100,8 +1089,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>154.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>1918</td>
       <td>7278.13709</td>
     </tr>
@@ -1115,8 +1104,8 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
       <td>M</td>
       <td>141.0</td>
       <td>Sst-IRES-Cre/wt;Ai32(RCL-ChR2(H134R)_EYFP)/wt</td>
-      <td>{probeC, probeE, OptogeneticStimulusDevice, pr...</td>
-      <td>{RFCI_presentations, invalid_times, ICkcfg1_pr...</td>
+      <td>{probeC, probeB, probeE, probeA, probeD, probe...</td>
+      <td>{spontaneous_presentations, ICwcfg1_presentati...</td>
       <td>2136</td>
       <td>7454.53444</td>
     </tr>
@@ -1161,9 +1150,10 @@ Examining file 12/12: 233e6f43-d51e-47f0-9cda-838444c274f6
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-619293_ses-1184980079_ogen.nwb
-Downloaded file to ./sub-619296_ses-1187930705_ogen.nwb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-631570_ses-1194857009_ogen.nwb
+Downloaded file to ./sub-619293_ses-1184980079_ogen.nwb
 Downloaded file to ./sub-631570_ses-1194857009_ogen.nwb
+Downloaded file to ./sub-619296_ses-1187930705_ogen.nwb
 </pre></div>
 </div>
 </div>
@@ -1202,12 +1192,12 @@ Downloaded file to ./sub-631570_ses-1194857009_ogen.nwb
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="stream_nwb.html"
+       href="use_nwbwidgets.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Streaming an NWB File with fsspec</p>
+        <p class="prev-next-title">Exploring an NWB File</p>
       </div>
     </a>
     <a class="right-next"

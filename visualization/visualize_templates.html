@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -193,9 +193,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with fsspec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -203,7 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
@@ -215,14 +215,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_spikes.html">Statistically Testing Spike Responses to Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +230,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../projects/glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/illusion.html">OpenScope’s Illusion Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
 <ul class="nav bd-sidenav">
@@ -556,7 +555,10 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
@@ -569,7 +571,6 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">mpl_interactions</span> <span class="kn">import</span> <span class="n">hyperslicer</span>
 </pre></div>
@@ -600,10 +601,6 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.6.0-alpha because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
 </pre></div>
 </div>
 </div>
@@ -684,7 +681,7 @@ Images from ophys_pilot_randomized_control_A_598ac1255d9c8e09541ae1f57034fac3.np
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1ed6786c160&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1df567f80a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/d40c1cc91528709659e2841b2dc684cf3460cd5f4ec5b01a6dda6ddd7df6ab77.png" src="../_images/d40c1cc91528709659e2841b2dc684cf3460cd5f4ec5b01a6dda6ddd7df6ab77.png" />
@@ -716,7 +713,7 @@ Images from ophys_pilot_randomized_control_A_598ac1255d9c8e09541ae1f57034fac3.np
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1ed678a3d00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1df568b73a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/8d1675af4e069023ec4f82a9dc31c25450032d532380817ed98ab08e8b42f6cd.png" src="../_images/8d1675af4e069023ec4f82a9dc31c25450032d532380817ed98ab08e8b42f6cd.png" />
@@ -792,48 +789,12 @@ Images from ophys_pilot_randomized_control_A_598ac1255d9c8e09541ae1f57034fac3.np
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PATH                                                    SIZE   DONE            DONE% CHECKSUM STATUS          MESSAGE
+sub-389014_ses-20180705T152908_behavior+image+ophys.nwb 1.3 GB 1.3 GB           100%    ok    done                   
+Summary:                                                1.3 GB 1.3 GB                         1 done                 
+                                                               100.00%                                               
+Downloaded file to ./sub-389014_ses-20180705T152908_behavior+image+ophys.nwb
 Opening file
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;hdmf-common&#39; version 1.1.3 because version 1.5.1 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\hdmf\spec\namespace.py:531: UserWarning: Ignoring cached namespace &#39;core&#39; version 2.2.5 because version 2.5.0 is already loaded.
-  warn(&quot;Ignoring cached namespace &#39;%s&#39; version %s because version %s is already loaded.&quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\base.py:193: UserWarning: TimeSeries &#39;running_velocity&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warn(&quot;%s &#39;%s&#39;: Length of data does not match length of timestamps. Your data may be transposed. &quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\ophys.py:360: UserWarning: RoiResponseSeries &#39;imaging_plane_1&#39;: The second dimension of data does not match the length of rois, but instead the first does. Data is oriented incorrectly and should be transposed.
-  warnings.warn(&quot;%s &#39;%s&#39;: The second dimension of data does not match the length of rois, &quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\base.py:193: UserWarning: RoiResponseSeries &#39;imaging_plane_1&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warn(&quot;%s &#39;%s&#39;: Length of data does not match length of timestamps. Your data may be transposed. &quot;
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;conspecifics&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;crickets&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;dots&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;human_montage&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;man_writing&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_1&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_1_spatial_phase_scramble&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_1_temporal_phase_scramble&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mouse_montage_2&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mousecam&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;mousecam_spatial_phase_scramble&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;noise&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;snake&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\pynwb\image.py:106: UserWarning: ImageSeries &#39;spontaneous&#39;: Length of data does not match length of timestamps. Your data may be transposed. Time should be on the 0th dimension
-  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -859,22 +820,43 @@ c:\Users\carter.peene\AppData\Local\Programs\Python\Python39\lib\site-packages\p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mouse_montage_1 pynwb.image.ImageSeries at 0x2119301154272
-Fields:
-  comments: no comments
-  conversion: 1.0
-  data: &lt;HDF5 dataset &quot;data&quot;: shape (900, 120, 192), type &quot;|u1&quot;&gt;
-  description: no description
-  format: raw
-  interval: 1
-  offset: 0.0
-  resolution: -1.0
-  timestamps: &lt;HDF5 dataset &quot;timestamps&quot;: shape (0,), type &quot;&lt;f8&quot;&gt;
-  timestamps_unit: seconds
-  unit: NA
-</pre></div>
-</div>
-</div>
+<div class="output text_html">
+        <style>
+            .container-fields {
+                font-family: "Open Sans", Arial, sans-serif;
+            }
+            .container-fields .field-value {
+                color: #00788E;
+            }
+            .container-fields details > summary {
+                cursor: pointer;
+                display: list-item;
+            }
+            .container-fields details > summary:hover {
+                color: #0A6EAA;
+            }
+        </style>
+        
+        <script>
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(function() {
+                    console.log('Copied to clipboard: ' + text);
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                let fieldKeys = document.querySelectorAll('.container-fields .field-key');
+                fieldKeys.forEach(function(fieldKey) {
+                    fieldKey.addEventListener('click', function() {
+                        let accessCode = fieldKey.getAttribute('title').replace('Access code: ', '');
+                        copyToClipboard(accessCode);
+                    });
+                });
+            });
+        </script>
+        <div class='container-wrap'><div class='container-header'><div class='xr-obj-type'><h3>mouse_montage_1 (ImageSeries)</h3></div></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".resolution">resolution: </span><span class="field-value">-1.0</span></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".comments">comments: </span><span class="field-value">no comments</span></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".description">description: </span><span class="field-value">no description</span></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".conversion">conversion: </span><span class="field-value">1.0</span></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".offset">offset: </span><span class="field-value">0.0</span></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".unit">unit: </span><span class="field-value">NA</span></div><details><summary style="display: list-item; margin-left: 0px;" class="container-fields field-key" title=".data"><b>data</b></summary></details><details><summary style="display: list-item; margin-left: 0px;" class="container-fields field-key" title=".timestamps"><b>timestamps</b></summary></details><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".timestamps_unit">timestamps_unit: </span><span class="field-value">seconds</span></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".interval">interval: </span><span class="field-value">1</span></div><div style="margin-left: 0px;" class="container-fields"><span class="field-key" title=".format">format: </span><span class="field-value">raw</span></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -885,7 +867,7 @@ Fields:
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4cec2a2fb4c645f58069e2e4552dc6dd", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "de36859678c14e03a9f0abea2e7d81ce", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7565a2ab4b1a4eedbb266aec48f943b4", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "1e43dc107a2549308ab501e48a2c364a", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 </section>
