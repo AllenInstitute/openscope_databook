@@ -57,7 +57,7 @@ class Committers(Directive):
 		print("Authors:", authors)
 
 		authors_text = ", ".join(authors)
-		emphasis_node = nodes.Text(authors_text)
+		emphasis_node = nodes.emphasis(text=authors_text)
 		return [emphasis_node]
 
 
@@ -73,8 +73,7 @@ class Authors(Directive):
 
 		# get authors with matching role from csv
 		authors = set()
-		with open("./data/contributors.csv") as f:
-			table = list(csv.reader(f))
+		table = list(csv.reader(open("./data/contributors.csv")))
 		role_idx = table[0].index("Role")
 		name_idx = table[0].index("Name")
 		for contributor in table[1:]:
@@ -89,9 +88,9 @@ class Authors(Directive):
 			for committer_name, n_commits in committers:
 				authors.add(committer_name)
 
-		# sort based on last name alphabetically
-		authors = sorted(list(authors), key=lambda name: name.title().split()[-1])
-		emphasis_node = nodes.Text(", ".join(authors))
+		# sort alphabetically
+		authors = sorted(list(authors))
+		emphasis_node = nodes.emphasis(text=", ".join(authors))
 		return [emphasis_node]
 
 
@@ -118,8 +117,7 @@ class VersionNumber(Directive):
 class AuthorsIndex(Directive):
 
 	def run(self):
-		with open("./data/contributors.csv") as f:
-			table = list(csv.reader(f))
+		table = list(csv.reader(open("./data/contributors.csv")))
 
 		section = nodes.section(ids=["contributorsblock"])
 		section += nodes.title("","Contributors")

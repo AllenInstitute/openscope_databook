@@ -6,7 +6,7 @@
 
 `````{tab-set}
 ````{tab-item} All Contributors
-**Supplied any substantial contribution to the project**
+###### Supplied any substantial contribution to the project
 ```{authors}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
@@ -16,28 +16,28 @@ aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAk
 ````
 
 ````{tab-item} Management
-**Performed administrative and supervisory duties**
+###### Performed administrative and supervisory duties
 ```{authors}
 :role: Management
 ```
 ````
 
 ````{tab-item} Conceptualization
-**Contributed ideas significant to the development of the project and its content**
+###### Contributed ideas significant to the development of the project and its content
 ```{authors}
 :role: Conceptualization
 ```
 ````
 
 ````{tab-item} Processing
-**Processed data used in the project or wrote substantial code to do so**
+###### Processed data used in the project or wrote substantial code to do so
 ```{authors}
 :role: Processing
 ```
 ````
 
 ````{tab-item} Commits
-**Committed code to the primary Github repository**
+###### Committed code to the primary Github repository
 ```{committers}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
@@ -47,14 +47,14 @@ aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAk
 ````
 
 ````{tab-item} Review
-**Reviewed code or content components the project or the project as a whole**
+###### Reviewed code or content components the project or the project as a whole 
 ```{authors}
 :role: Review
 ```
 ````
 
 ````{tab-item} Funding
-**Provided funds key to supporting the development of the project**
+###### Provided funds key to supporting the development of the project
 ```{authors}
 :role: Funding
 ```
@@ -73,6 +73,38 @@ Four key components are essential for reproducible analysis: accessible data, ac
 We cover several broadly used analyses across the community, providing a missing component for system neuroscience. Our key analyses are organized into chapters, including NWB basics such as downloading, streaming, and visualizing NWB files from data archives. We document essential analyses typically performed in all neuroscience laboratories, such as temporal alignment, alignment to sensory stimuli, and association with experimental metadata. We cover the two leading neuronal recording techniques: two-photon calcium imaging and electrophysiological recordings, and share example analyses of stimulus-averaged responses. Advanced first-order analyses include showing receptive fields, identifying optotagged units, current source density analysis, and cell matching across days.
 
 This resource is actively maintained and can be updated by the community, providing a living document that will grow over time.
+
+
+## Statement of Support
+
+We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions [here](https://github.com/AllenInstitute/openscope_databook/issues) are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* standard.
+
+
+
+![artwork](../data/images/openscope.png)
+
+## How Does It Work?
+
+Reproducible Analysis requires four components; 
+- Accessible Data
+- Accessible Computational Resources
+- Reproducible Environment
+- Documentation of Usage
+
+The Databook leverages a number of technologies to combine those components into a web-application. 
+
+### Data
+Data is accessed from The [DANDI archive](https://dandiarchive.org/) and downloaded via the [DANDI Python API](https://dandi.readthedocs.io/en/latest/modref/index.html) within notebooks. Most notebooks make use of publicly available datasets on DANDI, but for some notebooks, there is not yet sufficient publicly-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.
+
+### Computation
+This project utilizes [Binder](https://mybinder.org/), as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don't have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally or on other hosts. Details about the different ways to run this code can be found in the section [How Can I Use It?](Usage) below.
+
+### Environment
+As mentioned above, Binder is capable of reproducing the environment in which to run this code. There are also other options for creating the necessary environment. Instructions for running this code locally can be found in the section [How Can I Use It?](Usage) below.
+
+### Documentation
+The great part about this Databook is that the usage of the code is explained within each notebook. The instructions found here should be sufficient for utilizing our code and accurately reproducing a number of different analyses on the relevant data.
+
 
 
 (Usage)=
@@ -98,46 +130,8 @@ You can download an individual notebook by pressing the `Download` button in the
 ```
 pip install -e .
 ```
-It is recommended that this is done within a conda environment using Python 3.10 to minimize any interference with local machine environments. For information on installing and using conda, go [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html). *Before* running the pip installation above, you can create a conda environment in the conda prompt with the command 
-```
-conda create -n databook_env python=3.10
-```
-and you can run that environment with
-```
-conda activate databook_env
-```
-
-Once you environment is setup, you can execute the notebooks in Jupyter by running the following command within the repo directory;
+It is recommended that this is done within a conda environment using Python 3.8 to minimize any interference with local machine environments.
+From there, you can execute the notebook in Jupyter by running the following command within the repo directory;
 ```
 Jupyter notebook
 ```
-
-
-## How Does It Work?
-
-Reproducible Analysis requires four components; 
-- Accessible Data
-- Accessible Computational Resources
-- Reproducible Environment
-- Documentation of Usage
-
-The Databook leverages a number of technologies to combine those components into a web-application. 
-
-### Data
-Data is accessed from The [DANDI archive](https://dandiarchive.org/) and downloaded via the [DANDI Python API](https://dandi.readthedocs.io/en/latest/modref/index.html) within notebooks. Most notebooks make use of publicly available datasets on DANDI, but for some notebooks, there is not yet sufficient publicly-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.
-
-### Computation
-This project utilizes [Binder](https://mybinder.org/), as the host for the environment and the provider of computational resources. Conveniently, Binder has support for effectively replicating a computational environment from a Github Repo. Users of the Databook don't have to worry about managing the environment if they prefer to use our integrated Binder functionality. However, the Databook can be run locally or on other hosts. Details about the different ways to run this code can be found in the section [How Can I Use It?](Usage) below.
-
-### Environment
-As mentioned above, Binder is capable of reproducing the environment in which to run this code. There are also other options for creating the necessary environment. Instructions for running this code locally can be found in the section [How Can I Use It?](Usage) below.
-
-### Documentation
-The great part about this Databook is that the usage of the code is explained within each notebook. The instructions found here should be sufficient for utilizing our code and accurately reproducing a number of different analyses on the relevant data.
-
-
-## Statement of Support
-
-We are releasing this code to the public as a tool we expect others to use. We are actively updating and maintaining this project. Issue submissions [here](https://github.com/AllenInstitute/openscope_databook/issues) are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* standard.
-
-![artwork](../data/images/openscope.png)
