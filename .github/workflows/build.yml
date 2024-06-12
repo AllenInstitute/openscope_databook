@@ -26,10 +26,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: "3.10"
 
       - name: Upgrading pip
         run: pip install --upgrade pip
+
+      - name: Install deps
+        run: pip install cython numpy
 
       - name: Installing package
         run: pip install -e .
@@ -37,10 +40,10 @@ jobs:
       - name: Installing build dependencies
         run: |
           pip install markupsafe==2.0.1
-          pip install jupyter
-          pip install -U jupyter-book
-          pip install nbmake
-          pip install pytest-xdist
+          pip install jupyter==1.0.0
+          pip install -U jupyter-book==1.0.0
+          pip install nbmake==1.5.3
+          pip install pytest-xdist==3.5.0
         
       - name: Printing environment
         run: pip freeze
