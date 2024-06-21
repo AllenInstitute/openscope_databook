@@ -10,7 +10,7 @@
 ```{authors}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng
 ---
 ```
 ````
@@ -41,8 +41,7 @@ aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAk
 ```{committers}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim
----
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng
 ```
 ````
 
