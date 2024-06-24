@@ -14,22 +14,22 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -37,16 +37,16 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -84,27 +84,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -126,8 +122,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -201,7 +202,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
@@ -221,7 +221,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
@@ -265,7 +265,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -274,14 +274,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -306,14 +306,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/first-order/optotagging.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -324,14 +324,14 @@
       
       <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/first-order/optotagging.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onJupyterHub"
+   title="Launch on JupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_jupyterhub.svg">
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
   </span>
 <span class="btn__text-container">JupyterHub</span>
 </a>
@@ -342,14 +342,14 @@
       
       <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/first-order/optotagging.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -507,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -554,7 +554,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="identifying-optotagged-units">
 <h1>Identifying Optotagged Units<a class="headerlink" href="#identifying-optotagged-units" title="Link to this heading">#</a></h1>
-<p>In some transgenic mice, particular types of neurons express a trait whereby they will fire in response to direct laser stimulation. This is stored in the <code class="docutils literal notranslate"><span class="pre">optogenetic_stimulation</span></code> table of our NWB files. Identifying these cells is called <em>Optotagging</em>. Optotagging makes it possible to link the in vivo spike recordings of neuronal units to genetically defined cell classes. Doing this analysis with the optogenetic stimulus information is relatively similar to the analysis in <a class="reference internal" href="../visualization/visualize_unit_responses.html"><span class="std std-doc">Visualizing Neuronal Unit Responses</span></a>. To do this, we take all the relevant stimulation times from the stimulus table and identify which neuronal units fire within a predetermined window of time following the stimulus times. Neurons that spike more frequently and consistently after stimulus are likely to be optotagged.</p>
+<p>In some transgenic mice, particular types of neurons express a trait whereby they will fire in response to direct laser stimulation. These mice express light-gated ion channels (channelrhodopsins) in a Cre-dependent manner, thus units that fire action potentials in response to light pulses are likely to express the gene of interest. The particular form of laser stimulation is stored in the <code class="docutils literal notranslate"><span class="pre">optogenetic_stimulation</span></code> table of our NWB files.</p>
+<p>Identifying these expressive neurons is called <em>Optotagging</em>. Optotagging makes it possible to link the in vivo spike recordings of neuronal units to genetically defined cell classes. Doing this analysis with the optogenetic stimulus information is relatively similar to the analysis in <a class="reference internal" href="../visualization/visualize_unit_responses.html"><span class="std std-doc">Visualizing Neuronal Unit Responses</span></a>. To do this, we take all the relevant stimulation times from the stimulus table and identify which neuronal units fire within a predetermined window of time following the stimulus times. Neurons that spike more frequently and consistently after stimulus are likely to be optotagged.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
@@ -575,9 +576,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -629,7 +628,7 @@ Opening file
 </section>
 <section id="extracting-optogenetic-stimulus-data-and-units-data">
 <h2>Extracting Optogenetic Stimulus Data and Units Data<a class="headerlink" href="#extracting-optogenetic-stimulus-data-and-units-data" title="Link to this heading">#</a></h2>
-<p>The two components needed for this analysis are the <code class="docutils literal notranslate"><span class="pre">optogenetic_stimulation</span></code> table and the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table. The optogenetic stimulus table contains the intervals where lasers are fired at the brain. The primary property we will use from this is <code class="docutils literal notranslate"><span class="pre">start_time</span></code> which contains the times that stimulus is presented. From the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table, we will extract the <code class="docutils literal notranslate"><span class="pre">spike_times</span></code> which will be aligned relative to a predefined window of time around each stimulus time to determine if it occurred in response to the stimulus. These tables are retrieved and printed below.</p>
+<p>The two components needed for this analysis are the <code class="docutils literal notranslate"><span class="pre">optogenetic_stimulation</span></code> table and the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table. The optogenetic stimulus table contains the intervals during which laser stimulation is delivered to the brain. The primary property we will use from this table is <code class="docutils literal notranslate"><span class="pre">start_time</span></code>, which contains the times that stimulus is delivered. From the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table, we will extract the <code class="docutils literal notranslate"><span class="pre">spike_times</span></code> which will be aligned relative to a predefined window of time around each stimulus time to determine if it occurred in response to the stimulus. These tables are retrieved and printed below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wt_stim_table</span> <span class="o">=</span> <span class="n">wt_nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;optotagging&quot;</span><span class="p">][</span><span class="s2">&quot;optogenetic_stimulation&quot;</span><span class="p">]</span>
@@ -1128,7 +1127,7 @@ Opening file
 </section>
 <section id="selecting-units-and-stimuli">
 <h2>Selecting Units and Stimuli<a class="headerlink" href="#selecting-units-and-stimuli" title="Link to this heading">#</a></h2>
-<p>Here subsets of the data can be selected for analysis. The important properties of the stimulus table shown above are, <code class="docutils literal notranslate"><span class="pre">condition</span></code> (type of laser pulse presented), the voltage <code class="docutils literal notranslate"><span class="pre">level</span></code>, and the <code class="docutils literal notranslate"><span class="pre">duration</span></code>. Below, you can define <code class="docutils literal notranslate"><span class="pre">stim_select</span></code> to select individual rows of the table based on these properties.</p>
+<p>Here subsets of the data can be selected for analysis. The important properties of the stimulus table shown above are, <code class="docutils literal notranslate"><span class="pre">condition</span></code> (type of laser pulse delivered), the voltage <code class="docutils literal notranslate"><span class="pre">level</span></code>, and the <code class="docutils literal notranslate"><span class="pre">duration</span></code>. Below, you can define <code class="docutils literal notranslate"><span class="pre">stim_select</span></code> to select individual rows of the table based on these properties.</p>
 <p>The same can be done for the units table by defining the function <code class="docutils literal notranslate"><span class="pre">unit_select</span></code>. For information on the properties of the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table, see <a class="reference internal" href="../visualization/visualize_unit_metrics.html"><span class="std std-doc">Visualizing Unit Quality Metrics</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1290,6 +1289,8 @@ Selected stim times from SST file: 75
 </section>
 <section id="plotting-spike-counts">
 <h2>Plotting Spike Counts<a class="headerlink" href="#plotting-spike-counts" title="Link to this heading">#</a></h2>
+<p>The plot below show how different units respond to the optogenetic laser stimulation that was selected. It can be seen below that among the SST units, many cells show responsive activity following the laser activation, while the wildtype (non-genetically modified cells) don’t show any significant response to the optogenetic stimulation.</p>
+<p><strong>Note that there are also some units that seem to fire at the very beginning and/or very end of the light pulse. These spikes are almost certainly artifactual, as it takes at least 1 ms to generate a true light-evoked action potential. To manage this, we use the censor period to constrain the stimulus period analyzed, indicated by the dotted white lines.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### method to show plot of spike counts of units over time</span>
@@ -1356,7 +1357,7 @@ Selected stim times from SST file: 75
 <span class="n">show_counts</span><span class="p">(</span><span class="n">sorted_sst_spike_counts</span><span class="p">,</span>
             <span class="n">sst_bin_edges</span><span class="p">,</span>
             <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[</span><span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="o">-</span><span class="n">censor_period</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;SST Unit spike counts over time&quot;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;sorted SST Unit spike counts over time&quot;</span><span class="p">,</span>
             <span class="n">c_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;# Spikes (per </span><span class="si">{</span><span class="n">time_resolution</span><span class="si">}</span><span class="s2"> seconds)&quot;</span><span class="p">,</span>
             <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">vmax</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -1371,7 +1372,6 @@ Selected stim times from SST file: 75
 <section id="id1">
 <h2>Identifying Optotagged Units<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Now that the <code class="docutils literal notranslate"><span class="pre">spike_counts</span></code> array has been made, several other plots can be generated as well. Below, the mean and the standard deviation are taken for each unit of the baseline spiking behavior before any stimulus is presented.</p>
-<p><strong>Note that there are also some units that seem to fire at the very beginning and/or very end of the light pulse. These spikes are almost certainly artifactual, as it takes at least 1 ms to generate a true light-evoked action potential. To manage this, we use the censor period to constrain the stimulus period analyzed</strong></p>
 <section id="responsive-unit-spike-counts">
 <h3>Responsive Unit Spike Counts<a class="headerlink" href="#responsive-unit-spike-counts" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -1395,7 +1395,8 @@ Selected stim times from SST file: 75
 </section>
 <section id="calculating-unit-optotagging-metrics">
 <h2>Calculating Unit Optotagging Metrics<a class="headerlink" href="#calculating-unit-optotagging-metrics" title="Link to this heading">#</a></h2>
-<p>Here, certain metrics are calculated for each unit based on their spiking behaviors in response to stimulus. There is no single standard for what metrics to use for determining optotagged units, but the ones below may prove useful. You can adapt this code to calculate additional metrics for the units as well. Each function below calculates a metric (or two) for a given unit. As input, they use the <code class="docutils literal notranslate"><span class="pre">spike_counts</span></code>, and <code class="docutils literal notranslate"><span class="pre">spike_matrix</span></code> arrays which were already generated earlier, as well as the <code class="docutils literal notranslate"><span class="pre">stim_times</span></code> and <code class="docutils literal notranslate"><span class="pre">units_spike_times</span></code> which were produced from the NWB file. Finally, these metrics are displayed for each unit table below.</p>
+<p>Here, certain metrics are calculated for each unit based on their spiking behaviors in response to the stimulus. Metrics such as these are used to identify if a unit is “optotagged”. i.e if a unit is responsive to the laser, and thus is a genetically modified inhibitory neuron. There is no single standard for what metrics to use for determining optotagged units, but the ones below may prove useful. You can adapt this code to calculate additional metrics for the units as well. Each function below calculates a metric (or two) for a given unit. As input, they use the <code class="docutils literal notranslate"><span class="pre">spike_counts</span></code>, and <code class="docutils literal notranslate"><span class="pre">spike_matrix</span></code> arrays which were already generated earlier, as well as the <code class="docutils literal notranslate"><span class="pre">stim_times</span></code> and <code class="docutils literal notranslate"><span class="pre">units_spike_times</span></code> which were produced from the NWB file. Finally, these metrics are displayed for each unit table below.</p>
+<p>Among the metrics below, the response spike rate, fraction time responsive, fraction trials responsive, and ks salt value are likely to be higher if the unit is optotagged. The first spike latency and first spike jitter are likely to be lower if the unit is optotagged.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># utility function used by first_spike_latencies_and_jitters and ks_salt</span>
@@ -1686,7 +1687,7 @@ Selected stim times from SST file: 75
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1782,8 +1783,8 @@ By Carter Peene
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

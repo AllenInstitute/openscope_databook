@@ -14,22 +14,22 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -37,16 +37,16 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -84,27 +84,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -126,8 +122,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -201,7 +202,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualize_neuropixel_probes.html">Visualizing Neuropixel Probe Locations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Neuronal Unit Responses</a></li>
@@ -221,7 +221,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral state from trial outcomes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
@@ -265,7 +265,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -274,14 +274,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -306,14 +306,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=tree/docs/visualization/visualize_unit_responses.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -324,14 +324,14 @@
       
       <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=tree/openscope_databook/docs/visualization/visualize_unit_responses.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onJupyterHub"
+   title="Launch on JupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_jupyterhub.svg">
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
   </span>
 <span class="btn__text-container">JupyterHub</span>
 </a>
@@ -342,14 +342,14 @@
       
       <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/visualization/visualize_unit_responses.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -507,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -558,7 +558,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuronal-unit-responses">
 <h1>Visualizing Neuronal Unit Responses<a class="headerlink" href="#visualizing-neuronal-unit-responses" title="Link to this heading">#</a></h1>
 <p>Note: Some of this content is adapted from the <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_session.html">Allen SDK Documentation</a>.</p>
-<p>After processing Neuropixel ecephys data with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort</a></strong>, individual neuronal units have been identified and are stored in the units table, in the <code class="docutils literal notranslate"><span class="pre">Units</span></code> section of the NWB file. The units table contains information about hypothetical neurons determined by Kilosort. With this information and the stimulus information found in the stimulus tables of the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, this notebook helps examine the spiking behavior of these units in response to stimuli and their associated waveforms</p>
+<p>After processing Neuropixels ecephys data with <strong><a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort</a></strong>, individual neuronal units have been identified and are stored in the units table, in the <code class="docutils literal notranslate"><span class="pre">Units</span></code> section of the NWB file. The units table contains information about hypothetical neurons determined by Kilosort. With this information and the stimulus information found in the stimulus tables of the <code class="docutils literal notranslate"><span class="pre">Intervals</span></code> section, this notebook helps examine the spiking behavior of these units in response to stimuli and their associated waveforms</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
@@ -611,6 +611,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.62.1) of dandi/dandi-cli is available. You are using 0.55.1
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 </pre></div>
@@ -1421,10 +1424,10 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1a4d3657eb0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x116a86b6280&gt;]
 </pre></div>
 </div>
-<img alt="../_images/9f4c451da6af0742d93d14169703be35dfda0007479511f0efd7c104cf2cb8a5.png" src="../_images/9f4c451da6af0742d93d14169703be35dfda0007479511f0efd7c104cf2cb8a5.png" />
+<img alt="../_images/b76bbc71e03f16a9a6b8550d1422f6aec595cea5a90ccd679ca321ab372dad26.png" src="../_images/b76bbc71e03f16a9a6b8550d1422f6aec595cea5a90ccd679ca321ab372dad26.png" />
 </div>
 </div>
 </section>
@@ -1514,10 +1517,10 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1a50fcda440&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1171e7db820&gt;]
 </pre></div>
 </div>
-<img alt="../_images/558c34c0a382008236796959025ce4c38d29bf405526774730dc953e02d829cc.png" src="../_images/558c34c0a382008236796959025ce4c38d29bf405526774730dc953e02d829cc.png" />
+<img alt="../_images/ae663fd8c1951924d806fbdd177d8f86e40d3b2a161184ede9d65d5784b0f9ca.png" src="../_images/ae663fd8c1951924d806fbdd177d8f86e40d3b2a161184ede9d65d5784b0f9ca.png" />
 </div>
 </div>
 </section>
@@ -1589,7 +1592,7 @@ Opening file
       <td>NaN</td>
       <td>Eth</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>20</td>
       <td>43</td>
@@ -1605,7 +1608,7 @@ Opening file
       <td>NaN</td>
       <td>TH</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>20</td>
       <td>11</td>
@@ -1621,7 +1624,7 @@ Opening file
       <td>NaN</td>
       <td>TH</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>60</td>
       <td>43</td>
@@ -1637,7 +1640,7 @@ Opening file
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>80</td>
       <td>59</td>
@@ -1653,7 +1656,7 @@ Opening file
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>100</td>
       <td>11</td>
@@ -1669,7 +1672,7 @@ Opening file
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>140</td>
       <td>43</td>
@@ -1685,7 +1688,7 @@ Opening file
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>160</td>
       <td>27</td>
@@ -1701,7 +1704,7 @@ Opening file
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>180</td>
       <td>11</td>
@@ -1717,7 +1720,7 @@ Opening file
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>220</td>
       <td>43</td>
@@ -1733,7 +1736,7 @@ Opening file
       <td>NaN</td>
       <td>APN</td>
       <td>AP band: 500 Hz high-pass; LFP band: 1000 Hz l...</td>
-      <td>probeB abc.EcephysElectrodeGroup at 0x18074290...</td>
+      <td>probeB abc.EcephysElectrodeGroup at 0x11968190...</td>
       <td>probeB</td>
       <td>240</td>
       <td>27</td>
@@ -1754,7 +1757,7 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;VISpm&#39;, &#39;VISal&#39;, &#39;VISrl&#39;, &#39;VISp&#39;, &#39;CA1&#39;, &#39;VL&#39;, &#39;Eth&#39;, &#39;LGd&#39;, &#39;DG&#39;, &#39;VISam&#39;, &#39;POL&#39;, &#39;APN&#39;, &#39;LP&#39;, &#39;SUB&#39;, &#39;VISl&#39;, &#39;VPM&#39;, &#39;MB&#39;, &#39;TH&#39;, &#39;grey&#39;, &#39;PO&#39;, &#39;CA2&#39;, &#39;NOT&#39;, &#39;CA3&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;&#39;, &#39;Eth&#39;, &#39;VISl&#39;, &#39;VPM&#39;, &#39;POL&#39;, &#39;CA1&#39;, &#39;NOT&#39;, &#39;VISam&#39;, &#39;LGd&#39;, &#39;DG&#39;, &#39;VISal&#39;, &#39;APN&#39;, &#39;VISrl&#39;, &#39;SUB&#39;, &#39;VISpm&#39;, &#39;grey&#39;, &#39;PO&#39;, &#39;CA3&#39;, &#39;VISp&#39;, &#39;LP&#39;, &#39;CA2&#39;, &#39;MB&#39;, &#39;TH&#39;, &#39;VL&#39;}
 </pre></div>
 </div>
 </div>
@@ -1828,10 +1831,10 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1a517a11f90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1173a0d3910&gt;]
 </pre></div>
 </div>
-<img alt="../_images/7256dd13f1893e14d01609e8ebe611003bc5e719a94dae15046f4e3c49b00cb0.png" src="../_images/7256dd13f1893e14d01609e8ebe611003bc5e719a94dae15046f4e3c49b00cb0.png" />
+<img alt="../_images/f93f9a38b9248796960b96b1d9fba5839019261700a264bfee123a76f08404cd.png" src="../_images/f93f9a38b9248796960b96b1d9fba5839019261700a264bfee123a76f08404cd.png" />
 </div>
 </div>
 </section>
@@ -1841,7 +1844,7 @@ Opening file
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stim_time</span> <span class="o">=</span> <span class="mi">1007</span> <span class="c1"># arbitrarily chosen here</span>
-<span class="n">interval_start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span>
+<span class="n">interval_start</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
 <span class="n">interval_end</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="n">start_unit</span> <span class="o">=</span> <span class="mi">100</span>
@@ -1867,8 +1870,8 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each unit, generate a histogram with 200 bins, where bins represent the number spikes per second</span>
-<span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">interval_start</span><span class="p">,</span> <span class="n">interval_end</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each unit, generate a histogram with 275 bins, where bins represent the number spikes per second</span>
+<span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">interval_start</span><span class="p">,</span> <span class="n">interval_end</span><span class="p">,</span> <span class="mi">276</span><span class="p">)</span>
 <span class="n">hists</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">unit_spike_times</span> <span class="ow">in</span> <span class="n">spike_times</span><span class="p">:</span>
     <span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">unit_spike_times</span><span class="o">-</span><span class="n">stim_time</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
@@ -1880,7 +1883,7 @@ Opening file
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(400, 199)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(400, 275)
 </pre></div>
 </div>
 </div>
@@ -1896,10 +1899,11 @@ Opening file
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">NullLocator</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
-<span class="n">xtick_step</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">xtick_step</span><span class="o">=</span><span class="mi">25</span>
 <span class="n">reltime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">time_bin_edges</span><span class="p">)</span>
+
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reltime</span><span class="p">),</span> <span class="n">xtick_step</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mp</span><span class="si">:</span><span class="s1">1.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">mp</span> <span class="ow">in</span> <span class="n">reltime</span><span class="p">[::</span><span class="n">xtick_step</span><span class="p">]],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mp</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">mp</span> <span class="ow">in</span> <span class="n">reltime</span><span class="p">[::</span><span class="n">xtick_step</span><span class="p">]],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time since event (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Units Spikes Over Time&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
@@ -1910,7 +1914,7 @@ Opening file
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Units Spikes Over Time&#39;)
 </pre></div>
 </div>
-<img alt="../_images/60cad913db01e85bfd56616bc318ff73ec80889c079ea96f1ff2e0c57cc6050e.png" src="../_images/60cad913db01e85bfd56616bc318ff73ec80889c079ea96f1ff2e0c57cc6050e.png" />
+<img alt="../_images/d6b038f1cb1135cdd82ce6c218af8f50512ae3f9e102cc35ba85a963d7e27a55.png" src="../_images/d6b038f1cb1135cdd82ce6c218af8f50512ae3f9e102cc35ba85a963d7e27a55.png" />
 </div>
 </div>
 </section>
@@ -2042,7 +2046,7 @@ Opening file
 </section>
 <section id="waveform-image">
 <h3>Waveform Image<a class="headerlink" href="#waveform-image" title="Link to this heading">#</a></h3>
-<p>Below is an image of the waveform means for each channel of a unit. The further in space from the real neuron, the weaker the measurement of the response waveform, so it is usually only useful to view a subsection of the channels at once. Set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to be the bounds of the channels you want displayed. Because on neuropixel probes the channels are arranged into two rows along the length of a probe, typically a unit is only strongly detected by every other channel. The data shown below displays every other channel to avoid the resultant striping effect. If the waveform looks too dim, try incrementing <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> by 1.</p>
+<p>Below is an image of the waveform means for each channel of a unit. The further in space from the real neuron, the weaker the measurement of the response waveform, so it is usually only useful to view a subsection of the channels at once. Set <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> and <code class="docutils literal notranslate"><span class="pre">end_channel</span></code> to be the bounds of the channels you want displayed. Because on neuropixels probes the channels are arranged into two rows along the length of a probe, typically a unit is only strongly detected by every other channel. The data shown below displays every other channel to avoid the resultant striping effect. If the waveform looks too dim, try incrementing <code class="docutils literal notranslate"><span class="pre">start_channel</span></code> by 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_channel</span> <span class="o">=</span> <span class="mi">230</span>
@@ -2110,7 +2114,7 @@ Opening file
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2209,8 +2213,8 @@ By Carter Peene
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
