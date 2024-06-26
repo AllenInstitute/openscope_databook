@@ -25,14 +25,14 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v4
-        # with:
-        #   python-version: "3.9"
+        with:
+          python-version: "3.10"
 
       - name: Upgrading pip
         run: pip install --upgrade pip
 
-      - name: Install deps
-        run: pip install cython numpy
+    #   - name: Install deps
+    #     run: pip install cython numpy
 
       - name: Installing package
         run: pip install -e .
@@ -40,11 +40,11 @@ jobs:
       - name: Printing environment
         run: pip freeze
 
-      - name: Installing packages again (this prevents a weird error)
-        run: pip install -r requirements.txt
+    #   - name: Installing packages again (this prevents a weird error)
+    #     run: pip install -r requirements.txt
 
-      - name: Printing environment
-        run: pip freeze
+    #   - name: Printing environment
+    #     run: pip freeze
 
       - name: Installing build dependencies
         run: |
