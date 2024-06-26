@@ -1,10 +1,9 @@
-
 name: build
 on:
   push:
-    branches: [ "main", "test_build_env"]
+    branches: [ "main", "test_build_env" ]
   pull_request:
-    branches: [ "main", "test_build_env"]
+    branches: [ "main", "test_build_env" ]
 
   workflow_dispatch:
 
@@ -19,35 +18,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-    #     with:
-    #       fetch-depth: 0
-    #       ref: main
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
-
-      - name: Getting python version
-        run: python --version
+          python-version: 3.9
 
       - name: Upgrading pip
         run: pip install --upgrade pip
 
-    #   - name: Install deps
-    #     run: pip install numpy cython
-
       - name: Installing package
         run: pip install -e .
-
-      - name: Printing environment
-        run: pip freeze
-
-      - name: Installing packages again (this prevents a weird error)
-        run: pip install -r requirements.txt
-
-    #   - name: Printing environment
-    #     run: pip freeze
 
       - name: Installing build dependencies
         run: |
