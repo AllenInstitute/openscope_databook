@@ -1,0 +1,72 @@
+
+name: build
+on:
+  push:
+    branches: [ "main", "test_build_env"]
+  pull_request:
+    branches: [ "main", "test_build_env"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on:
+      group: LargerInstance
+
+    env:
+      DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
+      TESTING: True
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        # with:
+        #   python-version: "3.9"
+
+      - name: Upgrading pip
+        run: pip install --upgrade pip
+
+      - name: Install deps
+        run: pip install cython numpy
+
+      - name: Installing package
+        run: pip install -e .
+
+      - name: Printing environment
+        run: pip freeze
+
+      - name: Installing packages again (this prevents a weird error)
+        run: pip install -r requirements.txt
+
+      - name: Printing environment
+        run: pip freeze
+
+      - name: Installing build dependencies
+        run: |
+          pip install markupsafe==2.0.1
+          pip install jupyter==1.0.0
+          pip install -U jupyter-book==1.0.0
+          pip install nbmake==1.5.3
+          pip install pytest-xdist==3.5.0
+        
+      - name: Printing environment
+        run: pip freeze
+
+      - name: Testing Embargoed Notebooks
+        run: pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed/cell_matching.ipynb"
+
+      - name: Printing log
+        run: git status
+      
+      - name: Printing shortlog
+        run: git log | git shortlog -sn  
+
+      - name: Build Jupyter book
+        run: |
+          jupyter-book clean ./docs
+          jupyter-book build ./docs
