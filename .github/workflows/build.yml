@@ -37,6 +37,9 @@ jobs:
       - name: Installing package
         run: pip install -e .
 
+      - name: Installing packages again (this prevents a weird error)
+        run: pip install -r requirements.txt
+
       - name: Installing build dependencies
         run: |
           pip install markupsafe==2.0.1
