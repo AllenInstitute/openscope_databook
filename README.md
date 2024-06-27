@@ -18,32 +18,32 @@ We are releasing this code to the public as a tool we expect others to use and a
 ### Chapter 2: Data visualization
 - [Visualizing eye-tracking gaze locations, eye area, and running speed](https://alleninstitute.github.io/openscope_databook/embargoed/visualize_behavior.html)
 - [Visualizing 2P raw movie](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_raw.html)
-- [Visualizing Neuropixel probe locations](https://alleninstitute.github.io/openscope_databook/visualization/visualize_neuropixel_probes.html)
-- [Visualizing Neuropixel recorded unit quality metrics](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_metrics.html)
+- [Visualizing Neuropixels probe locations](https://alleninstitute.github.io/openscope_databook/visualization/visualize_neuropixels_probes.html)
+- [Visualizing Neuropixels recorded unit quality metrics](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_metrics.html)
 - [Visualizing LFP responses to stimulus events](https://alleninstitute.github.io/openscope_databook/visualization/visualize_lfp_responses.html)
 - [Visualizing neuronal spike matrices](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_spikes.html)
 - [Visualizing neuronal unit responses to stimulus events in different epochs and spike waveforms](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_responses.html)
 - [Visualizing 2P responses to stimulus events in different epochs](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_responses.html)
 
 ### Chapter 3: First-order analysis
-- [Neuropixel: Plotting receptive fields](https://alleninstitute.github.io/openscope_databook/first-order/receptive_fields.html)
-- [Neuropixel: Identifying opto-tagged cells](https://alleninstitute.github.io/openscope_databook/first-order/optotagging.html)
-- [Neuropixel: Extracting Current Source Density plots](https://alleninstitute.github.io/openscope_databook/first-order/current_source_density.html)
+- [Neuropixels: Plotting receptive fields](https://alleninstitute.github.io/openscope_databook/first-order/receptive_fields.html)
+- [Neuropixels: Identifying opto-tagged cells](https://alleninstitute.github.io/openscope_databook/first-order/optotagging.html)
+- [Neuropixels: Extracting Current Source Density plots](https://alleninstitute.github.io/openscope_databook/first-order/current_source_density.html)
 - [2P: Cell matching across days](https://alleninstitute.github.io/openscope_databook/embargoed/cell_matching.html)
 - [2P: Stimuli averages with 2P data](https://alleninstitute.github.io/openscope_databook/first-order/test_2p_responses.html)
-- [Neuropixel: Stimuli averages with neuropixel data](https://alleninstitute.github.io/openscope_databook/first-order/test_spike_responses.html)
+- [Neuropixels: Stimuli averages with neuropixels data](https://alleninstitute.github.io/openscope_databook/first-order/test_unit_responses.html)
 - [2P: How to align timestamps across modalities](https://alleninstitute.github.io/openscope_databook/embargoed/modality_alignment.html)
 - [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://alleninstitute.github.io/openscope_databook/first-order/suite2p.html)
-- [Classifying spike waveform between fast spiking and normal spiking cells](https://github.com/AllenInstitute/openscope_databook/blob/main/docs/first-order/classify_waveforms.ipynb)
+- [Classifying spike waveform between fast spiking and normal spiking cells](https://alleninstitute.github.io/openscope_databook/first-order/classify_waveforms.html)
 
 ### Chapter 4: Higher-order analysis
 - [Neural dynamics using time-analysis with CEBRA](https://alleninstitute.github.io/openscope_databook/higher-order/cebra_time.html)  
   [CEBRA Demo on the CEBRA Repository](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
 - [Extracting clusters of correlated neurons with TCA](https://alleninstitute.github.io/openscope_databook/higher-order/tca.html)
-- Identifying mouse behavioral state based on eye tracking and behavioral data.
-- Analysis of functional connectivity.
+- [Estimating behavioral state given trial choices and relating states to pupil size](https://alleninstitute.github.io/openscope_databook/higher-order/behavioral_state.html)
 
 ### Chapter 5: Replicating figures
-- [Openscope Credit Assignment](https://alleninstitute.github.io/openscope_databook/replication/cred_assign_figures.html)
-- Example notebooks from past projects
-- Guidelines for reproducible figures from NWB files
+- [OpenScope Credit Assignment](https://alleninstitute.github.io/openscope_databook/projects/cred_assign_figures.html)
+- [OpenScope Global/Local Oddball](https://alleninstitute.github.io/openscope_databook/projects/glo.html)
+- [OpenScope Illusion](https://alleninstitute.github.io/openscope_databook/projects/illusion.html)
+- [OpenScope Dendritic Coupling](https://alleninstitute.github.io/openscope_databook/projects/dendritic_coupling.html)

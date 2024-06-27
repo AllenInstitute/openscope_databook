@@ -32,13 +32,10 @@ def dictstring_to_dict(dictstring):
 class Committers(Directive):
 
 	optional_arguments = 3
-	option_spec = {"blacklist": setstring_to_set, "additional_authors": setstring_to_set, "aliases": dictstring_to_dict}
+	option_spec = {"blacklist": setstring_to_set, "aliases": dictstring_to_dict}
 
-	def run(self):
-		blacklist= self.options.get("blacklist", "blah")
-		additional_authors = self.options.get("additional_authors", set()) 
-		aliases = self.options.get("aliases", {})
-		
+	@classmethod
+	def get_comitters(self, blacklist, aliases, raw=False):
 		log = subprocess.Popen(["git", "log"], stdout=subprocess.PIPE, text=True)
 		shortlog = subprocess.check_output(["git", "shortlog", "-sn"], stdin=log.stdout, encoding="utf8")
 		print(shortlog)
@@ -46,34 +43,55 @@ class Committers(Directive):
 		contributors = {contribution.split("\t")[1] : contribution.split("\t")[0].strip() for contribution in contributions}
 
 		aliased_contributors = { aliases.get(name, name): commits for name, commits in contributors.items() }
-		authors = [contributor + " (" + str(n) + ")" for contributor, n in aliased_contributors.items() if contributor not in blacklist]
-		authors += additional_authors
+		filtered_contributors = [(contributor, n_commits) for contributor, n_commits in aliased_contributors.items() if contributor not in blacklist]
+
+		return filtered_contributors
+
+
+	def run(self):
+		blacklist= self.options.get("blacklist", set())
+		aliases = self.options.get("aliases", {})
+
+		committers = self.get_comitters(blacklist, aliases)
+		authors = [contributor + " (" + str(n_commits) + ")" for contributor, n_commits in committers]	
 		print("Authors:", authors)
 
 		authors_text = ", ".join(authors)
-		emphasis_node = nodes.emphasis(text=authors_text)
+		emphasis_node = nodes.Text(authors_text)
 		return [emphasis_node]
 
 
 class Authors(Directive):
 
-	optional_arguments = 1
-	option_spec = {"role": str}
+	optional_arguments = 3
+	option_spec = {"role": str, "blacklist": setstring_to_set, "aliases": dictstring_to_dict}
 
 	def run(self):
-		authors = []
-
 		selected_role = self.options.get("role", "")
+		blacklist= self.options.get("blacklist", set())
+		aliases = self.options.get("aliases", {})
 
-		table = list(csv.reader(open("./data/contributors.csv")))
+		# get authors with matching role from csv
+		authors = set()
+		with open("./data/contributors.csv") as f:
+			table = list(csv.reader(f))
 		role_idx = table[0].index("Role")
 		name_idx = table[0].index("Name")
 		for contributor in table[1:]:
 			contributor_roles = contributor[role_idx].split(", ")
-			if selected_role == "" or selected_role in contributor_roles:
-				authors.append(contributor[name_idx])
+			# if there is no selected role, include all but "Funding" contributors, otherwise only include contributors with selected roles
+			if (selected_role == "" and contributor_roles != ["Funding"]) or selected_role in contributor_roles:
+				authors.add(contributor[name_idx])
 		
-		emphasis_node = nodes.emphasis(text=", ".join(authors))
+		# if we need committers, add them to the set, replacing existing names that match committer names
+		if selected_role == "" or selected_role == "Committers":
+			committers = Committers.get_comitters(blacklist, aliases, raw=True)
+			for committer_name, n_commits in committers:
+				authors.add(committer_name)
+
+		# sort based on last name alphabetically
+		authors = sorted(list(authors), key=lambda name: name.title().split()[-1])
+		emphasis_node = nodes.Text(", ".join(authors))
 		return [emphasis_node]
 
 
@@ -100,7 +118,8 @@ class VersionNumber(Directive):
 class AuthorsIndex(Directive):
 
 	def run(self):
-		table = list(csv.reader(open("./data/contributors.csv")))
+		with open("./data/contributors.csv") as f:
+			table = list(csv.reader(f))
 
 		section = nodes.section(ids=["contributorsblock"])
 		section += nodes.title("","Contributors")
