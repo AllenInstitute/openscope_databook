@@ -31,7 +31,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_ap
     if os.path.exists(filepath) and not force_overwrite:
         print("File already exists")
     else:
-        download.download(file_url, output_dir=download_loc, dandi_api_key=dandi_api_key)
+        download.download(file_url, output_dir=download_loc)
         print(f"Downloaded file to {filepath}")
 
     print("Opening file")
