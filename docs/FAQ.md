@@ -41,5 +41,13 @@ If local installation is failing, it is recommended that you attempt to clone an
 **How can I contribute to this project?**\
 Contributing to this project can be as simple as forking the [GitHub repo](https://github.com/AllenInstitute/openscope_databook), making your changes, and issuing a PR on GitHub. However, it would be advised to reach out to [Jerome Lecoq](https://github.com/jeromelecoq) or [Carter Peene](https://github.com/rcpeene) and discuss if you wish to make a significant contribution.
 
+### Citing
+
+**How can I cite the Databook?**\
+The Databook has a DOI through Zenodo, and can be cited accordingly 10.5281/zenodo.12614663.
+
+
+### Additional Questions
+
 **I have a question that isn't addressed here**\
-Questions, bugs, or any other topics of interest can be discussed by filing an issue on the GitHub repo's [issues page](https://github.com/AllenInstitute/openscope_databook/issues).
+Questions, bugs, or any other topics of interest can be discussed by filing an issue on the Github repo's [issues page](https://github.com/AllenInstitute/openscope_databook/issues).
