@@ -3,10 +3,10 @@
 The OpenScope Databook is a community project. It aims to serve as a collection of contributed analyses from many different experts and to include a comprehensive set of useful and reproducible analyses. Contributors are added to the authors list and have an opportunity to share their figures, results, and datasets through their notebooks in the Databook. Together the project can grow and continue to shape the growing reproducible neuroscience ecosystem.
 
 ## Fork the OpenScope Databook
-The Databook can be forked via the Github Web UI from the Databook's [Github repo](https://github.com/AllenInstitute/openscope_databook). Press the [fork button](https://github.com/AllenInstitute/openscope_databook/fork) or click this link.
+The Databook can be forked via the GitHub Web UI from the Databook's [GitHub repo](https://github.com/AllenInstitute/openscope_databook). Press the [fork button](https://github.com/AllenInstitute/openscope_databook/fork) or click this link.
 
 ## Initialize Locally
-A local repo can be made by pressing the `code` button on the front page of the forked repo, and copying the HTTPS url. Then locally, run the command `git clone <copied_url_here>`. For more information on cloning Github repos, check out Github's [Cloning a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) Page.
+A local repo can be made by pressing the `code` button on the front page of the forked repo, and copying the HTTPS url. Then locally, run the command `git clone <copied_url_here>`. For more information on cloning GitHub repos, check out GitHub's [Cloning a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) Page.
 
 Then the environment must be set up. You may set up a conda environment if you don't want to interfere with your local environment. After installing conda, this can be done with the commands `conda create --name databook python=3.9` followed by `activate databook` (Windows) or `source activate databook` (Mac/Linux). Within or without the conda environment, the dependencies for the databook can be installed by navigating to the openscope_databook directory and running `pip install -e . --user`.
 
@@ -37,7 +37,7 @@ Once the pull request is made, it will be reviewed for merging into the Databook
 
 
 ## Reviewing the Databook
-Reviews of the Databook are also made on Github via Git commits. We recommend you make a local fork of this repository and create a PR with your edits that either correct or extend a given notebook as discussed in the various sections above. If you feel like a notebook should be discussed, please first make a PR request and enter your reviewing comment on the PR form on Github with ReviewNB. You are free to choose any page of the databook for reviews, depending on your expertise and time. According to the authorship section below, reviewers gain authorship if they propose modifications that are eventually merged into the main branch.
+Reviews of the Databook are also made on GitHub via Git commits. We recommend you make a local fork of this repository and create a PR with your edits that either correct or extend a given notebook as discussed in the various sections above. If you feel like a notebook should be discussed, please first make a PR request and enter your reviewing comment on the PR form on GitHub with ReviewNB. You are free to choose any page of the databook for reviews, depending on your expertise and time. According to the authorship section below, reviewers gain authorship if they propose modifications that are eventually merged into the main branch.
 
 
 ## Authorship
