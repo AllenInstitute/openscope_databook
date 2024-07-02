@@ -43,3 +43,9 @@ Contributing to this project can be as simple as forking the [Github repo](https
 
 **I have a question that isn't addressed here**\
 Questions, bugs, or any other topics of interest can be discussed by filing an issue on the Github repo's [issues page](https://github.com/AllenInstitute/openscope_databook/issues).
+
+
+### Citing
+
+**How can I cite the Databook?**\
+The Databook has a DOI through Zenodo, and can be cited accordingly 10.5281/zenodo.12614663.
