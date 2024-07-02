@@ -74,7 +74,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Contributing to the Databook" href="../contribution.html" />
-    <link rel="prev" title="Git/Github" href="github.html" />
+    <link rel="prev" title="Git/GitHub" href="github.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -247,7 +247,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="jupyter_book.html">Jupyter/Jupyter Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="github.html">Git/Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github.html">Git/GitHub</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Managing Environments on Multiple Platforms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
@@ -456,7 +456,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="managing-environments-on-multiple-platforms">
 <h1>Managing Environments on Multiple Platforms<a class="headerlink" href="#managing-environments-on-multiple-platforms" title="Link to this heading">#</a></h1>
 <p>As briefly mentioned in <a class="reference internal" href="jupyter_book.html"><span class="std std-doc">Jupyter/Jupyter Book</span></a>, Jupyter Book allows users to launch notebooks in the Databook onto other computing platforms. Namely, <a class="reference internal" href="#hub.dandiarchive.org"><span class="xref myst">Dandihub</span></a>, <a class="reference internal" href="#mybinder.org"><span class="xref myst">Binder</span></a>, and <a class="reference internal" href="#colab.research.google.com"><span class="xref myst">Google Colab</span></a>. In the case of Binder, clicking the launch button automatically produces a docker container with the necessary environment installed by using the files <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/apt.txt">apt.txt</a>, <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/setup.py">setup.py</a>, and <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/postBuild">postBuild</a> from the root directory. In the case of Dandihub, once a user has made an account, the environment should be persistent between runtimes, but it must still be setup once. As for Google Colab, the environment must be setup every runtime. If a notebook is being run locally, the environment may or may not be installed depending on the user.</p>
-<p>The measure we employed to solve this is to have an <em>“Environment Setup”</em> cell at the top of every notebook. This cell checks to see if the <code class="docutils literal notranslate"><span class="pre">databook_utils</span></code> package exists. databook_utils consists of merely a few small Python modules which handle DANDI operations that are used in nearly every Notebook in the databook. It can be presumed that the presence of databook_utils is a reliable indicator of whether or not the proper environment of the Databook is installed in the local environment of a notebook. Therefore, if importing databook_utils succeeds, the notebook continues. If it fails, the databook is cloned from Github and the necessary environment is installed from within the Databook’s root directory using the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>. This installs all the necessary pip dependencies as well as the databook_utils package which is stored within the Databook at <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/tree/main/databook_utils">/databook_utils</a>. However, the Jupyter kernel does not update its environment with the local environment until it has been restarted. In the case that the environment was installed by the Environment Setup, the Jupyter kernel must be restarted by the user and run again.</p>
+<p>The measure we employed to solve this is to have an <em>“Environment Setup”</em> cell at the top of every notebook. This cell checks to see if the <code class="docutils literal notranslate"><span class="pre">databook_utils</span></code> package exists. databook_utils consists of merely a few small Python modules which handle DANDI operations that are used in nearly every Notebook in the databook. It can be presumed that the presence of databook_utils is a reliable indicator of whether or not the proper environment of the Databook is installed in the local environment of a notebook. Therefore, if importing databook_utils succeeds, the notebook continues. If it fails, the databook is cloned from GitHub and the necessary environment is installed from within the Databook’s root directory using the command <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>. This installs all the necessary pip dependencies as well as the databook_utils package which is stored within the Databook at <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/tree/main/databook_utils">/databook_utils</a>. However, the Jupyter kernel does not update its environment with the local environment until it has been restarted. In the case that the environment was installed by the Environment Setup, the Jupyter kernel must be restarted by the user and run again.</p>
 <p>Finally, Jupyter Book allows for <a class="reference external" href="https://jupyterbook.org/en/stable/interactive/thebe.html">Thebe integration</a>. Thebe is a platform which allows Jupyter Book to run notebooks within its own UI, using Binder as its backend runtime. Just as with the other launch buttons, Thebe can be activate by pressing the its button, labeled “Live Code” in the top right of the UI. Just as with Binder, the environment is setup automatically using files from the Databook repository.</p>
 </section>
 
@@ -496,7 +496,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Git/Github</p>
+        <p class="prev-next-title">Git/GitHub</p>
       </div>
     </a>
     <a class="right-next"
