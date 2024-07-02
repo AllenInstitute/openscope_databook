@@ -21,7 +21,7 @@ The Openscope Databook is a great place to demonstrate the capabilities and some
 As described in [This Jupyter blog post](https://blog.jupyter.org/mybinder-org-reducing-capacity-c93ccfc6413f), Binder no longer has the support of Google, and therefore shows reduced performance. Launches may fail or take a long time. There is no working solution to this except trying to launch again. An alternative would be to launch Databook notebooks with Google Colab.
 
 **How can I store my work on the Databook and come back to it later?**\
-Launching the Databook with [Dandihub](https://hub.dandiarchive.org/) will allow your files to be stored persistently and contain all the Databook's notebooks together. Additionally, you can clone the [Github repo](https://github.com/AllenInstitute/openscope_databook) and run our files locally. These are both explained in further detail on the [front page](https://alleninstitute.github.io/openscope_databook/intro.html).
+Launching the Databook with [Dandihub](https://hub.dandiarchive.org/) will allow your files to be stored persistently and contain all the Databook's notebooks together. Additionally, you can clone the [GitHub repo](https://github.com/AllenInstitute/openscope_databook) and run our files locally. These are both explained in further detail on the [front page](https://alleninstitute.github.io/openscope_databook/intro.html).
 
 **How do you recommend using the Databook?**\
 The Databook can be used to reproduce analysis on files, as a starting point for investigating a dataset, or as an educational resource to get more familiar with NWB files or particular kinds of data. In all of these cases, the code can be modified, copied, and interactively run to gain a better understanding of the data. For educational use, the databook may be run remotely with Thebe, Binder, or Google Colab as simple demonstrations. For more advanced usage and analysis, it may behoove you to download an individual notebook and run it locally.
@@ -39,7 +39,7 @@ If local installation is failing, it is recommended that you attempt to clone an
 ### Contribution
 
 **How can I contribute to this project?**\
-Contributing to this project can be as simple as forking the [Github repo](https://github.com/AllenInstitute/openscope_databook), making your changes, and issuing a PR on Github. However, it would be advised to reach out to [Jerome Lecoq](https://github.com/jeromelecoq) or [Carter Peene](https://github.com/rcpeene) and discuss if you wish to make a significant contribution.
+Contributing to this project can be as simple as forking the [GitHub repo](https://github.com/AllenInstitute/openscope_databook), making your changes, and issuing a PR on GitHub. However, it would be advised to reach out to [Jerome Lecoq](https://github.com/jeromelecoq) or [Carter Peene](https://github.com/rcpeene) and discuss if you wish to make a significant contribution.
 
 **I have a question that isn't addressed here**\
-Questions, bugs, or any other topics of interest can be discussed by filing an issue on the Github repo's [issues page](https://github.com/AllenInstitute/openscope_databook/issues).
+Questions, bugs, or any other topics of interest can be discussed by filing an issue on the GitHub repo's [issues page](https://github.com/AllenInstitute/openscope_databook/issues).
