@@ -133,7 +133,16 @@ class AuthorsIndex(Directive):
 
 			line_block = nodes.line_block()				
 			for property in properties[1:]:
-				if property != "":
+				if not property:
+					continue
+				elif property.startswith("https://") or property.startswith("http://"):
+					link_node = nodes.reference(text=property, refuri=property)
+					line_block.append(link_node)
+				elif "@" in property:
+					mailto_link = f"mailto:{property}"
+					email_node = nodes.reference(text=property, refuri=mailto_link)
+					line_block.append(email_node)
+				else:
 					line_block.append(nodes.line(text=property))
 			line_block.append(nodes.line(text=""))
 
