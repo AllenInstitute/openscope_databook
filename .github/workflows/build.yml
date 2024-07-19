@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main" , "dev"]
 
   workflow_dispatch:
 
@@ -23,10 +23,10 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        # with:
-        #   python-version: "3.9"
+      # - name: Set up Python
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: "3.11"
 
       - name: Upgrading pip
         run: pip install --upgrade pip
@@ -34,11 +34,14 @@ jobs:
       - name: Install deps
         run: pip install cython numpy
 
-      - name: Installing package
-        run: pip install -e .
+      - name: pip freeze
+        run: pip freeze
 
       - name: Installing packages again (this prevents a weird error)
         run: pip install -r requirements.txt
+
+      - name: Installing package
+        run: pip install -e .
 
       - name: Installing build dependencies
         run: |
