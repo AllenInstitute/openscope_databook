@@ -1,10 +1,8 @@
 # OpenScope Databook
 
-### **The Deployed Databook can be found here: 
-### https://alleninstitute.github.io/openscope_databook**
+### **The Deployed Databook can be found here: https://alleninstitute.github.io/openscope_databook**
 
-### **The citeable DOI page on Zenodo can be found here: 
-### https://zenodo.org/records/12614664**
+### **The citeable DOI page on Zenodo can be found here: https://zenodo.org/records/12614664**
 
 The OpenScope Databook is meant to store code and documentation used for reproducible brain data analysis and visualization, primarily working with [NWB files](https://www.nwb.org/how-to-use/) and the [DANDI archive](https://dandiarchive.org/). It is provided by the Allen Institute's **[OpenScope](https://alleninstitute.org/what-we-do/brain-science/research/mindscope-program/openscope/)** Project, a component of The [Allen Institute for Neural Dynamics](https://alleninstitute.org/division/neural-dynamics/). **OpenScope** is a platform for high-throughput and reproducible neurophysiology open to external scientists to test theories of brain function. Through [Jupyter Book](https://jupyterbook.org/), this code is structured as a series of documented Jupyter notebooks intended to explain and educate users on how to work with brain data.
 
