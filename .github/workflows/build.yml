@@ -12,6 +12,8 @@ jobs:
   build:
     runs-on:
       group: LargerInstance
+      container: 
+        image: rcpeene/openscope_databook:latest
 
     env:
       DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
@@ -28,20 +30,20 @@ jobs:
       #   with:
       #     python-version: "3.11"
 
-      - name: Upgrading pip
-        run: pip install --upgrade pip
+      # - name: Upgrading pip
+      #   run: pip install --upgrade pip
 
-      - name: Install deps
-        run: pip install cython numpy
+      # - name: Install deps
+      #   run: pip install cython numpy
 
       - name: pip freeze
         run: pip freeze
 
-      - name: Installing packages again (this prevents a weird error)
-        run: pip install -r requirements.txt
+      # - name: Installing packages again (this prevents a weird error)
+      #   run: pip install -r requirements.txt
 
-      - name: Installing package
-        run: pip install -e .
+      # - name: Installing package
+      #   run: pip install -e .
 
       - name: Installing build dependencies
         run: |
