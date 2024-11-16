@@ -7,11 +7,12 @@ RUN apt-get install -y libglib2.0-0
 RUN apt-get install -y python3 python3-pip
 RUN apt-get install -y git
 
-# copy databook files
+# copy databook setup files
 COPY requirements.txt ./openscope_databook/requirements.txt
 COPY setup.py ./openscope_databook/setup.py
 COPY README.md ./openscope_databook/README.md
 COPY LICENSE.txt ./openscope_databook/LICENSE.txt
+COPY databook_utils ./openscope_databook/databook_utils
 
 # for reasons I don't understand, these must be installed before the rest the requirements
 RUN pip install numpy cython
