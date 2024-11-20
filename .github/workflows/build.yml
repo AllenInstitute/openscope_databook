@@ -87,7 +87,9 @@ jobs:
           rm ./docs/embargoed/*.nwb        
 
       - name: Printing log
-        run: git status
+        run: |
+          git config --global --add safe.directory /__w/openscope_databook/openscope_databook
+          git status
       
       - name: Printing shortlog
         run: git log | git shortlog -sn  
