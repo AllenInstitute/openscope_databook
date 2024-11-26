@@ -97,7 +97,9 @@ You can download an individual notebook by pressing the `Download` button in the
 ```
 pip install -e .
 ```
-It is recommended that this is done within a conda environment using Python 3.10 to minimize any interference with local machine environments. For information on installing and using conda, go [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html). *Before* running the pip installation above, you can create a conda environment in the conda prompt with the command 
+
+#### Locally (Conda)
+It is recommended that this is done within a conda environment using Python 3.10 or Docker to minimize any interference with local machine environments. For information on installing and using conda, go [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html). *Before* running the pip installation above, you can create a conda environment in the conda prompt with the command 
 ```
 conda create -n databook_env python=3.10
 ```
@@ -106,6 +108,22 @@ and you can run that environment with
 conda activate databook_env
 ```
 
+
+#### Locally (Docker)
+The Databook also includes a dockerfile. If you want to build a docker container for the Databook yourself (for some reason), you can do so by running the following command in the Databook main directory after you have docker installed and running
+```
+docker build -t openscope_databook
+```
+You can then activate the docker by running the following command. Note that, to access the databook in your host machine's web browser, the port 8888 should be mapped to the docker container's port.
+```
+docker run -p 8888:8888 openscope_databook
+```
+Instead of building the container yourself, you can use the main docker container that we maintain, registered publically on Docker hub with the following command
+```
+docker run -p 8888:8888 rcpeene/openscope_databook:latest
+```
+
+#### Locally (Running Notebook)
 Once you environment is setup, you can execute the notebooks in Jupyter by running the following command within the repo directory;
 ```
 Jupyter notebook
