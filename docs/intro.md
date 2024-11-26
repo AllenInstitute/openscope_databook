@@ -118,7 +118,7 @@ You can then activate the docker by running the following command. Note that, to
 ```
 docker run -p 8888:8888 openscope_databook
 ```
-Instead of building the container yourself, you can use the main docker container that we maintain, registered publically on Docker hub with the following command
+Instead of building the container yourself, you can use the main docker container that we maintain, registered publicly on Docker hub with the following command
 ```
 docker run -p 8888:8888 rcpeene/openscope_databook:latest
 ```
