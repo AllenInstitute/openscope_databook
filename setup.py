@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 with open("README.md", encoding="utf-8") as f:
     readme = f.read()
@@ -20,5 +20,13 @@ setup(
     url="https://github.com/AllenInstitute/openscope_databook",
     license=license,
     package_dir={"databook_utils": "databook_utils"},
-    install_requires=required
+    install_requires=required,
+    extras_require={
+        "dev": [
+            "markupsafe==2.0.1",
+            "jupyter-book==1.0.0",
+            "nbmake==1.5.3",
+            "pytest-xdist==3.5.0"
+        ]
+    }
 )
