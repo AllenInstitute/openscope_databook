@@ -6,7 +6,7 @@
 While NWB Files can be generated with [PyNWB](https://pynwb.readthedocs.io/en/stable/), it is typically an extensive process. [NeuroConv](https://neuroconv.readthedocs.io/en/main/) is a tool that makes this process easier. NWB Files can be very valuable, but it is recommended that you be prepared to invest a lot of time into producing them. Additionally, there are many datasets on [DANDI](https://dandiarchive.org/) that may suit your needs if you find yourself unequipped to make your own.
 
 **How to upload my files to DANDI**\
-The [DANDI Documentation](https://www.dandiarchive.org/handbook/) includes descriptions of the multiple ways files can be uploaded to DANDI.
+The [DANDI Documentation](https://docs.dandiarchive.org) includes descriptions of the multiple ways files can be uploaded to DANDI.
 
 **Where can I learn more about NWB files?**\
 The Openscope Databook is a great place to demonstrate the capabilities and some workings of NWB Files for a number of use-cases. For a broader view of how they can be used or their inner workings, here are some resources.
