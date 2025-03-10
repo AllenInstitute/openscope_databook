@@ -11,6 +11,8 @@ jobs:
   test:
     runs-on: 
       group: LargerInstance
+    container:
+      image: rcpeene/openscope_databook:latest
 
     env:
       DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
@@ -19,20 +21,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Upgrading pip
-        run: pip install --upgrade pip
+      # - name: Upgrading pip
+      #   run: pip install --upgrade pip
 
       - name: print environment
         run: pip freeze
 
-      - name: Install cython
-        run: pip install cython numpy
+      # - name: Install cython
+      #   run: pip install cython numpy
 
-      - name: Installing package
-        run: pip install -e .
+      # - name: Installing package
+      #   run: pip install -e .
 
-      - name: Installing requirements
-        run: pip install -r ./requirements.txt
+      # - name: Installing requirements
+      #   run: pip install -r ./requirements.txt
 
       - name: Installing build dependencies
         run: |

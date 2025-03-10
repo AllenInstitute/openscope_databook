@@ -12,12 +12,20 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      
+
+      - name: Installing python
+        run: |
+          sudo apt-get update
+          sudo apt install python3.12
+          sudo apt-get install build-essential
+
       - name: Upgrading pip
         run: pip install --upgrade pip
         
       - name: Installing dependencies
-        run: pip install markupsafe==2.0.1 numpy cython
+        run: |
+          pip install --upgrade pip setuptools
+          pip install markupsafe==2.0.1 numpy cython --no-cache-dir
 
       - name: Installing package
         run: pip install -e .
@@ -36,7 +44,7 @@ jobs:
           jupyter-book clean ./docs
           jupyter-book build ./docs
             
-      - name: Deploy book to Github pages
+      - name: Deploy book to GitHub pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
