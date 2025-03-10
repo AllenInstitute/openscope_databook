@@ -29,12 +29,12 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -580,12 +580,10 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 </pre></div>
 </div>
 </div>
@@ -618,6 +616,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.63.1) of dandi/dandi-cli is available. You are using 0.61.2
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 File already exists
@@ -731,66 +732,42 @@ Opening file
 <p><strong>Nway Matching</strong> can be run as a command with the following parameters. From there, several output files are generated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>nway.nway_matching<span class="w"> </span>--input_json<span class="w"> </span>input.json<span class="w"> </span>--output_json<span class="w"> </span><span class="s2">&quot;./output.json&quot;</span><span class="w"> </span>--output_dir<span class="w"> </span>matching_output
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>nway.nway_matching<span class="w"> </span>--input_json<span class="w"> </span>input.json<span class="w"> </span>--output_json<span class="w"> </span><span class="s2">&quot;./output.json&quot;</span><span class="w"> </span>--output_dir<span class="w"> </span>matching_output
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\scipy\__init__.py:169: UserWarning: A NumPy version &gt;=1.18.5 and &lt;1.26.0 is required for this version of SciPy (detected version 1.26.4
-  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
-WARNING:root:many=True not supported from argparse
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:many=True not supported from argparse
 INFO:NwayMatching:NWAY_COMMIT_SHA None
 INFO:NwayMatching:Nway matching version 0.6.0
-c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\scipy\__init__.py:169: UserWarning: A NumPy version &gt;=1.18.5 and &lt;1.26.0 is required for this version of SciPy (detected version 1.26.4
-  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
-c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\scipy\__init__.py:169: UserWarning: A NumPy version &gt;=1.18.5 and &lt;1.26.0 is required for this version of SciPy (detected version 1.26.4
-  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
-c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\scipy\__init__.py:169: UserWarning: A NumPy version &gt;=1.18.5 and &lt;1.26.0 is required for this version of SciPy (detected version 1.26.4
-  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
 WARNING:root:many=True not supported from argparse
 WARNING:root:many=True not supported from argparse
 INFO:PairwiseMatching:Matching 1193675753 to 1194754135
 INFO:PairwiseMatching:Matching 1193675753 to 1194754135: best registration was [&#39;Crop&#39;, &#39;CLAHE&#39;, &#39;PhaseCorrelate&#39;]
-multiprocessing.pool.RemoteTraceback: 
-&quot;&quot;&quot;
-Traceback (most recent call last):
-  File &quot;C:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py&quot;, line 125, in worker
-    result = (True, func(*args, **kwds))
-  File &quot;C:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py&quot;, line 48, in mapstar
-    return list(map(*args))
-  File &quot;c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\nway\nway_matching.py&quot;, line 121, in pair_match_job
-    pair_match.run()
-  File &quot;c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\nway\pairwise_matching.py&quot;, line 495, in run
-    segmask_moving_3d_registered = transform_mask(
-  File &quot;c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\nway\pairwise_matching.py&quot;, line 384, in transform_mask
-    dtype=np.int)
-  File &quot;c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\numpy\__init__.py&quot;, line 338, in __getattr__
-    raise AttributeError(__former_attrs__[attr])
-AttributeError: module &#39;numpy&#39; has no attribute &#39;int&#39;.
-`np.int` was a deprecated alias for the builtin `int`. To avoid this error in existing code, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
-The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
-    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
-&quot;&quot;&quot;
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File &quot;C:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\runpy.py&quot;, line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File &quot;C:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\runpy.py&quot;, line 86, in _run_code
-    exec(code, run_globals)
-  File &quot;c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\nway\nway_matching.py&quot;, line 502, in &lt;module&gt;
-    nmod.run()
-  File &quot;c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-packages\nway\nway_matching.py&quot;, line 462, in run
-    self.pair_matches = pool.map(pair_match_job, pair_arg_list)
-  File &quot;C:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py&quot;, line 367, in map
-    return self._map_async(func, iterable, mapstar, chunksize).get()
-  File &quot;C:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py&quot;, line 774, in get
-    raise self._value
-AttributeError: module &#39;numpy&#39; has no attribute &#39;int&#39;.
-`np.int` was a deprecated alias for the builtin `int`. To avoid this error in existing code, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
-The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
-    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\nway\utils.py:48: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+  df = df.sort_index(0)
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\nway\utils.py:49: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
+  df = df.sort_index(1)
+INFO:NwayMatching:registration success(1) or failure (0):
+   0  1
+0  1  1
+1  1  1
+id map{
+  &quot;0&quot;: 1193675753,
+  &quot;1&quot;: 1194754135
+}
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\nway\nway_matching.py:208: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  matching_frame = matching_frame.append(pairframe)
+INFO:NwayMatching:Nway matching is done!
+INFO:NwayMatching:Creating match summary plots
+WARNING:root:setting Dict fields not supported from argparse
+c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\argschema\utils.py:346: FutureWarning: &#39;--nway_output.nway_matches&#39; is using old-style command-line syntax with each element as a separate argument. This will not be supported in argschema after 2.0. See http://argschema.readthedocs.io/en/master/user/intro.html#command-line-specification for details.
+  warnings.warn(warn_msg, FutureWarning)
+WARNING:root:many=True not supported from argparse
+INFO:NwayMatching:wrote matching_output\nway_match_fraction_plot_2024_11_14_13_37_50.png
+INFO:NwayMatching:wrote matching_output\nway_warp_overlay_plot_2024_11_14_13_37_50.png
+INFO:NwayMatching:wrote matching_output\nway_warp_summary_plot_2024_11_14_13_37_50.png
+INFO:NwayMatching:wrote ./output.json
 </pre></div>
 </div>
 </div>
@@ -833,7 +810,7 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1c3b53e35b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21dff47bfa0&gt;
 </pre></div>
 </div>
 <img alt="../_images/e6592d078b8d6b12d49437e52e737d2dad606111037a11c5dd4e8948d002c4b2.png" src="../_images/e6592d078b8d6b12d49437e52e737d2dad606111037a11c5dd4e8948d002c4b2.png" />
@@ -849,7 +826,7 @@ The aliases was originally deprecated in NumPy 1.20; for more details and guidan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1c3b7dbdf00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21dff4fe680&gt;
 </pre></div>
 </div>
 <img alt="../_images/13852a5cdb6fb6f6b4f2d967fa88596147bec8c4f93257a4a2fcaa97ea6c9f58.png" src="../_images/13852a5cdb6fb6f6b4f2d967fa88596147bec8c4f93257a4a2fcaa97ea6c9f58.png" />

@@ -29,12 +29,12 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -460,7 +460,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binder">Binder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thebe">Thebe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dandihub">Dandihub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally">Locally</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally">Locally</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-conda">Locally (Conda)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-docker">Locally (Docker)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-running-notebook">Locally (Running Notebook)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-it-work">How Does It Work?</a><ul class="nav section-nav flex-column">
@@ -486,14 +491,14 @@ document.write(`
 <h1>OpenScope Databook<a class="headerlink" href="#openscope-databook" title="Link to this heading">#</a></h1>
 <section id="the-openscope-databook-reproducible-system-neuroscience-notebooks-to-facilitate-data-sharing-and-collaborative-reuse-with-open-science-datasets">
 <h2>The OpenScope Databook: Reproducible System Neuroscience Notebooks to Facilitate Data Sharing and Collaborative Reuse with Open Science Datasets<a class="headerlink" href="#the-openscope-databook-reproducible-system-neuroscience-notebooks-to-facilitate-data-sharing-and-collaborative-reuse-with-open-science-datasets" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/releases">v1.2.0
+<p><a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/releases">v1.3.0
 </a></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-0">
 All Contributors</label><div class="sd-tab-content docutils">
 <p><strong>Supplied any substantial contribution to the project</strong></p>
-Katrina Ager, Shailaja Akella, Ahad Bawany, Corbett Bennett, Benjamin Dichter, Ben Dichter, Satrajit Ghosh, Colleen J. Gillon, Yaroslav O. Halchenko, Daniel Hulsey, Santiago Jaramillo, Xiaoxuan Jia, Yeerim Kim, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, R. Carter Peene, Jason Pina, Stephanie Prince, Hyeyoung Shin, Josh Siegle, Jiatai Song, Shih-Yi Tseng, Jacob Westerberg, Alex Williams</div>
+Katrina Ager, Shailaja Akella, Ahad Bawany, Corbett Bennett, Benjamin Dichter, Ben Dichter, Satrajit Ghosh, Colleen J. Gillon, Kabilar Gunalan, Yaroslav O. Halchenko, Daniel Hulsey, Santiago Jaramillo, Xiaoxuan Jia, Yeerim Kim, Carly Kiselycznyk, Jerome Lecoq, Mackenzie Mathis, R. Carter Peene, Jason Pina, Stephanie Prince, Hyeyoung Shin, Josh Siegle, Jiatai Song, Shih-Yi Tseng, Jacob Westerberg, Alex Williams</div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
 Management</label><div class="sd-tab-content docutils">
@@ -513,7 +518,7 @@ Katrina Ager, Ahad Bawany, Corbett Bennett, Colleen J. Gillon, Yaroslav O. Halch
 <label class="sd-tab-label" for="sd-tab-item-4">
 Commits</label><div class="sd-tab-content docutils">
 <p><strong>Committed code to the primary GitHub repository</strong></p>
-R. Carter Peene (1476), Katrina Ager (76), Jerome Lecoq (15), Stephanie Prince (10), Yaroslav O. Halchenko (10), Santiago Jaramillo (8), Colleen J. Gillon (5), Yeerim Kim (8), Jiatai Song (7), Mackenzie Mathis (2), Ben Dichter (1), Shailaja Akella (1), Shih-Yi Tseng (1)</div>
+R. Carter Peene (1542), Katrina Ager (76), Jerome Lecoq (15), Stephanie Prince (10), Yaroslav O. Halchenko (10), Kabilar Gunalan (9), Santiago Jaramillo (8), Colleen J. Gillon (5), Yeerim Kim (8), Jiatai Song (7), Mackenzie Mathis (2), Ben Dichter (1), Shailaja Akella (1), Shih-Yi Tseng (1)</div>
 <input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-5">
 Review</label><div class="sd-tab-content docutils">
@@ -530,7 +535,7 @@ NIH U24 NS113646</div>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>Reproducibility is a significant challenge in neuroscience, as analysis and visualization methods are often difficult to replicate due to a lack of accessible code, separation of code from published figures, or unavailability of code altogether. This issue may arise from the complex nature of neuroscience research, the use of diverse data formats and analysis techniques, and insufficient emphasis on open-source, collaborative practices. In addition, key neuroscience analyses are typically rewritten at the start of new scientific projects, slowing down the initiation of research efforts.</p>
-<p>Four key components are essential for reproducible analysis: accessible data, accessible computational resources, a reproducible environment, and usage documentation. The OpenScope Databook, provided by the Allen Institute’s OpenScope Project, offers a solution to these challenges by facilitating the analysis and visualization of brain data, primarily using <a class="reference external" href="https://www.nwb.org/">NWB files</a> and the <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a>. Hosted on GitHub, the entire publication – including code, data access, text, references, and revisions from reviewers and contributors – is readily available for collaboration and version control, promoting transparency and collective knowledge growth. The OpenScope Databook addresses these components by leveraging a combination of open-source Python libraries, such as DANDI, <a class="reference external" href="https://mybinder.org/">Binder</a>, <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Book</a>, <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>, LaTeX references, Python scripts, Git versioning, and scientific revision through approved pull requests. The entire publication can be recreated by running the code locally, on distributed servers such as Binder, <a class="reference external" href="https://hub.dandiarchive.org/">DandiHub</a>, or Google Colab, or on any host running Jupyter notebooks.</p>
+<p>Four key components are essential for reproducible analysis: accessible data, accessible computational resources, a reproducible environment, and usage documentation. The OpenScope Databook, provided by the Allen Institute’s OpenScope Project, offers a solution to these challenges by facilitating the analysis and visualization of brain data, primarily using <a class="reference external" href="https://www.nwb.org/">NWB files</a> and the <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a>. Hosted on GitHub, the entire publication – including code, data access, text, references, and revisions from reviewers and contributors – is readily available for collaboration and version control, promoting transparency and collective knowledge growth. The OpenScope Databook addresses these components by leveraging a combination of open-source Python libraries, such as DANDI, <a class="reference external" href="https://mybinder.org/">Binder</a>, <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Book</a>, <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>, LaTeX references, Python scripts, Git versioning, and scientific revision through approved pull requests. The entire publication can be recreated by running the code locally, on distributed servers such as Binder, <a class="reference external" href="https://hub.dandiarchive.org/">DandiHub</a>, or Google Colab, or on any host running Jupyter notebooks.</p>
 <p>We cover several broadly used analyses across the community, providing a missing component for system neuroscience. Our key analyses are organized into chapters, including NWB basics such as downloading, streaming, and visualizing NWB files from data archives. We document essential analyses typically performed in all neuroscience laboratories, such as temporal alignment, alignment to sensory stimuli, and association with experimental metadata. We cover the two leading neuronal recording techniques: two-photon calcium imaging and electrophysiological recordings, and share example analyses of stimulus-averaged responses. Advanced first-order analyses include showing receptive fields, identifying optotagged units, current source density analysis, and cell matching across days.</p>
 <p>This resource is actively maintained and can be updated by the community, providing a living document that will grow over time.</p>
 </section>
@@ -548,10 +553,7 @@ NIH U24 NS113646</div>
 </section>
 <section id="dandihub">
 <h3>Dandihub<a class="headerlink" href="#dandihub" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://hub.dandiarchive.org/">Dandihub</a> is an instance of JupyterHub hosted by DANDI. Dandihub does not automatically reproduce the environment required for these notebooks, but importantly, Dandihub allows for persistent storage of your files, so you can leave your work and come back to it later. It can be used by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right of a notebook and selecting <code class="docutils literal notranslate"><span class="pre">JupyterHub</span></code>. In order to run notebooks on Dandihub, you must sign in with your GitHub account. To set up the correct environment on Dandihub, open a <code class="docutils literal notranslate"><span class="pre">terminal</span></code> tab, navigate to the directory <code class="docutils literal notranslate"><span class="pre">openscope_databook</span></code> and run the command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
-</pre></div>
-</div>
+<p><a class="reference external" href="https://hub.dandiarchive.org/">Dandihub</a> is an instance of JupyterHub hosted by the <a class="reference external" href="https://dandiarchive.org">DANDI Archive</a>. It can be used by hovering over the <code class="docutils literal notranslate"><span class="pre">Launch</span></code> button in the top-right of a notebook and selecting <code class="docutils literal notranslate"><span class="pre">JupyterHub</span></code>. In order to run notebooks on Dandihub, you must sign in with your GitHub account, select the server size, select the <code class="docutils literal notranslate"><span class="pre">OpenScope</span></code> option from the <code class="docutils literal notranslate"><span class="pre">Image</span></code> dropdown menu, and navigate to the <code class="docutils literal notranslate"><span class="pre">openscope_databook/docs</span></code> directory which contains the OpenScope notebooks.</p>
 </section>
 <section id="locally">
 <h3>Locally<a class="headerlink" href="#locally" title="Link to this heading">#</a></h3>
@@ -559,7 +561,9 @@ NIH U24 NS113646</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>It is recommended that this is done within a conda environment using Python 3.10 to minimize any interference with local machine environments. For information on installing and using conda, go <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html">here</a>. <em>Before</em> running the pip installation above, you can create a conda environment in the conda prompt with the command</p>
+<section id="locally-conda">
+<h4>Locally (Conda)<a class="headerlink" href="#locally-conda" title="Link to this heading">#</a></h4>
+<p>It is recommended that this is done within a conda environment using Python 3.10 or Docker to minimize any interference with local machine environments. For information on installing and using conda, go <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html">here</a>. <em>Before</em> running the pip installation above, you can create a conda environment in the conda prompt with the command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">databook_env</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span>
 </pre></div>
 </div>
@@ -567,10 +571,29 @@ NIH U24 NS113646</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">databook_env</span>
 </pre></div>
 </div>
+</section>
+<section id="locally-docker">
+<h4>Locally (Docker)<a class="headerlink" href="#locally-docker" title="Link to this heading">#</a></h4>
+<p>The Databook also includes a dockerfile. If you want to build a docker container for the Databook yourself (for some reason), you can do so by running the following command in the Databook main directory after you have docker installed and running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">openscope_databook</span>
+</pre></div>
+</div>
+<p>You can then activate the docker by running the following command. Note that, to access the databook in your host machine’s web browser, the port 8888 should be mapped to the docker container’s port.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8888</span><span class="p">:</span><span class="mi">8888</span> <span class="n">openscope_databook</span>
+</pre></div>
+</div>
+<p>Instead of building the container yourself, you can use the main docker container that we maintain, registered publicly on Docker hub with the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8888</span><span class="p">:</span><span class="mi">8888</span> <span class="n">rcpeene</span><span class="o">/</span><span class="n">openscope_databook</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+</section>
+<section id="locally-running-notebook">
+<h4>Locally (Running Notebook)<a class="headerlink" href="#locally-running-notebook" title="Link to this heading">#</a></h4>
 <p>Once you environment is setup, you can execute the notebooks in Jupyter by running the following command within the repo directory;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Jupyter</span> <span class="n">notebook</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 <section id="how-does-it-work">
@@ -585,7 +608,7 @@ NIH U24 NS113646</div>
 <p>The Databook leverages a number of technologies to combine those components into a web-application.</p>
 <section id="data">
 <h3>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
-<p>Data is accessed from The <a class="reference external" href="https://dandiarchive.org/">DANDI archive</a> and downloaded via the <a class="reference external" href="https://dandi.readthedocs.io/en/latest/modref/index.html">DANDI Python API</a> within notebooks. Most notebooks make use of publicly available datasets on DANDI, but for some notebooks, there is not yet sufficient publicly-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.</p>
+<p>Data is accessed from the <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a> and downloaded via the <a class="reference external" href="https://dandi.readthedocs.io/en/latest/modref/index.html">DANDI Python API</a> within notebooks. Most notebooks make use of publicly available datasets on DANDI, but for some notebooks, there is not yet sufficient publicly-available data to demonstrate our analysis. For these, it is encouraged to use your own NWB Files that are privately stored on DANDI.</p>
 </section>
 <section id="computation">
 <h3>Computation<a class="headerlink" href="#computation" title="Link to this heading">#</a></h3>
@@ -684,7 +707,12 @@ NIH U24 NS113646</div>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binder">Binder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thebe">Thebe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dandihub">Dandihub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally">Locally</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally">Locally</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-conda">Locally (Conda)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-docker">Locally (Docker)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-running-notebook">Locally (Running Notebook)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-it-work">How Does It Work?</a><ul class="nav section-nav flex-column">
