@@ -17,7 +17,9 @@ jobs:
         run: pip install --upgrade pip
         
       - name: Installing dependencies
-        run: pip install markupsafe==2.0.1 numpy cython
+        run: |
+          pip install markupsafe==2.0.1 numpy cython --no-cache-dir
+          pip install --upgrade pip setuptools
 
       - name: Installing package
         run: pip install -e .
