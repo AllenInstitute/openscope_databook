@@ -14,8 +14,11 @@ jobs:
           ref: main
 
       - name: Installing python
-        run: sudo apt install python3.12
-      
+        run: |
+          sudo apt-get update
+          sudo apt install python3.12
+          sudo apt-get install build-essential
+
       - name: Upgrading pip
         run: pip install --upgrade pip
         
