@@ -1,3 +1,4 @@
+import subprocess, sys
 from setuptools import setup
 
 with open("README.md", encoding="utf-8") as f:
@@ -8,6 +9,14 @@ with open("LICENSE.txt") as f:
 
 with open("requirements.txt", "r") as f:
     required = f.read().splitlines()
+    
+# Function to install critical dependencies first (numpy, cython)
+def pre_install_dependencies():
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "numpy", "cython"])
+    except subprocess.CalledProcessError as e:
+        print("Error occurred while installing numpy and cython:", e)
+        sys.exit(1)  # Exit with error if installation fails
 
 setup(
     name="databook_utils",
