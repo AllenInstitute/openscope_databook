@@ -27,11 +27,11 @@ jobs:
       - name: Install cython
         run: pip install cython numpy==1.26
 
-      - name: Installing package
-        run: pip install -e .
+      - name: Installing requirements
+        run: pip install -r ./requirements.txt
 
-      # - name: Installing requirements
-      #   run: pip install -r ./requirements.txt
+      - name: Installing packages again (this prevents a weird error in cell matching nb)
+        run: pip install -r requirements.txt
 
       - name: Installing build dependencies
         run: |
