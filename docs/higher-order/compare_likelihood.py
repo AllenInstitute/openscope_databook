@@ -148,7 +148,7 @@ print(ll - ll2)
 lam = 2**5  # their value for the regulariser
 
 # our penalized loss is  loss - 0.5 * lam * coef @ coeff, so 2**5 * 2 == 2**6
-model = nmo.glm.GLM(regularizer="Ridge", regularizer_strength=2**6 / (X.shape[0] - 5))
+model = nmo.glm.GLM(regularizer="Ridge", regularizer_strength= lam * 2 / (X.shape[0] - 5))
 reg = model.regularizer
 
 
