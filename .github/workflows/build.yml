@@ -61,6 +61,11 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
           rm ./docs/embargoed/*.nwb
 
+      - name: Testing Higher-Order Notebooks
+        run: |
+          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
+          rm ./docs/higher-order/*.nwb
+
       - name: Testing Basics Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
@@ -76,11 +81,6 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
           rm ./docs/first-order/*.nwb
         
-      - name: Testing Higher-Order Notebooks
-        run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
-          rm ./docs/higher-order/*.nwb
-
       - name: Testing Project Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
