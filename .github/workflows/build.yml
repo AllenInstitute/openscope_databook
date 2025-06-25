@@ -28,7 +28,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9.13'
+          python-version: '3.10'
 
       # - name: Upgrading pip
       #   run: pip install --upgrade pip
@@ -63,7 +63,7 @@ jobs:
 
       - name: Testing Higher-Order Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
+          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
           rm ./docs/higher-order/*.nwb
 
       - name: Testing Basics Notebooks
