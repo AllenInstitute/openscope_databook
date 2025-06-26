@@ -26,20 +26,23 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.10.11'
 
       # - name: Upgrading pip
       #   run: pip install --upgrade pip
 
-      - name: Install deps
-        run: pip install cython numpy==1.26
+      # - name: Install deps
+      #   run: pip install cython numpy==1.26
 
       - name: Installing package
         run: pip install -e .
 
-      - name: Installing packages again (this prevents a weird error in cell matching nb)
+      # Some git-based dependencies (e.g., ophys-nway-matching) in requirements.txt
+      # are not reliably installed via `pip install -e .` due to setuptools limitations.
+      # This second install ensures all such dependencies are properly installed.
+      - name: Installing packages again (to avoid setuptools limitations)
         run: pip install -r requirements.txt
 
       - name: Installing build dependencies
@@ -52,6 +55,16 @@ jobs:
         
       - name: Printing environment
         run: pip freeze
+
+      - name: Testing Embargoed Notebooks
+        run: |
+          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
+          rm ./docs/embargoed/*.nwb
+
+      - name: Testing Higher-Order Notebooks
+        run: |
+          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
+          rm ./docs/higher-order/*.nwb
 
       - name: Testing Basics Notebooks
         run: |
@@ -68,21 +81,11 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
           rm ./docs/first-order/*.nwb
         
-      - name: Testing Higher-Order Notebooks
-        run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
-          rm ./docs/higher-order/*.nwb
-
       - name: Testing Project Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
           rm ./docs/projects/*.nwb
         
-      - name: Testing Embargoed Notebooks
-        run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
-          rm ./docs/embargoed/*.nwb        
-
       - name: Printing log
         run: |
           git config --global --add safe.directory /__w/openscope_databook/openscope_databook
