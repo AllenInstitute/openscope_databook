@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -ex
+
+pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
+rm ./docs/embargoed/*.nwb
+
+pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
+rm ./docs/higher-order/*.nwb
+
+pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
+rm ./docs/basics/*.nwb
+        
+pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
+rm ./docs/visualization/*.nwb
+
+pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
+rm ./docs/first-order/*.nwb
+        
+pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
+rm ./docs/projects/*.nwb
+
+jupyter-book clean ./docs
+jupyter-book build ./docs
