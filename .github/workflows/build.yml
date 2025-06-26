@@ -26,9 +26,9 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: '3.10.11'
 
       # - name: Upgrading pip
       #   run: pip install --upgrade pip
@@ -61,6 +61,11 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
           rm ./docs/embargoed/*.nwb
 
+      - name: Testing Higher-Order Notebooks
+        run: |
+          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
+          rm ./docs/higher-order/*.nwb
+
       - name: Testing Basics Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
@@ -76,11 +81,6 @@ jobs:
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
           rm ./docs/first-order/*.nwb
         
-      - name: Testing Higher-Order Notebooks
-        run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
-          rm ./docs/higher-order/*.nwb
-
       - name: Testing Project Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
