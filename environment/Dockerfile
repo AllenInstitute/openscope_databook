@@ -17,6 +17,14 @@ RUN mkdir -p /.code-server && \
     curl -fL "https://github.com/coder/code-server/releases/download/v${VERSION}/code-server-${VERSION}-linux-amd64.tar.gz" | tar -xz && \
     ln -s /.code-server/code-server-${VERSION}-linux-amd64/bin/code-server /usr/bin/code-server
 
+# Install missing system libraries required by OpenCV
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libglib2.0-0 \
+        libgl1 \
+        && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
 # copy databook setup files
 COPY requirements.txt ./requirements.txt
 COPY setup.py ./setup.py
