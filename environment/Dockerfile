@@ -8,8 +8,14 @@ ARG GIT_ASKPASS
 ARG GIT_ACCESS_TOKEN
 COPY git-askpass /
 
-COPY postInstall /
-RUN /postInstall
+# Set environment variable for version
+ENV VERSION=4.100.3
+
+# Create directory and switch to it
+RUN mkdir -p /.code-server && \
+    cd /.code-server && \
+    curl -fL "https://github.com/coder/code-server/releases/download/v${VERSION}/code-server-${VERSION}-linux-amd64.tar.gz" | tar -xz && \
+    ln -s /.code-server/code-server-${VERSION}-linux-amd64/bin/code-server /usr/bin/code-server
 
 # copy databook setup files
 COPY requirements.txt ./requirements.txt
