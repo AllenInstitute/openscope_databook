@@ -1,23 +1,41 @@
 #!/usr/bin/env bash
 set -ex
 
-pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
-rm ./docs/embargoed/*.nwb
+cp -r ../docs* ../scratch/
 
-pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
-rm ./docs/higher-order/*.nwb
+SKIP_TEST=false
+# Check if --skip_test is in the arguments
+for arg in "$@"; do
+  if [ "$arg" = "--skip_test" ]; then
+    SKIP_TEST=true
+    break
+  fi
+done
 
-pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
-rm ./docs/basics/*.nwb
-        
-pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
-rm ./docs/visualization/*.nwb
+if [ "$SKIP_TEST" != true ]; then
+    pytest --nbmake --nbmake-timeout=8000 -n=auto "../scratch/embargoed"
+    rm ../scratch/embargoed/*.nwb
 
-pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
-rm ./docs/first-order/*.nwb
-        
-pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
-rm ./docs/projects/*.nwb
+    pytest --nbmake --nbmake-timeout=8000 -n=auto "../scratch/higher-order" --ignore ../scratch/higher-order/behavioral_state.ipynb
+    rm ../scratch/higher-order/*.nwb
 
-jupyter-book clean ./docs
-jupyter-book build ./docs
+    pytest --nbmake --nbmake-timeout=100000 -n=auto "../scratch/basics"
+    rm ../scratch/basics/*.nwb
+
+    pytest --nbmake --nbmake-timeout=8000 -n=auto "../scratch/visualization"
+    rm ../scratch/visualization/*.nwb
+
+    pytest --nbmake --nbmake-timeout=8000 -n=auto "../scratch/first-order"
+    rm ../scratch/first-order/*.nwb
+
+    pytest --nbmake --nbmake-timeout=8000 -n=auto "../scratch/projects"
+    rm ../scratch/projects/*.nwb
+else
+  echo "Skipping build tests."
+fi
+
+cd .. || { echo "Failed to move up one directory"; exit 1; }
+
+jupyter-book clean scratch/
+jupyter-book build scratch/
+mv scratch/_build ./results
