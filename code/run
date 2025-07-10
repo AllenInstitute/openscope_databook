@@ -4,12 +4,13 @@ set -ex
 cp -r ./* ../scratch/
 
 SKIP_TEST=false
-# Check if --skip_test is in the arguments
 for arg in "$@"; do
-  if [ "$arg" = "--skip_test" ]; then
-    SKIP_TEST=true
-    break
-  fi
+  case "$arg" in
+    --skip_test=true|--skip_test=True|--skip_test=t|--skip_test=T)
+      SKIP_TEST=true
+      break
+      ;;
+  esac
 done
 
 if [ "$SKIP_TEST" != true ]; then
