@@ -101,9 +101,13 @@ class VersionNumber(Directive):
 
 	def run(self):
 		try:
-			latest_version = subprocess.check_output(["git", "describe", "--tags", "--abbrev=0"], encoding="utf8")
-		except:
-			raise EnvironmentError("There are no git tags from which to get the version number")
+			latest_version = subprocess.check_output(["git", "describe", "--tags", "--abbrev=0"], 
+				encoding="utf8",
+				stderr=subprocess.STDOUT  # capture stderr in the output
+			)
+		except subprocess.CalledProcessError as e:
+			# raise EnvironmentError(f"There are no git tags from which to get the version number.\n" f"error:\n{e.output}") from e
+			latest_version = 'und'
 
 		if self.arguments:
 			paragraph_node = nodes.paragraph()
