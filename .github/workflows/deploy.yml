@@ -19,6 +19,9 @@ jobs:
           sudo apt install python3.12
           sudo apt-get install build-essential
 
+      - name: Installing package without PEP 517
+        run: python3.12 -m pip install --no-use-pep517 -e .
+
       - name: Upgrading pip
         run: pip install --upgrade pip
         
