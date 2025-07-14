@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'higher-order/tca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Generalized Linear Models" href="glm.html" />
+    <link rel="next" title="Introduction to Generalized Linear Models using Pynapple and NeMoS" href="GLM_pynapple_nemos.html" />
     <link rel="prev" title="Using CEBRA-Time to Identify Latent Embeddings" href="cebra_time.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -226,6 +226,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -564,14 +565,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tensor-decomposition-of-spiking-activity-through-trials">
 <h1>Tensor Decomposition of Spiking Activity Through Trials<a class="headerlink" href="#tensor-decomposition-of-spiking-activity-through-trials" title="Link to this heading">#</a></h1>
-<p>In several previous notebooks, we’ve utilized the <strong>Spike Matrix</strong> for analysis. As mentioned in <a class="reference internal" href="../visualization/visualize_unit_spikes.html"><span class="std std-doc">Visualizing Unit Spikes</span></a>, the Spike Matrix is a 3D matrix (or more precisely, a tensor) with dimensions <code class="docutils literal notranslate"><span class="pre">neurons</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, and <code class="docutils literal notranslate"><span class="pre">trials</span></code>. Using the neuron spike trains and stimulus table from an NWB file, we can produce a spike matrix for a particular selection of neurons and stimulus trials. The paper <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf"><span id="id1">[<a class="reference internal" href="../bibliography.html#id17" title="Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. Neuron, 2018. URL: https://doi.org/10.1016/j.neuron.2018.05.015.">Williams <em>et al.</em>, 2018</a>]</span></a> discusses <strong>TCA</strong>, a method for decomposing such a 3D spike matrix to yield <em>components</em> which isolate a set of features from the data. Each component consists of the three vectors called <em>neuronal factors</em>, <em>temporal factors</em>, and <em>trial factors</em>. In concert, these factors show a relationship between weighted populations of cells, their activity during the trials, and activity between trials. In contrast to PCA, TCA can be used to identify trends in neuron activity within trials as well as <em>across</em> trials. We do not aim to cover all uses of TCA, but rather help build a concrete intuition on how TCA can be used and pro and cons of this approach. The repo used for this is <strong><a class="reference external" href="https://github.com/neurostatslab/tensortools/tree/9d1edd8267e404850b5a1472b8fff4eabb9f3a8e/tensortools">TensorTools</a></strong></p>
+<p>In several previous notebooks, we’ve utilized the <strong>Spike Matrix</strong> for analysis. As mentioned in <a class="reference internal" href="../visualization/visualize_unit_spikes.html"><span class="std std-doc">Visualizing Unit Spikes</span></a>, the Spike Matrix is a 3D matrix (or more precisely, a tensor) with dimensions <code class="docutils literal notranslate"><span class="pre">neurons</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, and <code class="docutils literal notranslate"><span class="pre">trials</span></code>. Using the neuron spike trains and stimulus table from an NWB file, we can produce a spike matrix for a particular selection of neurons and stimulus trials. The paper <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.03.02.974014v3.full.pdf"><span id="id1">[<a class="reference internal" href="../bibliography.html#id21" title="Alex H. Williams, Tony Hyun Kim, Forea Wang, Saurabh Vyas, Stephen I. Ryu 2, Krishna V. Shenoy, Mark Schnitzer, Tamara G. Kolda, and Surya Ganguli. Unsupervised discovery of demixed, low-dimensional neural dynamics across multiple timescales through tensor component analysis. Neuron, 2018. URL: https://doi.org/10.1016/j.neuron.2018.05.015.">Williams <em>et al.</em>, 2018</a>]</span></a> discusses <strong>TCA</strong>, a method for decomposing such a 3D spike matrix to yield <em>components</em> which isolate a set of features from the data. Each component consists of the three vectors called <em>neuronal factors</em>, <em>temporal factors</em>, and <em>trial factors</em>. In concert, these factors show a relationship between weighted populations of cells, their activity during the trials, and activity between trials. In contrast to PCA, TCA can be used to identify trends in neuron activity within trials as well as <em>across</em> trials. We do not aim to cover all uses of TCA, but rather help build a concrete intuition on how TCA can be used and pro and cons of this approach. The repo used for this is <strong><a class="reference external" href="https://github.com/neurostatslab/tensortools/tree/9d1edd8267e404850b5a1472b8fff4eabb9f3a8e/tensortools">TensorTools</a></strong></p>
 <p>In this notebook, we demonstrate the simple usage of TCA and how it can be applied to our NWB files. First, cells are selected based on brain region and other criteria, then trials are selected based on repeats of specific trial movies. After this, the spike matrix is produced, and finally TCA produces decomposed factors and plots are generated to interpret them.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -582,11 +583,11 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">tensortools</span> <span class="k">as</span> <span class="nn">tt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensortools</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -1183,7 +1184,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
     <span class="n">channel_probes</span><span class="p">[</span><span class="n">channel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">location</span>
 
 <span class="c1"># function aligns location information from electrodes table with channel id from the units table</span>
-<span class="k">def</span> <span class="nf">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">channel_probes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">peak_channel_id</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">units</span><span class="p">))</span>
@@ -2441,7 +2442,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
     <span class="n">time_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
     <span class="c1"># 3D spike matrix to be populated with spike counts</span>
     <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -2624,7 +2625,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_factors_fancy</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">subplots</span><span class="p">,</span> <span class="n">n_neurons_in_region</span><span class="p">,</span> <span class="n">stim_times</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stim_borders_thresh</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_factors_fancy</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">subplots</span><span class="p">,</span> <span class="n">n_neurons_in_region</span><span class="p">,</span> <span class="n">stim_times</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stim_borders_thresh</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
   <span class="c1"># get lines separating the neurons of the selected brain regions and their midpoints for label locations</span>
   <span class="n">region_bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">n_neurons_in_region</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_neurons_in_region</span><span class="p">))]</span> <span class="p">)</span>
   <span class="n">region_lines</span> <span class="o">=</span> <span class="n">region_bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -2699,7 +2700,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_component_spike_counts</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_component_spike_counts</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">):</span>
     <span class="n">neuron_component</span> <span class="o">=</span> <span class="n">factor</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="n">component</span><span class="p">]</span>
 
     <span class="c1"># get indices of greatest 10% neurons</span>
@@ -2808,7 +2809,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_ensemble</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">,</span> <span class="n">stim_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_ensemble</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">,</span> <span class="n">stim_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
     <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">spike_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
@@ -2821,7 +2822,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_ensembles</span><span class="p">(</span><span class="n">ensembles</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">obj_ax</span><span class="p">,</span> <span class="n">sim_ax</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compare_ensembles</span><span class="p">(</span><span class="n">ensembles</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">obj_ax</span><span class="p">,</span> <span class="n">sim_ax</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">ensemble</span> <span class="ow">in</span> <span class="n">ensembles</span><span class="p">:</span>
         <span class="n">tt</span><span class="o">.</span><span class="n">plot_objective</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">obj_ax</span><span class="p">)</span>   <span class="c1"># plot reconstruction error as a function of num components.</span>
         <span class="n">tt</span><span class="o">.</span><span class="n">plot_similarity</span><span class="p">(</span><span class="n">ensemble</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">sim_ax</span><span class="p">)</span>  <span class="c1"># plot model similarity as a function of num components.</span>
@@ -2834,7 +2835,7 @@ Certain components are evenly distributed across all trials, are non-homogenousl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_four_ensembles</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_four_ensembles</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">):</span>
     <span class="c1"># make sure ensembles share the same temporal axis for proper comparison</span>
     <span class="n">n_bins</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">window_end_time</span> <span class="o">-</span> <span class="n">window_start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)</span>
     <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -2973,11 +2974,11 @@ Certain components are evenly distributed across all trials, are non-homogenousl
       </div>
     </a>
     <a class="right-next"
-       href="glm.html"
+       href="GLM_pynapple_nemos.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Generalized Linear Models</p>
+        <p class="prev-next-title">Introduction to Generalized Linear Models using Pynapple and NeMoS</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -567,19 +568,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="replicating-openscope-credit-assignment-project-figures">
 <h1>Replicating OpenScope Credit Assignment project figures<a class="headerlink" href="#replicating-openscope-credit-assignment-project-figures" title="Link to this heading">#</a></h1>
-<p>In this notebook, we will replicate figures from the OpenScope Credit Assignment project. All of these figures were published in the dataset descriptor paper <span id="id1">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, except for the final figure which is from the analysis paper <span id="id2">[<a class="reference internal" href="../bibliography.html#id19" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. Journal of Neuroscience, 44(5):e1009232023, 2024. URL: https://doi.org/10.1523/JNEUROSCI.1009-23.2023.">Gillon <em>et al.</em>, 2024</a>]</span>. See these papers for full details on the project and dataset.</p>
+<p>In this notebook, we will replicate figures from the OpenScope Credit Assignment project. All of these figures were published in the dataset descriptor paper <span id="id1">[<a class="reference internal" href="../bibliography.html#id22" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, except for the final figure which is from the analysis paper <span id="id2">[<a class="reference internal" href="../bibliography.html#id23" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. Journal of Neuroscience, 44(5):e1009232023, 2024. URL: https://doi.org/10.1523/JNEUROSCI.1009-23.2023.">Gillon <em>et al.</em>, 2024</a>]</span>. See these papers for full details on the project and dataset.</p>
 <p>The objective of collecting and sharing this dataset was to enable users to study how different compartments of visual cortex pyramidal neurons respond when inconsistent (i.e., unexpected or pattern-violating) features are introduced into the stimuli that mice are viewing. To achieve this, we first habituated mice to stimuli with consistent features, before introducing inconsistent features while recording neuronal activity in the somata (i.e., cell bodies) or distal apical dendrites of layer 2/3 or layer 5 pyramidal neurons in primary visual cortex.</p>
 <p>Since the full analyses performed on this dataset require a larger codebase (and in some cases, longer compute time) than is convenient for a notebook, this notebook focuses on replicating a few figures from data dictionaries. These data dictionaries were generated using the full analysis pipeline, and contain all the information needed to plot the associated figures.</p>
 <p>To work with the full analysis pipeline, from NWB data files to final plots, see the <a class="reference external" href="https://github.com/colleenjg/OpenScope_CA_Analysis">OpenScope_CA_Analysis</a> GitHub repository.</p>
 <section id="summary-of-experiments">
 <h2>Summary of experiments<a class="headerlink" href="#summary-of-experiments" title="Link to this heading">#</a></h2>
 <p>In brief, for this project, mice were head-fixed on a running disc and underwent <strong>three</strong> two-photon calcium imaging sessions in primary visual cortex (VisP) while passively viewing a visual stimulus (described below). In each mouse, imaging was performed in one of four cortical planes: layer 2/3 distal apical dendrites (<strong>L2/3-D</strong>), layer 2/3 somata (<strong>L2/3-S</strong>), layer 5 distal apical dendrites (<strong>L5-D</strong>) or layer 5 somata (<strong>L5-S</strong>).</p>
-<p><strong>Figure 1</strong> from <span id="id3">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
+<p><strong>Figure 1</strong> from <span id="id3">[<a class="reference internal" href="../bibliography.html#id22" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
 <p><img alt="title" src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41597-023-02214-y/MediaObjects/41597_2023_2214_Fig1_HTML.png?as=webp" /></p>
 <p>Previous to the imaging sessions, mice had been habituated over six days to stimuli with consistent features: (1) a Gabor sequence stimulus, and (2) a visual flow stimulus.</p>
 <p>The Gabor sequence stimulus was presented for 34 minutes. Each sequence lasted 1.5 seconds and consisted of five consecutive images (A-B-C-D-G) presented for 300 ms each. Images A, B, C and D comprised 30 Gabor patches each with positions and sizes fixed within a single session, while image G was simply a grayscreen image. For each sequence, a mean orientation was randomly sampled from {0, 45, 90, 135}°. This mean orientation was used to sample the orientation of each Gabor patch for all images in the sequence.</p>
 <p>The visual flow stimulus consisted of white squares moving together at a consistent speed in one direction (17 min), and then the other (17 min) (directions: nasal-to-temporal and temporal-to-nasal).</p>
-<p><strong>Figure 3</strong> from <span id="id4">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
+<p><strong>Figure 3</strong> from <span id="id4">[<a class="reference internal" href="../bibliography.html#id22" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>.</p>
 <p><img alt="title" src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41597-023-02214-y/MediaObjects/41597_2023_2214_Fig3_HTML.png?as=webp" /></p>
 <p>As mentioned above, once the mice had been habituated to these stimuli, inconsistent stimulus features were introduced into the Gabor sequence stimulus and the visual flow stimulus during the three two-photon calcium imaging sessions which were performed on different days.</p>
 <p>For the Gabor sequence stimulus, inconsistent sequences were randomly introduced, accounting for about 7% of all sequences. In these inconsistent sequences, D images were replaced with U images. The Gabor patches in U images had their own positions and sizes, and in addition, their orientations were rotated by 90° with respect to the rest of the sequence they were in.</p>
@@ -591,30 +592,30 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils</span> <span class="kn">import</span> <span class="n">cred_assign_utils</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">cred_assign_utils</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
     <span class="o">%</span><span class="k">pip</span> install -e .
-    <span class="kn">from</span> <span class="nn">databook_utils</span> <span class="kn">import</span> <span class="n">cred_assign_utils</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">cred_assign_utils</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">patches</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">patches</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">pprint</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -627,7 +628,7 @@ document.write(`
 <p>When using a plotting package like <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, it can be convenient to adjust a set of plotting defaults ahead of time, instead of applying individual changes to each plot. When called, the function below updates the defaults for the <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> module of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, used in this notebook. Specifically, it adjusts fontsizes for labels and titles, as well as line widths, and sets the format to be used if any figures are saved.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_plt_defaults</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_plt_defaults</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    set_plt_defaults()</span>
 
@@ -721,7 +722,7 @@ document.write(`
 <p>The function below, <code class="docutils literal notranslate"><span class="pre">load_data_dict()</span></code>, loads the data dictionaries, stored as <code class="docutils literal notranslate"><span class="pre">json</span></code> files, in which analysis results were saved for plotting. The data dictionaries used in this notebook can be found two directories up, under <code class="docutils literal notranslate"><span class="pre">data/cred_assign_data</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_data_dict</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">paper</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">direc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_data_dict</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">panel</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">paper</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">direc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     
     <span class="k">if</span> <span class="n">direc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">possible_parent_direcs</span> <span class="o">=</span> <span class="p">[</span>
@@ -765,7 +766,7 @@ document.write(`
 <p>This function, <code class="docutils literal notranslate"><span class="pre">print_data_dict_contents(data_dict)</span></code>, prints out the contents of a data dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_data_dict_contents</span><span class="p">(</span><span class="n">data_dict</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_data_dict_contents</span><span class="p">(</span><span class="n">data_dict</span><span class="p">):</span>
     <span class="n">df_key</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="s2">&quot;_df&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
@@ -962,7 +963,7 @@ document.write(`
 <p>The following function, <code class="docutils literal notranslate"><span class="pre">plot_roi_masks_overlayed_with_proj(roi_mask_df)</span></code>, plots the contours of tracked ROIs for all three imaging sessions, as well as an overlay of their masks, for two example mice.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_roi_masks_overlayed_with_proj</span><span class="p">(</span><span class="n">roi_mask_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rasterize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_roi_masks_overlayed_with_proj</span><span class="p">(</span><span class="n">roi_mask_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rasterize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    plot_roi_masks_overlayed_with_proj(roi_mask_df)</span>
 
@@ -1131,7 +1132,7 @@ document.write(`
 <p>The following general function, <code class="docutils literal notranslate"><span class="pre">plot_ex_traces(ex_traces_df)</span></code>, plots example ROI responses to inconsistent Gabor sequences. It calls the function defined right below, <code class="docutils literal notranslate"><span class="pre">add_subplot_roi_traces(sub_ax,</span> <span class="pre">df_row)</span></code>, to plot traces in each individual plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_ex_traces</span><span class="p">(</span><span class="n">ex_traces_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rasterize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_ex_traces</span><span class="p">(</span><span class="n">ex_traces_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rasterize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    plot_ex_traces(ex_traces_df)</span>
 
@@ -1224,7 +1225,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_subplot_roi_traces</span><span class="p">(</span><span class="n">sub_ax</span><span class="p">,</span> <span class="n">df_row</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">13</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add_subplot_roi_traces</span><span class="p">(</span><span class="n">sub_ax</span><span class="p">,</span> <span class="n">df_row</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">13</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    add_subplot_roi_traces(sub_ax, df_row)</span>
 
@@ -1317,7 +1318,7 @@ document.write(`
 <p>The following function, <code class="docutils literal notranslate"><span class="pre">plot_run_pupil_full(sess_df)</span></code>, plots the running velocity and pupil diameter traces for an example session.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_run_pupil_full</span><span class="p">(</span><span class="n">sess_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_run_pupil_full</span><span class="p">(</span><span class="n">sess_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    plot_run_pupil_full(sess_df)</span>
 
@@ -1442,7 +1443,7 @@ document.write(`
 <p>The following general function, <code class="docutils literal notranslate"><span class="pre">plot_chosen_roi_traces(chosen_rois_df)</span></code>, plots mean fluorescence responses (ΔF/F) to consistent and inconsistent Gabor sequences for example ROIs. It calls the function defined right below, <code class="docutils literal notranslate"><span class="pre">add_USI_boxes(ax,</span> <span class="pre">chosen_rois_df,</span> <span class="pre">sorted_target_idxs)</span></code>, to label each plot with its ROI’s USI value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_chosen_roi_traces</span><span class="p">(</span><span class="n">chosen_rois_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_chosen_roi_traces</span><span class="p">(</span><span class="n">chosen_rois_df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    plot_chosen_roi_traces(chosen_rois_df) </span>
 <span class="sd">    </span>
@@ -1561,7 +1562,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_USI_boxes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">chosen_rois_df</span><span class="p">,</span> <span class="n">sorted_target_idxs</span><span class="p">):</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add_USI_boxes</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">chosen_rois_df</span><span class="p">,</span> <span class="n">sorted_target_idxs</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    add_USI_boxes(ax, chosen_rois_df, sorted_target_idxs)</span>
 
@@ -1636,7 +1637,7 @@ document.write(`
 </section>
 <section id="going-further">
 <h2>Going further<a class="headerlink" href="#going-further" title="Link to this heading">#</a></h2>
-<p>As mentioned above, these examples show how to plot a few sample figures from the dataset descriptor paper <span id="id5">[<a class="reference internal" href="../bibliography.html#id18" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, and one figure from the analysis paper <span id="id6">[<a class="reference internal" href="../bibliography.html#id19" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. Journal of Neuroscience, 44(5):e1009232023, 2024. URL: https://doi.org/10.1523/JNEUROSCI.1009-23.2023.">Gillon <em>et al.</em>, 2024</a>]</span> using presaved data dictionaries.</p>
+<p>As mentioned above, these examples show how to plot a few sample figures from the dataset descriptor paper <span id="id5">[<a class="reference internal" href="../bibliography.html#id22" title="Colleen J. Gillon, Jérôme A. Lecoq, Jason E. Pina, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Joel Zylberberg, and Blake A. Richards. Responses of pyramidal cell somata and apical dendrites in mouse visual cortex over multiple days. Scientific Data, 2023. URL: https://doi.org/10.1038/s41597-023-02214-y.">Gillon <em>et al.</em>, 2023</a>]</span>, and one figure from the analysis paper <span id="id6">[<a class="reference internal" href="../bibliography.html#id23" title="Colleen J. Gillon, Jason E. Pina, Jérôme A. Lecoq, Ruweida Ahmed, Yazan N. Billeh, Shiella Caldejon, Peter Groblewski, Timothy M. Henley, India Kato, Eric Lee, Jennifer Luviano, Kyla Mace, Chelsea Nayan, Thuyanh V. Nguyen, Kat North, Jed Perkins, Sam Seid, Matthew T. Valley, Ali Williford, Yoshua Bengio, Timothy P. Lillicrap, Blake A. Richards, and Joel Zylberberg. Responses to pattern-violating visual stimuli evolve differently over days in somata and distal apical dendrites. Journal of Neuroscience, 44(5):e1009232023, 2024. URL: https://doi.org/10.1523/JNEUROSCI.1009-23.2023.">Gillon <em>et al.</em>, 2024</a>]</span> using presaved data dictionaries.</p>
 <p>To understand the full scope of the dataset and analyses, please consult these papers. To work with the full analysis pipeline for this dataset, from NWB data files to final plots, see the <a class="reference external" href="https://github.com/colleenjg/OpenScope_CA_Analysis">OpenScope_CA_Analysis</a> GitHub repository.</p>
 </section>
 </section>

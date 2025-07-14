@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -567,11 +568,11 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -582,13 +583,13 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 </pre></div>
 </div>
 </div>
@@ -608,7 +609,7 @@ document.write(`
 <span class="c1"># the subject ids should be the same, but the session ids should be different</span>
 <span class="n">input_dandi_filepaths</span> <span class="o">=</span> <span class="p">[</span><span class="n">dandi_filepath_1</span><span class="p">,</span> <span class="n">dandi_filepath_2</span><span class="p">]</span>
 
-<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DANDI_API_KEY&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -621,9 +622,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A newer version (0.63.1) of dandi/dandi-cli is available. You are using 0.61.2
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
 Opening file
 File already exists
@@ -650,13 +648,13 @@ Opening file
 </section>
 <section id="generating-cell-matching-input-file">
 <h2>Generating Cell-Matching Input File<a class="headerlink" href="#generating-cell-matching-input-file" title="Link to this heading">#</a></h2>
-<p>The Allen Institute has created a robust pipeline for conducting cell matching between 2 or more sessions called <a class="reference external" href="https://github.com/AllenInstitute/ophys_nway_matching"><strong>Nway Matching</strong></a>. For those who are inquisitive, the general algorithm is described in page 31 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id6" title="Marina Garrett, Peter Groblewski, Alex Piet, Doug Ollerenshaw, Farzaneh Najafi, and Iryna Yavorska. Stimulus novelty uncovers coding diversity in visual cortical circuits. BioRxiv, 2023. URL: https://doi.org/10.1101/2023.02.14.528085.">Garrett <em>et al.</em>, 2023</a>]</span>. In summary, the input images are aligned together with a euclidean image registration technique. Then the given input ROI masks are used with the <a class="reference external" href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom Algorithm</a> as a bipartite graph matching algorithm. This identifies which ROIs represent the same cells with high probability.</p>
+<p>The Allen Institute has created a robust pipeline for conducting cell matching between 2 or more sessions called <a class="reference external" href="https://github.com/AllenInstitute/ophys_nway_matching"><strong>Nway Matching</strong></a>. For those who are inquisitive, the general algorithm is described in page 31 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id10" title="Marina Garrett, Peter Groblewski, Alex Piet, Doug Ollerenshaw, Farzaneh Najafi, and Iryna Yavorska. Stimulus novelty uncovers coding diversity in visual cortical circuits. BioRxiv, 2023. URL: https://doi.org/10.1101/2023.02.14.528085.">Garrett <em>et al.</em>, 2023</a>]</span>. In summary, the input images are aligned together with a euclidean image registration technique. Then the given input ROI masks are used with the <a class="reference external" href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom Algorithm</a> as a bipartite graph matching algorithm. This identifies which ROIs represent the same cells with high probability.</p>
 <p>The caveat to using this pipeline is that it requires input in a specific JSON format rather than an NWB File. The following functions are used to generate a file, <code class="docutils literal notranslate"><span class="pre">input.json</span></code>, which can be used to obtain important output. The input json contains an entry for each input experiment. 2 or more experiments can be used. The first experiment is called <em>fixed</em> and the other ones are <em>moving</em>. For each experiment, a unique experiment ID, a path to the experiment projection image, and a list of objects for each ROI are required.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### for each ROI in an ROI table, create a JSON object containing its information, return a list of JSON objects</span>
 
-<span class="k">def</span> <span class="nf">make_roi_entries</span><span class="p">(</span><span class="n">roi_table</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_roi_entries</span><span class="p">(</span><span class="n">roi_table</span><span class="p">):</span>
     <span class="n">roi_entries</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">roi_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roi_table</span><span class="p">)):</span>
         <span class="n">roi_entry</span> <span class="o">=</span> <span class="p">{</span>
@@ -680,8 +678,17 @@ Opening file
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### take in an image array and return it converted to uint16</span>
 
-<span class="k">def</span> <span class="nf">normalize_to_16b</span><span class="p">(</span><span class="n">image_array</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_to_16b</span><span class="p">(</span><span class="n">image_array</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">image_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_to_8b</span><span class="p">(</span><span class="n">image_array</span><span class="p">):</span>
+    <span class="c1"># Normalize the image to 0–255 and convert to uint8</span>
+    <span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image_array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">image_array</span> <span class="o">-=</span> <span class="n">image_array</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">image_array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">image_array</span> <span class="o">/=</span> <span class="n">image_array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">image_array</span> <span class="o">*=</span> <span class="mi">255</span>
+    <span class="k">return</span> <span class="n">image_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -690,12 +697,14 @@ Opening file
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### convert an nwb object into a &#39;experiment&#39; JSON object with the required format</span>
 
-<span class="k">def</span> <span class="nf">nwb_to_experiment_json</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">nwb_to_experiment_json</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
     <span class="c1"># save image here</span>
     <span class="n">grayscale_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;images&quot;</span><span class="p">][</span><span class="s2">&quot;average_image&quot;</span><span class="p">])</span>
-    <span class="n">image_array</span> <span class="o">=</span> <span class="n">normalize_to_16b</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grayscale_image</span><span class="p">))</span>
-    <span class="n">image_file</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image_array</span><span class="p">)</span>
-    <span class="n">image_file</span> <span class="o">=</span> <span class="n">image_file</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+    <span class="n">image_array</span> <span class="o">=</span> <span class="n">normalize_to_8b</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grayscale_image</span><span class="p">))</span>
+    <span class="n">image_uint8</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image_array</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+    <span class="c1"># Save using &#39;L&#39; mode directly to avoid conversion errors</span>
+    <span class="n">image_file</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image_uint8</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
     <span class="n">image_file</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./</span><span class="si">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">_image.png&quot;</span><span class="p">)</span>
 
     <span class="n">roi_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;image_segmentation&quot;</span><span class="p">][</span><span class="s2">&quot;cell_specimen_table&quot;</span><span class="p">]</span>
@@ -737,42 +746,10 @@ Opening file
 <p><strong>Nway Matching</strong> can be run as a command with the following parameters. From there, several output files are generated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3<span class="w"> </span>-m<span class="w"> </span>nway.nway_matching<span class="w"> </span>--input_json<span class="w"> </span>input.json<span class="w"> </span>--output_json<span class="w"> </span><span class="s2">&quot;./output.json&quot;</span><span class="w"> </span>--output_dir<span class="w"> </span>matching_output
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:many=True not supported from argparse
-INFO:NwayMatching:NWAY_COMMIT_SHA None
-INFO:NwayMatching:Nway matching version 0.6.0
-WARNING:root:many=True not supported from argparse
-WARNING:root:many=True not supported from argparse
-INFO:PairwiseMatching:Matching 1193675753 to 1194754135
-INFO:PairwiseMatching:Matching 1193675753 to 1194754135: best registration was [&#39;Crop&#39;, &#39;CLAHE&#39;, &#39;PhaseCorrelate&#39;]
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\nway\utils.py:48: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
-  df = df.sort_index(0)
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\nway\utils.py:49: FutureWarning: In a future version of pandas all arguments of DataFrame.sort_index will be keyword-only.
-  df = df.sort_index(1)
-INFO:NwayMatching:registration success(1) or failure (0):
-   0  1
-0  1  1
-1  1  1
-id map{
-  &quot;0&quot;: 1193675753,
-  &quot;1&quot;: 1194754135
-}
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\nway\nway_matching.py:208: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  matching_frame = matching_frame.append(pairframe)
-INFO:NwayMatching:Nway matching is done!
-INFO:NwayMatching:Creating match summary plots
-WARNING:root:setting Dict fields not supported from argparse
-c:\Users\carter.peene\AppData\Local\Programs\Python\Python310\lib\site-packages\argschema\utils.py:346: FutureWarning: &#39;--nway_output.nway_matches&#39; is using old-style command-line syntax with each element as a separate argument. This will not be supported in argschema after 2.0. See http://argschema.readthedocs.io/en/master/user/intro.html#command-line-specification for details.
-  warnings.warn(warn_msg, FutureWarning)
-WARNING:root:many=True not supported from argparse
-INFO:NwayMatching:wrote matching_output\nway_match_fraction_plot_2024_11_14_13_37_50.png
-INFO:NwayMatching:wrote matching_output\nway_warp_overlay_plot_2024_11_14_13_37_50.png
-INFO:NwayMatching:wrote matching_output\nway_warp_summary_plot_2024_11_14_13_37_50.png
-INFO:NwayMatching:wrote ./output.json
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="o">!</span>python<span class="w"> </span>-m<span class="w"> </span>nway.nway_matching<span class="w"> </span>--input_json<span class="w"> </span>input.json<span class="w"> </span>--output_json<span class="w"> </span><span class="s2">&quot;./output.json&quot;</span><span class="w"> </span>--output_dir<span class="w"> </span>matching_output
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;output.json&quot;</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;output.json was not created!</span><span class="se">\n</span><span class="s2">Command output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -815,10 +792,10 @@ INFO:NwayMatching:wrote ./output.json
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21dff47bfa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1b146645640&gt;
 </pre></div>
 </div>
-<img alt="../_images/e6592d078b8d6b12d49437e52e737d2dad606111037a11c5dd4e8948d002c4b2.png" src="../_images/e6592d078b8d6b12d49437e52e737d2dad606111037a11c5dd4e8948d002c4b2.png" />
+<img alt="../_images/8c91de7b0a84704cb2df3b0287440428dab147b436dd1e70d6d4af04e228b877.png" src="../_images/8c91de7b0a84704cb2df3b0287440428dab147b436dd1e70d6d4af04e228b877.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -831,7 +808,7 @@ INFO:NwayMatching:wrote ./output.json
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x21dff4fe680&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1b146632250&gt;
 </pre></div>
 </div>
 <img alt="../_images/13852a5cdb6fb6f6b4f2d967fa88596147bec8c4f93257a4a2fcaa97ea6c9f58.png" src="../_images/13852a5cdb6fb6f6b4f2d967fa88596147bec8c4f93257a4a2fcaa97ea6c9f58.png" />
@@ -844,7 +821,7 @@ INFO:NwayMatching:wrote ./output.json
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># takes an ROI mask, colors it, adds it onto image</span>
-<span class="k">def</span> <span class="nf">add_color_mask</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_color_mask</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
     <span class="n">black</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">color_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[(</span><span class="n">color</span> <span class="k">if</span> <span class="n">boolean</span> <span class="k">else</span> <span class="n">black</span><span class="p">)</span> <span class="k">for</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">mask</span><span class="p">])</span>
     <span class="n">merged_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">color_mask</span><span class="o">!=</span><span class="n">black</span><span class="p">,</span> <span class="n">color_mask</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
@@ -856,7 +833,7 @@ INFO:NwayMatching:wrote ./output.json
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generates a &quot;random&quot; color based on n</span>
-<span class="k">def</span> <span class="nf">gen_color</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gen_color</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="mi">270</span> <span class="o">%</span> <span class="mi">255</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mi">610</span> <span class="o">%</span> <span class="mi">255</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mi">890</span> <span class="o">%</span> <span class="mi">255</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -865,7 +842,7 @@ INFO:NwayMatching:wrote ./output.json
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finds the table and image index that an ROI id belongs to</span>
-<span class="k">def</span> <span class="nf">get_image_num</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_image_num</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nwbs</span><span class="p">)):</span>
         <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">roi_tables</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">i</span>

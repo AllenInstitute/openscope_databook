@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -600,11 +601,11 @@ these barcodes for visually responsive neurons throughout the brain of an awake 
 <p>This experiment used the OpenScope Neuropixels passive viewing protocol, and displayed visual stimuli modulated in time by a short, repeated white noise sequence. The visual stimulus was either a spatially uniform field whose luminance was modulated in time (Full Field Flicker), or a standing sinusoidal grating whose contrast was modulated in time (Static Gratings). The best evidence for temporal barcodes has come from early visual areas (retina and LGN). Therefore, to obtain large populations of neurons in subcortical areas, roughly half of the mice were recorded in a novel electrode configuration. To our surprise, a majority of neurons in visual cortical areas responded to full field flicker with clear temporal barcodes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -615,14 +616,14 @@ these barcodes for visually responsive neurons throughout the brain of an awake 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>            <span class="c1"># various numerical utilities</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">floor</span><span class="p">,</span> <span class="n">ceil</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>            <span class="c1"># various numerical utilities</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">poisson</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">floor</span><span class="p">,</span> <span class="n">ceil</span>
 </pre></div>
 </div>
 </div>
@@ -987,7 +988,7 @@ Opening file
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper function to find the brain location of each unit</span>
-<span class="k">def</span> <span class="nf">getUnitsLocation</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">getUnitsLocation</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">   </span>
 <span class="sd">    INPUTS:</span>
@@ -1309,7 +1310,7 @@ Note: image_name references control_description in stimulus/templates</span></di
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  makeAlignedEvents:  a helper function that extracts and aligns spike times for one unit</span>
-<span class="k">def</span> <span class="nf">makeAlignedEvents</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span><span class="n">stim_times</span><span class="p">,</span><span class="n">duration</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">makeAlignedEvents</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span><span class="n">stim_times</span><span class="p">,</span><span class="n">duration</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    INPUTS:</span>
 <span class="sd">    spike_times     array of spike times of a single unit, in seconds</span>
@@ -1395,7 +1396,7 @@ One way to extract those times is to find the peaks in the peri-stimulus time hi
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute_psth: helper function to compute PSTH by assigning spike times to time bins</span>
-<span class="k">def</span> <span class="nf">compute_psth</span><span class="p">(</span><span class="n">spike_trains</span><span class="p">,</span> <span class="n">total_duration</span><span class="p">,</span> <span class="n">bin_duration</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_psth</span><span class="p">(</span><span class="n">spike_trains</span><span class="p">,</span> <span class="n">total_duration</span><span class="p">,</span> <span class="n">bin_duration</span><span class="p">):</span>
     <span class="n">n_bins</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_duration</span> <span class="o">/</span> <span class="n">bin_duration</span><span class="p">)</span>
     <span class="n">psth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_bins</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">train</span> <span class="ow">in</span> <span class="n">spike_trains</span><span class="p">:</span>
@@ -1444,7 +1445,7 @@ same firing rate as the neuron.</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># getSpikeCountThreshold: helper function to determine the number of spikes in psth bin expected by chance</span>
-<span class="k">def</span> <span class="nf">getSpikeCountThreshold</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">doplot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">getSpikeCountThreshold</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">doplot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns criterion spike-count thresholds (high and low) for detecting</span>
 <span class="sd">    significantly above- or below-chance spike counts in any one time bin</span>
@@ -1535,7 +1536,7 @@ same firing rate as the neuron.</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find_bars: helper function to return the bar code of a spike raster</span>
-<span class="k">def</span> <span class="nf">find_bars</span><span class="p">(</span><span class="n">spike_train</span><span class="p">,</span> <span class="n">trial_duration</span><span class="p">,</span> <span class="n">bin_duration</span><span class="p">,</span><span class="n">min_spikes</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_bars</span><span class="p">(</span><span class="n">spike_train</span><span class="p">,</span> <span class="n">trial_duration</span><span class="p">,</span> <span class="n">bin_duration</span><span class="p">,</span><span class="n">min_spikes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Identifies the times of PSTH peaks as bars of a barcode by a simple algorithm:</span>
 <span class="sd">    All consecutive time bins above set threshold are considered to be part of the same bar, </span>
@@ -1579,7 +1580,7 @@ same firing rate as the neuron.</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotPSTHbarcode: helper function to plot PSTH and illustrate how bar times are derived</span>
-<span class="k">def</span> <span class="nf">plotPSTHbarcode</span><span class="p">(</span><span class="n">psth</span><span class="p">,</span> <span class="n">bin_midpoints</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;PSTH and Barcode&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plotPSTHbarcode</span><span class="p">(</span><span class="n">psth</span><span class="p">,</span> <span class="n">bin_midpoints</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;PSTH and Barcode&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Visualization of barcode extraction from psth</span>
 <span class="sd">    Plots the psth, threshold, and identified peak midpoints</span>
@@ -1680,7 +1681,7 @@ There are three legal operations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># spkd:  helper function implementing a simple algorithm to compute the minimum edit distance  </span>
-<span class="k">def</span> <span class="nf">spkd</span><span class="p">(</span><span class="n">tli</span><span class="p">,</span> <span class="n">tlj</span><span class="p">,</span> <span class="n">cost</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">spkd</span><span class="p">(</span><span class="n">tli</span><span class="p">,</span> <span class="n">tlj</span><span class="p">,</span> <span class="n">cost</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Determines the minimum number of operations required to convert one bar code into the other </span>
 <span class="sd">    where the legal steps are to add a bar, delete a bar, or move a bar over by cost seconds</span>
@@ -1849,7 +1850,7 @@ permuted bar code =  [0.493 3.5   5.5  ]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># permute_barcode: helper function to permute barcodes</span>
-<span class="k">def</span> <span class="nf">permute_barcode</span><span class="p">(</span><span class="n">barcode</span><span class="p">,</span><span class="n">trial_duration</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">permute_barcode</span><span class="p">(</span><span class="n">barcode</span><span class="p">,</span><span class="n">trial_duration</span><span class="p">):</span>
     <span class="n">random_offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">trial_duration</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">barcode</span><span class="p">)):</span>
         <span class="n">barcode</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">random_offset</span>
@@ -1940,7 +1941,7 @@ The distance from permuted neuron1 to neuron2 was  126.6
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
 <span class="c1"># returns list of epochs, where an epoch is of the form (stimulus name, stimulus block, start time, stop time)</span>
-<span class="k">def</span> <span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
     
     <span class="c1"># specify a current epoch stop and start time</span>
     <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -2104,7 +2105,7 @@ for a very limited time, and therefore many RF maps are noisy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper function to extract one unit&#39;s firing rate as a function of gabor location</span>
-<span class="k">def</span> <span class="nf">get_rf</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span><span class="n">rf_stim_table</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_rf</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span><span class="n">rf_stim_table</span><span class="p">):</span>
     <span class="c1"># INPUT</span>
     <span class="c1">#  spike_times: the spike times of one unit</span>
     <span class="c1">#</span>
@@ -2148,7 +2149,7 @@ for a very limited time, and therefore many RF maps are noisy.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### helper function to display the receptive fields for each unit in a 2D plot</span>
 
-<span class="k">def</span> <span class="nf">display_rfs</span><span class="p">(</span><span class="n">unit_rfs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_rfs</span><span class="p">(</span><span class="n">unit_rfs</span><span class="p">):</span>
     <span class="n">n_cols</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">n_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unit_rfs</span><span class="p">)</span><span class="o">//</span><span class="n">n_cols</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_rows</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">)</span>

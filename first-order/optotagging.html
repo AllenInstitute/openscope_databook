@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -572,11 +573,11 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -587,14 +588,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isclose</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">isclose</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">mannwhitneyu</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">median_abs_deviation</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kstest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">mannwhitneyu</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">median_abs_deviation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kstest</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -1149,7 +1150,7 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_stim_times</span><span class="p">(</span><span class="n">stim_table</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_stim_times</span><span class="p">(</span><span class="n">stim_table</span><span class="p">):</span>
     <span class="n">stim_select</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">isclose</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">duration</span><span class="p">),</span> <span class="n">stim_duration</span><span class="p">)</span>
     <span class="c1"># stim_select = lambda row: True</span>
     <span class="n">stim_times</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">start_time</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">stim_table</span> <span class="k">if</span> <span class="n">stim_select</span><span class="p">(</span><span class="n">row</span><span class="p">)]</span>
@@ -1177,7 +1178,7 @@ Selected stim times from SST file: 75
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_times</span><span class="p">(</span><span class="n">units_table</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_spike_times</span><span class="p">(</span><span class="n">units_table</span><span class="p">):</span>
     <span class="c1"># unit_select = lambda row: float(row.firing_rate) &gt; 4</span>
     <span class="c1"># unit_select = lambda row: True</span>
     <span class="c1"># units_spike_times = [row.spike_times.iloc[0] for row in units_table if unit_select(row)]</span>
@@ -1226,7 +1227,7 @@ Selected stim times from SST file: 75
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
     <span class="n">time_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
     <span class="c1"># 3D spike matrix to be populated with spike counts</span>
     <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -1256,7 +1257,7 @@ Selected stim times from SST file: 75
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_counts</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">spike_times</span><span class="p">,</span> <span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_spike_counts</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">spike_times</span><span class="p">,</span> <span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_duration</span><span class="p">,</span> <span class="n">time_resolution</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">):</span>
     <span class="c1"># time bins used</span>
     <span class="n">n_bins</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">window_end_time</span> <span class="o">-</span> <span class="n">window_start_time</span><span class="p">)</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)</span>
     <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1306,7 +1307,7 @@ Selected stim times from SST file: 75
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### method to show plot of spike counts of units over time</span>
 
-<span class="k">def</span> <span class="nf">show_counts</span><span class="p">(</span><span class="n">counts_array</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">figax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">c_label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_counts</span><span class="p">(</span><span class="n">counts_array</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">figax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stim_bounds</span><span class="o">=</span><span class="p">[],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">c_label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">figax</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># change fig size for different plot dimensions</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1412,7 +1413,7 @@ Selected stim times from SST file: 75
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># utility function used by first_spike_latencies_and_jitters and ks_salt</span>
 <span class="c1"># returns an array of length &#39;start_times&#39; with the first spike time after each `start_time` (and the censor period)</span>
-<span class="k">def</span> <span class="nf">get_first_spikes_after_onset</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_first_spikes_after_onset</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">):</span>
     <span class="n">response_start_times</span> <span class="o">=</span> <span class="n">start_times</span><span class="p">[</span><span class="n">start_times</span> <span class="o">&lt;</span> <span class="n">spike_times</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
 
     <span class="n">first_spike_idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">response_start_times</span><span class="p">)</span>
@@ -1422,7 +1423,7 @@ Selected stim times from SST file: 75
     <span class="k">return</span> <span class="n">first_spike_times</span>
 
 
-<span class="k">def</span> <span class="nf">first_spike_latencies_and_jitters</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">first_spike_latencies_and_jitters</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">):</span>
     <span class="n">first_spike_times</span> <span class="o">=</span> <span class="n">get_first_spikes_after_onset</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">)</span>
     
     <span class="n">first_spike_jitter</span> <span class="o">=</span> <span class="n">median_abs_deviation</span><span class="p">(</span><span class="n">first_spike_times</span><span class="p">)</span>
@@ -1431,7 +1432,7 @@ Selected stim times from SST file: 75
     <span class="k">return</span> <span class="n">first_spike_jitter</span><span class="p">,</span> <span class="n">first_spike_latency</span>
 
 
-<span class="k">def</span> <span class="nf">ks_salt</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ks_salt</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">):</span>
     <span class="n">first_spikes</span> <span class="o">=</span> <span class="n">get_first_spikes_after_onset</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">start_times</span><span class="p">)</span>
  
     <span class="c1"># get first spikes at some time sufficiently prior the stimulus times so as to be a baseline period</span>
@@ -1448,7 +1449,7 @@ Selected stim times from SST file: 75
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fraction_time_responsive</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fraction_time_responsive</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">):</span>
     <span class="n">bl_mean_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bl_trial_counts</span><span class="p">)</span>
     
     <span class="n">bins_pvals</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1464,7 +1465,7 @@ Selected stim times from SST file: 75
     <span class="k">return</span> <span class="n">fraction_sig_bins</span>
 
 
-<span class="k">def</span> <span class="nf">fraction_trials_responsive</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fraction_trials_responsive</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">bl_trial_counts</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
     <span class="n">bl_mean_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bl_trial_counts</span><span class="p">)</span>
     
     <span class="n">trials_pvals</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1484,7 +1485,7 @@ Selected stim times from SST file: 75
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_opto_metrics</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">spike_counts</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">,</span> <span class="n">bl_start_idx</span><span class="p">,</span> <span class="n">bl_end_idx</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_opto_metrics</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">spike_counts</span><span class="p">,</span> <span class="n">spike_matrix</span><span class="p">,</span> <span class="n">censor_period</span><span class="p">,</span> <span class="n">stim_start_idx</span><span class="p">,</span> <span class="n">stim_end_idx</span><span class="p">,</span> <span class="n">bl_start_idx</span><span class="p">,</span> <span class="n">bl_end_idx</span><span class="p">):</span>
     <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">)</span>
     <span class="n">n_trials</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">)</span>
     <span class="n">start_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stim_times</span><span class="p">)</span> <span class="o">+</span> <span class="n">censor_period</span>

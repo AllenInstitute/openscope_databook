@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -558,17 +559,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="downloading-an-nwb-file">
 <h1>Downloading an NWB File<a class="headerlink" href="#downloading-an-nwb-file" title="Link to this heading">#</a></h1>
-<p>In order to analyze some data, you’ll need to have some data. The <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a> is used to store <a class="reference external" href="https://www.nwb.org/">NWB</a> files in datasets called <strong>dandisets</strong> <span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="Oliver Rübel, Andrew Tritt, Ryan Ly, Benjamin K Dichter, Satrajit Ghosh, Lawrence Niu, Pamela Baker, Ivan Soltesz, Lydia Ng, Karel Svoboda, Loren Frank, and Kristofer E Bouchard. The neurodata without borders ecosystem for neurophysiological data science. eLife, 11():e78362, 2022. URL: https://doi.org/10.7554/eLife.78362.">Rübel <em>et al.</em>, 2022</a>]</span>. Typically an NWB file contains the data for just one experimental session, while a dandiset contains all the related data files yielded from a project. This notebook allows you to download from public dandisets or private dandisets (called <strong>embargoed</strong> dandisets) via the <a class="reference external" href="https://dandi.readthedocs.io/en/latest/modref/index.html">DANDI Python API</a>. To download embargoed dandisets from DANDI, you will need to make an account on the DANDI Archive and must be given access by the owner of the dandiset.</p>
+<p>In order to analyze some data, you’ll need to have some data. The <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a> is used to store <a class="reference external" href="https://www.nwb.org/">NWB</a> files in datasets called <strong>dandisets</strong> <span id="id1">[<a class="reference internal" href="../bibliography.html#id6" title="Oliver Rübel, Andrew Tritt, Ryan Ly, Benjamin K Dichter, Satrajit Ghosh, Lawrence Niu, Pamela Baker, Ivan Soltesz, Lydia Ng, Karel Svoboda, Loren Frank, and Kristofer E Bouchard. The neurodata without borders ecosystem for neurophysiological data science. eLife, 11():e78362, 2022. URL: https://doi.org/10.7554/eLife.78362.">Rübel <em>et al.</em>, 2022</a>]</span>. Typically an NWB file contains the data for just one experimental session, while a dandiset contains all the related data files yielded from a project. This notebook allows you to download from public dandisets or private dandisets (called <strong>embargoed</strong> dandisets) via the <a class="reference external" href="https://dandi.readthedocs.io/en/latest/modref/index.html">DANDI Python API</a>. To download embargoed dandisets from DANDI, you will need to make an account on the DANDI Archive and must be given access by the owner of the dandiset.</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_stream_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_stream_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -579,7 +580,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dandi</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandiapi</span>
 </pre></div>
 </div>
 </div>
@@ -623,14 +624,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define functions to download files with a progress bar</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">MAX_CHUNK_SIZE</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DANDI_MAX_CHUNK_SIZE&quot;</span><span class="p">,</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">8</span><span class="p">))</span>  
 
-<span class="k">def</span> <span class="nf">get_download_file_iter_with_steps</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_download_file_iter_with_steps</span><span class="p">(</span>
     <span class="n">file</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">MAX_CHUNK_SIZE</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
 
@@ -642,7 +643,7 @@ document.write(`
     <span class="n">steps_dict</span><span class="p">[</span><span class="s2">&quot;total_steps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">total_size</span> <span class="o">//</span> <span class="n">chunk_size</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading </span><span class="si">{</span><span class="n">total_size</span><span class="si">}</span><span class="s2"> bytes in </span><span class="si">{</span><span class="n">steps_dict</span><span class="p">[</span><span class="s1">&#39;total_steps&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">downloader</span><span class="p">(</span><span class="n">start_at</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">downloader</span><span class="p">(</span><span class="n">start_at</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]:</span>
         <span class="n">headers</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">start_at</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Range&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;bytes=</span><span class="si">{</span><span class="n">start_at</span><span class="si">}</span><span class="s2">-&quot;</span><span class="p">}</span>
@@ -654,7 +655,7 @@ document.write(`
 
     <span class="k">return</span> <span class="n">downloader</span><span class="p">,</span> <span class="n">steps_dict</span>
 
-<span class="k">def</span> <span class="nf">download_with_progressbar</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">download_with_progressbar</span><span class="p">(</span>
     <span class="n">file</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">chunk_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">MAX_CHUNK_SIZE</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">downloader</span><span class="p">,</span> <span class="n">steps_dict</span> <span class="o">=</span> <span class="n">get_download_file_iter_with_steps</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>

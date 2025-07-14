@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -566,11 +567,11 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -581,9 +582,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -1266,12 +1267,12 @@ Opening file
 <span class="n">channel_probes</span> <span class="o">=</span> <span class="p">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]:</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">))}</span>
 
 <span class="c1"># function retrieves peak channel ID for given unit index from &quot;units&quot; dataset and looks up corresponding probe from dictionary</span>
-<span class="k">def</span> <span class="nf">get_unit_location</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_unit_location</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
     <span class="n">peak_channel_id</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">channel_locations</span><span class="p">[</span><span class="n">peak_channel_id</span><span class="p">]</span>
 
 <span class="c1"># function retrieves peak channel ID from &quot;units&quot; dataset, looks up corresponding group name, returns probe associated with peak channel</span>
-<span class="k">def</span> <span class="nf">get_unit_probe</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_unit_probe</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
     <span class="n">peak_channel_id</span> <span class="o">=</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;peak_channel_id&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">channel_probes</span><span class="p">[</span><span class="n">peak_channel_id</span><span class="p">]</span>
 
@@ -1291,7 +1292,7 @@ Opening file
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### select units to view the receptive fields of, change the conditional function below to select different units</span>
 
-<span class="k">def</span> <span class="nf">select_condition</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_condition</span><span class="p">(</span><span class="n">unit_idx</span><span class="p">):</span>
     <span class="c1"># the values below are recommended thresholds for these quality metrics</span>
     <span class="k">return</span> <span class="n">units</span><span class="p">[</span><span class="s2">&quot;snr&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> \
             <span class="n">units</span><span class="p">[</span><span class="s2">&quot;isi_violations&quot;</span><span class="p">][</span><span class="n">unit_idx</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">and</span> \
@@ -1347,7 +1348,7 @@ deg
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### get receptive field of a unit using its spike times and the stim table</span>
 
-<span class="k">def</span> <span class="nf">get_rf</span><span class="p">(</span><span class="n">spike_times</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_rf</span><span class="p">(</span><span class="n">spike_times</span><span class="p">):</span>
     <span class="c1"># creates 2D array that stores response spike counts for each coordinate of the receptive field</span>
     <span class="n">unit_rf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">xs</span><span class="o">.</span><span class="n">size</span><span class="p">])</span>
     <span class="c1"># for every x and y coordinate in the field</span>

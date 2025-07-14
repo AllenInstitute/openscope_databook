@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -76,7 +76,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Behavioral State from Trial Outcomes" href="behavioral_state.html" />
-    <link rel="prev" title="Tensor Decomposition of Spiking Activity Through Trials" href="tca.html" />
+    <link rel="prev" title="Introduction to Generalized Linear Models using Pynapple and NeMoS" href="GLM_pynapple_nemos.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -228,6 +228,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -586,7 +587,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -597,18 +598,18 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
 
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">ceil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">interpolate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">reduce</span>
 
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -661,7 +662,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 <p>This code was adapted from <a class="reference external" href="https://github.com/pillowlab/GLMspiketraintutorial/tree/master">this code</a> from the Pillow Lab, with the regularization code from <a class="reference external" href="https://compneuro.neuromatch.io/tutorials/W1D3_GeneralizedLinearModels/student/W1D3_Tutorial1.html">this tutorial</a> from Neuromatch Academy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neg_log_lik_lnp</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Cinv</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">neg_log_lik_lnp</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Cinv</span><span class="p">):</span>
   <span class="c1"># Compute the Poisson log likelihood</span>
   <span class="n">rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">theta</span><span class="p">)</span>
   <span class="n">log_lik</span> <span class="o">=</span> <span class="n">y</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span> <span class="o">-</span> <span class="n">rate</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -674,7 +675,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_lnp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fit_lnp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
   <span class="n">filt_len</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
   <span class="n">Imat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">filt_len</span><span class="p">)</span> <span class="c1"># identity matrix of size of filter + const</span>
   <span class="n">Imat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -694,11 +695,11 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">constant</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">constant</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">weights</span> <span class="o">+</span> <span class="n">constant</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">y</span>
 
-<span class="k">def</span> <span class="nf">predict_spikes</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">constant</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">predict_spikes</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">constant</span><span class="p">):</span>
     <span class="n">rate</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">constant</span><span class="p">)</span>
     <span class="n">spks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">rate</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">spks</span>
@@ -714,7 +715,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 <p><code class="docutils literal notranslate"><span class="pre">make_spikes</span></code> utilizes the same mathematics as the GLM’s prediction and generates spikes that have a direct relationship with the brightness of the synthetic stimulus. It simply multiplies the stimulus by a given coefficient <code class="docutils literal notranslate"><span class="pre">coeff</span></code>, and adds a given constant, <code class="docutils literal notranslate"><span class="pre">baseline_rate</span></code>. It runs the resulting rate through exponentiation and then generates Poission distributed spike counts with this as the spiking probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_flashes</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_flashes</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">):</span>
     <span class="n">flashes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">)</span>
     <span class="n">time_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">flashes</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">time_axis</span><span class="p">,</span> <span class="n">flashes</span>
@@ -743,7 +744,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_spikes</span><span class="p">(</span><span class="n">stim</span><span class="p">,</span> <span class="n">baseline_rate</span><span class="p">,</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">return_exp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_spikes</span><span class="p">(</span><span class="n">stim</span><span class="p">,</span> <span class="n">baseline_rate</span><span class="p">,</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">return_exp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">weighted_stim</span> <span class="o">=</span> <span class="p">(</span><span class="n">stim</span><span class="o">*</span><span class="n">coeff</span><span class="p">)</span> <span class="o">+</span> <span class="n">baseline_rate</span>
     <span class="n">exp_stim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">weighted_stim</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">exp_stim</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">exp_stim</span><span class="p">))</span>
@@ -781,7 +782,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 <p>The function <code class="docutils literal notranslate"><span class="pre">build_design_matrix</span></code> returns such a design_matrix from a given <code class="docutils literal notranslate"><span class="pre">stim</span></code> array and a filter length <code class="docutils literal notranslate"><span class="pre">d</span></code>. It can be seen below that the bins of the second dimension of the design matrix represent the stimulus values preceding the stimulus event, so the time axis is time prior the ‘current time’. The column of ones to product the GLM constant does not have a temporal relationship to the latest stimulus time, so its x value in the matrix undefined.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_design_mat</span><span class="p">(</span><span class="n">stim</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">include_const</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_design_mat</span><span class="p">(</span><span class="n">stim</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">include_const</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
   <span class="c1"># Create version of stimulus vector with zeros before onset</span>
   <span class="n">padded_stim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">stim</span><span class="p">])</span>
 
@@ -859,7 +860,7 @@ c:\Users\carter.peene\Desktop\Projects\openscope_databook\databook_env\lib\site-
 <p>To get a sense of how the GLM performs on synthetic data, the function <code class="docutils literal notranslate"><span class="pre">test_synthetic_glm</span></code> is used to yield a constant and a filter of length 1. Since the synthetic spikes were produced with a constant <code class="docutils literal notranslate"><span class="pre">baseline_rate</span></code> and a coefficient <code class="docutils literal notranslate"><span class="pre">coeff</span></code>, we should expect the GLM to effectively reproduce these values in the constant and length 1 filter. The GLM performance is tested by iterating over successive values of regularization coefficient <code class="docutils literal notranslate"><span class="pre">lam</span></code> and the number of repeats of stimulus flashes, <code class="docutils literal notranslate"><span class="pre">n_repeats</span></code>, both ranging between 1 and <span class="math notranslate nohighlight">\(2^9\)</span>. The optimal values for these variables are obtained by maximixing the <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">Coefficient of Determination</a> <span class="math notranslate nohighlight">\(R^2\)</span>. The results below indicate that as the regularization coefficient increases, the GLM performance starts to suffer. This is because higher regularization values promote a stronger tendency for trained filter values to stay closer to 0, limiting the MLE’s ability to fit a model effectively. They also indicate that the GLM performance converges toward the real constant and coefficient values as the number of repeats of the stimulus increases because there is more data to train with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_synthetic_glm</span><span class="p">(</span><span class="n">constant_in</span><span class="p">,</span> <span class="n">coeff_in</span><span class="p">,</span> <span class="n">flashes</span><span class="p">,</span> <span class="n">constants</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">r2s</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">filt_len</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_synthetic_glm</span><span class="p">(</span><span class="n">constant_in</span><span class="p">,</span> <span class="n">coeff_in</span><span class="p">,</span> <span class="n">flashes</span><span class="p">,</span> <span class="n">constants</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">r2s</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">filt_len</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">design_mat</span> <span class="o">=</span> <span class="n">build_design_mat</span><span class="p">(</span><span class="n">flashes</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">filt_len</span><span class="p">)</span>
     <span class="n">syn_spikes</span><span class="p">,</span> <span class="n">syn_weights</span><span class="p">,</span> <span class="n">syn_prob</span> <span class="o">=</span> <span class="n">make_spikes</span><span class="p">(</span><span class="n">flashes</span><span class="p">,</span> <span class="n">constant_in</span><span class="p">,</span> <span class="n">coeff_in</span><span class="p">,</span> <span class="n">return_exp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1380,7 +1381,7 @@ y: (25600,) X: (25600, 2) x0: (2,)
     <span class="n">channel_probes</span><span class="p">[</span><span class="n">channel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">location</span>
 
 <span class="c1"># function aligns location information from electrodes table with channel id from the units table</span>
-<span class="k">def</span> <span class="nf">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">channel_probes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">peak_channel_id</span><span class="p">)]</span>
 
 <span class="n">all_regions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">units</span><span class="p">)</span>
@@ -3132,7 +3133,7 @@ average black loss: 0.0412103108503236
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
     <span class="n">time_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
     <span class="c1"># 3D spike matrix to be populated with spike counts</span>
     <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -3219,7 +3220,7 @@ average black loss: 0.0412103108503236
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_zscore_mat</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">,</span> <span class="n">stimulus_onset_idx</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_zscore_mat</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">,</span> <span class="n">stimulus_onset_idx</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Inputs:</span>
 <span class="sd">    The 3D spike matrix with dimensions, Unit * Trial * Time, where values are the # of spikes in each bin</span>
@@ -3423,12 +3424,12 @@ Units that produced best fitting GLMs for black flashes: [  3  13  14  20  47  5
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tca.html"
+       href="GLM_pynapple_nemos.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tensor Decomposition of Spiking Activity Through Trials</p>
+        <p class="prev-next-title">Introduction to Generalized Linear Models using Pynapple and NeMoS</p>
       </div>
     </a>
     <a class="right-next"

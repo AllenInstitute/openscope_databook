@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Behavioral State from Trial Outcomes</a></li>
 
@@ -565,16 +566,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="behavioral-state-from-trial-outcomes">
 <h1>Behavioral State from Trial Outcomes<a class="headerlink" href="#behavioral-state-from-trial-outcomes" title="Link to this heading">#</a></h1>
-<p>This notebook describes how to load and process data from <span id="id1">[<a class="reference internal" href="../bibliography.html#id20" title="Daniel Hulsey, Kevin Zumwalt, Luca Mazzucato, David A. McCormick, and Santiago Jaramillo. Decision-making dynamics are predicted by arousal and uninstructed movements. Cell Reports, 43(2):113709, 2024. URL: https://www.sciencedirect.com/science/article/pii/S2211124724000378, doi:https://doi.org/10.1016/j.celrep.2024.113709.">Hulsey <em>et al.</em>, 2024</a>]</span> to evaluate the behavioral state of mice performing perceptual decision tasks, given trial outcomes. Behavioral state estimation is performed using a Hidden Markov Model with Generalized Linear Model emisions (GLM-HMM), as described in the paper cited above. The notebook also shows how to evaluate the relation between these behavioral states and arousal (as indexed by pupil size) and uninstructed movements (such as locomotion).</p>
+<p>This notebook describes how to load and process data from <span id="id1">[<a class="reference internal" href="../bibliography.html#id24" title="Daniel Hulsey, Kevin Zumwalt, Luca Mazzucato, David A. McCormick, and Santiago Jaramillo. Decision-making dynamics are predicted by arousal and uninstructed movements. Cell Reports, 43(2):113709, 2024. URL: https://www.sciencedirect.com/science/article/pii/S2211124724000378, doi:https://doi.org/10.1016/j.celrep.2024.113709.">Hulsey <em>et al.</em>, 2024</a>]</span> to evaluate the behavioral state of mice performing perceptual decision tasks, given trial outcomes. Behavioral state estimation is performed using a Hidden Markov Model with Generalized Linear Model emisions (GLM-HMM), as described in the paper cited above. The notebook also shows how to evaluate the relation between these behavioral states and arousal (as indexed by pupil size) and uninstructed movements (such as locomotion).</p>
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -586,14 +587,14 @@ document.write(`
 <p>This notebook requires the package <strong>ssm</strong> (<em>SSM: Bayesian learning and inference for state space models</em>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dandi</span> <span class="kn">import</span> <span class="n">dandiapi</span>
-<span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">ssm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dandi</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pynwb</span><span class="w"> </span><span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssm</span>
 </pre></div>
 </div>
 </div>
@@ -653,7 +654,7 @@ Opening file
 <p>Some of the variables in our table of trials contain enumerated values. For example, <code class="docutils literal notranslate"><span class="pre">choice</span></code> can be either <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code> representing <em>left</em>, <em>right</em>, or <em>no_lick</em>, respectively. This mapping is stored in the description field of each variable in the NWB file. The following function loads the data and these mappings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_trial_data</span><span class="p">(</span><span class="n">nwbFileObj</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_trial_data</span><span class="p">(</span><span class="n">nwbFileObj</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return trial information and dictionary mapping labels to integer values from open nwb file.</span>
 <span class="sd">    Args:</span>
@@ -1048,7 +1049,7 @@ Opening file
 <p>Because of the way stimulus values are stored, we also need to perform some preprocessing and convert stimulus values to a normalized scale in the range (-1, 1) for the target stimulus (either visual or auditory) of a given session. We achieve this normalization with the following function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize_stim_values</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">normalize_stim_values</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Normalize stimulus values to range (-1, 1).</span>
 <span class="sd">    </span>
@@ -1127,7 +1128,7 @@ Opening file
 <p>We first create a function to estimate the performance for each stimulus value (given the dataframe with trial data):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_psychometric</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">estimate_psychometric</span><span class="p">(</span><span class="n">trial_data</span><span class="p">,</span> <span class="n">trial_labels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Quantify the fraction of trials each choice was made for each stimulus value.</span>
 <span class="sd">    </span>
@@ -1203,7 +1204,7 @@ Opening file
 </div>
 </div>
 </div>
-<p>In this example, we will set the number of states of the model to 3. In general, one would instead use a model-selection process (as described in the associated paper <span id="id2">[<a class="reference internal" href="../bibliography.html#id20" title="Daniel Hulsey, Kevin Zumwalt, Luca Mazzucato, David A. McCormick, and Santiago Jaramillo. Decision-making dynamics are predicted by arousal and uninstructed movements. Cell Reports, 43(2):113709, 2024. URL: https://www.sciencedirect.com/science/article/pii/S2211124724000378, doi:https://doi.org/10.1016/j.celrep.2024.113709.">Hulsey <em>et al.</em>, 2024</a>]</span>) to estimate the appropriate number of states.</p>
+<p>In this example, we will set the number of states of the model to 3. In general, one would instead use a model-selection process (as described in the associated paper <span id="id2">[<a class="reference internal" href="../bibliography.html#id24" title="Daniel Hulsey, Kevin Zumwalt, Luca Mazzucato, David A. McCormick, and Santiago Jaramillo. Decision-making dynamics are predicted by arousal and uninstructed movements. Cell Reports, 43(2):113709, 2024. URL: https://www.sciencedirect.com/science/article/pii/S2211124724000378, doi:https://doi.org/10.1016/j.celrep.2024.113709.">Hulsey <em>et al.</em>, 2024</a>]</span>) to estimate the appropriate number of states.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model parameters</span>

@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -226,6 +226,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -564,7 +565,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="using-cebra-time-to-identify-latent-embeddings">
 <h1>Using <a class="reference external" href="https://cebra.ai/docs/index.html">CEBRA-Time</a> to Identify Latent Embeddings<a class="headerlink" href="#using-cebra-time-to-identify-latent-embeddings" title="Link to this heading">#</a></h1>
-<p>In this notebook, we will explore the applications of the advanced machine learning algorithm, <strong>CEBRA</strong> (created by the <a class="reference external" href="http://www.mackenziemathislab.org/">Mathis Laboratory</a>), to analyze OpenScope data from the Allen Institute. <strong>CEBRA</strong> is an algorithm that optimizes neural networks that map neural activity onto an embedding space <span id="id1">[<a class="reference internal" href="../bibliography.html#id16" title="Steffen Schneider, Jin Hwa Lee, and Mackenzie Weygandt Mathis. Learnable latent embeddings for joint behavioural and neural analysis. Nature, 2023. URL: https://doi.org/10.1038/s41586-023-06031-6.">Schneider <em>et al.</em>, 2023</a>]</span>. This algorithm leverages <strong><a class="reference external" href="http://proceedings.mlr.press/v119/chen20j/chen20j.pdf">contrastive learning</a></strong> and a generalized <strong><a class="reference external" href="https://www.nature.com/articles/s41586-023-06031-6#Sec11">InfoNCE loss function</a></strong> to learn representations where similar data points are pulled closer together while dissimilar data points are pushed apart within the embedding space. CEBRA has three different modes: <strong>CEBRA-Time</strong> (fully unsupervised/self supervised), <strong>CEBRA-Behavior</strong> (supervised), and <strong>CEBRA-Hybrid</strong>.</p>
+<p>In this notebook, we will explore the applications of the advanced machine learning algorithm, <strong>CEBRA</strong> (created by the <a class="reference external" href="http://www.mackenziemathislab.org/">Mathis Laboratory</a>), to analyze OpenScope data from the Allen Institute. <strong>CEBRA</strong> is an algorithm that optimizes neural networks that map neural activity onto an embedding space <span id="id1">[<a class="reference internal" href="../bibliography.html#id20" title="Steffen Schneider, Jin Hwa Lee, and Mackenzie Weygandt Mathis. Learnable latent embeddings for joint behavioural and neural analysis. Nature, 2023. URL: https://doi.org/10.1038/s41586-023-06031-6.">Schneider <em>et al.</em>, 2023</a>]</span>. This algorithm leverages <strong><a class="reference external" href="http://proceedings.mlr.press/v119/chen20j/chen20j.pdf">contrastive learning</a></strong> and a generalized <strong><a class="reference external" href="https://www.nature.com/articles/s41586-023-06031-6#Sec11">InfoNCE loss function</a></strong> to learn representations where similar data points are pulled closer together while dissimilar data points are pushed apart within the embedding space. CEBRA has three different modes: <strong>CEBRA-Time</strong> (fully unsupervised/self supervised), <strong>CEBRA-Behavior</strong> (supervised), and <strong>CEBRA-Hybrid</strong>.</p>
 <p>In this notebook, we will be utilizing <strong>CEBRA-Time</strong>, so our input data will be unlabeled and there will be no behavioral assumptions that influence neuronal activity. We utilize <strong>CEBRA-Time</strong> to create a 3D latent embedding space of a mouse’s neural activity while passively viewing visual stimuli. This algorithm can help us identify patterns in neural activity and its relationship to the visual stimulus. We use the neural data to train the model, generate embeddings for each type of visual stimulus, and plot different subsections of the data separately onto the same embedding space.</p>
 <p>Below is a visualization of the pipeline that displays the steps from how the algorithm receives input data to how the final output of the embedding is produced. To briefly describe how it works, <strong>CEBRA</strong> takes input in the form of <em>positive and negative pairs</em> of data relative to a reference point. An example of a positive and negative pair for behavioral labels would be two positions on a track that are close together in space versus a position on a track that is far away. Likewise, for time labels, a positive pair would be data from two points that occur close together in time versus a data point that occurs farther away in time. Next, a nonlinear encoder receives the data in the form of a triplet that contains 3 vectors: neural data from the positive points, neural data from the negative points, and neural data from the reference points. The nonlinear encoder maps the raw neural data onto a lower dimensional feature space. Here, <strong>CEBRA</strong> leverages <em>contrastive learning</em> to learn representations where similar pairs are pulled closer together and dissimilar pairs are pushed apart in an embedding space. During training, similarity scores are computed for positive and negative pairs. A modified <em>InfoNCE loss function</em> is calculated and gradient descent is used to optimize the loss. Once the network is fully trained, the lower-dimensional embedding space is produced from the final output layer.</p>
 <p>For further details on <strong>CEBRA</strong>, you can refer to <a class="reference external" href="https://www.nature.com/articles/s41586-023-06031-6">the paper published by the Mathis Lab</a> or visit the <a class="reference external" href="https://cebra.ai/docs/index.html">CEBRA website</a> to gain a deeper understanding on these concepts. Understanding how the input data is processed is important as well as how each point in the embedding relates to a given input.</p>
@@ -587,11 +588,11 @@ document.write(`
 <p><strong>⚠️Note: If running on a new environment, run this cell once and then restart the kernel⚠️</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -602,12 +603,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cebra</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cebra</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">cebra</span> <span class="kn">import</span> <span class="n">CEBRA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cebra</span><span class="w"> </span><span class="kn">import</span> <span class="n">CEBRA</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -656,7 +657,7 @@ Opening file
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use this if nwb intervals section has no stim information</span>
-<span class="k">def</span> <span class="nf">stim_obj_to_table</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stim_obj_to_table</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
 
     <span class="n">all_labeled_stim_timestamps</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">stim_type</span><span class="p">,</span> <span class="n">stim_obj</span> <span class="ow">in</span> <span class="n">nwb</span><span class="o">.</span><span class="n">stimulus</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -1487,7 +1488,7 @@ pos: -0.6272 neg:  6.3584 total:  5.7312 temperature:  1.0000: 100%|████
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### inputs fluorescence traces for each repeat of the stimulus into the model and gets colors for embedding space</span>
 <span class="c1">### returns an embedding space of points and color labels for each point</span>
-<span class="k">def</span> <span class="nf">get_embeddings</span><span class="p">(</span><span class="n">selected_frames</span><span class="p">,</span> <span class="n">individual_dff_input</span><span class="p">,</span> <span class="n">movie_repeat_indices</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_embeddings</span><span class="p">(</span><span class="n">selected_frames</span><span class="p">,</span> <span class="n">individual_dff_input</span><span class="p">,</span> <span class="n">movie_repeat_indices</span><span class="p">):</span>
 
     <span class="c1"># takes fluorescence traces from particular stimulus interval and selects only traces for one specific repeat</span>
     <span class="n">movie_repeat_input</span> <span class="o">=</span> <span class="n">individual_dff_input</span><span class="p">[</span><span class="n">movie_repeat_indices</span><span class="p">]</span>
@@ -1515,7 +1516,7 @@ pos: -0.6272 neg:  6.3584 total:  5.7312 temperature:  1.0000: 100%|████
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### plots embedding space for one repeat of the visual stimulus</span>
-<span class="k">def</span> <span class="nf">create_subplots</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">,</span> <span class="n">cebra_embedding_colors_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_subplots</span><span class="p">(</span><span class="n">cebra_time_models_list</span><span class="p">,</span> <span class="n">cebra_embedding_colors_list</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CEBRA-Time - </span><span class="si">{</span><span class="n">stim_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1540,7 +1541,7 @@ pos: -0.6272 neg:  6.3584 total:  5.7312 temperature:  1.0000: 100%|████
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sklearn</span>
 
 <span class="c1"># provides the names of each stimulus type from the stim table</span>
 <span class="n">stimulus_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stim_table</span><span class="p">[</span><span class="s2">&quot;stimulus type&quot;</span><span class="p">])</span>

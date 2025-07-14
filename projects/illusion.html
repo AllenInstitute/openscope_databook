@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -228,6 +228,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
 
@@ -577,7 +578,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="openscope-s-illusion-dataset">
 <h1>OpenScope’s Illusion Dataset<a class="headerlink" href="#openscope-s-illusion-dataset" title="Link to this heading">#</a></h1>
-<p>Imagine being out in the open sea on a boat. Suddenly, you notice a dark shape passing by underwater. Even though the shape is distorted by the wave and the color is a mere shade different from the water, you mind automatically infers the outline of a shark. As illustrated, perception is inference rather than faithful reconstruction. However sensory neuroscience has traditionally focused on the question of how faithfully/accurately the brain can represent sensory information. Moreover, sensory stimuli typically used in neurophysiology experiments make it difficult to dissociate between a neural representation that is faithful vs inferred. Illusions arise due to rational mistakes in perceptual inference, exemplifying the dichotomy between faithful representation and inferred representation. Openscope’s Illusion Experiment described by <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id1">[<a class="reference internal" href="../bibliography.html#id21" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, utilizes illusory contours (ICs) to study the neural mechanisms of perceptual inference.</p>
+<p>Imagine being out in the open sea on a boat. Suddenly, you notice a dark shape passing by underwater. Even though the shape is distorted by the wave and the color is a mere shade different from the water, you mind automatically infers the outline of a shark. As illustrated, perception is inference rather than faithful reconstruction. However sensory neuroscience has traditionally focused on the question of how faithfully/accurately the brain can represent sensory information. Moreover, sensory stimuli typically used in neurophysiology experiments make it difficult to dissociate between a neural representation that is faithful vs inferred. Illusions arise due to rational mistakes in perceptual inference, exemplifying the dichotomy between faithful representation and inferred representation. Openscope’s Illusion Experiment described by <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id1">[<a class="reference internal" href="../bibliography.html#id25" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, utilizes illusory contours (ICs) to study the neural mechanisms of perceptual inference.</p>
 <p>ICs have direct neural substrates in the brain – there are neurons in the visual cortex that respond to ICs with the same specificity as to real edges (IC-encoders). Prior literature has shown IC-encoding in primary visual cortex (V1) arises through top-down feedback from higher visual areas (Figure 1). IC perception requires precise alignment of inducers (e.g., black circular shapes on either side of the illusory contour): Rotating one of the inducers no longer evokes an illusory percept (rotated control images, RCs). It follows that inducer-encoders, i.e., neurons that receive feedforward sensory information from inducers on either side of the IC, need to coordinate their sensory driven activity to drive IC-encoders in higher visual areas, and in turn, V1. In other words, IC-encoders need to bind with inducer-encoders on both sides of the IC. On the contrary, the binding of faithful neurons, i.e., neurons that respond to real edges but not to illusory contours, is inconsequential for IC perception. Therefore, ICs necessitate a much more selective group of neurons to bind compared to real edges, narrowing down the spatial component of the binding problem. Thus, ICs are ideally suited for addressing the temporal component of the binding problem.</p>
 <p><img alt="illusion_fig1.png" src="../_images/illusion_fig1.png" /></p>
 <section id="environment-setup">
@@ -585,11 +586,11 @@ document.write(`
 <p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">databook_utils.dandi_utils</span> <span class="kn">import</span> <span class="n">dandi_download_open</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
     <span class="o">%</span><span class="k">cd</span> openscope_databook
@@ -601,21 +602,21 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
-<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">patches</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">floor</span><span class="p">,</span> <span class="n">ceil</span><span class="p">,</span> <span class="n">isclose</span>
-<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">PatchCollection</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter1d</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kruskal</span><span class="p">,</span> <span class="n">wilcoxon</span>
-<span class="kn">from</span> <span class="nn">statsmodels.stats.multicomp</span> <span class="kn">import</span> <span class="n">pairwise_tukeyhsd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">floor</span><span class="p">,</span> <span class="n">ceil</span><span class="p">,</span> <span class="n">isclose</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">PatchCollection</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.ndimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian_filter1d</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kruskal</span><span class="p">,</span> <span class="n">wilcoxon</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.multicomp</span><span class="w"> </span><span class="kn">import</span> <span class="n">pairwise_tukeyhsd</span>
 </pre></div>
 </div>
 </div>
@@ -921,7 +922,7 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">n_rows</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)</span> <span class="o">//</span> <span class="n">n_cols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n_cols</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">n_rows</span><span class="p">)</span> <span class="c1"># can tweak these if sizing/spacing needs improvement</span>
@@ -1332,7 +1333,7 @@ Opening file
     <span class="n">channel_probes</span><span class="p">[</span><span class="n">channel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">location</span>
 
 <span class="c1"># function aligns location information from electrodes table with channel id from the units table</span>
-<span class="k">def</span> <span class="nf">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">channel_probes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">peak_channel_id</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">get_unit_location</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">units</span><span class="p">))</span>
@@ -1378,7 +1379,7 @@ Opening file
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
 <span class="c1"># returns list of epochs, where an epoch is of the form (stimulus name, stimulus block, start time, stop time)</span>
-<span class="k">def</span> <span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
     
     <span class="c1"># specify a current epoch stop and start time</span>
     <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1731,7 +1732,7 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_spike_matrix</span><span class="p">(</span><span class="n">stim_times</span><span class="p">,</span> <span class="n">units_spike_times</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">):</span>
     <span class="n">time_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
     <span class="c1"># 3D spike matrix to be populated with spike counts</span>
     <span class="n">spike_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -1789,7 +1790,7 @@ Opening file
 <p>After generating spike matrices, we can view the PSTHs for each unit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_response</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[],</span> <span class="n">skipticks</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_response</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">window_start_time</span><span class="p">,</span> <span class="n">window_end_time</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[],</span> <span class="n">skipticks</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ROI&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">window</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Input data has length 0; Nothing to display&quot;</span><span class="p">)</span>
         <span class="k">return</span>
@@ -1815,7 +1816,7 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_many_responses</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">window_idxs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subplot_title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_many_responses</span><span class="p">(</span><span class="n">windows</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">window_idxs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subplot_title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">window_idxs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">window_idxs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">windows</span><span class="p">))</span>
     <span class="n">windows</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">window_idxs</span><span class="p">]</span>
@@ -1883,7 +1884,7 @@ Opening file
 <p>As discussed in <a class="reference internal" href="../first-order/test_2p_responses.html"><span class="std std-doc">Statistically Testing 2P Responses to Stimulus</span></a>, the criteria used to select for responsive cells can have a significant impact. Here, the simple criterion is to select units whose post-stimulus z-scores are greater than 1 or less than -1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">select_cells</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">,</span> <span class="n">stimulus_onset_idx</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select_cells</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">,</span> <span class="n">stimulus_onset_idx</span><span class="p">):</span>
     <span class="n">baseline_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spike_matrix</span><span class="p">[:,:,:</span><span class="n">stimulus_onset_idx</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">mean_baseline_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">baseline_means</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">std_baseline_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">baseline_means</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -2267,7 +2268,7 @@ pix
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### get receptive field of a unit using its spike times and the stim table</span>
 
-<span class="k">def</span> <span class="nf">get_rf</span><span class="p">(</span><span class="n">spike_times</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_rf</span><span class="p">(</span><span class="n">spike_times</span><span class="p">):</span>
     <span class="c1"># creates 2D array that stores response spike counts for each coordinate of the receptive field</span>
     <span class="n">unit_rf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">xs</span><span class="o">.</span><span class="n">size</span><span class="p">])</span>
     <span class="c1"># for every x and y coordinate in the field</span>
@@ -2310,7 +2311,7 @@ pix
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### display the receptive fields for each unit in a 2D plot</span>
 
-<span class="k">def</span> <span class="nf">display_rfs</span><span class="p">(</span><span class="n">rfs</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_rfs</span><span class="p">(</span><span class="n">rfs</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rfs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No receptive fields provided. Nothing to display&quot;</span><span class="p">)</span>
         <span class="k">return</span>
@@ -2728,8 +2729,8 @@ Number of units: 114
 </section>
 <section id="openscope-illusion-publication-example-analysis-code">
 <h2>OpenScope Illusion publication: Example Analysis Code<a class="headerlink" href="#openscope-illusion-publication-example-analysis-code" title="Link to this heading">#</a></h2>
-<p>The following code replicates some of the analysis created for the publication that accompanies OpenScope’s Illusion project, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id2">[<a class="reference internal" href="../bibliography.html#id21" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, this includes a more robust calculation of the receptive fields for units along with several other metrics.</p>
-<p>Here, we are reproducing Fig 1d-g, where we show that mouse primary visual cortex (V1) neurons respond to illusory contours despite the lack of visual information within their receptive fields. Von der Heydt and colleagues had showed the existence of illusory contours in primate visual cortex <span id="id3">[<a class="reference internal" href="../bibliography.html#id22" title="Rudiger von der Heydt, E. Peterhans, and Gunter Baumgartner. Illusory contours and cortical neuron responses. Science, ():, 1984. URL: https://doi.org/10.1126/science.6539501.">von der Heydt <em>et al.</em>, 1984</a>]</span>, <span id="id4">[]</span>. We are replicating their result in mouse V1.</p>
+<p>The following code replicates some of the analysis created for the publication that accompanies OpenScope’s Illusion project, <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.06.05.543698v1"><span id="id2">[<a class="reference internal" href="../bibliography.html#id25" title="Hyeyoung Shin, Mora B. Ogando, Lamiae Abdeladim, Severine Durand, Hannah Belski, Hannah Cabasco, Henry Loefler, Ahad Bawany, Ben Hardcastle, Josh Wilkes, Katrina Nguyen, Lucas Suarez, Tye Johnson, Warren Han, Ben Ouellette, Conor Grasso, Jackie Swapp, Vivian Ha, Ahrial Young, Shiella Caldejon, Ali Williford, Peter Groblewski, Shawn Olsen, Carly Kiselycznyk, Jerome Lecoq, and Hillel Adesnik. Recurrent pattern completion drives the neocortical representation of sensory inference. bioRxiv, ():, 2023. URL: https://doi.org/10.1101/2023.06.05.543698.">Shin <em>et al.</em>, 2023</a>]</span></a>, this includes a more robust calculation of the receptive fields for units along with several other metrics.</p>
+<p>Here, we are reproducing Fig 1d-g, where we show that mouse primary visual cortex (V1) neurons respond to illusory contours despite the lack of visual information within their receptive fields. Von der Heydt and colleagues had showed the existence of illusory contours in primate visual cortex <span id="id3">[<a class="reference internal" href="../bibliography.html#id26" title="Rudiger von der Heydt, E. Peterhans, and Gunter Baumgartner. Illusory contours and cortical neuron responses. Science, ():, 1984. URL: https://doi.org/10.1126/science.6539501.">von der Heydt <em>et al.</em>, 1984</a>]</span>, <span id="id4">[]</span>. We are replicating their result in mouse V1.</p>
 <p>It is important to note that originally we imposed a fixed-gaze restriction; i.e., we only analyzed the trials where the pupil position was within 8 visual degrees of the resting pupil position throughout the duration of the trial. For simplicity, we did not include this condition in this example code.</p>
 <p>An example session was selected, thus figures may look different from the paper (Shin et al., 2023 bioRxiv).</p>
 <div class="cell docutils container">
@@ -2772,7 +2773,7 @@ Opening file
 <h3>Fig. 1e : identifying exclusively center-responsive V1 neurons<a class="headerlink" href="#fig-1e-identifying-exclusively-center-responsive-v1-neurons" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">analyzeRFCI</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">trialorder</span><span class="p">,</span> <span class="n">sponFR</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analyzeRFCI</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">trialorder</span><span class="p">,</span> <span class="n">sponFR</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This function defines the receptive fields (RF) of each neuron.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        R (np.ndarray): Firing rate matrix of shape (Nneurons, Ntrials).</span>
@@ -2921,7 +2922,7 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_stim_table_info</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_stim_table_info</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This function extracts information from the stimulus table.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        table_name (str): Name of the stimulus table.</span>
@@ -3076,7 +3077,7 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_spiketrain</span><span class="p">(</span><span class="n">wanted_neurons</span><span class="p">,</span> <span class="n">timelength</span><span class="p">,</span> <span class="n">spiketime_data</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_spiketrain</span><span class="p">(</span><span class="n">wanted_neurons</span><span class="p">,</span> <span class="n">timelength</span><span class="p">,</span> <span class="n">spiketime_data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This function calculates the spike train matrix.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        wanted_neurons (list): List of neurons to be included.</span>
@@ -3098,7 +3099,7 @@ Opening file
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_psthmatrix</span><span class="p">(</span><span class="n">spiketrainmatrix</span><span class="p">,</span> <span class="n">wanted_neurons</span><span class="p">,</span> <span class="n">trialstart</span><span class="p">,</span> <span class="n">trial_ind</span><span class="p">,</span> <span class="n">timeline</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_psthmatrix</span><span class="p">(</span><span class="n">spiketrainmatrix</span><span class="p">,</span> <span class="n">wanted_neurons</span><span class="p">,</span> <span class="n">trialstart</span><span class="p">,</span> <span class="n">trial_ind</span><span class="p">,</span> <span class="n">timeline</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This function calculates the PSTH matrix.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        spiketrainmatrix (np.ndarray): Spike train matrix.</span>
