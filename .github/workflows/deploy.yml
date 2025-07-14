@@ -1,4 +1,3 @@
-
 name: deployment
 on:
   workflow_dispatch:
@@ -18,35 +17,46 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Check python and pip versions
+      - name: Check Python and pip versions
         run: |
           python --version
           python -m pip --version
           python -m pip list
 
-      - name: Upgrade build tools
-        run: python -m pip install --upgrade pip setuptools wheel build setuptools_scm
+      - name: Clean uninstall and reinstall build tools
+        run: |
+          python -m pip uninstall -y setuptools
+          python -m pip install --upgrade --force-reinstall --no-cache-dir setuptools wheel build setuptools_scm
 
-      - name: Installing package
+      - name: Install git dependencies explicitly
+        run: |
+          python -m pip install git+https://github.com/sytseng/ndx-harvey-swac
+          python -m pip install git+https://github.com/AllenInstitute/ophys_nway_matching.git
+
+      - name: Build wheel locally for debug
+        run: |
+          python -m pip install build
+          python -m build --wheel --no-isolation .
+
+      - name: Install your package
         run: python -m pip install -e .
 
-      - name: Installing Jupyter book
-        run: pip install -U jupyter-book
+      - name: Install Jupyter Book
+        run: python -m pip install -U jupyter-book
 
-      - name: Printing log
+      - name: Print Git status
         run: git status
       
-      - name: Printing shortlog
+      - name: Print Git shortlog
         run: git log | git shortlog -sn  
 
-      - name: Build Jupyter book
+      - name: Build Jupyter Book
         run: |
           jupyter-book clean ./docs
           jupyter-book build ./docs
-            
-      - name: Deploy book to GitHub pages
+
+      - name: Deploy book to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/_build/html
-
