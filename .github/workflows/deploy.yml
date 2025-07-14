@@ -18,16 +18,17 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Upgrading pip
-        run: pip install --upgrade pip
-        
-      - name: Installing dependencies
+      - name: Check python and pip versions
         run: |
-          pip install --upgrade pip setuptools wheel build
-          pip install markupsafe==2.0.1 --no-cache-dir
+          python --version
+          python -m pip --version
+          python -m pip list
+
+      - name: Upgrade build tools
+        run: python -m pip install --upgrade pip setuptools wheel build setuptools_scm
 
       - name: Installing package
-        run: pip install -e .
+        run: python -m pip install -e .
 
       - name: Installing Jupyter book
         run: pip install -U jupyter-book
