@@ -13,11 +13,10 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - name: Installing python
-        run: |
-          sudo apt-get update
-          sudo apt install python3.12
-          sudo apt-get install build-essential
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
       - name: Upgrading pip
         run: pip install --upgrade pip
