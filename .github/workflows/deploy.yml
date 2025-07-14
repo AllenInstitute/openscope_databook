@@ -17,45 +17,41 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Check Python and pip versions
+      - name: Show Python and pip versions
         run: |
           python --version
           python -m pip --version
-          python -m pip list
 
-      - name: Clean uninstall and reinstall build tools
+      - name: Uninstall setuptools fully
         run: |
           python -m pip uninstall -y setuptools
+
+      - name: Clean install build tools
+        run: |
           python -m pip install --upgrade --force-reinstall --no-cache-dir setuptools wheel build setuptools_scm
 
       - name: Install git dependencies explicitly
         run: |
-          python -m pip install git+https://github.com/sytseng/ndx-harvey-swac
-          python -m pip install git+https://github.com/AllenInstitute/ophys_nway_matching.git
+          python -m pip install --upgrade --force-reinstall git+https://github.com/sytseng/ndx-harvey-swac
+          python -m pip install --upgrade --force-reinstall git+https://github.com/AllenInstitute/ophys_nway_matching.git
 
-      - name: Build wheel locally for debug
+      - name: Build wheel explicitly without isolation
         run: |
-          python -m pip install build
+          python -m pip install --upgrade build
           python -m build --wheel --no-isolation .
 
-      - name: Install your package
+      - name: Install your package editable
         run: python -m pip install -e .
 
       - name: Install Jupyter Book
         run: python -m pip install -U jupyter-book
-
-      - name: Print Git status
-        run: git status
-      
-      - name: Print Git shortlog
-        run: git log | git shortlog -sn  
 
       - name: Build Jupyter Book
         run: |
           jupyter-book clean ./docs
           jupyter-book build ./docs
 
-      - name: Deploy book to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
