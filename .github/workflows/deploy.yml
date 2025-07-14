@@ -16,7 +16,7 @@ jobs:
       - name: Installing python
         run: |
           sudo apt-get update
-          sudo apt install python3.10
+          sudo apt install python3.12
           sudo apt-get install build-essential
 
       - name: Upgrading pip
@@ -24,7 +24,7 @@ jobs:
         
       - name: Installing dependencies
         run: |
-          pip install --upgrade pip setuptools
+          pip install --upgrade pip setuptools wheel build
           pip install markupsafe==2.0.1 --no-cache-dir
 
       - name: Installing package
