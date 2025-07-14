@@ -1,55 +1,42 @@
-
-name: deployment
+name: deploy-book
 on:
   workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on:
+      group: LargerInstance
+    container:
+      image: rcpeene/openscope_databook:latest
 
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           ref: main
+          fetch-tags: true
 
-      - name: Installing python
-        run: |
-          sudo apt-get update
-          sudo apt install python3.12
-          sudo apt-get install build-essential
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10.11'
 
-      - name: Installing package without PEP 517
-        run: python3.12 -m pip install --no-use-pep517 -e .
-
-      - name: Upgrading pip
-        run: pip install --upgrade pip
-        
-      - name: Installing dependencies
-        run: |
-          pip install --upgrade pip setuptools wheel build
-          pip install markupsafe==2.0.1 --no-cache-dir
-
-      - name: Installing package
+      - name: Install your package
         run: pip install -e .
 
-      - name: Installing Jupyter book
-        run: pip install -U jupyter-book
+      - name: Install build requirements
+        run: |
+          pip install -r requirements.txt
+          pip install markupsafe==2.0.1
+          pip install -U jupyter-book
 
-      - name: Printing log
-        run: git status
-      
-      - name: Printing shortlog
-        run: git log | git shortlog -sn  
-
-      - name: Build Jupyter book
+      - name: Build Jupyter Book
         run: |
           jupyter-book clean ./docs
           jupyter-book build ./docs
-            
-      - name: Deploy book to GitHub pages
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/_build/html
-
