@@ -9,7 +9,7 @@
 **Supplied any substantial contribution to the project**
 ```{authors}
 ---
-blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
+blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene, Ben Dichter
 aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng, Yaroslav Halchenko--Yaroslav O. Halchenko
 ---
 ```
