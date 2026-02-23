@@ -39,11 +39,11 @@ jobs:
       - name: Installing package
         run: pip install -e .
 
-      # Some git-based dependencies (e.g., ophys-nway-matching) in requirements.txt
+      # Some git-based dependencies (e.g., ophys-nway-matching) in requirements-ci.txt
       # are not reliably installed via `pip install -e .` due to setuptools limitations.
       # This second install ensures all such dependencies are properly installed.
       - name: Installing packages again (to avoid setuptools limitations)
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-ci.txt
 
       - name: Installing build dependencies
         run: |
