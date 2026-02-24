@@ -10,7 +10,8 @@ RUN apt-get install -y git
 RUN git config --global --add safe.directory /__w/openscope_databook/openscope_databook
 
 # copy databook setup files
-COPY requirements.txt ./openscope_databook/requirements.txt
+COPY pyproject.toml ./openscope_databook/pyproject.toml
+COPY requirements-ci.txt ./openscope_databook/requirements-ci.txt
 COPY setup.py ./openscope_databook/setup.py
 COPY README.md ./openscope_databook/README.md
 COPY LICENSE.txt ./openscope_databook/LICENSE.txt
@@ -19,4 +20,5 @@ COPY databook_utils ./openscope_databook/databook_utils
 # for reasons I don't understand, these must be installed before the rest the requirements
 RUN pip install numpy cython
 # set up databook dependencies
-RUN pip install -e ./openscope_databook[dev]
+RUN pip install -r ./openscope_databook/requirements-ci.txt
+RUN pip install --no-deps -e ./openscope_databook
