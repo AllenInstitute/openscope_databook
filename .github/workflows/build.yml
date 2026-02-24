@@ -30,98 +30,12 @@ jobs:
           apt-get update
           apt-get install -y python3-dev g++
 
-      # - name: Upgrading pip
-      #   run: pip install --upgrade pip
-
-      - name: Install build backend tools
-        run: python3 -m pip install setuptools wheel Cython numpy==1.26.0
-
-      - name: Debug nway before editable install
+      - name: Install Python environment
         run: |
-          python3 -m pip --version
-          python3 -m pip show ophys-nway-matching || true
-          python3 - <<'PY'
-          import importlib.metadata as md
-          import importlib.util
-          import sys
-
-          print("python:", sys.executable)
-          for name in ("ophys-nway-matching", "nway"):
-              try:
-                  print(f"{name} dist version:", md.version(name))
-              except Exception as exc:
-                  print(f"{name} dist version: not installed ({type(exc).__name__})")
-
-          spec = importlib.util.find_spec("nway")
-          print("nway spec origin:", spec.origin if spec else None)
-          if spec:
-              import inspect
-              import nway
-
-              print("nway import file:", inspect.getfile(nway))
-              print("nway __version__:", getattr(nway, "__version__", None))
-          PY
-
-      - name: Installing package
-        run: python3 -m pip install -vv --no-build-isolation -e .
-
-      - name: Debug nway after editable install
-        run: |
-          python3 -m pip show ophys-nway-matching || true
-          python3 - <<'PY'
-          import importlib.metadata as md
-          import importlib.util
-
-          try:
-              print("ophys-nway-matching dist version:", md.version("ophys-nway-matching"))
-          except Exception as exc:
-              print(f"ophys-nway-matching dist version: not installed ({type(exc).__name__})")
-
-          spec = importlib.util.find_spec("nway")
-          print("nway spec origin:", spec.origin if spec else None)
-          if spec:
-              import inspect
-              import nway
-
-              print("nway import file:", inspect.getfile(nway))
-              print("nway __version__:", getattr(nway, "__version__", None))
-          PY
-
-      # Some git-based dependencies (e.g., ophys-nway-matching) in requirements-ci.txt
-      # are not reliably installed via `pip install -e .` due to setuptools limitations.
-      # This second install ensures all such dependencies are properly installed.
-      - name: Installing packages again (to avoid setuptools limitations)
-        run: python3 -m pip install -r requirements-ci.txt
-
-      - name: Debug nway after requirements reinstall
-        run: |
-          python3 -m pip show ophys-nway-matching || true
-          python3 - <<'PY'
-          import importlib.metadata as md
-          import importlib.util
-
-          try:
-            print("ophys-nway-matching dist version:", md.version("ophys-nway-matching"))
-          except Exception as exc:
-            print(f"ophys-nway-matching dist version: not installed ({type(exc).__name__})")
-
-          spec = importlib.util.find_spec("nway")
-          print("nway spec origin:", spec.origin if spec else None)
-          if spec:
-            import inspect
-            import nway
-
-            print("nway import file:", inspect.getfile(nway))
-            print("nway __version__:", getattr(nway, "__version__", None))
-          PY
-
-      - name: Installing build dependencies
-        run: |
-          python3 -m pip install markupsafe==2.0.1
-          python3 -m pip install jupyter==1.0.0
+          python3 -m pip install --upgrade pip setuptools wheel Cython numpy==1.26.0
+          python3 -m pip install --upgrade --upgrade-strategy eager -r requirements-ci.txt
+          python3 -m pip install --no-deps --no-build-isolation -e .
           python3 -m pip install -U jupyter-book==1.0.0
-          python3 -m pip install nbmake==1.5.3
-          python3 -m pip install pytest-xdist==3.5.0
         
       - name: Printing environment
         run: python3 -m pip freeze
