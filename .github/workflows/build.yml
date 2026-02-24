@@ -33,8 +33,8 @@ jobs:
       # - name: Upgrading pip
       #   run: pip install --upgrade pip
 
-      # - name: Install deps
-      #   run: pip install cython numpy==1.26
+      - name: Install build backend tools
+        run: pip install setuptools wheel Cython numpy==1.26.0
 
       - name: Installing package
         run: pip install --no-build-isolation -e .
