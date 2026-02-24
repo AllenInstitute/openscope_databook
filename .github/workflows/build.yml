@@ -93,7 +93,7 @@ jobs:
       - name: Installing packages again (to avoid setuptools limitations)
         run: python3 -m pip install -r requirements-ci.txt
 
-        - name: Debug nway after requirements reinstall
+      - name: Debug nway after requirements reinstall
         run: |
           python3 -m pip show ophys-nway-matching || true
           python3 - <<'PY'
