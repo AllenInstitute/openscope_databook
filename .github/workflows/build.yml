@@ -37,7 +37,7 @@ jobs:
       #   run: pip install cython numpy==1.26
 
       - name: Installing package
-        run: pip install -e .
+        run: pip install --no-build-isolation -e .
 
       # Some git-based dependencies (e.g., ophys-nway-matching) in requirements-ci.txt
       # are not reliably installed via `pip install -e .` due to setuptools limitations.
