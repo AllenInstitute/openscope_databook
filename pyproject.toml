@@ -22,6 +22,7 @@ dependencies = [
     "jupyter==1.0.0",
     "markupsafe==2.0.1",
     "matplotlib",
+    "matplotlib-inline<0.2",
     "mpl-interactions",
     "nbmake==1.5.3",
     "nemos>=0.2.3",
@@ -43,10 +44,11 @@ dependencies = [
     "scikit-learn>=1.7.0",
     "scipy==1.13.1",
     "seaborn>=0.13.2",
+    "ssm",
     "statsmodels==0.14.0",
     "suite2p==0.14",
     "tensortools==0.4",
-    "torch>=2.10.0",
+    "torch==2.5.1",
     "tqdm==4.66.2",
     "traitlets==5.6.0",
     "zarr==2.13.3",
@@ -62,9 +64,13 @@ include = ["databook_utils*"]
 [tool.uv]
 override-dependencies = ["pynwb>3", "hdmf>4"]
 
+[tool.uv.extra-build-dependencies]
+ssm = ["numpy", "Cython"]
+
 
 [tool.uv.sources]
 ophys-nway-matching = { git = "https://github.com/AllenInstitute/ophys_nway_matching.git" }
 ndx-harvey-swac = { git = "https://github.com/sytseng/ndx-harvey-swac" }
 databook-utils = { git = "https://github.com/AllenInstitute/openscope_databook" }
+ssm = { git = "https://github.com/lindermanlab/ssm" }
 
