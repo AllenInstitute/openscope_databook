@@ -33,49 +33,46 @@ jobs:
             apt-get install -y python3-dev g++
           fi
 
-      - name: Create virtual environment
+      - name: Install uv
         run: |
-          python3 -m venv .venv
-          echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
+          python3 -m pip install --upgrade pip
+          python3 -m pip install uv
 
-      - name: Install Python environment
+      - name: Sync environment from lockfile
         run: |
-          python -m pip install --upgrade pip setuptools wheel Cython numpy==1.26.0
-          python -m pip install --no-build-isolation --upgrade --upgrade-strategy eager -r requirements-ci.txt
-          python -m pip install --no-deps --no-build-isolation -e .
-          python -m pip install -U jupyter-book==1.0.0
+          uv sync --frozen --extra dev
 
       - name: Printing environment
-        run: python -m pip freeze
+        run: uv pip freeze
 
       - name: Testing Embargoed Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
           rm ./docs/embargoed/*.nwb
 
       - name: Testing Higher-Order Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
           rm ./docs/higher-order/*.nwb
 
       - name: Testing Basics Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
+          uv run pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
           rm ./docs/basics/*.nwb
 
       - name: Testing Visualization Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
           rm ./docs/visualization/*.nwb
 
       - name: Testing First-Order Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
           rm ./docs/first-order/*.nwb
         
       - name: Testing Project Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
           rm ./docs/projects/*.nwb
         
       - name: Printing log
@@ -88,5 +85,5 @@ jobs:
 
       - name: Build Jupyter book
         run: |
-          jupyter-book clean ./docs
-          jupyter-book build ./docs
+          uv run jupyter-book clean ./docs
+          uv run jupyter-book build ./docs
