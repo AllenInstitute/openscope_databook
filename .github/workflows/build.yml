@@ -25,8 +25,13 @@ jobs:
 
       - name: Install Python build headers
         run: |
-          apt-get update
-          apt-get install -y python3-dev g++
+          if command -v sudo >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y python3-dev g++
+          else
+            apt-get update
+            apt-get install -y python3-dev g++
+          fi
 
       - name: Install Python environment
         run: |
