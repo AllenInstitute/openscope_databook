@@ -23,24 +23,29 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
 
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
       - name: Install Python build headers
         run: |
           if command -v sudo >/dev/null 2>&1; then
             sudo apt-get update
-            sudo apt-get install -y python3-dev g++
+            sudo apt-get install -y g++
           else
             apt-get update
-            apt-get install -y python3-dev g++
+            apt-get install -y g++
           fi
 
       - name: Install uv
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install uv
+          python -m pip install --upgrade pip
+          python -m pip install uv
 
       - name: Sync environment from lockfile
         run: |
-          uv sync --frozen --extra dev
+          uv sync --frozen --extra dev --python 3.10
 
       - name: Printing environment
         run: uv pip freeze
