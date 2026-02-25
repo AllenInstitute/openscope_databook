@@ -44,7 +44,7 @@ jobs:
           python -m pip install --no-build-isolation --upgrade --upgrade-strategy eager -r requirements-ci.txt
           python -m pip install --no-deps --no-build-isolation -e .
           python -m pip install -U jupyter-book==1.0.0
-        
+
       - name: Printing environment
         run: python -m pip freeze
 
@@ -62,7 +62,7 @@ jobs:
         run: |
           pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
           rm ./docs/basics/*.nwb
-        
+
       - name: Testing Visualization Notebooks
         run: |
           pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
