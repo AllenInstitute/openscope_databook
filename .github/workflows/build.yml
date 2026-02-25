@@ -33,7 +33,7 @@ jobs:
       - name: Install Python environment
         run: |
           python3 -m pip install --upgrade pip setuptools wheel Cython numpy==1.26.0
-          python3 -m pip install --upgrade --upgrade-strategy eager -r requirements-ci.txt
+          python3 -m pip install --no-build-isolation --upgrade --upgrade-strategy eager -r requirements-ci.txt
           python3 -m pip install --no-deps --no-build-isolation -e .
           python3 -m pip install -U jupyter-book==1.0.0
         
