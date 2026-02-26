@@ -77,7 +77,7 @@ jobs:
         
       - name: Testing Project Notebooks
         run: |
-          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=2 "./docs/projects"
           rm ./docs/projects/*.nwb
         
       - name: Printing log
