@@ -21,30 +21,33 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10.11'
+      - name: Install Python build headers
+        run: |
+          apt-get update
+          apt-get install -y python3-dev g++
+
+      - name: Install build backend tools
+        run: python3 -m pip install setuptools wheel Cython numpy==1.26.0
 
       # - name: Upgrading pip
       #   run: pip install --upgrade pip
 
       - name: Installing requirements
-        run: pip install -r ./requirements.txt
+        run: python3 -m pip install -r ./requirements-ci.txt
 
       - name: Installing packages again (this prevents a weird error in cell matching nb)
-        run: pip install -r requirements.txt
+        run: python3 -m pip install -r requirements-ci.txt
 
       - name: Installing build dependencies
         run: |
-          pip install markupsafe==2.0.1
-          pip install jupyter
-          pip install -U jupyter-book
-          pip install nbmake
-          pip install pytest-xdist
+          python3 -m pip install markupsafe==2.0.1
+          python3 -m pip install jupyter
+          python3 -m pip install -U jupyter-book
+          python3 -m pip install nbmake
+          python3 -m pip install pytest-xdist
 
       - name: Printing environment
-        run: pip freeze
+        run: python3 -m pip freeze
       
       - name: Getting changed files
         id: changed_files
@@ -54,5 +57,5 @@ jobs:
         
       - name: Testing notebooks
         if: ${{ steps.changed_files.outputs.added_modified  != '' }}
-        run: pytest --nbmake --nbmake-timeout=5000 -n=auto ${{ steps.changed_files.outputs.added_modified }}
+        run: pytest --nbmake --nbmake-timeout=5000 -n=2 ${{ steps.changed_files.outputs.added_modified }}
 

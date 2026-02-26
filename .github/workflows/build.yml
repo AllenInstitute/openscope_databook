@@ -12,8 +12,6 @@ jobs:
   build:
     runs-on:
       group: LargerInstance
-    container: 
-      image: rcpeene/openscope_databook:latest
 
     env:
       DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
@@ -25,65 +23,61 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
 
-      - name: Set up Python
+      - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10.11'
+          python-version: '3.10'
 
-      # - name: Upgrading pip
-      #   run: pip install --upgrade pip
-
-      # - name: Install deps
-      #   run: pip install cython numpy==1.26
-
-      - name: Installing package
-        run: pip install -e .
-
-      # Some git-based dependencies (e.g., ophys-nway-matching) in requirements.txt
-      # are not reliably installed via `pip install -e .` due to setuptools limitations.
-      # This second install ensures all such dependencies are properly installed.
-      - name: Installing packages again (to avoid setuptools limitations)
-        run: pip install -r requirements.txt
-
-      - name: Installing build dependencies
+      - name: Install Python build headers
         run: |
-          pip install markupsafe==2.0.1
-          pip install jupyter==1.0.0
-          pip install -U jupyter-book==1.0.0
-          pip install nbmake==1.5.3
-          pip install pytest-xdist==3.5.0
-        
+          if command -v sudo >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y g++
+          else
+            apt-get update
+            apt-get install -y g++
+          fi
+
+      - name: Install uv
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install uv
+
+      - name: Sync environment from lockfile
+        run: |
+          uv sync --frozen --extra dev --python 3.10
+
       - name: Printing environment
-        run: pip freeze
+        run: uv pip freeze
 
       - name: Testing Embargoed Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
           rm ./docs/embargoed/*.nwb
 
       - name: Testing Higher-Order Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order" --ignore docs/higher-order/behavioral_state.ipynb
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"
           rm ./docs/higher-order/*.nwb
 
       - name: Testing Basics Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
+          uv run pytest --nbmake --nbmake-timeout=100000 -n=auto "./docs/basics"
           rm ./docs/basics/*.nwb
-        
+
       - name: Testing Visualization Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/visualization"
           rm ./docs/visualization/*.nwb
 
       - name: Testing First-Order Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/first-order"
           rm ./docs/first-order/*.nwb
         
       - name: Testing Project Notebooks
         run: |
-          pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/projects"
+          uv run pytest --nbmake --nbmake-timeout=8000 -n=2 "./docs/projects"
           rm ./docs/projects/*.nwb
         
       - name: Printing log
@@ -96,5 +90,5 @@ jobs:
 
       - name: Build Jupyter book
         run: |
-          jupyter-book clean ./docs
-          jupyter-book build ./docs
+          uv run jupyter-book clean ./docs
+          uv run jupyter-book build ./docs

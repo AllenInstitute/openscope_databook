@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openscope-databook"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+authors = [
+    { name = "Carter Peene", email = "carter.peene@alleninstitute.org" }
+]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "autograd==1.7",
+    "ccfwidget==0.5.3",
+    "cebra>=0.6.0",
+    "dandi==0.67.2",
+    "elephant==1.1.1",
+    "h5py>=3.8",
+    "ipympl",
+    "ipywidgets",
+    "itkwidgets",
+    "jaxopt>=0.8.5",
+    "jupyter==1.0.0",
+    "markupsafe==2.0.1",
+    "matplotlib",
+    "matplotlib-inline<0.2",
+    "mpl-interactions",
+    "nbmake==1.5.3",
+    "nemos>=0.2.3",
+    "neo==0.13.0",
+    "numcodecs==0.11.0",
+    "numpy==1.26.0",
+    "ophys-nway-matching @ git+https://github.com/AllenInstitute/ophys_nway_matching.git@main",
+    "pandas==1.5.2",
+    "pillow==11",
+    "pooch>=1.8.2",
+    "pynapple>=0.9.2",
+    "pynwb>3",
+    "pytest==8.3.5",
+    "pytest-xdist==3.5.0",
+    "quantities==0.14.1",
+    "remfile==0.1.10",
+    "sbxreader>=0.2.3",
+    "scikit-image==0.19.3",
+    "scikit-learn>=1.7.0",
+    "scipy==1.13.1",
+    "seaborn>=0.13.2",
+    "ssm @ git+https://github.com/rcpeene/ssm",
+    "statsmodels==0.14.0",
+    "suite2p==0.14",
+    "tensortools==0.4",
+    "torch==2.5.1",
+    "tqdm==4.66.2",
+    "traitlets==5.6.0",
+    "zarr==2.13.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "markupsafe==2.0.1",
+    "jupyter-book==1.0.0",
+    "nbmake==1.5.3",
+    "pytest==8.3.5",
+    "pytest-xdist==3.5.0",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["databook_utils*"]
+
+[tool.uv]
+override-dependencies = ["pynwb>3", "hdmf>4"]
+
+[tool.uv.extra-build-dependencies]
+ssm = ["numpy", "Cython"]
+
+
+[tool.uv.sources]
+ophys-nway-matching = { git = "https://github.com/AllenInstitute/ophys_nway_matching.git" }
+ndx-harvey-swac = { git = "https://github.com/sytseng/ndx-harvey-swac" }
+databook-utils = { git = "https://github.com/AllenInstitute/openscope_databook" }
+
