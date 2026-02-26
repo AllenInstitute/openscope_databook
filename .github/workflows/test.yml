@@ -11,8 +11,6 @@ jobs:
   test:
     runs-on: 
       group: LargerInstance
-    container:
-      image: rcpeene/openscope_databook:latest
 
     env:
       DANDI_API_KEY: ${{ secrets.DANDI_API_KEY }}
@@ -21,33 +19,31 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Python build headers
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install system build tools
         run: |
-          apt-get update
-          apt-get install -y python3-dev g++
+          if command -v sudo >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y g++
+          else
+            apt-get update
+            apt-get install -y g++
 
-      - name: Install build backend tools
-        run: python3 -m pip install setuptools wheel Cython numpy==1.26.0
-
-      # - name: Upgrading pip
-      #   run: pip install --upgrade pip
-
-      - name: Installing requirements
-        run: python3 -m pip install -r ./requirements-ci.txt
-
-      - name: Installing packages again (this prevents a weird error in cell matching nb)
-        run: python3 -m pip install -r requirements-ci.txt
-
-      - name: Installing build dependencies
+      - name: Install uv
         run: |
-          python3 -m pip install markupsafe==2.0.1
-          python3 -m pip install jupyter
-          python3 -m pip install -U jupyter-book
-          python3 -m pip install nbmake
-          python3 -m pip install pytest-xdist
+          python -m pip install --upgrade pip
+          python -m pip install uv
+
+      - name: Sync environment from lockfile
+        run: |
+          uv sync --frozen --extra dev --python 3.10
 
       - name: Printing environment
-        run: python3 -m pip freeze
+        run: uv pip freeze
       
       - name: Getting changed files
         id: changed_files
@@ -57,5 +53,5 @@ jobs:
         
       - name: Testing notebooks
         if: ${{ steps.changed_files.outputs.added_modified  != '' }}
-        run: pytest --nbmake --nbmake-timeout=5000 -n=2 ${{ steps.changed_files.outputs.added_modified }}
+        run: uv run pytest --nbmake --nbmake-timeout=5000 -n=2 ${{ steps.changed_files.outputs.added_modified }}
 
