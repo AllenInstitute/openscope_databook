@@ -8,9 +8,9 @@ The Databook can be forked via the GitHub Web UI from the Databook's [GitHub rep
 ## Initialize Locally
 A local repo can be made by pressing the [code button](../data/images/code_button.png) on the front page of the forked repo, and copying the HTTPS url. Then locally, run the command `git clone <copied_url_here>`. For more information on cloning GitHub repos, check out GitHub's [Cloning a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) Page.
 
-Then the environment must be set up. You may set up a conda environment if you don't want to interfere with your local environment. After installing conda, this can be done with the commands `conda create --name databook python=3.11` followed by `activate databook` (Windows) or `source activate databook` (Mac/Linux). Within or without the conda environment, the dependencies for the databook can be installed by navigating to the openscope_databook directory and running `pip install -e . --user`.
+Then the environment must be set up. The preferred local setup is Python 3.10 with `uv`, which mirrors CI and lockfile resolution. After cloning, run `python -m pip install uv` followed by `uv sync --frozen --extra dev --python 3.10`. If you prefer not to use `uv`, create a Python 3.10 environment and install with `python -m pip install -r requirements-ci.txt` and `python -m pip install -e .`.
 
-Finally, notebooks can be run with Jupyter notebook by running `jupyter notebook ./docs`
+Finally, notebooks can be run with Jupyter notebook by running `uv run jupyter notebook ./docs` (or `jupyter notebook ./docs` in an already-activated pip environment).
 
 
 ## Make Contributions
@@ -19,7 +19,7 @@ A contribution can take the form of changes to an existing notebook. More likely
 **Important Note:**
 For a notebook to be compliant with the Databook, it must have an environment setup cell at the top. This is described in the **Styleguide** below.
 
-Any additional packages required for the notebook to run should be added to `requirements.txt`. When the notebook is complete it must be added to `docs/_toc.yml` to the appropriate chapter
+Any additional packages required for the notebook to run should be added to `pyproject.toml`, then lock/export artifacts should be updated with `uv lock` and `uv export --frozen --no-dev --no-emit-project --no-hashes -o requirements-ci.txt`. When the notebook is complete it must be added to `docs/_toc.yml` to the appropriate chapter.
 
 
 ## Run and Test Locally

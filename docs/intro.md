@@ -90,13 +90,28 @@ Binder will automatically setup the environment with [repo2docker](https://githu
 [Dandihub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by the [DANDI Archive](https://dandiarchive.org). It can be used by hovering over the `Launch` button in the top-right of a notebook and selecting `JupyterHub`. In order to run notebooks on Dandihub, you must sign in with your GitHub account, select the server size, select the `OpenScope` option from the `Image` dropdown menu, and navigate to the `openscope_databook/docs` directory which contains the OpenScope notebooks.
 
 ### Locally
-You can download an individual notebook by pressing the `Download` button in the top-right and selecting `.ipynb`. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the `GitHub` button in the top-right and selecting `repository`. When run locally, the environment can be replicated with our [requirements.txt](https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt) file using the command 
+You can download an individual notebook by pressing the `Download` button in the top-right and selecting `.ipynb`. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the `GitHub` button in the top-right and selecting `repository`.
+
+#### Locally (Preferred: uv)
+Use Python 3.10. Then install and sync with:
 ```
-pip install -e .
+python -m pip install uv
+uv sync --frozen --extra dev --python 3.10
+```
+Run notebooks/tools through uv (for example):
+```
+uv run jupyter notebook ./docs
+```
+
+#### Locally (Pip-only fallback)
+If you prefer not to use uv, create a Python 3.10 virtual environment and install from exported requirements:
+```
+python -m pip install -r requirements-ci.txt
+python -m pip install -e .
 ```
 
 #### Locally (Conda)
-It is recommended that this is done within a conda environment using Python 3.10 or Docker to minimize any interference with local machine environments. For information on installing and using conda, go [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html). *Before* running the pip installation above, you can create a conda environment in the conda prompt with the command 
+If you prefer conda for environment isolation, create a Python 3.10 conda environment first, then follow either the uv or pip-only installation steps above. For information on installing and using conda, go [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html). You can create a conda environment with:
 ```
 conda create -n databook_env python=3.10
 ```
@@ -104,7 +119,6 @@ and you can run that environment with
 ```
 conda activate databook_env
 ```
-
 
 #### Locally (Docker)
 The Databook also includes a dockerfile. If you want to build a docker container for the Databook yourself (for some reason), you can do so by running the following command in the Databook main directory after you have docker installed and running
