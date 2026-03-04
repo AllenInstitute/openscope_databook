@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -78,6 +81,7 @@
     <link rel="next" title="Background" href="basics/background.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -93,19 +97,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -113,7 +106,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -121,8 +113,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -140,7 +132,8 @@
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -170,21 +163,17 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="OpenScope Databook - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="OpenScope Databook - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="OpenScope Databook - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -201,7 +190,6 @@
 <li class="toctree-l1"><a class="reference internal" href="basics/download_nwb.html">Downloading an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics/read_nwb.html">Reading an NWB File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basics/use_nwbwidgets.html">Exploring an NWB File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
@@ -419,24 +407,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -467,6 +447,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thebe">Thebe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dandihub">Dandihub</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally">Locally</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-preferred-uv">Locally (Preferred: uv)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-pip-only-fallback">Locally (Pip-only fallback)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-conda">Locally (Conda)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-docker">Locally (Docker)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-running-notebook">Locally (Running Notebook)</a></li>
@@ -504,7 +486,7 @@ document.write(`
 <label class="sd-tab-label" for="sd-tab-item-0">
 All Contributors</label><div class="sd-tab-content docutils">
 <p><strong>Supplied any substantial contribution to the project</strong></p>
-Katrina Ager, Shailaja Akella, Ahad Bawany, Corbett Bennett, Michael Berry, Ben Dichter, Benjamin Dichter, Satrajit Ghosh, Colleen J. Gillon, Kabilar Gunalan, Yaroslav O. Halchenko, Daniel Hulsey, Santiago Jaramillo, Siddharth Jha, Xiaoxuan Jia, Yeerim Kim, Carly Kiselycznyk, Jerome Lecoq, Camila Patricia Maura Llauri, Mackenzie Mathis, Mayank Mehta, R. Carter Peene, Jason Pina, Stephanie Prince, Chinmay Purandare, Pamela Reinagel, Hyeyoung Shin, Josh Siegle, Jiatai Song, Shih-Yi Tseng, Jacob Westerberg, Alex Williams</div>
+Katrina Ager, Saif Ah.tub&#64;gmail.com, Shailaja Akella, Ahad Bawany, Corbett Bennett, Michael Berry, danieldeitch1, Benjamin Dichter, Satrajit Ghosh, Colleen J. Gillon, Kabilar Gunalan, Yaroslav O. Halchenko, Daniel Hulsey, Santiago Jaramillo, Siddharth Jha, Xiaoxuan Jia, Yeerim Kim, Carly Kiselycznyk, Jerome Lecoq, Camila Patricia Maura Llauri, Mackenzie Mathis, Mayank Mehta, orlandi, R. Carter Peene, Jason Pina, Stephanie Prince, Chinmay Purandare, Pamela Reinagel, Roberto, Hyeyoung Shin, Josh Siegle, Sofia Pereira da Silva, sofiaeps, Jiatai Song, Shih-Yi Tseng, Jacob Westerberg, Alex Williams</div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-1">
 Management</label><div class="sd-tab-content docutils">
@@ -524,7 +506,7 @@ Katrina Ager, Ahad Bawany, Corbett Bennett, Colleen J. Gillon, Yaroslav O. Halch
 <label class="sd-tab-label" for="sd-tab-item-4">
 Commits</label><div class="sd-tab-content docutils">
 <p><strong>Committed code to the primary GitHub repository</strong></p>
-R. Carter Peene (1603), Katrina Ager (76), Camila Patricia Maura Llauri (42), Jerome Lecoq (15), Kabilar Gunalan (11), Stephanie Prince (10), Yaroslav O. Halchenko (10), Santiago Jaramillo (8), Colleen J. Gillon (5), Yeerim Kim (8), Jiatai Song (7), Mackenzie Mathis (2), Ben Dichter (1), Shailaja Akella (1), Shih-Yi Tseng (1)</div>
+R. Carter Peene (1662), Katrina Ager (76), Camila Patricia Maura Llauri (42), Jerome Lecoq (15), Kabilar Gunalan (11), Stephanie Prince (10), Yaroslav O. Halchenko (10), Santiago Jaramillo (8), Colleen J. Gillon (5), Yeerim Kim (8), Jiatai Song (7), danieldeitch1 (7), Saif Ah.tub&#64;gmail.com (3), Ben Dichter (2), Mackenzie Mathis (2), Roberto (2), Sofia Pereira da Silva (2), orlandi (2), sofiaeps (2), Shailaja Akella (1), Shih-Yi Tseng (1)</div>
 <input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" for="sd-tab-item-5">
 Review</label><div class="sd-tab-content docutils">
@@ -563,13 +545,30 @@ NIH U24 NS113646</div>
 </section>
 <section id="locally">
 <h3>Locally<a class="headerlink" href="#locally" title="Link to this heading">#</a></h3>
-<p>You can download an individual notebook by pressing the <code class="docutils literal notranslate"><span class="pre">Download</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">repository</span></code>. When run locally, the environment can be replicated with our <a class="reference external" href="https://github.com/AllenInstitute/openscope_databook/blob/main/requirements.txt">requirements.txt</a> file using the command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+<p>You can download an individual notebook by pressing the <code class="docutils literal notranslate"><span class="pre">Download</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> button in the top-right and selecting <code class="docutils literal notranslate"><span class="pre">repository</span></code>.</p>
+<section id="locally-preferred-uv">
+<h4>Locally (Preferred: uv)<a class="headerlink" href="#locally-preferred-uv" title="Link to this heading">#</a></h4>
+<p>Use Python 3.10. Then install and sync with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">uv</span>
+<span class="n">uv</span> <span class="n">sync</span> <span class="o">--</span><span class="n">frozen</span> <span class="o">--</span><span class="n">extra</span> <span class="n">dev</span> <span class="o">--</span><span class="n">python</span> <span class="mf">3.10</span>
 </pre></div>
 </div>
+<p>Run notebooks/tools through uv (for example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uv</span> <span class="n">run</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">./</span><span class="n">docs</span>
+</pre></div>
+</div>
+</section>
+<section id="locally-pip-only-fallback">
+<h4>Locally (Pip-only fallback)<a class="headerlink" href="#locally-pip-only-fallback" title="Link to this heading">#</a></h4>
+<p>If you prefer not to use uv, create a Python 3.10 virtual environment and install from exported requirements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">-</span><span class="n">ci</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+</section>
 <section id="locally-conda">
 <h4>Locally (Conda)<a class="headerlink" href="#locally-conda" title="Link to this heading">#</a></h4>
-<p>It is recommended that this is done within a conda environment using Python 3.10 or Docker to minimize any interference with local machine environments. For information on installing and using conda, go <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html">here</a>. <em>Before</em> running the pip installation above, you can create a conda environment in the conda prompt with the command</p>
+<p>If you prefer conda for environment isolation, create a Python 3.10 conda environment first, then follow either the uv or pip-only installation steps above. For information on installing and using conda, go <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html">here</a>. You can create a conda environment with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">databook_env</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10</span>
 </pre></div>
 </div>
@@ -698,7 +697,8 @@ NIH U24 NS113646</div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -714,6 +714,8 @@ NIH U24 NS113646</div>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thebe">Thebe</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dandihub">Dandihub</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locally">Locally</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-preferred-uv">Locally (Preferred: uv)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-pip-only-fallback">Locally (Pip-only fallback)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-conda">Locally (Conda)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-docker">Locally (Docker)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-running-notebook">Locally (Running Notebook)</a></li>
@@ -777,8 +779,8 @@ By Carter Peene
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

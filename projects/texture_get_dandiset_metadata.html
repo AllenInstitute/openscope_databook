@@ -1,0 +1,1807 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Experimental Metadata from DANDI for textures &#8212; OpenScope Databook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/texture_get_dandiset_metadata';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="OpenScope Databook - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="OpenScope Databook - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixels_probes.html">Visualizing Neuropixels Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_templates.html">Visualizing Stimulus Templates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="illusion.html">OpenScope’s Illusion Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_learning.html">OpenScope’s Sequence Learning Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="barcoding.html">Introduction to the Temporal Barcode Dataset</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/modality_alignment.html">Aligning Data across Modalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/cell_matching.html">Cell Matching Across Days</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../methods/jupyter_book.html">Jupyter/Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/projects/texture_get_dandiset_metadata.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/projects/texture_get_dandiset_metadata.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/projects/texture_get_dandiset_metadata.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fprojects/texture_get_dandiset_metadata.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/texture_get_dandiset_metadata.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Getting Experimental Metadata from DANDI for textures</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-dandiset-metadata">Getting Dandiset Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-nwb-info">Get NWB Info</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-table">Getting Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-files">Selecting Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-selected-files">Downloading Selected Files</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-experimental-metadata-from-dandi-for-textures">
+<h1>Getting Experimental Metadata from DANDI for textures<a class="headerlink" href="#getting-experimental-metadata-from-dandi-for-textures" title="Link to this heading">#</a></h1>
+<p>It can be helpful to view general information about the experimental sessions that produced your data. Since typically each NWB File represents one session, a dandiset’s files can be examined to get an overview of each of the sessions. This can vary, depending on who produced the NWB file. In this notebook, NWB Files within one of the Allen Institute’s datasets are opened and some basic information is used to make a table of the experimental sessions and their properties.</p>
+<p>To clearly identify the sessions for the texture project we need to pull additional metadata entries</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_stream_open</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">%</span><span class="k">cd</span> openscope_databook
+    <span class="o">%</span><span class="k">pip</span> install -e .
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">remfile</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dandi</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandiapi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pynwb</span><span class="w"> </span><span class="kn">import</span> <span class="n">NWBHDF5IO</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-dandiset-metadata">
+<h2>Getting Dandiset Metadata<a class="headerlink" href="#getting-dandiset-metadata" title="Link to this heading">#</a></h2>
+<p>To view other data, change <code class="docutils literal notranslate"><span class="pre">dandiset_id</span></code> to be the id of the dandiset you’re interested in. If the dandiset is embargoed, set <code class="docutils literal notranslate"><span class="pre">dandi_api_key</span></code> to your DANDI API key.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;001461&quot;</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_dandiset</span> <span class="o">=</span> <span class="n">dandiapi</span><span class="o">.</span><span class="n">DandiAPIClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span><span class="o">.</span><span class="n">get_dandiset</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got dandiset </span><span class="si">{</span><span class="n">my_dandiset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Got dandiset DANDI:001461/draft
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-nwb-info">
+<h2>Get NWB Info<a class="headerlink" href="#get-nwb-info" title="Link to this heading">#</a></h2>
+<p>Below are two definitions of thefunction <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>. These function are tailored to our NWB Files; Our <em>Ophys</em> and our <em>Ecephys</em> datasets respectively. It retrieves a series of important metadata values from the NWB file object. It is likely that the code for accessing the fields of interest to you will be slightly different for your files. This can easily be altered to extract any other information from an NWB file you want as long as you’re familiar with the internal layout of your files. However, make sure to change the <code class="docutils literal notranslate"><span class="pre">columns</span></code> field in the pandas dataframe below to properly reflect any changes to the function. <code class="docutils literal notranslate"><span class="pre">nwb_type</span></code> can be set below to ‘ephys’ or ‘ophys’ depending on the type of the NWBs of interest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb_type</span> <span class="o">=</span> <span class="s2">&quot;ophys&quot;</span> <span class="c1"># or, &quot;ephys&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within ophys file</span>
+<span class="c1"># getattr is used because not all nwb files have all properties. If not handled like this, errors will arise</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ophys_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+        <span class="n">session_time</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;session_start_time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">metadata_obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;lab_meta_data&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata_obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">session_id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;session_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">subject</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">sub_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;subject_id&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">genotype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;genotype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        
+        <span class="k">try</span><span class="p">:</span> <span class="n">n_rois</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">processing</span><span class="p">[</span><span class="s2">&quot;ophys&quot;</span><span class="p">][</span><span class="s2">&quot;dff&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">roi_response_series</span><span class="p">[</span><span class="s2">&quot;traces&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span> <span class="n">n_rois</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">location</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nwb</span><span class="o">.</span><span class="n">imaging_planes</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">location</span>
+        <span class="k">except</span><span class="p">:</span> <span class="n">location</span> <span class="o">=</span> <span class="kc">None</span>
+        
+        <span class="n">intervals</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;intervals&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">if</span> <span class="s2">&quot;behavior_presentations&quot;</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">intervals</span><span class="p">[</span><span class="s2">&quot;behavior_presentations&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">image_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;OpenScope-Texture_stage-A2.5_240404&quot;</span><span class="p">:</span>
+                <span class="n">stim_types</span> <span class="o">=</span> <span class="s2">&quot;active_single_exemplar&quot;</span>
+            <span class="k">elif</span> <span class="n">intervals</span><span class="p">[</span><span class="s2">&quot;behavior_presentations&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">image_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;OpenScope-Texture_ShiftedImages_TriangleDistribution_8_13_stage-B2.5_241016&quot;</span><span class="p">:</span>
+                <span class="n">stim_types</span> <span class="o">=</span> <span class="s2">&quot;active_shifting_exemplars&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">stim_types</span> <span class="o">=</span> <span class="s2">&quot;active_unknown&quot;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown session type on: </span><span class="si">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+        <span class="k">elif</span> <span class="s2">&quot;fam-0-smp-0.tiff_presentations&quot;</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">:</span>
+            <span class="n">stim_types</span> <span class="o">=</span> <span class="s2">&quot;passive&quot;</span>  
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stim_types</span> <span class="o">=</span> <span class="s2">&quot;unknown&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown session type on: </span><span class="si">{</span><span class="n">nwb</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="n">stim_tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">intervals</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">]</span>
+        <span class="c1"># gets highest value among final &quot;stop times&quot; of all stim tables in intervals</span>
+        <span class="n">session_end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">stim_tables</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">session_time</span><span class="p">,</span> <span class="n">sub_name</span><span class="p">,</span> <span class="n">session_id</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">genotype</span><span class="p">,</span> <span class="n">stim_types</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">,</span> <span class="n">session_end</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get experimental information from within ecephys file</span>
+<span class="c1"># getattr is used because not all nwb files have all properties. If not handled like this, errors will arise</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ephys_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">):</span>
+        <span class="n">session_time</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;session_start_time&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">subject</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">specimen_name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;specimen_name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;age_in_days&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">sex</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">genotype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s2">&quot;genotype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">probes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;devices&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>        
+        
+        <span class="n">intervals</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="s2">&quot;intervals&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">stim_types</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">stim_tables</span> <span class="o">=</span> <span class="p">[</span><span class="n">intervals</span><span class="p">[</span><span class="n">table_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">intervals</span><span class="p">]</span>
+        <span class="c1"># gets highest value among final &quot;stop times&quot; of all stim tables in intervals</span>
+        <span class="n">session_end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">stim_tables</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">session_time</span><span class="p">,</span> <span class="n">specimen_name</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">genotype</span><span class="p">,</span> <span class="n">probes</span><span class="p">,</span> <span class="n">stim_types</span><span class="p">,</span> <span class="n">n_units</span><span class="p">,</span> <span class="n">session_end</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-table">
+<h2>Getting Table<a class="headerlink" href="#getting-table" title="Link to this heading">#</a></h2>
+<p>Here, each relevant file in the dandiset is streamed and opened remotely to get the information of interest using the function <code class="docutils literal notranslate"><span class="pre">get_nwb_info</span></code>, defined above, and then it is added to a table of sessions and their metadata. Since some files are for specific probes rather than entire sessions, they are skipped.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb_table</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># skip files that aren&#39;t main session files</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">asset</span> <span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_assets</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;probe&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">asset</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
+<span class="c1"># swap this with line above for one of our ophys dandisets</span>
+<span class="c1"># files = [asset for asset in my_dandiset.get_assets() if &quot;raw&quot; not in asset.path]</span>
+<span class="n">n_files</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2"> files retrieved&quot;</span><span class="p">)</span>
+
+<span class="n">extract_nwb_info</span> <span class="o">=</span> <span class="n">get_ephys_nwb_info</span> <span class="k">if</span> <span class="n">nwb_type</span> <span class="o">==</span> <span class="s2">&quot;ephys&quot;</span> <span class="k">else</span> <span class="n">get_ophys_nwb_info</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examining file </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n_files</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    
+    <span class="c1"># get basic file metadata</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">]</span>
+    
+    <span class="n">base_url</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">base_download_url</span><span class="p">)</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Location&quot;</span><span class="p">]</span>
+
+    <span class="c1"># open and read nwb file with streaming</span>
+    <span class="n">rem_file</span> <span class="o">=</span> <span class="n">remfile</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
+    <span class="n">h5py_file</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">rem_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">h5py_file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">load_namespaces</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># extract experimental info from within file</span>
+    <span class="n">row</span> <span class="o">+=</span> <span class="n">extract_nwb_info</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
+    <span class="n">nwb_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="c1"># del nwb</span>
+
+    <span class="c1"># don&#39;t run full loop if running in test environment</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TESTING&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>144 files retrieved
+Examining file 1/144: 3a99f387-2af0-4ead-9af2-b3fb6319e966
+Examining file 2/144: 7c7f7ac5-3252-42c2-8172-db7d8cea3a4b
+Examining file 3/144: 6d082069-8960-4bf2-9bec-2c0e0d6c9d5f
+Examining file 4/144: 004043f9-321e-445e-b695-85e04002f2f1
+Examining file 5/144: 9db56b96-0a4a-4bb3-be7e-2fced9efd393
+Examining file 6/144: cdfcd9d0-2de5-46b4-805f-a3f91dfee8b7
+Examining file 7/144: 8f2de772-089e-4c2f-bdad-87600da96bb4
+Examining file 8/144: 4068057d-9d2d-4f58-a105-7b1e5285504e
+Examining file 9/144: c809ff72-2074-4c6e-bf91-a447261b81de
+Examining file 10/144: e8a5b4fd-d88a-4b39-80c3-48399374b77e
+Examining file 11/144: 1eed7d79-ffc5-4139-8736-48159a72dfc8
+Examining file 12/144: ec8ec2f3-c09f-4e38-9bde-10137752c33e
+Examining file 13/144: c5d4942c-7f9e-4287-b36a-4ee420e375b7
+Examining file 14/144: 6d8ee037-671b-4d9a-82dd-18a5cb80f931
+Examining file 15/144: e0523d3c-46bc-45a8-b1d2-8475ec2d5eb8
+Examining file 16/144: 5b52d1c0-df79-4a91-a068-cbfaec589f6b
+Examining file 17/144: 970a6370-1c76-4397-bea3-891b6f072c8a
+Examining file 18/144: 3a4b7fe8-238f-4ee4-8d0f-7adf9920c171
+Examining file 19/144: 9f54b3c1-8977-4a8d-9730-15427c1b9e98
+Examining file 20/144: b2e21eeb-1399-4040-90c0-4d5bcd42af19
+Examining file 21/144: 67eb445a-253d-4b9c-a3e1-3620db56a2b4
+Examining file 22/144: 6442325b-7a8b-4a9e-9236-624d7eeabe5e
+Examining file 23/144: cb28809f-8dd9-4c68-9357-056b5eaa1c15
+Examining file 24/144: 6b9c4eb7-628f-449c-9036-c0aa250d93ca
+Examining file 25/144: b6c5184f-3117-41a8-8c30-e1b1d5f59484
+Examining file 26/144: cb81ec76-9f8a-4451-a97e-ba1eddbaffa4
+Examining file 27/144: c8ce6607-4b95-4809-bcda-6bcf37eded7f
+Examining file 28/144: d1d278eb-321f-41b0-bc08-cf77b682ea8b
+Examining file 29/144: 699bb3cc-3e43-447f-a91d-4f440d56ff13
+Examining file 30/144: 02901995-4d73-458e-b8e4-f5e0cfca4fab
+Examining file 31/144: 4b8c8141-ed5f-4e1a-be63-baa92c04d7ff
+Examining file 32/144: 5b8ec59e-277f-43e6-bfff-8388abb348d3
+Examining file 33/144: b9c60e76-4a64-4bcd-935c-082ca729dc3b
+Examining file 34/144: 6ac44346-38b3-4b95-9cf3-204033c268e4
+Examining file 35/144: a41b9cc5-8059-433e-abd1-b02dac2c5758
+Examining file 36/144: 5c07c0bf-a3e1-480c-ad50-b6ee94c0981c
+Examining file 37/144: 7279b2be-1703-4f1a-a01f-b6c43361ba39
+Examining file 38/144: 08724566-f89a-45e8-8d1e-5ac4fdf299ee
+Examining file 39/144: d41d576c-e551-4ca6-8297-bc49f004cf48
+Examining file 40/144: bb8a4d6e-f40b-48a9-b9c6-7b679b169e52
+Examining file 41/144: 984e482a-2b07-4004-9d17-04d22bf96687
+Examining file 42/144: f1ce147b-c033-4f1d-bd12-78bba28e68fb
+Examining file 43/144: 6cc6c965-5633-4c94-a166-061d5fb94391
+Examining file 44/144: b422c589-cf6a-493e-aa87-ebec2df75c15
+Examining file 45/144: 889e8587-4f32-40aa-8de5-175d7d98f358
+Examining file 46/144: 670a7a30-0946-460e-ba10-a83267d9b36d
+Examining file 47/144: 32e46125-c9ea-4ec4-8528-bf96db023c85
+Examining file 48/144: d81eee92-91ee-474c-b656-103f94f5b50b
+Examining file 49/144: f3a5dad2-a101-4569-8dd1-867c41f76e9e
+Examining file 50/144: ac165833-d5b6-4e03-8d41-d5b6a1078283
+Examining file 51/144: 64b4cdba-8c43-4eab-b7cb-40fe563ae05b
+Examining file 52/144: 2d94680c-f5f2-4181-a0b5-726286c8087b
+Examining file 53/144: e02d7725-5383-4996-b6b4-d983a4654e3c
+Examining file 54/144: 1f377f16-90b3-4861-b95b-1e6e9cbc64e0
+Examining file 55/144: 783f0211-a484-4033-b2e5-a695701e4b98
+Examining file 56/144: 2a600d5a-7e02-4c59-9a3e-06ba0cd26c33
+Examining file 57/144: 52c0716a-2eac-4bb5-a574-9a5f54200382
+Examining file 58/144: 4c744966-bc29-425f-99b9-836cb8f1440a
+Examining file 59/144: c0812fea-f394-48d3-a9c4-c19c72d2dca5
+Examining file 60/144: df9c631e-7216-4868-ba77-eda740df2bd0
+Examining file 61/144: 74297073-b4b2-488d-a048-fdfdfcbd2949
+Examining file 62/144: e497cd41-c3c5-4675-b812-ec862578a100
+Examining file 63/144: 5751dc9a-a2b8-4758-8eed-e18a80941f49
+Examining file 64/144: 22955fab-3544-44e7-b5c9-35965a56613e
+Examining file 65/144: ed5ff8c6-7887-4bd7-9c0b-36b28db56f62
+Examining file 66/144: b3a349a4-c320-4bc8-b4ec-8a4927244397
+Examining file 67/144: 443c4c82-b729-49b5-9c41-00e8e721307b
+Examining file 68/144: f2e2b443-039e-49ac-8648-184237c67cd9
+Examining file 69/144: f88a3134-5a9e-4a69-b74f-70985d289468
+Examining file 70/144: 3c9780b6-e80b-4d44-9a3d-04cdda910900
+Examining file 71/144: 424259c6-8b56-4030-b6da-0ac519429179
+Examining file 72/144: 552dba1f-8bb0-4970-ad9f-cb837ea0fba2
+Examining file 73/144: 80f51999-f281-4563-8927-b1557c4a3a57
+Examining file 74/144: a3732e26-9774-4662-b942-3bac4c21d518
+Examining file 75/144: b9d8ce70-a02a-41ff-ac48-b6672ba37a19
+Examining file 76/144: 7ff7b6c7-7c27-4789-8bbf-e1543c85c40d
+Examining file 77/144: 10a3c193-2d08-46ac-8770-5026082cf1a8
+Examining file 78/144: 389ee3f2-bd09-4a64-9bba-8ffa26fae28b
+Examining file 79/144: a67340e7-c1d8-4776-a8c2-8d8950f9eaf3
+Examining file 80/144: 11a6decc-e963-4f6c-bbe3-2c9954bd1e93
+Examining file 81/144: 7fc7f1fb-a00f-4911-b1eb-8356d181370b
+Examining file 82/144: 47a7cbb4-23ec-443c-89e8-bc14caf72907
+Examining file 83/144: 6cac609b-b896-44a7-9b73-aaa3ae39e2fe
+Examining file 84/144: 997bc7c3-31df-4915-ae44-8756d1e727af
+Examining file 85/144: da8f564a-bb05-4121-ace8-c263617c2c45
+Examining file 86/144: d02a5ff9-6b2a-4abe-b955-e31f81d5f160
+Examining file 87/144: ee93f2f9-db91-411f-b02b-d8964964bbf5
+Examining file 88/144: 7e64ca4b-dbaf-413a-a112-0801844c6c68
+Examining file 89/144: 3295026c-61f6-446a-b476-f8603e0dc0bd
+Examining file 90/144: 65d66096-02d6-4ced-b6a2-8e6cdc86a63f
+Examining file 91/144: 8c9dae78-6e3d-47ec-9c7f-eda512f7cc3e
+Examining file 92/144: 67a81078-fa31-4b23-962d-4adff1586ed5
+Examining file 93/144: 8cf7a77d-65a4-4c40-af53-bd8324e5bb4b
+Examining file 94/144: 148cf3c6-3d8e-4b13-9fb4-2f12a9eaa63b
+Examining file 95/144: ed10080c-7243-40e5-9d40-06b9781d6a1f
+Examining file 96/144: 60fa6085-d4b8-4030-99c7-b7a54d20b622
+Examining file 97/144: 7ccf0c23-56bf-4d91-93bd-78011750eb8e
+Examining file 98/144: d207a224-7de2-4174-a61f-75d501d04b1c
+Examining file 99/144: 1523d05d-cd80-479e-ab97-030f01912b3c
+Examining file 100/144: e88f074f-ac8a-4108-9c59-f17f4cc4f16d
+Examining file 101/144: a736e1f4-f8a8-45a4-a756-46377650b356
+Examining file 102/144: 5a672039-0f5f-43e8-8bee-98b90fa505c8
+Examining file 103/144: 6a21eabf-3d18-409c-b768-82d585628dc5
+Examining file 104/144: ed6123df-9c36-436d-b7c2-d0476c0ef83b
+Examining file 105/144: 3d1e1b7d-61ee-48b1-984d-fcf3f3e781c6
+Examining file 106/144: 120fc0fd-5aa0-4708-89e2-fbe50123a280
+Examining file 107/144: 4ca8587f-8e16-4a5b-a1d3-5fd4baa44a7c
+Examining file 108/144: f210e0f2-c437-4f7c-b6fe-a34ad5fafc62
+Examining file 109/144: 2fbd5350-3660-4f4d-8a0c-064eb4a0731a
+Examining file 110/144: 544903e1-dffe-47ff-9a58-8fb9f31a2ac3
+Examining file 111/144: 31ecbf10-3ec2-4423-a440-779ad7c91fd9
+Examining file 112/144: 4fa79b1e-80bc-463b-9986-28aec7ee5144
+Examining file 113/144: a1fa26ea-faad-4664-978a-910d148eb699
+Examining file 114/144: b51d361e-914c-42a2-84f3-d73adba25e42
+Examining file 115/144: c90a489b-295a-4c6b-9d03-55d348c0660e
+Examining file 116/144: 28be4bfd-3111-4339-982b-ce47128ec2f2
+Examining file 117/144: 8f859387-5b18-44bf-b260-fb390e93afe5
+Examining file 118/144: c54f5954-451b-4378-9a6f-60974e0ad9ed
+Examining file 119/144: a77a6de5-8697-46f4-a23a-aee4c3ff7075
+Examining file 120/144: 89a0e627-b431-434f-a41e-ee7e653ba5b8
+Examining file 121/144: 6507d27f-8e2a-4bd0-86e2-e0bea2bdc190
+Examining file 122/144: 0c8b2731-6985-47c3-92b4-b7edd8f9459d
+Examining file 123/144: 2a972215-acc5-4dd3-b947-31ca61e3274e
+Examining file 124/144: 7277f79b-c2c2-4838-9a6a-44247b290e59
+Examining file 125/144: c0599912-3c84-47cb-992b-e4ff69cdcb9b
+Examining file 126/144: 2527fc8f-f64d-4d42-ad14-6cf607b60196
+Examining file 127/144: de6d4dc8-642a-4fb4-9e1a-9994be90ff80
+Examining file 128/144: be1946c8-26fc-4d7f-9b09-e96d0d19a31a
+Examining file 129/144: 3079ba26-d2ea-4188-b731-6965052fb884
+Examining file 130/144: e5d0d15f-0b79-4a2c-9f4a-e96f20263b41
+Examining file 131/144: 24e01abe-ce0e-4d4c-b9fa-1cb9705dea0f
+Examining file 132/144: c284c3e7-07bf-4948-9092-65a02a4ee833
+Examining file 133/144: 743b5d86-2672-4206-ac2a-adcb0c791811
+Examining file 134/144: 430aa80f-890d-4702-98a2-8e7df250f550
+Examining file 135/144: 85f8e332-23d3-4e76-9ce2-fb68386b65c4
+Examining file 136/144: 5d0c3373-6112-4a34-b373-f34cd05f1475
+Examining file 137/144: 50abc53a-e239-42fd-9dc7-16394d31c579
+Examining file 138/144: 4e84bcf0-e0c4-4d18-92f8-d77db4593403
+Examining file 139/144: ad6aeb66-6253-4881-940e-06e62c25ebf9
+Examining file 140/144: fa152afc-97f0-4903-a0c1-36540101ab37
+Examining file 141/144: 3120ec6f-b3d7-42ef-904b-e90deccf8025
+Examining file 142/144: 74567b97-79f3-4b57-956c-501b48d9b3f3
+Examining file 143/144: e8ac0c33-4057-4f58-9642-bfb47d91993b
+Examining file 144/144: 29007b2e-57aa-4f01-a673-5369c2df09a3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert table to pandas dataframe</span>
+<span class="k">if</span> <span class="n">nwb_type</span> <span class="o">==</span> <span class="s2">&quot;ephys&quot;</span><span class="p">:</span>
+    <span class="n">dandiset_files</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nwb_table</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;session_time&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_sex&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_age&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_genotype&quot;</span><span class="p">,</span> <span class="s2">&quot;probes&quot;</span><span class="p">,</span> <span class="s2">&quot;stim types&quot;</span><span class="p">,</span> <span class="s2">&quot;#_units&quot;</span><span class="p">,</span> <span class="s2">&quot;session_length&quot;</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">dandiset_files</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">nwb_table</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;session_time&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_name&quot;</span><span class="p">,</span> <span class="s2">&quot;session_id&quot;</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_sex&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_age&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_genotype&quot;</span><span class="p">,</span> <span class="s2">&quot;stim_types&quot;</span><span class="p">,</span> <span class="s2">&quot;#_rois&quot;</span><span class="p">,</span> <span class="s2">&quot;session_end&quot;</span><span class="p">))</span>
+<span class="n">dandiset_files</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>size</th>
+      <th>path</th>
+      <th>session_time</th>
+      <th>sub_name</th>
+      <th>session_id</th>
+      <th>location</th>
+      <th>sub_sex</th>
+      <th>sub_age</th>
+      <th>sub_genotype</th>
+      <th>stim_types</th>
+      <th>#_rois</th>
+      <th>session_end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3a99f387-2af0-4ead-9af2-b3fb6319e966</td>
+      <td>1729071576</td>
+      <td>sub-770196/sub-770196_ses-multiplane-ophys-770...</td>
+      <td>2025-03-19 14:16:39.177500-07:00</td>
+      <td>770196</td>
+      <td>multiplane-ophys_770196_2025-03-19_14-16-39</td>
+      <td>Structure: VISal Depth: 161</td>
+      <td>F</td>
+      <td>P167D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_single_exemplar</td>
+      <td>None</td>
+      <td>3917.756320</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7c7f7ac5-3252-42c2-8172-db7d8cea3a4b</td>
+      <td>980469748</td>
+      <td>sub-770962/sub-770962_ses-multiplane-ophys-770...</td>
+      <td>2025-03-08 11:22:47.102736-08:00</td>
+      <td>770962</td>
+      <td>multiplane-ophys_770962_2025-03-08_11-22-47</td>
+      <td>Structure: VISal Depth: 161</td>
+      <td>M</td>
+      <td>P152D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3920.138760</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6d082069-8960-4bf2-9bec-2c0e0d6c9d5f</td>
+      <td>1545544760</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-19 14:31:09.098968-08:00</td>
+      <td>766757</td>
+      <td>multiplane-ophys_766757_2025-02-19_14-31-09</td>
+      <td>Structure: VISal Depth: 148</td>
+      <td>M</td>
+      <td>P156D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>passive</td>
+      <td>None</td>
+      <td>3502.008335</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>004043f9-321e-445e-b695-85e04002f2f1</td>
+      <td>1535386552</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-21 11:52:07.454331-08:00</td>
+      <td>766757</td>
+      <td>multiplane-ophys_766757_2025-02-21_11-52-07</td>
+      <td>Structure: VISal Depth: 144</td>
+      <td>M</td>
+      <td>P158D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>passive</td>
+      <td>None</td>
+      <td>3495.192990</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9db56b96-0a4a-4bb3-be7e-2fced9efd393</td>
+      <td>1671603180</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-17 09:51:19.800644-08:00</td>
+      <td>766757</td>
+      <td>multiplane-ophys_766757_2025-02-17_09-51-19</td>
+      <td>Structure: VISal Depth: 140</td>
+      <td>M</td>
+      <td>P154D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3918.313840</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>fa152afc-97f0-4903-a0c1-36540101ab37</td>
+      <td>1598986452</td>
+      <td>sub-770196/sub-770196_ses-multiplane-ophys-770...</td>
+      <td>2025-03-21 14:14:24.910581-07:00</td>
+      <td>770196</td>
+      <td>multiplane-ophys_770196_2025-03-21_14-14-24</td>
+      <td>Structure: VISal Depth: 158</td>
+      <td>F</td>
+      <td>P169D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_single_exemplar</td>
+      <td>None</td>
+      <td>3920.496550</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>3120ec6f-b3d7-42ef-904b-e90deccf8025</td>
+      <td>1960065116</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-05 14:14:02.646070-08:00</td>
+      <td>766757</td>
+      <td>multiplane-ophys_766757_2025-02-05_14-14-02</td>
+      <td>Structure: VISal Depth: 144</td>
+      <td>M</td>
+      <td>P142D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_single_exemplar</td>
+      <td>None</td>
+      <td>3916.145170</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>74567b97-79f3-4b57-956c-501b48d9b3f3</td>
+      <td>1344031012</td>
+      <td>sub-762551/sub-762551_ses-multiplane-ophys-762...</td>
+      <td>2025-01-27 10:07:52.846287-08:00</td>
+      <td>762551</td>
+      <td>multiplane-ophys_762551_2025-01-27_10-07-52</td>
+      <td>Structure: VISal Depth: 142</td>
+      <td>F</td>
+      <td>P155D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3919.738360</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>e8ac0c33-4057-4f58-9642-bfb47d91993b</td>
+      <td>1393133956</td>
+      <td>sub-762551/sub-762551_ses-multiplane-ophys-762...</td>
+      <td>2025-01-23 15:07:09.374731-08:00</td>
+      <td>762551</td>
+      <td>multiplane-ophys_762551_2025-01-23_15-07-09</td>
+      <td>Structure: VISal Depth: 140</td>
+      <td>F</td>
+      <td>P151D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3928.410900</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>29007b2e-57aa-4f01-a673-5369c2df09a3</td>
+      <td>1148788024</td>
+      <td>sub-762551/sub-762551_ses-multiplane-ophys-762...</td>
+      <td>2025-01-30 11:23:54.975176-08:00</td>
+      <td>762551</td>
+      <td>multiplane-ophys_762551_2025-01-30_11-23-54</td>
+      <td>Structure: VISal Depth: 136</td>
+      <td>F</td>
+      <td>P158D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>passive</td>
+      <td>None</td>
+      <td>3499.208880</td>
+    </tr>
+  </tbody>
+</table>
+<p>144 rows × 13 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">nwb_type</span> <span class="o">==</span> <span class="s2">&quot;ephys&quot;</span><span class="p">:</span>
+    <span class="n">m_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
+    <span class="n">f_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">])</span>
+    <span class="n">sst_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Sst&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">pval_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Pval&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">wt_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;wt/wt&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dandiset Overview:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">),</span> <span class="s2">&quot;dandiset_files&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;sub_name&quot;</span><span class="p">])),</span> <span class="s2">&quot;subjects&quot;</span><span class="p">,</span> <span class="n">m_count</span><span class="p">,</span> <span class="s2">&quot;males,&quot;</span><span class="p">,</span> <span class="n">f_count</span><span class="p">,</span> <span class="s2">&quot;females&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sst_count</span><span class="p">,</span> <span class="s2">&quot;sst,&quot;</span><span class="p">,</span> <span class="n">pval_count</span><span class="p">,</span> <span class="s2">&quot;pval,&quot;</span><span class="p">,</span> <span class="n">wt_count</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">n_sessions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;session_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+    <span class="n">subjects_info</span> <span class="o">=</span> <span class="n">dandiset_files</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;sub_name&quot;</span><span class="p">,</span> <span class="s2">&quot;sub_sex&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+    <span class="n">m_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">sex</span> <span class="k">for</span> <span class="n">sex</span> <span class="ow">in</span> <span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">sex</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
+    <span class="n">f_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">sex</span> <span class="k">for</span> <span class="n">sex</span> <span class="ow">in</span> <span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">sex</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dandiset Overview:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dandiset_files</span><span class="p">),</span> <span class="s2">&quot;dandiset_files&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subjects_info</span><span class="p">[</span><span class="s2">&quot;sub_name&quot;</span><span class="p">]),</span> <span class="s2">&quot;subjects&quot;</span><span class="p">,</span> <span class="n">m_count</span><span class="p">,</span> <span class="s2">&quot;males&quot;</span><span class="p">,</span> <span class="n">f_count</span><span class="p">,</span><span class="s2">&quot;females&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dandiset Overview:
+144 dandiset_files
+15 subjects 9 males 6 females
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output all session metadata to local CSV file</span>
+<span class="n">dandiset_files</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../data/texture_sessions.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selecting-files">
+<h2>Selecting Files<a class="headerlink" href="#selecting-files" title="Link to this heading">#</a></h2>
+<p><strong>Pandas</strong> syntax can be used to filter the table above and select individual sessions.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_files</span> <span class="o">=</span> <span class="n">dandiset_files</span><span class="p">[</span><span class="n">dandiset_files</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2_500_000_000</span><span class="p">]</span>
+<span class="c1"># selected_files = dandiset_files[dandiset_files[&quot;sub_sex&quot;] == &quot;F&quot;]</span>
+<span class="c1"># selected_files = dandiset_files[dandiset_files[&quot;#_units&quot;] &gt; 2900]</span>
+<span class="n">selected_files</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>size</th>
+      <th>path</th>
+      <th>session_time</th>
+      <th>sub_name</th>
+      <th>session_id</th>
+      <th>experiment_id</th>
+      <th>container_id</th>
+      <th>group</th>
+      <th>group_count</th>
+      <th>...</th>
+      <th>location</th>
+      <th>fov_height</th>
+      <th>fov_width</th>
+      <th>specimen_name</th>
+      <th>sub_sex</th>
+      <th>sub_age</th>
+      <th>sub_genotype</th>
+      <th>stim_types</th>
+      <th>#_rois</th>
+      <th>session_end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3a99f387-2af0-4ead-9af2-b3fb6319e966</td>
+      <td>1729071576</td>
+      <td>sub-770196/sub-770196_ses-multiplane-ophys-770...</td>
+      <td>2025-03-19 14:16:39.177500-07:00</td>
+      <td>770196</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 161</td>
+      <td>None</td>
+      <td>None</td>
+      <td>770196</td>
+      <td>F</td>
+      <td>P167D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_single_exemplar</td>
+      <td>None</td>
+      <td>3917.756320</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7c7f7ac5-3252-42c2-8172-db7d8cea3a4b</td>
+      <td>980469748</td>
+      <td>sub-770962/sub-770962_ses-multiplane-ophys-770...</td>
+      <td>2025-03-08 11:22:47.102736-08:00</td>
+      <td>770962</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 161</td>
+      <td>None</td>
+      <td>None</td>
+      <td>770962</td>
+      <td>M</td>
+      <td>P152D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3920.138760</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>6d082069-8960-4bf2-9bec-2c0e0d6c9d5f</td>
+      <td>1545544760</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-19 14:31:09.098968-08:00</td>
+      <td>766757</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 148</td>
+      <td>None</td>
+      <td>None</td>
+      <td>766757</td>
+      <td>M</td>
+      <td>P156D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>passive</td>
+      <td>None</td>
+      <td>3502.008335</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>004043f9-321e-445e-b695-85e04002f2f1</td>
+      <td>1535386552</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-21 11:52:07.454331-08:00</td>
+      <td>766757</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 144</td>
+      <td>None</td>
+      <td>None</td>
+      <td>766757</td>
+      <td>M</td>
+      <td>P158D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>passive</td>
+      <td>None</td>
+      <td>3495.192990</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9db56b96-0a4a-4bb3-be7e-2fced9efd393</td>
+      <td>1671603180</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-17 09:51:19.800644-08:00</td>
+      <td>766757</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 140</td>
+      <td>None</td>
+      <td>None</td>
+      <td>766757</td>
+      <td>M</td>
+      <td>P154D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3918.313840</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>fa152afc-97f0-4903-a0c1-36540101ab37</td>
+      <td>1598986452</td>
+      <td>sub-770196/sub-770196_ses-multiplane-ophys-770...</td>
+      <td>2025-03-21 14:14:24.910581-07:00</td>
+      <td>770196</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 158</td>
+      <td>None</td>
+      <td>None</td>
+      <td>770196</td>
+      <td>F</td>
+      <td>P169D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_single_exemplar</td>
+      <td>None</td>
+      <td>3920.496550</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>3120ec6f-b3d7-42ef-904b-e90deccf8025</td>
+      <td>1960065116</td>
+      <td>sub-766757/sub-766757_ses-multiplane-ophys-766...</td>
+      <td>2025-02-05 14:14:02.646070-08:00</td>
+      <td>766757</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 144</td>
+      <td>None</td>
+      <td>None</td>
+      <td>766757</td>
+      <td>M</td>
+      <td>P142D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_single_exemplar</td>
+      <td>None</td>
+      <td>3916.145170</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>74567b97-79f3-4b57-956c-501b48d9b3f3</td>
+      <td>1344031012</td>
+      <td>sub-762551/sub-762551_ses-multiplane-ophys-762...</td>
+      <td>2025-01-27 10:07:52.846287-08:00</td>
+      <td>762551</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 142</td>
+      <td>None</td>
+      <td>None</td>
+      <td>762551</td>
+      <td>F</td>
+      <td>P155D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3919.738360</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>e8ac0c33-4057-4f58-9642-bfb47d91993b</td>
+      <td>1393133956</td>
+      <td>sub-762551/sub-762551_ses-multiplane-ophys-762...</td>
+      <td>2025-01-23 15:07:09.374731-08:00</td>
+      <td>762551</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 140</td>
+      <td>None</td>
+      <td>None</td>
+      <td>762551</td>
+      <td>F</td>
+      <td>P151D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>active_shifting_exemplars</td>
+      <td>None</td>
+      <td>3928.410900</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>29007b2e-57aa-4f01-a673-5369c2df09a3</td>
+      <td>1148788024</td>
+      <td>sub-762551/sub-762551_ses-multiplane-ophys-762...</td>
+      <td>2025-01-30 11:23:54.975176-08:00</td>
+      <td>762551</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>...</td>
+      <td>Structure: VISal Depth: 136</td>
+      <td>None</td>
+      <td>None</td>
+      <td>762551</td>
+      <td>F</td>
+      <td>P158D</td>
+      <td>Slc17a7-IRES2-Cre/wt;Camk2a-tTA/wt;Ai93(TITL-G...</td>
+      <td>passive</td>
+      <td>None</td>
+      <td>3499.208880</td>
+    </tr>
+  </tbody>
+</table>
+<p>144 rows × 21 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="downloading-selected-files">
+<h2>Downloading Selected Files<a class="headerlink" href="#downloading-selected-files" title="Link to this heading">#</a></h2>
+<p>To download the files, we use the same method that is explained in <a class="reference internal" href="#./download_nwb.ipynb"><span class="xref myst">Downloading an NWB File</span></a>. This can be used with the paths from the selected sessions above to just download the files of interest.  Set <code class="docutils literal notranslate"><span class="pre">download_loc</span></code> to be the relative path of where the files should be downloaded. Note that if the files are large, this can take a long time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_paths</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">selected_files</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="n">selected_paths</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sub-740066/sub-740066_ses-multiplane-ophys-740066-2024-09-26-09-13-55_ophys.nwb&#39;,
+ &#39;sub-740066/sub-740066_ses-multiplane-ophys-740066-2024-10-11-09-08-12_ophys.nwb&#39;,
+ &#39;sub-740066/sub-740066_ses-multiplane-ophys-740066-2024-10-14-08-42-28_ophys.nwb&#39;,
+ &#39;sub-740066/sub-740066_ses-multiplane-ophys-740066-2024-10-16-11-51-06_ophys.nwb&#39;,
+ &#39;sub-740066/sub-740066_ses-multiplane-ophys-740066-2024-10-23-12-08-15_ophys.nwb&#39;,
+ &#39;sub-740066/sub-740066_ses-multiplane-ophys-740066-2024-10-30-09-20-54_ophys.nwb&#39;,
+ &#39;sub-740066/sub-740066_ses-multiplane-ophys-740066-2024-11-01-09-07-34_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-09-20-09-21-49_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-09-25-09-26-11_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-09-27-09-13-52_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-10-03-09-14-54_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-10-07-10-02-08_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-10-15-09-09-41_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-10-17-09-26-31_ophys.nwb&#39;,
+ &#39;sub-740067/sub-740067_ses-multiplane-ophys-740067-2024-10-24-09-52-12_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-10-21-13-29-58_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-10-23-15-06-03_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-10-29-12-08-55_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-10-31-15-45-01_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-11-04-15-17-15_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-11-06-14-28-22_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-11-08-12-09-18_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-11-12-12-05-38_ophys.nwb&#39;,
+ &#39;sub-741824/sub-741824_ses-multiplane-ophys-741824-2024-11-18-14-22-20_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-11-04-09-11-18_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-11-11-09-09-06_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-11-15-09-07-46_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-11-20-09-21-27_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-11-22-09-17-33_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-12-04-09-42-47_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-12-06-09-01-16_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-12-12-09-17-17_ophys.nwb&#39;,
+ &#39;sub-745909/sub-745909_ses-multiplane-ophys-745909-2024-12-19-09-15-51_ophys.nwb&#39;,
+ &#39;sub-746989/sub-746989_ses-multiplane-ophys-746989-2024-11-01-14-02-49_ophys.nwb&#39;,
+ &#39;sub-746989/sub-746989_ses-multiplane-ophys-746989-2024-11-05-12-17-39_ophys.nwb&#39;,
+ &#39;sub-746989/sub-746989_ses-multiplane-ophys-746989-2024-11-07-14-06-37_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-11-22-14-26-48_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-11-26-11-46-45_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-03-11-51-19_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-05-14-01-30_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-09-14-54-16_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-11-10-19-46_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-13-13-43-05_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-17-11-55-57.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-17-11-55-57_ophys.nwb&#39;,
+ &#39;sub-749011/sub-749011_ses-multiplane-ophys-749011-2024-12-19-15-29-08_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-11-13-14-42-09_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-11-15-14-29-34_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-11-19-12-20-43_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-11-21-14-13-57_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-11-25-11-57-12_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-11-27-11-56-16_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-12-02-13-52-25_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-12-04-14-32-23_ophys.nwb&#39;,
+ &#39;sub-749013/sub-749013_ses-multiplane-ophys-749013-2024-12-06-13-34-33_ophys.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2024-12-11-09-57-41.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2024-12-16-09-20-06.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2024-12-18-09-44-26_ophys.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2024-12-20-09-46-02_ophys.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2025-01-06-09-12-18_ophys.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2025-01-08-09-34-03_ophys.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2025-01-10-09-34-29_ophys.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2025-01-15-09-27-41_ophys.nwb&#39;,
+ &#39;sub-749014/sub-749014_ses-multiplane-ophys-749014-2025-01-16-11-42-43_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-16-14-30-36_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-21-12-04-09_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-23-15-07-09_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-24-14-19-46_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-27-10-07-52_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-28-11-31-36_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-29-09-46-34_ophys.nwb&#39;,
+ &#39;sub-762551/sub-762551_ses-multiplane-ophys-762551-2025-01-30-11-23-54_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-03-10-06-43_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-05-14-14-02_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-10-09-55-39_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-11-12-23-06_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-12-13-39-43_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-13-14-08-18_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-14-15-07-47_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-17-09-51-19_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-18-11-52-59_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-19-14-31-09_ophys.nwb&#39;,
+ &#39;sub-766757/sub-766757_ses-multiplane-ophys-766757-2025-02-21-11-52-07_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-08-12-30-22_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-09-14-05-48_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-10-15-20-03_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-11-14-44-01_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-14-10-07-21_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-15-11-50-22_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-17-14-54-46_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-18-14-05-33_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-20-12-16-55_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-24-15-01-54_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-25-14-09-59_ophys.nwb&#39;,
+ &#39;sub-770194/sub-770194_ses-multiplane-ophys-770194-2025-04-28-14-59-35_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-19-14-16-39_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-20-14-10-25_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-21-14-14-24_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-24-09-30-16_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-25-11-54-09_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-26-14-58-49_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-27-13-35-10_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-28-13-05-27_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-03-31-10-28-55_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-04-01-11-55-39_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-04-02-15-30-42_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-04-03-13-45-19_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-04-04-14-45-11_ophys.nwb&#39;,
+ &#39;sub-770196/sub-770196_ses-multiplane-ophys-770196-2025-04-07-14-19-43_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-02-25-12-14-00_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-02-26-14-54-15_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-02-27-14-08-03_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-04-11-56-13_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-05-14-31-14_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-06-15-04-15_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-07-13-44-33_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-08-11-22-47_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-10-09-43-52_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-11-12-24-30_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-12-15-05-12_ophys.nwb&#39;,
+ &#39;sub-770962/sub-770962_ses-multiplane-ophys-770962-2025-03-13-14-20-53_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-04-29-12-40-52_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-04-30-14-46-30_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-02-14-15-23_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-05-09-42-51_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-06-15-46-31_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-07-14-23-24_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-12-16-11-33_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-13-16-14-42_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-14-12-14-46_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-15-15-28-21_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-16-14-10-20_ophys.nwb&#39;,
+ &#39;sub-770966/sub-770966_ses-multiplane-ophys-770966-2025-05-19-09-51-20_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-05-20-16-27-00_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-05-21-14-43-57_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-05-22-14-57-58_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-05-23-14-40-58_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-05-27-16-21-42_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-05-28-14-55-06_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-05-29-15-00-48_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-06-02-14-55-42_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-06-03-12-22-10_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-06-04-14-42-32_ophys.nwb&#39;,
+ &#39;sub-784492/sub-784492_ses-multiplane-ophys-784492-2025-06-05-15-02-26_ophys.nwb&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for dandi_filepath in selected_paths:</span>
+<span class="c1">#     filename = dandi_filepath.split(&quot;/&quot;)[-1]</span>
+<span class="c1">#     file = my_dandiset.get_asset_by_path(dandi_filepath)</span>
+<span class="c1">#     file.download(f&quot;{download_loc}/{filename}&quot;)</span>
+<span class="c1">#     print(f&quot;Downloaded file to {download_loc}/{filename}&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloaded file to ./sub-740067_ses-multiplane-ophys-740067-2024-09-25-09-26-11_ophys.nwb
+Downloaded file to ./sub-745909_ses-multiplane-ophys-745909-2024-11-22-09-17-33_ophys.nwb
+Downloaded file to ./sub-749011_ses-multiplane-ophys-749011-2024-11-26-11-46-45_ophys.nwb
+Downloaded file to ./sub-770966_ses-multiplane-ophys-770966-2025-05-07-14-23-24_ophys.nwb
+Downloaded file to ./sub-740066_ses-multiplane-ophys-740066-2024-10-11-09-08-12_ophys.nwb
+Downloaded file to ./sub-770194_ses-multiplane-ophys-770194-2025-04-18-14-05-33_ophys.nwb
+Downloaded file to ./sub-749011_ses-multiplane-ophys-749011-2024-12-05-14-01-30_ophys.nwb
+Downloaded file to ./sub-770966_ses-multiplane-ophys-770966-2025-04-29-12-40-52_ophys.nwb
+Downloaded file to ./sub-745909_ses-multiplane-ophys-745909-2024-12-06-09-01-16_ophys.nwb
+Downloaded file to ./sub-740067_ses-multiplane-ophys-740067-2024-09-27-09-13-52_ophys.nwb
+Downloaded file to ./sub-745909_ses-multiplane-ophys-745909-2024-11-11-09-09-06_ophys.nwb
+Downloaded file to ./sub-749013_ses-multiplane-ophys-749013-2024-12-04-14-32-23_ophys.nwb
+Downloaded file to ./sub-746989_ses-multiplane-ophys-746989-2024-11-05-12-17-39_ophys.nwb
+Downloaded file to ./sub-784492_ses-multiplane-ophys-784492-2025-05-29-15-00-48_ophys.nwb
+Downloaded file to ./sub-766757_ses-multiplane-ophys-766757-2025-02-21-11-52-07_ophys.nwb
+Downloaded file to ./sub-741824_ses-multiplane-ophys-741824-2024-11-04-15-17-15_ophys.nwb
+Downloaded file to ./sub-770966_ses-multiplane-ophys-770966-2025-05-02-14-15-23_ophys.nwb
+Downloaded file to ./sub-745909_ses-multiplane-ophys-745909-2024-11-20-09-21-27_ophys.nwb
+Downloaded file to ./sub-745909_ses-multiplane-ophys-745909-2024-12-12-09-17-17_ophys.nwb
+Downloaded file to ./sub-766757_ses-multiplane-ophys-766757-2025-02-11-12-23-06_ophys.nwb
+Downloaded file to ./sub-770966_ses-multiplane-ophys-770966-2025-05-19-09-51-20_ophys.nwb
+Downloaded file to ./sub-770966_ses-multiplane-ophys-770966-2025-05-13-16-14-42_ophys.nwb
+Downloaded file to ./sub-762551_ses-multiplane-ophys-762551-2025-01-21-12-04-09_ophys.nwb
+Downloaded file to ./sub-770196_ses-multiplane-ophys-770196-2025-03-26-14-58-49_ophys.nwb
+Downloaded file to ./sub-745909_ses-multiplane-ophys-745909-2024-12-04-09-42-47_ophys.nwb
+Downloaded file to ./sub-770196_ses-multiplane-ophys-770196-2025-04-07-14-19-43_ophys.nwb
+Downloaded file to ./sub-770196_ses-multiplane-ophys-770196-2025-03-19-14-16-39_ophys.nwb
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">dandi_filepath</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">file</span> <span class="o">=</span> <span class="n">my_dandiset</span><span class="o">.</span><span class="n">get_asset_by_path</span><span class="p">(</span><span class="n">dandi_filepath</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">file</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded file to </span><span class="si">{</span><span class="n">download_loc</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nn">File c:\Users\carter.peene\Desktop\Repos\openscope_databook\.venv\lib\site-packages\dandi\dandiapi.py:1633,</span> in <span class="ni">BaseRemoteAsset.download</span><span class="nt">(self, filepath, chunk_size)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1631</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1632</span>     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">downloader</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1633</span>         <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+<span class="ne">OSError</span>: [Errno 28] No space left on device
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-dandiset-metadata">Getting Dandiset Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-nwb-info">Get NWB Info</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-table">Getting Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-files">Selecting Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-selected-files">Downloading Selected Files</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carter Peene
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

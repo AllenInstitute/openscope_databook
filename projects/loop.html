@@ -1,0 +1,2387 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>OpenScope’s LOOP Dataset &#8212; OpenScope Databook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-TJPN1M4PDX"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-TJPN1M4PDX');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects/loop';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="OpenScope Databook - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="OpenScope Databook - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    OpenScope Databook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../basics/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/download_nwb.html">Downloading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/stream_nwb.html">Streaming an NWB File with remfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/read_nwb.html">Reading an NWB File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/get_dandiset_metadata.html">Getting Experimental Metadata from DANDI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualizing NWB Files</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_raw.html">Visualizing Raw 2-Photon Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_metrics.html">Visualizing Unit Quality Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_lfp_responses.html">Visualizing LFP Responses to Stimuli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_responses.html">Visualizing Neuronal Unit Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_2p_responses.html">Visualizing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_unit_spikes.html">Visualizing Neuronal Unit Spikes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_neuropixels_probes.html">Visualizing Neuropixels Probe Locations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/visualize_templates.html">Visualizing Stimulus Templates</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">First-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../first-order/receptive_fields.html">Showing Receptive Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/optotagging.html">Identifying Optotagged Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/current_source_density.html">Current Source Density Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/classify_waveforms.html">Classifying Fast-Spiking and Regular-Spiking Neurons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_2p_responses.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/test_unit_responses.html">Statistically Testing Spike Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../first-order/suite2p.html">Identifying Regions of Interest with Segmentation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Higher-Order Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/cebra_time.html">Using CEBRA-Time to Identify Latent Embeddings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/tca.html">Tensor Decomposition of Spiking Activity Through Trials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/GLM_pynapple_nemos.html">Introduction to Generalized Linear Models using Pynapple and NeMoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/glm.html">Generalized Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../higher-order/behavioral_state.html">Behavioral State from Trial Outcomes</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Openscope Experimental Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cred_assign_figures.html">Replicating OpenScope Credit Assignment project figures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glo.html">OpenScope’s Global/Local Oddball Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="illusion.html">OpenScope’s Illusion Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dendritic_coupling.html">OpenScope’s Dendritic Coupling Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequence_learning.html">OpenScope’s Sequence Learning Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="barcoding.html">Introduction to the Temporal Barcode Dataset</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="vippo.html">OpenScope’s Vision2Hippocampus Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Embargoed Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/modality_alignment.html">Aligning Data across Modalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/visualize_behavior.html">Visualizing Behavioral Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/test_2p_responses_embargoed.html">Statistically Testing 2P Responses to Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../embargoed/cell_matching.html">Cell Matching Across Days</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../methods/jupyter_book.html">Jupyter/Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/github.html">Git/GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/environments.html">Managing Environments on Multiple Platforms</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contribution.html">Contributing to the Databook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors_index.html">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FAQ.html">FAQ</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/main?urlpath=lab/tree/docs/projects/loop.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A//github.com/AllenInstitute/openscope_databook&urlpath=lab/tree/openscope_databook/docs/projects/loop.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/AllenInstitute/openscope_databook/blob/main/docs/projects/loop.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AllenInstitute/openscope_databook/issues/new?title=Issue%20on%20page%20%2Fprojects/loop.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/projects/loop.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>OpenScope’s LOOP Dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-question-and-hypothesis">Main question and hypothesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-design">Experiment design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-movies-presented">Examples of movies presented</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-1-natural-movie-in-a-forawrd-reversed-fashion"><u>Aim 1 - natural movie in a forawrd-reversed fashion:</u></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-2-gradually-morphing-movie"><u> Aim 2 - gradually morphing movie:</u></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-a-explore-basic-features-of-the-dataset">Section A - explore basic features of the dataset:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-basic-information-about-the-dataset">Extract basic information about the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-a-single-ecephys-nwb-file">Downloading a single Ecephys NWB file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-units-spikes-and-locations">Extracting units spikes and locations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-b-basic-analysis-of-neuronal-data">Section B - basic analysis of neuronal data:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-overall-activity-according-to-session-timeline">Plot overall activity according to session timeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-the-stability-of-neuronal-responses-across-trials">Quantifying the stability of neuronal responses across trials</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-c-advanced-analysis-of-natural-movies">Section C - Advanced analysis of natural movies:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-stimulus-times-for-natural-movies">Extracting stimulus times for natural movies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell-level-characterization-of-v1-neurons-tuning-to-natural-movies">Single cell-level characterization of V1 neurons tuning to natural movies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-level-characterization-of-v1-neurons-tuning-to-natural-movies">Population-level characterization of V1 neurons tuning to natural movies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-population-level-analysis-of-v1-activity-using-dimensionality-reduction">Unsupervised population-level analysis of V1 activity using dimensionality reduction</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="openscope-s-loop-dataset">
+<h1>OpenScope’s LOOP Dataset<a class="headerlink" href="#openscope-s-loop-dataset" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In the natural world, sensory experience unfolds as a continuous and dynamic process where past sensory input predicts the present. The brain utilizes this sequential flow of recent sensory information to make predictions, infer causal relationships between events, and to give rise to our perceptions. Traditionally, such higher cognitive functions were attributed to the computations undertaken in associative brain regions, while sensory areas (such as V1) were thought to serve as passive feature detectors<sup>1,2</sup>. This longstanding view is now being challenged by compelling evidence showing the capacity of these areas for plasticity<sup>3–6</sup> and complex computations such as forming spatial expectations<sup>7,8</sup>, temporal associations<sup>9</sup>, reward prediction<sup>10,11</sup>, and categorial learning<sup>12</sup>. Importantly, it has been established that sensory processing is not solely determined by the system’s current sensory inputs but also strongly influenced by preceding sensory inputs, a phenomenon known as hysteresis<sup>13–17</sup>.This phenomenon has been characterized in detail in the visual system, with prominent examples that include adaptation<sup>18</sup>, repetition suppression<sup>19</sup>, prediction suppression<sup>20</sup> and facilitatory history effects<sup>21</sup>. However, previous work predominantly focused on the neuronal dynamics over short time scales, ranging from milliseconds<sup>22</sup> to several minutes<sup>23,24</sup>, in response to a limited set of synthetic stimuli. Moreover, much of our current knowledge relies on recordings from the primary visual cortex and on interpretations that emphasize modulation of single cells’ activity rather than analysis of population-level dynamics<sup>25–30</sup>. Consequently, the extent to which prior experience over longer timescales shapes neuronal representations, and specifically representations of more ethologically relevant natural stimuli, remains unclear<sup>31–33</sup>. It also remains unclear whether and to what extent the effects of prior experience on such neuronal representations differ along the visual system’s hierarchical structure.</p>
+</section>
+<section id="main-question-and-hypothesis">
+<h2>Main question and hypothesis<a class="headerlink" href="#main-question-and-hypothesis" title="Link to this heading">#</a></h2>
+<p>We focus on how past experience impacts the neuronal representations of distinct visual scenes. We hypothesize that distinct visual scenes can be associated through their learned sequential order and temporal proximity, and that the persistence of this association over time can constrain visual system flexibility.</p>
+<p>•	<b><u>Aim 1</u></b>: Determine whether the visual system can form associations between visually distinct natural sceneries based on their temporal proximity; if so, determine if such associations persist when their temporal relationship is perturbed.</p>
+<p>•	<b><u>Aim 2</u></b>: Determine how prior experience of complex sceneries constrains the degree to which their neuronal representations change in the future.</p>
+</section>
+<section id="experiment-design">
+<h2>Experiment design<a class="headerlink" href="#experiment-design" title="Link to this heading">#</a></h2>
+<p><b><u>Visual stimuli:</b></u>
+<br>Two distinct single-shot natural movies were used. One of the movies was used in the previously published datasets<sup>34</sup> (‘Natural movie 1’), and the other was a newly generated movie with multiple (n=50) versions which differed for one another in a several-second-long scene that gradually changed with every trial (i.e., movie presentation).</p>
+<p>Each mouse underwent through a single, 120 minutes long, recording session with six Neuropixels probes<sup>35</sup> implanted along the visual processing hierarchy as previously done<sup>34</sup>.</p>
+<p>Each session consists of two phases in which different sets of 30 sec long natural movies were presented:</p>
+<ul class="simple">
+<li><p>Aim 1 consists of two natural movies (i.e., movie01 and movie02) and a constant gray screen (i.e., movie00).</p></li>
+<li><p>Aim 2 consists of 50 natural movies (i.e., movie03-movie52) and a constant gray screen (i.e., movie00).</p></li>
+</ul>
+<p>Animals (N=14) were assigned into two groups (A and B; N=7 each), with each group presented with the movies in different order.</p>
+<p>In both groups, a total of 230 movies will be presented for a total time of 115 min:</p>
+<ol class="arabic">
+<li><p><b><u>For group A:</b></u></p>
+<ul class="simple">
+<li><p>Aim 1:</p>
+<ul>
+<li><p>50 presentations of movie01 (25 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+<li><p>50 alternations between movie01 and movie02 (25 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Aim 2:</p>
+<ul>
+<li><p>20 presentations of movie03 (10 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+<li><p>50 sequential presentations of movie03 to movie52 (25 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+<li><p>20 alternations between movie03 and movie52 (10 min)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><b><u>For group B:</b></u></p>
+<ul class="simple">
+<li><p>Aim 1:</p>
+<ul>
+<li><p>50 alternations between movie01 and movie02 (25 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+<li><p>50 presentations of movie01 (25 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Aim 2:</p>
+<ul>
+<li><p>20 presentations of movie03 (10 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+<li><p>50 presentations of movie52 (25 min)</p></li>
+<li><p>10 presentations of movie00 (5 min)</p></li>
+<li><p>20 alternations between movie03 and movie52 (10 min)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div>
+<img src="../../data/images/loop_exp_design.png" width="65%" height="65%"/>
+</div>
+</section>
+<section id="examples-of-movies-presented">
+<h2>Examples of movies presented<a class="headerlink" href="#examples-of-movies-presented" title="Link to this heading">#</a></h2>
+<section id="aim-1-natural-movie-in-a-forawrd-reversed-fashion">
+<h3><u>Aim 1 - natural movie in a forawrd-reversed fashion:</u><a class="headerlink" href="#aim-1-natural-movie-in-a-forawrd-reversed-fashion" title="Link to this heading">#</a></h3>
+<p><img alt="loop_aim1_main.png" src="../_images/loop_aim1_main.png" /></p>
+</section>
+<section id="aim-2-gradually-morphing-movie">
+<h3><u> Aim 2 - gradually morphing movie:</u><a class="headerlink" href="#aim-2-gradually-morphing-movie" title="Link to this heading">#</a></h3>
+<p><img alt="loop_morph_movie_exp.png" src="../_images/loop_morph_movie_exp.png" /></p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Hubel, D. H. &amp; Wiesel, T. N. Receptive fields of single neurones in the cat’s striate cortex. J Physiol 148, 574–591 (1959).</p></li>
+<li><p>Felleman, D. J. &amp; Van Essen, D. C. Distributed Hierarchical Processing in the Primate Cerebral Cortex. <a class="reference external" href="https://academic.oup.com/cercor/article/1/1/1/408896">https://academic.oup.com/cercor/article/1/1/1/408896</a>.</p></li>
+<li><p>Hofer, S. B., Mrsic-Flogel, T. D., Bonhoeffer, T. &amp; Hübener, M. Experience leaves a lasting structural trace in cortical circuits. Nature 457, 313–317 (2009).</p></li>
+<li><p>Rose, T., Jaepel, J., Hübener, M. &amp; Bonhoeffer, T. Cell-specific restoration of stimulus preference after monocular deprivation in the visual cortex. Science (1979) 352, 1319–1322 (2016).</p></li>
+<li><p>Kreile, A. K., Bonhoeffer, T. &amp; Hübener, M. Altered Visual Experience Induces Instructive Changes of Orientation Preference in Mouse Visual Cortex. The Journal of Neuroscience 31, 13911–13920 (2011).</p></li>
+<li><p>Bauer, J. et al. Sensory experience steers representational drift in mouse visual cortex. doi:10.1101/2023.09.22.558966.</p></li>
+<li><p>Fiser, A. et al. Experience-dependent spatial expectations in mouse visual cortex. Nat Neurosci 19, 1658–1664 (2016).</p></li>
+<li><p>Saleem, A. B., Diamanti, E. M., Fournier, J., Harris, K. D. &amp; Carandini, M. Coherent encoding of subjective spatial position in visual cortex and hippocampus. Nature 562, 124–127 (2018).</p></li>
+<li><p>Knöpfel, T. et al. Audio-visual experience strengthens multisensory assemblies in adult mouse visual cortex. Nat Commun 10, 5684 (2019).</p></li>
+<li><p>Shuler, M. G. &amp; Bear, M. F. Reward Timing in the Primary Visual Cortex. Science (1979) 311, 1606–1609 (2006).</p></li>
+<li><p>Henschke, J. U. et al. Reward Association Enhances Stimulus-Specific Representations in Primary Visual Cortex. Current Biology 30, 1866-1880.e5 (2020).</p></li>
+<li><p>Goltstein, P. M., Reinert, S., Bonhoeffer, T. &amp; Hübener, M. Mouse visual cortex areas represent perceptual and semantic features of learned visual categories. Nat Neurosci 24, 1441–1451 (2021).</p></li>
+<li><p>Poltoratski, S. &amp; Tong, F. Hysteresis in the dynamic perception of scenes and objects. J Exp Psychol Gen 143, 1875–1892 (2014).</p></li>
+<li><p>Sayal, A. et al. Identification of competing neural mechanisms underlying positive and negative perceptual hysteresis in the human visual system. Neuroimage 221, 117153 (2020).</p></li>
+<li><p>Buckthought, A., Kim, J. &amp; Wilson, H. R. Hysteresis effects in stereopsis and binocular rivalry. Vision Res 48, 819–830 (2008).</p></li>
+<li><p>Liaci, E. et al. Positive and negative hysteresis effects for the perception of geometric and emotional ambiguities. PLoS One 13, e0202398 (2018).</p></li>
+<li><p>Leutgeb, J. K. et al. Progressive Transformation of Hippocampal Neuronal Representations in “Morphed” Environments. Neuron 48, 345–358 (2005).</p></li>
+<li><p>Jin, M. &amp; Glickfeld, L. L. Magnitude, time course, and specificity of rapid adaptation across mouse visual areas. J Neurophysiol 124, 245–258 (2020).</p></li>
+<li><p>McMahon, D. B. T. &amp; Olson, C. R. Repetition Suppression in Monkey Inferotemporal Cortex: Relation to Behavioral Priming. J Neurophysiol 97, 3532–3543 (2007).</p></li>
+<li><p>Meyer, T. &amp; Olson, C. R. Statistical learning of visual transitions in monkey inferotemporal cortex. Proceedings of the National Academy of Sciences 108, 19401–19406 (2011).</p></li>
+<li><p>Kim, H., Homann, J., Tank, D. W. &amp; Ii, M. J. B. A Long Timescale Stimulus History Effect in the Primary Visual Cortex. doi:10.1101/585539.</p></li>
+<li><p>Nortmann, N., Rekauzke, S., Onat, S., König, P. &amp; Jancke, D. Primary Visual Cortex Represents the Difference Between Past and Present. Cerebral Cortex 25, 1427–1440 (2015).</p></li>
+<li><p>Fritsche, M., Solomon, S. G. &amp; de Lange, F. P. Brief Stimuli Cast a Persistent Long-Term Trace in Visual Cortex. The Journal of Neuroscience 42, 1999–2010 (2022).</p></li>
+<li><p>Peter, A. et al. Stimulus-specific plasticity of macaque V1 spike rates and gamma. Cell Rep 37, 110086 (2021).</p></li>
+<li><p>Gallego, J. A., Perich, M. G., Chowdhury, R. H., Solla, S. A. &amp; Miller, L. E. Long-term stability of cortical population dynamics underlying consistent behavior. Nat Neurosci 23, 260–270 (2020).</p></li>
+<li><p>Pashkovski, S. L. et al. Structure and flexibility in cortical representations of odour space. Nature 583, 253–258 (2020).</p></li>
+<li><p>Montijn, J. S., Meijer, G. T., Lansink, C. S. &amp; Pennartz, C. M. A. Population-Level Neural Codes Are Robust to Single-Neuron Variability from a Multidimensional Coding Perspective. Cell Rep 16, 2486–2498 (2016).</p></li>
+<li><p>Schneider, S., Lee, J. H. &amp; Mathis, M. W. Learnable latent embeddings for joint behavioural and neural analysis. Nature 617, 360–368 (2023).</p></li>
+<li><p>Xia, J., Marks, T. D., Goard, M. J. &amp; Wessel, R. Stable representation of a naturalistic movie emerges from episodic activity with gain variability. Nat Commun 12, 5170 (2021).</p></li>
+<li><p>Rubin, A. et al. Revealing neural correlates of behavior without behavioral measurements. Nat Commun 10, 4745 (2019).</p></li>
+<li><p>Talebi, V. &amp; Baker, C. L. Natural versus Synthetic Stimuli for Estimating Receptive Field Models: A Comparison of Predictive Robustness. The Journal of Neuroscience 32, 1560–1576 (2012).</p></li>
+<li><p>Felsen, G., Touryan, J., Han, F. &amp; Dan, Y. Cortical Sensitivity to Visual Features in Natural Scenes. PLoS Biol 3, e342 (2005).</p></li>
+<li><p>Lazar, A. et al. Paying attention to natural scenes in area V1. doi:10.1101/2023.03.21.533636.</p></li>
+<li><p>Siegle, J. H. et al. Survey of spiking in the mouse visual system reveals functional hierarchy. Nature 592, 86–92 (2021).</p></li>
+<li><p>Jun, J. J. et al. Fully integrated silicon probes for high-density recording of neural activity. Nature 551, 232–236 (2017).</p></li>
+</ol>
+</section>
+<section id="section-a-explore-basic-features-of-the-dataset">
+<h2>Section A - explore basic features of the dataset:<a class="headerlink" href="#section-a-explore-basic-features-of-the-dataset" title="Link to this heading">#</a></h2>
+<p>In this section we will learn how to download and extract basic information from NWB files.</p>
+<section id="environment-setup">
+<h3>Environment setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h3>
+<p>⚠️<strong>Note: If running on a new environment, run this cell once and then restart the kernel</strong>⚠️</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">databook_utils.dandi_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">dandi_download_open</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AllenInstitute/openscope_databook.git
+    <span class="o">%</span><span class="k">cd</span> openscope_databook
+    <span class="o">%</span><span class="k">pip</span> install -e .
+    <span class="o">%</span><span class="k">cd</span> docs/projects
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">floor</span><span class="p">,</span> <span class="n">ceil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-basic-information-about-the-dataset">
+<h3>Extract basic information about the dataset<a class="headerlink" href="#extract-basic-information-about-the-dataset" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session_files</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/loop_sessions.csv&quot;</span><span class="p">)</span>
+<span class="n">session_files</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>size</th>
+      <th>path</th>
+      <th>session_time</th>
+      <th>sub_name</th>
+      <th>sub_sex</th>
+      <th>sub_age</th>
+      <th>sub_genotype</th>
+      <th>sub_group</th>
+      <th>probes</th>
+      <th>stim types</th>
+      <th>#_units</th>
+      <th>session_length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6b94958d-c883-4183-8ba1-c6a4a734f669</td>
+      <td>12099295788</td>
+      <td>sub-747815\sub-747815_ecephys.nwb</td>
+      <td>2024-08-28T15:53:33.997646-07:00</td>
+      <td>747815</td>
+      <td>M</td>
+      <td>113</td>
+      <td>wt/wt</td>
+      <td>A</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3959</td>
+      <td>7511.932</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>cdff7fc7-ad58-4b73-9301-899999396035</td>
+      <td>11679969079</td>
+      <td>sub-747816\sub-747816_ecephys.nwb</td>
+      <td>2024-08-14T13:57:37-07:00</td>
+      <td>747816</td>
+      <td>F</td>
+      <td>99</td>
+      <td>wt/wt</td>
+      <td>A</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3923</td>
+      <td>7451.397</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7cbbef6f-f8e9-481d-8605-320dd97b4621</td>
+      <td>12061439170</td>
+      <td>sub-747824\sub-747824_ecephys.nwb</td>
+      <td>2024-08-29T13:52:36-07:00</td>
+      <td>747824</td>
+      <td>M</td>
+      <td>107</td>
+      <td>wt/wt</td>
+      <td>A</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>4006</td>
+      <td>7467.487</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10f592db-3565-4abf-9901-027f09e32210</td>
+      <td>10895734616</td>
+      <td>sub-747825\sub-747825_ecephys.nwb</td>
+      <td>2024-08-28T14:09:58-07:00</td>
+      <td>747825</td>
+      <td>M</td>
+      <td>106</td>
+      <td>wt/wt</td>
+      <td>A</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3307</td>
+      <td>7471.242</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0bd7aca0-c7b5-4e5c-b890-f2fe417cca57</td>
+      <td>11782270726</td>
+      <td>sub-747829\sub-747829_ecephys.nwb</td>
+      <td>2024-09-04T14:06:07-07:00</td>
+      <td>747829</td>
+      <td>F</td>
+      <td>113</td>
+      <td>wt/wt</td>
+      <td>A</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3787</td>
+      <td>7477.819</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>09fa58cf-e3ac-4f57-b609-0edae3a03184</td>
+      <td>10979064090</td>
+      <td>sub-751594\sub-751594_ecephys.nwb</td>
+      <td>2024-09-12T14:23:48-07:00</td>
+      <td>751594</td>
+      <td>M</td>
+      <td>107</td>
+      <td>wt/wt</td>
+      <td>B</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3163</td>
+      <td>7440.850</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>e7f4e045-da1d-40c8-90e2-b17d60e41a18</td>
+      <td>10008833827</td>
+      <td>sub-751596\sub-751596_ecephys.nwb</td>
+      <td>2024-09-18T14:05:53-07:00</td>
+      <td>751596</td>
+      <td>F</td>
+      <td>113</td>
+      <td>wt/wt</td>
+      <td>B</td>
+      <td>{'probeB','probeC','probeD','probeE','probeF'}</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3224</td>
+      <td>7436.762</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>fefcb822-06a5-4939-86f6-1bd20a51f109</td>
+      <td>11743653763</td>
+      <td>sub-753020\sub-753020_ecephys.nwb</td>
+      <td>2024-09-25T13:47:49-07:00</td>
+      <td>753020</td>
+      <td>F</td>
+      <td>113</td>
+      <td>wt/wt</td>
+      <td>B</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3736</td>
+      <td>7436.375</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>6a7deb4b-195e-4756-9e1a-022f007acd1a</td>
+      <td>10346001307</td>
+      <td>sub-754603\sub-754603_ecephys.nwb</td>
+      <td>2024-10-02T13:55:49-07:00</td>
+      <td>754603</td>
+      <td>M</td>
+      <td>113</td>
+      <td>wt/wt</td>
+      <td>B</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3023</td>
+      <td>7434.681</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>df9a4c6f-17f0-4925-8c4c-6812724b3878</td>
+      <td>11776646878</td>
+      <td>sub-754604\sub-754604_ecephys.nwb</td>
+      <td>2024-10-03T13:17:45-07:00</td>
+      <td>754604</td>
+      <td>F</td>
+      <td>114</td>
+      <td>wt/wt</td>
+      <td>B</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3935</td>
+      <td>7437.016</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>449c2bb1-e07b-483a-9b2b-494656b34a51</td>
+      <td>11192269600</td>
+      <td>sub-754605\sub-754605_ecephys.nwb</td>
+      <td>2024-10-08T14:17:27-07:00</td>
+      <td>754605</td>
+      <td>F</td>
+      <td>119</td>
+      <td>wt/wt</td>
+      <td>B</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3591</td>
+      <td>7434.583</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>c05f39e2-0e1d-4d6c-be8c-2eb7d6e5c6d7</td>
+      <td>11231488756</td>
+      <td>sub-755828\sub-755828_ecephys.nwb</td>
+      <td>2024-10-17T13:36:40-07:00</td>
+      <td>755828</td>
+      <td>M</td>
+      <td>121</td>
+      <td>wt/wt</td>
+      <td>A</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3704</td>
+      <td>7467.368</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>51cc7d1b-46f3-4304-9106-9c06ae031342</td>
+      <td>11785861378</td>
+      <td>sub-755830\sub-755830_ecephys.nwb</td>
+      <td>2024-10-10T14:05:36-07:00</td>
+      <td>755830</td>
+      <td>F</td>
+      <td>114</td>
+      <td>wt/wt</td>
+      <td>B</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3805</td>
+      <td>7435.845</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>56971ceb-f73c-45fd-bb10-8770039fcf91</td>
+      <td>10518178467</td>
+      <td>sub-757088\sub-757088_ecephys.nwb</td>
+      <td>2024-10-16T14:40:58-07:00</td>
+      <td>757088</td>
+      <td>F</td>
+      <td>113</td>
+      <td>wt/wt</td>
+      <td>A</td>
+      <td>{'probeA','probeB','probeC','probeD','probeE',...</td>
+      <td>{'movie00_presentations','movie01_presentation...</td>
+      <td>3057</td>
+      <td>7474.789</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">session_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">session_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
+<span class="n">f_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">session_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">][</span><span class="n">session_files</span><span class="p">[</span><span class="s2">&quot;sub_sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">])</span>
+<span class="n">wt_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">session_files</span><span class="p">[</span><span class="n">session_files</span><span class="p">[</span><span class="s2">&quot;sub_genotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;wt/wt&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dandiset Overview:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">session_files</span><span class="p">),</span> <span class="s2">&quot;files&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">session_files</span><span class="p">[</span><span class="s2">&quot;sub_name&quot;</span><span class="p">])),</span> <span class="s2">&quot;subjects&quot;</span><span class="p">,</span> <span class="n">m_count</span><span class="p">,</span> <span class="s2">&quot;males,&quot;</span><span class="p">,</span> <span class="n">f_count</span><span class="p">,</span> <span class="s2">&quot;females&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dandiset Overview:
+14 files
+14 subjects 6 males, 8 females
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="downloading-a-single-ecephys-nwb-file">
+<h3>Downloading a single Ecephys NWB file<a class="headerlink" href="#downloading-a-single-ecephys-nwb-file" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dandiset_id</span> <span class="o">=</span> <span class="s2">&quot;001191&quot;</span>
+<span class="n">dandi_filepath</span> <span class="o">=</span> <span class="s2">&quot;sub-747825/sub-747825_ecephys.nwb&quot;</span>
+<span class="n">download_loc</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+<span class="n">dandi_api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DANDI_API_KEY&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can sometimes take a while depending on the size of the file</span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">dandi_download_open</span><span class="p">(</span><span class="n">dandiset_id</span><span class="p">,</span> <span class="n">dandi_filepath</span><span class="p">,</span> <span class="n">download_loc</span><span class="p">,</span> <span class="n">dandi_api_key</span><span class="o">=</span><span class="n">dandi_api_key</span><span class="p">)</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File already exists
+Opening file
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\carter.peene\Desktop\Repos\openscope_databook\.venv\lib\site-packages\hdmf\common\table.py:525: UserWarning: An attribute &#39;name&#39; already exists on DynamicTable &#39;eye_tracking&#39; so this column cannot be accessed as an attribute, e.g., table.name; it can only be accessed using other methods, e.g., table[&#39;name&#39;].
+  self.__set_table_attr(col)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extracting-units-spikes-and-locations">
+<h3>Extracting units spikes and locations<a class="headerlink" href="#extracting-units-spikes-and-locations" title="Link to this heading">#</a></h3>
+<p>Below, the <code class="docutils literal notranslate"><span class="pre">Units</span></code> table is retrieved from the file. It contains many metrics for every putative neuronal unit, printed below. For the analysis in this notebook, we are mainly interested in the <code class="docutils literal notranslate"><span class="pre">spike_times</span></code> attribute. This is an array of timestamps that a spike is measured for each unit. For more information on the various unit metrics, see <a class="reference internal" href="../visualization/visualize_unit_metrics.html"><span class="std std-doc">Visualizing Unit Quality Metrics</span></a>. From this table, the Units used in this notebook are selected if they belong in one of the regions of the primary visual cortex.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">units</span>
+<span class="n">units</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>spike_times</th>
+      <th>electrodes</th>
+      <th>waveform_mean</th>
+      <th>waveform_sd</th>
+      <th>unit_name</th>
+      <th>drift_std</th>
+      <th>rp_contamination</th>
+      <th>nn_miss_rate</th>
+      <th>amplitude_cv_median</th>
+      <th>estimated_x</th>
+      <th>...</th>
+      <th>presence_ratio</th>
+      <th>rp_violations</th>
+      <th>num_positive_peaks</th>
+      <th>amplitude</th>
+      <th>peak_trough_ratio</th>
+      <th>isi_violations_ratio</th>
+      <th>decoder_probability</th>
+      <th>repolarization_slope</th>
+      <th>ks_unit_id</th>
+      <th>num_spikes</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[20.182346858988613, 20.51824484820569, 20.692...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[0.7019997239112854, 0.19187992811203003, 0.2...</td>
+      <td>[[19.06691551208496, 19.063072204589844, 21.69...</td>
+      <td>149b01a4-d6af-4329-9ae7-21ed873ffa21</td>
+      <td>4.565579</td>
+      <td>0.070028</td>
+      <td>0.021143</td>
+      <td>0.260527</td>
+      <td>19.12</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>19</td>
+      <td>1</td>
+      <td>99.69</td>
+      <td>-0.519146</td>
+      <td>0.087730</td>
+      <td>0.789056</td>
+      <td>6.448576e+05</td>
+      <td>0</td>
+      <td>32491</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[28.338931364638007, 28.378264462511993, 28.51...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[0.6224396824836731, -0.3697202503681183, 0.7...</td>
+      <td>[[20.10701560974121, 19.00174903869629, 23.121...</td>
+      <td>85961830-770e-4e99-8ba7-dfb341f4ea92</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>0.008733</td>
+      <td>0.677306</td>
+      <td>47.57</td>
+      <td>...</td>
+      <td>0.984</td>
+      <td>0</td>
+      <td>1</td>
+      <td>102.90</td>
+      <td>-0.094652</td>
+      <td>1.803650</td>
+      <td>0.541565</td>
+      <td>8.523726e+04</td>
+      <td>1</td>
+      <td>1666</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[20.03051443456827, 20.058980930826223, 20.073...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[-0.9313201904296875, -0.66923987865448, -0.7...</td>
+      <td>[[18.49985694885254, 18.80291748046875, 20.931...</td>
+      <td>cd143374-ae2a-4b81-9e7d-f5d0f6d7512a</td>
+      <td>4.435255</td>
+      <td>0.017545</td>
+      <td>0.014857</td>
+      <td>0.153883</td>
+      <td>7.26</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>354</td>
+      <td>1</td>
+      <td>191.30</td>
+      <td>-0.317906</td>
+      <td>0.019880</td>
+      <td>0.806371</td>
+      <td>1.110838e+06</td>
+      <td>2</td>
+      <td>276451</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[20.058680932622103, 20.082614122684408, 20.12...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[-1.1793601512908936, -0.2620803117752075, -1...</td>
+      <td>[[18.960338592529297, 19.205020904541016, 23.1...</td>
+      <td>4b4b6804-fd35-4689-b874-4162ea3360aa</td>
+      <td>NaN</td>
+      <td>0.132919</td>
+      <td>0.021953</td>
+      <td>NaN</td>
+      <td>8.08</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>14</td>
+      <td>1</td>
+      <td>148.28</td>
+      <td>-0.398973</td>
+      <td>0.124084</td>
+      <td>0.759398</td>
+      <td>1.006369e+06</td>
+      <td>3</td>
+      <td>20582</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[20.197213436659627, 20.370779064312035, 20.50...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[-0.4539600908756256, -0.3790798485279083, -0...</td>
+      <td>[[18.63796615600586, 18.85635757446289, 21.796...</td>
+      <td>75f96cd7-0212-4280-9691-e2b29dcc0294</td>
+      <td>1.616157</td>
+      <td>0.000000</td>
+      <td>0.022232</td>
+      <td>NaN</td>
+      <td>6.88</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>117.87</td>
+      <td>-0.586625</td>
+      <td>0.048500</td>
+      <td>0.811322</td>
+      <td>6.509424e+05</td>
+      <td>4</td>
+      <td>14368</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>[23.11416264162112, 24.30045554012727, 24.5192...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[-1.155959963798523, -0.9687597751617432, -0....</td>
+      <td>[[19.39491844177246, 20.012475967407227, 22.36...</td>
+      <td>e414ad49-9ce6-45ab-b057-59c669a5b121</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>0.020044</td>
+      <td>NaN</td>
+      <td>28.15</td>
+      <td>...</td>
+      <td>0.488</td>
+      <td>0</td>
+      <td>1</td>
+      <td>85.80</td>
+      <td>-0.249686</td>
+      <td>0.000000</td>
+      <td>0.515112</td>
+      <td>5.766773e+05</td>
+      <td>5</td>
+      <td>896</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>[19.99448131693965, 20.039414381290605, 20.061...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[-0.3509998917579651, 0.2761194109916687, -0....</td>
+      <td>[[17.19342803955078, 18.795902252197266, 19.09...</td>
+      <td>07bdb489-0c15-4fde-baaf-c6b0f342d682</td>
+      <td>6.007311</td>
+      <td>0.031555</td>
+      <td>0.016656</td>
+      <td>0.253346</td>
+      <td>35.90</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>249</td>
+      <td>1</td>
+      <td>130.89</td>
+      <td>-0.566064</td>
+      <td>0.038832</td>
+      <td>0.864272</td>
+      <td>7.616187e+05</td>
+      <td>6</td>
+      <td>173501</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>[19.998514626128422, 20.031581094849603, 20.04...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[-0.416519433259964, -0.2807996869087219, -0....</td>
+      <td>[[18.044757843017578, 19.73351287841797, 20.71...</td>
+      <td>dd89aa39-e9e3-41b0-93e6-6a212444c9b6</td>
+      <td>5.612966</td>
+      <td>0.010298</td>
+      <td>0.033378</td>
+      <td>0.288877</td>
+      <td>44.81</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>230</td>
+      <td>1</td>
+      <td>96.99</td>
+      <td>-0.355319</td>
+      <td>0.010750</td>
+      <td>0.809977</td>
+      <td>5.734405e+05</td>
+      <td>7</td>
+      <td>290326</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>[19.98698136183656, 19.990248008948125, 19.995...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[0.38843995332717896, 0.09359971433877945, -0...</td>
+      <td>[[19.39836883544922, 18.546384811401367, 22.73...</td>
+      <td>468822e7-2267-440b-911a-63f7f4338aa7</td>
+      <td>6.331952</td>
+      <td>0.040865</td>
+      <td>0.006307</td>
+      <td>0.153518</td>
+      <td>9.15</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>896</td>
+      <td>1</td>
+      <td>279.61</td>
+      <td>-0.485398</td>
+      <td>0.044467</td>
+      <td>0.832779</td>
+      <td>1.570705e+06</td>
+      <td>8</td>
+      <td>289899</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>[20.51831151447327, 20.638710793728215, 20.715...</td>
+      <td>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,...</td>
+      <td>[[-0.16379998624324799, -0.8470801711082458, -...</td>
+      <td>[[19.477611541748047, 18.863203048706055, 23.4...</td>
+      <td>7660c3d3-8e69-4d79-813a-968ce1ae8a10</td>
+      <td>NaN</td>
+      <td>0.625866</td>
+      <td>0.001007</td>
+      <td>0.525502</td>
+      <td>44.19</td>
+      <td>...</td>
+      <td>1.000</td>
+      <td>6</td>
+      <td>1</td>
+      <td>109.76</td>
+      <td>-0.152912</td>
+      <td>0.286673</td>
+      <td>0.513893</td>
+      <td>1.909555e+05</td>
+      <td>9</td>
+      <td>7238</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 54 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>location</th>
+      <th>group</th>
+      <th>group_name</th>
+      <th>channel_name</th>
+      <th>inter_sample_shift</th>
+      <th>rel_x</th>
+      <th>rel_y</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MRN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP1</td>
+      <td>0.000000</td>
+      <td>16.0</td>
+      <td>0.0</td>
+      <td>8.561</td>
+      <td>3.994</td>
+      <td>6.982</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MRN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP2</td>
+      <td>0.000000</td>
+      <td>48.0</td>
+      <td>0.0</td>
+      <td>8.558</td>
+      <td>3.984</td>
+      <td>6.985</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MRN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP3</td>
+      <td>0.076923</td>
+      <td>0.0</td>
+      <td>20.0</td>
+      <td>8.556</td>
+      <td>3.975</td>
+      <td>6.988</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MRN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP4</td>
+      <td>0.076923</td>
+      <td>32.0</td>
+      <td>20.0</td>
+      <td>8.554</td>
+      <td>3.965</td>
+      <td>6.991</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MRN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP5</td>
+      <td>0.153846</td>
+      <td>16.0</td>
+      <td>40.0</td>
+      <td>8.551</td>
+      <td>3.955</td>
+      <td>6.994</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>MRN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP6</td>
+      <td>0.153846</td>
+      <td>48.0</td>
+      <td>40.0</td>
+      <td>8.549</td>
+      <td>3.946</td>
+      <td>6.997</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>MRN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP7</td>
+      <td>0.230769</td>
+      <td>0.0</td>
+      <td>60.0</td>
+      <td>8.546</td>
+      <td>3.936</td>
+      <td>7.000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>APN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP8</td>
+      <td>0.230769</td>
+      <td>32.0</td>
+      <td>60.0</td>
+      <td>8.544</td>
+      <td>3.927</td>
+      <td>7.003</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>APN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP9</td>
+      <td>0.307692</td>
+      <td>16.0</td>
+      <td>80.0</td>
+      <td>8.542</td>
+      <td>3.917</td>
+      <td>7.006</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>APN</td>
+      <td>probeA pynwb.ecephys.ElectrodeGroup at 0x20954...</td>
+      <td>probeA</td>
+      <td>AP10</td>
+      <td>0.307692</td>
+      <td>48.0</td>
+      <td>80.0</td>
+      <td>8.539</td>
+      <td>3.907</td>
+      <td>7.009</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select electrodes</span>
+<span class="n">channel_locations</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">channel_probes</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">channel_idxs</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">electrodes</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">electrodes</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">electrodes</span><span class="p">)):</span>
+    <span class="n">channel_id</span> <span class="o">=</span> <span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">probe</span> <span class="o">=</span> <span class="n">electrodes</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">channel_locations</span><span class="p">[</span><span class="n">channel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">location</span>
+    <span class="n">channel_probes</span><span class="p">[</span><span class="n">channel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">probe</span>
+
+
+<span class="c1"># align location information from electrodes table with channel id from the units table</span>
+<span class="c1"># takes a few minutes to run (~5 min)</span>
+<span class="n">mean_waveforms</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">waveform_mean</span>
+<span class="n">electrodes_index</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">electrodes_index</span>
+<span class="n">unit_locations</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mean_waveforms</span><span class="p">)):</span>
+    <span class="n">flat_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">mean_waveforms</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">flat_index</span><span class="p">,</span> <span class="n">mean_waveforms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">row_index</span><span class="p">,</span> <span class="n">col_index</span> <span class="o">=</span> <span class="n">coordinates</span>
+   
+    <span class="n">unit_loc</span> <span class="o">=</span> <span class="n">electrodes_index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">col_index</span><span class="p">][</span><span class="s2">&quot;location&quot;</span><span class="p">]</span>
+    <span class="n">unit_locations</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">unit_loc</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+<span class="c1"># print all recorded brain areas</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">unit_locations</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;DG-po&#39;, &#39;VISl5&#39;, &#39;VISal4&#39;, &#39;MB&#39;, &#39;CA1&#39;, &#39;VISpm5&#39;, &#39;MGm&#39;, &#39;VISrl6b&#39;, &#39;SUB&#39;, &#39;VISal6a&#39;, &#39;NB&#39;, &#39;VISp1&#39;, &#39;VISl1&#39;, &#39;VISp6b&#39;, &#39;VISrl2/3&#39;, &#39;VISrl5&#39;, &#39;ProS&#39;, &#39;VISam1&#39;, &#39;NOT&#39;, &#39;VISl6a&#39;, &#39;VISam5&#39;, &#39;VISal2/3&#39;, &#39;VISal5&#39;, &#39;root&#39;, &#39;VISp6a&#39;, &#39;DG-sg&#39;, &#39;PIL&#39;, &#39;VISam4&#39;, &#39;APN&#39;, &#39;VISp4&#39;, &#39;VISal6b&#39;, &#39;MGd&#39;, &#39;VISpm6a&#39;, &#39;MGv&#39;, &#39;VISpm2/3&#39;, &#39;VISp5&#39;, &#39;TH&#39;, &#39;VISp2/3&#39;, &#39;VISrl6a&#39;, &#39;VISam2/3&#39;, &#39;VISrl4&#39;, &#39;VISpm4&#39;, &#39;PRE&#39;, &#39;HPF&#39;, &#39;CA3&#39;, &#39;VISl2/3&#39;, &#39;VISrl1&#39;, &#39;VISl6b&#39;, &#39;VISam6a&#39;, &#39;MRN&#39;, &#39;DG-mo&#39;, &#39;VISl4&#39;, &#39;VISpm6b&#39;, &#39;VISal1&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># selecting units spike times</span>
+<span class="n">units_spike_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">units</span><span class="p">:</span>
+    <span class="n">units_spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">spike_times</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+<span class="n">units_spike_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> <span class="c1"># all units</span>
+
+<span class="n">V1_units_ind</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>  <span class="p">[</span><span class="s1">&#39;VISp1&#39;</span><span class="p">,</span><span class="s1">&#39;VISp2/3&#39;</span><span class="p">,</span><span class="s1">&#39;VISp4&#39;</span><span class="p">,</span><span class="s1">&#39;VISp5&#39;</span><span class="p">,</span><span class="s1">&#39;VISp6b&#39;</span><span class="p">]:</span>
+    <span class="n">V1_units_ind</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">unit_locations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    
+<span class="n">V1_spike_times</span> <span class="o">=</span> <span class="n">units_spike_times</span><span class="p">[</span><span class="n">V1_units_ind</span><span class="p">]</span> <span class="c1"># all V1 units</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-b-basic-analysis-of-neuronal-data">
+<h2>Section B - basic analysis of neuronal data:<a class="headerlink" href="#section-b-basic-analysis-of-neuronal-data" title="Link to this heading">#</a></h2>
+<p>As part of the project, we plan to compare the similarity in neuronal responses across stimuli occurring at different times of the experiment within each group of mice. As such, our analysis relies on the stable recording of the same single unit’s activity across different blocks of each aim.
+In the next sections we will examine a subset of both gross and fine measures of neuronal activity and quantify their stability over time.</p>
+<section id="plot-overall-activity-according-to-session-timeline">
+<h3>Plot overall activity according to session timeline<a class="headerlink" href="#plot-overall-activity-according-to-session-timeline" title="Link to this heading">#</a></h3>
+<p>In the following section we will extract the start and end times of each trial (i.e., movie presentations)
+in the experiment and plot the overall activity (in total number of spikes) across all neurons in each trial.
+Changes in overall activity levels over time could be a result of recording instability or behavioral changes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epoch times from stim table where stimulus rows have a different &#39;block&#39; than following row</span>
+<span class="c1"># returns list of epochs, where an epoch is of the form (stimulus name, stimulus block, start time, stop time)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">):</span>
+    
+    <span class="c1"># specify a current epoch stop and start time</span>
+    <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># for each row, try to extend current epoch stop_time</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">)):</span>
+        <span class="n">this_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stim_block</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># if end of table, end the current epoch</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stim_table</span><span class="p">):</span>
+            <span class="n">epochs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">this_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_stop</span><span class="p">))</span>
+            <span class="k">break</span>
+            
+        <span class="n">next_block</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stim_block</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># if next row is the same stim block, push back epoch_stop time</span>
+        <span class="k">if</span> <span class="n">next_block</span> <span class="o">==</span> <span class="n">this_block</span><span class="p">:</span>
+            <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># otherwise, end the current epoch, start new epoch</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">epochs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">this_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_stop</span><span class="p">))</span>
+            <span class="n">epoch_start</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">start_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">epoch_stop</span> <span class="o">=</span> <span class="n">stim_table</span><span class="o">.</span><span class="n">stop_time</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">epochs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract epochs from all valid stimulus tables</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">stim_name</span> <span class="ow">in</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">stim_table</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">epochs</span> <span class="o">=</span> <span class="n">extract_epochs</span><span class="p">(</span><span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_table</span><span class="p">,</span> <span class="n">epochs</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+<span class="c1"># epochs take the form (stimulus name, stimulus block, start time, stop time)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">))</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>231
+(&#39;movie01_presentations&#39;, &#39;0.0&#39;, 79.16006702930127, 109.10165702930126)
+(&#39;movie01_presentations&#39;, &#39;1.0&#39;, 109.10165702930126, 139.12661702930126)
+(&#39;movie01_presentations&#39;, &#39;2.0&#39;, 139.12661702930126, 169.15165702930128)
+(&#39;movie01_presentations&#39;, &#39;3.0&#39;, 169.15165702930128, 199.17669702930127)
+(&#39;movie01_presentations&#39;, &#39;4.0&#39;, 199.17669702930127, 229.20171702930128)
+(&#39;movie01_presentations&#39;, &#39;5.0&#39;, 229.20171702930128, 259.2267270293013)
+(&#39;movie01_presentations&#39;, &#39;6.0&#39;, 259.2267270293013, 289.2517770293013)
+(&#39;movie01_presentations&#39;, &#39;7.0&#39;, 289.2517770293013, 319.2768170293013)
+(&#39;movie01_presentations&#39;, &#39;8.0&#39;, 319.2768170293013, 349.3018470293013)
+(&#39;movie01_presentations&#39;, &#39;9.0&#39;, 349.3018470293013, 379.3268770293013)
+(&#39;movie01_presentations&#39;, &#39;10.0&#39;, 379.3268770293013, 409.3519170293013)
+(&#39;movie01_presentations&#39;, &#39;11.0&#39;, 409.3519170293013, 439.3769470293013)
+(&#39;movie01_presentations&#39;, &#39;12.0&#39;, 439.3769470293013, 469.4020170293013)
+(&#39;movie01_presentations&#39;, &#39;13.0&#39;, 469.4020170293013, 499.4270470293013)
+(&#39;movie01_presentations&#39;, &#39;14.0&#39;, 499.4270470293013, 529.4520670293012)
+(&#39;movie01_presentations&#39;, &#39;15.0&#39;, 529.4520670293012, 559.4771270293013)
+(&#39;movie01_presentations&#39;, &#39;16.0&#39;, 559.4771270293013, 589.5021470293013)
+(&#39;movie01_presentations&#39;, &#39;17.0&#39;, 589.5021470293013, 619.5271770293011)
+(&#39;movie01_presentations&#39;, &#39;18.0&#39;, 619.5271770293011, 649.5522170293013)
+(&#39;movie01_presentations&#39;, &#39;19.0&#39;, 649.5522170293013, 679.5772870293013)
+(&#39;movie01_presentations&#39;, &#39;20.0&#39;, 679.5772870293013, 709.6023070293013)
+(&#39;movie01_presentations&#39;, &#39;21.0&#39;, 709.6023070293013, 739.6273570293013)
+(&#39;movie01_presentations&#39;, &#39;22.0&#39;, 739.6273570293013, 769.6523670293013)
+(&#39;movie01_presentations&#39;, &#39;23.0&#39;, 769.6523670293013, 799.6774270293013)
+(&#39;movie01_presentations&#39;, &#39;24.0&#39;, 799.6774270293013, 829.7024670293013)
+(&#39;movie01_presentations&#39;, &#39;25.0&#39;, 829.7024670293013, 859.7275270293012)
+(&#39;movie01_presentations&#39;, &#39;26.0&#39;, 859.7275270293012, 889.7525470293012)
+(&#39;movie01_presentations&#39;, &#39;27.0&#39;, 889.7525470293012, 919.7776070293012)
+(&#39;movie01_presentations&#39;, &#39;28.0&#39;, 919.7776070293012, 949.8026270293012)
+(&#39;movie01_presentations&#39;, &#39;29.0&#39;, 949.8026270293012, 979.8276470293011)
+(&#39;movie01_presentations&#39;, &#39;30.0&#39;, 979.8276470293011, 1009.8526970293012)
+(&#39;movie01_presentations&#39;, &#39;31.0&#39;, 1009.8526970293012, 1039.8777570293012)
+(&#39;movie01_presentations&#39;, &#39;32.0&#39;, 1039.8777570293012, 1069.9028070293011)
+(&#39;movie01_presentations&#39;, &#39;33.0&#39;, 1069.9028070293011, 1099.9278370293011)
+(&#39;movie01_presentations&#39;, &#39;34.0&#39;, 1099.9278370293011, 1129.9528570293012)
+(&#39;movie01_presentations&#39;, &#39;35.0&#39;, 1129.9528570293012, 1159.9778970293012)
+(&#39;movie01_presentations&#39;, &#39;36.0&#39;, 1159.9778970293012, 1190.0029470293011)
+(&#39;movie01_presentations&#39;, &#39;37.0&#39;, 1190.0029470293011, 1220.027997029301)
+(&#39;movie01_presentations&#39;, &#39;38.0&#39;, 1220.027997029301, 1250.0530270293011)
+(&#39;movie01_presentations&#39;, &#39;39.0&#39;, 1250.0530270293011, 1280.0780870293013)
+(&#39;movie01_presentations&#39;, &#39;40.0&#39;, 1280.0780870293013, 1310.103107029301)
+(&#39;movie01_presentations&#39;, &#39;41.0&#39;, 1310.103107029301, 1340.1281770293012)
+(&#39;movie01_presentations&#39;, &#39;42.0&#39;, 1340.1281770293012, 1370.1532070293013)
+(&#39;movie01_presentations&#39;, &#39;43.0&#39;, 1370.1532070293013, 1400.1782470293012)
+(&#39;movie01_presentations&#39;, &#39;44.0&#39;, 1400.1782470293012, 1430.2032670293013)
+(&#39;movie01_presentations&#39;, &#39;45.0&#39;, 1430.2032670293013, 1460.2283070293013)
+(&#39;movie01_presentations&#39;, &#39;46.0&#39;, 1460.2283070293013, 1490.2533670293012)
+(&#39;movie01_presentations&#39;, &#39;47.0&#39;, 1490.2533670293012, 1520.2783970293012)
+(&#39;movie01_presentations&#39;, &#39;48.0&#39;, 1520.2783970293012, 1550.3034270293012)
+(&#39;movie01_presentations&#39;, &#39;49.0&#39;, 1550.3034270293012, 1580.3284670293012)
+(&#39;movie00_presentations&#39;, &#39;50.0&#39;, 1580.3284670293012, 1610.3535170293012)
+(&#39;movie00_presentations&#39;, &#39;51.0&#39;, 1610.3535170293012, 1640.3785570293012)
+(&#39;movie00_presentations&#39;, &#39;52.0&#39;, 1640.3785570293012, 1670.4035770293012)
+(&#39;movie00_presentations&#39;, &#39;53.0&#39;, 1670.4035770293012, 1700.4286170293012)
+(&#39;movie00_presentations&#39;, &#39;54.0&#39;, 1700.4286170293012, 1730.4536670293012)
+(&#39;movie00_presentations&#39;, &#39;55.0&#39;, 1730.4536670293012, 1760.4787270293011)
+(&#39;movie00_presentations&#39;, &#39;56.0&#39;, 1760.4787270293011, 1790.5037570293011)
+(&#39;movie00_presentations&#39;, &#39;57.0&#39;, 1790.5037570293011, 1820.528807029301)
+(&#39;movie00_presentations&#39;, &#39;58.0&#39;, 1820.528807029301, 1850.553837029301)
+(&#39;movie00_presentations&#39;, &#39;59.0&#39;, 1850.553837029301, 1880.578867029301)
+(&#39;movie01_presentations&#39;, &#39;60.0&#39;, 1880.578867029301, 1910.6038870293007)
+(&#39;movie02_presentations&#39;, &#39;61.0&#39;, 1910.6038870293007, 1940.628947029301)
+(&#39;movie01_presentations&#39;, &#39;62.0&#39;, 1940.628947029301, 1970.653987029301)
+(&#39;movie02_presentations&#39;, &#39;63.0&#39;, 1970.653987029301, 2000.679027029301)
+(&#39;movie01_presentations&#39;, &#39;64.0&#39;, 2000.679027029301, 2030.704067029301)
+(&#39;movie02_presentations&#39;, &#39;65.0&#39;, 2030.704067029301, 2060.7291070293013)
+(&#39;movie01_presentations&#39;, &#39;66.0&#39;, 2060.7291070293013, 2090.754157029301)
+(&#39;movie02_presentations&#39;, &#39;67.0&#39;, 2090.754157029301, 2120.779217029301)
+(&#39;movie01_presentations&#39;, &#39;68.0&#39;, 2120.779217029301, 2150.804237029301)
+(&#39;movie02_presentations&#39;, &#39;69.0&#39;, 2150.804237029301, 2180.8292370293016)
+(&#39;movie01_presentations&#39;, &#39;70.0&#39;, 2180.8292370293016, 2210.854317029301)
+(&#39;movie02_presentations&#39;, &#39;71.0&#39;, 2210.854317029301, 2240.879357029301)
+(&#39;movie01_presentations&#39;, &#39;72.0&#39;, 2240.879357029301, 2270.9043870293017)
+(&#39;movie02_presentations&#39;, &#39;73.0&#39;, 2270.9043870293017, 2300.929417029301)
+(&#39;movie01_presentations&#39;, &#39;74.0&#39;, 2300.929417029301, 2330.9544670293017)
+(&#39;movie02_presentations&#39;, &#39;75.0&#39;, 2330.9544670293017, 2360.9794870293017)
+(&#39;movie01_presentations&#39;, &#39;76.0&#39;, 2360.9794870293017, 2391.004537029301)
+(&#39;movie02_presentations&#39;, &#39;77.0&#39;, 2391.004537029301, 2421.0295670293017)
+(&#39;movie01_presentations&#39;, &#39;78.0&#39;, 2421.0295670293017, 2451.0546270293016)
+(&#39;movie02_presentations&#39;, &#39;79.0&#39;, 2451.0546270293016, 2481.0796570293014)
+(&#39;movie01_presentations&#39;, &#39;80.0&#39;, 2481.0796570293014, 2511.104717029302)
+(&#39;movie02_presentations&#39;, &#39;81.0&#39;, 2511.104717029302, 2541.129737029302)
+(&#39;movie01_presentations&#39;, &#39;82.0&#39;, 2541.129737029302, 2571.154777029302)
+(&#39;movie02_presentations&#39;, &#39;83.0&#39;, 2571.154777029302, 2601.179837029302)
+(&#39;movie01_presentations&#39;, &#39;84.0&#39;, 2601.179837029302, 2631.204857029302)
+(&#39;movie02_presentations&#39;, &#39;85.0&#39;, 2631.204857029302, 2661.2298870293016)
+(&#39;movie01_presentations&#39;, &#39;86.0&#39;, 2661.2298870293016, 2691.254947029301)
+(&#39;movie02_presentations&#39;, &#39;87.0&#39;, 2691.254947029301, 2721.279987029301)
+(&#39;movie01_presentations&#39;, &#39;88.0&#39;, 2721.279987029301, 2751.305017029302)
+(&#39;movie02_presentations&#39;, &#39;89.0&#39;, 2751.305017029302, 2781.330067029301)
+(&#39;movie01_presentations&#39;, &#39;90.0&#39;, 2781.330067029301, 2811.355107029301)
+(&#39;movie02_presentations&#39;, &#39;91.0&#39;, 2811.355107029301, 2841.3801370293017)
+(&#39;movie01_presentations&#39;, &#39;92.0&#39;, 2841.3801370293017, 2871.4051770293017)
+(&#39;movie02_presentations&#39;, &#39;93.0&#39;, 2871.4051770293017, 2901.430227029301)
+(&#39;movie01_presentations&#39;, &#39;94.0&#39;, 2901.430227029301, 2931.455247029301)
+(&#39;movie02_presentations&#39;, &#39;95.0&#39;, 2931.455247029301, 2961.480327029302)
+(&#39;movie01_presentations&#39;, &#39;96.0&#39;, 2961.480327029302, 2991.505347029301)
+(&#39;movie02_presentations&#39;, &#39;97.0&#39;, 2991.505347029301, 3021.5303970293016)
+(&#39;movie01_presentations&#39;, &#39;98.0&#39;, 3021.5303970293016, 3051.5554370293016)
+(&#39;movie02_presentations&#39;, &#39;99.0&#39;, 3051.5554370293016, 3081.5804670293014)
+(&#39;movie01_presentations&#39;, &#39;100.0&#39;, 3081.5804670293014, 3111.6054970293017)
+(&#39;movie02_presentations&#39;, &#39;101.0&#39;, 3111.6054970293017, 3141.630567029302)
+(&#39;movie01_presentations&#39;, &#39;102.0&#39;, 3141.630567029302, 3171.655587029302)
+(&#39;movie02_presentations&#39;, &#39;103.0&#39;, 3171.655587029302, 3201.6806370293016)
+(&#39;movie01_presentations&#39;, &#39;104.0&#39;, 3201.6806370293016, 3231.7056870293018)
+(&#39;movie02_presentations&#39;, &#39;105.0&#39;, 3231.7056870293018, 3261.730707029302)
+(&#39;movie01_presentations&#39;, &#39;106.0&#39;, 3261.730707029302, 3291.755757029301)
+(&#39;movie02_presentations&#39;, &#39;107.0&#39;, 3291.755757029301, 3321.7808070293017)
+(&#39;movie01_presentations&#39;, &#39;108.0&#39;, 3321.7808070293017, 3351.805837029301)
+(&#39;movie02_presentations&#39;, &#39;109.0&#39;, 3351.805837029301, 3381.830877029301)
+(&#39;movie00_presentations&#39;, &#39;110.0&#39;, 3381.830877029301, 3411.855917029301)
+(&#39;movie00_presentations&#39;, &#39;111.0&#39;, 3411.855917029301, 3441.880977029301)
+(&#39;movie00_presentations&#39;, &#39;112.0&#39;, 3441.880977029301, 3471.906017029301)
+(&#39;movie00_presentations&#39;, &#39;113.0&#39;, 3471.906017029301, 3501.931057029301)
+(&#39;movie00_presentations&#39;, &#39;114.0&#39;, 3501.931057029301, 3531.9561070293016)
+(&#39;movie00_presentations&#39;, &#39;115.0&#39;, 3531.9561070293016, 3561.981117029301)
+(&#39;movie00_presentations&#39;, &#39;116.0&#39;, 3561.981117029301, 3592.006177029302)
+(&#39;movie00_presentations&#39;, &#39;117.0&#39;, 3592.006177029302, 3622.0312270293016)
+(&#39;movie00_presentations&#39;, &#39;118.0&#39;, 3622.0312270293016, 3652.0562670293016)
+(&#39;movie00_presentations&#39;, &#39;119.0&#39;, 3652.0562670293016, 3682.0813070293016)
+(&#39;movie03_presentations&#39;, &#39;120.0&#39;, 3682.0813070293016, 3712.106337029302)
+(&#39;movie03_presentations&#39;, &#39;121.0&#39;, 3712.106337029302, 3742.1313870293015)
+(&#39;movie03_presentations&#39;, &#39;122.0&#39;, 3742.1313870293015, 3772.1564270293015)
+(&#39;movie03_presentations&#39;, &#39;123.0&#39;, 3772.1564270293015, 3802.1814770293017)
+(&#39;movie03_presentations&#39;, &#39;124.0&#39;, 3802.1814770293017, 3832.2065170293017)
+(&#39;movie03_presentations&#39;, &#39;125.0&#39;, 3832.2065170293017, 3862.2315670293015)
+(&#39;movie03_presentations&#39;, &#39;126.0&#39;, 3862.2315670293015, 3892.2565970293017)
+(&#39;movie03_presentations&#39;, &#39;127.0&#39;, 3892.2565970293017, 3922.2816570293016)
+(&#39;movie03_presentations&#39;, &#39;128.0&#39;, 3922.2816570293016, 3952.306687029301)
+(&#39;movie03_presentations&#39;, &#39;129.0&#39;, 3952.306687029301, 3982.331727029301)
+(&#39;movie03_presentations&#39;, &#39;130.0&#39;, 3982.331727029301, 4012.356767029302)
+(&#39;movie03_presentations&#39;, &#39;131.0&#39;, 4012.356767029302, 4042.381807029302)
+(&#39;movie03_presentations&#39;, &#39;132.0&#39;, 4042.381807029302, 4072.4068570293016)
+(&#39;movie03_presentations&#39;, &#39;133.0&#39;, 4072.4068570293016, 4102.431897029302)
+(&#39;movie03_presentations&#39;, &#39;134.0&#39;, 4102.431897029302, 4132.456937029301)
+(&#39;movie03_presentations&#39;, &#39;135.0&#39;, 4132.456937029301, 4162.481987029301)
+(&#39;movie03_presentations&#39;, &#39;136.0&#39;, 4162.481987029301, 4192.507017029301)
+(&#39;movie03_presentations&#39;, &#39;137.0&#39;, 4192.507017029301, 4222.532047029301)
+(&#39;movie03_presentations&#39;, &#39;138.0&#39;, 4222.532047029301, 4252.557097029301)
+(&#39;movie03_presentations&#39;, &#39;139.0&#39;, 4252.557097029301, 4282.582167029301)
+(&#39;movie00_presentations&#39;, &#39;140.0&#39;, 4282.582167029301, 4312.607177029301)
+(&#39;movie00_presentations&#39;, &#39;141.0&#39;, 4312.607177029301, 4342.632227029301)
+(&#39;movie00_presentations&#39;, &#39;142.0&#39;, 4342.632227029301, 4372.657257029301)
+(&#39;movie00_presentations&#39;, &#39;143.0&#39;, 4372.657257029301, 4402.682327029302)
+(&#39;movie00_presentations&#39;, &#39;144.0&#39;, 4402.682327029302, 4432.707377029301)
+(&#39;movie00_presentations&#39;, &#39;145.0&#39;, 4432.707377029301, 4462.732387029301)
+(&#39;movie00_presentations&#39;, &#39;146.0&#39;, 4462.732387029301, 4492.757437029301)
+(&#39;movie00_presentations&#39;, &#39;147.0&#39;, 4492.757437029301, 4522.782487029302)
+(&#39;movie00_presentations&#39;, &#39;148.0&#39;, 4522.782487029302, 4552.807527029301)
+(&#39;movie00_presentations&#39;, &#39;149.0&#39;, 4552.807527029301, 4582.832567029302)
+(&#39;movie03_presentations&#39;, &#39;150.0&#39;, 4582.832567029302, 4612.8576270293015)
+(&#39;movie04_presentations&#39;, &#39;151.0&#39;, 4612.8576270293015, 4642.882657029301)
+(&#39;movie05_presentations&#39;, &#39;152.0&#39;, 4642.882657029301, 4672.907697029301)
+(&#39;movie06_presentations&#39;, &#39;153.0&#39;, 4672.907697029301, 4702.932767029301)
+(&#39;movie07_presentations&#39;, &#39;154.0&#39;, 4702.932767029301, 4732.957777029301)
+(&#39;movie08_presentations&#39;, &#39;155.0&#39;, 4732.957777029301, 4762.982817029301)
+(&#39;movie09_presentations&#39;, &#39;156.0&#39;, 4762.982817029301, 4793.007867029301)
+(&#39;movie10_presentations&#39;, &#39;157.0&#39;, 4793.007867029301, 4823.032917029301)
+(&#39;movie11_presentations&#39;, &#39;158.0&#39;, 4823.032917029301, 4853.057947029301)
+(&#39;movie12_presentations&#39;, &#39;159.0&#39;, 4853.057947029301, 4883.082997029302)
+(&#39;movie13_presentations&#39;, &#39;160.0&#39;, 4883.082997029302, 4913.108047029301)
+(&#39;movie14_presentations&#39;, &#39;161.0&#39;, 4913.108047029301, 4943.133087029301)
+(&#39;movie15_presentations&#39;, &#39;162.0&#39;, 4943.133087029301, 4973.1581370293015)
+(&#39;movie16_presentations&#39;, &#39;163.0&#39;, 4973.1581370293015, 5003.183167029301)
+(&#39;movie17_presentations&#39;, &#39;164.0&#39;, 5003.183167029301, 5033.208197029301)
+(&#39;movie18_presentations&#39;, &#39;165.0&#39;, 5033.208197029301, 5063.233267029301)
+(&#39;movie19_presentations&#39;, &#39;166.0&#39;, 5063.233267029301, 5093.258287029301)
+(&#39;movie20_presentations&#39;, &#39;167.0&#39;, 5093.258287029301, 5123.283337029301)
+(&#39;movie21_presentations&#39;, &#39;168.0&#39;, 5123.283337029301, 5153.308367029301)
+(&#39;movie22_presentations&#39;, &#39;169.0&#39;, 5153.308367029301, 5183.333427029301)
+(&#39;movie23_presentations&#39;, &#39;170.0&#39;, 5183.333427029301, 5213.358467029301)
+(&#39;movie24_presentations&#39;, &#39;171.0&#39;, 5213.358467029301, 5243.383527029301)
+(&#39;movie25_presentations&#39;, &#39;172.0&#39;, 5243.383527029301, 5273.408527029301)
+(&#39;movie26_presentations&#39;, &#39;173.0&#39;, 5273.408527029301, 5303.433577029301)
+(&#39;movie27_presentations&#39;, &#39;174.0&#39;, 5303.433577029301, 5333.458607029301)
+(&#39;movie28_presentations&#39;, &#39;175.0&#39;, 5333.458607029301, 5363.483667029302)
+(&#39;movie29_presentations&#39;, &#39;176.0&#39;, 5363.483667029302, 5393.508687029301)
+(&#39;movie30_presentations&#39;, &#39;177.0&#39;, 5393.508687029301, 5423.533747029302)
+(&#39;movie31_presentations&#39;, &#39;178.0&#39;, 5423.533747029302, 5453.558787029301)
+(&#39;movie32_presentations&#39;, &#39;179.0&#39;, 5453.558787029301, 5483.583827029302)
+(&#39;movie33_presentations&#39;, &#39;180.0&#39;, 5483.583827029302, 5513.608857029301)
+(&#39;movie34_presentations&#39;, &#39;181.0&#39;, 5513.608857029301, 5543.633927029301)
+(&#39;movie35_presentations&#39;, &#39;182.0&#39;, 5543.633927029301, 5573.658947029301)
+(&#39;movie36_presentations&#39;, &#39;183.0&#39;, 5573.658947029301, 5603.683997029301)
+(&#39;movie37_presentations&#39;, &#39;184.0&#39;, 5603.683997029301, 5633.709037029301)
+(&#39;movie38_presentations&#39;, &#39;185.0&#39;, 5633.709037029301, 5663.734087029301)
+(&#39;movie39_presentations&#39;, &#39;186.0&#39;, 5663.734087029301, 5693.759127029301)
+(&#39;movie40_presentations&#39;, &#39;187.0&#39;, 5693.759127029301, 5723.784157029301)
+(&#39;movie41_presentations&#39;, &#39;188.0&#39;, 5723.784157029301, 5753.809197029301)
+(&#39;movie42_presentations&#39;, &#39;189.0&#39;, 5753.809197029301, 5783.834237029301)
+(&#39;movie43_presentations&#39;, &#39;190.0&#39;, 5783.834237029301, 5813.859277029301)
+(&#39;movie44_presentations&#39;, &#39;191.0&#39;, 5813.859277029301, 5843.884327029301)
+(&#39;movie45_presentations&#39;, &#39;192.0&#39;, 5843.884327029301, 5873.909367029301)
+(&#39;movie46_presentations&#39;, &#39;193.0&#39;, 5873.909367029301, 5903.934427029301)
+(&#39;movie47_presentations&#39;, &#39;194.0&#39;, 5903.934427029301, 5933.959457029301)
+(&#39;movie48_presentations&#39;, &#39;195.0&#39;, 5933.959457029301, 5963.984497029302)
+(&#39;movie49_presentations&#39;, &#39;196.0&#39;, 5963.984497029302, 5994.009547029301)
+(&#39;movie50_presentations&#39;, &#39;197.0&#39;, 5994.009547029301, 6024.0345770293015)
+(&#39;movie51_presentations&#39;, &#39;198.0&#39;, 6024.0345770293015, 6054.059607029301)
+(&#39;movie52_presentations&#39;, &#39;199.0&#39;, 6054.059607029301, 6084.084637029301)
+(&#39;movie00_presentations&#39;, &#39;200.0&#39;, 6084.084637029301, 6114.109697029301)
+(&#39;movie00_presentations&#39;, &#39;201.0&#39;, 6114.109697029301, 6144.134757029301)
+(&#39;movie00_presentations&#39;, &#39;202.0&#39;, 6144.134757029301, 6174.159797029301)
+(&#39;movie00_presentations&#39;, &#39;203.0&#39;, 6174.159797029301, 6204.184827029301)
+(&#39;movie00_presentations&#39;, &#39;204.0&#39;, 6204.184827029301, 6234.209867029301)
+(&#39;movie00_presentations&#39;, &#39;205.0&#39;, 6234.209867029301, 6264.2348970293015)
+(&#39;movie00_presentations&#39;, &#39;206.0&#39;, 6264.2348970293015, 6294.259927029301)
+(&#39;movie00_presentations&#39;, &#39;207.0&#39;, 6294.259927029301, 6324.284987029301)
+(&#39;movie00_presentations&#39;, &#39;208.0&#39;, 6324.284987029301, 6354.310027029302)
+(&#39;movie00_presentations&#39;, &#39;209.0&#39;, 6354.310027029302, 6384.335067029301)
+(&#39;movie52_presentations&#39;, &#39;210.0&#39;, 6384.335067029301, 6414.360097029301)
+(&#39;movie03_presentations&#39;, &#39;211.0&#39;, 6414.360097029301, 6444.385157029301)
+(&#39;movie52_presentations&#39;, &#39;212.0&#39;, 6444.385157029301, 6474.410197029301)
+(&#39;movie03_presentations&#39;, &#39;213.0&#39;, 6474.410197029301, 6504.435217029301)
+(&#39;movie52_presentations&#39;, &#39;214.0&#39;, 6504.435217029301, 6534.460257029301)
+(&#39;movie03_presentations&#39;, &#39;215.0&#39;, 6534.460257029301, 6564.485297029301)
+(&#39;movie52_presentations&#39;, &#39;216.0&#39;, 6564.485297029301, 6594.510357029301)
+(&#39;movie03_presentations&#39;, &#39;217.0&#39;, 6594.510357029301, 6624.535397029301)
+(&#39;movie52_presentations&#39;, &#39;218.0&#39;, 6624.535397029301, 6654.5604270293015)
+(&#39;movie03_presentations&#39;, &#39;219.0&#39;, 6654.5604270293015, 6684.585457029301)
+(&#39;movie52_presentations&#39;, &#39;220.0&#39;, 6684.585457029301, 6714.6105070293015)
+(&#39;movie03_presentations&#39;, &#39;221.0&#39;, 6714.6105070293015, 6744.635557029301)
+(&#39;movie52_presentations&#39;, &#39;222.0&#39;, 6744.635557029301, 6774.6605870293015)
+(&#39;movie03_presentations&#39;, &#39;223.0&#39;, 6774.6605870293015, 6804.6856070293015)
+(&#39;movie52_presentations&#39;, &#39;224.0&#39;, 6804.6856070293015, 6834.710687029301)
+(&#39;movie03_presentations&#39;, &#39;225.0&#39;, 6834.710687029301, 6864.735717029301)
+(&#39;movie52_presentations&#39;, &#39;226.0&#39;, 6864.735717029301, 6894.760717029301)
+(&#39;movie03_presentations&#39;, &#39;227.0&#39;, 6894.760717029301, 6924.785787029301)
+(&#39;movie52_presentations&#39;, &#39;228.0&#39;, 6924.785787029301, 6954.810847029301)
+(&#39;movie03_presentations&#39;, &#39;229.0&#39;, 6954.810847029301, 6984.835837029301)
+(&#39;create_receptive_field_mapping_presentations&#39;, &#39;230.0&#39;, 6984.835837029301, 7471.241537029301)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_start</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="nb">min</span><span class="p">([</span><span class="n">epoch</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">]))</span>
+<span class="n">time_end</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="n">epoch</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">]))</span>
+<span class="n">all_units_spike_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">units_spike_times</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># make histogram of unit spikes per second over specified timeframe</span>
+<span class="n">time_bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">,</span> <span class="p">(</span><span class="n">time_end</span><span class="o">-</span><span class="n">time_start</span><span class="p">))</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">all_units_spike_times</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">time_bin_edges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate plot of spike histogram with colored epoch intervals</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># assign unique color to each stimulus name</span>
+<span class="n">stim_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">epoch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">})</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">)))</span>
+<span class="n">stim_color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">stim_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stim_names</span><span class="p">))}</span>
+
+<span class="n">epoch_key</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+<span class="c1"># draw colored rectangles for each epoch</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
+    <span class="n">stim_name</span><span class="p">,</span> <span class="n">stim_block</span><span class="p">,</span> <span class="n">epoch_start</span><span class="p">,</span> <span class="n">epoch_end</span> <span class="o">=</span> <span class="n">epoch</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">stim_color_map</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">epoch_start</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">epoch_end</span><span class="o">-</span><span class="n">epoch_start</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">))</span>
+    <span class="n">epoch_key</span><span class="p">[</span><span class="n">stim_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">rec</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">height</span><span class="o">+</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time (s)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;# spikes&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;All Unit Spikes Per Second Throughout Epochs&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">epoch_key</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">epoch_key</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span><span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1e8af9ff5b0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/cd1238aee048cfba4e133a00ec438805d8102ce18265a3a0511f743e8a7d8075.png" src="../_images/cd1238aee048cfba4e133a00ec438805d8102ce18265a3a0511f743e8a7d8075.png" />
+</div>
+</div>
+<p>The figure shows the overall activity across all neurons (blue line) over the course of the experiment. Different trials (movie presentations) are colored according to the natural movie presented. For example, the first 50 trials in aim 1 (0-1500 sec) correspond to presentations of ‘movie01’ and thus colored by cyan. Note that some colors might be used more than once despite representing different stimuli.</p>
+</section>
+<section id="quantifying-the-stability-of-neuronal-responses-across-trials">
+<h3>Quantifying the stability of neuronal responses across trials<a class="headerlink" href="#quantifying-the-stability-of-neuronal-responses-across-trials" title="Link to this heading">#</a></h3>
+<p>Some of our hypotheses concern how gradual changes in naturalistic stimulus affect the stability of neuronal responses. To do so, we first need to establish a baseline of how stable neuronal representations under repeated presentations of the same fixed naturalistic stimulus are.</p>
+<p>In the following section, we will examine the consistency in population responses in area V1 across all trials (i.e., movie presentations) of the experiment using established routines (Rubin et al., Elife, 2015).</p>
+<p>First, we will construct for each trial its population vector (PV), defined as the average activity rate of each neuron across all movie frames in that trial. This will result in a NxT matrix (where N is the number of neurons and T is the number of trials). Then, we will correlate the vectors of all trials to produce a single symmetric matrix in the size of TxT. Each entry in this correlation matrix corresponds to the similarity in activity levels across each pair of trials. Finally, we will plot the correlations as a function of elapsed time between trials and examine where their values remain constant (stable representations) or gradually decline (drifting representations).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating trial-level spike matrix</span>
+<span class="n">pv_per_trial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">V1_spike_times</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)))</span>
+<span class="n">pv_per_trial</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1"># TODO - convert to function</span>
+<span class="k">for</span> <span class="n">trial_ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)):</span>
+    <span class="n">epoch</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="n">trial_ind</span><span class="p">]</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">epoch</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+   
+    <span class="k">for</span> <span class="n">unit_ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">V1_spike_times</span><span class="p">)):</span>
+        <span class="n">unit_activity</span> <span class="o">=</span> <span class="n">V1_spike_times</span><span class="p">[</span><span class="n">unit_ind</span><span class="p">]</span>
+        <span class="n">pv_per_trial</span><span class="p">[</span><span class="n">unit_ind</span><span class="p">,</span><span class="n">trial_ind</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">start_time</span><span class="o">&lt;</span><span class="n">unit_activity</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">unit_activity</span> <span class="o">&lt;</span> <span class="n">end_time</span><span class="p">))</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the correlation in population responses across trials</span>
+<span class="n">pv_corr_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">pv_per_trial</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+
+<span class="c1"># plot the correlation matrix as a heatmap</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pv_corr_mat</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Correlation (r)&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Trial ID&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Trial ID&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Population similarity across trial:&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Population similarity across trial:&#39;)
+</pre></div>
+</div>
+<img alt="../_images/de86ada7de83919eaed5babba65c859cd8ce6bf98d716d481c73eac8740a288a.png" src="../_images/de86ada7de83919eaed5babba65c859cd8ce6bf98d716d481c73eac8740a288a.png" />
+</div>
+</div>
+<p>The figure shows the pairwise similarities between trials in terms of individual cells’ activity levels.
+Note the high correlations between trials of matching stimuli (movies with movies) relative to those of
+non-matching stimuli (gray screen with movies), resulting in a checkerboard pattern.</p>
+<p>Also note the gradual decline in correlations over the course of each block of trials (e.g., trials 1-50)
+and throughout the entire experiment, suggesting the existence of stimulus independent representational drift.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stability_elapsed_time</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+    <span class="c1"># Calculates the average value for each diagonal (i.e., time interval) of the matrix</span>
+    <span class="n">mean_elpased_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">mean_elpased_time</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">interval_values</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">interval</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">mean_elpased_time</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">interval</span><span class="p">]</span> <span class="o">=</span> <span class="n">interval_values</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">mean_elpased_time</span> 
+
+
+<span class="c1"># focus on the stability of the first block of movies (trials 1-50)</span>
+<span class="n">pv_corr_blockA</span> <span class="o">=</span> <span class="n">pv_corr_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">pv_elapsed_time</span> <span class="o">=</span> <span class="n">stability_elapsed_time</span><span class="p">(</span><span class="n">pv_corr_blockA</span><span class="p">)</span>
+
+<span class="c1"># plot correlation as a function of elapsed time</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">y_axis</span> <span class="o">=</span> <span class="n">pv_elapsed_time</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+<span class="n">x_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_axis</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">y_axis</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Elapsed time between trials (1 interval = 30 sec)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Ensemble rate correlation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Ensemble rate correlation&#39;)
+</pre></div>
+</div>
+<img alt="../_images/f64a4592365bc29d1f74946427e1d51d4d37a0adcdd2ce8d3f35b0ddf52a9bd9.png" src="../_images/f64a4592365bc29d1f74946427e1d51d4d37a0adcdd2ce8d3f35b0ddf52a9bd9.png" />
+</div>
+</div>
+<p>This figure shows that similarity in activity levels between the first 50 trials of the experiment as a function of elapsed time between pairs of trials.
+Note the gradual decline in correlation over time, indicating representational drift.</p>
+</section>
+</section>
+<section id="section-c-advanced-analysis-of-natural-movies">
+<h2>Section C - Advanced analysis of natural movies:<a class="headerlink" href="#section-c-advanced-analysis-of-natural-movies" title="Link to this heading">#</a></h2>
+<p>As part of the project, we plan to compare how prior experience with a fixed or gradually morphing naturalistic stimuli affects the neuronal tuning in the visual cortex.</p>
+<p>In the following section, we will present a set of established supervised and unsupervised routines for characterizing the neuronal tuning for natural movies in visual cortex data both at the single cell and population-level.</p>
+<section id="extracting-stimulus-times-for-natural-movies">
+<h3>Extracting stimulus times for natural movies<a class="headerlink" href="#extracting-stimulus-times-for-natural-movies" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_raster_mat_fast</span><span class="p">(</span><span class="n">spike_times</span><span class="p">,</span> <span class="n">stim_times</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Count spikes in each interval (start, end] for each unit.</span>
+<span class="sd">    Returns array of shape (n_units, n_frames).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">start_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">stim_times</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">][:],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">end_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">stim_times</span><span class="p">[</span><span class="s2">&quot;stop_time&quot;</span><span class="p">][:],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+    <span class="n">n_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
+    <span class="n">n_frames</span> <span class="o">=</span> <span class="n">start_times</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">pv_per_frame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_units</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">unit_ind</span><span class="p">,</span> <span class="n">unit_activity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">spike_times</span><span class="p">):</span>
+        <span class="n">spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">unit_activity</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+        <span class="n">right_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">end_times</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+        <span class="n">left_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">start_times</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+        <span class="n">pv_per_frame</span><span class="p">[</span><span class="n">unit_ind</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">right_idx</span> <span class="o">-</span> <span class="n">left_idx</span>
+
+    <span class="k">return</span> <span class="n">pv_per_frame</span>
+
+
+<span class="c1"># focusing on trials 1-10 of first stimulus block (natural movie 1)</span>
+<span class="n">num_frames</span> <span class="o">=</span> <span class="mi">900</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">natural_movie1_forward</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="s2">&quot;movie01_presentations&quot;</span><span class="p">][:</span> <span class="n">num_frames</span> <span class="o">*</span> <span class="n">num_trials</span><span class="p">]</span>
+
+<span class="n">V1_pv_per_frame</span> <span class="o">=</span> <span class="n">calculate_raster_mat_fast</span><span class="p">(</span><span class="n">V1_spike_times</span><span class="p">,</span> <span class="n">natural_movie1_forward</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="single-cell-level-characterization-of-v1-neurons-tuning-to-natural-movies">
+<h3>Single cell-level characterization of V1 neurons tuning to natural movies<a class="headerlink" href="#single-cell-level-characterization-of-v1-neurons-tuning-to-natural-movies" title="Link to this heading">#</a></h3>
+<p>To quantify the similarities in the tuning preference of individual neurons across different presentations of the same stimulus (regardless of changes in activity rates), we will calculate for each neuron the “tuning curve correlation” between different movie repeats. To this end, we will first divide each movie repeat into 30 equal time bins (each bin spanning 1 s). Then, for each neuron, we will define the tuning curve as the mean activity rate in each temporal bin within the movie. Finally, we will calculate the Pearson’s correlation between the tuning curve of each individual neuron in one movie repeat and that of the same neuron in another movie repeat and use the median value across all neurons to capture the central tendency of the entire population (will not be shown here).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bin_movie_frames</span><span class="p">(</span><span class="n">raster_mat</span><span class="p">,</span><span class="n">bin_size</span><span class="p">):</span>
+    <span class="c1"># averages neuronal activity from multiple movie frames</span>
+    
+    <span class="n">num_bins</span> <span class="o">=</span> <span class="n">raster_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">bin_size</span>
+    
+   
+    <span class="n">num_bins</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raster_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">bin_size</span><span class="p">)</span>
+    <span class="n">bin_edges</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">raster_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">bin_size</span><span class="p">)</span>
+
+    <span class="n">pv_per_bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">raster_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num_bins</span><span class="p">))</span>
+    <span class="n">pv_per_bin</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">ind</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">bin_ind</span> <span class="ow">in</span> <span class="n">bin_edges</span><span class="p">:</span>
+        <span class="n">bin_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">bin_ind</span><span class="p">,</span><span class="n">bin_ind</span><span class="o">+</span><span class="n">bin_size</span><span class="p">)</span>
+    
+        <span class="n">pv_per_bin</span><span class="p">[:,</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">raster_mat</span><span class="p">[:,</span><span class="n">bin_range</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ind</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">return</span> <span class="n">pv_per_bin</span>
+
+
+<span class="c1"># bin athe activity of V1 neurons across 10 movie repeats</span>
+<span class="n">bin_size</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">pv_per_bin</span> <span class="o">=</span> <span class="n">bin_movie_frames</span><span class="p">(</span><span class="n">V1_pv_per_frame</span><span class="p">,</span><span class="n">bin_size</span><span class="p">)</span>
+
+
+<span class="n">example_cells_id</span> <span class="o">=</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">73</span><span class="p">]</span>
+
+<span class="c1"># plot the tuning curve of four example neurons across 10 movie repeats</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">cell_ind</span> <span class="ow">in</span> <span class="n">example_cells_id</span><span class="p">:</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="n">example_cell</span> <span class="o">=</span> <span class="n">pv_per_bin</span><span class="p">[</span><span class="n">cell_ind</span><span class="p">,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">bin_size</span><span class="p">)</span>
+    
+    <span class="n">window_size</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">smoothed_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">window_size</span><span class="p">)</span><span class="o">/</span><span class="n">window_size</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">arr</span><span class="o">=</span><span class="n">example_cell</span>
+    <span class="p">)</span>
+
+    <span class="n">norm_data</span> <span class="o">=</span> <span class="n">smoothed_data</span> <span class="o">/</span> <span class="n">smoothed_data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">heatmap</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">norm_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">,</span><span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span> 
+    
+    <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Norm. activity rate&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Trial ID&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time in movie (sec)&#39;</span><span class="p">)</span>
+  
+    <span class="n">title_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Cell #</span><span class="si">{</span><span class="n">cell_ind</span><span class="si">}</span><span class="s2">:&quot;</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title_string</span><span class="p">)</span>
+    <span class="n">ind</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b817ac46720314939c01e73b9c6aa65aca5fd89971d57c38e7b8ffc59aa5ee3a.png" src="../_images/b817ac46720314939c01e73b9c6aa65aca5fd89971d57c38e7b8ffc59aa5ee3a.png" />
+</div>
+</div>
+<p>The figure shows the visual responses of four highly reliable V1 neurons across the first 10 repeats of ‘movie01’.
+For visualization, the tuning curve of each cell on each trial (i.e., each row of each heatmap) was smoothed and normalized relative
+to the temporal bin with maximal activity on that trial.</p>
+</section>
+<section id="population-level-characterization-of-v1-neurons-tuning-to-natural-movies">
+<h3>Population-level characterization of V1 neurons tuning to natural movies<a class="headerlink" href="#population-level-characterization-of-v1-neurons-tuning-to-natural-movies" title="Link to this heading">#</a></h3>
+<p>To determine the level of similarity between population representations of the same stimulus on different presentations, we will calculate the “population vector correlation” between pairs of different movie repeats. First, we will divide each movie repeat into 30 equal time bins (each bin spanning 1 s). Then, for each temporal bin, we will define the population vector as the average activity rate for each unit. Finally, we will calculate the Pearson’s correlation between the population vectors (PVs) of one repeat with all the PVs of another movie repeat. Finding higher correlations between matching time bins across different trials relative to those of non-matching time bins will indicate a unique and reliable neuronal code for different scenes of the movie at the population level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the correlation in population responses across trials</span>
+<span class="n">pv_corr_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">pv_per_bin</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+
+<span class="c1"># plot the population vector correlation matrix as a heatmap</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pv_corr_mat</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span> 
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Population vector correlation&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span>   
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Trial ID&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Trial ID&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Population similarity across trials:&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Population similarity across trials:&#39;)
+</pre></div>
+</div>
+<img alt="../_images/c835f0252c5ebaf8bbd55001d7170e02ea55c6caeb575a47fcbae738430026ab.png" src="../_images/c835f0252c5ebaf8bbd55001d7170e02ea55c6caeb575a47fcbae738430026ab.png" />
+</div>
+</div>
+<p>The figure shows the similarity between the population-level representations of different time points across the
+first 10 trials of ‘movie01’. As expected from neurons in V1, each time bin in the movie elicited a highly distinct and reliable representation that persisted across different trials (note the high correlations between matching time bins of different trials).</p>
+</section>
+<section id="unsupervised-population-level-analysis-of-v1-activity-using-dimensionality-reduction">
+<h3>Unsupervised population-level analysis of V1 activity using dimensionality reduction<a class="headerlink" href="#unsupervised-population-level-analysis-of-v1-activity-using-dimensionality-reduction" title="Link to this heading">#</a></h3>
+<p>To determine the level of similarity between population representations of the same stimulus on different presentations without relying on linear or supervised measures, we will we embed the neuronal data in a low-dimensional space using the non-linear dimensionality reduction algorithm t-distributed stochastic neighbor embedding (t-SNE).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bin athe activity of V1 neurons across 10 movie repeats</span>
+<span class="n">bin_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">pv_per_bin</span> <span class="o">=</span> <span class="n">bin_movie_frames</span><span class="p">(</span><span class="n">V1_pv_per_frame</span><span class="p">,</span><span class="n">bin_size</span><span class="p">)</span>
+<span class="n">norm_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_per_bin</span> <span class="o">-</span> <span class="n">pv_per_bin</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span> <span class="o">/</span> <span class="n">pv_per_bin</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">norm_data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">norm_data</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># standrize data</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaled_data</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">norm_data</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span>
+
+<span class="c1"># perform PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">principal_components</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">scaled_data</span><span class="p">)</span>
+
+<span class="c1"># perform t-SNE on PCA results</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;exact&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">reduced_data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">principal_components</span><span class="p">)</span>
+
+
+<span class="c1"># visualize reduced data</span>
+<span class="n">colormap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">scat</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">reduced_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colormap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Comp. 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Comp. 2&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scat</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Time in movie (1 bin = 10 msec)&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\carter.peene\AppData\Local\Temp\ipykernel_10972\372906705.py:4: RuntimeWarning: invalid value encountered in divide
+  norm_data = (pv_per_bin - pv_per_bin.mean(axis=1)[:, np.newaxis]) / pv_per_bin.std(axis=1)[:, np.newaxis]
+</pre></div>
+</div>
+<img alt="../_images/b6c7b9531c900a4a26bbd4e49cbc3d1d83902a6a143f139fd741f4aa2e4ef91d.png" src="../_images/b6c7b9531c900a4a26bbd4e49cbc3d1d83902a6a143f139fd741f4aa2e4ef91d.png" />
+</div>
+</div>
+<p>Dimensionality reduction (t-SNE) applied to the population activity of a single mouse recorded from area V1 recovers a low-dimensional ring-like structure. Each point represents a single time point of population activity of a single ‘movie01’ repeat, colored according to time in the presented movie. Note the coherent matching between the proximity of time points in the reduced space and their temporal proximity in the actual movie sequence. Also note the high proximity in reduced space between time points corresponding to the beginning (dark blue) and end (dark red) scenes of the movie. This suggests that these two visual scenes elicit similar representations despite being highly visually distinct (see example frames in the introduction section). In future analysis, we will examine whether this similarity reflects the visual cortex ability to form temporal associations between complex natural stimuli.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "AllenInstitute/openscope_databook",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-question-and-hypothesis">Main question and hypothesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-design">Experiment design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-movies-presented">Examples of movies presented</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-1-natural-movie-in-a-forawrd-reversed-fashion"><u>Aim 1 - natural movie in a forawrd-reversed fashion:</u></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-2-gradually-morphing-movie"><u> Aim 2 - gradually morphing movie:</u></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-a-explore-basic-features-of-the-dataset">Section A - explore basic features of the dataset:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">Environment setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-basic-information-about-the-dataset">Extract basic information about the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-a-single-ecephys-nwb-file">Downloading a single Ecephys NWB file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-units-spikes-and-locations">Extracting units spikes and locations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-b-basic-analysis-of-neuronal-data">Section B - basic analysis of neuronal data:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-overall-activity-according-to-session-timeline">Plot overall activity according to session timeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-the-stability-of-neuronal-responses-across-trials">Quantifying the stability of neuronal responses across trials</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-c-advanced-analysis-of-natural-movies">Section C - Advanced analysis of natural movies:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-stimulus-times-for-natural-movies">Extracting stimulus times for natural movies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell-level-characterization-of-v1-neurons-tuning-to-natural-movies">Single cell-level characterization of V1 neurons tuning to natural movies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-level-characterization-of-v1-neurons-tuning-to-natural-movies">Population-level characterization of V1 neurons tuning to natural movies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-population-level-analysis-of-v1-activity-using-dimensionality-reduction">Unsupervised population-level analysis of V1 activity using dimensionality reduction</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carter Peene
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
