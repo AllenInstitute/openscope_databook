@@ -10,7 +10,7 @@
 ```{authors}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene, Ben Dichter
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng, Yaroslav Halchenko--Yaroslav O. Halchenko
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng, Yaroslav Halchenko--Yaroslav O. Halchenko, Saif Ah.tub@gmail.com--Saif Ahmed
 ---
 ```
 ````
@@ -41,7 +41,7 @@ aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAk
 ```{committers}
 ---
 blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng, Yaroslav Halchenko--Yaroslav O. Halchenko
+aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng, Yaroslav Halchenko--Yaroslav O. Halchenko, Saif Ah.tub@gmail.com--Saif Ahmed
 ```
 ````
 
