@@ -8,6 +8,19 @@ The OpenScope Databook is meant to store code and documentation used for reprodu
 
 We are releasing this code to the public as a tool we expect others to use and are actively updating and maintaining this project. Issue submissions are encouraged. Questions can be directed to [@rcpeene](https://github.com/rcpeene) or [@jeromelecoq](https://github.com/jeromelecoq). Below, you can see a working list of the content goals for this databook. We are open to hearing input from users about what types of analysis and visualization might be useful for reproducible neuroscience, particularly when working with the *NWB* file standard.
 
+## Environment Setup
+
+### Preferred (uv lockfile, mirrors CI)
+- Use Python 3.10
+- Install uv: `python -m pip install uv`
+- Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
+- Run tooling through uv, e.g. `uv run jupyter notebook ./docs`
+
+### Pip-only fallback (no uv required)
+- Create and activate a Python 3.10 virtual environment
+- Install dependencies: `python -m pip install -r requirements-ci.txt`
+- Install project: `python -m pip install -e .`
+
 ## Content Goals
 
 ### Chapter 1: Using DANDI/getting data

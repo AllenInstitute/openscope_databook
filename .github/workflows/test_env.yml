@@ -1,0 +1,73 @@
+name: test-env
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+  workflow_dispatch:
+
+jobs:
+  test-env:
+    runs-on:
+      group: LargerInstance
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install system build tools
+        run: |
+          if command -v sudo >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y g++
+          else
+            apt-get update
+            apt-get install -y g++
+          fi
+
+      - name: Create isolated virtual environment
+        run: |
+          python -m venv .venv
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
+
+      - name: Install environment from repo files (pip-only)
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements-ci.txt
+          python -m pip install -e .
+
+      - name: Verify environment health
+        run: |
+          python -m pip check
+          python - <<'PY'
+          import importlib
+
+          modules = [
+              "databook_utils",
+              "numpy",
+              "pandas",
+              "scipy",
+              "pynwb",
+              "nway",
+          ]
+
+          missing = []
+          for module_name in modules:
+              try:
+                  importlib.import_module(module_name)
+                  print(f"OK: {module_name}")
+              except Exception as exc:
+                  print(f"FAIL: {module_name} -> {exc}")
+                  missing.append(module_name)
+
+          if missing:
+              raise SystemExit(f"Missing/broken imports: {', '.join(missing)}")
+          PY
+
+      - name: Print environment snapshot
+        run: python -m pip freeze
