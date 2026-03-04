@@ -88,6 +88,11 @@ jobs:
       - name: Printing shortlog
         run: git log | git shortlog -sn  
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Build Jupyter book
         run: |
           uv run jupyter-book clean ./docs

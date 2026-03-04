@@ -36,6 +36,11 @@ jobs:
           python3 -m pip install markupsafe==2.0.1
           python3 -m pip install -U jupyter-book
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Build Jupyter Book
         run: |
           jupyter-book clean ./docs
