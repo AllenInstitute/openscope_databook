@@ -46,8 +46,15 @@ jobs:
           jupyter-book clean ./docs
           jupyter-book build ./docs
 
+      - name: Verify built site exists
+        run: |
+          ls -la ./docs/_build
+          test -d ./docs/_build/html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/_build/html
+          publish_branch: gh-pages
+          force_orphan: false
