@@ -29,6 +29,39 @@ def dictstring_to_dict(dictstring):
 	return this_dict
 
 
+def load_contributors_table(path="./data/contributors.csv"):
+	with open(path, newline="", encoding="utf-8") as f:
+		table = list(csv.reader(f))
+
+	if not table:
+		message = f"Formatting problem in {path}: file is empty. Expected a header row with contributor columns."
+		print(message)
+		raise ValueError(message)
+
+	header = table[0]
+	for required_column in ["Name", "Role"]:
+		if required_column not in header:
+			message = (
+				f"Formatting problem in {path}: missing required column '{required_column}'. "
+				f"Found columns: {header}"
+			)
+			print(message)
+			raise ValueError(message)
+
+	expected_columns = len(header)
+	for line_number, row in enumerate(table[1:], start=2):
+		if len(row) < expected_columns:
+			message = (
+				f"Formatting problem in {path} at line {line_number}: expected {expected_columns} columns "
+				f"to match header, but found {len(row)}. Row content: {row}. "
+				"This is usually caused by a missing comma or quote mismatch."
+			)
+			print(message)
+			raise ValueError(message)
+
+	return table
+
+
 class Committers(Directive):
 
 	optional_arguments = 3
@@ -73,8 +106,7 @@ class Authors(Directive):
 
 		# get authors with matching role from csv
 		authors = set()
-		with open("./data/contributors.csv") as f:
-			table = list(csv.reader(f))
+		table = load_contributors_table("./data/contributors.csv")
 		role_idx = table[0].index("Role")
 		name_idx = table[0].index("Name")
 		for contributor in table[1:]:
@@ -121,8 +153,7 @@ class VersionNumber(Directive):
 class AuthorsIndex(Directive):
 
 	def run(self):
-		with open("./data/contributors.csv") as f:
-			table = list(csv.reader(f))
+		table = load_contributors_table("./data/contributors.csv")
 
 		section = nodes.section(ids=["contributorsblock"])
 		section += nodes.title("","Contributors")
