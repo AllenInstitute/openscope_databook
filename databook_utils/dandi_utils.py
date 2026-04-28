@@ -12,9 +12,9 @@ from pynwb import NWBHDF5IO
 
 # downloads an NWB file from DANDI to download_loc, opens it, and returns the IO object for the NWB
 # dandi_api_key is required to access files from embargoed dandisets
-def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_api_key=None, force_overwrite=False, version='published'):
+def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_api_key=None, force_overwrite=False, version=None):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
-    dandiset = client.get_dandiset(dandiset_id, version=version)
+    dandiset = client.get_dandiset(dandiset_id, version_id=version)
 
     file = dandiset.get_asset_by_path(dandi_filepath)
     file_url = file.download_url
@@ -41,9 +41,9 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_ap
 
 # streams an NWB file remotely from DANDI, opens it, and returns the IO object for the NWB
 # dandi_api_key is required to access files from embargoed dandisets
-def dandi_stream_open(dandiset_id, dandi_filepath, dandi_api_key=None):
+def dandi_stream_open(dandiset_id, dandi_filepath, dandi_api_key=None, version=None):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
-    dandiset = client.get_dandiset(dandiset_id)
+    dandiset = client.get_dandiset(dandiset_id, version_id=version)
 
     file = dandiset.get_asset_by_path(dandi_filepath)
     base_url = file.client.session.head(file.base_download_url)
