@@ -50,11 +50,6 @@ jobs:
       - name: Printing environment
         run: uv pip freeze
 
-      - name: Testing Embargoed Notebooks
-        run: |
-          uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/embargoed"
-          rm ./docs/embargoed/*.nwb
-
       - name: Testing Higher-Order Notebooks
         run: |
           uv run pytest --nbmake --nbmake-timeout=8000 -n=auto "./docs/higher-order"

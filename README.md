@@ -31,7 +31,7 @@ We are releasing this code to the public as a tool we expect others to use and a
 - [Querying metadata across sessions from DANDI](https://alleninstitute.github.io/openscope_databook/basics/get_dandiset_metadata.html)
 
 ### Chapter 2: Data visualization
-- [Visualizing eye-tracking gaze locations, eye area, and running speed](https://alleninstitute.github.io/openscope_databook/embargoed/visualize_behavior.html)
+- [Visualizing eye-tracking gaze locations, eye area, and running speed](https://alleninstitute.github.io/openscope_databook/visualization/visualize_behavior.html)
 - [Visualizing 2P raw movie](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_raw.html)
 - [Visualizing Neuropixels probe locations](https://alleninstitute.github.io/openscope_databook/visualization/visualize_neuropixels_probes.html)
 - [Visualizing Neuropixels recorded unit quality metrics](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_metrics.html)
@@ -44,10 +44,10 @@ We are releasing this code to the public as a tool we expect others to use and a
 - [Neuropixels: Plotting receptive fields](https://alleninstitute.github.io/openscope_databook/first-order/receptive_fields.html)
 - [Neuropixels: Identifying opto-tagged cells](https://alleninstitute.github.io/openscope_databook/first-order/optotagging.html)
 - [Neuropixels: Extracting Current Source Density plots](https://alleninstitute.github.io/openscope_databook/first-order/current_source_density.html)
-- [2P: Cell matching across days](https://alleninstitute.github.io/openscope_databook/embargoed/cell_matching.html)
+- [2P: Cell matching across days](https://alleninstitute.github.io/openscope_databook/first-order/cell_matching.html)
 - [2P: Stimuli averages with 2P data](https://alleninstitute.github.io/openscope_databook/first-order/test_2p_responses.html)
 - [Neuropixels: Stimuli averages with neuropixels data](https://alleninstitute.github.io/openscope_databook/first-order/test_unit_responses.html)
-- [2P: How to align timestamps across modalities](https://alleninstitute.github.io/openscope_databook/embargoed/modality_alignment.html)
+- [2P: How to align timestamps across modalities](https://alleninstitute.github.io/openscope_databook/first-order/modality_alignment.html)
 - [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://alleninstitute.github.io/openscope_databook/first-order/suite2p.html)
 - [Classifying spike waveform between fast spiking and normal spiking cells](https://alleninstitute.github.io/openscope_databook/first-order/classify_waveforms.html)
 
