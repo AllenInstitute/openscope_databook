@@ -8,6 +8,10 @@ on:
 
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on:
@@ -72,8 +76,12 @@ jobs:
         
       - name: Testing Project Notebooks
         run: |
-          uv run pytest --nbmake --nbmake-timeout=12000 -n=0 -v --tb=long "./docs/projects"
-          rm ./docs/projects/*.nwb
+          for nb in ./docs/projects/*.ipynb; do
+            echo "::group::Testing $nb"
+            uv run pytest --nbmake --nbmake-timeout=12000 -v --tb=long "$nb"
+            rm -f ./docs/projects/*.nwb
+            echo "::endgroup::"
+          done
         
       - name: Printing log
         run: |
