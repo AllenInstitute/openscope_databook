@@ -27,6 +27,14 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
 
+      - name: Set up swap space
+        run: |
+          sudo fallocate -l 10G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
