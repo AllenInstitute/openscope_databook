@@ -8,6 +8,10 @@ on:
 
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on:
@@ -22,6 +26,14 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.ref }}
+
+      - name: Set up swap space
+        run: |
+          sudo fallocate -l 10G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
@@ -72,8 +84,12 @@ jobs:
         
       - name: Testing Project Notebooks
         run: |
-          uv run pytest --nbmake --nbmake-timeout=12000 -n=2 "./docs/projects"
-          rm ./docs/projects/*.nwb
+          for nb in ./docs/projects/*.ipynb; do
+            echo "::group::Testing $nb"
+            uv run pytest --nbmake --nbmake-timeout=12000 -v --tb=long "$nb"
+            rm -f ./docs/projects/*.nwb
+            echo "::endgroup::"
+          done
         
       - name: Printing log
         run: |
