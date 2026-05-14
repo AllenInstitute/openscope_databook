@@ -73,9 +73,8 @@
  *         - platform: github
  *           url: https://github.com/janesmith
  *
- * Run `uv run python sync_authors.py` from docs/ to sync contributors and
- * affiliations into the myst.yml sentinel block (needed for native MyST
- * frontmatter features like citation generation).
+ * Contributors and affiliations in myst.yml are synced from authors.yml
+ * (needed for native MyST frontmatter features like citation generation).
  */
 
 import { readFileSync } from 'node:fs';
