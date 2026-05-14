@@ -99,6 +99,9 @@ jobs:
       - name: Printing shortlog
         run: git log | git shortlog -sn  
 
+      - name: Install docs JS dependencies
+        run: npm install --prefix ./docs
+
       - name: Build MyST book
         run: |
           cd docs && uv run myst clean --all

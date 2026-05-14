@@ -36,6 +36,9 @@ jobs:
           python3 -m pip install markupsafe==2.0.1
           python3 -m pip install mystmd
 
+      - name: Install docs JS dependencies
+        run: npm install --prefix ./docs
+
       - name: Build MyST Book
         run: |
           cd docs && myst clean --all
