@@ -1,0 +1,87 @@
+version: 1
+project:
+  title: OpenScope Databook
+  # <sync-contributors-start>
+  contributors: []
+  affiliations: []
+  # <sync-contributors-end>
+  github: https://github.com/AllenInstitute/openscope_databook
+  bibliography:
+    - references.bib
+  plugins:
+    - authorship-plugin.mjs
+  # Note: databook_utils.insert_authors_version and sphinx.ext.intersphinx
+  # extensions are not yet ported — to be replaced in a future step.
+  jupyter:
+    binder:
+      url: https://mybinder.org
+    jupyterhub:
+      url: https://hub.dandiarchive.org
+  toc:
+    - file: intro.md
+    - title: Basics
+      children:
+        - file: basics/background.md
+        - file: basics/download_nwb.ipynb
+        - file: basics/stream_nwb.ipynb
+        - file: basics/read_nwb.ipynb
+        - file: basics/get_dandiset_metadata.ipynb
+    - title: Visualizing NWB Files
+      children:
+        - file: visualization/visualize_2p_raw.ipynb
+        - file: visualization/visualize_neuropixel_probes.ipynb
+        - file: visualization/visualize_unit_metrics.ipynb
+        - file: visualization/visualize_lfp_responses.ipynb
+        - file: visualization/visualize_unit_responses.ipynb
+        - file: visualization/visualize_2p_responses.ipynb
+        - file: visualization/visualize_unit_spikes.ipynb
+        - file: visualization/visualize_behavior.ipynb
+        - file: visualization/visualize_2p_vr_behavior.ipynb
+        - file: visualization/visualize_neuropixels_probes.ipynb
+        - file: visualization/visualize_templates.ipynb
+    - title: First-Order Analysis
+      children:
+        - file: first-order/receptive_fields.ipynb
+        - file: first-order/optotagging.ipynb
+        - file: first-order/current_source_density.ipynb
+        - file: first-order/classify_waveforms.ipynb
+        - file: first-order/test_2p_responses.ipynb
+        - file: first-order/test_unit_responses.ipynb
+        - file: first-order/suite2p.ipynb
+        - file: first-order/cell_matching.ipynb
+        - file: first-order/modality_alignment.ipynb
+    - title: Higher-Order Analysis
+      children:
+        - file: higher-order/cebra_time.ipynb
+        - file: higher-order/tca.ipynb
+        - file: higher-order/GLM_pynapple_nemos.ipynb
+        - file: higher-order/glm.ipynb
+        - file: higher-order/behavioral_state.ipynb
+    - title: Openscope Experimental Projects
+      children:
+        - file: projects/cred_assign_figures.ipynb
+        - file: projects/glo.ipynb
+        - file: projects/illusion.ipynb
+        - file: projects/dendritic_coupling.ipynb
+        - file: projects/sequence_learning.ipynb
+        - file: projects/barcoding.ipynb
+        - file: projects/vippo.ipynb
+        - file: projects/vismo.ipynb
+        - file: projects/texture.ipynb
+        - file: projects/loop.ipynb
+        - file: projects/psycode.ipynb
+    - title: Methods
+      children:
+        - file: methods/jupyter_book.md
+        - file: methods/github.md
+        - file: methods/environments.md
+    - title: Appendix
+      children:
+        - file: contribution.md
+        - file: FAQ.md
+site:
+  template: book-theme
+  options:
+    logo: ../data/images/logo.png
+    analytics:
+      google: G-TJPN1M4PDX
