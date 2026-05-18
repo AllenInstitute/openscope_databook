@@ -21,6 +21,16 @@ We are releasing this code to the public as a tool we expect others to use and a
 - Install dependencies: `python -m pip install -r requirements-ci.txt`
 - Install project: `python -m pip install -e .`
 
+### Maintaining `requirements-ci.txt`
+`requirements-ci.txt` is a fully-pinned, pip-compatible export of the uv lockfile used by CI. After any change to `pyproject.toml` or `uv.lock`, regenerate it with:
+
+```bash
+uv export --frozen --extra dev --no-hashes --no-editable -o requirements-ci.txt
+```
+
+- `--no-hashes` — omits hash annotations so pip accepts VCS dependencies (e.g. `ophys-nway-matching`, `ssm`) without entering hash-verification mode
+- `--no-editable` — converts the local project entry from `-e .` to `.` so the file is self-contained
+
 ## Content Goals
 
 ### Chapter 1: Using DANDI/getting data
