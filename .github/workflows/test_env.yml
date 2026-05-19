@@ -76,5 +76,11 @@ jobs:
               raise SystemExit(f"Missing/broken imports: {', '.join(missing)}")
           PY
 
+      - name: Build MyST docs
+        working-directory: ./docs
+        run: |
+          npm install
+          myst build --html
+
       - name: Print environment snapshot
         run: python -m pip freeze

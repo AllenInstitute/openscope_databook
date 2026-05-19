@@ -103,6 +103,7 @@ jobs:
         run: npm install --prefix ./docs
 
       - name: Build MyST book
+        working-directory: ./docs
         run: |
-          cd docs && uv run myst clean --all
-          cd docs && uv run myst build --html
+          uv run myst clean --all
+          uv run myst build --html
