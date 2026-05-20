@@ -1,0 +1,86 @@
+/* byline-widget.css — self-contained styles (Tailwind classes unavailable inside anywidget scope) */
+
+.myst-fm-authors-affiliations {
+  margin-top: 1rem;
+}
+
+.myst-fm-authors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75rem;
+}
+
+.myst-fm-authors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .myst-fm-authors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.myst-fm-authors-header-authors,
+.myst-fm-authors-header-affil {
+  font-size: 0.75rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  color: inherit;
+}
+
+.myst-fm-author {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: inherit;
+}
+
+.myst-fm-affiliation-col {
+  font-size: 0.875rem;
+  color: inherit;
+}
+
+.myst-fm-affiliation-item {
+  color: inherit;
+}
+
+/* Reset button to look like inline text */
+.myst-fm-author-popover {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  font-weight: inherit;
+  color: inherit;
+  outline: none;
+}
+
+.myst-fm-author-popover:hover .myst-fm-author-name {
+  text-decoration: underline;
+}
+
+.myst-fm-author-popover:focus {
+  box-shadow: 0 0 0 2px currentColor;
+}
+
+.myst-fm-author-icon-link {
+  margin-left: 0.25rem;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  color: #9ca3af; /* text-gray-400 */
+}
+
+.myst-fm-author-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(-0.1em);
+  color: #9ca3af;
+}
+
+.myst-fm-author-icon-orcid:hover {
+  color: #A9C751;
+}

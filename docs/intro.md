@@ -4,63 +4,9 @@
 ```{version} https://github.com/AllenInstitute/openscope_databook/releases
 ```
 
-`````{tab-set}
-````{tab-item} All Contributors
-**Supplied any substantial contribution to the project**
-```{authors}
----
-blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene, Ben Dichter
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng, Yaroslav Halchenko--Yaroslav O. Halchenko, Saif Ah.tub@gmail.com--Saif Ahmed
----
+```{authorship-explorer}
+:authors: ./authors.yml
 ```
-````
-
-````{tab-item} Management
-**Performed administrative and supervisory duties**
-```{authors}
-:role: Management
-```
-````
-
-````{tab-item} Conceptualization
-**Contributed ideas significant to the development of the project and its content**
-```{authors}
-:role: Conceptualization
-```
-````
-
-````{tab-item} Processing
-**Processed data used in the project or wrote substantial code to do so**
-```{authors}
-:role: Processing
-```
-````
-
-````{tab-item} Commits
-**Committed code to the primary GitHub repository**
-```{committers}
----
-blacklist: Publishing Bot, github-actions[bot], GitHub Authors Action, Ross Carter Peene, rcpeene
-aliases: Carter Peene--R. Carter Peene, colleenjg--Colleen J. Gillon, shailajaAkella--Shailaja Akella, KimYeerim--Yeerim Kim, Steph Prince--Stephanie Prince, sjara--Santiago Jaramillo, Song Jiatai--Jiatai Song, sytseng--Shih-Yi Tseng, Yaroslav Halchenko--Yaroslav O. Halchenko, Saif Ah.tub@gmail.com--Saif Ahmed
-```
-````
-
-````{tab-item} Review
-**Reviewed code or content components the project or the project as a whole**
-```{authors}
-:role: Review
-```
-````
-
-````{tab-item} Funding
-**Provided funds key to supporting the development of the project**
-```{authors}
-:role: Funding
-```
-````
-
-`````
-*More author information can be found on the [Contributors Page](https://alleninstitute.github.io/openscope_databook/authors_index.html)*
 
 
 ## Abstract

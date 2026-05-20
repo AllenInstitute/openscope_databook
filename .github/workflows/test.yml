@@ -54,5 +54,5 @@ jobs:
         
       - name: Testing notebooks
         if: ${{ steps.changed_files.outputs.added_modified  != '' }}
-        run: uv run pytest --nbmake --nbmake-timeout=5000 -n=2 ${{ steps.changed_files.outputs.added_modified }}
+        run: uv run pytest --nbmake --nbmake-timeout=5000 -n=1 ${{ steps.changed_files.outputs.added_modified }}
 
