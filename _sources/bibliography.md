@@ -1,4 +1,0 @@
-# Bibliography
-```{bibliography}
-:style: plain
-```

@@ -1,0 +1,297 @@
+
+        <style>
+            .container-fields {
+                font-family: "Open Sans", Arial, sans-serif;
+            }
+            .container-fields .field-value {
+                color: #00788E;
+            }
+            .container-fields details > summary {
+                cursor: pointer;
+                display: list-item;
+            }
+            .container-fields details > summary:hover {
+                color: #0A6EAA;
+            }
+        </style>
+        
+        <script>
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(function() {
+                    console.log('Copied to clipboard: ' + text);
+                }, function(err) {
+                    console.error('Could not copy text: ', err);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                let fieldKeys = document.querySelectorAll('.container-fields .field-key');
+                fieldKeys.forEach(function(fieldKey) {
+                    fieldKey.addEventListener('click', function() {
+                        let accessCode = fieldKey.getAttribute('title').replace('Access code: ', '');
+                        copyToClipboard(accessCode);
+                    });
+                });
+            });
+        </script>
+        <div class='container-wrap'><div class='container-header'><div class='xr-obj-type'><h3>ImageSegmentation</h3></div></div><details><summary style="display: list-item; margin-left: 0px;" class="container-fields field-key" title=".plane_segmentations"><b>plane_segmentations</b></summary><details><summary style="display: list-item; margin-left: 20px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_0']"><b>PlaneSegmentation_0</b></summary><div style="margin-left: 40px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0']">description: </span><span class="field-value">Plane segmentation of imagine plane 0</span></div><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_0']"><b>imaging_plane</b></summary><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_0'].optical_channel"><b>optical_channel</b></summary><details><summary style="display: list-item; margin-left: 80px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_0'].optical_channel[0]"><b>0</b></summary><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].optical_channel[0].description">description: </span><span class="field-value">optical channel for GCaMP</span></div><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].optical_channel[0].emission_lambda">emission_lambda: </span><span class="field-value">525.0</span></div></details></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].description">description: </span><span class="field-value">volume calcium imaging in visA layer 2/3</span></div><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_0'].device"><b>device</b></summary><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].device.description">description: </span><span class="field-value">Two-photon microscope</span></div><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].device.manufacturer">manufacturer: </span><span class="field-value">Harvey Lab custom-bulit two-photon microscope (Odin)</span></div></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].excitation_lambda">excitation_lambda: </span><span class="field-value">920.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].imaging_rate">imaging_rate: </span><span class="field-value">30.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].indicator">indicator: </span><span class="field-value">GCaMP6s</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].location">location: </span><span class="field-value">visA</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].conversion">conversion: </span><span class="field-value">1.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].unit">unit: </span><span class="field-value">meters</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_0'].reference_frame">reference_frame: </span><span class="field-value">[p->a, l->m, depth from pia] in minimeters from bregma in Allen Institute Mouse Common Coordinate Framework (CCF); i.e. directionality of the imaging FOV: x-axis: posterior to anterior; y-axis: laterl (left) to medial (right); however, the FOV axes does not run parallelly to the CCF coordinate system. The following transformation matrix can be applied to a column vector of pixel coordinate ([x,y,1].T) to [ml, ap, _] in mm in CCF: np.array([[-0.000128,-0.001469,-1.088622],[0.001331,-0.000140,-1.957084],[0.000000,0.000000,1.000000]])</span></div></details><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_0']"><b>table</b></summary><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ml</th>
+      <th>ap</th>
+      <th>depth</th>
+      <th>area</th>
+      <th>mTagBFP2</th>
+      <th>mScarlet</th>
+      <th>pixel_mask</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.83153</td>
+      <td>-1.67308</td>
+      <td>0.115</td>
+      <td>A</td>
+      <td>True</td>
+      <td>False</td>
+      <td>[[483, 258, 91007.11], [482, 259, 157956.42], [483, 259, 247654.84], [484, 259, 175354.88], [481, 260, 169253.83], [482, 260, 328937.47], [483, 260, 380361.25], [484, 260, 342891.0], [485, 260, 156837.55], [480, 261, 139835.08], [481, 261, 320548.3], [482, 261, 328538.8], [483, 261, 284250.38], [484, 261, 272464.12], [485, 261, 263009.78], [486, 261, 114113.06], [479, 262, 130135.49], [480, 262, 350195.44], [481, 262, 344748.8], [482, 262, 263407.06], [483, 262, 228751.84], [484, 262, 207297.28], [485, 262, 223281.47], [486, 262, 214495.58], [479, 263, 270379.03], [480, 263, 450994.62], [481, 263, 325501.34], [482, 263, 261987.56], [483, 263, 233517.36], [484, 263, 214340.12], [485, 263, 202163.22], [486, 263, 230735.47], [479, 264, 326150.06], [480, 264, 476270.56], [481, 264, 333029.28], [482, 264, 265543.38], [483, 264, 236059.42], [484, 264, 218495.77], [485, 264, 204481.16], [486, 264, 268010.78], [487, 264, 129516.695], [478, 265, 109774.41], [479, 265, 310635.3], [480, 265, 478236.94], [481, 265, 377786.2], [482, 265, 281787.9], [483, 265, 253100.7], [484, 265, 228369.28], [485, 265, 223610.05], [486, 265, 330142.8], [487, 265, 157617.06], [479, 266, 166514.53], [480, 266, 430299.75], [481, 266, 460057.44], [482, 266, 308356.97], [483, 266, 276319.9], [484, 266, 262071.53], [485, 266, 282850.75], [486, 266, 351484.25], [480, 267, 223096.55], [481, 267, 472413.94], [482, 267, 400318.12], [483, 267, 341142.75], [484, 267, 350033.25], [485, 267, 394185.56], [486, 267, 239445.08], [481, 268, 215518.58], [482, 268, 379879.94], [483, 268, 439134.2], [484, 268, 445183.56], [485, 268, 331286.72], [482, 269, 100239.83], [483, 269, 223852.78], [484, 269, 204007.98]]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.81635</td>
+      <td>-1.72861</td>
+      <td>0.115</td>
+      <td>A</td>
+      <td>False</td>
+      <td>True</td>
+      <td>[[475, 217, 11779.721], [476, 217, 21893.092], [477, 217, 23192.68], [478, 217, 18077.207], [474, 218, 27621.184], [475, 218, 45044.8], [476, 218, 56738.1], [477, 218, 59457.008], [478, 218, 48369.43], [479, 218, 12665.242], [472, 219, 12816.762], [473, 219, 32254.629], [474, 219, 42073.28], [475, 219, 40477.832], [476, 219, 42192.938], [477, 219, 53071.88], [478, 219, 61973.242], [479, 219, 26224.95], [472, 220, 29170.098], [473, 220, 36263.19], [474, 220, 20734.17], [475, 220, 23104.074], [476, 220, 27555.078], [477, 220, 33960.977], [478, 220, 50999.695], [479, 220, 41034.797], [472, 221, 37479.72], [473, 221, 23905.121], [474, 221, 14156.272], [475, 221, 19098.836], [476, 221, 20715.451], [477, 221, 24270.803], [478, 221, 40262.656], [479, 221, 49374.586], [480, 221, 8807.097], [471, 222, 9034.222], [472, 222, 44253.723], [473, 222, 25068.469], [474, 222, 17174.328], [475, 222, 19703.775], [476, 222, 18325.326], [477, 222, 22856.584], [478, 222, 36802.316], [479, 222, 50652.03], [480, 222, 11847.38], [472, 223, 46447.465], [473, 223, 35605.07], [474, 223, 18739.86], [475, 223, 20567.977], [476, 223, 19826.758], [477, 223, 22451.738], [478, 223, 34963.312], [479, 223, 48713.07], [480, 223, 11620.417], [472, 224, 30984.92], [473, 224, 46513.94], [474, 224, 25852.896], [475, 224, 19138.723], [476, 224, 22233.225], [477, 224, 27827.264], [478, 224, 45244.23], [479, 224, 44777.91], [480, 224, 11101.3955], [472, 225, 9798.707], [473, 225, 42598.45], [474, 225, 43409.465], [475, 225, 34840.586], [476, 225, 36535.746], [477, 225, 42026.746], [478, 225, 45569.97], [479, 225, 33260.34], [480, 225, 8740.246], [473, 226, 15096.922], [474, 226, 31177.703], [475, 226, 39540.508], [476, 226, 38490.17], [477, 226, 33005.82], [478, 226, 24084.61], [479, 226, 17231.744], [475, 227, 17536.627], [476, 227, 11626.823]]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.40609</td>
+      <td>-1.43519</td>
+      <td>0.115</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[178, 405, 32037.309], [179, 405, 28367.28], [180, 405, 22740.55], [178, 406, 49287.418], [179, 406, 77518.414], [180, 406, 67876.07], [181, 406, 61937.824], [182, 406, 68309.266], [183, 406, 24239.715], [178, 407, 69871.7], [179, 407, 72018.234], [180, 407, 56953.594], [181, 407, 56053.12], [182, 407, 80453.46], [183, 407, 81597.305], [184, 407, 23621.553], [177, 408, 48576.777], [178, 408, 77786.12], [179, 408, 55984.98], [180, 408, 50533.477], [181, 408, 52787.09], [182, 408, 63563.54], [183, 408, 112992.12], [184, 408, 75882.96], [177, 409, 67347.086], [178, 409, 77002.47], [179, 409, 55371.684], [180, 409, 51000.75], [181, 409, 51419.348], [182, 409, 58725.332], [183, 409, 114647.03], [184, 409, 101665.65], [177, 410, 74202.19], [178, 410, 75644.46], [179, 410, 55892.496], [180, 410, 47841.797], [181, 410, 49068.387], [182, 410, 59874.043], [183, 410, 111127.9], [184, 410, 99859.836], [177, 411, 94655.65], [178, 411, 86854.11], [179, 411, 58681.523], [180, 411, 48304.203], [181, 411, 51326.863], [182, 411, 61971.895], [183, 411, 115961.234], [184, 411, 91740.99], [176, 412, 27772.012], [177, 412, 120215.67], [178, 412, 114160.29], [179, 412, 71993.9], [180, 412, 62098.45], [181, 412, 59333.758], [182, 412, 75147.984], [183, 412, 122726.94], [184, 412, 76248.016], [176, 413, 30632.07], [177, 413, 132753.81], [178, 413, 155358.08], [179, 413, 128421.81], [180, 413, 111980.48], [181, 413, 94046.664], [182, 413, 101115.97], [183, 413, 103329.83], [184, 413, 38284.61], [176, 414, 30348.316], [177, 414, 105145.84], [178, 414, 134515.81], [179, 414, 138606.23], [180, 414, 125665.12], [181, 414, 118764.85], [182, 414, 98895.125], [183, 414, 63616.16], [175, 415, 21947.162], [176, 415, 36471.523], [177, 415, 47442.668], [178, 415, 50510.016], [179, 415, 65668.99], [180, 415, 67600.03], [181, 415, 80247.08], [182, 415, 68049.61], [183, 415, 36324.883], [175, 416, 24278.654], [181, 416, 39606.33], [182, 416, 36787.703]]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.35358</td>
+      <td>-1.47856</td>
+      <td>0.115</td>
+      <td>A</td>
+      <td>True</td>
+      <td>False</td>
+      <td>[[146, 371, 16934.56], [147, 371, 34940.188], [148, 371, 37597.117], [149, 371, 33068.87], [145, 372, 17398.12], [146, 372, 49466.68], [147, 372, 57905.902], [148, 372, 51037.902], [149, 372, 58547.566], [150, 372, 58545.125], [151, 372, 30182.604], [145, 373, 50427.953], [146, 373, 65703.46], [147, 373, 45523.984], [148, 373, 37536.12], [149, 373, 43694.145], [150, 373, 70622.07], [151, 373, 67974.9], [152, 373, 17481.072], [144, 374, 32390.61], [145, 374, 72466.55], [146, 374, 51935.742], [147, 374, 38058.234], [148, 374, 35878.285], [149, 374, 36538.246], [150, 374, 50961.047], [151, 374, 71556.51], [152, 374, 37928.926], [144, 375, 53536.242], [145, 375, 75379.66], [146, 375, 46385.227], [147, 375, 36893.24], [148, 375, 36025.89], [149, 375, 36507.75], [150, 375, 47480.69], [151, 375, 69799.86], [152, 375, 42584.04], [144, 376, 63746.75], [145, 376, 79705.26], [146, 376, 53863.176], [147, 376, 36438.215], [148, 376, 35401.31], [149, 376, 36938.37], [150, 376, 54663.426], [151, 376, 63014.816], [152, 376, 21333.14], [144, 377, 51157.45], [145, 377, 90364.83], [146, 377, 65920.6], [147, 377, 40195.49], [148, 377, 37356.797], [149, 377, 45672.81], [150, 377, 51050.1], [151, 377, 26788.98], [144, 378, 23436.592], [145, 378, 61648.535], [146, 378, 73479.06], [147, 378, 58223.074], [148, 378, 50781.723], [149, 378, 43713.66], [150, 378, 20872.053], [145, 379, 18803.438], [146, 379, 31090.203], [147, 379, 30570.53], [148, 379, 21850.73]]</td>
+    </tr>
+  </tbody>
+</table><p>... and 220 more rows.</p></details></details><details><summary style="display: list-item; margin-left: 20px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_1']"><b>PlaneSegmentation_1</b></summary><div style="margin-left: 40px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1']">description: </span><span class="field-value">Plane segmentation of imagine plane 1</span></div><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_1']"><b>imaging_plane</b></summary><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_1'].optical_channel"><b>optical_channel</b></summary><details><summary style="display: list-item; margin-left: 80px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_1'].optical_channel[0]"><b>0</b></summary><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].optical_channel[0].description">description: </span><span class="field-value">optical channel for GCaMP</span></div><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].optical_channel[0].emission_lambda">emission_lambda: </span><span class="field-value">525.0</span></div></details></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].description">description: </span><span class="field-value">volume calcium imaging in visA layer 2/3</span></div><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_1'].device"><b>device</b></summary><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].device.description">description: </span><span class="field-value">Two-photon microscope</span></div><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].device.manufacturer">manufacturer: </span><span class="field-value">Harvey Lab custom-bulit two-photon microscope (Odin)</span></div></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].excitation_lambda">excitation_lambda: </span><span class="field-value">920.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].imaging_rate">imaging_rate: </span><span class="field-value">30.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].indicator">indicator: </span><span class="field-value">GCaMP6s</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].location">location: </span><span class="field-value">visA</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].conversion">conversion: </span><span class="field-value">1.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].unit">unit: </span><span class="field-value">meters</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_1'].reference_frame">reference_frame: </span><span class="field-value">[p->a, l->m, depth from pia] in minimeters from bregma in Allen Institute Mouse Common Coordinate Framework (CCF); i.e. directionality of the imaging FOV: x-axis: posterior to anterior; y-axis: laterl (left) to medial (right); however, the FOV axes does not run parallelly to the CCF coordinate system. The following transformation matrix can be applied to a column vector of pixel coordinate ([x,y,1].T) to [ml, ap, _] in mm in CCF: np.array([[-0.000128,-0.001469,-1.088622],[0.001331,-0.000140,-1.957084],[0.000000,0.000000,1.000000]])</span></div></details><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_1']"><b>table</b></summary><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ml</th>
+      <th>ap</th>
+      <th>depth</th>
+      <th>area</th>
+      <th>mTagBFP2</th>
+      <th>mScarlet</th>
+      <th>pixel_mask</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.74051</td>
+      <td>-1.73168</td>
+      <td>0.14</td>
+      <td>A</td>
+      <td>False</td>
+      <td>True</td>
+      <td>[[418, 205, 80954.92], [419, 206, 106628.51], [420, 206, 71980.125], [419, 207, 66816.54], [420, 207, 134012.6], [420, 208, 106484.19], [421, 208, 124369.63], [421, 209, 133296.33], [422, 209, 77688.93], [428, 209, 85140.31], [421, 210, 63801.777], [422, 210, 154372.94], [423, 210, 120622.56], [424, 210, 191736.75], [425, 210, 257740.8], [426, 210, 263139.56], [427, 210, 206639.5], [428, 210, 127587.52], [422, 211, 214593.34], [423, 211, 296451.62], [424, 211, 317929.12], [425, 211, 348076.75], [426, 211, 370676.78], [427, 211, 357356.25], [428, 211, 222814.45], [422, 212, 265213.56], [423, 212, 312027.9], [424, 212, 290475.56], [425, 212, 326428.2], [426, 212, 346077.62], [427, 212, 362241.88], [428, 212, 312615.88], [429, 212, 115635.375], [422, 213, 285515.1], [423, 213, 286348.97], [424, 213, 277571.94], [425, 213, 307762.34], [426, 213, 300866.88], [427, 213, 319051.66], [428, 213, 323915.9], [429, 213, 198792.58], [422, 214, 275262.78], [423, 214, 285173.0], [424, 214, 273413.28], [425, 214, 284702.6], [426, 214, 262519.53], [427, 214, 281516.78], [428, 214, 305891.47], [429, 214, 239727.06], [422, 215, 239352.89], [423, 215, 285932.03], [424, 215, 267950.38], [425, 215, 278662.4], [426, 215, 260541.75], [427, 215, 275679.7], [428, 215, 280789.84], [429, 215, 242092.53], [430, 215, 68862.36], [422, 216, 164213.67], [423, 216, 278138.56], [424, 216, 280982.25], [425, 216, 301893.16], [426, 216, 297371.03], [427, 216, 292953.62], [428, 216, 255792.55], [429, 216, 205874.1], [422, 217, 91650.914], [423, 217, 287728.06], [424, 217, 323231.7], [425, 217, 326706.16], [426, 217, 316796.56], [427, 217, 278671.5], [428, 217, 221073.0], [429, 217, 125364.07], [423, 218, 285386.8], [424, 218, 346141.75], [425, 218, 330276.84], [426, 218, 298269.78], [427, 218, 218828.44], [428, 218, 127287.72], [423, 219, 281046.4], [424, 219, 279774.22], [425, 219, 209622.2], [426, 219, 154638.48], [427, 219, 93138.664], [422, 220, 118295.625], [423, 220, 226160.62], [424, 220, 111444.65], [421, 221, 67580.63], [422, 221, 104084.13], [423, 221, 78847.4]]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.86115</td>
+      <td>-1.72994</td>
+      <td>0.14</td>
+      <td>A</td>
+      <td>True</td>
+      <td>False</td>
+      <td>[[505, 220, 58717.656], [506, 220, 59157.453], [507, 220, 37949.51], [508, 220, 34401.824], [509, 220, 24819.156], [504, 221, 73709.81], [505, 221, 151153.0], [506, 221, 142337.55], [507, 221, 81303.625], [508, 221, 63926.797], [509, 221, 51074.98], [510, 221, 26319.35], [503, 222, 49863.098], [504, 222, 115891.14], [505, 222, 177364.84], [506, 222, 170445.39], [507, 222, 121882.14], [508, 222, 95807.12], [509, 222, 79446.71], [510, 222, 43476.28], [502, 223, 32153.977], [503, 223, 69536.64], [504, 223, 109411.48], [505, 223, 147429.4], [506, 223, 142484.14], [507, 223, 121745.31], [508, 223, 106557.69], [509, 223, 94126.125], [510, 223, 57618.168], [502, 224, 42249.74], [503, 224, 62905.492], [504, 224, 77768.95], [505, 224, 104085.06], [506, 224, 105990.84], [507, 224, 105042.836], [508, 224, 101964.266], [509, 224, 95924.4], [510, 224, 60721.17], [501, 225, 26475.72], [502, 225, 48274.945], [503, 225, 63017.883], [504, 225, 69668.58], [505, 225, 79739.91], [506, 225, 93178.12], [507, 225, 95592.11], [508, 225, 96745.35], [509, 225, 92093.29], [510, 225, 56640.84], [502, 226, 46989.76], [503, 226, 67352.32], [504, 226, 72204.734], [505, 226, 81049.52], [506, 226, 95201.18], [507, 226, 99863.016], [508, 226, 97634.72], [509, 226, 86581.18], [510, 226, 56020.242], [502, 227, 30419.225], [503, 227, 54363.676], [504, 227, 63399.04], [505, 227, 74784.87], [506, 227, 87050.3], [507, 227, 91917.37], [508, 227, 87050.3], [509, 227, 76632.016], [510, 227, 51485.453], [503, 228, 28581.855], [504, 228, 31572.469], [505, 228, 40119.17], [506, 228, 50586.316], [507, 228, 60139.664], [508, 228, 53948.312], [509, 228, 44942.266], [510, 228, 28078.533]]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.76924</td>
+      <td>-1.82857</td>
+      <td>0.14</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[446, 138, 14899.492], [447, 138, 15248.103], [447, 139, 23149.13], [447, 140, 16052.7705], [448, 140, 23163.457], [449, 140, 15594.324], [450, 140, 16544.645], [451, 140, 18571.836], [452, 140, 20725.576], [453, 140, 24751.305], [454, 140, 17227.537], [448, 141, 43991.707], [449, 141, 76001.734], [450, 141, 82228.96], [451, 141, 56627.62], [452, 141, 44825.027], [453, 141, 40632.156], [454, 141, 30085.514], [455, 141, 16902.805], [447, 142, 19238.014], [448, 142, 75423.91], [449, 142, 126808.05], [450, 142, 115318.25], [451, 142, 61111.797], [452, 142, 39421.574], [453, 142, 35603.58], [454, 142, 29840.096], [455, 142, 30312.348], [456, 142, 27119.941], [447, 143, 29154.295], [448, 143, 90457.11], [449, 143, 117968.64], [450, 143, 90337.72], [451, 143, 47611.52], [452, 143, 35190.5], [453, 143, 36116.94], [454, 143, 26864.453], [455, 143, 24653.406], [456, 143, 33440.285], [457, 143, 19631.99], [447, 144, 31382.055], [448, 144, 87400.805], [449, 144, 99482.766], [450, 144, 68623.625], [451, 144, 43963.055], [452, 144, 38468.863], [453, 144, 44462.09], [454, 144, 35147.52], [455, 144, 26857.29], [456, 144, 34786.973], [457, 144, 25782.807], [447, 145, 20116.703], [448, 145, 75462.11], [449, 145, 91751.266], [450, 145, 63480.434], [451, 145, 40975.992], [452, 145, 24198.412], [453, 145, 29660.496], [454, 145, 22845.889], [455, 145, 20670.658], [456, 145, 29479.027], [457, 145, 23977.676], [448, 146, 52162.55], [449, 146, 93489.54], [450, 146, 63341.945], [451, 146, 37408.707], [452, 146, 22334.912], [453, 146, 19467.236], [454, 146, 17349.312], [455, 146, 17970.125], [456, 146, 23528.781], [448, 147, 32960.35], [449, 147, 91154.33], [450, 147, 70486.06], [451, 147, 36432.125], [452, 147, 20195.498], [453, 147, 17153.518], [454, 147, 18208.898], [455, 147, 24297.633], [456, 147, 18664.957], [448, 148, 35080.664], [449, 148, 61044.938], [450, 148, 57644.797], [451, 148, 39751.082], [452, 148, 23395.068], [453, 148, 18829.71], [454, 148, 21186.41], [455, 148, 20467.7], [447, 149, 15436.733], [448, 149, 30061.635], [449, 149, 16489.727], [450, 149, 24674.896], [451, 149, 28133.105], [452, 149, 19149.668], [447, 150, 20150.13]]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.52488</td>
+      <td>-1.68150</td>
+      <td>0.14</td>
+      <td>A</td>
+      <td>False</td>
+      <td>True</td>
+      <td>[[276, 232, 76022.45], [277, 232, 84155.92], [278, 232, 82370.22], [279, 232, 54377.13], [274, 233, 67319.484], [275, 233, 121896.15], [276, 233, 165350.12], [277, 233, 173068.16], [278, 233, 174482.92], [279, 233, 143426.02], [280, 233, 41130.008], [273, 234, 88310.05], [274, 234, 155442.8], [275, 234, 195334.47], [276, 234, 203181.34], [277, 234, 203225.44], [278, 234, 202431.92], [279, 234, 184115.19], [280, 234, 73818.0], [273, 235, 104072.81], [274, 235, 188677.84], [275, 235, 192204.53], [276, 235, 174086.17], [277, 235, 168840.22], [278, 235, 172499.16], [279, 235, 176907.52], [280, 235, 106726.414], [273, 236, 123805.28], [274, 236, 183916.81], [275, 236, 147239.25], [276, 236, 134499.1], [277, 236, 124051.27], [278, 236, 119025.74], [279, 236, 140362.2], [280, 236, 111443.36], [281, 236, 36104.477], [273, 237, 128988.64], [274, 237, 156144.14], [275, 237, 124359.86], [276, 237, 120083.75], [277, 237, 106880.71], [278, 237, 94383.01], [279, 237, 95176.51], [280, 237, 81135.88], [273, 238, 109415.516], [274, 238, 122949.18], [275, 238, 105844.74], [276, 238, 107431.75], [277, 238, 96499.016], [278, 238, 83450.27], [279, 238, 72649.79], [280, 238, 40623.043], [273, 239, 103816.9], [274, 239, 125550.12], [275, 239, 100202.04], [276, 239, 105580.24], [277, 239, 95683.47], [278, 239, 87814.55], [279, 239, 60438.625], [273, 240, 44326.066], [274, 240, 127423.67], [275, 240, 114925.97], [276, 240, 119598.83], [277, 240, 106990.914], [278, 240, 81819.18], [279, 240, 41063.88], [274, 241, 43554.605], [275, 241, 107586.05], [276, 241, 110385.35], [277, 241, 82965.35], [278, 241, 46353.914]]</td>
+    </tr>
+  </tbody>
+</table><p>... and 187 more rows.</p></details></details><details><summary style="display: list-item; margin-left: 20px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_2']"><b>PlaneSegmentation_2</b></summary><div style="margin-left: 40px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2']">description: </span><span class="field-value">Plane segmentation of imagine plane 2</span></div><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_2']"><b>imaging_plane</b></summary><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_2'].optical_channel"><b>optical_channel</b></summary><details><summary style="display: list-item; margin-left: 80px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_2'].optical_channel[0]"><b>0</b></summary><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].optical_channel[0].description">description: </span><span class="field-value">optical channel for GCaMP</span></div><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].optical_channel[0].emission_lambda">emission_lambda: </span><span class="field-value">525.0</span></div></details></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].description">description: </span><span class="field-value">volume calcium imaging in visA layer 2/3</span></div><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_2'].device"><b>device</b></summary><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].device.description">description: </span><span class="field-value">Two-photon microscope</span></div><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].device.manufacturer">manufacturer: </span><span class="field-value">Harvey Lab custom-bulit two-photon microscope (Odin)</span></div></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].excitation_lambda">excitation_lambda: </span><span class="field-value">920.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].imaging_rate">imaging_rate: </span><span class="field-value">30.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].indicator">indicator: </span><span class="field-value">GCaMP6s</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].location">location: </span><span class="field-value">visA</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].conversion">conversion: </span><span class="field-value">1.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].unit">unit: </span><span class="field-value">meters</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_2'].reference_frame">reference_frame: </span><span class="field-value">[p->a, l->m, depth from pia] in minimeters from bregma in Allen Institute Mouse Common Coordinate Framework (CCF); i.e. directionality of the imaging FOV: x-axis: posterior to anterior; y-axis: laterl (left) to medial (right); however, the FOV axes does not run parallelly to the CCF coordinate system. The following transformation matrix can be applied to a column vector of pixel coordinate ([x,y,1].T) to [ml, ap, _] in mm in CCF: np.array([[-0.000128,-0.001469,-1.088622],[0.001331,-0.000140,-1.957084],[0.000000,0.000000,1.000000]])</span></div></details><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_2']"><b>table</b></summary><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ml</th>
+      <th>ap</th>
+      <th>depth</th>
+      <th>area</th>
+      <th>mTagBFP2</th>
+      <th>mScarlet</th>
+      <th>pixel_mask</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.43297</td>
+      <td>-1.72679</td>
+      <td>0.165</td>
+      <td>MM</td>
+      <td>True</td>
+      <td>False</td>
+      <td>[[215, 192, 63482.414], [216, 192, 149908.53], [217, 192, 182727.72], [218, 192, 155130.8], [219, 192, 71471.36], [214, 193, 61038.125], [215, 193, 213503.92], [216, 193, 231565.48], [217, 193, 211168.48], [218, 193, 232933.81], [219, 193, 223243.9], [220, 193, 93869.516], [214, 194, 149996.27], [215, 194, 207052.47], [216, 194, 158505.88], [217, 194, 145993.98], [218, 194, 163402.16], [219, 194, 262627.7], [220, 194, 185477.14], [214, 195, 177353.6], [215, 195, 142412.81], [216, 195, 125967.375], [217, 195, 130043.69], [218, 195, 133977.75], [219, 195, 247141.5], [220, 195, 228367.5], [214, 196, 157667.4], [215, 196, 118241.734], [216, 196, 114095.21], [217, 196, 115660.34], [218, 196, 123871.85], [219, 196, 243809.1], [220, 196, 236873.72], [214, 197, 127226.56], [215, 197, 115616.47], [216, 197, 102485.0], [217, 197, 105075.77], [218, 197, 129407.04], [219, 197, 237801.66], [220, 197, 210917.19], [214, 198, 77726.89], [215, 198, 140823.77], [216, 198, 94305.45], [217, 198, 105455.88], [218, 198, 154801.94], [219, 198, 239654.44], [220, 198, 142350.56], [215, 199, 148498.66], [216, 199, 164591.61], [217, 199, 161733.55], [218, 199, 213753.98], [219, 199, 200660.84], [216, 200, 182167.97], [217, 200, 226381.39], [218, 200, 207889.3], [219, 200, 79900.18], [217, 201, 78502.38], [218, 201, 62715.55]]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.70887</td>
+      <td>-1.85857</td>
+      <td>0.165</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[412, 114, 160243.02], [413, 114, 200628.88], [414, 114, 179605.11], [415, 114, 190153.11], [416, 114, 236535.45], [417, 114, 185168.1], [410, 115, 212549.56], [411, 115, 428181.06], [412, 115, 530579.2], [413, 115, 596901.6], [414, 115, 580718.4], [415, 115, 509916.7], [416, 115, 437814.53], [417, 115, 217028.86], [409, 116, 342537.28], [410, 116, 525521.94], [411, 116, 562848.9], [412, 116, 543982.94], [413, 116, 574216.2], [414, 116, 587943.0], [415, 116, 567280.5], [416, 116, 440415.4], [417, 116, 203663.23], [408, 117, 367735.3], [409, 117, 517204.56], [410, 117, 536742.8], [411, 117, 498777.16], [412, 117, 498646.2], [413, 117, 510205.66], [414, 117, 544161.56], [415, 117, 536214.44], [416, 117, 351696.56], [417, 117, 127804.28], [407, 118, 358003.75], [408, 118, 517141.34], [409, 118, 531446.2], [410, 118, 492144.0], [411, 118, 490988.06], [412, 118, 515551.9], [413, 118, 527111.4], [414, 118, 557888.44], [415, 118, 507749.28], [416, 118, 239353.06], [407, 119, 505539.88], [408, 119, 517336.4], [409, 119, 484196.88], [410, 119, 471336.97], [411, 119, 489513.8], [412, 119, 507654.88], [413, 119, 514251.47], [414, 119, 509338.7], [415, 119, 338981.16], [416, 119, 132680.92], [407, 120, 451116.75], [408, 120, 451289.06], [409, 120, 422176.03], [410, 120, 429760.16], [411, 120, 442723.88], [412, 120, 433423.1], [413, 120, 397789.9], [414, 120, 204306.05], [408, 121, 180644.11], [409, 121, 215513.42], [410, 121, 205104.22], [411, 121, 172290.78], [412, 121, 135132.36]]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.66363</td>
+      <td>-1.55203</td>
+      <td>0.165</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[361, 338, 82727.47], [362, 338, 84487.625], [359, 339, 76780.984], [360, 339, 225110.05], [361, 339, 297609.56], [362, 339, 317589.75], [363, 339, 305982.22], [364, 339, 214549.1], [359, 340, 244329.08], [360, 340, 327484.7], [361, 340, 328055.56], [362, 340, 372392.53], [363, 340, 418632.38], [364, 340, 399603.62], [365, 340, 247088.25], [358, 341, 202751.28], [359, 341, 290949.5], [360, 341, 300844.47], [361, 341, 326723.56], [362, 341, 371250.8], [363, 341, 415968.38], [364, 341, 399413.34], [365, 341, 285050.6], [357, 342, 131678.9], [358, 342, 248134.83], [359, 342, 264499.56], [360, 342, 297038.72], [361, 342, 321593.97], [362, 342, 336977.62], [363, 342, 361165.56], [364, 342, 366874.2], [365, 342, 262977.25], [356, 343, 101518.35], [357, 343, 207889.03], [358, 343, 224919.77], [359, 343, 239952.47], [360, 343, 255330.55], [361, 343, 267256.4], [362, 343, 272037.72], [363, 343, 303698.78], [364, 343, 345181.44], [365, 343, 249276.56], [356, 344, 95904.875], [357, 344, 211694.78], [358, 344, 201894.98], [359, 344, 210697.3], [360, 344, 212808.38], [361, 344, 216677.84], [362, 344, 230402.17], [363, 344, 294755.25], [364, 344, 367254.78], [365, 344, 244519.38], [357, 345, 135008.94], [358, 345, 193046.61], [359, 345, 218164.56], [360, 345, 221114.02], [361, 345, 225966.34], [362, 345, 234338.98], [363, 345, 314735.44], [364, 345, 330339.0], [365, 345, 186481.7], [358, 346, 107607.555], [359, 346, 211504.5], [360, 346, 232055.55], [361, 346, 216737.4], [362, 346, 179536.2], [363, 346, 171448.98], [364, 346, 136245.81], [365, 346, 116646.2]]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.85260</td>
+      <td>-1.71299</td>
+      <td>0.165</td>
+      <td>A</td>
+      <td>True</td>
+      <td>False</td>
+      <td>[[498, 231, 17505.365], [499, 231, 12477.909], [497, 232, 19963.219], [498, 232, 41850.125], [499, 232, 35684.906], [500, 232, 30366.857], [501, 232, 23129.676], [497, 233, 54028.42], [498, 233, 41109.066], [499, 233, 30732.39], [500, 233, 35686.67], [501, 233, 50912.535], [502, 233, 29839.82], [496, 234, 24426.693], [497, 234, 55739.11], [498, 234, 33018.266], [499, 234, 29705.512], [500, 234, 31221.172], [501, 234, 43722.402], [502, 234, 58117.55], [495, 235, 13100.926], [496, 235, 39397.336], [497, 235, 47894.887], [498, 235, 30800.63], [499, 235, 33915.81], [500, 235, 37008.24], [501, 235, 39285.906], [502, 235, 57875.82], [503, 235, 28034.422], [495, 236, 22423.73], [496, 236, 51501.08], [497, 236, 51978.18], [498, 236, 39289.883], [499, 236, 29646.836], [500, 236, 41512.4], [501, 236, 41391.918], [502, 236, 64378.367], [503, 236, 55068.59], [496, 237, 42173.977], [497, 237, 60974.32], [498, 237, 43145.37], [499, 237, 29748.775], [500, 237, 38458.9], [501, 237, 39421.707], [502, 237, 67924.516], [503, 237, 49837.676], [496, 238, 17777.371], [497, 238, 55631.652], [498, 238, 46446.39], [499, 238, 26367.27], [500, 238, 36650.785], [501, 238, 44404.746], [502, 238, 50224.51], [503, 238, 24375.115], [497, 239, 27293.596], [498, 239, 45303.07], [499, 239, 37931.65], [500, 239, 37566.3], [501, 239, 40841.535], [502, 239, 23635.824], [498, 240, 26833.688], [499, 240, 37643.67], [500, 240, 38909.492], [501, 240, 29485.793], [499, 241, 24246.168], [500, 241, 16752.25], [501, 241, 12240.44]]</td>
+    </tr>
+  </tbody>
+</table><p>... and 140 more rows.</p></details></details><details><summary style="display: list-item; margin-left: 20px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_3']"><b>PlaneSegmentation_3</b></summary><div style="margin-left: 40px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3']">description: </span><span class="field-value">Plane segmentation of imagine plane 3</span></div><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_3']"><b>imaging_plane</b></summary><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_3'].optical_channel"><b>optical_channel</b></summary><details><summary style="display: list-item; margin-left: 80px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_3'].optical_channel[0]"><b>0</b></summary><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].optical_channel[0].description">description: </span><span class="field-value">optical channel for GCaMP</span></div><div style="margin-left: 100px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].optical_channel[0].emission_lambda">emission_lambda: </span><span class="field-value">525.0</span></div></details></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].description">description: </span><span class="field-value">volume calcium imaging in visA layer 2/3</span></div><details><summary style="display: list-item; margin-left: 60px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_3'].device"><b>device</b></summary><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].device.description">description: </span><span class="field-value">Two-photon microscope</span></div><div style="margin-left: 80px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].device.manufacturer">manufacturer: </span><span class="field-value">Harvey Lab custom-bulit two-photon microscope (Odin)</span></div></details><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].excitation_lambda">excitation_lambda: </span><span class="field-value">920.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].imaging_rate">imaging_rate: </span><span class="field-value">30.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].indicator">indicator: </span><span class="field-value">GCaMP6s</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].location">location: </span><span class="field-value">visA</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].conversion">conversion: </span><span class="field-value">1.0</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].unit">unit: </span><span class="field-value">meters</span></div><div style="margin-left: 60px;" class="container-fields"><span class="field-key" title=".plane_segmentations['PlaneSegmentation_3'].reference_frame">reference_frame: </span><span class="field-value">[p->a, l->m, depth from pia] in minimeters from bregma in Allen Institute Mouse Common Coordinate Framework (CCF); i.e. directionality of the imaging FOV: x-axis: posterior to anterior; y-axis: laterl (left) to medial (right); however, the FOV axes does not run parallelly to the CCF coordinate system. The following transformation matrix can be applied to a column vector of pixel coordinate ([x,y,1].T) to [ml, ap, _] in mm in CCF: np.array([[-0.000128,-0.001469,-1.088622],[0.001331,-0.000140,-1.957084],[0.000000,0.000000,1.000000]])</span></div></details><details><summary style="display: list-item; margin-left: 40px;" class="container-fields field-key" title=".plane_segmentations['PlaneSegmentation_3']"><b>table</b></summary><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ml</th>
+      <th>ap</th>
+      <th>depth</th>
+      <th>area</th>
+      <th>mTagBFP2</th>
+      <th>mScarlet</th>
+      <th>pixel_mask</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-1.43901</td>
+      <td>-1.45756</td>
+      <td>0.19</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[203, 392, 163163.88], [204, 392, 158278.22], [205, 392, 138995.62], [201, 393, 129277.055], [202, 393, 284141.16], [203, 393, 353207.62], [204, 393, 354892.03], [205, 393, 318330.3], [206, 393, 248795.62], [207, 393, 150956.34], [201, 394, 248046.42], [202, 394, 461554.44], [203, 394, 627572.1], [204, 394, 641951.44], [205, 394, 501093.66], [206, 394, 382545.8], [207, 394, 247435.97], [208, 394, 125776.56], [201, 395, 368866.5], [202, 395, 739483.6], [203, 395, 837345.1], [204, 395, 795799.4], [205, 395, 638318.0], [206, 395, 435998.56], [207, 395, 316869.6], [208, 395, 162894.72], [200, 396, 122847.73], [201, 396, 508838.94], [202, 396, 848253.7], [203, 396, 833614.1], [204, 396, 791158.2], [205, 396, 693900.75], [206, 396, 475296.5], [207, 396, 322061.06], [208, 396, 185756.1], [201, 397, 504595.88], [202, 397, 839298.4], [203, 397, 820657.8], [204, 397, 773041.94], [205, 397, 700297.9], [206, 397, 514015.2], [207, 397, 322736.22], [208, 397, 168583.9], [201, 398, 376118.94], [202, 398, 752879.9], [203, 398, 805245.9], [204, 398, 752979.1], [205, 398, 666002.1], [206, 398, 486192.3], [207, 398, 277888.25], [208, 398, 119801.67], [201, 399, 203926.86], [202, 399, 559982.5], [203, 399, 723135.94], [204, 399, 700457.94], [205, 399, 591766.5], [206, 399, 392650.72], [207, 399, 183950.88], [202, 400, 291365.78], [203, 400, 515337.44], [204, 400, 567589.2], [205, 400, 435895.4], [206, 400, 221180.81], [203, 401, 257725.11], [204, 401, 368854.78], [205, 401, 215269.23], [204, 402, 214619.75], [204, 403, 151162.81], [204, 404, 168748.6]]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.83887</td>
+      <td>-1.75568</td>
+      <td>0.19</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[492, 198, 187391.72], [493, 198, 150639.34], [491, 199, 262635.75], [492, 199, 344534.56], [493, 199, 325931.5], [494, 199, 201608.67], [490, 200, 274357.2], [491, 200, 471126.06], [492, 200, 491241.56], [493, 200, 473545.97], [494, 200, 395655.16], [495, 200, 189509.14], [490, 201, 431802.53], [491, 201, 572157.25], [492, 201, 585315.5], [493, 201, 574425.94], [494, 201, 548109.44], [495, 201, 415165.66], [496, 201, 176275.25], [489, 202, 181115.08], [490, 202, 493056.47], [491, 202, 615261.9], [492, 202, 635528.6], [493, 202, 629478.9], [494, 202, 632806.25], [495, 202, 583046.9], [496, 202, 395050.16], [497, 202, 128746.73], [489, 203, 211288.31], [490, 203, 506970.97], [491, 203, 604523.56], [492, 203, 621489.5], [493, 203, 624790.3], [494, 203, 653980.44], [495, 203, 658971.5], [496, 203, 510909.88], [497, 203, 252199.9], [489, 204, 202440.52], [490, 204, 452976.75], [491, 204, 531321.3], [492, 204, 574892.4], [493, 204, 601952.4], [494, 204, 627815.2], [495, 204, 685893.0], [496, 204, 546346.0], [497, 204, 285019.9], [489, 205, 151849.3], [490, 205, 362986.38], [491, 205, 453884.22], [492, 205, 526722.2], [493, 205, 573518.44], [494, 205, 609060.9], [495, 205, 627994.9], [496, 205, 475500.4], [497, 205, 256207.88], [490, 206, 305816.0], [491, 206, 398075.06], [492, 206, 454942.9], [493, 206, 478990.75], [494, 206, 483021.25], [495, 206, 433426.62], [496, 206, 288933.75], [497, 206, 161226.45], [490, 207, 240932.2], [491, 207, 334401.2], [492, 207, 362230.16], [493, 207, 339997.22], [494, 207, 301429.94], [495, 207, 207960.94], [490, 208, 128028.32], [491, 208, 186786.73], [492, 208, 214993.8], [493, 208, 185954.89]]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.40346</td>
+      <td>-1.48436</td>
+      <td>0.19</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[180, 371, 95635.44], [181, 371, 94044.93], [182, 371, 98119.03], [183, 371, 50283.227], [179, 372, 69018.375], [180, 372, 175559.08], [181, 372, 180136.4], [182, 372, 176668.31], [183, 372, 146762.19], [184, 372, 116104.04], [179, 373, 81010.55], [180, 373, 191814.33], [181, 373, 188300.0], [182, 373, 178528.17], [183, 373, 183847.9], [184, 373, 153502.62], [179, 374, 66518.5], [180, 374, 193058.22], [181, 374, 189365.08], [182, 374, 191734.92], [183, 374, 189356.05], [184, 374, 143594.64], [180, 375, 169460.34], [181, 375, 210231.3], [182, 375, 221452.39], [183, 375, 181360.4], [184, 375, 119993.72], [180, 376, 139232.34], [181, 376, 220223.78], [182, 376, 219269.94], [183, 376, 162306.7], [184, 376, 64966.273], [180, 377, 81964.6], [181, 377, 213753.95], [182, 377, 173447.44], [183, 377, 94828.81], [181, 378, 104155.664], [182, 378, 85971.41]]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-1.48421</td>
+      <td>-1.68091</td>
+      <td>0.19</td>
+      <td>A</td>
+      <td>False</td>
+      <td>False</td>
+      <td>[[247, 230, 56648.055], [248, 230, 76853.14], [249, 230, 103793.26], [250, 230, 87776.805], [251, 230, 43325.613], [246, 231, 91448.78], [247, 231, 127411.99], [248, 231, 127651.875], [249, 231, 147451.02], [250, 231, 170442.38], [251, 231, 126157.25], [246, 232, 105048.01], [247, 232, 134017.86], [248, 232, 123352.52], [249, 232, 133538.11], [250, 232, 175959.56], [251, 232, 183893.98], [252, 232, 49848.44], [246, 233, 117318.67], [247, 233, 137080.9], [248, 233, 113259.2], [249, 233, 111875.3], [250, 233, 150311.1], [251, 233, 198489.62], [252, 233, 83864.95], [246, 234, 137246.98], [247, 234, 135494.03], [248, 234, 112797.91], [249, 234, 99992.12], [250, 234, 138686.25], [251, 234, 194891.45], [252, 234, 101246.87], [246, 235, 144923.06], [247, 235, 138870.77], [248, 235, 97556.44], [249, 235, 102353.99], [250, 235, 148318.27], [251, 235, 194928.36], [252, 235, 75958.21], [246, 236, 112124.4], [247, 236, 146085.55], [248, 236, 116986.54], [249, 236, 133907.14], [250, 236, 168984.0], [251, 236, 144923.06], [246, 237, 46264.117], [247, 237, 104673.64], [248, 237, 128749.77], [249, 237, 124049.625], [250, 237, 103737.91], [251, 237, 52825.137], [248, 238, 56089.73], [249, 238, 40282.54]]</td>
+    </tr>
+  </tbody>
+</table><p>... and 113 more rows.</p></details></details></details></div>
