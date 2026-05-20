@@ -32,19 +32,12 @@ See [How Can I Use It?](Usage) for details on each platform.
 
 (Usage)=
 ## How Can I Use It?
-There are four ways to run this code. With **Binder**, with **Thebe**, **Dandihub**, or **Locally**. All external platforms are launchable from the top-right of any notebook with the `Launch` rocket button in the top-right of the Databook.
+There are three ways to run this code: **Locally**, with **Binder**, or with **Dandihub**. Binder is launchable directly from any notebook page using the `Launch` rocket button in the top-right of the Databook.
 ![buttons](../data/images/buttons.png)
 
 
-### Binder
-Binder will automatically setup the environment with [repo2docker](https://github.com/jupyterhub/repo2docker) and then execute the code in an instance of [JupyterHub](https://jupyter.org/hub) where the kernel is run. JupyterHub offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the `Launch` button in the top-right and selecting `Binder`. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes. 
-
-
-### Dandihub
-[Dandihub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by the [DANDI Archive](https://dandiarchive.org). It can be used by hovering over the `Launch` button in the top-right of a notebook and selecting `JupyterHub`. In order to run notebooks on Dandihub, you must sign in with your GitHub account, select the server size, select the `OpenScope` option from the `Image` dropdown menu, and navigate to the `openscope_databook/docs` directory which contains the OpenScope notebooks.
-
 ### Locally
-You can download an individual notebook by pressing the `Download` button in the top-right and selecting `.ipynb`. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the the `GitHub` button in the top-right and selecting `repository`.
+You can download an individual notebook by pressing the `Download` button in the top-right and selecting `.ipynb`. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by hovering over the `GitHub` button in the top-right and selecting `repository`.
 
 #### Locally (Preferred: uv)
 Use Python 3.10. Then install and sync with:
@@ -89,10 +82,18 @@ docker run -p 8888:8888 rcpeene/openscope_databook:latest
 ```
 
 #### Locally (Running Notebook)
-Once you environment is setup, you can execute the notebooks in Jupyter by running the following command within the repo directory;
+Once your environment is setup, you can execute the notebooks in Jupyter by running the following command within the repo directory:
 ```
 Jupyter notebook
 ```
+
+
+### Binder
+Binder will automatically set up the environment with [repo2docker](https://github.com/jupyterhub/repo2docker) and then execute the code in an instance of [JupyterHub](https://jupyter.org/hub) where the kernel is run. JupyterHub offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the `Launch` button in the top-right and selecting `Binder`. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes.
+
+
+### Dandihub
+[Dandihub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by the [DANDI Archive](https://dandiarchive.org). To use it, navigate to `https://hub.dandiarchive.org` in your browser and sign in with your GitHub account. From there you will need to set up the environment yourself — there is no pre-built OpenScope image available. Follow the [Locally (uv)](#locally-preferred-uv) or [Locally (Pip-only fallback)](#locally-pip-only-fallback) instructions above after launching your server. Once the environment is ready, navigate to the `openscope_databook/docs` directory which contains the OpenScope notebooks.
 
 
 ## How Does It Work?
