@@ -49,6 +49,7 @@ jobs:
         working-directory: ./docs
         env:
           HOST: "127.0.0.1"
+          BASE_URL: /${{ github.event.repository.name }}
         run: |
           myst clean --all
           myst build --html
