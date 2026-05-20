@@ -45,10 +45,6 @@ jobs:
       - name: Install docs JS dependencies
         run: npm install --prefix ./docs
 
-      - name: Install MyST book-theme template
-        working-directory: ./docs
-        run: myst templates install book-theme --yes
-
       - name: Build MyST Book
         working-directory: ./docs
         env:
