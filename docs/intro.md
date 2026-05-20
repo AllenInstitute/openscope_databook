@@ -8,7 +8,6 @@
 :authors: ./authors.yml
 ```
 
-
 ## Abstract
 
 Reproducibility is a significant challenge in neuroscience, as analysis and visualization methods are often difficult to replicate due to a lack of accessible code, separation of code from published figures, or unavailability of code altogether. This issue may arise from the complex nature of neuroscience research, the use of diverse data formats and analysis techniques, and insufficient emphasis on open-source, collaborative practices. In addition, key neuroscience analyses are typically rewritten at the start of new scientific projects, slowing down the initiation of research efforts.
@@ -20,6 +19,17 @@ We cover several broadly used analyses across the community, providing a missing
 This resource is actively maintained and can be updated by the community, providing a living document that will grow over time.
 
 
+## Open In
+
+Run any notebook in the cloud using one of the platforms below:
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/HEAD)
+[![DandiHub](https://img.shields.io/badge/Open%20in-DandiHub-blue?logo=jupyter)](https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAllenInstitute%2Fopenscope_databook&urlpath=lab%2Ftree%2Fopenscope_databook%2Fdocs)
+
+
+See [How Can I Use It?](Usage) for details on each platform.
+
+
 (Usage)=
 ## How Can I Use It?
 There are four ways to run this code. With **Binder**, with **Thebe**, **Dandihub**, or **Locally**. All external platforms are launchable from the top-right of any notebook with the `Launch` rocket button in the top-right of the Databook.
@@ -29,8 +39,6 @@ There are four ways to run this code. With **Binder**, with **Thebe**, **Dandihu
 ### Binder
 Binder will automatically setup the environment with [repo2docker](https://github.com/jupyterhub/repo2docker) and then execute the code in an instance of [JupyterHub](https://jupyter.org/hub) where the kernel is run. JupyterHub offers a lot of utilities for interacting with Jupyter notebooks and the environment. A given notebook can be launched in Binder by hovering over the `Launch` button in the top-right and selecting `Binder`. Occasionally, Binder will have to rebuild the environment before starting JupyterLab, which can take many minutes. 
 
-### Thebe
-[Thebe](https://github.com/executablebooks/thebe) uses Binder in the backend to prepare the environment and run the kernel. It allows users to run notebooks embedded directly within the Databook's web UI. It can be used by hovering over the `Launch` button in the top-right of a notebook and selecting `Live Code`. Thebe is a work-in-progress project and has room for improvement. It is also worth noting that, like Binder, starting the Jupyter Kernel can sometimes take many minutes.
 
 ### Dandihub
 [Dandihub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by the [DANDI Archive](https://dandiarchive.org). It can be used by hovering over the `Launch` button in the top-right of a notebook and selecting `JupyterHub`. In order to run notebooks on Dandihub, you must sign in with your GitHub account, select the server size, select the `OpenScope` option from the `Image` dropdown menu, and navigate to the `openscope_databook/docs` directory which contains the OpenScope notebooks.
