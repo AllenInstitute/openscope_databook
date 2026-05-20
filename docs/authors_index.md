@@ -1,3 +1,0 @@
-
-```{authors_index}
-```
