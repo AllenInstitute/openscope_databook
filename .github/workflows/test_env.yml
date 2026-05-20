@@ -18,6 +18,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -46,7 +49,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install -r requirements-ci.txt
+          python -m pip install markupsafe==2.0.1
           python -m pip install -e . --no-deps
+          python -m pip install -U mystmd
 
       - name: Verify environment health
         run: |
@@ -76,10 +81,16 @@ jobs:
               raise SystemExit(f"Missing/broken imports: {', '.join(missing)}")
           PY
 
+      - name: Install docs JS dependencies
+        run: npm install --prefix ./docs
+
       - name: Build MyST docs
         working-directory: ./docs
+        env:
+          HOST: "127.0.0.1"
+          BASE_URL: /${{ github.event.repository.name }}
         run: |
-          npm install
+          myst clean --all
           myst build --html
 
       - name: Print environment snapshot

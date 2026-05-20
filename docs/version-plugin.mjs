@@ -31,9 +31,7 @@ function getLatestGitTag() {
       stdio: ['pipe', 'pipe', 'pipe'],
     }).trim();
   } catch (e) {
-    throw new Error(
-      `There are no git tags from which to get the version number.\nerror:\n${e.message}`
-    );
+    return 'dev';
   }
 }
 
