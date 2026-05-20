@@ -22,7 +22,13 @@ jobs:
       - name: Install Python build headers
         run: |
           apt-get update
-          apt-get install -y python3-dev g++ nodejs npm
+          apt-get install -y python3-dev g++
+
+      - name: Install Node.js 20
+        run: |
+          apt-get install -y curl
+          curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+          apt-get install -y nodejs
 
       - name: Install build backend tools
         run: python3 -m pip install setuptools wheel Cython numpy==1.26.0
