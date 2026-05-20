@@ -46,9 +46,10 @@ jobs:
         run: npm install --prefix ./docs
 
       - name: Build MyST Book
+        working-directory: ./docs
         run: |
-          cd docs && myst clean --all
-          cd docs && myst build --html
+          myst clean --all
+          myst build --html
 
       - name: Verify built site exists
         run: |
