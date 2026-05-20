@@ -40,13 +40,19 @@ jobs:
         run: |
           python3 -m pip install -r requirements-ci.txt
           python3 -m pip install markupsafe==2.0.1
-          python3 -m pip install mystmd
+          python3 -m pip install -U mystmd
 
       - name: Install docs JS dependencies
         run: npm install --prefix ./docs
 
+      - name: Install MyST book-theme template
+        working-directory: ./docs
+        run: myst templates install book-theme --yes
+
       - name: Build MyST Book
         working-directory: ./docs
+        env:
+          HOST: "0.0.0.0"
         run: |
           myst clean --all
           myst build --html
