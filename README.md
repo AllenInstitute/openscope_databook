@@ -10,16 +10,32 @@ We are releasing this code to the public as a tool we expect others to use and a
 
 ## Environment Setup
 
-### Preferred (uv lockfile, mirrors CI)
-- Use Python 3.10
-- Install uv: `python -m pip install uv`
-- Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
-- Run tooling through uv, e.g. `uv run jupyter notebook ./docs`
+### Prerequisites
+Before setting up the environment, ensure you have the following installed:
+- **Python 3.10** (check with `python --version`)
+- **uv** (optional, highly recommended for reproducible builds: `python -m pip install uv`)
+- **Node.js & npm** (to build the databook in MyST, not needed to run notebooks. check with `npm --version`)
 
-### Pip-only fallback (no uv required)
+### For Running Notebooks (Python only)
+
+**Preferred (uv lockfile, mirrors CI):**
+- Use Python 3.10
+- Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
+- Run Jupyter: `uv run jupyter notebook`
+
+**Pip-only fallback (no uv required):**
 - Create and activate a Python 3.10 virtual environment
 - Install dependencies: `python -m pip install -r requirements-ci.txt`
 - Install project: `python -m pip install -e .`
+- Run Jupyter: `jupyter notebook`
+
+### For Building the Databook in MyST (Python + Node.js)
+
+If you want to build or develop the databook documentation with MyST, you'll also need to install JavaScript dependencies. After completing the Python setup above:
+
+- Make sure you're in the 'docs' folder: `cd docs`
+- Install JavaScript dependencies for MyST: `npm install`
+- Run the development server: `uv run myst start`, Or build for production: `uv run myst build`
 
 ### Maintaining `requirements-ci.txt`
 `requirements-ci.txt` is a fully-pinned, pip-compatible export of the uv lockfile used by CI. After any change to `pyproject.toml` or `uv.lock`, regenerate it with:
