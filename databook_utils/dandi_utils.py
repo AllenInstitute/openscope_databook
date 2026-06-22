@@ -38,7 +38,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_ap
         print(f"Downloaded file to {filepath}")
 
     print("Opening file")
-    io = NWBHDF5IO(filepath, mode="r", load_namespaces=True)
+    io = NWBHDF5IO(filepath, mode="r")
     return io
 
 
@@ -54,7 +54,7 @@ def dandi_stream_open(dandiset_id, dandi_filepath, dandi_api_key=None, version=N
 
     rem_file = remfile.File(file_url)
     h5py_file = h5py.File(rem_file, "r")
-    io = NWBHDF5IO(file=h5py_file, mode="r", load_namespaces=True)
+    io = NWBHDF5IO(file=h5py_file, mode="r")
     return io
 
 
