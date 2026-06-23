@@ -4,8 +4,8 @@
   height: 3.75rem !important;
 }
 
-/* Force all content images to readable size - escape text flow constraints */
-img:not(.myst-home-link-logo img) {
+/* Enlarge paragraph images used as main content figures. */
+.page-body p img {
   min-height: 400px !important;
   height: auto !important;
   width: auto !important;
@@ -13,4 +13,22 @@ img:not(.myst-home-link-logo img) {
   display: block !important;
   margin: 2rem auto !important;
   line-height: 0 !important;
+}
+
+/* Keep intro badges and the launch screenshot at their intended size. */
+.page-body img[src*="badge_logo.svg"],
+.page-body img[src*="shields.io"],
+.page-body img[src$="buttons.png"] {
+  min-height: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+.page-body img[src$="buttons.png"] {
+  display: block !important;
+  max-width: 24rem !important;
+  margin: 1rem auto !important;
 }
