@@ -9,8 +9,22 @@ from pathlib import Path
 
 from dandi import download
 from dandi import dandiapi
+from hdmf_zarr.nwb import NWBZarrIO
 from pynwb import NWBHDF5IO
 from tqdm.notebook import tqdm
+
+
+def _is_zarr_asset(asset_path: Union[str, Path]) -> bool:
+    """Return True when the provided asset path points to a Zarr-backed NWB."""
+    path = str(asset_path).lower()
+    return path.endswith(".zarr") or ".zarr/" in path
+
+
+def open_nwb_io(path_or_url: Union[str, Path], mode: str = "r"):
+    """Open an NWB IO object using the appropriate backend for HDF5 or Zarr."""
+    if _is_zarr_asset(path_or_url):
+        return NWBZarrIO(path=str(path_or_url), mode=mode)
+    return NWBHDF5IO(str(path_or_url), mode=mode)
 
 
 # downloads an NWB file from DANDI to download_loc, opens it, and returns the IO object for the NWB
@@ -38,7 +52,7 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_ap
         print(f"Downloaded file to {filepath}")
 
     print("Opening file")
-    io = NWBHDF5IO(filepath, mode="r")
+    io = open_nwb_io(filepath, mode="r")
     return io
 
 
@@ -49,6 +63,12 @@ def dandi_stream_open(dandiset_id, dandi_filepath, dandi_api_key=None, version=N
     dandiset = client.get_dandiset(dandiset_id, version_id=version)
 
     file = dandiset.get_asset_by_path(dandi_filepath)
+
+    if _is_zarr_asset(dandi_filepath):
+        zarr_url = file.client.session.head(file.base_download_url, allow_redirects=True).url
+        io = open_nwb_io(zarr_url, mode="r")
+        return io
+
     base_url = file.client.session.head(file.base_download_url)
     file_url = base_url.headers["Location"]
 
