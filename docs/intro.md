@@ -38,6 +38,9 @@ There are three ways to run this code: **Locally**, with **Binder**, or with **D
 
 ### Locally
 You can download an individual notebook by pressing the `Download` button in the top-right and selecting `.ipynb`. Alternatively, you can clone the repo to your machine and access the files there. The repo can be found by clicking the `GitHub` button in the top-right.
+```
+git clone --depth 1 https://github.com/AllenInstitute/openscope_databook.git
+```
 
 #### Locally (Preferred: uv)
 Use Python 3.10. Then install and sync with:
