@@ -56,29 +56,23 @@ jobs:
       - name: Environment smoke test (fail fast)
         run: |
           python -m pip check
-          python - <<'PY'
+          python -c "
           import importlib
           import pkgutil
+          
+          # Test core dependencies
+          for mod in ['numpy', 'pandas', 'scipy', 'pynwb', 'nway']:
+              importlib.import_module(mod)
+          
+          # Test all databook_utils submodules
           import databook_utils
-
-          for module_name in 'numpy pandas scipy pynwb nway'.split():
-              importlib.import_module(module_name)
-
-          for mod in pkgutil.walk_packages(
-              databook_utils.__path__,
-              databook_utils.__name__ + '.',
-          ):
+          for mod in pkgutil.walk_packages(databook_utils.__path__, databook_utils.__name__ + '.'):
               importlib.import_module(mod.name)
-          PY
+          
+          print('✓ Environment smoke test passed')
+          "
 
-      - name: Install docs JS dependencies
-        run: npm install --prefix ./docs
-
-      - name: Build MyST docs
-        working-directory: ./docs
-        env:
-          HOST: "127.0.0.1"
-          BASE_URL: /${{ github.event.repository.name }}
+      - name: Build documentation
         run: |
           myst clean --all
           myst build --html
