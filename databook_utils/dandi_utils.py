@@ -20,21 +20,41 @@ def _is_zarr_asset(asset_path: Union[str, Path]) -> bool:
     return path.endswith(".zarr") or ".zarr/" in path
 
 
-def open_nwb_io(path_or_url: Union[str, Path], mode: str = "r"):
-    """Open an NWB IO object using the appropriate backend for HDF5 or Zarr."""
-    if _is_zarr_asset(path_or_url):
+def open_nwb_io(path_or_url: Union[str, Path], mode: str = "r", force_zarr: bool = False):
+    """Open an NWB IO object using the appropriate backend for HDF5 or Zarr.
+
+    Parameters
+    ----------
+    path_or_url : str or Path
+        Local path or remote URL to the NWB asset.
+    mode : str
+        IO mode passed to the backend reader.
+    force_zarr : bool
+        When True, use the Zarr backend even if the URL/path does not include a
+        ".zarr" suffix (e.g., redirected DANDI download URLs).
+    """
+    if force_zarr or _is_zarr_asset(path_or_url):
         return NWBZarrIO(path=str(path_or_url), mode=mode)
     return NWBHDF5IO(str(path_or_url), mode=mode)
 
 
 # downloads an NWB file from DANDI to download_loc, opens it, and returns the IO object for the NWB
 # dandi_api_key is required to access files from embargoed dandisets
-def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_api_key=None, force_overwrite=False, version=None):
+def dandi_download_open(
+    dandiset_id,
+    dandi_filepath,
+    download_loc=None,
+    dandi_api_key=None,
+    force_overwrite=False,
+    version=None,
+    show_progress=True,
+):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
     dandiset = client.get_dandiset(dandiset_id, version_id=version)
 
     file = dandiset.get_asset_by_path(dandi_filepath)
     file_url = file.download_url
+    is_zarr_asset = _is_zarr_asset(dandi_filepath)
 
     if download_loc == None:
         if "codeocean" in os.environ.get("GIT_ASKPASS", ""):
@@ -48,7 +68,12 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_ap
     if os.path.exists(filepath) and not force_overwrite:
         print("File already exists")
     else:
-        download.download(file_url, output_dir=download_loc)
+        if is_zarr_asset:
+            download.download(file_url, output_dir=download_loc, preserve_tree=True)
+        elif show_progress:
+            download_with_progressbar(file, filepath)
+        else:
+            download.download(file_url, output_dir=download_loc)
         print(f"Downloaded file to {filepath}")
 
     print("Opening file")
@@ -58,16 +83,23 @@ def dandi_download_open(dandiset_id, dandi_filepath, download_loc=None, dandi_ap
 
 # streams an NWB file remotely from DANDI, opens it, and returns the IO object for the NWB
 # dandi_api_key is required to access files from embargoed dandisets
-def dandi_stream_open(dandiset_id, dandi_filepath, dandi_api_key=None, version=None):
+def dandi_stream_open(
+    dandiset_id,
+    dandi_filepath,
+    dandi_api_key=None,
+    version=None,
+):
     client = dandiapi.DandiAPIClient(token=dandi_api_key)
     dandiset = client.get_dandiset(dandiset_id, version_id=version)
 
     file = dandiset.get_asset_by_path(dandi_filepath)
 
     if _is_zarr_asset(dandi_filepath):
-        zarr_url = file.client.session.head(file.base_download_url, allow_redirects=True).url
-        io = open_nwb_io(zarr_url, mode="r")
-        return io
+        raise NotImplementedError(
+            "Remote streaming of DANDI Zarr assets is not supported by the "
+            "current hdmf-zarr backend in this environment. "
+            "Use dandi_download_open(...) for Zarr assets."
+        )
 
     base_url = file.client.session.head(file.base_download_url)
     file_url = base_url.headers["Location"]
@@ -116,7 +148,7 @@ def get_download_file_iter_with_steps(
     result = file.client.session.get(url, stream=True)
 
     total_size = int(result.headers.get('content-length', 0))
-    steps_dict["total_steps"] = total_size // chunk_size
+    steps_dict["total_steps"] = (total_size + chunk_size - 1) // chunk_size
     print(f"Downloading {total_size} bytes in {steps_dict['total_steps']} steps")
 
     def downloader(start_at: int = 0) -> Iterator[bytes]:
