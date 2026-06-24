@@ -53,32 +53,22 @@ jobs:
           python -m pip install -e . --no-deps
           python -m pip install -U mystmd
 
-      - name: Verify environment health
+      - name: Environment smoke test (fail fast)
         run: |
           python -m pip check
           python - <<'PY'
           import importlib
+          import pkgutil
+          import databook_utils
 
-          modules = [
-              "databook_utils",
-              "numpy",
-              "pandas",
-              "scipy",
-              "pynwb",
-              "nway",
-          ]
+          for module_name in 'numpy pandas scipy pynwb nway'.split():
+              importlib.import_module(module_name)
 
-          missing = []
-          for module_name in modules:
-              try:
-                  importlib.import_module(module_name)
-                  print(f"OK: {module_name}")
-              except Exception as exc:
-                  print(f"FAIL: {module_name} -> {exc}")
-                  missing.append(module_name)
-
-          if missing:
-              raise SystemExit(f"Missing/broken imports: {', '.join(missing)}")
+          for mod in pkgutil.walk_packages(
+              databook_utils.__path__,
+              databook_utils.__name__ + '.',
+          ):
+              importlib.import_module(mod.name)
           PY
 
       - name: Install docs JS dependencies
