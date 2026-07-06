@@ -12,19 +12,19 @@ We are releasing this code to the public as a tool we expect others to use and a
 
 ### Prerequisites
 Before setting up the environment, ensure you have the following installed:
-- **Python 3.10** (check with `python --version`)
+- **Python 3.13** (check with `python --version`)
 - **uv** (optional, highly recommended for reproducible builds: `python -m pip install uv`)
 - **Node.js & npm** (to build the databook in MyST, not needed to run notebooks. check with `npm --version`)
 
 ### For Running Notebooks (Python only)
 
 **Preferred (uv lockfile, mirrors CI):**
-- Use Python 3.10
+- Use Python 3.13
 - Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
 - Run Jupyter: `uv run jupyter notebook`
 
 **Pip-only fallback (no uv required):**
-- Create and activate a Python 3.10 virtual environment
+- Create and activate a Python 3.13 virtual environment
 - Install dependencies: `python -m pip install -r requirements-ci.txt`
 - Install project: `python -m pip install -e .`
 - Run Jupyter: `jupyter notebook`
