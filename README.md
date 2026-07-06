@@ -11,13 +11,13 @@ We are releasing this code to the public as a tool we expect others to use and a
 ## Environment Setup
 
 ### Preferred (uv lockfile, mirrors CI)
-- Use Python 3.10
+- Use Python 3.13
 - Install uv: `python -m pip install uv`
-- Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
+- Sync from lockfile: `uv sync --frozen --extra dev --python 3.13`
 - Run tooling through uv, e.g. `uv run jupyter notebook ./docs`
 
 ### Pip-only fallback (no uv required)
-- Create and activate a Python 3.10 virtual environment
+- Create and activate a Python 3.13 virtual environment
 - Install dependencies: `python -m pip install -r requirements-ci.txt`
 - Install project: `python -m pip install -e .`
 
