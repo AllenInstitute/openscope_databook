@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ['3.11', '3.12', '3.13']
 
     steps:
       - uses: actions/checkout@v3
@@ -49,46 +49,29 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install -r requirements-ci.txt
-          python -m pip install markupsafe==2.0.1
           python -m pip install -e . --no-deps
           python -m pip install -U mystmd
 
-      - name: Verify environment health
+      - name: Environment smoke test (fail fast)
         run: |
           python -m pip check
-          python - <<'PY'
+          python -c "
           import importlib
+          import pkgutil
+          
+          # Test core dependencies
+          for mod in ['numpy', 'pandas', 'scipy', 'pynwb', 'nway']:
+              importlib.import_module(mod)
+          
+          # Test all databook_utils submodules
+          import databook_utils
+          for mod in pkgutil.walk_packages(databook_utils.__path__, databook_utils.__name__ + '.'):
+              importlib.import_module(mod.name)
+          
+          print('✓ Environment smoke test passed')
+          "
 
-          modules = [
-              "databook_utils",
-              "numpy",
-              "pandas",
-              "scipy",
-              "pynwb",
-              "nway",
-          ]
-
-          missing = []
-          for module_name in modules:
-              try:
-                  importlib.import_module(module_name)
-                  print(f"OK: {module_name}")
-              except Exception as exc:
-                  print(f"FAIL: {module_name} -> {exc}")
-                  missing.append(module_name)
-
-          if missing:
-              raise SystemExit(f"Missing/broken imports: {', '.join(missing)}")
-          PY
-
-      - name: Install docs JS dependencies
-        run: npm install --prefix ./docs
-
-      - name: Build MyST docs
-        working-directory: ./docs
-        env:
-          HOST: "127.0.0.1"
-          BASE_URL: /${{ github.event.repository.name }}
+      - name: Build documentation
         run: |
           myst clean --all
           myst build --html
