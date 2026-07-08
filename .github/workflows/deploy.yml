@@ -6,8 +6,6 @@ jobs:
   deploy:
     runs-on:
       group: LargerInstance
-    container:
-      image: rcpeene/openscope_databook:latest
 
     steps:
       - uses: actions/checkout@v3
@@ -26,14 +24,18 @@ jobs:
 
       - name: Install Python build headers
         run: |
-          apt-get update
-          apt-get install -y python3-dev g++
+          if command -v sudo >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y g++
+          else
+            apt-get update
+            apt-get install -y g++
+          fi
 
-      - name: Install Node.js 20
-        run: |
-          apt-get install -y curl
-          curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-          apt-get install -y nodejs
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Install build backend tools
         run: python3 -m pip install setuptools wheel Cython numpy==2.4.6

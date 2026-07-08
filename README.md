@@ -20,7 +20,7 @@ Before setting up the environment, ensure you have the following installed:
 
 **Preferred (uv lockfile, mirrors CI):**
 - Use Python 3.13
-- Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
+- Sync from lockfile: `uv sync --frozen --extra dev --python 3.13`
 - Run Jupyter: `uv run jupyter notebook`
 
 **Pip-only fallback (no uv required):**
