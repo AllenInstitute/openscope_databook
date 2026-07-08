@@ -44,7 +44,7 @@ Contributing to this project can be as simple as forking the [GitHub repo](https
 ### Citing
 
 **How can I cite the Databook?**\
-The Databook has a DOI through Zenodo, and can be cited accordingly 10.5281/zenodo.12614663.
+The Databook has a DOI through Zenodo, and can be cited accordingly: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12614663.svg)](https://doi.org/10.5281/zenodo.12614663)
 
 
 ### Additional Questions
