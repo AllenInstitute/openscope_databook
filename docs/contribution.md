@@ -8,7 +8,7 @@ The Databook can be forked via the GitHub Web UI from the Databook's [GitHub rep
 ## Initialize Locally
 A local repo can be made by pressing the [code button](../data/images/code_button.png) on the front page of the forked repo, and copying the HTTPS url. Then locally, run the command `git clone --depth 1 <copied_url_here>`. For more information on cloning GitHub repos, check out GitHub's [Cloning a Repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) Page. If you need the full commit history for contribution workflows, omit `--depth 1` when cloning, or later run `git fetch --unshallow`.
 
-Then the environment must be set up. The preferred local setup is Python 3.10 with `uv`, which mirrors CI and lockfile resolution. After cloning, run `python -m pip install uv` followed by `uv sync --frozen --extra dev --python 3.10`. If you prefer not to use `uv`, create a Python 3.10 environment and install with `python -m pip install -r requirements-ci.txt` and `python -m pip install -e .`.
+Then the environment must be set up. The preferred local setup is Python 3.13 with `uv`, which mirrors CI and lockfile resolution. After cloning, run `python -m pip install uv` followed by `uv sync --frozen --extra dev --python 3.13`. If you prefer not to use `uv`, create a Python 3.13 environment and install with `python -m pip install -r requirements-ci.txt` and `python -m pip install -e .`.
 
 Finally, notebooks can be run with Jupyter notebook by running `uv run jupyter notebook ./docs` (or `jupyter notebook ./docs` in an already-activated pip environment).
 

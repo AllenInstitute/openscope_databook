@@ -46,10 +46,10 @@ git clone --depth 1 https://github.com/AllenInstitute/openscope_databook.git
 
 (locally-preferred-uv)=
 #### Locally (Preferred: uv)
-Use Python 3.10. Then install and sync with:
+Use Python 3.13. Then install and sync with:
 ```
 python -m pip install uv
-uv sync --frozen --extra dev --python 3.10
+uv sync --frozen --extra dev --python 3.13
 ```
 Run notebooks/tools through uv (for example):
 ```
@@ -58,16 +58,16 @@ uv run jupyter notebook ./docs
 
 (locally-pip-only-fallback)=
 #### Locally (Pip-only fallback)
-If you prefer not to use uv, create a Python 3.10 virtual environment and install from exported requirements:
+If you prefer not to use uv, create a Python 3.13 virtual environment and install from exported requirements:
 ```
 python -m pip install -r requirements-ci.txt
 python -m pip install -e .
 ```
 
 #### Locally (Conda)
-If you prefer conda for environment isolation, create a Python 3.10 conda environment first, then follow either the uv or pip-only installation steps above. For information on installing and using conda, go [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html). You can create a conda environment with:
+If you prefer conda for environment isolation, create a Python 3.13 conda environment first, then follow either the uv or pip-only installation steps above. For information on installing and using conda, go [here](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html). You can create a conda environment with:
 ```
-conda create -n databook_env python=3.10
+conda create -n databook_env python=3.13
 ```
 and you can run that environment with
 ```
