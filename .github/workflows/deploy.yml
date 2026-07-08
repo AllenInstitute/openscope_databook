@@ -16,6 +16,11 @@ jobs:
           ref: main
           fetch-tags: true
 
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
       - name: Make repo safe for git
         run: git config --global --add safe.directory $GITHUB_WORKSPACE
 
