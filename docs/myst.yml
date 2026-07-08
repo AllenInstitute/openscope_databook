@@ -1,6 +1,8 @@
 version: 1
 project:
   title: OpenScope Databook
+  settings:
+    output_matplotlib_strings: remove
   # <sync-contributors-start>
   contributors: []
   affiliations: []
@@ -9,14 +11,14 @@ project:
   bibliography:
     - references.bib
   plugins:
-    - authorship-plugin.mjs
+    - ./authorship-plugin-shim.mjs
     - version-plugin.mjs
+    - figure-lightbox-plugin.mjs
+    - colab-badge-plugin.mjs
   # Note: sphinx.ext.intersphinx is not yet ported — to be replaced in a future step.
   jupyter:
     binder:
       url: https://mybinder.org
-    jupyterhub:
-      url: https://hub.dandiarchive.org
   toc:
     - file: intro.md
     - title: Basics
@@ -84,5 +86,9 @@ site:
   template: book-theme
   options:
     logo: ../data/images/logo.png
+    style: ./custom.css
+    hide_authors: true
     analytics:
       google: G-TJPN1M4PDX
+    images:
+      optimize: false

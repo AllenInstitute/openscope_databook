@@ -16,6 +16,11 @@ jobs:
           ref: main
           fetch-tags: true
 
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
       - name: Make repo safe for git
         run: git config --global --add safe.directory $GITHUB_WORKSPACE
 
@@ -24,8 +29,14 @@ jobs:
           apt-get update
           apt-get install -y python3-dev g++
 
+      - name: Install Node.js 20
+        run: |
+          apt-get install -y curl
+          curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+          apt-get install -y nodejs
+
       - name: Install build backend tools
-        run: python3 -m pip install setuptools wheel Cython numpy==1.26.0
+        run: python3 -m pip install setuptools wheel Cython numpy==2.4.6
 
       - name: Install your package
         run: python3 -m pip install --no-build-isolation -e .
@@ -33,16 +44,20 @@ jobs:
       - name: Install build requirements
         run: |
           python3 -m pip install -r requirements-ci.txt
-          python3 -m pip install markupsafe==2.0.1
-          python3 -m pip install mystmd
+          python3 -m pip install markupsafe==3.0.3
+          python3 -m pip install -U mystmd
 
       - name: Install docs JS dependencies
         run: npm install --prefix ./docs
 
       - name: Build MyST Book
+        working-directory: ./docs
+        env:
+          HOST: "127.0.0.1"
+          BASE_URL: /${{ github.event.repository.name }}
         run: |
-          cd docs && myst clean --all
-          cd docs && myst build --html
+          myst clean --all
+          myst build --html
 
       - name: Verify built site exists
         run: |

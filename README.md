@@ -10,16 +10,32 @@ We are releasing this code to the public as a tool we expect others to use and a
 
 ## Environment Setup
 
-### Preferred (uv lockfile, mirrors CI)
-- Use Python 3.10
-- Install uv: `python -m pip install uv`
-- Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
-- Run tooling through uv, e.g. `uv run jupyter notebook ./docs`
+### Prerequisites
+Before setting up the environment, ensure you have the following installed:
+- **Python 3.13** (check with `python --version`)
+- **uv** (optional, highly recommended for reproducible builds: `python -m pip install uv`)
+- **Node.js & npm** (to build the databook in MyST, not needed to run notebooks. check with `npm --version`)
 
-### Pip-only fallback (no uv required)
-- Create and activate a Python 3.10 virtual environment
+### For Running Notebooks (Python only)
+
+**Preferred (uv lockfile, mirrors CI):**
+- Use Python 3.13
+- Sync from lockfile: `uv sync --frozen --extra dev --python 3.10`
+- Run Jupyter: `uv run jupyter notebook`
+
+**Pip-only fallback (no uv required):**
+- Create and activate a Python 3.13 virtual environment
 - Install dependencies: `python -m pip install -r requirements-ci.txt`
 - Install project: `python -m pip install -e .`
+- Run Jupyter: `jupyter notebook`
+
+### For Building the Databook in MyST (Python + Node.js)
+
+If you want to build or develop the databook documentation with MyST, you'll also need to install JavaScript dependencies. After completing the Python setup above:
+
+- Make sure you're in the 'docs' folder: `cd docs`
+- Install JavaScript dependencies for MyST: `npm install`
+- Run the development server: `uv run myst start`, Or build for production: `uv run myst build`
 
 ### Maintaining `requirements-ci.txt`
 `requirements-ci.txt` is a fully-pinned, pip-compatible export of the uv lockfile used by CI. After any change to `pyproject.toml` or `uv.lock`, regenerate it with:
@@ -32,44 +48,65 @@ uv export --frozen --extra dev --no-hashes --no-editable --no-emit-project -o re
 - `--no-editable` — converts editable installs to regular installs
 - `--no-emit-project` — excludes the local project itself from the file, preventing pip from reading `pyproject.toml` (which would conflict with pinned VCS commits)
 
-## Content Goals
+## Content
 
-### Chapter 1: Using DANDI/getting data
-- [Downloading NWB files from DANDI](https://alleninstitute.github.io/openscope_databook/basics/download_nwb.html)
-- [Reading NWB files](https://alleninstitute.github.io/openscope_databook/basics/read_nwb.html)
-- [Exploring NWB files with NWBWidgets](https://alleninstitute.github.io/openscope_databook/basics/use_nwbwidgets.html)
-- [Streaming NWB files from DANDI](https://alleninstitute.github.io/openscope_databook/basics/stream_nwb.html)
-- [Querying metadata across sessions from DANDI](https://alleninstitute.github.io/openscope_databook/basics/get_dandiset_metadata.html)
+### Basics
+- [Background](https://alleninstitute.github.io/openscope_databook/basics/background.html)
+- [Downloading NWB Files from DANDI](https://alleninstitute.github.io/openscope_databook/basics/download_nwb.html)
+- [Streaming NWB Files from DANDI](https://alleninstitute.github.io/openscope_databook/basics/stream_nwb.html)
+- [Reading NWB Files](https://alleninstitute.github.io/openscope_databook/basics/read_nwb.html)
+- [Querying Metadata Across Sessions from DANDI](https://alleninstitute.github.io/openscope_databook/basics/get_dandiset_metadata.html)
 
-### Chapter 2: Data visualization
-- [Visualizing eye-tracking gaze locations, eye area, and running speed](https://alleninstitute.github.io/openscope_databook/visualization/visualize_behavior.html)
-- [Visualizing 2P raw movie](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_raw.html)
-- [Visualizing Neuropixels probe locations](https://alleninstitute.github.io/openscope_databook/visualization/visualize_neuropixels_probes.html)
-- [Visualizing Neuropixels recorded unit quality metrics](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_metrics.html)
-- [Visualizing LFP responses to stimulus events](https://alleninstitute.github.io/openscope_databook/visualization/visualize_lfp_responses.html)
-- [Visualizing neuronal spike matrices](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_spikes.html)
-- [Visualizing neuronal unit responses to stimulus events in different epochs and spike waveforms](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_responses.html)
-- [Visualizing 2P responses to stimulus events in different epochs](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_responses.html)
+### Visualizing NWB Files
+- [Visualizing 2P Raw Movie](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_raw.html)
+- [Visualizing Unit Quality Metrics](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_metrics.html)
+- [Visualizing LFP Responses to Stimulus Events](https://alleninstitute.github.io/openscope_databook/visualization/visualize_lfp_responses.html)
+- [Visualizing Neuronal Unit Responses to Stimulus Events](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_responses.html)
+- [Visualizing 2P Responses to Stimulus Events](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_responses.html)
+- [Visualizing Neuronal Spike Matrices](https://alleninstitute.github.io/openscope_databook/visualization/visualize_unit_spikes.html)
+- [Visualizing Behavior: Eye Tracking and Running Speed](https://alleninstitute.github.io/openscope_databook/visualization/visualize_behavior.html)
+- [Visualizing 2P and Behavioral Data for Virtual Navigation](https://alleninstitute.github.io/openscope_databook/visualization/visualize_2p_VR_behavior.html)
+- [Visualizing Neuropixels Probe Locations](https://alleninstitute.github.io/openscope_databook/visualization/visualize_neuropixels_probes.html)
+- [Visualizing Stimulus Templates](https://alleninstitute.github.io/openscope_databook/visualization/visualize_templates.html)
 
-### Chapter 3: First-order analysis
-- [Neuropixels: Plotting receptive fields](https://alleninstitute.github.io/openscope_databook/first-order/receptive_fields.html)
-- [Neuropixels: Identifying opto-tagged cells](https://alleninstitute.github.io/openscope_databook/first-order/optotagging.html)
-- [Neuropixels: Extracting Current Source Density plots](https://alleninstitute.github.io/openscope_databook/first-order/current_source_density.html)
-- [2P: Cell matching across days](https://alleninstitute.github.io/openscope_databook/first-order/cell_matching.html)
-- [2P: Stimuli averages with 2P data](https://alleninstitute.github.io/openscope_databook/first-order/test_2p_responses.html)
-- [Neuropixels: Stimuli averages with neuropixels data](https://alleninstitute.github.io/openscope_databook/first-order/test_unit_responses.html)
-- [2P: How to align timestamps across modalities](https://alleninstitute.github.io/openscope_databook/first-order/modality_alignment.html)
-- [Sending NWB raw data to a segmentation pipeline: example with Suite2p](https://alleninstitute.github.io/openscope_databook/first-order/suite2p.html)
-- [Classifying spike waveform between fast spiking and normal spiking cells](https://alleninstitute.github.io/openscope_databook/first-order/classify_waveforms.html)
+### First-Order Analysis
+- [Neuropixels: Plotting Receptive Fields](https://alleninstitute.github.io/openscope_databook/first-order/receptive_fields.html)
+- [Neuropixels: Identifying Opto-Tagged Cells](https://alleninstitute.github.io/openscope_databook/first-order/optotagging.html)
+- [Neuropixels: Extracting Current Source Density Plots](https://alleninstitute.github.io/openscope_databook/first-order/current_source_density.html)
+- [Neuropixels: Classifying Spike Waveforms](https://alleninstitute.github.io/openscope_databook/first-order/classify_waveforms.html)
+- [2P: Stimulus-Averaged Responses](https://alleninstitute.github.io/openscope_databook/first-order/test_2p_responses.html)
+- [Neuropixels: Stimulus-Averaged Responses](https://alleninstitute.github.io/openscope_databook/first-order/test_unit_responses.html)
+- [2P: Segmentation Pipeline with Suite2p](https://alleninstitute.github.io/openscope_databook/first-order/suite2p.html)
+- [2P: Cell Matching Across Days](https://alleninstitute.github.io/openscope_databook/first-order/cell_matching.html)
+- [2P: Aligning Data Across Modalities](https://alleninstitute.github.io/openscope_databook/first-order/modality_alignment.html)
 
-### Chapter 4: Higher-order analysis
-- [Neural dynamics using time-analysis with CEBRA](https://alleninstitute.github.io/openscope_databook/higher-order/cebra_time.html)  
-  [CEBRA Demo on the CEBRA Repository](https://github.com/adaptivemotorcontrollab/CEBRA-demos/blob/main/Demo_openscope_databook.ipynb)
-- [Extracting clusters of correlated neurons with TCA](https://alleninstitute.github.io/openscope_databook/higher-order/tca.html)
-- [Estimating behavioral state given trial choices and relating states to pupil size](https://alleninstitute.github.io/openscope_databook/higher-order/behavioral_state.html)
+### Higher-Order Analysis
+- [Neural Dynamics Using CEBRA](https://alleninstitute.github.io/openscope_databook/higher-order/cebra_time.html)
+- [Extracting Clusters of Correlated Neurons with TCA](https://alleninstitute.github.io/openscope_databook/higher-order/tca.html)
+- [Generalized Linear Models with Pynapple and NeMoS](https://alleninstitute.github.io/openscope_databook/higher-order/GLM_pynapple_nemos.html)
+- [Generalized Linear Models](https://alleninstitute.github.io/openscope_databook/higher-order/glm.html)
+- [Estimating Behavioral State from Trial Choices](https://alleninstitute.github.io/openscope_databook/higher-order/behavioral_state.html)
 
-### Chapter 5: Replicating figures
+### OpenScope Experimental Projects
 - [OpenScope Credit Assignment](https://alleninstitute.github.io/openscope_databook/projects/cred_assign_figures.html)
 - [OpenScope Global/Local Oddball](https://alleninstitute.github.io/openscope_databook/projects/glo.html)
 - [OpenScope Illusion](https://alleninstitute.github.io/openscope_databook/projects/illusion.html)
 - [OpenScope Dendritic Coupling](https://alleninstitute.github.io/openscope_databook/projects/dendritic_coupling.html)
+- [OpenScope Sequence Learning](https://alleninstitute.github.io/openscope_databook/projects/sequence_learning.html)
+- [OpenScope Temporal Barcoding](https://alleninstitute.github.io/openscope_databook/projects/barcoding.html)
+- [OpenScope Vision2Hippocampus](https://alleninstitute.github.io/openscope_databook/projects/vippo.html)
+- [OpenScope Vismo](https://alleninstitute.github.io/openscope_databook/projects/vismo.html)
+- [OpenScope Texture](https://alleninstitute.github.io/openscope_databook/projects/texture.html)
+- [OpenScope Loop](https://alleninstitute.github.io/openscope_databook/projects/loop.html)
+- [OpenScope Psycode](https://alleninstitute.github.io/openscope_databook/projects/psycode.html)
+- [OpenScope Predictive Processing - Neuropixels](https://alleninstitute.github.io/openscope_databook/projects/predictive_processing_ephys.html)
+- [OpenScope Predictive Processing - Mesoscope](https://alleninstitute.github.io/openscope_databook/projects/predictive_processing_ophys.html)
+
+### Methods
+- [Jupyter/Jupyter Book](https://alleninstitute.github.io/openscope_databook/methods/jupyter_book.html)
+- [Git/GitHub](https://alleninstitute.github.io/openscope_databook/methods/github.html)
+- [Managing Environments on Multiple Platforms](https://alleninstitute.github.io/openscope_databook/methods/environments.html)
+
+### Appendix
+- [Contributing to the Databook](https://alleninstitute.github.io/openscope_databook/contribution.html)
+- [FAQ](https://alleninstitute.github.io/openscope_databook/FAQ.html)
