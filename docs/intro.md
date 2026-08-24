@@ -12,7 +12,7 @@
 
 Reproducibility is a significant challenge in neuroscience, as analysis and visualization methods are often difficult to replicate due to a lack of accessible code, separation of code from published figures, or unavailability of code altogether. This issue may arise from the complex nature of neuroscience research, the use of diverse data formats and analysis techniques, and insufficient emphasis on open-source, collaborative practices. In addition, key neuroscience analyses are typically rewritten at the start of new scientific projects, slowing down the initiation of research efforts.
 
-Four key components are essential for reproducible analysis: accessible data, accessible computational resources, a reproducible environment, and usage documentation. The OpenScope Databook, provided by the Allen Institute's OpenScope Project, offers a solution to these challenges by facilitating the analysis and visualization of brain data, primarily using [NWB files](https://www.nwb.org/) and the [DANDI Archive](https://dandiarchive.org/). Hosted on GitHub, the entire publication – including code, data access, text, references, and revisions from reviewers and contributors – is readily available for collaboration and version control, promoting transparency and collective knowledge growth. The OpenScope Databook addresses these components by leveraging a combination of open-source Python libraries, such as DANDI, [Binder](https://mybinder.org/), [Jupyter Book](https://jupyterbook.org/en/stable/intro.html), LaTeX references, Python scripts, Git versioning, and scientific revision through approved pull requests. The entire publication can be recreated by running the code locally, on distributed servers such as Binder, [DandiHub](https://hub.dandiarchive.org/), or on any host running Jupyter notebooks.
+Four key components are essential for reproducible analysis: accessible data, accessible computational resources, a reproducible environment, and usage documentation. The OpenScope Databook, provided by the Allen Institute's OpenScope Project, offers a solution to these challenges by facilitating the analysis and visualization of brain data, primarily using [NWB files](https://www.nwb.org/) and the [DANDI Archive](https://dandiarchive.org/). Hosted on GitHub, the entire publication – including code, data access, text, references, and revisions from reviewers and contributors – is readily available for collaboration and version control, promoting transparency and collective knowledge growth. The OpenScope Databook addresses these components by leveraging a combination of open-source Python libraries, such as DANDI, [Binder](https://mybinder.org/), [Jupyter Book](https://jupyterbook.org/en/stable/intro.html), LaTeX references, Python scripts, Git versioning, and scientific revision through approved pull requests. The entire publication can be recreated by running the code locally, on distributed servers such as Binder or on any host running Jupyter notebooks.
 
 We cover several broadly used analyses across the community, providing a missing component for system neuroscience. Our key analyses are organized into chapters, including NWB basics such as downloading, streaming, and visualizing NWB files from data archives. We document essential analyses typically performed in all neuroscience laboratories, such as temporal alignment, alignment to sensory stimuli, and association with experimental metadata. We cover the two leading neuronal recording techniques: two-photon calcium imaging and electrophysiological recordings, and share example analyses of stimulus-averaged responses. Advanced first-order analyses include showing receptive fields, identifying optotagged units, current source density analysis, and cell matching across days.
 
@@ -22,14 +22,13 @@ This resource is actively maintained and can be updated by the community, provid
 (Usage)=
 ## How Can I Use It?
 
-There are four primary ways to run this code: **Locally**, with **Binder**, in **Google Colab**, or with **DandiHub**.
+There are four primary ways to run this code: **Locally**, with **Binder**, or in **Google Colab**.
 
 ### Quick Start: Cloud Execution
 
-Launch the Databook in the cloud with Binder or DANDIHub using the links below:
+Launch the Databook in the cloud with Binder using the link below:
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AllenInstitute/openscope_databook/HEAD)
-[![DandiHub](https://img.shields.io/badge/Open%20in-DandiHub-blue?logo=jupyter)](https://hub.dandiarchive.org/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAllenInstitute%2Fopenscope_databook&urlpath=lab%2Ftree%2Fopenscope_databook%2Fdocs)
 
 Google Colab works a little differently. Colab can only open a specific `.ipynb` file, not the Databook landing page or the `docs/` directory as a whole. For that reason, Colab badges are added automatically to individual notebook pages when the project is built. Open a notebook page in the Databook and click its `Open in Colab` badge to launch that notebook in Colab.
 
@@ -101,10 +100,6 @@ Binder will automatically set up the environment with [repo2docker](https://gith
 
 ### Google Colab
 Google Colab is best suited for opening and running an individual notebook rather than the Databook as a whole. Each notebook page in the built Databook includes an automatically generated `Open in Colab` badge that links directly to that notebook's `.ipynb` file in GitHub. Clicking that badge opens the notebook in Colab, where you can run it in a hosted Python environment.
-
-
-### DANDIHub
-[DANDIHub](https://hub.dandiarchive.org/) is an instance of JupyterHub hosted by the [DANDI Archive](https://dandiarchive.org). To use it, navigate to `https://hub.dandiarchive.org` in your browser and sign in with your GitHub account. From there you will need to set up the environment yourself — there is no pre-built OpenScope image available. Follow the [Locally (uv)](#locally-preferred-uv) or [Locally (Pip-only fallback)](#locally-pip-only-fallback) instructions above after launching your server. Once the environment is ready, navigate to the `openscope_databook/docs` directory which contains the OpenScope notebooks.
 
 
 ## How Does It Work?
