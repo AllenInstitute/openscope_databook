@@ -22,7 +22,7 @@ This resource is actively maintained and can be updated by the community, provid
 (Usage)=
 ## How Can I Use It?
 
-There are four primary ways to run this code: **Locally**, with **Binder**, or in **Google Colab**.
+There are three primary ways to run this code: **Locally**, with **Binder**, or in **Google Colab**.
 
 ### Quick Start: Cloud Execution
 
