@@ -14,7 +14,7 @@ We are releasing this code to the public as a tool we expect others to use and a
 Before setting up the environment, ensure you have the following installed:
 - **Python 3.13** (check with `python --version`)
 - **uv** (optional, highly recommended for reproducible builds: `python -m pip install uv`)
-- **Node.js & npm** (to build the databook in MyST, not needed to run notebooks. check with `npm --version`)
+- **Node.js 20** (to build the databook in MyST, not needed to run notebooks. check with `node --version`)
 
 ### For Running Notebooks (Python only)
 
@@ -31,10 +31,9 @@ Before setting up the environment, ensure you have the following installed:
 
 ### For Building the Databook in MyST (Python + Node.js)
 
-If you want to build or develop the databook documentation with MyST, you'll also need to install JavaScript dependencies. After completing the Python setup above:
+After completing the Python setup above:
 
 - Make sure you're in the 'docs' folder: `cd docs`
-- Install JavaScript dependencies for MyST: `npm install`
 - Run the development server: `uv run myst start`, Or build for production: `uv run myst build`
 
 ### Maintaining `requirements-ci.txt`
